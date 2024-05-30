@@ -1,0 +1,106 @@
+{% extends "layouts/main.html" %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" action="#" method="post">
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          name: "security-questions",
+          fieldset: {
+            legend: {
+              text: "What was the security question outcome?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "automated",
+              text: "Passed automated"
+            },
+            {
+              value: "biographical",
+              text: "Passed biographical questions"
+            },
+            {
+              value: "memorable",
+              text: " Passed memorable information"
+            },
+            {
+              value: "security",
+              text: "Passed security questions"
+            },
+            {
+              value: "implicit-consent",
+              text: "Passed implicit consent"
+            },
+            {
+              value: "authenticated",
+              text: "Authenticated"
+            },
+            {
+              value: "unauthenticated",
+              text: "Unauthenticated"
+            },
+            {
+              value: "fail-automated",
+              text: "Failed automated"
+            },
+            {
+              value: "fail-biographical",
+              text: "Failed biographical questions"
+            },
+            {
+              value: "fail-implicit-consent",
+              text: "Failed implicit consent"
+            },
+            {
+              value: "fail-security",
+              text: "Failed security questions"
+            },
+            {
+              value: "abandoned-insufficient-data",
+              text: "Abandoned insufficient data"
+            },
+            {
+              value: "abandoned-other",
+              text: "Abandoned other"
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "not-applicable",
+              text: "Not applicable"
+            }
+          ]
+        }) }}
+
+      
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
+

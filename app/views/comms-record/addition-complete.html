@@ -1,0 +1,43 @@
+{% extends "layouts/main.html" %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" action="#" method="post">
+
+        <div class="dwp-timeline">
+          <h1 class="govuk-heading-l">Timeline</h1>
+          <ol class="dwp-timeline__events">
+          <li class="dwp-timeline__events--entry">
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Change of circumstance</h2>
+            <p class="govuk-caption-m govuk-!-margin-bottom-1">Telephone call from the claimant by Gordon Carroll</p>
+            <p class="govuk-caption-m">6 June 2023</p>
+          </li>
+          <li class="dwp-timeline__events--entry">
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Declined</h2>
+            <p class="govuk-caption-m govuk-!-margin-bottom-1">by John Smith</p>
+            <p class="govuk-caption-m">10 Aug 2021</p>
+          </li>
+          </ol>
+          </div>
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
+
