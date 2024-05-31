@@ -26,18 +26,50 @@
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
-          name: "who",
+          name: "post-type",
           fieldset: {
             legend: {
-              text: "Why did we contact them about [a change of circumstance]?",
+              text: "What type of post did we contact them about?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--m"
             }
           },
           items: [
             {
-              value: "claimant",
-              text: "Sub reasons"
+              value: "decision-letter",
+              text: "Decision letter"
+            },
+            {
+              value: "return-docs",
+              text: "Return/Copy of Documents"
+            },
+            {
+              value: "acknowledgement",
+              text: "Acknowledgement"
+            },
+            {
+              value: "reconsideration-form",
+              text: "Reconsideration/Appeal Form"
+            },
+            {
+              value: "complaint-form",
+              text: "Complaint form"
+            },
+            {
+              value: "reclassification-ap",
+              text: "Reclassification for AP"
+            },
+            {
+              value: "rep-letter",
+              text: "Representative Letter"
+            },
+            {
+              value: "med-evidence-nr",
+              text: "Medical Evidence not relevant to the Claim"
+            },
+            {
+              value: "other-information",
+              text: "Other information"
             }
           ]
         }) }}

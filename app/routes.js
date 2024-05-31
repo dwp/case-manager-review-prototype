@@ -22,17 +22,46 @@ router.post('/comms-record/start-record', function(request, response) {
 //OUTBOUND
 // Why did we contact them?
 router.post('/comms-record/outbound/contact-reasons-1', function(request, response) {
-    var claimingSelf = request.session.data['who']
-    if (claimingSelf == 'post'){
+    var what = request.session.data['what']
+    if (what == 'post'){
+        response.redirect('/comms-record/outbound/post-sub-reason')
+    } else if (what == "change-of-circs") {
         response.redirect('/comms-record/outbound/contact-sub-reasons')
-    } else if (claimingSelf == "change-of-circs") {
+    } else if (what == "enquiry") {
+        response.redirect('/comms-record/outbound/contact-sub-reasons')
+    } else if (what == "evidence") {
+        response.redirect('/comms-record/outbound/contact-sub-reasons')
+    } else if (what == "update") {
+        response.redirect('/comms-record/outbound/contact-sub-reasons')
+    } else if (what == "new-claim") {
+        response.redirect('/comms-record/outbound/contact-sub-reasons')
+    } else if (what == "feedback") {
         response.redirect('/comms-record/outbound/contact-sub-reasons')
     }
 })
 
-// Why did we contact them?
-router.post('/comms-record/outbound/contact-sub-reasons', function(request, response) {
+// What type of post did we contact them about?
+router.post('/comms-record/outbound/post-sub-reason', function(request, response) {
+    var postType = request.session.data['post-type']
+    if (postType == 'decision-letter'){
         response.redirect('/comms-record/security-questions')
+    } else if (postType == "return-docs") {
+        response.redirect('/comms-record/security-questions')
+    } else if (postType == "acknowledgement") {
+        response.redirect('/comms-record/security-questions')
+    } else if (postType == "reconsideration-form") {
+        response.redirect('/comms-record/security-questions')
+    } else if (postType == "complaint-form") {
+        response.redirect('/comms-record/security-questions')
+    } else if (postType == "reclassification-ap") {
+        response.redirect('/comms-record/security-questions')
+    } else if (postType == "rep-letter") {
+        response.redirect('/comms-record/security-questions')
+    } else if (postType == "med-evidence-nr") {
+        response.redirect('/comms-record/security-questions')
+    } else if (postType == "other-information") {
+        response.redirect('/comms-record/outbound/other-information')
+    }
 })
 
 // Security questions
@@ -53,6 +82,11 @@ router.post('/comms-record/inbound/contact-reasons-1', function(request, respons
 })
 
  // Why did we contact them?
-router.post('/comms-record/outbound/contact-sub-reasons', function(request, response) {
+router.post('/comms-record/inbound/contact-sub-reasons', function(request, response) {
     response.redirect('/comms-record/security-questions')
+})
+
+// Security questions
+router.post('/comms-record/security-questions', function(request, response) {
+    response.redirect('/comms-record/addition-complete')
 })
