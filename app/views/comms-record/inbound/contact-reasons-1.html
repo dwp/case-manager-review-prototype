@@ -20,7 +20,7 @@
       <form class="form" action="#" method="post">
 
         <h1 class="govuk-heading-l">
-          Outbound contact
+          Inbound contact
         </h1>
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -29,7 +29,7 @@
           name: "who",
           fieldset: {
             legend: {
-              text: "Who did we contact?",
+              text: "Who contacted us about the claim?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--m"
             }
@@ -60,7 +60,7 @@
           name: "contact-format",
           fieldset: {
             legend: {
-              text: "How did we contact them?",
+              text: "How did they contact us?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--m"
             }
@@ -83,7 +83,7 @@
             },
             {
               value: "text-phone",
-              text: "Textphone"
+              text: "Text phone"
             },
             {
               value: "sms",
@@ -96,7 +96,7 @@
           name: "who",
           fieldset: {
             legend: {
-              text: "What did we contact them for?",
+              text: "Why did they contact us?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--m"
             }
