@@ -1,0 +1,89 @@
+{% extends "layouts/main.html" %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" action="#" method="post">
+
+        <h1 class="govuk-heading-l">
+          Outbound contact
+        </h1>
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          name: "post-type",
+          fieldset: {
+            legend: {
+              text: "What type of enquiry did we contact them about?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "decision-letter",
+              text: "DPA print produced"
+            },
+            {
+              value: "return-docs",
+              text: "Full record print produced"
+            },
+            {
+              value: "acknowledgement",
+              text: "Progress chasing - New Claims"
+            },
+            {
+              value: "reconsideration-form",
+              text: "Progress chasing - Ongoing"
+            },
+            {
+              value: "complaint-form",
+              text: "Can you send me?"
+            }
+          ]
+        }) }}
+
+
+
+        {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+
+        {{ govukCharacterCount({
+          name: "furtherInfo",
+          id: "info",
+          maxlength: 2000,
+          label: {
+            text: "Further information",
+            classes: "govuk-label--m",
+            isPageHeading: true
+          },
+          content: {
+            text: "Add details of any additional information."
+          }
+        }) }}
+
+      
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
+

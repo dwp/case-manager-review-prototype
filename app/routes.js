@@ -26,17 +26,17 @@ router.post('/comms-record/outbound/contact-reasons-1', function(request, respon
     if (what == 'post'){
         response.redirect('/comms-record/outbound/post-sub-reason')
     } else if (what == "change-of-circs") {
-        response.redirect('/comms-record/outbound/contact-sub-reasons')
+        response.redirect('/comms-record/outbound/change-circs-sub-reason')
     } else if (what == "enquiry") {
-        response.redirect('/comms-record/outbound/contact-sub-reasons')
+        response.redirect('/comms-record/outbound/enquiry-sub-reason')
     } else if (what == "evidence") {
-        response.redirect('/comms-record/outbound/contact-sub-reasons')
+        response.redirect('/comms-record/security-questions')
     } else if (what == "update") {
-        response.redirect('/comms-record/outbound/contact-sub-reasons')
+        response.redirect('/comms-record/outbound/update-sub-reason')
     } else if (what == "new-claim") {
-        response.redirect('/comms-record/outbound/contact-sub-reasons')
+        response.redirect('/comms-record/security-questions')
     } else if (what == "feedback") {
-        response.redirect('/comms-record/outbound/contact-sub-reasons')
+        response.redirect('/comms-record/outbound/feedback-sub-reason')
     }
 })
 
@@ -64,25 +64,96 @@ router.post('/comms-record/outbound/post-sub-reason', function(request, response
     }
 })
 
+// What type of change of circs did we contact them about?
+router.post('/comms-record/outbound/change-circs-sub-reason', function(request, response) {
+    response.redirect('/comms-record/security-questions')
+})
+
+// What type of enquiry did we contact them about?
+router.post('/comms-record/outbound/enquiry-sub-reason', function(request, response) {
+    response.redirect('/comms-record/security-questions')
+})
+
+// What type of enquiry did we contact them about?
+router.post('/comms-record/outbound/update-sub-reason', function(request, response) {
+    response.redirect('/comms-record/security-questions')
+})
+
+// What type of feedback did we contact them about?
+router.post('/comms-record/outbound/feedback-sub-reason', function(request, response) {
+    response.redirect('/comms-record/security-questions')
+})
+
 // Security questions
 router.post('/comms-record/security-questions', function(request, response) {
     response.redirect('/comms-record/addition-complete')
 })
 
-
+//------------------------------------------------------------------------------------------------------------------------
 //INBOUND
-// Why did we contact them?
+
+// Why did they contact us?
 router.post('/comms-record/inbound/contact-reasons-1', function(request, response) {
-    var whyTwo = request.session.data['who']
-    if (whyTwo == 'post'){
-        response.redirect('/comms-record/inbound/contact-sub-reasons')
-    } else if (whyTwo == "change-of-circs") {
-        response.redirect('/comms-record/inbound/contact-sub-reasons')
+    var what = request.session.data['what-reason']
+    if (what == 'post'){
+        response.redirect('/comms-record/inbound/post-sub-reason')
+    } else if (what == "change-of-circs") {
+        response.redirect('/comms-record/inbound/change-circs-sub-reason')
+    } else if (what == "enquiry") {
+        response.redirect('/comms-record/inbound/enquiry-sub-reason')
+    } else if (what == "evidence") {
+        response.redirect('/comms-record/security-questions')
+    } else if (what == "update") {
+        response.redirect('/comms-record/inbound/update-sub-reason')
+    } else if (what == "new-claim") {
+        response.redirect('/comms-record/security-questions')
+    } else if (what == "feedback") {
+        response.redirect('/comms-record/inbound/feedback-sub-reason')
     }
 })
 
- // Why did we contact them?
-router.post('/comms-record/inbound/contact-sub-reasons', function(request, response) {
+// What type of post did we contact them about?
+router.post('/comms-record/inbound/post-sub-reason', function(request, response) {
+    var postType = request.session.data['post-type']
+    if (postType == 'decision-letter'){
+        response.redirect('/comms-record/security-questions')
+    } else if (postType == "return-docs") {
+        response.redirect('/comms-record/security-questions')
+    } else if (postType == "acknowledgement") {
+        response.redirect('/comms-record/security-questions')
+    } else if (postType == "reconsideration-form") {
+        response.redirect('/comms-record/security-questions')
+    } else if (postType == "complaint-form") {
+        response.redirect('/comms-record/security-questions')
+    } else if (postType == "reclassification-ap") {
+        response.redirect('/comms-record/security-questions')
+    } else if (postType == "rep-letter") {
+        response.redirect('/comms-record/security-questions')
+    } else if (postType == "med-evidence-nr") {
+        response.redirect('/comms-record/security-questions')
+    } else if (postType == "other-information") {
+        response.redirect('/comms-record/inbound/other-information')
+    }
+})
+
+
+// What type of change of circs did we contact them about?
+router.post('/comms-record/inbound/change-circs-sub-reason', function(request, response) {
+    response.redirect('/comms-record/security-questions')
+})
+
+// What type of enquiry did we contact them about?
+router.post('/comms-record/inbound/enquiry-sub-reason', function(request, response) {
+    response.redirect('/comms-record/security-questions')
+})
+
+// What type of enquiry did we contact them about?
+router.post('/comms-record/inbound/update-sub-reason', function(request, response) {
+    response.redirect('/comms-record/security-questions')
+})
+
+// What type of feedback did we contact them about?
+router.post('/comms-record/inbound/feedback-sub-reason', function(request, response) {
     response.redirect('/comms-record/security-questions')
 })
 

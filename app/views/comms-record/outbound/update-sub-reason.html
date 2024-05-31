@@ -26,18 +26,22 @@
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
         {{ govukRadios({
-          name: "who",
+          name: "post-type",
           fieldset: {
             legend: {
-              text: "Why did they contact us about [post]/[a change of circumstance]/[an enquiry]/[evidence]/[an update]/[a new claim]/[feedback]?",
+              text: "What type of update did we contact them about?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--m"
             }
           },
           items: [
             {
-              value: "claimant",
-              text: "Sub reasons"
+              value: "change-other",
+              text: "Change (other)"
+            },
+            {
+              value: "change-coa",
+              text: "Change - CoA/MoP"
             }
           ]
         }) }}
