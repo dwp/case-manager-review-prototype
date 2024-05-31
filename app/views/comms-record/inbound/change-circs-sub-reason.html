@@ -1,0 +1,81 @@
+{% extends "layouts/main.html" %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" action="#" method="post">
+
+        <h1 class="govuk-heading-l">
+          Inbound contact
+        </h1>
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          name: "circs-type",
+          fieldset: {
+            legend: {
+              text: "What type of change of circumstance did they contact us about?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "change-address",
+              text: "Change of Address"
+            },
+            {
+              value: "change-mop",
+              text: "Change of MOP"
+            },
+            {
+              value: "change-other",
+              text: "Change (Other)"
+            }
+          ]
+        }) }}
+
+
+
+        {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+
+        {{ govukCharacterCount({
+          name: "furtherInfo",
+          id: "info",
+          maxlength: 2000,
+          label: {
+            text: "Further information",
+            classes: "govuk-label--m",
+            isPageHeading: true
+          },
+          content: {
+            text: "Add details of any additional information."
+          }
+        }) }}
+
+      
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
+
