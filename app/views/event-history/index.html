@@ -1,0 +1,101 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %} Personal details {% endblock %}
+
+{% block main %}
+
+{% include "./record-id-bar.html" %}
+
+
+  <div class="govuk-width-container">
+    <div class="column-full">
+    <nav class="navigation-secondary">
+      <ul>
+        <li>
+          <a href="#">Personal details</a>
+        </li>
+        <li>
+          <a href="#">Supporting documents</a>
+        </li>
+        <li>
+          <a href="#">Conditions</a>
+        </li>
+        <li>
+          <a href="#">Activities</a>
+        </li>
+
+        <li>
+          <a href="event-history" class="active" aria-current="section">Event history</a>
+        </li>
+
+        {# <li>
+          <a href="Other-actions">Other actions</a>
+        </li> #}
+
+      </ul>
+    </nav>
+</div>
+
+
+ <br><br><br><br>
+
+<h1 class="govuk-heading-l">Event history</h1>
+
+{{ govukButton({
+  text: "Add new event"
+}) }}
+
+
+{{ govukTable({
+  caption:"Event history",
+  captionClasses:"govuk-visually-hidden",
+  firstCellIsHeader: false,
+  head: [
+    {
+      text: "Date"
+    },
+    {
+      text: "Event"
+    },
+    {
+      text: "Details",
+      classes:"govuk-!-width-two-thirds"
+    }
+  ],
+  rows: [
+    [
+      {
+        text: "12/06/2024"
+      },
+      {
+        text: "Inbound contact"
+      },
+      { text:"User generated content from add event process - consdierations to be had on character count for this block overall and the impact that this will have on displaying content here. Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus vitae beatae rerum harum eius, magnam odit fugit similique maiores accusamus." }
+    ],
+    [
+      {
+        text: "10/06/2024"
+      },
+      {
+        text: "Outbound contact"
+      },
+      { text:"User generated content from add event process - consdierations to be had on character count for this block overall and the impact that this will have on displaying content here."}
+    ],
+    [
+      {
+        text: "9/06/2024"
+      },
+      {
+        text: "Claim registered"
+      },
+      { text:"Succinct system generated statement"}
+    ]
+  ]
+}) }} 
+
+<br><br>
+
+</div>
+
+
+{% endblock %}
