@@ -1,0 +1,92 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %} Personal details {% endblock %}
+
+{% block main %}
+
+{% include "./record-id-bar.html" %}
+
+
+  <div class="govuk-width-container">
+    <div class="column-full">
+    <nav class="navigation-secondary">
+      <ul>
+        <li>
+          <a href="#">Personal details</a>
+        </li>
+        <li>
+          <a href="#">Supporting documents</a>
+        </li>
+        <li>
+          <a href="#">Conditions</a>
+        </li>
+        <li>
+          <a href="#">Activities</a>
+        </li>
+
+        <li>
+          <a href="../event-history" class="active" aria-current="section">Event history</a>
+        </li>
+
+        {# <li>
+          <a href="Other-actions">Other actions</a>
+        </li> #}
+
+      </ul>
+    </nav>
+</div>
+
+
+ <br><br><br><br>
+
+{{ govukRadios({
+  name: "eventType",
+  fieldset: {
+    legend: {
+      text: "Add an event",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "inbound-call",
+      text: "Inbound call"
+    },
+    {
+      value: "outbound-call",
+      text: "Outbound call"
+    },
+    {
+      value: "issue-notification",
+      text: "Issue notification"
+    },
+    {
+      value: "case-eject",
+      text: "Case eject"
+    },
+    {
+      value: "disallow-claim",
+      text: "Disallow claim"
+    },
+    {
+      value: "other",
+      text: "Other"
+    }
+  ]
+}) }}
+
+{{ govukButton({
+  text: "Continue",
+  href: "add-a-note"
+}) }}
+
+
+
+
+<br><br>
+
+</div>
+
+
+{% endblock %}
