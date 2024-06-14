@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% block pageTitle %} Personal details {% endblock %}
+{% block pageTitle %} Add an event {% endblock %}
 
 {% block main %}
 
@@ -39,7 +39,51 @@
 
  <br><br><br><br>
 
-{{ govukRadios({
+ <div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    
+ 
+ {{ govukRadios({
+  name: "eventType",
+  fieldset: {
+    legend: {
+      text: "Add an event",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "inbound-call",
+      text: "Inbound call"
+    },
+    {
+      value: "outbound-call",
+      text: "Outbound call"
+    },
+    {
+      value: "issue-notification",
+      text: "Issue notification"
+    },
+    {
+      value: "case-eject",
+      text: "Case eject"
+    },
+    {
+      value: "disallow-claim",
+      text: "Disallow claim"
+    },
+    {
+      value: "other",
+      text: "Other"
+    }
+  ],
+  errorMessage: {
+    text: "You must select an event type"
+  }
+}) }}
+
+{# {{ govukRadios({
   name: "eventType",
   fieldset: {
     legend: {
@@ -74,13 +118,15 @@
       text: "Other"
     }
   ]
-}) }}
+}) }} #}
 
 {{ govukButton({
   text: "Continue",
   href: "add-a-note"
 }) }}
 
+</div>
+</div>
 
 
 
