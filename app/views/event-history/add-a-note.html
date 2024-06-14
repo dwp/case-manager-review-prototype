@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% block pageTitle %} Personal details {% endblock %}
+{% block pageTitle %} Add a note {% endblock %}
 
 {% block main %}
 
@@ -39,16 +39,33 @@
 
  <br><br><br><br>
 
+ <div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
 
 <h1 class="govuk-heading-l">Add a note</h1>
-{# 
-{{ govukButton({
-  text: "Continue",
-  href: "add-a-note"
+
+{{ govukCharacterCount({
+  name: "furtherInfo",
+  id: "info",
+  maxlength: 2000,
+  label: {
+    text: "Further information",
+    classes: "govuk-label--m",
+    isPageHeading: true
+  },
+  content: {
+    text: "Add details of any additional information."
+  }
 }) }}
- #}
 
 
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+  </div>
+  </div>
 
 <br><br>
 
