@@ -161,3 +161,39 @@ router.post('/comms-record/inbound/feedback-sub-reason', function(request, respo
 router.post('/comms-record/security-questions', function(request, response) {
     response.redirect('/comms-record/addition-complete')
 })
+
+
+router.post('/event-history/add-an-event', function (req, res, next){
+
+ const eventTypeGiven = req.session.data['eventType']
+
+  if( eventTypeGiven ){
+    // Remove the eventError that we added - to keep the return journey clean
+    if(req.session.data['eventError']){
+      delete req.session.data['eventError']
+    }
+    res.redirect('/event-history/add-a-note')
+  } else {
+    req.session.data['eventError'] = 'ERROR!'
+    next()
+  }
+  
+
+})
+
+
+
+
+
+// Logging session data  
+  
+router.use((req, res, next) => {    
+  const log = {  
+    method: req.method,  
+    url: req.originalUrl,  
+    data: req.session.data  
+  }  
+  console.log(JSON.stringify(log, null, 2))  
+ 
+next()  
+})  

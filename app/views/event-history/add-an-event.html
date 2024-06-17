@@ -37,13 +37,89 @@
 </div>
 
 
- <br><br><br><br>
+ <br>
+
+ {{ govukBackLink({
+  text: "Back",
+  href: "/event-history"
+}) }}
+
+<br><br><br>
 
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+
     
+    <form action="add-an-event" method="post">
+
+
+      <div class="govuk-form-group {{ "govuk-form-group--error" if data['eventError'] else "" }}">
+        <fieldset class="govuk-fieldset" {{ 'aria-describedby="eventType-error"' if data['eventError'] else ""}} >
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Add an event
+            </h1>
+          </legend>
+
+          {% if data['eventError'] %}
+
+            <p id="eventType-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> You must select an event type
+            </p>
+
+          {% endif %}
+
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="eventType" name="eventType" type="radio" value="inbound-call" {{ checked('eventType', 'inbound-call') }}>
+              <label class="govuk-label govuk-radios__label" for="eventType">
+                Inbound call
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="eventType-2" name="eventType" type="radio" value="outbound-call" {{ checked('eventType', 'outbound-call') }}>
+              <label class="govuk-label govuk-radios__label" for="eventType-2">
+                Outbound call
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="eventType-3" name="eventType" type="radio" value="issue-notification" {{ checked('eventType', 'issue-notification') }}>
+              <label class="govuk-label govuk-radios__label" for="eventType-3">
+                Issue notification
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="eventType-4" name="eventType" type="radio" value="case-eject" {{ checked('eventType', 'case-eject') }}>
+              <label class="govuk-label govuk-radios__label" for="eventType-4">
+                Case eject
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="eventType-5" name="eventType" type="radio" value="disallow-claim" {{ checked('eventType', 'disallow-claim') }}>
+              <label class="govuk-label govuk-radios__label" for="eventType-5">
+                Disallow claim
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="eventType-5" name="eventType" type="radio" value="other-event" {{ checked('eventType', 'other-claim') }}>
+              <label class="govuk-label govuk-radios__label" for="eventType-5">
+                Other
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
  
- {{ govukRadios({
+ {# {{ govukRadios({
   name: "eventType",
   fieldset: {
     legend: {
@@ -81,49 +157,9 @@
   errorMessage: {
     text: "You must select an event type"
   }
-}) }}
-
-{# {{ govukRadios({
-  name: "eventType",
-  fieldset: {
-    legend: {
-      text: "Add an event",
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--l"
-    }
-  },
-  items: [
-    {
-      value: "inbound-call",
-      text: "Inbound call"
-    },
-    {
-      value: "outbound-call",
-      text: "Outbound call"
-    },
-    {
-      value: "issue-notification",
-      text: "Issue notification"
-    },
-    {
-      value: "case-eject",
-      text: "Case eject"
-    },
-    {
-      value: "disallow-claim",
-      text: "Disallow claim"
-    },
-    {
-      value: "other",
-      text: "Other"
-    }
-  ]
 }) }} #}
 
-{{ govukButton({
-  text: "Continue",
-  href: "add-a-note"
-}) }}
+
 
 </div>
 </div>
