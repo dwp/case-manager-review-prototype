@@ -50,22 +50,23 @@
   <div class="govuk-grid-column-two-thirds">
 
     
+  <h1 class="govuk-heading-l">Add an event</h1>
+
     <form action="add-an-event" method="post">
 
 
       <div class="govuk-form-group {{ "govuk-form-group--error" if data['eventError'] else "" }}">
         <fieldset class="govuk-fieldset" {{ 'aria-describedby="eventType-error"' if data['eventError'] else ""}} >
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <h1 class="govuk-fieldset__heading">
-              Add an event
-            </h1>
+          <legend class="govuk-fieldset__legend">
+            <h2>
+              Select the event you want to record
+            </h2>
           </legend>
 
           {% if data['eventError'] %}
 
             <p id="eventType-error" class="govuk-error-message">
-              <span class="govuk-visually-hidden">Error:</span> You must select an event type
-            </p>
+              <span class="govuk-visually-hidden">Error:</span> Select an event type
 
           {% endif %}
 

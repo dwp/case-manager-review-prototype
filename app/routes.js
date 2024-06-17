@@ -163,8 +163,8 @@ router.post('/comms-record/security-questions', function(request, response) {
 })
 
 
+// Add an event (to event history)
 router.post('/event-history/add-an-event', function (req, res, next){
-
  const eventTypeGiven = req.session.data['eventType']
 
   if( eventTypeGiven ){
@@ -177,11 +177,23 @@ router.post('/event-history/add-an-event', function (req, res, next){
     req.session.data['eventError'] = 'ERROR!'
     next()
   }
-  
-
 })
 
-
+// Add an note (to an event)
+router.post('/event-history/add-a-note', function (req, res, next){
+  const furtherInfoGiven = req.session.data['furtherInfo']
+ 
+   if( furtherInfoGiven ){
+     if(req.session.data['noteError']){
+       delete req.session.data['noteError']
+     }
+     res.redirect('/event-history/add-a-note/confirmation')
+   } else {
+     req.session.data['noteError'] = 'ERROR!'
+     next()
+   }
+ })
+ 
 
 
 

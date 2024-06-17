@@ -50,9 +50,58 @@
   <div class="govuk-grid-column-two-thirds">
 
 
-<h1 class="govuk-heading-l">Add a note</h1>
+  <h1 class="govuk-heading-l">Add a note</h1>
 
-{{ govukCharacterCount({
+    <form action="add-a-note" method="post">
+
+      <div class="govuk-form-group {{ "govuk-form-group--error" if data['noteError'] else "" }} govuk-character-count" data-module="govuk-character-count" data-maxlength="400">
+        <h2 class="govuk-label-wrapper">
+          <label class="govuk-label" for="further-info">
+            Further information
+          </label>
+        </h2>
+
+        {% if data['noteError'] %}
+
+          <p id="further-info-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Further information must be 400 characters or less
+          </p>
+
+        {% endif %}
+
+        <textarea class="govuk-textarea {{ "govuk-textarea--error" if data['noteError'] else "" }} govuk-js-character-count" id="further-info" name="furtherInfo" rows="5" aria-describedby="further-info-help-text {{ "further-info-error" if data['noteError'] else "" }}"></textarea>
+        <div id="further-info-help-text" class="govuk-hint govuk-character-count__message">
+          You can enter up to 400 characters
+        </div>
+      </div>
+
+
+
+
+      {# <div class="govuk-form-group govuk-form-group--error govuk-character-count" data-module="govuk-character-count" data-maxlength="350">
+        <h1 class="govuk-label-wrapper">
+          <label class="govuk-label govuk-label--l" for="exceeding-characters">
+            Enter a job description
+          </label>
+        </h1>
+        <p id="exceeding-characters-error" class="govuk-error-message">
+          <span class="govuk-visually-hidden">Error:</span> Job description must be 350 characters or less
+        </p>
+        <textarea class="govuk-textarea govuk-textarea--error govuk-js-character-count" id="exceeding-characters" name="exceeding" rows="5" aria-describedby="exceeding-characters-info exceeding-characters-error">A content designer works on the end-to-end journey of a service to help users complete their goal and government deliver a policy intent. Their work may involve the creation of, or change to, a transaction, product or single piece of content that stretches across digital and offline channels. They make sure appropriate content is shown to a user in the right place and in the best format.</textarea>
+        <div id="exceeding-characters-info" class="govuk-hint govuk-character-count__message">
+          You can enter up to 350 characters
+        </div>
+      </div> #}
+
+
+    {{ govukButton({
+      text: "Finish and close"
+    }) }}
+
+  </form>
+
+
+{# {{ govukCharacterCount({
   name: "furtherInfo",
   id: "info",
   maxlength: 400,
@@ -67,12 +116,10 @@
   errorMessage: {
     text: "Further information must be 400 characters or less"
   }
-}) }}
+}) }} #}
 
 
-{{ govukButton({
-  text: "Finish and close"
-}) }}
+
 
   </div>
   </div>
