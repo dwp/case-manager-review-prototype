@@ -36,24 +36,31 @@
     </nav>
 </div>
 
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "/event-history/add-an-event"
+}) }}
+{% endblock %}
+
 
  <br><br><br><br>
 
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-
-<h1 class="govuk-heading-l">Add a note</h1>
-
 {{ govukCharacterCount({
   name: "furtherInfo",
   id: "info",
   maxlength: 2000,
   label: {
-    text: "Further information",
-    classes: "govuk-label--m",
+    text: "Add a note",
+    classes: "govuk-label--l",
     isPageHeading: true
   },
+  hint: {
+    text: "Enter more information about this event."
+  }, 
   content: {
     text: "Add details of any additional information."
   },
@@ -64,7 +71,8 @@
 
 
 {{ govukButton({
-  text: "Finish and close"
+  text: "Finish and close",
+  href: "index"
 }) }}
 
   </div>
