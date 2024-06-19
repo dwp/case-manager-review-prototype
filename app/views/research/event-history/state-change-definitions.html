@@ -1,0 +1,185 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %} Event history {% endblock %}
+
+{% block main %}
+
+{% include "./record-id-bar.html" %}
+
+
+  <div class="govuk-width-container">
+    <div class="column-full">
+    <nav class="navigation-secondary">
+      <ul>
+        <li>
+          <a href="#">Personal details</a>
+        </li>
+        <li>
+          <a href="#">Supporting documents</a>
+        </li>
+        <li>
+          <a href="#">Conditions</a>
+        </li>
+        <li>
+          <a href="#">Activities</a>
+        </li>
+
+        <li>
+          <a href="event-history" class="active" aria-current="section">Event history</a>
+        </li>
+
+        {# <li>
+          <a href="Other-actions">Other actions</a>
+        </li> #}
+
+      </ul>
+    </nav>
+</div>
+
+
+ <br><br><br><br>
+
+<h1 class="govuk-heading-l">Event history</h1>
+
+{{ govukButton({
+  text: "Add new event",
+  href:"/event-history/add-an-event"
+}) }}
+
+
+{{ govukTable({
+  caption:"Event history",
+  captionClasses:"govuk-visually-hidden",
+  firstCellIsHeader: false,
+  head: [
+    {
+      text: "Date"
+    },
+    {
+      text: "Event type"
+    },
+    {
+      text: "Event type description",
+      classes:"govuk-!-width-two-thirds"
+    }
+  ],
+  rows: [
+    [
+      {
+        text: "DD/MM/YY"
+      },
+      {
+        text: "Registration"
+      },
+      { text:"This State is set whilst the claimant completes the registration questions and submits (Inherited from PIP Apply and this cannot be changed)" }
+    ],
+    [
+      {
+        text: "DD/MM/YY"
+      },
+      {
+        text: "Health & Disability"
+      },
+      { text:"This State is set whilst the claimant completes the Health Information Gather questions and submits this can take up to 40 days (Inherited from PIP Apply and this cannot be changed)"}
+    ],
+    [
+      {
+        text: "DD/MM/YY"
+      },
+      {
+        text: "Submitted"
+      },
+      { text:"Once in the Submitted state an agent will complete a number of checks before they make a request for a HCP Assessment (Inherited from PIP Apply and this cannot be changed)"}
+    ],
+    [
+    {
+      text: "DD/MM/YY"
+    },
+    {
+      text: "Disallowed: Failure to Comply"
+    },
+    { text:"This state is triggered automatically if the 40 day timer expires without a HIG being submitted or a timer extension request, and the claim not being flagged as Additional Support"}
+  ],
+  [
+  {
+    text: "DD/MM/YY"
+  },
+  {
+    text: "Claim Withdrawn"
+  },
+  { text:"This state will be applied when a claimant informs PIP that they are withdrawing their application. This can occur at any time during the application process"}
+],
+[
+{
+  text: "DD/MM/YY"
+},
+{
+  text: "Referral Requested"
+},
+{ text:"This State is triggered when the claim has been passed to the Assessment Provider."}
+],
+[
+{
+  text: "DD/MM/YY"
+},
+{
+  text: "AP Outcome Available"
+},
+{ text:"The State is triggered when the Coordinator consumes an Assessment outcome Event from the provider. There are several possible outcomes that could be contained in the Event"}
+],
+[
+{
+  text: "DD/MM/YY"
+},
+{
+  text: "Pending Decision"
+},
+{ text:"When an agent selects a claim to work on from the work queue, then that selection event will trigger the state to Change. However depending on the assessment outcome this state name may not always be appropriate"}
+],
+[
+{
+  text: "DD/MM/YY"
+},
+{
+  text: "Decision Made - Awarded"
+},
+{ text:"Once a decision is made and recorded in Decide Manager the state will change, and this is the final state for the Application Coordinator as the application is deemed to have concluded"}
+],
+[
+{
+  text: "DD/MM/YY"
+},
+{
+  text: "Decision Made - Not Awarded"
+},
+{ text:"In the event of a claim qualifies for a Nil Nil award then the state will be changed to reflect that the claim has completed the process successfully and the outcome was to not award.
+
+In this State the claim will not move into the Award Manager micro service but reside in the Coordinator"}
+],
+[
+{
+  text: "DD/MM/YY"
+},
+{
+  text: "Routed to PIPCS"
+},
+{ text: "Once the HIG is submitted this state will be used for all claims that have been routed to PIPCS as a way of concluding the Digital journey"}
+],
+[
+{
+  text: "DD/MM/YY"
+},
+{
+  text: "Claim Ejected"
+},
+{ text: "In the event that information is uncovered or a change occurs with a claim that means it can not be handled in PIP Service it will be Ejected and rebuilt in PIPCS. To maintain the correct history the state will be changed to reflect the re-routing"}
+]
+  ]
+}) }} 
+
+<br><br>
+
+</div>
+
+
+{% endblock %}
