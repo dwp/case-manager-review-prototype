@@ -1,0 +1,69 @@
+{% extends "layouts/main.html" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="/form-handler" method="post" novalidate>
+
+        <h1 class="govuk-heading-l">Select the correct claimant record</h1>
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+        
+        <div class="govuk-width-container">
+        
+        <p>6 claimant records found. <a href="#">search again</a></p>
+        
+        {{ govukRadios({
+        name: "select-an-address",
+        fieldset: {
+          legend: {
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "1 Washington Street, Worcester, WR1 1NL",
+            text: "1 Washington Street, Worcester, WR1 1NL"
+          },
+          {
+            value: "10 Washington Street, Worcester, WR1 1NL",
+            text: "10 Washington Street, Worcester, WR1 1NL"
+          },
+          {
+            value: "11 Washington Street, Worcester, WR1 1NL",
+            text: "11 Washington Street, Worcester, WR1 1NL"
+          },
+          {
+            value: "101 Washington Street, Worcester, WR1 1NL",
+            text: "101 Washington Street, Worcester, WR1 1NL"
+          },
+          {
+            value: "110 Washington Street, Worcester, WR1 1NL",
+            text: "110 Washington Street, Worcester, WR1 1NL"
+          },
+          {
+            value: "111 Washington Street, Worcester, WR1 1NL",
+            text: "111 Washington Street, Worcester, WR1 1NL"
+          }
+        ]
+        }) }}
+      
+
+{{ govukButton({
+  text: "Continue",
+  href: "#"
+}) }}
+
+</div>
+</div>
+
+{% endblock %}
+
