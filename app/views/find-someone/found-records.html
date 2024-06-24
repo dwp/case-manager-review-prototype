@@ -2,7 +2,8 @@
 
 {% block beforeContent %}
   {{ govukBackLink({
-    text: "Back"
+    text: "Back",
+    href: "/find-someone/search-claimant"
   }) }}
 {% endblock %}
 
@@ -20,7 +21,7 @@
         
         <div class="govuk-width-container">
         
-        <p>6 claimant records found. <a href="/find-someone/search-claimant">Search again</a></p>
+        <p>1 claimant record found. <a href="/find-someone/search-claimant">Search again</a></p>
 
         {{ govukTable({
           caption:"Event history",
@@ -48,7 +49,7 @@
               {
                 text: "QQ 12 34 56 C"
               },
-              { text:"24/03/78" }
+              { text:"4/6/72" }
             ]
           ]
         }) }} 
