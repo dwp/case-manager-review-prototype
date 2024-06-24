@@ -7,8 +7,10 @@
 {% endblock %}
 
 {% block content %}
+
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="column-full">
+
       <form action="/form-handler" method="post" novalidate>
 
         <h1 class="govuk-heading-l">Select the correct claimant record</h1>
@@ -18,49 +20,38 @@
         
         <div class="govuk-width-container">
         
-        <p>6 claimant records found. <a href="#">search again</a></p>
-        
-        {{ govukRadios({
-        name: "select-an-address",
-        fieldset: {
-          legend: {
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--l"
-          }
-        },
-        items: [
-          {
-            value: "1 Washington Street, Worcester, WR1 1NL",
-            text: "1 Washington Street, Worcester, WR1 1NL"
-          },
-          {
-            value: "10 Washington Street, Worcester, WR1 1NL",
-            text: "10 Washington Street, Worcester, WR1 1NL"
-          },
-          {
-            value: "11 Washington Street, Worcester, WR1 1NL",
-            text: "11 Washington Street, Worcester, WR1 1NL"
-          },
-          {
-            value: "101 Washington Street, Worcester, WR1 1NL",
-            text: "101 Washington Street, Worcester, WR1 1NL"
-          },
-          {
-            value: "110 Washington Street, Worcester, WR1 1NL",
-            text: "110 Washington Street, Worcester, WR1 1NL"
-          },
-          {
-            value: "111 Washington Street, Worcester, WR1 1NL",
-            text: "111 Washington Street, Worcester, WR1 1NL"
-          }
-        ]
-        }) }}
-      
+        <p>6 claimant records found. <a href="/find-someone/search-claimant">Search again</a></p>
 
-{{ govukButton({
-  text: "Continue",
-  href: "#"
-}) }}
+        {{ govukTable({
+          caption:"Event history",
+          captionClasses:"govuk-visually-hidden",
+          firstCellIsHeader: false,
+          head: [
+            {
+              text: "Name",
+              classes:"govuk-!-width-one-quarter"
+            },
+            {
+              text: "National Insurance number",
+              classes:"govuk-!-width-one-third"
+            },
+            {
+              text: "Date of birth",
+              classes:"govuk-!-width-one-third"
+            }
+          ],
+          rows: [
+            [
+              {
+                html: '<a href="/case-manager-review/record-details" class="govuk-link">Jane Doe'
+              },
+              {
+                text: "QQ 12 34 56 C"
+              },
+              { text:"24/03/78" }
+            ]
+          ]
+        }) }} 
 
 </div>
 </div>
