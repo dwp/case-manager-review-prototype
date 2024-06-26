@@ -161,3 +161,16 @@ router.post('/comms-record/inbound/feedback-sub-reason', function(request, respo
 router.post('/comms-record/security-questions', function(request, response) {
     response.redirect('/comms-record/addition-complete')
 })
+
+
+//FIND SOMEONE V.1
+
+// What direction of contact are you adding?
+router.post('/find-someone/found-records-v2', function(request, response) {
+    var rightPerson = request.session.data['correct-claimant']
+    if (rightPerson == 'yes'){
+        response.redirect('/case-manager-review/record-details')
+    } else if (rightPerson == "no") {
+        response.redirect('/find-someone/search-claimant')
+    }
+})
