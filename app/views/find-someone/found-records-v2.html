@@ -12,7 +12,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form action="/form-handler" method="post" novalidate>
+      <form action="#" method="post" novalidate>
 
         <h1 class="govuk-heading-l">One claimant record found</h1>
 
@@ -57,7 +57,7 @@
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
     {{ govukRadios({
-      name: "correctClaimant",
+      name: "correct-claimant",
       fieldset: {
         legend: {
           text: "Is this the correct claimant?",
@@ -78,8 +78,7 @@
     }) }}
 
     {{ govukButton({
-      text: "Continue",
-      href: "/case-manager-review/record-details"
+      text: "Continue"
     }) }}
 </div>
 </div>
