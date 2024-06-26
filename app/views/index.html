@@ -10,17 +10,35 @@
     <h1 class="govuk-heading-xl">
       {{ serviceName }}
     </h1>
-    <p class="govuk-body"><a href="/comms-record/start-record">Communications record V.1</a></p>
-    <p class="govuk-body"><a href="/event-history">Event History V.1</a></p>
 
-    <p class="govuk-body">Find Someone</p>
-    <ul class="govuk-list govuk-list govuk-list--bullet">
-      <li>
+    <h2 class="govuk-heading-m">Communications record and Event history </h2>
+
+    {{ govukSummaryList({
+      classes: "govuk-summary-list--no-border",
+      rows: [
+        {
+          key: {
+            html: '<p class="govuk-body"><a href="/event-history">Event history V.1</a></p>'
+          },
+          value: {
+            html: '<strong class="govuk-tag">Active</strong>'
+          }
+        },
+        {
+          key: {
+            html: '<p class="govuk-body"><a href="/comms-record/start-record">Communications record V.1</a></p>'
+          }
+        }
+        ]
+      }) }}
+
+
+    <h2 class="govuk-heading-m">Find Someone</h2>
+
         <p class="govuk-body"><a href="/find-someone/search-claimant">Happy path: one application V.1</a></p>
-      </li>
-      <li>
-        <a class="govuk-link" href="/find-someone/multiple-results">Multiple applications: 2 claimants share NINO V.1</a>
-      </li>
+
+        <p class="govuk-body"><a class="govuk-link" href="/find-someone/multiple-results">Multiple applications: 2 claimants share NINO V.1</a></p>
+
     </ul>
 
     <h2 class="govuk-heading-m">Research and testing</h2>
