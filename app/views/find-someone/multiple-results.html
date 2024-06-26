@@ -21,7 +21,7 @@
         
         <div class="govuk-width-container">
         
-        <p>1 claimant record found. <a href="/find-someone/search-claimant">Search again</a></p>
+        <p>2 claimant records found. <a href="/find-someone/search-claimant">Search again</a></p>
 
         {{ govukTable({
           caption:"Event history",
@@ -43,23 +43,23 @@
           ],
           rows: [
             [
-              {
-                html: '<a href="/case-manager-review/record-details" class="govuk-link">Jane Doe'
-              },
-              {
-                text: "QQ 12 34 56 C"
-              },
-              { text:"4/6/72" }
-            ],
-            [
             {
               html: '<a href="/case-manager-review/record-details" class="govuk-link">Jane Doe'
             },
             {
               text: "QQ 12 34 56 C"
             },
-            { text:"4/6/72" }
-          ]
+            { text:"5 March 1976" }
+          ],
+          [
+          {
+            html: '<a href="/case-manager-review/record-details" class="govuk-link">Richard Smith'
+          },
+          {
+            text: "QQ 12 34 56 C"
+          },
+          { text:"15 May 1972" }
+        ]
           ]
         }) }} 
 
