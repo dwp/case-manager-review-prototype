@@ -12,6 +12,9 @@
     </h1>
 
     <h2 class="govuk-heading-m">Communications record and Event history </h2>
+  </div>
+
+    <div class="govuk-grid-column-full">
 
     {{ govukSummaryList({
       classes: "govuk-summary-list--no-border",
@@ -35,9 +38,24 @@
 
     <h2 class="govuk-heading-m">Find Someone</h2>
 
-        <p class="govuk-body"><a href="/find-someone/search-claimant">Happy path: one application V.1</a></p>
-
-        <p class="govuk-body"><a class="govuk-link" href="/find-someone/multiple-results">Multiple applications: 2 claimants share NINO V.1</a></p>
+    {{ govukSummaryList({
+      classes: "govuk-summary-list--no-border",
+      rows: [
+        {
+          key: {
+            html: '<p class="govuk-body"><a href="/find-someone/search-claimant">Happy path: one application V.1</a></p>'
+          },
+          value: {
+            html: '<strong class="govuk-tag">Active</strong>'
+          }
+        },
+        {
+          key: {
+            html: '<p class="govuk-body"><a class="govuk-link" href="/find-someone/multiple-results">Multiple applications: 2 claimants share NINO V.1</a></p>'
+          }
+        }
+        ]
+      }) }}
 
     </ul>
 
