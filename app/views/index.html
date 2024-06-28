@@ -19,12 +19,17 @@
     {{ govukSummaryList({
       classes: "govuk-summary-list--no-border",
       rows: [
+      {
+        key: {
+          html: '<p class="govuk-body"><a href="/event-history/v2/index">Timeline V.2</a></p>'
+        },
+        value: {
+          html: '<strong class="govuk-tag">Active</strong>'
+        }
+      },
         {
           key: {
-            html: '<p class="govuk-body"><a href="/event-history">Event history V.1</a></p>'
-          },
-          value: {
-            html: '<strong class="govuk-tag">Active</strong>'
+            html: '<p class="govuk-body"><a href="/event-history">Timeline V.1</a></p>'
           }
         },
         {
