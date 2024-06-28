@@ -1,0 +1,74 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %} Timeline {% endblock %}
+
+{% block main %}
+
+{% include "./record-id-bar.html" %}
+
+
+  <div class="govuk-width-container">
+    <div class="column-full">
+    <nav class="navigation-secondary">
+      <ul>
+        <li>
+          <a href="/case-manager-review/record-details">Personal details</a>
+        </li>
+        <li>
+          <a href="#">Supporting documents</a>
+        </li>
+        <li>
+          <a href="#">Conditions</a>
+        </li>
+        <li>
+          <a href="#">Activities</a>
+        </li>
+        <li>
+          <a href="event-history" class="active" aria-current="section">Timeline</a>
+        </li>
+
+        {# <li>
+          <a href="Other-actions">Other actions</a>
+        </li> #}
+
+      </ul>
+    </nav>
+</div>
+
+
+ <br><br><br><br>
+
+<h1 class="govuk-heading-l">Timeline</h1>
+
+{{ govukButton({
+  text: "Add new event",
+  href:"/event-history/add-an-event"
+}) }}
+
+{% from "timeline/macro.njk" import dwpTimeline %}
+
+{{
+    dwpTimeline({ 
+        title: "Appointments",
+        events: [
+        {
+            name: "John Smith",
+            state: "Accepted",
+            date: "11 Aug 2021"
+        },
+        {
+            name: "John Smith",
+            state: "Declined",
+            date: "10 Aug 2021"
+        }
+        ]
+    })
+}}
+
+
+<br><br>
+
+</div>
+
+
+{% endblock %}
