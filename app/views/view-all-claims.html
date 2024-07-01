@@ -1,0 +1,94 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %} Timeline {% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+<h1 class="govuk-heading-l">View cases</h1>
+
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+
+{{ govukSelect({
+  id: "sort",
+  name: "sort",
+  label: {
+    text: "Sort by"
+  },
+  items: [
+    {
+      value: "oldest",
+      text: "Oldest to Newest",
+      selected: true
+    },
+    {
+      value: "newest",
+      text: "Newest to Oldest"
+    }
+  ]
+}) }}
+
+
+{{ govukTable({
+  caption:"all-cases",
+  captionClasses:"govuk-visually-hidden",
+  firstCellIsHeader: false,
+  head: [
+    {
+      text: "National Insurance Number",
+      classes:"govuk-!-width-two-thirds"
+    },
+    {
+      text: "Creation date",
+      classes:"govuk-!-width-one-third"
+    },
+    {
+      text: "status",
+      classes:"govuk-!-width-one-third"
+    }
+  ],
+  rows: [
+    [
+      {
+       html: '<a href="/case-manager-review/record-details" class="govuk-link">QQ 56 82 91 F'
+      },
+      {
+        text: "30 June 2024"
+      },
+      { 
+        text:"Health and Disability"
+      }
+    ],
+    [
+    {
+      html: '<a href="/case-manager-review/record-details" class="govuk-link">QQ 23 64 77 A'
+    },
+    {
+      text: "30 June 2024"
+    },
+    { 
+      text: "Registration"
+    }
+  ],
+  [
+  {
+    html: '<a href="/case-manager-review/record-details" class="govuk-link">QQ 12 34 56 C'
+  },
+  {
+    text: "1 July 2024"
+  },
+  { 
+    text:"Registration"
+  }
+]
+]
+}) }} 
+
+</div>
+</div>
+
+
+{% endblock %}

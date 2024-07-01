@@ -62,6 +62,18 @@
         ]
       }) }}
 
+      <h2 class="govuk-heading-m">View all claims</h2>
+      {{ govukSummaryList({
+        classes: "govuk-summary-list--no-border",
+        rows: [
+          {
+            key: {
+              html: '<p class="govuk-body"><a href="/view-all-claims">View all claims V.1</a></p>'
+            }
+          }
+          ]
+        }) }}
+
     </ul>
 
     <h2 class="govuk-heading-m">Research and testing</h2>
