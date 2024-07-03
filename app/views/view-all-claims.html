@@ -7,29 +7,49 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-m govuk-!-Marchgin-bottom-5">
+      Filters
+    </h2>
+    <div id="filter-hint" class="govuk-hint govuk-!-Marchgin-bottom-4">
+      Select one or more filters to apply to the list.
+    </div>
+    <div class="table-filter">
+      <form id="filters" action="index" method="post"> 
+        <!--Filters-->
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+            Benefit type
+          </legend>
+
+          
+          <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="ESA" name="benefit-type" type="checkbox" value="ESA" {% if checkESA %} checked {% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="ESA">
+                  Employment Support Allowance (2)   
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="PIP" name="benefit-type" type="checkbox" value="PIP" {% if checkPIP %} checked {% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="PIP">
+                  Personal Independence Payment (3)
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="UC" name="benefit-type" type="checkbox" value="UC" {% if checkUC %} checked {% endif %}>
+                  <label class="govuk-label govuk-checkboxes__label" for="UC">
+                    Universal Credit (6)
+                  </label>   
+              </div>     
+          </div>
+        </fieldset>
+    </div>
+  
+  <div class="govuk-grid-column-two-thirds">
 
 <h1 class="govuk-heading-l">View cases</h1>
 
-{% from "govuk/components/select/macro.njk" import govukSelect %}
-
-{{ govukSelect({
-  id: "sort",
-  name: "sort",
-  label: {
-    text: "Sort by"
-  },
-  items: [
-    {
-      value: "oldest",
-      text: "Oldest to Newest",
-      selected: true
-    },
-    {
-      value: "newest",
-      text: "Newest to Oldest"
-    }
-  ]
-}) }}
 
 
 {{ govukTable({
@@ -39,15 +59,13 @@
   head: [
     {
       text: "National Insurance Number",
-      classes:"govuk-!-width-two-thirds"
+      classes:"govuk-!-width-one-half"
     },
     {
-      text: "Creation date",
-      classes:"govuk-!-width-one-third"
+      text: "Current status"
     },
     {
-      text: "status",
-      classes:"govuk-!-width-one-third"
+      text: "Creation date"
     }
   ],
   rows: [
@@ -56,36 +74,220 @@
        html: '<a href="/case-manager-review/record-details" class="govuk-link">QQ 56 82 91 F'
       },
       {
-        text: "30 June 2024"
+        text: "Health and Disability"
       },
       { 
-        text:"Health and Disability"
+        text:"30 June 2024"
       }
     ],
     [
     {
       html: '<a href="/case-manager-review/record-details" class="govuk-link">QQ 23 64 77 A'
     },
-    {
-      text: "30 June 2024"
-    },
     { 
       text: "Registration"
+    },
+    {
+      text: "30 June 2024"
     }
   ],
   [
   {
     html: '<a href="/case-manager-review/record-details" class="govuk-link">QQ 12 34 56 C'
   },
-  {
-    text: "1 July 2024"
-  },
   { 
     text:"Registration"
+  },
+  {
+    text: "1 July 2024"
   }
 ]
 ]
 }) }} 
+
+{%- from "govuk/components/table/macro.njk" import govukTable -%}
+
+{{ govukTable({
+  attributes: {
+    'data-module': 'moj-sortable-table'
+  },
+  head: [
+    {
+      text: "Name",
+      attributes: {
+        "aria-sort": "ascending"
+      }
+    },
+    {
+      text: "Elevation",
+      attributes: {
+        "aria-sort": "none"
+      }
+    },
+    {
+      text: "Continent",
+      attributes: {
+        "aria-sort": "none"
+      }
+    },
+    {
+      text: "First summit",
+      attributes: {
+        "aria-sort": "none"
+      },
+      format: "numeric"
+    }
+  ],
+  rows: [
+    [
+      {
+        text: "Aconcagua"
+      },
+      {
+        text: "6,961 meters",
+        attributes: {
+          "data-sort-value": "6961"
+        }
+      },
+      {
+        text: "South America"
+      },
+      {
+        text: "1897",
+        format: "numeric",
+        attributes: {
+          "data-sort-value": "1897"
+        }
+      }
+    ],
+    [
+      {
+        text: "Denali"
+      },
+      {
+        text: "6,194 meters",
+        attributes: {
+          "data-sort-value": "6194"
+        }
+      },
+      {
+        text: "North America"
+      },
+      {
+        text: "1913",
+        format: "numeric",
+        attributes: {
+          "data-sort-value": "1913"
+        }
+      }
+    ],
+    [
+      {
+        text: "Elbrus"
+      },
+      {
+        text: "5,642 meters",
+        attributes: {
+          "data-sort-value": "5642"
+        }
+      },
+      {
+        text: "Europe"
+      },
+      {
+        text: "1874",
+        format: "numeric",
+        attributes: {
+          "data-sort-value": "1874"
+        }
+      }
+    ],
+    [
+      {
+        text: "Everest"
+      },
+      {
+        text: "8,850 meters",
+        attributes: {
+          "data-sort-value": "8850"
+        }
+      },
+      {
+        text: "Asia"
+      },
+      {
+        text: "1953",
+        format: "numeric",
+        attributes: {
+          "data-sort-value": "1953"
+        }
+      }
+    ],
+    [
+      {
+        text: "Kilimanjaro"
+      },
+      {
+        text: "5,895 meters",
+        attributes: {
+          "data-sort-value": "5895"
+        }
+      },
+      {
+        text: "Africa"
+      },
+      {
+        text: "1889",
+        format: "numeric",
+        attributes: {
+          "data-sort-value": "1889"
+        }
+      }
+    ],
+    [
+      {
+        text: "Puncak Jaya"
+      },
+      {
+        text: "4,884 meters",
+        attributes: {
+          "data-sort-value": "4884"
+        }
+      },
+      {
+        text: "Australia"
+      },
+      {
+        text: "1962",
+        format: "numeric",
+        attributes: {
+          "data-sort-value": "1962"
+        }
+      }
+    ],
+    [
+      {
+        text: "Vinson"
+      },
+      {
+        text: "4,897 meters",
+        attributes: {
+          "data-sort-value": "4897"
+        }
+      },
+      {
+        text: "Antarctica"
+      },
+      {
+        text: "1966",
+        format: "numeric",
+        attributes: {
+          "data-sort-value": "1966"
+        }
+      }
+    ]
+  ]
+}) }}
 
 </div>
 </div>
