@@ -49,35 +49,13 @@
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
- 
- {{ govukRadios({
-  name: "communicationType",
-  fieldset: {
-    legend: {
-      text: "What event do you need to add?",
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend govuk-fieldset__legend--l"
-    }
-  },
-  items: [
-    {
-      value: "inbound-call",
-      text: "Inbound contact"
-    },
-    {
-      value: "outbound-call",
-      text: "Outbound contact"
-    }
-  ]
-}) }}
-
 {{ govukRadios({
   name: "eventType",
   fieldset: {
     legend: {
-      text: "What was the update?",
+      text: "Add an event",
       isPageHeading: true,
-      classes: "govuk-fieldset__legend govuk-fieldset__legend--m"
+      classes: "govuk-fieldset__legend govuk-fieldset__legend--l"
     }
   },
   items: [
@@ -116,6 +94,48 @@
     {
       value: "other",
       text: "Other"
+    }
+  ]
+}) }}
+
+{% set otherHtml %}
+{{ govukInput({
+  id: "other-channel",
+  name: "otherChannel",
+  type: "other",
+  autocomplete: "other",
+  spellcheck: false,
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "other communication type"
+  }
+}) }}
+{% endset -%}
+
+{{ govukRadios({
+  name: "communicationType",
+  fieldset: {
+    legend: {
+      text: "What is the source of this event?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "inbound-call",
+      text: "Inbound contact"
+    },
+    {
+      value: "outbound-call",
+      text: "Outbound contact"
+    },
+    {
+      value: "outbound-call",
+      text: "Other",
+      conditional: {
+        html: otherHtml
+      }
     }
   ]
 }) }}
