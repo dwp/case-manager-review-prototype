@@ -4,11 +4,34 @@
 
 {% block content %}
 
+<div class="govuk-width-container">
+
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-tag--red govuk-phase-banner__content__tag">
+        Agent
+      </strong>
+      <strong class="govuk-tag govuk-tag--blue govuk-phase-banner__content__tag">
+        PIP: Decide
+      </strong>
+      <strong class="govuk-tag govuk-tag--green govuk-phase-banner__content__tag">
+        Event History
+      </strong>
+      <strong class="govuk-tag govuk-tag--green govuk-phase-banner__content__tag">
+        Find someone
+      </strong>
+      <strong class="govuk-tag govuk-tag--green govuk-phase-banner__content__tag">
+        View all claims
+      </strong>
+    </p>
+  </div>
+  
+  <main class="govuk-main-wrapper">
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-xl">
-      {{ serviceName }}
+      Personal Independence Payment
     </h1>
 
     <h2 class="govuk-heading-m">Communications record and Event history </h2>
@@ -16,84 +39,144 @@
 
     <div class="govuk-grid-column-full">
 
-    {{ govukSummaryList({
-      classes: "govuk-summary-list--no-border",
-      rows: [
-      {
-        key: {
-          html: '<p class="govuk-body"><a href="/event-history/v3/two-events-timeline">Timeline V.3</a></p>'
-        },
-        value: {
-          html: '<strong class="govuk-tag govuk-tag--purple">Concept</strong>'
-        }
-      },
-      {
-        key: {
-          html: '<p class="govuk-body"><a href="/event-history/v2/index">Timeline V.2</a></p>'
-        }
-      },
-        {
-          key: {
-            html: '<p class="govuk-body"><a href="/event-history">Timeline V.1</a></p>'
-          },
-          value: {
-            html: '<strong class="govuk-tag">Active</strong>'
-          }
-        },
-        {
-          key: {
-            html: '<p class="govuk-body"><a href="/comms-record/start-record">Communications record V.1</a></p>'
-          }
-        }
-        ]
-      }) }}
+  
+<dl class="govuk-summary-list govuk-summary-list--no-border">
+
+  
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      <p class="govuk-body"><a href="/event-history/v3/two-events-timeline">Timeline, Add and event V.3</a></p>
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <strong class="govuk-tag govuk-tag--purple">Concept</strong>
+    </dd>
+    
+  </div>
+  
+
+  
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      <p class="govuk-body"><a href="/event-history/v2/index">Timeline (timeline format) V.2</a></p>
+    </dt>
+    <dd class="govuk-summary-list__value">
+      
+    </dd>
+    
+  </div>
+  
+
+  
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      <p class="govuk-body"><a href="/event-history">Timeline (table format) V.1</a></p>
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <strong class="govuk-tag">Active</strong>
+    </dd>
+    
+  </div>
+  
+
+  
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      <p class="govuk-body"><a href="/comms-record/start-record">Communications record V.1</a></p>
+    </dt>
+    <dd class="govuk-summary-list__value">
+      
+    </dd>
+    
+  </div>
+  
+
+</dl>
+
 
 
     <h2 class="govuk-heading-m">Find Someone</h2>
 
-    {{ govukSummaryList({
-      classes: "govuk-summary-list--no-border",
-      rows: [
-        {
-          key: {
-            html: '<p class="govuk-body"><a href="/find-someone/search-claimant">Happy path: one application V.1</a></p>'
-          },
-          value: {
-            html: '<strong class="govuk-tag">Active</strong>'
-          }
-        },
-        {
-          key: {
-            html: '<p class="govuk-body"><a class="govuk-link" href="/find-someone/multiple-results">Multiple applications: 2 claimants share NINO V.1</a></p>'
-          }
-        }
-        ]
-      }) }}
+    
+
+  
+
+  
+<dl class="govuk-summary-list govuk-summary-list--no-border">
+
+  
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      <p class="govuk-body"><a href="/find-someone/search-claimant">Happy path: one application V.1</a></p>
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <strong class="govuk-tag">Active</strong>
+    </dd>
+    
+  </div>
+  
+
+  
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      <p class="govuk-body"><a class="govuk-link" href="/find-someone/multiple-results">Multiple applications: 2 claimants share NINO V.1</a></p>
+    </dt>
+    <dd class="govuk-summary-list__value">
+      
+    </dd>
+    
+  </div>
+  
+
+</dl>
+
 
       <h2 class="govuk-heading-m">View all claims</h2>
-      {{ govukSummaryList({
-        classes: "govuk-summary-list--no-border",
-        rows: [
-        {
-          key: {
-            html: '<p class="govuk-body"><a href="/view-all-claims-base">View all claims V.2</a></p>'
-          }
-        },
-          {
-            key: {
-              html: '<p class="govuk-body"><a href="/view-all-claims">View all claims V.1</a></p>'
-            }
-          }
-          ]
-        }) }}
+      
 
-    </ul>
+  
+
+  
+<dl class="govuk-summary-list govuk-summary-list--no-border">
+
+  
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      <p class="govuk-body"><a href="/view-all-claims-base">View all claims V.2</a></p>
+    </dt>
+    <dd class="govuk-summary-list__value">
+      
+    </dd>
+    
+  </div>
+  
+
+  
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      <p class="govuk-body"><a href="/view-all-claims">View all claims V.1</a></p>
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <strong class="govuk-tag">Active</strong>
+    </dd>
+    
+  </div>
+  
+
+</dl>
+
+
+    
 
     <h2 class="govuk-heading-m">Research and testing</h2>
     <h3 class="govuk-body">Event History</h3>
     <p class="govuk-body"><a href="/research/event-history/state-change-definitions">State change terms</a></p>
   </div>
 </div>
+
+</div>
+
+
+   </main>
 
 {% endblock %}
 
@@ -107,4 +190,7 @@
     ]
   }
 }) }} 
+
 {% endblock %}
+
+</div>
