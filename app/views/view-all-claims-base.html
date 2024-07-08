@@ -2,10 +2,15 @@
 
 {% block pageTitle %} Timeline {% endblock %}
 
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
 
 {% block content %}
-  
-  <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing govuk-width-container--extended">
 
     <div class="govuk-grid-row">
   <div class="govuk-grid-column-one-quarter">
@@ -122,21 +127,20 @@
       classes:"govuk-!-width-one-quarter"
     },
     {
+      text: "Claim start date",
+      attributes: {
+        "aria-sort": "none"
+      }
+    },
+    {
       text: "Claim status"
     },
     {
-      text: "Status start date",
-      classes:"govuk-!-width-one-quarter",
+      text: "Status change date",
       attributes: {
         "aria-sort": "none"
       }
-  },
-    {
-      text: "Claim date",
-      attributes: {
-        "aria-sort": "none"
-      }
-    }
+  }
   ],
   rows: [
     [
@@ -144,17 +148,17 @@
         html: '<a href="/event-history/v2/index" class="govuk-link">QQ 56 82 91 F'
       },
       {
-        text: "Health and Disability"
-      },
-      {
-        text: "3 July 2024"
-      },
-      {
         text: "30 June 2024",
         format: "numeric",
         attributes: {
           "data-sort-value": "30 June 2024"
         }
+      },
+      {
+        text: "Health and Disability"
+      },
+      {
+        text: "3 July 2024"
       }
     ],
     [
@@ -162,17 +166,17 @@
         html: '<a href="/event-history/v2/index" class="govuk-link">QQ 23 64 77 A'
       },
       {
-        text: "Registration"
-      },
-      {
-        text: "30 June 2024"
-      },
-      {
         text: "30 June 2024",
         format: "numeric",
         attributes: {
           "data-sort-value": "30 June 2024"
         }
+      },
+      {
+        text: "Registration"
+      },
+      {
+        text: "30 June 2024"
       }
     ],
     [
@@ -180,23 +184,21 @@
         html: '<a href="/event-history/v2/index" class="govuk-link">QQ 12 34 56 C'
       },
       {
-        text: "Registration"
-      },
-      {
-        text: "1 July 2024"
-      },
-      {
         text: "1 July 2024",
         format: "numeric",
         attributes: {
           "data-sort-value": "1 July 2024"
         }
+      },
+      {
+        text: "Registration"
+      },
+      {
+        text: "1 July 2024"
       }
     ]
   ]
 }) }}
         </div>
-
-        </main>
 
         {% endblock %}

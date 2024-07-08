@@ -2,13 +2,20 @@
 
 {% block pageTitle %} Timeline {% endblock %}
 
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
 
 {% block content %}
-  
-  <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing govuk-width-container--extended">
+
+<div class="govuk-width-container">
 
     <div class="govuk-grid-row">
-  <div class="govuk-grid-column-one-third">
+  <div class="govuk-grid-column-one-third" style="margin-top: 0px;">
+
     <h2 class="govuk-heading-m govuk-!-Margin-bottom-5">Filters</h2>
     <div id="filter-hint" class="govuk-hint govuk-!-Marchgin-bottom-4">
       Select one or more filters to apply to the list.
@@ -181,6 +188,6 @@
 }) }}
         </div>
 
-        </main>
+      </div>
 
         {% endblock %}
