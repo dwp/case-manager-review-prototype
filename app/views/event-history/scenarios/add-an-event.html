@@ -6,6 +6,7 @@
 
 {% include "./record-id-bar.html" %}
 
+
   <div class="govuk-width-container">
     <div class="column-full">
     <nav class="navigation-secondary">
@@ -35,11 +36,10 @@
     </nav>
 </div>
 
-
 {% block beforeContent %}
 {{ govukBackLink({
   text: "Back",
-  href: "index"
+  href: "/index"
 }) }}
 {% endblock %}
 
@@ -48,6 +48,20 @@
 
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+
+    {% set otherEventHtml %}
+{{ govukInput({
+  id: "other-event",
+  name: "otherEvent",
+  type: "other",
+  autocomplete: "other",
+  spellcheck: false,
+  classes: "govuk-!-width-one-third",
+  label: {
+    text: "other event"
+  }
+}) }}
+{% endset -%}
 
 {{ govukRadios({
   name: "eventType",
@@ -75,14 +89,6 @@
       value: "rebuilt-pipcs",
       text: "Completed rebuild in PIPCS"
     },
-   {
-      value: "reopen",
-      text: "Re-open and extend deadline"
-    },
-    {
-      value: "extend-timer",
-      text: "Extend deadline"
-    },
     {
       value: "IDV-passed",
       text: "Passed IDV"
@@ -93,7 +99,10 @@
     },
     {
       value: "other",
-      text: "Other"
+      text: "Other",
+      conditional: {
+        html: otherEventHtml
+      }
     }
   ]
 }) }}
@@ -143,7 +152,7 @@
 
 {{ govukButton({
   text: "Continue",
-  href: "add-a-note" 
+  href: "/event-history/scenarios/add-a-note"
 }) }}
 
 </div>

@@ -1,0 +1,72 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+
+{% block beforeContent %}
+
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-tag--red govuk-phase-banner__content__tag">
+      Agent
+    </strong>
+    <strong class="govuk-tag govuk-tag--blue govuk-phase-banner__content__tag">
+      PIP: Decide
+    </strong>
+    <strong class="govuk-tag govuk-tag--green govuk-phase-banner__content__tag">
+      Event History
+    </strong>
+    <strong class="govuk-tag govuk-tag--green govuk-phase-banner__content__tag">
+      Find someone
+    </strong>
+    <strong class="govuk-tag govuk-tag--green govuk-phase-banner__content__tag">
+      View all claims
+    </strong>
+  </p>
+</div>
+
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-m">
+      Concepts
+    </h1>
+  </div>
+
+    <div class="govuk-grid-column-full">
+  
+<dl class="govuk-summary-list govuk-summary-list--no-border">
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      <p class="govuk-body"><a href="/event-history/scenarios/add-an-event">Event list 8/7/24</a></p>
+    </dt>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      <p class="govuk-body"><a href="/event-history/v2/index">Timeline (timeline format) V.2</a></p>
+    </dt>
+  </div>
+
+</dl>
+
+<h2 class="govuk-heading-m">
+ Scenarios
+</h2>
+
+<ul class="govuk-list">
+  <li>
+    <a class="govuk-link" href="/event-history/scenarios/withdraw-claim">Timeline: Withdraw claim</a>
+  </li>
+</ul>
+
+{% endblock %}
