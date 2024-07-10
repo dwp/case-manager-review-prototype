@@ -2,29 +2,32 @@
 
 {% set pageName="Home" %}
 
+{% block beforeContent %}
+
+<div class="govuk-phase-banner">
+  <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-tag--red govuk-phase-banner__content__tag">
+      Agent
+    </strong>
+    <strong class="govuk-tag govuk-tag--blue govuk-phase-banner__content__tag">
+      PIP: Decide
+    </strong>
+    <strong class="govuk-tag govuk-tag--green govuk-phase-banner__content__tag">
+      Event History
+    </strong>
+    <strong class="govuk-tag govuk-tag--green govuk-phase-banner__content__tag">
+      Find someone
+    </strong>
+    <strong class="govuk-tag govuk-tag--green govuk-phase-banner__content__tag">
+      View all claims
+    </strong>
+  </p>
+</div>
+{% endblock %}
+
 {% block content %}
 
 <div class="govuk-width-container">
-
-  <div class="govuk-phase-banner">
-    <p class="govuk-phase-banner__content">
-      <strong class="govuk-tag govuk-tag--red govuk-phase-banner__content__tag">
-        Agent
-      </strong>
-      <strong class="govuk-tag govuk-tag--blue govuk-phase-banner__content__tag">
-        PIP: Decide
-      </strong>
-      <strong class="govuk-tag govuk-tag--green govuk-phase-banner__content__tag">
-        Event History
-      </strong>
-      <strong class="govuk-tag govuk-tag--green govuk-phase-banner__content__tag">
-        Find someone
-      </strong>
-      <strong class="govuk-tag govuk-tag--green govuk-phase-banner__content__tag">
-        View all claims
-      </strong>
-    </p>
-  </div>
   
   <main class="govuk-main-wrapper">
 <div class="govuk-grid-row">
@@ -39,34 +42,8 @@
 
     <div class="govuk-grid-column-full">
 
-  
 <dl class="govuk-summary-list govuk-summary-list--no-border">
 
-  
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      <p class="govuk-body"><a href="/event-history/v3/two-events-timeline">Timeline, Add and event V.3</a></p>
-    </dt>
-    <dd class="govuk-summary-list__value">
-      <strong class="govuk-tag govuk-tag--purple">Concept</strong>
-    </dd>
-    
-  </div>
-  
-
-  
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      <p class="govuk-body"><a href="/event-history/v2/index">Timeline (timeline format) V.2</a></p>
-    </dt>
-    <dd class="govuk-summary-list__value">
-      
-    </dd>
-    
-  </div>
-  
-
-  
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
       <p class="govuk-body"><a href="/event-history">Timeline (table format) V.1</a></p>
@@ -74,22 +51,30 @@
     <dd class="govuk-summary-list__value">
       <strong class="govuk-tag">Active</strong>
     </dd>
-    
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      <p class="govuk-body"><a href="/event-history/v3/two-events-timeline">Timeline, Add and event V.3</a></p>
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <strong class="govuk-tag govuk-tag--green">Backlog ready</strong>
+    </dd>
   </div>
   
-
   
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
       <p class="govuk-body"><a href="/comms-record/start-record">Communications record V.1</a></p>
     </dt>
-    <dd class="govuk-summary-list__value">
-      
-    </dd>
-    
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      <p class="govuk-body"><a href="/concepts">Concepts and scenarios</a></p>
+    </dt>
   </div>
   
-
 </dl>
 
 
