@@ -78,6 +78,9 @@ font-family: Helvetica, Arial, sans-serif;
         color: #505a5f;
     }
 
+    .govuk-table__cell {
+      text-align: left;
+    }
  .input[type="radio" i] {
     background-color: initial;
     appearance: auto;
