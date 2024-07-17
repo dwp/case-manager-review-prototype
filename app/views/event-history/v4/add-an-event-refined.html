@@ -25,7 +25,7 @@
         </li>
 
         <li>
-          <a href="../event-history" class="active" aria-current="section">Timeline</a>
+          <a href="../event-history" class="active" aria-current="section">Event history</a>
         </li>
 
         {# <li>
@@ -54,31 +54,32 @@
   name: "eventType",
   fieldset: {
     legend: {
-      text: "What event do you need to add?",
+      text: "Add an event",
       isPageHeading: true,
       classes: "govuk-fieldset__legend--l"
     }
   },
   items: [
+
     {
-      value: "inbound-call",
-      text: "Inbound call"
-    },
-    {
-      value: "outbound-call",
-      text: "Outbound call"
-    },
-    {
-      value: "issue-notification",
-      text: "Issue notification"
-    },
-    {
-      value: "case-eject",
-      text: "Case eject"
-    },
-    {
-      value: "disallow-claim",
+      value: "disallow",
       text: "Disallow claim"
+    },
+    {
+      value: "withdraw",
+      text: "Withdraw claim"
+    },
+    {
+      value: "extend",
+      text: "Extend deadline"
+    },
+    {
+      value: "passed",
+      text: "Passed IDV"
+    },
+    {
+      value: "failed",
+      text: "Failed IDV"
     },
     {
       value: "other",
@@ -86,43 +87,6 @@
     }
   ]
 }) }}
-
-{# {{ govukRadios({
-  name: "eventType",
-  fieldset: {
-    legend: {
-      text: "Add an event",
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--l"
-    }
-  },
-  items: [
-    {
-      value: "inbound-call",
-      text: "Inbound call"
-    },
-    {
-      value: "outbound-call",
-      text: "Outbound call"
-    },
-    {
-      value: "issue-notification",
-      text: "Issue notification"
-    },
-    {
-      value: "case-eject",
-      text: "Case eject"
-    },
-    {
-      value: "disallow-claim",
-      text: "Disallow claim"
-    },
-    {
-      value: "other",
-      text: "Other"
-    }
-  ]
-}) }} #}
 
 {{ govukButton({
   text: "Continue",
