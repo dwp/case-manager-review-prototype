@@ -33,47 +33,63 @@
 {% block content %}
 
 <div class="govuk-width-container">
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-m">
-      Concepts
-    </h1>
-  </div>
+    <h2 class="govuk-heading-m">
+      Versions
+    </h2>
 
-    <div class="govuk-grid-column-two-thirds">
-      
-      <p class="govuk-body"><a class="govuk-link" href="/event-history/scenarios/add-an-event">Event list update</a></p>
-      <p class="govuk-body">Golden eagle 8/7/24 - Thin slice will not cater for:
+    <h3 class="govuk-heading-s">Timeline and add an event</h3>
+
+      <li class="govuk-list">
+        <p class="govuk-body"><a href="/event-history">First build- Timeline (table format) V.2</a></p>
+      </li>
+
+      <li class="govuk-list">
+        <p class="govuk-body"><a href="/comms-record/start-record">Communications record V.1</a></p>
+      </li>
+
+      <h2 class="govuk-heading-m">
+        Concepts
+       </h2>
+
+       <h3 class="govuk-heading-s">States</h3>
+
+       <p class="govuk-body">Golden eagle 8/7/24 - Thin slice will not cater for:</p>
         <ul class="govuk-list govuk-list--bullet">
           <li>Reopen and extend deadline</li>
           <li>Extend deadline</li>
         </ul>
+
+        <h3 class="govuk-heading-s">Timeline and dd an event</h3>
   
+      <ul class="govuk-list">
+        <li class="govuk-summary-list__key">
+          <p class="govuk-body"><a href="/event-history/v3/two-events-timeline">Add event: Event type and source of event V.4</a></p>
+        </li>
+        <li>
+          <a class="govuk-link" href="/event-history/v2/index">Timeline (timeline format) V.3</a>
+        </li>
+      </ul>
+
+
+      <h2 class="govuk-heading-m">
+      Scenarios
+      </h2>
 
       <ul class="govuk-list">
         <li>
-          <a class="govuk-link" href="/event-history/v2/index">Timeline (timeline format) V.2</a>
+          <a class="govuk-link" href="/event-history/scenarios/withdraw-claim/withdraw-claim">Timeline: Withdraw claim</a>
         </li>
         <li>
-          <a class="govuk-link" href="/event-history/v4/add-an-event-refined">Event history (timeline format) V.3</a>
+          <a class="govuk-link" href="/event-history/scenarios/oidv-timeline/timeline">OIDV auto event published to timeline</a>
         </li>
       </ul>
-  
 
-</dl>
-
-<h2 class="govuk-heading-m">
- Scenarios
-</h2>
-
-<ul class="govuk-list">
-  <li>
-    <a class="govuk-link" href="/event-history/scenarios/withdraw-claim/withdraw-claim">Timeline: Withdraw claim</a>
-  </li>
-  <li>
-    <a class="govuk-link" href="/event-history/scenarios/oidv-timeline/timeline">OIDV auto event published to timeline</a>
-  </li>
-</ul>
+    </div>
+  </div>
+</div>
 
 {% endblock %}

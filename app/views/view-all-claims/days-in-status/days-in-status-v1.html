@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% block pageTitle %} Timeline {% endblock %}
+{% block pageTitle %} view all claims {% endblock %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -48,7 +48,7 @@
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="status-2" name="current-status" type="checkbox" value="health-dis" {% if checkstatus-2 %} checked {% endif %}>
                 <label class="govuk-label govuk-checkboxes__label" for="status-2">
-                  Health information gather (1)
+                  Start health information gather (1)
                 </label>
               </div>
               <div class="govuk-checkboxes__item">
@@ -115,7 +115,11 @@
     
 
       <div class="govuk-grid-column-three-quarters">
+
         <h1 class="govuk-heading-l">View cases</h1>
+
+        <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">Total cases: <b>11</b></p>
+
         {%- from "govuk/components/table/macro.njk" import govukTable -%}
 
         {{ govukTable({
@@ -124,14 +128,12 @@
           },
           head: [
             {
-              text: "National Insurance number",
-              classes:"govuk-!-width-one-third"
+              text: "National Insurance number"
             },
             {
               text: "Date of claim",
               attributes: {
-                "aria-sort": "none",
-                classes:"govuk-!-width-one-quarter"
+                "aria-sort": "none"
               }
             },
             {
@@ -157,7 +159,7 @@
                 }
               },
               {
-                text: "Health and Disability"
+                text: "Start health information gather"
               },
               {
                 text: "15 days"
@@ -189,7 +191,7 @@
                 text: "1 July 2024",
                 format: "numeric",
                 attributes: {
-                  "data-sort-value": "1 July 2024"
+                  "data-sort-value": "01 July 2024"
                 }
               },
               {
@@ -198,7 +200,151 @@
               {
                 text: "3 days"
               }
-            ]
+            ],
+            [
+            {
+              html: '<a href="/event-history/v2/index" class="govuk-link">QQ 1 14 60 C'
+            },
+            {
+              text: "14 May 2024",
+              format: "numeric",
+              attributes: {
+                "data-sort-value": "14 May 2024"
+              }
+            },
+            {
+              text: "Disallowed: failure to comply"
+            },
+            {
+              text: "4 days"
+            }
+          ],
+          [
+          {
+            html: '<a href="/event-history/v2/index" class="govuk-link">QQ 52 74 36 C'
+          },
+          {
+            text: "14 June 2024",
+            format: "numeric",
+            attributes: {
+              "data-sort-value": "14 June 2024"
+            }
+          },
+          {
+            text: "Received health information"
+          },
+          {
+            text: "4 days"
+          }
+        ],
+        [
+        {
+          html: '<a href="/event-history/v2/index" class="govuk-link">QQ 11 37 66 B'
+        },
+        {
+          text: "27 April 2024",
+          format: "numeric",
+          attributes: {
+            "data-sort-value": "27 April 2024"
+          }
+        },
+        {
+          text: "Claim withdrawn"
+        },
+        {
+          text: "1 day"
+        }
+      ],
+      [
+      {
+        html: '<a href="/event-history/v2/index" class="govuk-link">QQ 30 47 88 C'
+      },
+      {
+        text: "15 April 2024",
+        format: "numeric",
+        attributes: {
+          "data-sort-value": "15 April 2024"
+        }
+      },
+      {
+        text: "Referred to assessment provider"
+      },
+      {
+        text: "5 days"
+      }
+    ],
+        [
+        {
+          html: '<a href="/event-history/v2/index" class="govuk-link">QQ 22 94 26 A'
+        },
+        {
+          text: "26 June 2024",
+          format: "numeric",
+          attributes: {
+            "data-sort-value": "26 June 2024"
+          }
+        },
+        {
+          text: "Returned from assessment provider"
+        },
+        {
+          text: "8 days"
+        }
+      ],
+          [
+          {
+            html: '<a href="/event-history/v2/index" class="govuk-link">QQ 25 44 31 C'
+          },
+          {
+            text: "15 April 2024",
+            format: "numeric",
+            attributes: {
+              "data-sort-value": "15 April 2024"
+            }
+          },
+          {
+            text: "Ready for decision"
+          },
+          {
+            text: "4 days"
+          }
+        ],
+        [
+        {
+          html: '<a href="/event-history/v2/index" class="govuk-link">QQ 17 82 96 A'
+        },
+        {
+          text: "4 April 2024",
+          format: "numeric",
+          attributes: {
+            "data-sort-value": "4 April 2024"
+          }
+        },
+        {
+          text: "Decision made: awarded"
+        },
+        {
+          text: "1 day"
+        }
+        ],
+        [
+        {
+          html: '<a href="/event-history/v2/index" class="govuk-link">QQ 15 64 68 B'
+        },
+        {
+          text: "15 April 2024",
+          format: "numeric",
+          attributes: {
+            "data-sort-value": "15 April 2024"
+          }
+        },
+        {
+          text: "Ready for decision"
+        },
+        {
+          text: "4 days"
+        }
+        ]
           ]
         }) }}
 
