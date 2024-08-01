@@ -100,11 +100,17 @@
         </label>   
     </div> 
     <div class="govuk-checkboxes__item">
-      <input class="govuk-checkboxes__input" id="sent-directly" name="sent-directly" type="checkbox" value="sent-directly" {% if checkstatus-10 %} checked {% endif %}>
-      <label class="govuk-label govuk-checkboxes__label" for="status-10">
+      <input class="govuk-checkboxes__input" id="status-11" name="sent-directly" type="checkbox" value="sent-directly" {% if checkstatus-10 %} checked {% endif %}>
+      <label class="govuk-label govuk-checkboxes__label" for="status-11">
         Sent directly to PIPCS
       </label>   
   </div> 
+  <div class="govuk-checkboxes__item">
+    <input class="govuk-checkboxes__input" id="status-12" name="moved-to-PIPCS" type="checkbox" value="moved-to-PIPCS" {% if checkstatus-10 %} checked {% endif %}>
+    <label class="govuk-label govuk-checkboxes__label" for="status-12">
+      Moved to PIPCS
+    </label>   
+</div> 
 
         </fieldset>
         </div>
@@ -367,6 +373,24 @@
         },
         {
           text: "1 day"
+        }
+        ],
+        [
+        {
+          html: '<a href="/event-history/v2/index" class="govuk-link">QQ 15 64 68 B'
+        },
+        {
+          text: "21 April 2024",
+          format: "numeric",
+          attributes: {
+            "data-sort-value": "05 June 2024"
+          }
+        },
+        {
+          text: "Moved to PIPCS"
+        },
+        {
+          text: "57 days"
         }
         ]
           ]
