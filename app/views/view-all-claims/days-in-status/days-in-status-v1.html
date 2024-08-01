@@ -48,13 +48,13 @@
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="status-2" name="current-status" type="checkbox" value="health-dis" {% if checkstatus-2 %} checked {% endif %}>
                 <label class="govuk-label govuk-checkboxes__label" for="status-2">
-                  Start health information gather (1)
+                  Started health information gather (1)
                 </label>
               </div>
               <div class="govuk-checkboxes__item">
                   <input class="govuk-checkboxes__input" id="status-3" name="current-status" type="checkbox" value="submitted" {% if checkstatus-3 %} checked {% endif %}>
                   <label class="govuk-label govuk-checkboxes__label" for="status-3">
-                    Received health information
+                    Received health information gather
                   </label>   
               </div>   
               <div class="govuk-checkboxes__item">
@@ -99,6 +99,12 @@
           Decision made: not awarded
         </label>   
     </div> 
+    <div class="govuk-checkboxes__item">
+      <input class="govuk-checkboxes__input" id="sent-directly" name="sent-directly" type="checkbox" value="sent-directly" {% if checkstatus-10 %} checked {% endif %}>
+      <label class="govuk-label govuk-checkboxes__label" for="status-10">
+        Sent directly to PIPCS
+      </label>   
+  </div> 
 
         </fieldset>
         </div>
@@ -159,7 +165,7 @@
                 }
               },
               {
-                text: "Start health information gather"
+                text: "Started health information gather"
               },
               {
                 text: "15 days"
@@ -231,7 +237,7 @@
             }
           },
           {
-            text: "Received health information"
+            text: "Received health information gather"
           },
           {
             text: "4 days"
@@ -343,6 +349,24 @@
         },
         {
           text: "4 days"
+        }
+        ],
+        [
+        {
+          html: '<a href="/event-history/v2/index" class="govuk-link">QQ 15 64 68 B'
+        },
+        {
+          text: "29 May 2024",
+          format: "numeric",
+          attributes: {
+            "data-sort-value": "31 July 2024"
+          }
+        },
+        {
+          text: "Sent directly to PIPCS"
+        },
+        {
+          text: "1 day"
         }
         ]
           ]
