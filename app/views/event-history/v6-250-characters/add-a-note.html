@@ -1,0 +1,83 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %} Add a note {% endblock %}
+
+{% block main %}
+
+{% include "./record-id-bar.html" %}
+
+
+  <div class="govuk-width-container">
+    <div class="column-full">
+    <nav class="navigation-secondary">
+      <ul>
+        <li>
+          <a href="#">Personal details</a>
+        </li>
+        <li>
+          <a href="#">Supporting documents</a>
+        </li>
+        <li>
+          <a href="#">Conditions</a>
+        </li>
+        <li>
+          <a href="#">Activities</a>
+        </li>
+
+        <li>
+          <a href="../event-history" class="active" aria-current="section">Event history</a>
+        </li>
+
+        {# <li>
+          <a href="Other-actions">Other actions</a>
+        </li> #}
+
+      </ul>
+    </nav>
+</div>
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "/event-history/v6-250-characters/add-an-event-refined"
+}) }}
+{% endblock %}
+
+
+ <br><br><br><br>
+
+ <div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+
+{{ govukCharacterCount({
+  id: "exceeding-characters",
+  name: "exceeding",
+  maxlength: 250,
+  value: "",
+  label: {
+    text: "Add a note",
+    classes: "govuk-label--l",
+    isPageHeading: true
+  },
+  hint: {
+    text: "Enter more information about this event."
+  }
+}) }}
+
+{{ govukButton({
+  text: "Save and continue",
+  href: "/event-history/v4/index"
+}) }}
+
+  </div>
+  </div>
+
+<br><br>
+
+</div>
+
+
+{% endblock %}

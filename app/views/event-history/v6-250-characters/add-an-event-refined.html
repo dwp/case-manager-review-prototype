@@ -1,0 +1,106 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %} Add an event {% endblock %}
+
+{% block main %}
+
+{% include "./record-id-bar.html" %}
+
+
+  <div class="govuk-width-container">
+    <div class="column-full">
+    <nav class="navigation-secondary">
+      <ul>
+        <li>
+          <a href="#">Personal details</a>
+        </li>
+        <li>
+          <a href="#">Supporting documents</a>
+        </li>
+        <li>
+          <a href="#">Conditions</a>
+        </li>
+        <li>
+          <a href="#">Activities</a>
+        </li>
+
+        <li>
+          <a href="../event-history" class="active" aria-current="section">Event history</a>
+        </li>
+
+        {# <li>
+          <a href="Other-actions">Other actions</a>
+        </li> #}
+
+      </ul>
+    </nav>
+</div>
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "index"
+}) }}
+{% endblock %}
+
+
+ <br><br><br><br>
+
+ <div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+ 
+ {{ govukRadios({
+  name: "eventType",
+  fieldset: {
+    legend: {
+      text: "Add an event",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+
+    {
+      value: "disallow",
+      text: "Disallow claim"
+    },
+    {
+      value: "withdraw",
+      text: "Withdraw claim"
+    },
+    {
+      value: "extend",
+      text: "Extend deadline"
+    },
+    {
+      value: "passed",
+      text: "Passed IDV"
+    },
+    {
+      value: "failed",
+      text: "Failed IDV"
+    },
+    {
+      value: "other",
+      text: "Other"
+    }
+  ]
+}) }}
+
+{{ govukButton({
+  text: "Continue",
+  href: "add-a-note"
+}) }}
+
+</div>
+</div>
+
+
+
+<br><br>
+
+</div>
+
+
+{% endblock %}
