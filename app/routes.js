@@ -174,3 +174,13 @@ router.post('/find-someone/found-records-v2', function(request, response) {
         response.redirect('/find-someone/search-claimant')
     }
 })
+
+
+//Upload note V.1- 250 characters
+
+router.post('/event-history/v6-250-characters/add-a-note',function(request, response) {
+    var notes = req.session.data['notes']
+    if (notes == 'notes'){
+    response.redirect('/event-history/v6-250-characters/index')
+    }
+})

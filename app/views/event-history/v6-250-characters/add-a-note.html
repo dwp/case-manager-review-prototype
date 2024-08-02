@@ -54,9 +54,9 @@
 
 {{ govukCharacterCount({
   id: "exceeding-characters",
-  name: "exceeding",
+  name: 'notes',
   maxlength: 250,
-  value: "",
+  value: data['notes'],
   label: {
     text: "Add a note",
     classes: "govuk-label--l",
@@ -69,7 +69,7 @@
 
 {{ govukButton({
   text: "Save and continue",
-  href: "/event-history/v4/index"
+  href: "/event-history/v6-250-characters/index?notes"
 }) }}
 
   </div>
