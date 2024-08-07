@@ -1,0 +1,696 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %} view all claims {% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+
+{% block content %}
+  
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-one-quarter">
+
+      <h2 class="govuk-heading-m govuk-!-Margin-bottom-5">Filters</h2>
+
+      <div id="filter-hint" class="govuk-hint govuk-!-Marchgin-bottom-4">
+        Select one data point to sort results by.
+      </div>
+
+      <div class="table-filter">
+        <form class="form" id="filters" action="#" method="post">
+          
+    
+            {{ govukRadios({
+              classes: "govuk-radios--small",
+                name: "sortCategory",
+                fieldset: {
+                  legend: {
+                    text: "What do you want to sort?",
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend govuk-fieldset__legend--s"
+                  }
+                },
+                items: [
+                  {
+                    value: "date-claim",
+                    text: "Date of claim",
+                    checked: "true"
+                  },
+                  {
+                    value: "current-days-status",
+                    text: "Current days in status"
+                  }
+                ]
+              }) }}
+        
+                {{ govukRadios({
+                  classes: "govuk-radios--small",
+                  name: "sortHierarchy",
+                    fieldset: {
+                      legend: {
+                        text: "How do you want to sort them?",
+                        isPageHeading: true,
+                        classes: "govuk-fieldset__legend govuk-fieldset__legend--s"
+                      }
+                    },
+                    items: [
+                      {
+                        value: "oldest-newest",
+                        text: "Oldest to newest",
+                        checked: "true"
+                      },
+                      {
+                        value: "newest-oldest",
+                        text: "Newest to oldest"
+                      }
+                    ]
+                  }) }}
+
+
+                      {{ govukButton({
+                        text: " Apply filters"
+                      }) }}
+    
+          </form>
+      </div>
+
+    </div>
+    
+
+      <div class="govuk-grid-column-three-quarters">
+
+        <h1 class="govuk-heading-l">View cases</h1>
+
+        <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">Total cases: <b>75</b></p>
+
+        {%- from "govuk/components/table/macro.njk" import govukTable -%}
+
+        {{ govukTable({
+          attributes: {
+            'data-module': 'moj-sortable-table'
+          },
+          head: [
+            {
+              text: "National Insurance number"
+            },
+            {
+              text: "Date of claim"
+            },
+            {
+              text: "Current status"
+            },
+            {
+              text: "Days in current status"
+          }
+          ],
+          rows: [
+            [
+              {
+                html: '<a href="/event-history/v2/index" class="govuk-link">QQ 56 82 91 F'
+              },
+              {
+                text: "4 April 2024",
+                format: "numeric",
+                attributes: {
+                  "data-sort-value": "04 April 2024"
+                }
+              },
+              {
+                text: "Started health information gather"
+              },
+              {
+                text: "15 days"
+              }
+            ],
+            [
+            {
+              html: '<a href="/event-history/v2/index" class="govuk-link">QQ 17 82 96 A'
+            },
+            {
+              text: "4 April 2024",
+              format: "numeric",
+              attributes: {
+                "data-sort-value": "4 April 2024"
+              }
+            },
+            {
+              text: "Decision made: awarded"
+            },
+            {
+              text: "1 day"
+            }
+            ],
+            [
+            {
+              html: '<a href="/event-history/v2/index" class="govuk-link">QQ 30 47 88 C'
+            },
+            {
+              text: "15 April 2024",
+              format: "numeric",
+              attributes: {
+                "data-sort-value": "15 April 2024"
+              }
+            },
+            {
+              text: "Referred to assessment provider"
+            },
+            {
+              text: "5 days"
+            }
+            ],
+            [
+            {
+              html: '<a href="/event-history/v2/index" class="govuk-link">QQ 25 44 31 C'
+            },
+            {
+              text: "15 April 2024",
+              format: "numeric",
+              attributes: {
+                "data-sort-value": "15 April 2024"
+              }
+            },
+            {
+              text: "Ready for decision"
+            },
+            {
+              text: "4 days"
+            }
+          ],
+            [
+            {
+              html: '<a href="/event-history/v2/index" class="govuk-link">QQ 77 88 99 C'
+            },
+            {
+              text: "21 April 2024",
+              format: "numeric",
+              attributes: {
+                "data-sort-value": "05 June 2024"
+              }
+            },
+            {
+              text: "Moved to PIPCS"
+            },
+            {
+              text: "57 days"
+            }
+            ],
+            [
+            {
+              html: '<a href="/event-history/v2/index" class="govuk-link">QQ 11 37 66 B'
+            },
+            {
+              text: "27 April 2024",
+              format: "numeric",
+              attributes: {
+                "data-sort-value": "27 April 2024"
+              }
+            },
+            {
+              text: "Claim withdrawn"
+            },
+            {
+              text: "1 day"
+            }
+          ],
+            [
+              {
+                html: '<a href="/event-history/v2/index" class="govuk-link">QQ 23 64 77 A'
+              },
+              {
+                text: "30 April 2024",
+                format: "numeric",
+                attributes: {
+                  "data-sort-value": "30 April 2024"
+                }
+              },
+              {
+                text: "Start of claim"
+              },
+              {
+                text: "7 days"
+              }
+            ],
+            [
+              {
+                html: '<a href="/event-history/v2/index" class="govuk-link">QQ 12 34 56 C'
+              },
+              {
+                text: "1 May 2024",
+                format: "numeric",
+                attributes: {
+                  "data-sort-value": "1 May 2024"
+                }
+              },
+              {
+                text: "Start of claim"
+              },
+              {
+                text: "3 days"
+              }
+            ],
+            [
+            {
+              html: '<a href="/event-history/v2/index" class="govuk-link">FI 91 10 14 D'
+            },
+            {
+              text: "8 May 2024",
+              format: "numeric",
+              attributes: {
+                "data-sort-value": "8 May 2024"
+              }
+            },
+            {
+              text: "Withdrawn"
+            },
+            {
+              text: "86 days"
+            }
+            ],
+            [
+            {
+              html: '<a href="/event-history/v2/index" class="govuk-link">QQ 1 14 60 C'
+            },
+            {
+              text: "14 May 2024",
+              format: "numeric",
+              attributes: {
+                "data-sort-value": "14 May 2024"
+              }
+            },
+            {
+              text: "Disallowed: failure to comply"
+            },
+            {
+              text: "4 days"
+            }
+          ],
+          [
+          {
+            html: '<a href="/event-history/v2/index" class="govuk-link">QQ 15 64 68 B'
+          },
+          {
+            text: "29 May 2024",
+            format: "numeric",
+            attributes: {
+              "data-sort-value": "31 July 2024"
+            }
+          },
+          {
+            text: "Sent directly to PIPCS"
+          },
+          {
+            text: "1 day"
+          }
+          ],
+          [
+          {
+            html: '<a href="/event-history/v2/index" class="govuk-link">QQ 52 74 36 C'
+          },
+          {
+            text: "14 June 2024",
+            format: "numeric",
+            attributes: {
+              "data-sort-value": "14 June 2024"
+            }
+          },
+          {
+            text: "Received health information gather"
+          },
+          {
+            text: "4 days"
+          }
+        ],
+        [
+        {
+          html: '<a href="/event-history/v2/index" class="govuk-link">QQ 11 37 66 B'
+        },
+        {
+          text: "7 June 2024",
+          format: "numeric",
+          attributes: {
+            "data-sort-value": "7 June 2024"
+          }
+        },
+        {
+          text: "Claim withdrawn"
+        },
+        {
+          text: "1 day"
+        }
+      ],
+      [
+      {
+        html: '<a href="/event-history/v2/index" class="govuk-link">QQ 52 74 36 C'
+      },
+      {
+        text: "14 June 2024",
+        format: "numeric",
+        attributes: {
+          "data-sort-value": "14 June 2024"
+        }
+      },
+      {
+        text: "Received health information gather"
+      },
+      {
+        text: "4 days"
+      }
+    ],
+      [
+      {
+        html: '<a href="/event-history/v2/index" class="govuk-link">QQ 30 47 88 C'
+      },
+      {
+        text: "15 June 2024",
+        format: "numeric",
+        attributes: {
+          "data-sort-value": "15 June 2024"
+        }
+      },
+      {
+        text: "Referred to assessment provider"
+      },
+      {
+        text: "5 days"
+      }
+    ],
+        [
+        {
+          html: '<a href="/event-history/v2/index" class="govuk-link">QQ 22 94 26 A'
+        },
+        {
+          text: "16 June 2024",
+          format: "numeric",
+          attributes: {
+            "data-sort-value": "26 June 2024"
+          }
+        },
+        {
+          text: "Returned from assessment provider"
+        },
+        {
+          text: "8 days"
+        }
+      ],
+        [
+        {
+          html: '<a href="/event-history/v2/index" class="govuk-link">QQ 17 82 96 A'
+        },
+        {
+          text: "20 June 2024",
+          format: "numeric",
+          attributes: {
+            "data-sort-value": "4 April 2024"
+          }
+        },
+        {
+          text: "Decision made: awarded"
+        },
+        {
+          text: "1 day"
+        }
+        ],
+        [
+        {
+          html: '<a href="/event-history/v2/index" class="govuk-link">QQ 15 64 68 B'
+        },
+        {
+          text: "22 June 2024",
+          format: "numeric",
+          attributes: {
+            "data-sort-value": "15 April 2024"
+          }
+        },
+        {
+          text: "Ready for decision"
+        },
+        {
+          text: "4 days"
+        }
+        ],
+        [
+        {
+          html: '<a href="/event-history/v2/index" class="govuk-link">QQ 15 64 68 B'
+        },
+        {
+          text: "25 June 2024",
+          format: "numeric",
+          attributes: {
+            "data-sort-value": "31 July 2024"
+          }
+        },
+        {
+          text: "Sent directly to PIPCS"
+        },
+        {
+          text: "1 day"
+        }
+        ],
+        [
+        {
+          html: '<a href="/event-history/v2/index" class="govuk-link">QQ 22 94 26 A'
+        },
+        {
+          text: "26 June 2024",
+          format: "numeric",
+          attributes: {
+            "data-sort-value": "26 June 2024"
+          }
+        },
+        {
+          text: "Returned from assessment provider"
+        },
+        {
+          text: "8 days"
+        }
+      ],
+      [
+      {
+        html: '<a href="/event-history/v2/index" class="govuk-link">GJ 05 08 22 A'
+      },
+      {
+        text: "29 June 2024",
+        format: "numeric",
+        attributes: {
+          "data-sort-value": "29 June 2024"
+        }
+      },
+      {
+        text: "Referred to assessment provider"
+      },
+      {
+        text: "4 days"
+      }
+      ],
+        [
+        {
+          html: '<a href="/event-history/v2/index" class="govuk-link">QQ 56 82 91 F'
+        },
+        {
+          text: "30 June 2024",
+          format: "numeric",
+          attributes: {
+            "data-sort-value": "30 June 2024"
+          }
+        },
+        {
+          text: "Started health information gather"
+        },
+        {
+          text: "15 days"
+        }
+      ],
+      [
+        {
+          html: '<a href="/event-history/v2/index" class="govuk-link">QQ 23 64 77 A'
+        },
+        {
+          text: "30 June 2024",
+          format: "numeric",
+          attributes: {
+            "data-sort-value": "30 June 2024"
+          }
+        },
+        {
+          text: "Start of claim"
+        },
+        {
+          text: "7 days"
+        }
+      ],
+      [
+      {
+        html: '<a href="/event-history/v2/index" class="govuk-link">QQ 12 34 56 C'
+      },
+      {
+        text: "1 July 2024",
+        format: "numeric",
+        attributes: {
+          "data-sort-value": "01 July 2024"
+        }
+      },
+      {
+        text: "Start of claim"
+      },
+      {
+        text: "3 days"
+      }
+    ],
+        [
+        {
+          html: '<a href="/event-history/v2/index" class="govuk-link">QQ 15 64 68 B'
+        },
+        {
+          text: "2 July 2024",
+          format: "numeric",
+          attributes: {
+            "data-sort-value": "15 July 2024"
+          }
+        },
+        {
+          text: "Started health information gather"
+        },
+        {
+          text: "3 days"
+        }
+        ],
+        [
+        {
+          html: '<a href="/event-history/v2/index" class="govuk-link">IG 99 44 41 D'
+        },
+        {
+          text: "4 July 2024",
+          format: "numeric",
+          attributes: {
+            "data-sort-value": "04 July 2024"
+          }
+        },
+        {
+          text: "Start of claim"
+        },
+        {
+          text: "29 days"
+        }
+        ],
+        [
+        {
+          html: '<a href="/event-history/v2/index" class="govuk-link">IG 99 44 41 D'
+        },
+        {
+          text: "4 July 2024",
+          format: "numeric",
+          attributes: {
+            "data-sort-value": "04 July 2024"
+          }
+        },
+        {
+          text: "Start of claim"
+        },
+        {
+          text: "29 days"
+        }
+        ],
+        [
+        {
+          html: '<a href="/event-history/v2/index" class="govuk-link">QT 56 61 11 A'
+        },
+        {
+          text: "15 July 2024",
+          format: "numeric",
+          attributes: {
+            "data-sort-value": "15 July 2024"
+          }
+        },
+        {
+          text: "Start of claim"
+        },
+        {
+          text: "12 days"
+        }
+        ],
+        [
+        {
+          html: '<a href="/event-history/v2/index" class="govuk-link">HQ 25 70 69 D'
+        },
+        {
+          text: "24 July 2024",
+          format: "numeric",
+          attributes: {
+            "data-sort-value": "24 July 2024"
+          }
+        },
+        {
+          text: "Ready for decision"
+        },
+        {
+          text: "9 days"
+        }
+        ],
+        [
+        {
+          html: '<a href="/event-history/v2/index" class="govuk-link">HQ 25 70 69 D'
+        },
+        {
+          text: "24 July 2024",
+          format: "numeric",
+          attributes: {
+            "data-sort-value": "24 July 2024"
+          }
+        },
+        {
+          text: "Ready for decision"
+        },
+        {
+          text: "9 days"
+        }
+        ],
+        [
+        {
+          html: '<a href="/event-history/v2/index" class="govuk-link">MJ 85 60 00 C'
+        },
+        {
+          text: "28 July 2024",
+          format: "numeric",
+          attributes: {
+            "data-sort-value": "28 July 2024"
+          }
+        },
+        {
+          text: "Disallowed: not eligible"
+        },
+        {
+          text: "5 days"
+        }
+        ],
+  [
+  {
+    html: '<a href="/event-history/v2/index" class="govuk-link">MJ 85 60 00 C'
+  },
+  {
+    text: "28 July 2024",
+    format: "numeric",
+    attributes: {
+      "data-sort-value": "28 July 2024"
+    }
+  },
+  {
+    text: "Disallowed: not eligible"
+  },
+  {
+    text: "5 days"
+  }
+  ]
+          ]
+        }) }}
+
+      </div>
+
+  </div>
+
+        {% endblock %}
