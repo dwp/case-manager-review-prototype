@@ -5,6 +5,10 @@
 
 // Add extra styles here
 
+.govuk-notification-banner {
+  margin-top: 20px;
+}
+
 .dwp-quick-reference {
   padding-top: 20px;
 }
@@ -105,6 +109,7 @@ font-family: Helvetica, Arial, sans-serif;
     .govuk-table__cell {
       text-align: left;
     }
+
 
     .govuk-table {
       font-family: Helvetica, arial, sans-serif;
