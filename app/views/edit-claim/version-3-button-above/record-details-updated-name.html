@@ -51,7 +51,6 @@
       <h3 class="govuk-notification-banner__heading">
         Name updated
       </h3>
-      <p class="govuk-body">Name updated from Jane Doe to <a class="govuk-notification-banner__link" href="">Jane Richards</a>.</p>
     {% endset %}
 
     {{ govukNotificationBanner({
@@ -226,11 +225,6 @@ Personal details
 
 <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="health-professionals">
 
-  {{ govukButton({
-    text: "Edit claim",
-    href: "/edit-claim/version-2/record-details-link#health-professionals"
-  }) }}
-
   <h2 class="govuk-heading-m">Consent</h2>
   <table class="govuk-table">
 
@@ -313,10 +307,6 @@ Personal details
 </div>
 <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="support">
 
-  {{ govukButton({
-    text: "Edit claim",
-    href: "/edit-claim/version-2/record-details-link#support"
-  }) }}
 
 <h2 class="govuk-heading-m">Help and support</h2>
 <table class="govuk-table">
@@ -363,11 +353,6 @@ Personal details
 </div>
 
 <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="payment-details">
-
-  {{ govukButton({
-    text: "Edit claim",
-    href: "/edit-claim/version-2/record-details-link"
-  }) }}
 
   
   <h2 class="govuk-heading-m">Payment details</h2>
