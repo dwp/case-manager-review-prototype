@@ -1,0 +1,143 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/path/of/next/page" method="post">
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+        {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+        
+        {% call govukFieldset({
+          legend: {
+            text: "Home address",
+            classes: "govuk-fieldset__legend--xl",
+            isPageHeading: true
+          }
+        }) %}
+        
+          {{ govukInput({
+            label: {
+              text: "Building and street"
+            },
+            id: "address-line-1",
+            name: "addressLine1",
+            autocomplete: "address-line1",
+            value: "12 Pearl Street"
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              text: ""
+            },
+            id: "address-line-2",
+            name: "addressLine2",
+            autocomplete: "address-line2"
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              text: "Town or city"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "address-town",
+            name: "addressTown",
+            autocomplete: "address-level2",
+            value: "Bristol"
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              text: "County"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "address-county",
+            name: "addressCounty",
+            value: "Bristol"
+          }) }}
+
+        
+          {{ govukInput({
+            label: {
+              text: "Postcode"
+            },
+            classes: "govuk-input--width-10",
+            id: "address-postcode",
+            name: "addressPostcode",
+            autocomplete: "postal-code",
+            value: "BS3 4AB"
+          }) }}
+
+          {% from "govuk/components/select/macro.njk" import govukSelect %}
+
+          {{ govukSelect({
+            id: "location",
+            name: "location",
+            label: {
+              text: "Country"
+            },
+            items: [
+              {
+                value: "country",
+                text: "Select a country"
+              },
+              {
+                value: "United Kingdom",
+                text: "United Kingdom",
+                selected: true
+              }
+            ]
+          }) }}
+
+          {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+          {{ govukRadios({
+            classes: "govuk-radios--inline",
+            name: "changedName",
+            fieldset: {
+              legend: {
+                text: "
+                Can we write to you at this address?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            items: [
+              {
+                value: "yes",
+                text: "Yes"
+              },
+              {
+                value: "no",
+                text: "No",
+                checked: "true"
+              }
+            ]
+          }) }}
+        
+        {% endcall %}
+
+        {{ govukButton({
+          text: "Continue",
+          href: "/edit-claim/version-3-button-above/record-details-updated-address"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

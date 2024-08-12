@@ -44,6 +44,20 @@
   <main class="govuk-main-wrapper" id="main-content" role="main">
   <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
+
+    {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+    {% set html %}
+      <h3 class="govuk-notification-banner__heading">
+        Home address updated
+      </h3>
+    {% endset %}
+
+    {{ govukNotificationBanner({
+      html: html,
+      type: "success"
+    }) }}
+    
   <h1 class="govuk-heading-l">Personal details</h1>
 
 <div class="govuk-tabs" data-module="govuk-tabs">
@@ -51,13 +65,11 @@
 Personal details
 </h2>
 
-{% from "govuk/components/button/macro.njk" import govukButton %}
-
 {{ govukButton({
-  text: "Read only view",
-  classes: "govuk-button--secondary",
-  href: "/edit-claim/version-3-button-above/record-details-button"
+  text: "Change details",
+  href: "/edit-claim/version-3-button-above/record-details-link"
 }) }}
+
 
 <ul class="govuk-tabs__list">
 <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
@@ -105,89 +117,76 @@ Personal details
       <tr class="govuk-table__row">
         <td class="govuk-table__header" width="42%">National Insurance number</td>
         <td class="govuk-table__cell" >QQ 12 34 56 C</td>
-        <td class="govuk-table__cell" ><a class="govuk-link" href="#"><span class="govuk-visually-hidden">extend row</span></a></td>
       </tr>
       <tr class="govuk-table__row">
         <td class="govuk-table__header">Name</td>
         <td class="govuk-table__cell">Jane Doe</td>
-        <td class="govuk-table__cell" width="15%"><a class="govuk-link" href="/edit-claim/version-3-button-above/change-name">Change<span class="govuk-visually-hidden"> name</span></a></td>
       </tr>
       <tr class="govuk-table__row">
         <td class="govuk-table__header">Age</td>
         <td class="govuk-table__cell">50</td>
-        <td class="govuk-table__cell" ><a class="govuk-link" href="#"><span class="govuk-visually-hidden">extend row</span></a></td>
       </tr>
       <tr class="govuk-table__row">
         <td class="govuk-table__header">Date of birth</td>
         <td class="govuk-table__cell">4 June 1972</td>
-        <td class="govuk-table__cell" ><a class="govuk-link" href="#"><span class="govuk-visually-hidden">extend row</span></a></td>
       </tr>
   </table>
 
 <h2 class="govuk-heading-m">Contact details</h2>
 
 <table class="govuk-table">
+
 <tbody class="govuk-table__body">
   <tr class="govuk-table__row">
+  <tr class="govuk-table__row">
     <td class="govuk-table__header " width="42%">Home address</td>
-    <td class="govuk-table__cell">12 Pearl Street <br>
-                                  Bristol  <br>
-                                  BS3 4AB<br>
+    <td class="govuk-table__cell">13 Ruby Street <br>
+                                  Essex  <br>
+                                  CB10 1JZ d<br>
                                   United Kingdom</td>
-   <td class="govuk-table__cell" ><a class="govuk-link" href="/edit-claim/version-3-button-above/change-address">Change<span class="govuk-visually-hidden"> address</span></a></td>
   </tr>
   <tr class="govuk-table__row">
     <td class="govuk-table__header">Can we write to you at this address?</td>
     <td class="govuk-table__cell">No</td>
-    <td class="govuk-table__cell" ><a class="govuk-link" href="/edit-claim/version-3-button-above/change-address">Change<span class="govuk-visually-hidden"> address</span></a></td>
   </tr>
   <tr class="govuk-table__row">
-    <td class="govuk-table__header" width="42%">Correspondence address</td>
-    <td class="govuk-table__cell" width="43%">11 Pearl Street<br>
+    <td class="govuk-table__header">Correspondence address</td>
+    <td class="govuk-table__cell">11 Pearl Street<br>
                                   Bristol  <br>
                                   BS3 4AB<br>
                                   United Kingdom</td>
-   <td class="govuk-table__cell" width="15%"><a class="govuk-link" href="/edit-claim/version-3-button-above/change-correspondence-address">Change<span class="govuk-visually-hidden"> address</span></a></td>
   </tr>
   <tr class="govuk-table__row">
-    <td class="govuk-table__header" width="42%">Mobile phone number</td>
-    <td class="govuk-table__cell" width="43%">07777 7777777</td>
-    <td class="govuk-table__cell" width="15%"><a class="govuk-link" href="/edit-claim/version-3-button-above/change-phone-numbers">Change<span class="govuk-visually-hidden">mobile number</span></a></td>
+    <td class="govuk-table__header">Mobile phone number</td>
+    <td class="govuk-table__cell">07777 7777777</td>
   </tr>
   <tr class="govuk-table__row">
-    <td class="govuk-table__header" width="42%">Do you want to receive text message updates about your claim?</td>
-    <td class="govuk-table__cell" width="43%">No</td>
-    <td class="govuk-table__cell" width="15%"><a class="govuk-link" href="#"><span class="govuk-visually-hidden">extend row</span></a></td>
+    <td class="govuk-table__header">Do you want to receive text message updates about your claim?</td>
+    <td class="govuk-table__cell">No</td>
   </tr>
   <tr class="govuk-table__row">
-    <td class="govuk-table__header" width="42%">Alternative phone number</td>
-    <td class="govuk-table__cell" width="43%">0777 77777778</td>
-    <td class="govuk-table__cell" width="15%"><a class="govuk-link" href="#"><span class="govuk-visually-hidden">extend row</span></a></td>
+    <td class="govuk-table__header">Alternative phone number</td>
+    <td class="govuk-table__cell">0777 77777778</td>
   </tr>
   <tr class="govuk-table__row">
     <td class="govuk-table__header">Textphone</td>
     <td class="govuk-table__cell">0777 77777778</td>
-    <td class="govuk-table__cell" ><a class="govuk-link" href="#"><span class="govuk-visually-hidden">extend row</span></a></td>
   </tr>
   <tr class="govuk-table__row">
-    <td class="govuk-table__header" width="42%">Email address</td>
-    <td class="govuk-table__cell" width="43%">jane.doe72@outlook.com</td>
-    <td class="govuk-table__cell" width="15%"><a class="govuk-link" href="#">Change<span class="govuk-visually-hidden">email</span></a></td>
+    <td class="govuk-table__header">Email address</td>
+    <td class="govuk-table__cell">jane.doe72@outlook.com</td>
   </tr>
    <tr class="govuk-table__row">
     <td class="govuk-table__header">Are you currently staying in health or care accommodation?</td>
     <td class="govuk-table__cell">No</td>
-    <td class="govuk-table__cell" ><a class="govuk-link" href="#"><span class="govuk-visually-hidden">extend row</span></a></td>
   </tr>
   <tr class="govuk-table__row">
     <td class="govuk-table__header">When did you go into this health or care accommodation?</td>
     <td class="govuk-table__cell">Not applicable</td>
-    <td class="govuk-table__cell" ><a class="govuk-link" href="#"><span class="govuk-visually-hidden">extend row</span></a></td>
   </tr>
   <tr class="govuk-table__row">
     <td class="govuk-table__header">Health or care accommodation address</td>
     <td class="govuk-table__cell">Not applicable</td>
-    <td class="govuk-table__cell" ><a class="govuk-link" href="#"><span class="govuk-visually-hidden">extend row</span></a></td>
   </tr>
 </tbody>
 </table>
@@ -224,10 +223,8 @@ Personal details
 
 </div>
 
-
-
 <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="health-professionals">
-  
+
   <h2 class="govuk-heading-m">Consent</h2>
   <table class="govuk-table">
 
@@ -235,42 +232,29 @@ Personal details
     <tr class="govuk-table__row">
       <td class="govuk-table__header" width="42%">Can DWP contact your health and care professionals for information about you?</td>
       <td class="govuk-table__cell">Yes</td>
-      <td class="govuk-table__cell" ><a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a></td>
     </tr>
     <tr class="govuk-table__row">
-      <td class="govuk-table__header" width="42%">Can your health and care professionals share information to support your claim?</td>
-      <td class="govuk-table__cell" width="43%">Yes</td>
-      <td class="govuk-table__cell" width="15%"><a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a></td>
+      <td class="govuk-table__header">Can your health and care professionals share information to support your claim?</td>
+      <td class="govuk-table__cell">Yes</td>
     </tr>
   </tbody>
   </table>
 <br>
-
+<h2 class="govuk-heading-m">Health professional 1</h2>
 <table class="govuk-table">
-
-  <tbody class="govuk-table__body">
-    <tr class="govuk-table__row">
-      <td class="govuk-table__header" width="42%">Health professional 1</td>
-      <td class="govuk-table__cell" width="43%"></td>
-      <td class="govuk-table__cell" width="15%"><a class="govuk-link" href="#">Change<span class="govuk-visually-hidden">health professional</span></a></td>
-    </tr>
-  </tbody>
 
 <tbody class="govuk-table__body">
   <tr class="govuk-table__row">
     <td class="govuk-table__header" width="42%">Name</td>
-    <td class="govuk-table__cell" width="43%">Dr Camilla Stasiak</td>
-    <td class="govuk-table__cell" width="15%"><a class="govuk-link" href="#"><span class="govuk-visually-hidden"> extend row</span></a></td>
+    <td class="govuk-table__cell">Dr Camilla Stasiak</td>
   </tr>
   <tr class="govuk-table__row">
     <td class="govuk-table__header">Profession</td>
     <td class="govuk-table__cell">Doctor</td>
-    <td class="govuk-table__cell" ><a class="govuk-link" href="#"><span class="govuk-visually-hidden"> extend row</span></a></td>
   </tr>
   <tr class="govuk-table__row">
     <td class="govuk-table__header">Phone number</td>
     <td class="govuk-table__cell">020 8291 7007</td>
-    <td class="govuk-table__cell" ><a class="govuk-link" href="#"><span class="govuk-visually-hidden"> extend row</span></a></td>
   </tr>
   <tr class="govuk-table__row">
     <td class="govuk-table__header">Address</td>
@@ -280,43 +264,29 @@ Personal details
                                   London<br>
                                   SE23 2JF<br>
                                   United Kingdom</td>
-   <td class="govuk-table__cell" ><a class="govuk-link" href="#"><span class="govuk-visually-hidden"> extend row</span></a></td>
   </tr>
   <tr class="govuk-table__row">
     <td class="govuk-table__header">Approximate date of last appointment</td>
     <td class="govuk-table__cell">No date given</td>
-    <td class="govuk-table__cell" ><a class="govuk-link" href="#"><span class="govuk-visually-hidden"> extend row</span></a></td>
   </tr>
 </tbody>
-
 </table>
 <br>
-
+<h2 class="govuk-heading-m">Health professional 2</h2>
 <table class="govuk-table">
-
-  <tbody class="govuk-table__body">
-    <tr class="govuk-table__row">
-      <td class="govuk-table__header" width="42%">Health professional 2</td>
-      <td class="govuk-table__cell" width="43%"></td>
-      <td class="govuk-table__cell"width="15%"><a class="govuk-link" href="#">Change<span class="govuk-visually-hidden">health professional 2</span></a></td>
-    </tr>
-  </tbody>
 
 <tbody class="govuk-table__body">
   <tr class="govuk-table__row">
     <td class="govuk-table__header" width="42%">Name</td>
     <td class="govuk-table__cell">Mr Ramon Niekrash</td>
-    <td class="govuk-table__cell" ><a class="govuk-link" href="#"><span class="govuk-visually-hidden"> extend row</span></a></td>
   </tr>
   <tr class="govuk-table__row">
     <td class="govuk-table__header">Profession</td>
     <td class="govuk-table__cell">Doctor</td>
-    <td class="govuk-table__cell" ><a class="govuk-link" href="#"><span class="govuk-visually-hidden"> extend row</span></a></td>
   </tr>
   <tr class="govuk-table__row">
     <td class="govuk-table__header">Phone number</td>
     <td class="govuk-table__cell">020 8836 5435</td>
-    <td class="govuk-table__cell" ><a class="govuk-link" href="#"><span class="govuk-visually-hidden"> extend row</span></a></td>
   </tr>
   <tr class="govuk-table__row">
     <td class="govuk-table__header">Address</td>
@@ -326,23 +296,18 @@ Personal details
     <br>London
     <br>SE18 4QH
     <br>United Kingdom</td>
-    <td class="govuk-table__cell" ><a class="govuk-link" href="#"><span class="govuk-visually-hidden"> extend row</span></a></td>
   </tr>
   <tr class="govuk-table__row">
     <td class="govuk-table__header">Approximate date of last appointment</td>
     <td class="govuk-table__cell">No date given</td>
-    <td class="govuk-table__cell" ><a class="govuk-link" href="#"><span class="govuk-visually-hidden"> extend row</span></a></td>
   </tr>
 </tbody>
 </table>
 
 </div>
-
-
-
-
 <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="support">
-  
+
+
 <h2 class="govuk-heading-m">Help and support</h2>
 <table class="govuk-table">
 <thead class="govuk-table__head"></thead>
@@ -387,10 +352,8 @@ Personal details
     </table>
 </div>
 
-
-
-
 <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="payment-details">
+
   
   <h2 class="govuk-heading-m">Payment details</h2>
   <table class="govuk-table">
