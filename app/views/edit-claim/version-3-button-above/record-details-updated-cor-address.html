@@ -65,11 +65,13 @@
 Personal details
 </h2>
 
-{{ govukButton({
-  text: "Change details",
-  href: "/edit-claim/version-3-button-above/record-details-link"
-}) }}
+{% from "govuk/components/button/macro.njk" import govukButton %}
 
+{{ govukButton({
+  text: "Read only view",
+  classes: "govuk-button--secondary",
+  href: "/edit-claim/version-3-button-above/record-details-button"
+}) }}
 
 <ul class="govuk-tabs__list">
 <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
