@@ -65,9 +65,12 @@
 Personal details
 </h2>
 
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
 {{ govukButton({
-  text: "Change details",
-  href: "/edit-claim/version-3-button-above/record-details-link"
+  text: "Read only view",
+  classes: "govuk-button--secondary",
+  href: "/edit-claim/version-3-button-above/record-details-button"
 }) }}
 
 
