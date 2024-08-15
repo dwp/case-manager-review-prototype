@@ -38,7 +38,7 @@
           <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
 
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input govuk-body" id="status-1" name="current-status" type="checkbox" value="registered" checked>
+                <input class="govuk-checkboxes__input govuk-body" id="status-1" name="current-status" type="checkbox" value="registered" {% if checkstatus-2 %} checked {% endif %}>
                 <label class="govuk-label govuk-checkboxes__label " for="status-1">
                   Start of claim (2)   
                 </label>
@@ -99,12 +99,6 @@
           Decision made: not awarded
         </label>   
     </div> 
-    <div class="govuk-checkboxes__item">
-      <input class="govuk-checkboxes__input" id="status-11" name="sent-directly" type="checkbox" value="sent-directly" {% if checkstatus-10 %} checked {% endif %}>
-      <label class="govuk-label govuk-checkboxes__label" for="status-11">
-        Sent directly to PIPCS
-      </label>   
-  </div> 
   <div class="govuk-checkboxes__item">
     <input class="govuk-checkboxes__input" id="status-12" name="moved-to-PIPCS" type="checkbox" value="moved-to-PIPCS" {% if checkstatus-10 %} checked {% endif %}>
     <label class="govuk-label govuk-checkboxes__label" for="status-12">
