@@ -35,75 +35,93 @@
 <div class="govuk-width-container">
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full">
 
-    <h2 class="govuk-heading-m">
-      Versions
-    </h2>
+    <h1 class="govuk-heading-l">Versions, concepts and scenarios</h1>
+    <p class="govuk-body">Design work across all features including previous versions, iterations to come in the future.</p>
 
-    <h3 class="govuk-heading-s">Case manager review</h3>
+    <div class="govuk-tabs" data-module="govuk-tabs">
+      <h2 class="govuk-tabs__title">
+        Contents
+      </h2>
+      <ul class="govuk-tabs__list">
+        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+          <a class="govuk-tabs__tab" href="#versions">
+            Versions
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item">
+          <a class="govuk-tabs__tab" href="#concepts">
+            Concepts
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item">
+          <a class="govuk-tabs__tab" href="#scenarios">
+            Scenarios
+          </a>
+        </li>
+      </ul>
 
-    <li class="govuk-list">
-        <p class="govuk-body"><a href="/case-manager-review/record-details">Case manager review (retired key details bar) V.1</a></p>
-      </li>
+      <div class="govuk-tabs__panel" id="versions">
+        <h2 class="govuk-heading-m">Versions</h2>
+        <h3 class="govuk-heading-s">Case manager review</h3>
 
-    <h3 class="govuk-heading-s">Event history and Add an event</h3>
+        <li class="govuk-list">
+            <p class="govuk-body"><a href="/case-manager-review/record-details">Case manager review (retired key details bar) V.1</a></p>
+          </li>
+    
+        <h3 class="govuk-heading-s">Event history and Add an event</h3>
+    
+        <ul class="govuk-list">
+        <li class="govuk-link">
+          <p class="govuk-body"><a href="/event-history/v4/index">Event history (timeline format) V.5</a></p>
+        </li>
+          <li class="govuk-list">
+            <p class="govuk-body"><a href="/event-history">First build- Timeline (table format) V.2</a></p>
+          </li>
+          <li class="govuk-list">
+            <p class="govuk-body"><a href="/comms-record/start-record">Communications record V.1</a></p>
+          </li>
+        </ul>
 
-    <ul class="govuk-list">
-    <li class="govuk-link">
-      <p class="govuk-body"><a href="/event-history/v4/index">Event history (timeline format) V.5</a></p>
-    </li>
-      <li class="govuk-list">
-        <p class="govuk-body"><a href="/event-history">First build- Timeline (table format) V.2</a></p>
-      </li>
-      <li class="govuk-list">
-        <p class="govuk-body"><a href="/comms-record/start-record">Communications record V.1</a></p>
-      </li>
-    </ul>
+        <h3 class="govuk-heading-s">View all claims</h3>
+    
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              <p class="govuk-body"><a href="/view-all-claims/days-in-status/days-in-status-v1">Next iteration V.2 - claim creation date, current status, days in current status</a></p>
+            </dt>   
+          </div>
+    
+          <ul class="govuk-list govuk-list--bullet">
+            <li>State 'Sent directly to PIPCS' removed as this will not be a thin slice case</li>
+          </ul>
+        
+          <h3 class="govuk-body">Claim creation/ start date</h3>
+        
+          <ul class="govuk-list">
+            <li>
+              <p class="govuk-body"><a href="/view-all-claims/status-start-date/status-start-v2">Content V.2 - claim creation date, current status, status start date</a></p>
+            </li>      
+          </ul>
+    
+          <ul class="govuk-list">
+            <li>
+              <p class="govuk-body"><a href="/view-all-claims/status-start-date/status-start-v1">Content V.1 - claim start date, claim status, status change date</a></p>
+            </li>      
+          </ul>
 
-    <h3 class="govuk-heading-s">View all claims</h3>
+          <h3 class="govuk-body">Requirements base only</h3>
 
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          <p class="govuk-body"><a href="/view-all-claims/days-in-status/days-in-status-v1">Next iteration V.2 - claim creation date, current status, days in current status</a></p>
-        </dt>   
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              <p class="govuk-body"><a href="/view-all-claims/view-all-claims">View all claims V.1- claim status, claim date</a></p>
+            </dt>
+          </div>
       </div>
 
-      <ul class="govuk-list govuk-list--bullet">
-        <li>State 'Sent directly to PIPCS' removed as this will not be a thin slice case</li>
-      </ul>
-    
-      <h3 class="govuk-body">Claim creation/ start date</h3>
-    
-      <ul class="govuk-list">
-        <li>
-          <p class="govuk-body"><a href="/view-all-claims/status-start-date/status-start-v2">Content V.2 - claim creation date, current status, status start date</a></p>
-        </li>      
-      </ul>
-
-      <ul class="govuk-list">
-        <li>
-          <p class="govuk-body"><a href="/view-all-claims/status-start-date/status-start-v1">Content V.1 - claim start date, claim status, status change date</a></p>
-        </li>      
-      </ul>
-         
-
-      <h3 class="govuk-body">Requirements base only</h3>
-  
-  
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          <p class="govuk-body"><a href="/view-all-claims/view-all-claims">View all claims V.1- claim status, claim date</a></p>
-        </dt>
-      </div>
-
-      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-
-      <h2 class="govuk-heading-m">
-        Concepts
-       </h2>
-
-       <h3 class="govuk-heading-s">Case manager review</h3>
+      <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="concepts">
+        <h2 class="govuk-heading-m">Concepts</h2>
+        <h3 class="govuk-heading-s">Case manager review</h3>
 
        <ul class="govuk-list">
         <li class="govuk-list">
@@ -120,17 +138,14 @@
 
         <h3 class="govuk-heading-s">Event history and Add an event</h3>
 
-      <ul class="govuk-list">
-        <li class="govuk-link">
-          <p class="govuk-body"><a href="/event-history/v6-250-characters/index">Notes: 250 character count V.6</a></p>
-        </li>
-        <li class="govuk-link">
-          <p class="govuk-body"><a href="/event-history/v3/two-events-timeline">Add event: Event type and source of event V.4</a></p>
-        </li>
-        <li>
-          <a class="govuk-link" href="/event-history/v2/index">Timeline (timeline format) V.3</a>
-        </li>
-      </ul>
+          <ul class="govuk-list">
+            <li class="govuk-link">
+              <p class="govuk-body"><a href="/event-history/v6-250-characters/index">Notes: 250 character count V.6</a></p>
+            </li>
+            <li class="govuk-link">
+              <p class="govuk-body"><a href="/event-history/v3/two-events-timeline">Add event: Event type and source of event V.4</a></p>
+            </li>
+          </ul>
 
       <h3 class="govuk-heading-s">View all claims</h3>
 
@@ -153,23 +168,23 @@
             <p class="govuk-body"><a href="/edit-claim/version-2/record-details-button">Change details V.1- button in tabs</a></p>
           </dt>
         </div>
+      </div>
 
-      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+      <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="scenarios">
+        <h2 class="govuk-heading-m">Scenarios</h2>
+        <h3 class="govuk-heading-s">Event history and Add an event</h3>
 
-      <h2 class="govuk-heading-m">
-      Scenarios
-      </h2>
+        <strong class="govuk-tag govuk-tag--red">Flag</strong>
+        <div class="govuk-!-padding-bottom-3"></div>
+  
+        <ul class="govuk-list">
+          <li>
+            <a class="govuk-link" href="/event-history/v5-quick-reference/add-a-note-2000">Notes using 2,000 characters</a>
+          </li>
+        </ul>
+      </div>
+    </div>
 
-      <h3 class="govuk-heading-s">Event history and Add an event</h3>
-
-      <strong class="govuk-tag govuk-tag--red">Flag</strong>
-      <div class="govuk-!-padding-bottom-3"></div>
-
-      <ul class="govuk-list">
-        <li>
-          <a class="govuk-link" href="/event-history/v5-quick-reference/add-a-note-2000">Notes using 2,000 characters</a>
-        </li>
-      </ul>
     </div>
   </div>
 </div>
