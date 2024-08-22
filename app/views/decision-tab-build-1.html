@@ -52,42 +52,40 @@
 
 <h2 class="govuk-heading-m">Award dates</h2>
 
-{{ govukSummaryList({
-  rows: [
-  {
-      key: {
-        text: "Start date"
-      },
-      value: {
-        text: "2 March 2024"
-      }
-    },
-    {
-      key: {
-        text: "End date"
-      },
-      value: {
-        text: "1 March 2027"
-      }
-    },
-    {
-      key: {
-        text: "Review date"
-      },
-      value: {
-        text: "1 March 2026"
-      }
-    },
-    {
-      key: {
-        text: "Review period"
-      },
-      value: {
-        text: "3 years"
-      }
-    }
-  ]
-}) }}
+<dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row">
+    <dt id="decision" class="govuk-summary-list__key">
+      Start date
+    </dt>
+    <dd class="govuk-summary-list__value">
+      2 March 2024
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt id="decision" class="govuk-summary-list__key">
+      End date
+    </dt>
+    <dd class="govuk-summary-list__value">
+      1 March 2027
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt id="decision" class="govuk-summary-list__key">
+      Review date
+    </dt>
+    <dd class="govuk-summary-list__value">
+      1 March 2026
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt id="decision" class="govuk-summary-list__key">
+      Review period
+    </dt>
+    <dd class="govuk-summary-list__value">
+      3 years
+    </dd>
+  </div>
+  </dl>
 
     <h2 class="govuk-heading-m">Daily living scoring</h2>
 
