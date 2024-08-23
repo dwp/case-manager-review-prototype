@@ -37,6 +37,7 @@
 
           <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
 
+              <!-- status 1: start claim -->
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input govuk-body" id="status-1" name="current-status" type="checkbox" value="registered" {% if checkstatus-2 %} checked {% endif %}>
                 <label class="govuk-label govuk-checkboxes__label " for="status-1">
@@ -45,66 +46,93 @@
 
               </div>
 
+               <!-- status 2: Started health information gather -->
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="status-2" name="current-status" type="checkbox" value="health-dis" {% if checkstatus-2 %} checked {% endif %}>
                 <label class="govuk-label govuk-checkboxes__label" for="status-2">
                   Started health information gather (1)
                 </label>
               </div>
+              
+               <!-- status 3: Received health information gather -->
               <div class="govuk-checkboxes__item">
                   <input class="govuk-checkboxes__input" id="status-3" name="current-status" type="checkbox" value="submitted" {% if checkstatus-3 %} checked {% endif %}>
                   <label class="govuk-label govuk-checkboxes__label" for="status-3">
-                    Received health information gather
+                    Received health information gather (1)
                   </label>   
               </div>   
+
+              <!-- status 4: Referred to assessment provider -->
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="status-4" name="current-status" type="checkbox" value="disallowed" {% if checkstatus-4 %} checked {% endif %}>
-                <label class="govuk-label govuk-checkboxes__label" for="status-4">
-                  Disallowed: failure to comply
+                <input class="govuk-checkboxes__input" id="status-6" name="current-status" type="checkbox" value="referred-ap" {% if checkstatus-6 %} checked {% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="status-6">
+                  Referred to assessment provider (1)
                 </label>   
             </div> 
+
+            <!-- status 5: Returned from assessment provider -->
             <div class="govuk-checkboxes__item">
-              <input class="govuk-checkboxes__input" id="status-5" name="current-status" type="checkbox" value="Withdrawn" {% if checkstatus-5 %} checked {% endif %}>
-              <label class="govuk-label govuk-checkboxes__label" for="status-5">
-                Claim withdrawn 
+              <input class="govuk-checkboxes__input" id="status-7" name="current-status" type="checkbox" value="Returned-ap" {% if checkstatus-7 %} checked {% endif %}>
+              <label class="govuk-label govuk-checkboxes__label" for="status-7">
+                Returned from assessment provider (1)
               </label>   
           </div> 
+
+          <!-- status 6: Ready for decision -->
           <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="status-6" name="current-status" type="checkbox" value="referred-ap" {% if checkstatus-6 %} checked {% endif %}>
-            <label class="govuk-label govuk-checkboxes__label" for="status-6">
-              Referred to assessment provider
+            <input class="govuk-checkboxes__input" id="status-8" name="current-status" type="checkbox" value="Ready-decision" {% if checkstatus-8 %} checked {% endif %}>
+            <label class="govuk-label govuk-checkboxes__label" for="status-8">
+              Ready for decision (2)
             </label>   
         </div> 
+
+        <!-- status 7: Decision made: awarded -->
         <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="status-7" name="current-status" type="checkbox" value="Returned-ap" {% if checkstatus-7 %} checked {% endif %}>
-          <label class="govuk-label govuk-checkboxes__label" for="status-7">
-            Returned from assessment provider
+          <input class="govuk-checkboxes__input" id="status-9" name="current-status" type="checkbox" value="awarded" {% if checkstatus-9 %} checked {% endif %}>
+          <label class="govuk-label govuk-checkboxes__label" for="status-9">
+            Decision made: awarded (1)
+          </label>   
+          </div> 
+
+           <!-- status 8: Decision made: not awarded -->
+           <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="status-10" name="current-status" type="checkbox" value="not-awarded" {% if checkstatus-10 %} checked {% endif %}>
+            <label class="govuk-label govuk-checkboxes__label" for="status-10">
+              Decision made: not awarded
+            </label>   
+        </div> 
+
+        <!-- status 9: Moved to PIPCS -->
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="status-12" name="moved-to-PIPCS" type="checkbox" value="moved-to-PIPCS" {% if checkstatus-10 %} checked {% endif %}>
+          <label class="govuk-label govuk-checkboxes__label" for="status-12">
+            Moved to PIPCS (2)
           </label>   
       </div> 
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="status-8" name="current-status" type="checkbox" value="Ready-decision" {% if checkstatus-8 %} checked {% endif %}>
-        <label class="govuk-label govuk-checkboxes__label" for="status-8">
-          Ready for decision
-        </label>   
-    </div>   
-    <div class="govuk-checkboxes__item">
-      <input class="govuk-checkboxes__input" id="status-9" name="current-status" type="checkbox" value="awarded" {% if checkstatus-9 %} checked {% endif %}>
-      <label class="govuk-label govuk-checkboxes__label" for="status-9">
-        Decision made: awarded
-      </label>   
-      </div> 
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="status-10" name="current-status" type="checkbox" value="not-awarded" {% if checkstatus-10 %} checked {% endif %}>
-        <label class="govuk-label govuk-checkboxes__label" for="status-10">
-          Decision made: not awarded
-        </label>   
-    </div> 
-  <div class="govuk-checkboxes__item">
-    <input class="govuk-checkboxes__input" id="status-12" name="moved-to-PIPCS" type="checkbox" value="moved-to-PIPCS" {% if checkstatus-10 %} checked {% endif %}>
-    <label class="govuk-label govuk-checkboxes__label" for="status-12">
-      Moved to PIPCS
-    </label>   
-</div> 
+
+        <!-- status 10: Disallowed: not eligible -->
+         <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="status-4" name="current-status" type="checkbox" value="not-eligible" {% if checkstatus-4 %} checked {% endif %}>
+                    <label class="govuk-label govuk-checkboxes__label" for="status-4">
+                      Disallowed: not eligible
+                    </label>   
+         </div> 
+
+       <!-- status 11 Disallowed: failure to comply -->
+          <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="status-4" name="current-status" type="checkbox" value="failure-to-comply" {% if checkstatus-4 %} checked {% endif %}>
+                  <label class="govuk-label govuk-checkboxes__label" for="status-4">
+                    Disallowed: failure to comply (1)
+                  </label>   
+          </div> 
+
+       <!-- status 12: Withdrawn -->
+        <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="status-5" name="current-status" type="checkbox" value="Withdrawn" {% if checkstatus-5 %} checked {% endif %}>
+              <label class="govuk-label govuk-checkboxes__label" for="status-5">
+                Withdrawn (1)
+              </label>   
+       </div> 
 
         </fieldset>
         </div>
@@ -255,7 +283,7 @@
           }
         },
         {
-          text: "Claim withdrawn"
+          text: "Withdrawn"
         },
         {
           text: "1 day"
@@ -363,7 +391,7 @@
           }
         },
         {
-          text: "Sent directly to PIPCS"
+          text: "Moved to PIPCS"
         },
         {
           text: "1 day"
