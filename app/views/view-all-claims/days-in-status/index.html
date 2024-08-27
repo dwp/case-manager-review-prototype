@@ -39,7 +39,7 @@
 
               <!-- status 1: start claim -->
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input govuk-body" id="status-1" name="current-status" type="checkbox" value="registered" {% if checkstatus-2 %} checked {% endif %}>
+                <input class="govuk-checkboxes__input govuk-body" id="status-1" name="current-status" type="checkbox" value="registered" checked {% if checkstatus-2 %} checked {% endif %}>
                 <label class="govuk-label govuk-checkboxes__label " for="status-1">
                   Start of claim (2)   
                 </label>
@@ -48,7 +48,7 @@
 
                <!-- status 2: Started health information gather -->
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="status-2" name="current-status" type="checkbox" value="health-dis" {% if checkstatus-2 %} checked {% endif %}>
+                <input class="govuk-checkboxes__input" id="status-2" name="current-status" type="checkbox" value="health-dis" checked {% if checkstatus-2 %} checked {% endif %}>
                 <label class="govuk-label govuk-checkboxes__label" for="status-2">
                   Started health information gather (1)
                 </label>
@@ -56,7 +56,7 @@
               
                <!-- status 3: Received health information gather -->
               <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="status-3" name="current-status" type="checkbox" value="submitted" {% if checkstatus-3 %} checked {% endif %}>
+                  <input class="govuk-checkboxes__input" id="status-3" name="current-status" type="checkbox" value="submitted" checked {% if checkstatus-3 %} checked {% endif %}>
                   <label class="govuk-label govuk-checkboxes__label" for="status-3">
                     Received health information gather (1)
                   </label>   
@@ -137,7 +137,7 @@
         </fieldset>
         </div>
 
-        <button class="govuk-button" xmlns="/view-all-claims/days-in-status/index">
+        <button type="submit" class="govuk-button" data-module="govuk-button" data-test-id="submit-button">
           Apply filters
         </button>
 
@@ -152,7 +152,7 @@
 
         <h1 class="govuk-heading-l">View cases</h1>
 
-        <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">Number of cases: <b>11</b></p>
+        <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">Number of cases: <b>4</b> out of <b>11</b></p>
 
         {%- from "govuk/components/table/macro.njk" import govukTable -%}
 
