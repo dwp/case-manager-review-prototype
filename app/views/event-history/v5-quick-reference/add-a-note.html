@@ -56,6 +56,9 @@
   <div class="govuk-grid-column-two-thirds">
 
 
+    <span class="govuk-caption-xl">Disallow application</span>
+    <h1 class="govuk-heading-xl">Add a note</h1>
+    
 {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
 
 {{ govukCharacterCount({
@@ -64,7 +67,7 @@
   maxlength: 2000,
   value: "Outbound call to claimant, claimant confirmed they intend to withdraw their claim. IDV passed.",
   label: {
-    text: "Add a note",
+    text: "",
     classes: "govuk-label--l",
     isPageHeading: true
   },
