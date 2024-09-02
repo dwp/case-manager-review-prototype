@@ -182,5 +182,15 @@ router.post('/event-history/v6-250-characters/add-a-note',function(request, resp
     var notes = req.session.data['notes']
     if (notes == 'notes'){
     response.redirect('/event-history/v6-250-characters/index')
-    }
+    } 
+})
+
+
+//-------------------------------------------------------------------
+// withdraw event
+
+
+// event types
+router.post('/event-history/v5-quick-reference/add-an-event-refined',function(request, response) {
+    response.redirect('/event-history/v5-quick-reference/withdraw/add-a-note')
 })
