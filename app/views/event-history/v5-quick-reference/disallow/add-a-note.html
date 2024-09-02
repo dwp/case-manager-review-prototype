@@ -1,11 +1,11 @@
 {% extends "layouts/main.html" %}
 
-{% block pageTitle %} Add an event {% endblock %}
+{% block pageTitle %} Add a note {% endblock %}
 
 {% block main %}
 
-      <div class="govuk-width-container">
-        <div class="column-full">
+  <div class="govuk-width-container">
+    <div class="column-full">
           <section class="dwp-quick-reference" aria-label="Case information">
             <dl class="dwp-quick-reference__block">
             <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
@@ -14,7 +14,7 @@
             <dd class="dwp-quick-reference__secondary">QQ 12 34 56 X</dd>
             </dl>
             </section>
-        
+
     <nav class="navigation-secondary">
       <ul>
         <li>
@@ -45,71 +45,44 @@
 {% block beforeContent %}
 {{ govukBackLink({
   text: "Back",
-  href: "index"
+  href: "/event-history/v5-quick-reference/add-an-event-refined"
 }) }}
 {% endblock %}
 
 
  <br><br><br><br>
 
- <form class="form">
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
- 
- {{ govukRadios({
-  name: "event-type",
-  fieldset: {
-    legend: {
-      text: "Add an event",
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--xl"
-    }
+    
+{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+
+{{ govukCharacterCount({
+  id: "exceeding-characters",
+  name: "exceeding",
+  maxlength: 2000,
+  value: "Outbound call to claimant, claimant confirmed they intend to withdraw their claim. IDV passed.",
+  label: {
+    text: "Add a note",
+    classes: "govuk-label--xl",
+    isPageHeading: true
   },
-  items: [
-    {
-      value: "need-to-move",
-      text: "Identified need to move to PIPCS"
-    },
-    {
-      value: "moved",
-      text: "Completed move to PIPCS"
-    },
-    {
-      value: "verified-identity",
-      text: "Verified claimant's identity"
-    },
-    {
-      value: "extend-hig-deadline",
-      text: "Extend health information deadline"
-    },
-    {
-      value: "disallow",
-      text: "Disallow application"
-    },
-    {
-      value: "withdraw",
-      text: "Withdraw application"
-    },
-    {
-      value: "other",
-      text: "Other event"
-    }
-  ]
+  hint: {
+    text: "Enter more information about this event."
+  }
 }) }}
 
 {{ govukButton({
-  text: "Continue"
+  text: "Save and continue",
+  href: "/event-history/v5-quick-reference/disallow/index-disallow-eligibility"
 }) }}
 
-</div>
-</div>
-
-
+  </div>
+  </div>
 
 <br><br>
 
 </div>
-</form>
 
 
 {% endblock %}
