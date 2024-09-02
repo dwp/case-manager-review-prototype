@@ -52,12 +52,15 @@
 
  <br><br><br><br>
 
- <form class="form">
+
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="/event-type" method="post">
+
  
  {{ govukRadios({
-  name: "event-type",
+  name: "event",
   fieldset: {
     legend: {
       text: "Add an event",
@@ -100,7 +103,7 @@
 {{ govukButton({
   text: "Continue"
 }) }}
-
+</form>
 </div>
 </div>
 
@@ -109,7 +112,6 @@
 <br><br>
 
 </div>
-</form>
 
 
 {% endblock %}
