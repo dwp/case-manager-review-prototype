@@ -187,10 +187,16 @@ router.post('/event-history/v6-250-characters/add-a-note',function(request, resp
 
 
 //-------------------------------------------------------------------
-// withdraw event
 
 
 // event types
-router.post('/event-history/v5-quick-reference/add-an-event-refined',function(request, response) {
-    response.redirect('/event-history/v5-quick-reference/withdraw/add-a-note')
-})
+router.post('/event-type',function(request, response) {
+    var event = request.session.data['event']
+    if (event == "need-to-move"){
+        response.redirect("/event-history/v5-quick-reference/identified-need/add-a-note")
+    } else if (event == "withdraw") {
+        response.redirect("/event-history/v5-quick-reference/withdraw/add-a-note")
+    } else if (event == "disallow") {
+        response.redirect("/event-history/v5-quick-reference/disallow/add-a-note")
+    }
+    })
