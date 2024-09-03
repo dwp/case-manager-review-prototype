@@ -54,31 +54,31 @@
 
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="/event-history/v5-quick-reference/withdraw/index-withdraw" method="post">
     
-{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+    <h3 class="govuk-heading-xl">
+      Add a note
+    </h3>
 
-{{ govukCharacterCount({
-  id: "exceeding-characters",
-  name: "exceeding",
-  maxlength: 2000,
-  value: "",
-  label: {
-    text: "Add a note",
-    classes: "govuk-label--xl",
-    isPageHeading: true
-  },
-  hint: {
-    text: "Enter more information about this event."
-  }
-}) }}
+    <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="2000">
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-hint" for="event-3-description">
+          Enter more information about this event.
+        </label>
+
+        <textarea class="govuk-textarea govuk-js-character-count" id="event-3-description" name="withdraw-notes" rows="4" aria-describedby="event-3-description"></textarea>
+        
+        <div id="event-3-description" class="govuk-hint govuk-character-count__message" aria-live="polite">You have 2000 characters remaining</div>
+      </div>
+    </div>
 
 {{ govukButton({
-  text: "Save and continue",
-  href: "/event-history/v5-quick-reference/withdraw/index-withdraw"
+  text: "Save and continue"
 }) }}
 
   </div>
   </div>
+</form>
 
 <br><br>
 

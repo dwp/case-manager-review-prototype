@@ -53,20 +53,33 @@
 
 <div class="dwp-timeline">
   <ol class="dwp-timeline__events">
-  <li class="dwp-timeline__events--entry">
-    <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Added event: withdraw </h2>
-    <p class="govuk-caption-m govuk-!-margin-bottom-1">Outbound call to claimant, claimant confirmed they intend to withdraw their claim. IDV passed.</p>
-    <p class="govuk-caption-m">6 August 2024</p>
-  </li>
-  <li class="dwp-timeline__events--entry">
-    <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Added event: other event</h2>
-    <p class="govuk-caption-m govuk-!-margin-bottom-1">Received email from HAS explaining claimant wishes to withdraw their application.</p>
-    <p class="govuk-caption-m">24 July 2024</p>
-  </li>
+    <li class="dwp-timeline__entry dwp-timeline__events--entry pip_filter_tag" id="event-3-description">
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-1" id="event-3-description">
+        Added event: withdraw 
+      </h2>
+
+      <p class="govuk-caption-m govuk-!-margin-bottom-1" id="event-3-description">
+        {% if data['withdraw-notes'] === 'claim withdrawn' %}
+        claim withdrawn
+      {% else %} 
+        {{ data['withdraw-notes'] }}
+      {% endif %}
+      </p>
+
+      <p class="govuk-caption-m" id="event-date-3">
+        {% if data['year'] %}
+        {{ data['day']}} {{ data['month'] | toMonth }} {{ data['year']}}
+      {% else %}
+        4 September 2024
+      {% endif %}
+      </p>
+    </li>
+
   <li class="dwp-timeline__events--entry">
     <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Ready for decision </h2>
     <p class="govuk-caption-m">20 June 2024</p>
   </li>
+
   <li class="dwp-timeline__events--entry">
     <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Returned from assessment provider</h2>
     <p class="govuk-caption-m">1 June 2024</p>
