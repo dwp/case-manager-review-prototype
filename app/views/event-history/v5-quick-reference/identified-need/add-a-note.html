@@ -54,31 +54,31 @@
 
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    
-{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+    <form class="form" action="/event-history/v5-quick-reference/identified-need/index-need-to-move" method="post">
 
-{{ govukCharacterCount({
-  id: "exceeding-characters",
-  name: "exceeding",
-  maxlength: 2000,
-  value: "",
-  label: {
-    text: "Add a note",
-    classes: "govuk-label--xl",
-    isPageHeading: true
-  },
-  hint: {
-    text: "Enter more information about this event."
-  }
-}) }}
+      <h3 class="govuk-heading-xl">
+        Add a note
+      </h3>
 
-{{ govukButton({
-  text: "Save and continue",
-  href: "/event-history/v5-quick-reference/identified-need/index-need-to-move"
-}) }}
+      <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="2000">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-hint" for="event-1-description">
+            Enter more information about this event.
+          </label>
+
+          <textarea class="govuk-textarea govuk-js-character-count" id="event-1-description" name="need-to-move-notes" rows="4" aria-describedby="event-1-description"></textarea>
+          
+          <div id="event-1-description" class="govuk-hint govuk-character-count__message" aria-live="polite">You have 2000 characters remaining</div>
+        </div>
+      </div>
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
 
   </div>
   </div>
+</form>
 
 <br><br>
 

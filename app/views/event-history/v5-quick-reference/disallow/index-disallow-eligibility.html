@@ -53,16 +53,35 @@
 
 <div class="dwp-timeline">
   <ol class="dwp-timeline__events">
-  <li class="dwp-timeline__events--entry">
-    <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Added event: disallow </h2>
-    <p class="govuk-caption-m govuk-!-margin-bottom-1">Claimant is no longer eligible as they have changed address in the past month that is not within the postcode criteria for thin slice claims. IDV passed. </p>
-    <p class="govuk-caption-m">29 July 2024</p>
-  </li>
+
+    <li class="dwp-timeline__entry dwp-timeline__events--entry pip_filter_tag" id="event-2">
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-1" id="event-header-2">
+        Added event: disallow
+      </h2>
+
+      <p class="govuk-caption-m govuk-!-margin-bottom-1" id="event-2">
+        {% if data['disallow-notes'] === 'the claimant' %}
+        the claimant
+      {% else %} 
+        {{ data['disallow-notes'] }}
+      {% endif %}
+      </p>
+
+      <p class="govuk-caption-m" id="event-date-2">
+        {% if data['year'] %}
+        {{ data['day']}} {{ data['month'] | toMonth }} {{ data['year']}}
+      {% else %}
+        4 September 2024
+      {% endif %}
+      </p>
+    </li>
+
   <li class="dwp-timeline__events--entry">
     <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Added event: other event</h2>
     <p class="govuk-caption-m govuk-!-margin-bottom-1">Received inbound call from claimant explaining explaining they have changed address.</p>
     <p class="govuk-caption-m">24 July 2024</p>
   </li>
+
   <li class="dwp-timeline__events--entry">
     <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Ready for decision </h2>
     <p class="govuk-caption-m">20 June 2024</p>
