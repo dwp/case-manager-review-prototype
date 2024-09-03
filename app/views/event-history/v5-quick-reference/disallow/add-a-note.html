@@ -18,7 +18,7 @@
     <nav class="navigation-secondary">
       <ul>
         <li>
-          <a href="#">Personal details</a>
+          <a href="">Personal details</a>
         </li>
         <li>
           <a href="#">Supporting documents</a>
@@ -40,7 +40,7 @@
 
       </ul>
     </nav>
-</div>
+    </div>
 
 {% block beforeContent %}
 {{ govukBackLink({
@@ -54,35 +54,35 @@
 
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="/event-history/v5-quick-reference/disallow/index-disallow-eligibility" method="post">
+
+      <h3 class="govuk-heading-xl">
+        Add a note
+      </h3>
+
+      <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="2000">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-hint" for="event-2">
+            Enter more information about this event.
+          </label>
     
-{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+          <textarea class="govuk-textarea govuk-js-character-count" id="event-2" name="disallow-notes" rows="4" aria-describedby="event-2-info"></textarea>
+          
+          <div id="event-2-info" class="govuk-hint govuk-character-count__message" aria-live="polite">You have 2000 characters remaining</div>
+        </div>
+      </div>
 
-{{ govukCharacterCount({
-  id: "exceeding-characters",
-  name: "exceeding",
-  maxlength: 2000,
-  value: "",
-  label: {
-    text: "Add a note",
-    classes: "govuk-label--xl",
-    isPageHeading: true
-  },
-  hint: {
-    text: "Enter more information about this event."
-  }
-}) }}
 
-{{ govukButton({
-  text: "Save and continue",
-  href: "/event-history/v5-quick-reference/disallow/index-disallow-eligibility"
-}) }}
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
 
-  </div>
-  </div>
+      </div>
+   </div>
+  </form>
 
-<br><br>
-
-</div>
+ <br><br>
+ </div>
 
 
 {% endblock %}
