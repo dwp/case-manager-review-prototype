@@ -23,7 +23,7 @@
         
         {% call govukFieldset({
           legend: {
-            text: "Change home address",
+            text: "Enter home address",
             classes: "govuk-fieldset__legend--xl",
             isPageHeading: true
           }
@@ -36,7 +36,7 @@
             id: "address-line-1",
             name: "addressLine1",
             autocomplete: "address-line1",
-            value: "12 Pearl Street"
+            value: ""
           }) }}
         
           {{ govukInput({
@@ -56,7 +56,7 @@
             id: "address-town",
             name: "addressTown",
             autocomplete: "address-level2",
-            value: "Bristol"
+            value: ""
           }) }}
         
           {{ govukInput({
@@ -66,7 +66,7 @@
             classes: "govuk-!-width-two-thirds",
             id: "address-county",
             name: "addressCounty",
-            value: "Bristol"
+            value: ""
           }) }}
 
         
@@ -78,7 +78,7 @@
             id: "address-postcode",
             name: "addressPostcode",
             autocomplete: "postal-code",
-            value: "BS3 4AB"
+            value: ""
           }) }}
 
           {% from "govuk/components/select/macro.njk" import govukSelect %}
@@ -92,12 +92,12 @@
             items: [
               {
                 value: "country",
-                text: "Select a country"
+                text: "Select a country",
+                selected: true
               },
               {
                 value: "United Kingdom",
-                text: "United Kingdom",
-                selected: true
+                text: "United Kingdom"
               }
             ]
           }) }}

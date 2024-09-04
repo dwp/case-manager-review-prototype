@@ -204,3 +204,14 @@ router.post('/event-type',function(request, response) {
         response.redirect("/event-history/v5-quick-reference/other-event/add-a-note")
     }
     })
+
+//-------------------------------------------------------------------
+//EDIT A CLAIM
+router.post('/edit-claim/version-3-button-above/confirm-change-address',function(request, response) {
+    var writeToHome = request.session.data['write-to-home-address']
+    if (writeToHome == "yes"){
+        response.redirect("/edit-claim/version-3-button-above/record-details-updated-address")
+     } else if (writeToHome == "no") {
+            response.redirect("/edit-claim/version-3-button-above/change-corr-address")
+        } 
+    })
