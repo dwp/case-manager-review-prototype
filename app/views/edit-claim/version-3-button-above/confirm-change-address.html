@@ -16,29 +16,26 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="/edit-claim/version-3-button-above/record-details-updated-address" method="post">
+      <form class="form" action="#" method="post">
 
         {% from "govuk/components/button/macro.njk" import govukButton %}
         {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 
 
         <div class="govuk-width-container">
-        <h1 class="govuk-heading-xl">Confirm new address </h1>
-        <p>6 addresses found for <b>wr11nl</b> and <b>1</b>. <a href="#">Search again</a></p>
+        <h1 class="govuk-heading-xl">New home address </h1>
 
         {{ govukInsetText({
         html: "1 Washington Street<br>Worcester<br>WR1 1NL"
         }) }}
 
-        {% from "govuk/components/radios/macro.njk" import govukRadios %}
-
         {{ govukRadios({
           classes: "govuk-radios--inline",
-          name: "changedName",
+          name: "write-to-home-address",
           fieldset: {
             legend: {
               text: "
-              Can we write to you at this address?",
+              Can we write to this address?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--m"
             }
@@ -57,11 +54,10 @@
         }) }}
 
         {{ govukButton({
-          text: "Use this address"
+          text: "Save and continue"
           }) }}
 
-        <p class="govuk-body"><a href="/edit-claim/version-3-button-above/change-address" class="govuk-link">Use a different address</a></p>
-        <p class="govuk-body govuk-!-margin-bottom-0"><a href="/edit-claim/version-3-button-above/change-address-manually" class="govuk-link">Enter address manually</a></p>
+        <p class="govuk-body"><a href="/edit-claim/version-3-button-above/change-select-address" class="govuk-link">Select a different address</a></p>
         </div>
 
       </form>
