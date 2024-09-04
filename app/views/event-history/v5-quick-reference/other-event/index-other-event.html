@@ -17,7 +17,7 @@
         
     <nav class="navigation-secondary">
       <ul>
-         <li>
+        <li>
           <a href="/case-manager-review/record-details-iteration-4" aria-current="section">Personal details</a>
         </li>
         <li>
@@ -30,7 +30,7 @@
           <a href="#">Activities</a>
         </li>
         <li>
-          <a href="/case-manager-review/record-details-iteration-4" class="active" aria-current="section">Event history</a>
+          <a href="/event-history/v5-quick-reference/index" class="active" aria-current="section">Event history</a>
         </li>
         <li>
           <a href="/decision-tab-iteration-4-evidence" aria-current="section">Decision</a>
@@ -56,21 +56,20 @@
 
 <div class="dwp-timeline">
   <ol class="dwp-timeline__events">
-
-    <li class="dwp-timeline__entry dwp-timeline__events--entry pip_filter_tag" id="event-5-description">
-      <h2 class="govuk-heading-s govuk-!-margin-bottom-1" id="event-header-5">
-        Added event: disallow
+    <li class="dwp-timeline__entry dwp-timeline__events--entry pip_filter_tag" id="event-7-description">
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-1" id="event-7-description">
+        Added event: other event
       </h2>
 
-      <p class="govuk-caption-m govuk-!-margin-bottom-1" id="event-5-description">
-        {% if data['disallow-notes'] === 'the claimant' %}
+      <p class="govuk-caption-m govuk-!-margin-bottom-1" id="event-7-description">
+        {% if data['other-event-notes'] === 'Other event added' %}
         the claimant
       {% else %} 
-        {{ data['disallow-notes'] }}
+        {{ data['other-event-notes'] }}
       {% endif %}
       </p>
 
-      <p class="govuk-caption-m" id="event-date-5">
+      <p class="govuk-caption-m" id="event-date-7">
         {% if data['year'] %}
         {{ data['day']}} {{ data['month'] | toMonth }} {{ data['year']}}
       {% else %}
@@ -80,34 +79,20 @@
     </li>
 
   <li class="dwp-timeline__events--entry">
-    <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Added event: other event</h2>
-    <p class="govuk-caption-m govuk-!-margin-bottom-1">Received inbound call from claimant explaining explaining they have changed address.</p>
-    <p class="govuk-caption-m">24 July 2024</p>
-  </li>
-
-  <li class="dwp-timeline__events--entry">
-    <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Ready for decision </h2>
-    <p class="govuk-caption-m">20 June 2024</p>
-  </li>
-  <li class="dwp-timeline__events--entry">
-    <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Returned from assessment provider</h2>
-    <p class="govuk-caption-m">1 June 2024</p>
-  </li>
-  <li class="dwp-timeline__events--entry">
     <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Referred to assessment provider</h2>
-    <p class="govuk-caption-m">16 May 2024</p>
+    <p class="govuk-caption-m">16 July 2024</p>
   </li>
   <li class="dwp-timeline__events--entry">
     <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Received health information gather</h2>
-    <p class="govuk-caption-m">14 May 2024</p>
+    <p class="govuk-caption-m">14 July 2024</p>
   </li>
   <li class="dwp-timeline__events--entry">
     <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Started health information gather</h2>
-    <p class="govuk-caption-m">4 May 2024</p>
+    <p class="govuk-caption-m">4 July 2024</p>
   </li>
   <li class="dwp-timeline__events--entry">
     <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Start of claim</h2>
-    <p class="govuk-caption-m">3 May 2024</p>
+    <p class="govuk-caption-m">3 July 2024</p>
   </li>
   </ol>
   </div>

@@ -18,7 +18,7 @@
     <nav class="navigation-secondary">
       <ul>
         <li>
-          <a href="/record-details-iteration-4" aria-current="section">Personal details</a>
+          <a href="/case-manager-review/record-details-iteration-4" aria-current="section">Personal details</a>
         </li>
         <li>
           <a href="#">Supporting documents</a>
@@ -56,20 +56,20 @@
 
 <div class="dwp-timeline">
   <ol class="dwp-timeline__events">
-    <li class="dwp-timeline__entry dwp-timeline__events--entry pip_filter_tag" id="event-4-description">
-      <h2 class="govuk-heading-s govuk-!-margin-bottom-4" id="event-4-description">
-        Added event: completed move to PIPCS
+    <li class="dwp-timeline__entry dwp-timeline__events--entry pip_filter_tag" id="event-2-description">
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-1" id="event-2-description">
+        Added event: Completed move to PIPCS
       </h2>
 
-      <p class="govuk-caption-m govuk-!-margin-bottom-1" id="event-4-description">
+      <p class="govuk-caption-m govuk-!-margin-bottom-1" id="event-2-description">
         {% if data['moved-notes'] === 'moved to PIPCS' %}
-        moved to pipcs
+        the claimant
       {% else %} 
         {{ data['moved-notes'] }}
       {% endif %}
       </p>
 
-      <p class="govuk-caption-m" id="event-date-1">
+      <p class="govuk-caption-m" id="event-date-2">
         {% if data['year'] %}
         {{ data['day']}} {{ data['month'] | toMonth }} {{ data['year']}}
       {% else %}
