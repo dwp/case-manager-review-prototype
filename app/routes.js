@@ -198,5 +198,7 @@ router.post('/event-type',function(request, response) {
         response.redirect("/event-history/v5-quick-reference/withdraw/add-a-note")
     } else if (event == "disallow") {
         response.redirect("/event-history/v5-quick-reference/disallow/add-a-note")
+    } else if (event == "moved") {
+        response.redirect("/event-history/v5-quick-reference/completed-move/add-a-note")
     }
     })
