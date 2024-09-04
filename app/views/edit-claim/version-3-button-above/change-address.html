@@ -18,122 +18,34 @@
 
       <form class="form" action="/path/of/next/page" method="post">
 
-        {% from "govuk/components/input/macro.njk" import govukInput %}
-        {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
-        
-        {% call govukFieldset({
-          legend: {
-            text: "Home address",
-            classes: "govuk-fieldset__legend--xl",
-            isPageHeading: true
-          }
-        }) %}
-        
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+          {% from "govuk/components/input/macro.njk" import govukInput %}
+          <div class="govuk-width-container">
+          <h1 class="govuk-heading-xl">Change home address</h1>
           {{ govukInput({
-            label: {
-              text: "Building and street"
-            },
-            id: "address-line-1",
-            name: "addressLine1",
-            autocomplete: "address-line1",
-            value: "12 Pearl Street"
+          label: {
+            text: "Postcode"
+          },
+          classes: "govuk-!-width-two-thirds",
+          id: "postcode",
+          name: "postcode"
           }) }}
-        
+
           {{ govukInput({
-            label: {
-              text: ""
-            },
-            id: "address-line-2",
-            name: "addressLine2",
-            autocomplete: "address-line2"
-          }) }}
-        
-          {{ govukInput({
-            label: {
-              text: "Town or city"
-            },
-            classes: "govuk-!-width-two-thirds",
-            id: "address-town",
-            name: "addressTown",
-            autocomplete: "address-level2",
-            value: "Bristol"
-          }) }}
-        
-          {{ govukInput({
-            label: {
-              text: "County"
-            },
-            classes: "govuk-!-width-two-thirds",
-            id: "address-county",
-            name: "addressCounty",
-            value: "Bristol"
+          label: {
+            text: "Building number or name"
+          },
+          classes: "govuk-!-width-two-thirds",
+          id: "searchString",
+          name: "searchString"
           }) }}
 
-        
-          {{ govukInput({
-            label: {
-              text: "Postcode"
-            },
-            classes: "govuk-input--width-10",
-            id: "address-postcode",
-            name: "addressPostcode",
-            autocomplete: "postal-code",
-            value: "BS3 4AB"
+          {{ govukButton({
+            text: "Find address",
+            href: "/edit-claim/version-3-button-above/change-select-address"
           }) }}
-
-          {% from "govuk/components/select/macro.njk" import govukSelect %}
-
-          {{ govukSelect({
-            id: "location",
-            name: "location",
-            label: {
-              text: "Country"
-            },
-            items: [
-              {
-                value: "country",
-                text: "Select a country"
-              },
-              {
-                value: "United Kingdom",
-                text: "United Kingdom",
-                selected: true
-              }
-            ]
-          }) }}
-
-          {% from "govuk/components/radios/macro.njk" import govukRadios %}
-
-          {{ govukRadios({
-            classes: "govuk-radios--inline",
-            name: "changedName",
-            fieldset: {
-              legend: {
-                text: "
-                Can we write to you at this address?",
-                isPageHeading: true,
-                classes: "govuk-fieldset__legend--m"
-              }
-            },
-            items: [
-              {
-                value: "yes",
-                text: "Yes"
-              },
-              {
-                value: "no",
-                text: "No",
-                checked: "true"
-              }
-            ]
-          }) }}
-        
-        {% endcall %}
-
-        {{ govukButton({
-          text: "Continue",
-          href: "/edit-claim/version-3-button-above/record-details-updated-address"
-        }) }}
+          <p class="govuk-body govuk-!-margin-bottom-0"><a href="/edit-claim/version-3-button-above/change-address-manually" class="govuk-link">Change address manually</a></p>
+          </div>
 
       </form>
 
