@@ -49,9 +49,9 @@
 
     {% set html %}
       <h3 class="govuk-notification-banner__heading">
-        Address information updated
+        Contact details updated
       </h3>
-      <p class="govuk-body">Home address changed<p>
+      <p class="govuk-body">Home address<p>
     {% endset %}
 
     {{ govukNotificationBanner({
@@ -246,104 +246,215 @@ Personal details
 <br>
 
 <h2 class="govuk-heading-m">Health professional details</h2>
-<table class="govuk-table">
 
-  <tbody class="govuk-table__body">
-    <dt class="govuk-table__row">
-      <dd class="govuk-table__header" width="42%">Health professional 1</dd>
-      <dd class="govuk-summary-list__value" width="43%"></dd>
-      <dd class="govuk-summary-list__actions">
-        <ul class="govuk-summary-list__actions-list">
-          <li class="govuk-summary-list__actions-list-item">
-            <a class="govuk-link" href="#">Add<span class="govuk-visually-hidden"> contact details</span></a>
-          </li>
-          <li class="govuk-summary-list__actions-list-item">
-            <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> contact details</span></a>
-          </li>
-        </ul>
-      </dd>
-    </dt>
-  </tbody>
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
-<tbody class="govuk-table__body">
-  <tr class="govuk-table__row">
-    <td class="govuk-table__header" width="42%">Name</td>
-    <td class="govuk-table__cell" width="43%">Dr Camilla Stasiak</td>
-    <td class="govuk-table__cell" width="15%"><a class="govuk-link" href="#"><span class="govuk-visually-hidden"> extend row</span></a></td>
-  </tr>
-  <tr class="govuk-table__row">
-    <td class="govuk-table__header">Profession</td>
-    <td class="govuk-table__cell">Doctor</td>
-    <td class="govuk-table__cell" ><a class="govuk-link" href="#"><span class="govuk-visually-hidden"> extend row</span></a></td>
-  </tr>
-  <tr class="govuk-table__row">
-    <td class="govuk-table__header">Phone number</td>
-    <td class="govuk-table__cell">020 8291 7007</td>
-    <td class="govuk-table__cell" ><a class="govuk-link" href="#"><span class="govuk-visually-hidden"> extend row</span></a></td>
-  </tr>
-  <tr class="govuk-table__row">
-    <td class="govuk-table__header">Address</td>
-    <td class="govuk-table__cell">The Vale Medical Centre<br>
-                                  195-197 Perry Vale<br>
-                                  Forest Hill<br>
-                                  London<br>
-                                  SE23 2JF<br>
-                                  United Kingdom</td>
-   <td class="govuk-table__cell" ><a class="govuk-link" href="#"><span class="govuk-visually-hidden"> extend row</span></a></td>
-  </tr>
-  <tr class="govuk-table__row">
-    <td class="govuk-table__header">Approximate date of last appointment</td>
-    <td class="govuk-table__cell">No date given</td>
-    <td class="govuk-table__cell" ><a class="govuk-link" href="#"><span class="govuk-visually-hidden"> extend row</span></a></td>
-  </tr>
-</tbody>
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Health professional 1"
+      },
+      value: {
+        text: ""
+      },
+      actions: {
+        items: [
+        {
+          href: "",
+          text: "Add",
+          visuallyHiddenText: "contact details"
+        },
+          {
+            href: "/edit-claim/version-3-button-above/change-hcp-1",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Name"
+      },
+      value: {
+        text: "Dr Camilla Stasiak"
+      },
+      actions: {
+        items: [
+          {
+            visuallyHiddenText: "profession"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Profession"
+      },
+      value: {
+        text: "Doctor"
+      },
+      actions: {
+        items: [
+          {
+            visuallyHiddenText: "profession"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Phone number"
+      },
+      value: {
+        text: "020 8291 7007"
+      },
+      actions: {
+        items: [
+          {
+            visuallyHiddenText: "address"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Address"
+      },
+      value: {
+        html: "The Vale Medical Centre<br>195-197 Perry Vale<br>Forest Hill<br>London<br>SE23 2JF<br>United Kingdom"
+      },
+      actions: {
+        items: [
+          {
+            visuallyHiddenText: "contact details"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Approximate date of last appointment"
+      },
+      value: {
+        text: "No date given"
+      },
+      actions: {
+        items: [
+          {
+            visuallyHiddenText: "profession"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
 
-</table>
 <br>
 
-<table class="govuk-table">
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Health professional 2"
+      },
+      value: {
+        text: ""
+      },
+      actions: {
+        items: [
+        {
+          href: "",
+          text: "Add",
+          visuallyHiddenText: "contact details"
+        },
+          {
+            href: "/edit-claim/version-3-button-above/change-hcp-2",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Name"
+      },
+      value: {
+        text: "Mr Ramon Niekrash"
+      },
+      actions: {
+        items: [
+          {
+            visuallyHiddenText: "profession"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Profession"
+      },
+      value: {
+        text: "Doctor"
+      },
+      actions: {
+        items: [
+          {
+            visuallyHiddenText: "profession"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Phone number"
+      },
+      value: {
+        text: "020 8836 5435"
+      },
+      actions: {
+        items: [
+          {
+            visuallyHiddenText: "address"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Address"
+      },
+      value: {
+        html: "Queen Elizabeth Hospital<br>Stadium Rd<br>Greenwich<br>London<br>SE18 4QH<br>United Kingdom</td>"
+      },
+      actions: {
+        items: [
+          {
+            visuallyHiddenText: "contact details"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Approximate date of last appointment"
+      },
+      value: {
+        text: "No date given"
+      },
+      actions: {
+        items: [
+          {
+            visuallyHiddenText: "profession"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
 
-  <tbody class="govuk-table__body">
-    <tr class="govuk-table__row">
-      <td class="govuk-table__header" width="42%">Health professional 2</td>
-      <td class="govuk-table__cell" width="43%"></td>
-      <td class="govuk-table__cell"width="15%"><a class="govuk-link" href="/edit-claim/version-3-button-above/change-hcp-2">Change<span class="govuk-visually-hidden">health professional 2</span></a></td>
-    </tr>
-  </tbody>
-
-<tbody class="govuk-table__body">
-  <tr class="govuk-table__row">
-    <td class="govuk-table__header" width="42%">Name</td>
-    <td class="govuk-table__cell">Mr Ramon Niekrash</td>
-    <td class="govuk-table__cell" ><a class="govuk-link" href="#"><span class="govuk-visually-hidden"> extend row</span></a></td>
-  </tr>
-  <tr class="govuk-table__row">
-    <td class="govuk-table__header">Profession</td>
-    <td class="govuk-table__cell">Doctor</td>
-    <td class="govuk-table__cell" ><a class="govuk-link" href="#"><span class="govuk-visually-hidden"> extend row</span></a></td>
-  </tr>
-  <tr class="govuk-table__row">
-    <td class="govuk-table__header">Phone number</td>
-    <td class="govuk-table__cell">020 8836 5435</td>
-    <td class="govuk-table__cell" ><a class="govuk-link" href="#"><span class="govuk-visually-hidden"> extend row</span></a></td>
-  </tr>
-  <tr class="govuk-table__row">
-    <td class="govuk-table__header">Address</td>
-    <td class="govuk-table__cell">Queen Elizabeth Hospital
-    <br>Stadium Rd
-    <br>Greenwich
-    <br>London
-    <br>SE18 4QH
-    <br>United Kingdom</td>
-    <td class="govuk-table__cell" ><a class="govuk-link" href="#"><span class="govuk-visually-hidden"> extend row</span></a></td>
-  </tr>
-  <tr class="govuk-table__row">
-    <td class="govuk-table__header">Approximate date of last appointment</td>
-    <td class="govuk-table__cell">No date given</td>
-    <td class="govuk-table__cell" ><a class="govuk-link" href="#"><span class="govuk-visually-hidden"> extend row</span></a></td>
-  </tr>
-</tbody>
-</table>
 
 </div>
 
