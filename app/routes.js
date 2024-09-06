@@ -207,10 +207,17 @@ router.post('/event-type',function(request, response) {
 
 //-------------------------------------------------------------------
 //EDIT A CLAIM
+
+//Select home address
+router.post('/edit-claim/version-3-button-above/change-select-address',function(request, response) {
+        response.redirect("/edit-claim/version-3-button-above/confirm-change-address")
+    })
+
+//confirm change address
 router.post('/edit-claim/version-3-button-above/confirm-change-address',function(request, response) {
     var writeToHome = request.session.data['write-to-home-address']
     if (writeToHome == "yes"){
-        response.redirect("/edit-claim/version-3-button-above/record-details-updated-address")
+        response.redirect("/edit-claim/version-3-button-above/record-details-link")
      } else if (writeToHome == "no") {
             response.redirect("/edit-claim/version-3-button-above/change-corr-address")
         } 

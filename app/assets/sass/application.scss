@@ -261,3 +261,18 @@ font-family: Helvetica, Arial, sans-serif;
 .govuk-table__cell {
   padding: 10px 20px 10px 0;
 }
+
+// service navigation 
+
+.navigation-secondary ul {
+  font-family: Helvetica, arial, sans-serif;
+  margin: 0 auto;
+  max-width: 960px;
+  padding-left: 0;
+}
+
+.navigation-secondary li {
+  font-family: Helvetica, arial, sans-serif;
+  float: left;
+  list-style-type: none;
+  }
