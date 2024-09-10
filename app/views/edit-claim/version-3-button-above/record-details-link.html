@@ -133,6 +133,15 @@ Personal details
         },
         value: {
           text: data['first-name'] or "Jane Doe"
+        },
+        actions: {
+          items: [
+          {
+            href: "/edit-claim/version-3-button-above/change-name",
+              text: "Change",
+              visuallyHiddenText: "home address"
+            }
+          ]
         }
       },
       {
@@ -144,6 +153,9 @@ Personal details
         },
         actions: {
           items: [
+          {
+
+          }
           ]
         }
       },
@@ -156,6 +168,8 @@ Personal details
         },
         actions: {
           items: [
+          {
+          }
           ]
         }
       }
@@ -245,9 +259,6 @@ Personal details
       actions: {
         items: [
         {
-        href: "/edit-claim/version-3-button-above/change-text-messages",
-            text: "Change",
-            visuallyHiddenText: "text updates"
         }
        ]
       }
@@ -439,7 +450,12 @@ Personal details
         href: "/edit-claim/version-3-button-above/change-hcp-1",
             text: "Change",
             visuallyHiddenText: "change health professional 1"
-         }
+         },
+         {
+          href: "#",
+          text: "Remove",
+          visuallyHiddenText: "contact details"
+        }
         ]
         }
       },
@@ -537,7 +553,12 @@ Personal details
       href: "/edit-claim/version-3-button-above/change-hcp-2",
           text: "Change",
           visuallyHiddenText: "change health professional 2"
-       }
+       },
+       {
+        href: "#",
+        text: "Remove",
+        visuallyHiddenText: "contact details"
+      }
       ]
       }
     },
