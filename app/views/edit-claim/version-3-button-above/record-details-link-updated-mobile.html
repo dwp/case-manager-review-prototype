@@ -45,6 +45,22 @@
   <main class="govuk-main-wrapper" id="main-content" role="main">
   <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
+
+    {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+    {% set html %}
+      <h3 class="govuk-notification-banner__heading">
+        Contact details updated
+      </h3>
+
+      <p class="govuk-body">Mobile phone number<p>
+    {% endset %}
+  
+    {{ govukNotificationBanner({
+      html: html,
+      type: "success"
+    }) }}
+
   <h1 class="govuk-heading-l">Personal details</h1>
 
 <div class="govuk-tabs" data-module="govuk-tabs">
@@ -211,7 +227,7 @@ Personal details
       actions: {
         items: [
         {
-        href: "/edit-claim/version-3-button-above/change-correspondence-address",
+        href: "/edit-claim/version-3-button-above/change-corr-address",
             text: "Change",
             visuallyHiddenText: "correspondence address"
           }
@@ -771,6 +787,9 @@ Personal details
         actions: {
           items: [
           {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "can provide bank details"
            }
         ]
         }
@@ -802,7 +821,9 @@ Personal details
         actions: {
           items: [
           {
-           
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "sort code"
            }
         ]
         }
@@ -817,6 +838,9 @@ Personal details
         actions: {
           items: [
           {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "account number"
            }
         ]
         }
@@ -831,6 +855,9 @@ Personal details
         actions: {
           items: [
           {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "building number"
            }
         ]
         }
