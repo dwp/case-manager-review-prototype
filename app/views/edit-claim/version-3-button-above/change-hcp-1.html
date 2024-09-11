@@ -165,13 +165,26 @@
             autocomplete: "postal-code"
           }) }}
 
+        {{ govukInput({
+          label: {
+            text: "Date of last contact with them",
+            classes: "govuk-label--m",
+            isPageHeading: true
+          },
+          hint: {
+            text: "This can be approximate - for example, March 2021 or 18 months ago."
+          },
+          id: "date-last-appointment",
+          name: "date-last-appointment"
+        }) }}
+
         {% endcall %}
 
     <div class="govuk-body govuk-!-margin-bottom-6"></div>
 
         {{ govukButton({
           text: "Save and continue",
-          href: "/edit-claim/version-3-button-above/record-details-link#health-professionals"
+          href: "/edit-claim/version-3-button-above/record-details-link-updated-hcp-1#health-professionals"
         }) }}
 
     </form>

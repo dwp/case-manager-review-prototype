@@ -45,14 +45,16 @@
   <main class="govuk-main-wrapper" id="main-content" role="main">
   <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
+    
+    {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
 
     {% set html %}
       <h3 class="govuk-notification-banner__heading">
-       Contact details updated
+        Health professional details updated
       </h3>
-      <p class="govuk-body">Correspondence address</p>
+      <p class="govuk-body">Health professional 1<p>
     {% endset %}
-    
+
     {{ govukNotificationBanner({
       html: html,
       type: "success"
@@ -146,6 +148,15 @@ Personal details
         },
         value: {
           text: data['first-name'] or "Jane Doe"
+        },
+        actions: {
+          items: [
+          {
+            href: "/edit-claim/version-3-button-above/change-name",
+              text: "Change",
+              visuallyHiddenText: "home address"
+            }
+          ]
         }
       },
       {
@@ -157,6 +168,9 @@ Personal details
         },
         actions: {
           items: [
+          {
+
+          }
           ]
         }
       },
@@ -169,6 +183,8 @@ Personal details
         },
         actions: {
           items: [
+          {
+          }
           ]
         }
       }
@@ -224,7 +240,7 @@ Personal details
       actions: {
         items: [
         {
-        href: "/edit-claim/version-3-button-above/change-corr-address",
+        href: "/edit-claim/version-3-button-above/change-correspondence-address",
             text: "Change",
             visuallyHiddenText: "correspondence address"
           }
@@ -445,13 +461,14 @@ Personal details
         },
         actions: {
           items: [
-        {
-        href: "/edit-claim/version-3-button-above/change-hcp-1",
+          {
+            href: "/edit-claim/version-3-button-above/change-hcp-1",
             text: "Change",
-            visuallyHiddenText: "change health professional 1"
-         }
-        ]
+            visuallyHiddenText: "health professional 1"
+          }
+         ]
         }
+
       },
       {
         key: {
@@ -516,10 +533,10 @@ Personal details
   },
   {
     key: {
-      text: "Approximate date of last appointment"
+      text: "Approximate date of last contact"
     },
     value: {
-      text: "No date given"
+      text: "3 months ago"
     },
     actions: {
       items: [
@@ -543,12 +560,12 @@ Personal details
       },
       actions: {
         items: [
-      {
-      href: "/edit-claim/version-3-button-above/change-hcp-2",
+        {
+          href: "/edit-claim/version-3-button-above/change-hcp-2",
           text: "Change",
-          visuallyHiddenText: "change health professional 2"
-       }
-      ]
+          visuallyHiddenText: "health professional 2"
+        }
+       ]
       }
     },
       {
@@ -614,7 +631,7 @@ Personal details
 },
 {
   key: {
-    text: "Approximate date of last appointment"
+    text: "Approximate date of last contact"
   },
   value: {
     text: "No date given"
@@ -781,9 +798,6 @@ Personal details
         actions: {
           items: [
           {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: "can provide bank details"
            }
         ]
         }
@@ -815,9 +829,7 @@ Personal details
         actions: {
           items: [
           {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: "sort code"
+           
            }
         ]
         }
@@ -832,9 +844,6 @@ Personal details
         actions: {
           items: [
           {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: "account number"
            }
         ]
         }
@@ -849,9 +858,6 @@ Personal details
         actions: {
           items: [
           {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: "building number"
            }
         ]
         }

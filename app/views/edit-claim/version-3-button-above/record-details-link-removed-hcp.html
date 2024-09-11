@@ -45,22 +45,6 @@
   <main class="govuk-main-wrapper" id="main-content" role="main">
   <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-
-    {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
-
-    {% set html %}
-      <h3 class="govuk-notification-banner__heading">
-        Contact details updated
-      </h3>
-
-      <p class="govuk-body">Wants text updates about claim<p>
-    {% endset %}
-  
-    {{ govukNotificationBanner({
-      html: html,
-      type: "success"
-    }) }}
-
   <h1 class="govuk-heading-l">Personal details</h1>
 
 <div class="govuk-tabs" data-module="govuk-tabs">
@@ -149,6 +133,15 @@ Personal details
         },
         value: {
           text: data['first-name'] or "Jane Doe"
+        },
+        actions: {
+          items: [
+          {
+            href: "/edit-claim/version-3-button-above/change-name",
+              text: "Change",
+              visuallyHiddenText: "home address"
+            }
+          ]
         }
       },
       {
@@ -160,6 +153,9 @@ Personal details
         },
         actions: {
           items: [
+          {
+
+          }
           ]
         }
       },
@@ -172,6 +168,8 @@ Personal details
         },
         actions: {
           items: [
+          {
+          }
           ]
         }
       }
@@ -227,7 +225,7 @@ Personal details
       actions: {
         items: [
         {
-        href: "/edit-claim/version-3-button-above/change-corr-address",
+        href: "/edit-claim/version-3-button-above/change-correspondence-address",
             text: "Change",
             visuallyHiddenText: "correspondence address"
           }
@@ -261,9 +259,6 @@ Personal details
       actions: {
         items: [
         {
-        href: "/edit-claim/version-3-button-above/change-text-messages",
-            text: "Change",
-            visuallyHiddenText: "text updates"
         }
        ]
       }
@@ -441,119 +436,27 @@ Personal details
   }) }}
   
   <h2 class="govuk-heading-m">Health professional details</h2>
-  {{ govukSummaryList({
-    rows: [
-      {
-        key: {
-          text: "Health professional 1"
-        },
-        value: {
-        },
-        actions: {
-          items: [
-        {
-        href: "/edit-claim/version-3-button-above/change-hcp-1",
-            text: "Change",
-            visuallyHiddenText: "change health professional 1"
-         }
-        ]
-        }
-      },
-      {
-        key: {
-          text: "Name"
-        },
-        value: {
-          text: "Dr Camilla Stasiak"
-        },
-        actions: {
-          items: [
-          {
-             }
-        ]
-        }
-      },
-        {
-          key: {
-            text: "Profession"
-          },
-          value: {
-            text: "Doctor"
-          },
-          actions: {
-            items: [
-            {
-            }
-          ]
-          }
-      },
-      {
-        key: {
-          text: "Phone number"
-        },
-        value: {
-          text: "020 8291 7007"
-        },
-        actions: {
-          items: [
-          {
-          }
-        ]
-        }
-    },
-    {
-      key: {
-        text: "Address"
-      },
-      value: {
-        html: "The Vale Medical Centre<br>
-        195-197 Perry Vale<br>
-        Forest Hill<br>
-        London<br>
-        SE23 2JF<br>
-        United Kingdom"
-      },
-      actions: {
-        items: [
-        {
-        }
-      ]
-      }
-  },
-  {
-    key: {
-      text: "Approximate date of last appointment"
-    },
-    value: {
-      text: "No date given"
-    },
-    actions: {
-      items: [
-      {
-      }
-    ]
-    }
-}
-    ]
-  }) }}
-
-<br>
 
 {{ govukSummaryList({
   rows: [
     {
       key: {
-        text: "Health professional 2"
+        text: "Health professional "
       },
       value: {
       },
       actions: {
         items: [
       {
-      href: "/edit-claim/version-3-button-above/change-hcp-2",
+      href: "/edit-claim/version-3-button-above/change-hcp-1",
           text: "Change",
-          visuallyHiddenText: "change health professional 2"
-       }
+          visuallyHiddenText: "change health professional 1"
+       },
+       {
+        href: "#",
+        text: "Add",
+        visuallyHiddenText: "contact details"
+      }
       ]
       }
     },
@@ -787,9 +690,6 @@ Personal details
         actions: {
           items: [
           {
-            href: "/edit-claim/version-3-button-above/change-bank-details",
-            text: "Change",
-            visuallyHiddenText: "can provide bank details"
            }
         ]
         }
@@ -804,7 +704,7 @@ Personal details
         actions: {
           items: [
           {
-            href: "#",
+            href: "/edit-claim/version-3-button-above/change-bank-details",
             text: "Change",
             visuallyHiddenText: "account name"
            }
@@ -821,9 +721,7 @@ Personal details
         actions: {
           items: [
           {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: "sort code"
+           
            }
         ]
         }
@@ -838,9 +736,6 @@ Personal details
         actions: {
           items: [
           {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: "account number"
            }
         ]
         }
@@ -855,9 +750,6 @@ Personal details
         actions: {
           items: [
           {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: "building number"
            }
         ]
         }
