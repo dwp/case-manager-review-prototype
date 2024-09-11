@@ -1,0 +1,50 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="#" method="post">
+
+          <div class="govuk-width-container">
+            <h1 class="govuk-heading-xl">Change mobile phone number</h1>
+
+            {{ govukInput({
+              label: {
+                text: "Mobile number"
+              },
+              classes: "govuk-!-width-two-thirds",
+              id: "mobile",
+              name: "mobile",
+              autocomplete: "mobile",
+              value: "07777 7777777",
+              errorMessage: {
+                text: "Enter a mobile number"
+              }
+            }) }}
+
+          {{ govukButton({
+            text: "Save and continue",
+            href: "/edit-claim/version-3-button-above/record-details-link-updated-mobile"
+          }) }}
+
+          </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

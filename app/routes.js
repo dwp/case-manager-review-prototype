@@ -217,7 +217,7 @@ router.post('/edit-claim/version-3-button-above/change-select-address',function(
 router.post('/edit-claim/version-3-button-above/confirm-change-address',function(request, response) {
     var writeToHome = request.session.data['write-to-home-address']
     if (writeToHome == "yes"){
-        response.redirect("/edit-claim/version-3-button-above/record-details-link")
+        response.redirect("/edit-claim/version-3-button-above/record-details-link-updated-address")
      } else if (writeToHome == "no") {
             response.redirect("/edit-claim/version-3-button-above/change-corr-address")
         } 

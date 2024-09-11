@@ -225,7 +225,7 @@ Personal details
       actions: {
         items: [
         {
-        href: "/edit-claim/version-3-button-above/change-correspondence-address",
+        href: "/edit-claim/version-3-button-above/change-corr-address",
             text: "Change",
             visuallyHiddenText: "correspondence address"
           }
@@ -446,17 +446,12 @@ Personal details
         },
         actions: {
           items: [
-        {
-        href: "/edit-claim/version-3-button-above/change-hcp-1",
+          {
+            href: "/edit-claim/version-3-button-above/change-hcp-1",
             text: "Change",
-            visuallyHiddenText: "change health professional 1"
-         },
-         {
-          href: "#",
-          text: "Remove",
-          visuallyHiddenText: "contact details"
-        }
-        ]
+            visuallyHiddenText: "health professional 1"
+          }
+         ]
         }
       },
       {
@@ -522,7 +517,7 @@ Personal details
   },
   {
     key: {
-      text: "Approximate date of last appointment"
+      text: "Approximate date of last contact"
     },
     value: {
       text: "No date given"
@@ -549,17 +544,12 @@ Personal details
       },
       actions: {
         items: [
-      {
-      href: "/edit-claim/version-3-button-above/change-hcp-2",
+        {
+          href: "/edit-claim/version-3-button-above/change-hcp-2",
           text: "Change",
-          visuallyHiddenText: "change health professional 2"
-       },
-       {
-        href: "#",
-        text: "Remove",
-        visuallyHiddenText: "contact details"
-      }
-      ]
+          visuallyHiddenText: "health professional 2"
+        }
+       ]
       }
     },
       {
@@ -625,7 +615,7 @@ Personal details
 },
 {
   key: {
-    text: "Approximate date of last appointment"
+    text: "Approximate date of last contact"
   },
   value: {
     text: "No date given"
@@ -795,6 +785,28 @@ Personal details
            }
         ]
         }
+      }
+      ]
+    }) }}
+
+    {{ govukSummaryList({
+      rows: [
+      {
+        key: {
+          text: "Bank details"
+        },
+        value: {
+          text: ""
+        },
+        actions: {
+          items: [
+          {
+            href: "/edit-claim/version-3-button-above/change-bank-details",
+            text: "Change",
+            visuallyHiddenText: "account name"
+           }
+        ]
+        }
       },
       {
         key: {
@@ -806,9 +818,6 @@ Personal details
         actions: {
           items: [
           {
-            href: "/edit-claim/version-3-button-above/change-bank-details",
-            text: "Change",
-            visuallyHiddenText: "account name"
            }
         ]
         }

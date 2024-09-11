@@ -46,13 +46,16 @@
   <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
+    {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
     {% set html %}
       <h3 class="govuk-notification-banner__heading">
-       Contact details updated
+        Personal data updated
       </h3>
-      <p class="govuk-body">Correspondence address</p>
+
+      <p class="govuk-body">Name<p>
     {% endset %}
-    
+  
     {{ govukNotificationBanner({
       html: html,
       type: "success"
@@ -146,7 +149,16 @@ Personal details
         },
         value: {
           text: data['first-name'] or "Jane Doe"
+        },
+        actions: {
+          items: [
+        {
+          href: "/edit-claim/version-3-button-above/change-name",
+          text: "Change",
+          visuallyHiddenText: "write to this address"
         }
+        ]
+      }
       },
       {
         key: {
@@ -157,6 +169,9 @@ Personal details
         },
         actions: {
           items: [
+          {
+
+          }
           ]
         }
       },
@@ -169,6 +184,9 @@ Personal details
         },
         actions: {
           items: [
+          {
+            
+          }
           ]
         }
       }
