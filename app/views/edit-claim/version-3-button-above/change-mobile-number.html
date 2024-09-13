@@ -19,18 +19,18 @@
       <form class="form" action="#" method="post">
 
           <div class="govuk-width-container">
-            <h1 class="govuk-heading-xl">Change mobile phone number</h1>
 
             {{ govukInput({
               label: {
-                text: "Mobile number"
+                text: "Change mobile phone number?",
+                classes: "govuk-label--xl",
+                isPageHeading: true
               },
-              classes: "govuk-!-width-two-thirds",
+              value: "07777 7777777",
               id: "mobile",
-              name: "mobile",
-              autocomplete: "mobile",
-              value: "07777 7777777"
+              name: "mobile"
             }) }}
+
 
           {{ govukButton({
             text: "Save and continue",

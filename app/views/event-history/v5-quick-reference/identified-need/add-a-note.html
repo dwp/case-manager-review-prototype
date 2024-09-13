@@ -58,25 +58,27 @@
   <div class="govuk-grid-column-two-thirds">
     <form class="form" action="/event-history/v5-quick-reference/identified-need/index-need-to-move" method="post">
 
-      <h3 class="govuk-heading-xl">
-        Add a note
-      </h3>
-
-      <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="2000">
-        <div class="govuk-form-group">
-          <label class="govuk-label govuk-hint" for="event-1-description">
+        <div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength="2000">
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--xl" for="with-hint">
+              Add a note
+            </label>
+          </h1>
+          <div id="with-hint-hint" class="govuk-hint">
             Enter more information about this event.
-          </label>
-
-          <textarea class="govuk-textarea govuk-js-character-count" id="event-1-description" name="need-to-move-notes" rows="4" aria-describedby="event-1-description"></textarea>
-          
-          <div id="event-1-description" class="govuk-hint govuk-character-count__message" aria-live="polite">You have 2000 characters remaining</div>
+          </div>
+          <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="eventOne" rows="5" aria-describedby="with-hint-info with-hint-hint"></textarea>
+          <div id="with-hint-info" class="govuk-hint govuk-character-count__message">
+            You have 2000 characters remaining
+          </div>
         </div>
-      </div>
+
 
       {{ govukButton({
         text: "Save and continue"
       }) }}
+
+      </div>
 
   </div>
   </div>
