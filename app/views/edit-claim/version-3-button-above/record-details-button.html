@@ -457,32 +457,95 @@ Personal details
 <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="payment-details">
 
   <h2 class="govuk-heading-m">Payment details</h2>
-  <table class="govuk-table">
-  <thead class="govuk-table__head"></thead>
-  <tbody class="govuk-table__body">
-    <tr class="govuk-table__row">
-      <td class="govuk-table__header" width="42%">Can provide bank, building society or credit union account details</td>
-      <td class="govuk-table__cell">Yes</td>
-    </tr>
-    <tr class="govuk-table__row">
-      <td class="govuk-table__header">Name on the account</td>
-      <td class="govuk-table__cell">Jane Doe</td>
-    </tr>
-    <tr class="govuk-table__row">
-      <td class="govuk-table__header">Sort code
-  </td>
-      <td class="govuk-table__cell">055333</td>
-    </tr>
-    <tr class="govuk-table__row">
-      <td class="govuk-table__header">Account number</td>
-      <td class="govuk-table__cell">00001604</td>
-    </tr>
-    <tr class="govuk-table__row">
-      <td class="govuk-table__header">Building society roll number</td>
-      <td class="govuk-table__cell">CXJ-K6 897/98X</td>
-    </tr>
-  </tbody>
-  </table>
+  {{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          text: "
+          Can provide bank, building society or credit union account details"
+        },
+        value: {
+          text: "Yes"
+        },
+        actions: {
+          items: [
+          {
+           }
+        ]
+        }
+      }
+      ]
+    }) }}
+
+    {{ govukSummaryList({
+      rows: [
+      {
+        key: {
+          text: "Account details"
+        },
+        value: {
+          text: ""
+        },
+        actions: {
+          items: [
+          {
+           }
+        ]
+        }
+      },
+      {
+        key: {
+          text: "Name on the account"
+        },
+        value: {
+          text: "Jane Doe"
+        },
+        actions: {
+          items: [
+          {
+           }
+        ]
+        }
+      },
+      {
+        key: {
+          text: "Sort code"
+        },
+        value: {
+          text: "055333"
+        },
+        actions: {
+          items: [
+          {
+           
+           }
+        ]
+        }
+      },
+      {
+        key: {
+          text: "Account number"
+        },
+        value: {
+          text: "00001604"
+        },
+        actions: {
+          items: [
+          {
+           }
+        ]
+        }
+      },
+      {
+        key: {
+          text: "Building society roll number"
+        },
+        value: {
+          text: "CXJ-K6 897/98X"
+        }
+      }
+        ]
+      }) }}
   </div>
 
 </div>
