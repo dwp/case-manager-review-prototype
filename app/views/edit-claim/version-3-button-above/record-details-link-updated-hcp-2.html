@@ -801,6 +801,28 @@ Personal details
            }
         ]
         }
+      }
+      ]
+    }) }}
+
+    {{ govukSummaryList({
+      rows: [
+      {
+        key: {
+          text: "Account details"
+        },
+        value: {
+          text: ""
+        },
+        actions: {
+          items: [
+          {
+            href: "/edit-claim/version-3-button-above/change-bank-details",
+            text: "Change",
+            visuallyHiddenText: "account name"
+           }
+        ]
+        }
       },
       {
         key: {
@@ -812,9 +834,6 @@ Personal details
         actions: {
           items: [
           {
-            href: "/edit-claim/version-3-button-above/change-bank-details",
-            text: "Change",
-            visuallyHiddenText: "account name"
            }
         ]
         }

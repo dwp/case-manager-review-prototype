@@ -446,7 +446,7 @@ Personal details
         actions: {
           items: [
         {
-        href: "/edit-claim/version-3-button-above/change-hcp-1",
+        href: "/edit-claim/version-3-button-above/change-hcp-1-input",
             text: "Change",
             visuallyHiddenText: "change health professional 1"
          }
@@ -544,7 +544,7 @@ Personal details
       actions: {
         items: [
       {
-      href: "/edit-claim/version-3-button-above/change-hcp-2",
+      href: "/edit-claim/version-3-button-above/change-hcp-2-input",
           text: "Change",
           visuallyHiddenText: "change health professional 2"
        }
@@ -781,9 +781,28 @@ Personal details
         actions: {
           items: [
           {
-            href: "#",
+           }
+        ]
+        }
+      }
+      ]
+    }) }}
+
+    {{ govukSummaryList({
+      rows: [
+      {
+        key: {
+          text: "Account details"
+        },
+        value: {
+          text: ""
+        },
+        actions: {
+          items: [
+          {
+            href: "/edit-claim/version-3-button-above/change-bank-details",
             text: "Change",
-            visuallyHiddenText: "can provide bank details"
+            visuallyHiddenText: "account name"
            }
         ]
         }
@@ -798,9 +817,6 @@ Personal details
         actions: {
           items: [
           {
-            href: "/edit-claim/version-3-button-above/change-bank-details",
-            text: "Change",
-            visuallyHiddenText: "account name"
            }
         ]
         }
@@ -815,9 +831,7 @@ Personal details
         actions: {
           items: [
           {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: "sort code"
+           
            }
         ]
         }
@@ -832,9 +846,6 @@ Personal details
         actions: {
           items: [
           {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: "account number"
            }
         ]
         }
@@ -849,9 +860,6 @@ Personal details
         actions: {
           items: [
           {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: "building number"
            }
         ]
         }
