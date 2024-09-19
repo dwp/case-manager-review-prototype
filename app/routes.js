@@ -169,7 +169,7 @@ router.post('/comms-record/security-questions', function(request, response) {
 router.post('/find-someone/found-records-v2', function(request, response) {
     var rightPerson = request.session.data['correct-claimant']
     if (rightPerson == 'yes'){
-        response.redirect('/case-manager-review/record-details')
+        response.redirect('/case-manager-review/record-details-iteration-4')
     } else if (rightPerson == "no") {
         response.redirect('/find-someone/search-claimant')
     }
@@ -201,6 +201,24 @@ router.post('/event-type',function(request, response) {
     } else if (event == "moved") {
         response.redirect("/event-history/v5-quick-reference/completed-move/add-a-note")
     } else if (event == "other-event") {
+        response.redirect("/event-history/v5-quick-reference/other-event/add-a-note")
+    }
+    })
+
+    // pause payments
+router.post('/event-history/pause-payment/add-an-event-pp',function(request, response) {
+    var addEvent = request.session.data['add-an-event']
+    if (addEvent == "need-to-move"){
+        response.redirect("/event-history/v5-quick-reference/identified-need/add-a-note")
+    } else if (addEvent == "pause-payment") {
+        response.redirect("/event-history/pause-payment/add-a-note")
+    } else if (addEvent == "withdraw") {
+        response.redirect("/event-history/v5-quick-reference/withdraw/add-a-note")
+    } else if (addEvent == "disallow") {
+        response.redirect("/event-history/v5-quick-reference/disallow/add-a-note")
+    } else if (addEvent == "moved") {
+        response.redirect("/event-history/v5-quick-reference/completed-move/add-a-note")
+    } else if (addEvent == "other-event") {
         response.redirect("/event-history/v5-quick-reference/other-event/add-a-note")
     }
     })
