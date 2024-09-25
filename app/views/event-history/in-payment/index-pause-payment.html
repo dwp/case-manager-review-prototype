@@ -1,0 +1,96 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %} Timeline {% endblock %}
+
+{% block main %}
+
+  <div class="govuk-width-container">
+    <div class="column-full">
+      <section class="dwp-quick-reference" aria-label="Case information">
+        <dl class="dwp-quick-reference__block">
+        <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+        <dd class="dwp-quick-reference__primary">Jane Doe</dd>
+        <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">National Insurance number:</dt>
+        <dd class="dwp-quick-reference__secondary">QQ 12 34 56 X</dd>
+        </dl>
+        </section>
+        
+    <nav class="navigation-secondary">
+      <ul>
+        <li>
+          <a href="/case-manager-review/record-details-iteration-4" aria-current="section">Personal details</a>
+        </li>
+        <li>
+          <a href="#">Supporting documents</a>
+        </li>
+        <li>
+          <a href="#">Conditions or disabilities</a>
+        </li>
+        <li>
+          <a href="#">Activities</a>
+        </li>
+        <li>
+          <a href="/event-history/v5-quick-reference/index" class="active" aria-current="section">Event history</a>
+        </li>
+        <li>
+          <a href="/decision-tab-iteration-4-evidence" aria-current="section">Decision</a>
+        </li>
+
+        {# <li>
+          <a href="Other-actions">Other actions</a>
+        </li> #}
+
+      </ul>
+    </nav>
+</div>
+
+
+ <br><br><br><br>
+
+<h1 class="govuk-heading-xl">Event history</h1>
+
+{{ govukButton({
+  text: "Add new event",
+  href:"/event-history/in-payment/add-an-event-pp"
+}) }}
+
+<div class="dwp-timeline">
+  <ol class="dwp-timeline__events">
+    <li class="dwp-timeline__events--entry">
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Decision made: awarded</h2>
+      <p class="govuk-caption-m">15 September 2024</p>
+    </li>
+    <li class="dwp-timeline__events--entry">
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Ready for decision</h2>
+      <p class="govuk-caption-m">10 September 2024</p>
+    </li>
+    <li class="dwp-timeline__events--entry">
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Returned from assessment provider</h2>
+      <p class="govuk-caption-m">26 August 2024</p>
+    </li>
+  <li class="dwp-timeline__events--entry">
+    <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Referred to assessment provider</h2>
+    <p class="govuk-caption-m">16 July 2024</p>
+  </li>
+  <li class="dwp-timeline__events--entry">
+    <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Received health information gather</h2>
+    <p class="govuk-caption-m">14 July 2024</p>
+  </li>
+  <li class="dwp-timeline__events--entry">
+    <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Started health information gather</h2>
+    <p class="govuk-caption-m">4 July 2024</p>
+  </li>
+  <li class="dwp-timeline__events--entry">
+    <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Start of claim</h2>
+    <p class="govuk-caption-m">3 July 2024</p>
+  </li>
+  </ol>
+  </div>
+
+
+<br><br>
+
+</div>
+
+
+{% endblock %}

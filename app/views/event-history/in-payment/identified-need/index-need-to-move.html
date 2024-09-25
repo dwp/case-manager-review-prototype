@@ -6,14 +6,14 @@
 
   <div class="govuk-width-container">
     <div class="column-full">
-      <section class="dwp-quick-reference" aria-label="Case information">
-        <dl class="dwp-quick-reference__block">
-        <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
-        <dd class="dwp-quick-reference__primary">Jane Doe</dd>
-        <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">National Insurance number:</dt>
-        <dd class="dwp-quick-reference__secondary">QQ 12 34 56 X</dd>
-        </dl>
-        </section>
+          <section class="dwp-quick-reference" aria-label="Case information">
+            <dl class="dwp-quick-reference__block">
+            <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+            <dd class="dwp-quick-reference__primary">Jane Doe</dd>
+            <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">National Insurance number:</dt>
+            <dd class="dwp-quick-reference__secondary">QQ 12 34 56 X</dd>
+            </dl>
+            </section>
         
     <nav class="navigation-secondary">
       <ul>
@@ -51,22 +51,31 @@
 
 {{ govukButton({
   text: "Add new event",
-  href:"/event-history/pause-payment/add-an-event-pp"
+  href:"/event-history/v5-quick-reference/add-an-event-refined"
 }) }}
 
 <div class="dwp-timeline">
   <ol class="dwp-timeline__events">
-    <li class="dwp-timeline__events--entry">
-      <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Decision made: awarded</h2>
-      <p class="govuk-caption-m">15 September 2024</p>
-    </li>
-    <li class="dwp-timeline__events--entry">
-      <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Ready for decision</h2>
-      <p class="govuk-caption-m">10 September 2024</p>
-    </li>
-    <li class="dwp-timeline__events--entry">
-      <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Returned from assessment provider</h2>
-      <p class="govuk-caption-m">26 August 2024</p>
+    <li class="dwp-timeline__entry dwp-timeline__events--entry pip_filter_tag" id="event-1-description">
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-1" id="event-1-description">
+        Added event: identified need to move to PIPCS
+      </h2>
+
+      <p class="govuk-caption-m govuk-!-margin-bottom-1" id="event-1-description">
+        {% if data['eventOne'] === 'move to PIPCS' %}
+        the claimant
+      {% else %} 
+        {{ data['eventOne'] }}
+      {% endif %}
+      </p>
+
+      <p class="govuk-caption-m" id="event-date-1">
+        {% if data['year'] %}
+        {{ data['day']}} {{ data['month'] | toMonth }} {{ data['year']}}
+      {% else %}
+        4 September 2024
+      {% endif %}
+      </p>
     </li>
   <li class="dwp-timeline__events--entry">
     <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Referred to assessment provider</h2>
