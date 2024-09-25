@@ -223,7 +223,7 @@ router.post('/event-history/in-payment/stop-payment-in-pip-service/are-you-sure'
     if (stopPayment == "yes"){
         response.redirect("/event-history/in-payment/identified-need/add-a-note")
     } else if (stopPayment == "no") {
-        response.redirect("/event-history/in-payment/add-an-event-pp")
+        response.redirect("/event-history/in-payment/index-pause-payment")
     }
     })
 
