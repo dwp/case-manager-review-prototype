@@ -205,21 +205,25 @@ router.post('/event-type',function(request, response) {
     }
     })
 
-    // pause payments
-router.post('/event-history/pause-payment/add-an-event-pp',function(request, response) {
-    var addEvent = request.session.data['add-an-event']
+    // stop payments in PIP Service
+router.post('/event-history/in-payment/add-an-event-pp',function(request, response) {
+    var addEvent = request.session.data['add-an-event-pp']
     if (addEvent == "need-to-move"){
-        response.redirect("/event-history/v5-quick-reference/identified-need/add-a-note")
+        response.redirect("/event-history/in-payment/identified-need/add-a-note")
     } else if (addEvent == "pause-payment") {
-        response.redirect("/event-history/pause-payment/add-a-note")
-    } else if (addEvent == "withdraw") {
-        response.redirect("/event-history/v5-quick-reference/withdraw/add-a-note")
-    } else if (addEvent == "disallow") {
-        response.redirect("/event-history/v5-quick-reference/disallow/add-a-note")
+        response.redirect("/event-history/in-payment/stop-payment-in-pip-service/are-you-sure")
     } else if (addEvent == "moved") {
-        response.redirect("/event-history/v5-quick-reference/completed-move/add-a-note")
-    } else if (addEvent == "other-event") {
-        response.redirect("/event-history/v5-quick-reference/other-event/add-a-note")
+        response.redirect("/event-history/in-payment/completed-move/add-a-note")
+    } 
+    })
+
+        // Are you sure stop payments in PIP Service
+router.post('/event-history/in-payment/stop-payment-in-pip-service/are-you-sure',function(request, response) {
+    var stopPayment = request.session.data['areYouSureStop']
+    if (stopPayment == "yes"){
+        response.redirect("/event-history/in-payment/identified-need/add-a-note")
+    } else if (stopPayment == "no") {
+        response.redirect("/event-history/in-payment/stop-payment-in-pip-service/add-an-event-pp")
     }
     })
 

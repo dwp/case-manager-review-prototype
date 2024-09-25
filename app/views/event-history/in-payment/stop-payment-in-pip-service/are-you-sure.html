@@ -1,0 +1,105 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %} Add a note {% endblock %}
+
+{% block main %}
+
+  <div class="govuk-width-container">
+    <div class="column-full">
+          <section class="dwp-quick-reference" aria-label="Case information">
+            <dl class="dwp-quick-reference__block">
+            <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+            <dd class="dwp-quick-reference__primary">Jane Doe</dd>
+            <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">National Insurance number:</dt>
+            <dd class="dwp-quick-reference__secondary">QQ 12 34 56 X</dd>
+            </dl>
+            </section>
+
+    <nav class="navigation-secondary">
+      <ul>
+        <li>
+          <a href="/case-manager-review/record-details-iteration-4" aria-current="section">Personal details</a>
+        </li>
+        <li>
+          <a href="#">Supporting documents</a>
+        </li>
+        <li>
+          <a href="#">Conditions or disabilities</a>
+        </li>
+        <li>
+          <a href="#">Activities</a>
+        </li>
+        <li>
+          <a href="/event-history/v5-quick-reference/index" class="active" aria-current="section">Event history</a>
+        </li>
+        <li>
+          <a href="/decision-tab-iteration-4-evidence" aria-current="section">Decision</a>
+        </li>
+
+        {# <li>
+          <a href="Other-actions">Other actions</a>
+        </li> #}
+
+      </ul>
+    </nav>
+</div>
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "/event-history/in-payment/add-an-event-pp"
+}) }}
+{% endblock %}
+
+
+ <br><br><br><br>
+
+ <div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="/event-history/v5-quick-reference/completed-move/index-completed-move" method="post">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            <h1 class="govuk-fieldset__heading">
+              Are you sure you want to stop payments in PIP service?
+            </h1>
+          </legend>
+          <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+              <span class="govuk-visually-hidden">Warning</span>
+              If you stop payments more than one day before you move the claim to PIPCS, the claimant may not get their next scheduled payment. 
+            </strong>
+          </div>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="stop-payment" name="areYouSureStop" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="stop-payment">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="-abort-stop-payment" name="areYouSureStop" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="abort-stop-payment">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+  </div>
+  </div>
+</form>
+
+<br><br>
+
+</div>
+
+
+{% endblock %}
