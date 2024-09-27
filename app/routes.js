@@ -221,9 +221,9 @@ router.post('/event-history/in-payment/add-an-event-pp',function(request, respon
 router.post('/event-history/in-payment/stop-payment-in-pip-service/are-you-sure',function(request, response) {
     var stopPayment = request.session.data['areYouSureStop']
     if (stopPayment == "yes"){
-        response.redirect("/event-history/in-payment/identified-need/add-a-note")
+        response.redirect("/event-history/in-payment/stop-payment-in-pip-service/add-a-note")
     } else if (stopPayment == "no") {
-        response.redirect("/event-history/in-payment/index-pause-payment")
+        response.redirect("/event-history/in-payment/identified-need/index-need-to-move")
     }
     })
 

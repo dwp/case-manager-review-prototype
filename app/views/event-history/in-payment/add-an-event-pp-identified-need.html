@@ -1,11 +1,11 @@
 {% extends "layouts/main.html" %}
 
-{% block pageTitle %} Add a note {% endblock %}
+{% block pageTitle %} Add an event {% endblock %}
 
 {% block main %}
 
-  <div class="govuk-width-container">
-    <div class="column-full">
+      <div class="govuk-width-container">
+        <div class="column-full">
           <section class="dwp-quick-reference" aria-label="Case information">
             <dl class="dwp-quick-reference__block">
             <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
@@ -14,7 +14,7 @@
             <dd class="dwp-quick-reference__secondary">QQ 12 34 56 X</dd>
             </dl>
             </section>
-
+        
     <nav class="navigation-secondary">
       <ul>
         <li>
@@ -47,39 +47,46 @@
 {% block beforeContent %}
 {{ govukBackLink({
   text: "Back",
-  href: "/event-history/in-payment/stop-payment-in-pip-service/are-you-sure"
+  href: "index"
 }) }}
 {% endblock %}
 
 
  <br><br><br><br>
 
+
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form class="form" action="/event-history/in-payment/stop-payment-in-pip-service/index-stopped-payment" method="post">
 
-      <div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength="2000">
-        <h1 class="govuk-label-wrapper">
-          <label class="govuk-label govuk-label--xl" for="with-hint">
-            Add a note
-          </label>
-        </h1>
-        <div id="with-hint-hint" class="govuk-hint">
-          Enter more information about this event.
-        </div>
-        <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="movedNotes" rows="5" aria-describedby="with-hint-info with-hint-hint"></textarea>
-        <div id="with-hint-info" class="govuk-hint govuk-character-count__message">
-          You have 2000 characters remaining
-        </div>
-      </div>
+    <form class="form" action="" method="post">
 
-      {{ govukButton({
-        text: "Save and continue"
-      }) }}
+ 
+ {{ govukRadios({
+  name: "add-an-event-pp",
+  fieldset: {
+    legend: {
+      text: "Add an event",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--xl"
+    }
+  },
+  items: [
+    {
+      value: "need-to-move",
+      text: "Identified need to move to PIPCS"
+    }
+  ]
+}) }}
 
-  </div>
-  </div>
+{{ govukButton({
+  text: "Continue",
+  href: '/event-history/in-payment/identified-need/add-a-note'
+}) }}
 </form>
+</div>
+</div>
+
+
 
 <br><br>
 
