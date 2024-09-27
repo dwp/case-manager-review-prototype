@@ -72,22 +72,15 @@
   },
   items: [
     {
-      value: "need-to-move",
-      text: "Identified need to move to PIPCS"
-    },
-    {
       value: "pause-payment",
       text: "Stop payments in PIP service"
-    },
-    {
-      value: "moved",
-      text: "Completed move to PIPCS"
     }
   ]
 }) }}
 
 {{ govukButton({
-  text: "Continue"
+  text: "Continue",
+  href: '/event-history/in-payment/stop-payment-in-pip-service/are-you-sure'
 }) }}
 </form>
 </div>
