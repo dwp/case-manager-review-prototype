@@ -1,11 +1,11 @@
 {% extends "layouts/main.html" %}
 
-{% block pageTitle %} Add an event {% endblock %}
+{% block pageTitle %} Add a note {% endblock %}
 
 {% block main %}
 
-      <div class="govuk-width-container">
-        <div class="column-full">
+  <div class="govuk-width-container">
+    <div class="column-full">
           <section class="dwp-quick-reference" aria-label="Case information">
             <dl class="dwp-quick-reference__block">
             <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
@@ -14,7 +14,7 @@
             <dd class="dwp-quick-reference__secondary">QQ 12 34 56 X</dd>
             </dl>
             </section>
-        
+
     <nav class="navigation-secondary">
       <ul>
         <li>
@@ -47,46 +47,45 @@
 {% block beforeContent %}
 {{ govukBackLink({
   text: "Back",
-  href: "/event-history/in-payment/index-pause-payment"
+  href: "/event-history/in-payment/add-an-event-pp-identified-need"
 }) }}
 {% endblock %}
 
 
  <br><br><br><br>
 
-
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="/event-history/in-payment/identified-need/add-a-note" method="post">
 
-    <form class="form" action="" method="post">
+      <h1 class="govuk-heading-xl">Payment schedule transfer</h1>
 
- 
- {{ govukRadios({
-  name: "add-an-event-pp",
-  fieldset: {
-    legend: {
-      text: "Add an event",
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--xl"
-    }
-  },
-  items: [
-    {
-      value: "need-to-move",
-      text: "Identified need to move to PIPCS"
-    }
-  ]
-}) }}
+      <p class="govuk-body">Use payments service to input next payment dates to know payment date must be stopped in PIP serivce. This will inform when to rebuild and schedule new payment in PIPCS.</p>
 
-{{ govukButton({
-  text: "Continue",
-  href: '/event-history/in-payment/identified-need/date-scheduled'
-}) }}
+      {{ govukDateInput({
+        id: "stop-date-in-pip-service",
+        namePrefix: "next-sheduled-payment",
+        fieldset: {
+          legend: {
+            text: "Next scheduled payment date",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        hint: {
+          text: "Find the date in xxx service for next payment."
+        }
+      }) }}
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+      </div>
+
+  </div>
+  </div>
 </form>
-</div>
-</div>
-
-
 
 <br><br>
 
