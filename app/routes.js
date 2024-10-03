@@ -255,8 +255,11 @@ router.post('/case-eject/reason',function(request, response) {
         response.redirect("/case-eject/add-note")
     } else if (addAny == "pre-ref-issues") {
         response.redirect("/case-eject/add-note")
-    }
-    else if (addAny == "pre-dec-issues") {
+    } else if (addAny == "pre-dec-issues") {
+        response.redirect("/case-eject/add-note")
+    } else if (addAny == "mand-recon") {
+        response.redirect("/case-eject/add-note")
+    } else if (addAny == "ap-outcome") {
         response.redirect("/case-eject/add-note")
     }
     })

@@ -81,7 +81,14 @@
                 <p class="govuk-caption-xl">
                   Pre-decision checks
                 </p>
-                
+                {% elseif (data['reason'] == "mand-recon") %}
+                <p class="govuk-caption-xl">
+                  Mandatory reconsideration
+                </p>
+                {% elseif (data['reason'] == "ap-outcome") %}
+                <p class="govuk-caption-xl">
+                  Outcome from assessment provider
+                </p>
               {% endif %}
            </span>
           <label class="govuk-label govuk-label--xl" for="with-hint">
