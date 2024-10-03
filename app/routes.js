@@ -188,7 +188,6 @@ router.post('/event-history/v6-250-characters/add-a-note',function(request, resp
 
 //-------------------------------------------------------------------
 
-
 // event types
 router.post('/event-type',function(request, response) {
     var event = request.session.data['event']
@@ -224,6 +223,38 @@ router.post('/event-history/in-payment/stop-payment-in-pip-service/are-you-sure'
         response.redirect("/event-history/in-payment/stop-payment-in-pip-service/add-a-note")
     } else if (stopPayment == "no") {
         response.redirect("/event-history/in-payment/identified-need/index-need-to-move")
+    }
+    })
+
+//-------------------------------------------------------------------
+
+// CASE EJECT
+
+// Add any event
+router.post('/case-eject/add-event',function(request, response) {
+    var addAny = request.session.data['add-any-event']
+    if (addAny == "case-eject"){
+        response.redirect("/case-eject/reason")
+    } else if (addAny == "completed-case-eject") {
+        response.redirect("/event-history/v5-quick-reference/completed-move/add-a-note")
+    } else if (addAny == "extend-hig") {
+        response.redirect("/event-history/v5-quick-reference/completed-move/add-a-note")
+    } else if (addAny == "other-event") {
+        response.redirect("/event-history/v5-quick-reference/other-event/add-a-note")
+    }
+    })
+
+    // Add any event
+router.post('/case-eject/reason',function(request, response) {
+    var addAny = request.session.data['reason']
+    if (addAny == "change-circs"){
+        response.redirect("/case-eject/add-note")
+    } else if (addAny == "telephony-idv") {
+        response.redirect("/event-history/v5-quick-reference/completed-move/add-a-note")
+    } else if (addAny == "as-identified") {
+        response.redirect("/event-history/v5-quick-reference/completed-move/add-a-note")
+    } else if (addAny == "pre-ref-issues") {
+        response.redirect("/event-history/v5-quick-reference/other-event/add-a-note")
     }
     })
 
