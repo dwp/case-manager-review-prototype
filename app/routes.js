@@ -250,11 +250,11 @@ router.post('/case-eject/reason',function(request, response) {
     if (addAny == "change-circs"){
         response.redirect("/case-eject/add-note")
     } else if (addAny == "telephony-idv") {
-        response.redirect("/event-history/v5-quick-reference/completed-move/add-a-note")
+        response.redirect("/case-eject/add-note")
     } else if (addAny == "as-identified") {
-        response.redirect("/event-history/v5-quick-reference/completed-move/add-a-note")
+        response.redirect("/case-eject/add-note")
     } else if (addAny == "pre-ref-issues") {
-        response.redirect("/event-history/v5-quick-reference/other-event/add-a-note")
+        response.redirect("/case-eject/add-note")
     }
     })
 
