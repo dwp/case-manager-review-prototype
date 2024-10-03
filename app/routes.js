@@ -256,6 +256,9 @@ router.post('/case-eject/reason',function(request, response) {
     } else if (addAny == "pre-ref-issues") {
         response.redirect("/case-eject/add-note")
     }
+    else if (addAny == "pre-dec-issues") {
+        response.redirect("/case-eject/add-note")
+    }
     })
 
 //-------------------------------------------------------------------
