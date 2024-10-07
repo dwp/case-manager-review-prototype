@@ -265,6 +265,18 @@ router.post('/case-eject/reason',function(request, response) {
     })
 
 //-------------------------------------------------------------------
+    // QPPT
+    router.post('/qppt/dl-3m9m-check',function(request, response) {
+    var DlQppt = request.session.data['qppt-dl-3m-check']
+    var DlPt = request.session.data['qppt-dl-9m-check']
+    if (DlQppt == 'Yes' && DlPt == 'Yes') {
+        response.redirect('/qppt/met')
+      } else if (DlQppt == 'EffectiveDate' || 'NoRestrictions' || DlPt == 'EndBefore9') {
+        response.redirect('/qppt/no-decision')
+      }
+})
+
+//-------------------------------------------------------------------
 //EDIT A CLAIM
 
 //Select home address
