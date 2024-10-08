@@ -51,6 +51,10 @@
         <h1 class="govuk-heading-xl">Decision</h1>
 
           <h2 class="govuk-heading-l">Outcome</h2>
+        {{ govukWarningText({
+          text: "Applicant has not been awarded.",
+          iconFallbackText: "Warning"
+        }) }}
 
           <dl class="govuk-summary-list">
             <div class="govuk-summary-list__row">
