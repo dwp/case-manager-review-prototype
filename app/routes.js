@@ -162,16 +162,27 @@ router.post('/comms-record/security-questions', function(request, response) {
     response.redirect('/comms-record/addition-complete')
 })
 
-
 //FIND SOMEONE V.1
 
 // What direction of contact are you adding?
-router.post('/find-someone/found-records-v2', function(request, response) {
+router.post('/find-someone/v1/found-records-v1', function(request, response) {
     var rightPerson = request.session.data['correct-claimant']
     if (rightPerson == 'yes'){
         response.redirect('/case-manager-review/record-details-iteration-4')
     } else if (rightPerson == "no") {
-        response.redirect('/find-someone/search-claimant')
+        response.redirect('/find-someone/v1/search-claimant-v1')
+    }
+})
+
+//FIND SOMEONE V.2
+
+// What direction of contact are you adding?
+router.post('/find-someone/v2/found-records-v2', function(request, response) {
+    var rightPerson = request.session.data['correct-claimant']
+    if (rightPerson == 'yes'){
+        response.redirect('/case-manager-review/record-details-iteration-4')
+    } else if (rightPerson == "no") {
+        response.redirect('/find-someone/v2/search-claimant-v2')
     }
 })
 

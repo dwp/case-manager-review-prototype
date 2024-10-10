@@ -1,10 +1,10 @@
 {% extends "layouts/main.html" %}
 
 {% block beforeContent %}
-  {{ govukBackLink({
-    text: "Back",
-    href: "/find-someone/search-claimant"
-  }) }}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
 {% endblock %}
 
 {% block content %}
@@ -14,7 +14,7 @@
 
       <form action="#" method="post" novalidate>
 
-        <h1 class="govuk-heading-xl">One claimant record found</h1>
+        <h1 class="govuk-heading-xl">One record found</h1>
 
         {% from "govuk/components/button/macro.njk" import govukButton %}
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -64,7 +64,7 @@
       name: "correct-claimant",
       fieldset: {
         legend: {
-          text: "Is this the correct claimant?",
+          text: "Is this the correct applicant or claimant?",
           isPageHeading: true,
           classes: "govuk-fieldset__legend--l"
         }
