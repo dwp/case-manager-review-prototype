@@ -81,11 +81,12 @@ Personal details
 
   <h2 class="govuk-heading-m">Claim details</h2>
 
-  {{ govukSummaryList({
+  {{ govukSummaryList ({
     rows: [
     {
       key: {
-        text: "Identity verified"
+        text: "Identity verified",
+        classes: "cmr-summary-list-key"
       },
       value: {
         text: "Yes"
@@ -93,7 +94,8 @@ Personal details
     },
       {
         key: {
-          text: "Claim date"
+          text: "Claim date",
+          classes: "cmr-summary-list-key"
         },
         value: {
           text: "20 November 2021"
@@ -107,7 +109,8 @@ Personal details
     rows: [
       {
         key: {
-          text: "National Insurance number"
+          text: "National Insurance number",
+          classes: "cmr-summary-list-key"
         },
         value: {
           text: "QQ 12 34 56 C"
@@ -144,11 +147,11 @@ Personal details
 
 <h2 class="govuk-heading-m">Contact details</h2>
 {{ govukSummaryList({
-  classes: "summary-list-key-width",
   rows: [
     {
       key: {
-        text: "Home address"
+        text: "Home address",
+        classes: "cmr-summary-list-key"
       },
       value: {
         html: "12 Pearl Street<br>Bristol<br>BS3 4AB<br>United Kingdom"
@@ -234,7 +237,8 @@ Personal details
   rows: [
   {
     key: {
-      text: "Nationality"
+      text: "Nationality",
+      classes: "cmr-summary-list-key"
     },
     value: {
       text: "Swiss"
@@ -283,7 +287,8 @@ Personal details
     rows: [
       {
         key: {
-          text: "Health and care professionals can share information"
+          text: "Health and care professionals can share information",
+          classes: "cmr-summary-list-key"
         },
         value: {
           text: "Yes"
@@ -297,7 +302,8 @@ Personal details
   rows: [
     {
       key: {
-        text: "Health professional 1"
+        text: "Health professional 1",
+        classes: "cmr-summary-list-key"
       },
       value: {
       }
@@ -354,7 +360,8 @@ Personal details
   rows: [
     {
       key: {
-        text: "Health professional 2"
+        text: "Health professional 2",
+        classes: "cmr-summary-list-key"
       },
       value: {
       }
@@ -415,7 +422,8 @@ Personal details
   rows: [
     {
       key: {
-        text: "Needs help communicating with us"
+        text: "Needs help communicating with us",
+        classes: "cmr-summary-list-key"
       },
       value: {
         text: "Yes"
@@ -423,7 +431,8 @@ Personal details
     },
     {
       key: {
-        text: "Needs help completing forms and understanding letters"
+        text: "Needs help completing forms and understanding letters",
+        classes: "cmr-summary-list-key"
       },
       value: {
         text: "Yes"
@@ -454,7 +463,8 @@ Personal details
   rows: [
     {
       key: {
-        text: "Needs communications in another format"
+        text: "Needs communications in another format",
+        classes: "cmr-summary-list-key"
       },
       value: {
         text: "No"
@@ -495,8 +505,8 @@ Personal details
     rows: [
       {
         key: {
-          text: "
-          Can provide bank, building society or credit union account details"
+          text: "Can provide bank, building society or credit union account details",
+          classes: "cmr-summary-list-key"
         },
         value: {
           text: "Yes"
@@ -509,7 +519,8 @@ Personal details
       rows: [
       {
         key: {
-          text: "Account details"
+          text: "Account details",
+          classes: "cmr-summary-list-key"
         },
         value: {
           text: ""
