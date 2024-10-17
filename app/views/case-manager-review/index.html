@@ -1,0 +1,134 @@
+{% extends "layouts/main-nav.html" %}
+
+{% set pageName="EventHistoryVersions" %}
+
+{% block beforeContent %}
+
+{{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+  {% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  
+  <main class="govuk-main-wrapper">
+     <div class="govuk-grid-row">
+
+      <div class="govuk-grid-column-full">
+
+        <h1 class="govuk-heading-l">CMR design documentation</h1>
+
+        <p class="govuk-body">V.2 Design features</p>
+        <ul class='govuk-list govuk-list--bullet'>
+          <li><a href='https://design-system.dwp.gov.uk/components/quick-referencequick'>Quick reference component (replacing key details)</a></li>
+          <li>IDV verified field added</li>
+          <li>Improved content for CMR data labels</li>
+        </ul>
+
+        <table class="govuk-table">
+          <caption class="govuk-table__caption govuk-table__caption--m">Edit a claim</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">prototype</th>
+              <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">sprint or date</th>
+              <th scope="col" class="govuk-table__header govuk-!-width-one-half">description</th>
+            </tr>
+          </thead>
+
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+
+              <td class="govuk-table__cell">
+
+                <strong class="govuk-tag govuk-tag--turquoise">Future feature</strong>
+                <div class="govuk-!-padding-bottom-3"></div>
+                <p>V.2</p>
+                <a href="/edit-claim/version-3-button-above/record-details-button" role="button" draggable="false" class="govuk-button" data-module="govuk-button">
+                  Start now
+                </a>
+              </td>
+
+              <td class="govuk-table__cell">
+                <p class='govuk-body'>2/10/2024</p>
+              </td>
+
+              <td class="govuk-table__cell">
+                <p class='govuk-body'>Edit a claim allows agents to alter information about the claimant or their application in CMR on request of the applicant.</p>
+              </td>
+
+            </tr>
+            <tr>
+              <td class="govuk-table__cell">
+                <p>V.1</p>
+                <a href="/edit-claim/version-2/record-details-button" role="button" draggable="false" class="govuk-button" data-module="govuk-button">
+                  Start now
+                </a>
+              </td>
+              <td class="govuk-table__cell">
+                <p class='govuk-body'>20/07/2024</p>
+              </td>
+              <td class="govuk-table__cell">
+                <p class='govuk-body'>First iteration.'change details' button sits above the Personal details tabs.  </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="govuk-table">
+          <caption class="govuk-table__caption govuk-table__caption--m">User research</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">prototype</th>
+              <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">sprint or date</th>
+              <th scope="col" class="govuk-table__header govuk-!-width-one-half">description</th>
+            </tr>
+          </thead>
+
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+  
+                <td class="govuk-table__cell">
+                  <ol class="govuk-list govuk-list--number">
+                    <li><p class="govuk-body"><a href="/edit-claim/pip-service-home">'Edit a claim' - link on homepage V.1</a></p></li>
+                    <li><p class="govuk-body"><a href="/case-manager-review/record-details-edit-link">CMR - Edit links</a></p></li>
+                    <li><p class="govuk-body"><a href="/case-manager-review/record-details-edit-button">CMR - Edit button</a></p></li>
+                  </ol>
+                </td>
+
+                  <td class="govuk-table__cell">
+                    <p class='govuk-body'>Sprint 4</p>
+                  </td>
+
+                  <td class="govuk-table__cell">
+                    <p class='govuk-body'>Interaction journeys were tested with agents and case workers to understand how best to edit or change particular parts of information. <br>This included content testing for how to label the CTA to edit a the information, e.g. what a change link or button says.</p>
+                  </td>
+
+                </td>
+
+              </tbody>
+            </table>
+                
+
+      </div>
+    </div>
+
+   </main>
+  </div>
+
+  {% endblock %}
+
+{% block footer %}
+{% from "internal-service-footer/macro.njk" import dwpFooter %}
+
+{{ dwpFooter({
+  meta: {
+    visuallyHiddenTitle: "Meta links",
+    items: [
+    ]
+  }
+}) }} 
+
+{% endblock %}

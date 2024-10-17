@@ -69,21 +69,6 @@
         <li class="govuk-list">
             <p class="govuk-body"><a href="/case-manager-review/record-details">Case manager review (retired key details bar) V.1</a></p>
           </li>
-
-          <h3 class="govuk-heading-m">Decision tab</h3>
-          <li class="govuk-list">
-            <p class="govuk-body"><a href="/decision-tab-iteration-4">Decision tab with increased header sizing</a></p>
-          </li>
-          
-          <h3 class="govuk-heading-s">Qualifying period/ Prospective test</h3>
-          <ul class="govuk-list">
-            <li class="govuk-list">
-              <p class="govuk-body"><a href="/qppt/met-v2">QP/PT met both</a></p>
-            </li>
-            <li class="govuk-list">
-              <p class="govuk-body"><a href="/qppt/not-met-kept-in-v2">Not awarded, retained V2: QP/PT some met</a></p>
-            </li>
-          </ul>
   
         <h3 class="govuk-heading-m">Event history and Add an event</h3>
         
@@ -108,12 +93,10 @@
           </ul>
 
         <h3 class="govuk-heading-m">View all claims</h3>
-    
-          <ul class="govuk-list govuk-list--bullet">
-            <li>State 'Sent directly to PIPCS' removed as this will not be a thin slice case</li>
-          </ul>
+
+        <p class="govuk-body"><strong class="govuk-tag govuk-tag--purple">Built</strong> <a href="/view-all-claims/no-filter-v1">V.1 - Sortable columns, no pagination (for thin slice)</a></p>
         
-          <h3 class="govuk-body">Claim creation/ start date</h3>
+          <h3 class="govuk-body">Iteration 2: Claim creation/ start date</h3>
         
           <ul class="govuk-list">
             <li>
@@ -127,7 +110,7 @@
             </li>      
           </ul>
 
-          <h3 class="govuk-body">Requirements base only</h3>
+          <h3 class="govuk-body">Iteration 1: Requirements base only</h3>
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -143,6 +126,23 @@
         <li class="govuk-list">
           <p class="govuk-body"><a href="/case-manager-review/record-details-IDV-field-v2"> Quick reference component, IDV field, original data category V.2</a></p>
         </li>
+        </ul>
+
+        <h3 class="govuk-heading-m">Decision tab</h3>
+          
+        <p class="govuk-body">Qualifying period/ Prospective test</p>
+        <ul class="govuk-list">
+          <strong class="govuk-tag govuk-tag--green govuk-phase-banner__content__tag">Awarded</strong>
+          <li class="govuk-list">
+            <p class="govuk-body"><a href="/qppt/met-v2">QP/PT awarded both: standard rate</a></p>
+          </li>
+          <li class="govuk-list">
+            <p class="govuk-body"><a href="/qppt/met-DL-v2">QP/PT awarded only DL: standard rate</a></p>
+          </li>
+          <strong class="govuk-tag govuk-tag--red govuk-phase-banner__content__tag">Nil Award</strong>
+          <li class="govuk-list">
+            <p class="govuk-body"><a href="/qppt/not-met-kept-in-v2">Not awarded, retained V2: QP/PT some met</a></p>
+          </li>
         </ul>
 
         <h3 class="govuk-heading-m">Event history and Add an event</h3>
@@ -161,12 +161,12 @@
               </li>
           </ul>
 
-          <h3 class="govuk-heading-s">Stop payments in PIP Service</h3>
-
-          <ul class="govuk-list">
-            <li class="govuk-link">
-              <p class="govuk-body"><a href="/event-history/in-payment/index-pause-payment">Add an event: pause payment</a></p>
-            </li>
+          <p class='govuk-body'><strong>In progress</strong></p>
+          <ul class='govuk-list govuk-list--bullet'>
+          <li><a href='/event-history/in-payment/index-pause-payment'>Stop payments in PIP Service</a> <strong class="govuk-tag govuk-tag--purple">
+            Post-award
+          </strong>
+        </li>
           </ul>
 
       <h3 class="govuk-heading-m">View all claims</h3>
@@ -186,14 +186,6 @@
       </li>
         </ul>
 
-        <h3 class="govuk-heading-m">Edit a claim</h3>
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            <p class="govuk-body"><a href="/edit-claim/version-2/record-details-button">Change details V.1- button in tabs</a></p>
-          </dt>
-        </div>
-
       </div>
 
       <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="scenarios">
@@ -203,14 +195,16 @@
         <h2 class="govuk-heading-m">Case manager review</h2>
         <ul class="govuk-list">
           <li>
-            <p class="govuk-body"><a class="govuk-link" href="/case-manager-review/no-hig-info/personal-details">no HIG information available</a></a>
+            <p class="govuk-body"><strong class="govuk-tag govuk-tag--purple">Built</strong>
+              <a class="govuk-link" href="/case-manager-review/no-hig-info/personal-details">no HIG information available</a>
           </li>
         </ul>
 
         <h3 class="govuk-heading-m">Event history and Add an event</h3>
         <ul class="govuk-list">
           <li>
-            <p class="govuk-body"><a class="govuk-link" href="/event-history/scenarios/reminder-text">Sent reminder to return health information gather</a></a>
+            <p class="govuk-body"><strong class="govuk-tag govuk-tag--purple">Built</strong>
+              <a class="govuk-link" href="/event-history/scenarios/reminder-text">Sent reminder to return health information gather</a></a>
           </li>
         </ul>
 
@@ -218,17 +212,21 @@
   
         <ul class="govuk-list">
           <li>
-            <p class="govuk-body"><a class="govuk-link" href="/find-someone/no-nino-found">No NINO found: V.1</a></a>
+            <p class="govuk-body"> <strong class="govuk-tag govuk-tag--purple">Built</strong>
+              <a class="govuk-link" href="/find-someone/no-nino-found">No NINO found: V.1</a> 
           </li>
           <li>
-            <p class="govuk-body"><a class="govuk-link" href="/find-someone/multiple-results">Multiple applications: 2 claimants share NINO V.1</a>
+            <p class="govuk-body"> <strong class="govuk-tag">Build ready</strong>
+              <a class="govuk-link" href="/find-someone/multiple-results">Multiple applications: 2 claimants share NINO V.1</a>
           </li>
         </ul>
 
         <h3 class="govuk-heading-m">View all cases</h3>
         <ul class="govuk-list">
           <li>
-            <p class="govuk-body"><a class="govuk-link" href="/view-all-claims/no-claims-available-v1">No applications or claims in PIP service V.1</a></a>
+            <p class="govuk-body">
+            <strong class="govuk-tag govuk-tag--purple">Built</strong>
+            <a class="govuk-link" href="/view-all-claims/no-claims-available-v1">No applications or claims in PIP service V.1</a>
           </li>
 
         </ul>
