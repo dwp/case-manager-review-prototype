@@ -19,7 +19,7 @@
 
       <div class="govuk-grid-column-full">
 
-        <h1 class="govuk-heading-l">Case manager review</h1>
+        <h1 class="govuk-heading-xl">Case manager review</h1>
 
         <div class="govuk-tabs" data-module="govuk-tabs">
           <h2 class="govuk-tabs__title">
@@ -36,6 +36,11 @@
                 Scenarios
               </a>
             </li>
+            <li class="govuk-tabs__list-item">
+              <a class="govuk-tabs__tab" href="#in-progress">
+                In progress
+              </a>
+            </li>
           </ul>
 
           <div class="govuk-tabs__panel" id="versions">
@@ -48,15 +53,12 @@
                   <th scope="col" class="govuk-table__header">Descripton</th>
                 </tr>
               </thead>
+
               <tbody class="govuk-table__body">
-                <tr class="govuk-table__row">
-                  <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey">Inactive</strong> Original prototype V.1</td>
-                  <td class="govuk-table__cell"><a href="/case-manager-review/record-details">V.1 prototype</a></p></td>
-                  <td class="govuk-table__cell">Original prototype used for initial framework. This uses the retired key details bar</td>
-                </tr>
+
                 <tr class="govuk-table__row">
                   <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey">Inactive</strong> V.2</td>
-                  <td class="govuk-table__cell"><a href="/case-manager-review/record-details">V.2 prototype</a></p></td>
+                  <td class="govuk-table__cell"><a href="/case-manager-review/record-details-v2">V.2 prototype</a></p></td>
                   <td class="govuk-table__cell">
                     <ul class="govuk-list govuk-list--bullet">
                     <li>Original data row labels.</li>
@@ -65,6 +67,13 @@
                   </ul>
                 </td>
                 </tr>
+
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey">Inactive</strong> Original prototype V.1</td>
+                  <td class="govuk-table__cell"><a href="/case-manager-review/record-details">V.1 prototype</a></p></td>
+                  <td class="govuk-table__cell">Original prototype used for initial framework. This uses the retired key details bar</td>
+                </tr>
+
               </tbody>
             </table>
 
@@ -96,6 +105,29 @@
             </table>
 
           </div>
+
+          <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="in-progress">
+            <h2 class="govuk-heading-l">Concepts and in progress work</h2>
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th scope="col" class="govuk-table__header govuk-!-width-one-third">Concepts</th>
+                  <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Prototype</th>
+                  <th scope="col" class="govuk-table__header">Descripton</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">Data row labels as questions</td>
+                  <td class="govuk-table__cell"><a href="/case-manager-review/record-details-IDV-field-v2">V.2</a></p></td>
+                  <td class="govuk-table__cell">Quick reference component, IDV field, Data labels as the original questions asked.
+                </td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+
         </div>
 
                 

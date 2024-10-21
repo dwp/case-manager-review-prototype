@@ -37,9 +37,10 @@
 </div>
 
 {% block beforeContent %}
+
 {{ govukBackLink({
   text: "Back",
-  href: "index"
+  href: "javascript:window.history.back()"
 }) }}
 {% endblock %}
 
