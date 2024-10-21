@@ -1,0 +1,190 @@
+{% extends "layouts/main-nav.html" %}
+
+{% set pageName="EventHistoryVersions" %}
+
+{% block beforeContent %}
+
+{{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+  {% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  
+    <main class="govuk-main-wrapper">
+       <div class="govuk-grid-row">
+  
+            <div class="govuk-grid-column-full">
+    
+                <h1 class="govuk-heading-xl">View all cases</h1>
+
+                <div class="govuk-tabs" data-module="govuk-tabs">
+                    <h2 class="govuk-tabs__title">
+                      Contents
+                    </h2>
+                    <ul class="govuk-tabs__list">
+                      <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                        <a class="govuk-tabs__tab" href="#versions">
+                          Versions
+                        </a>
+                      </li>
+                      <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="#scenarios">
+                          Scenarios
+                        </a>
+                      </li>
+                      <li class="govuk-tabs__list-item">
+                        <a class="govuk-tabs__tab" href="#in-progress">
+                          In progress work
+                        </a>
+                      </li>
+                    </ul>
+          
+                    <div class="govuk-tabs__panel" id="versions">
+                      <h2 class="govuk-heading-l">Versions</h2>
+            
+                      <table class="govuk-table">
+                        <thead class="govuk-table__head">
+
+            
+                          <tr class="govuk-table__row">
+                            <th scope="col" class="govuk-table__header govuk-!-width-one-third">Version</th>
+                            <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Prototype</th>
+                            <th scope="col" class="govuk-table__header">Descripton</th>
+                          </tr>
+                        </thead>
+
+                        <tbody class="govuk-table__body">
+
+                          <tr class="govuk-table__row">
+                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--purple">Built</strong> V.3</td>
+                            <td class="govuk-table__cell"><a href="/view-all-claims/no-filter-v1">V.3</a></td>
+                            <td class="govuk-table__cell">Sortable columns, no pagination (for thin slice)</td>
+                          </tr>
+
+                          <tr class="govuk-table__row">
+                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey">Inactive</strong> V.2 </td>
+                            <td class="govuk-table__cell"><p class="govuk-body"><a href="/view-all-claims/status-start-date/status-start-v2">Content V.2.2</a></p><br>
+                                <p class="govuk-body"><a href="/view-all-claims/status-start-date/status-start-v1">Content V.2.1</a></p></td>
+                            <td class="govuk-table__cell">
+                                <p class="govuk-body">Label content variations</p>
+
+                              <ul class="govuk-list govuk-list--bullet">
+                                <p class="govuk-body">Content V.2.2</p>
+                                <li>Claim <strong>creation</strong> date</li>
+                                <li><strong>Current</strong> status</li>
+                                <li>Status <strong>start</strong> date</li>
+                             </ul>
+
+                             <ul class="govuk-list govuk-list--bullet">
+                                <p class="govuk-body">Content V.2.1</p>
+                                <li>Claim <strong>start</strong> date</li>
+                                <li><strong>Claim</strong> status</li>
+                                <li>Status <strong>change</strong> date</li>
+                             </ul>
+                          </td>
+                          </tr>
+
+                          <tr class="govuk-table__row">
+                            <td class="govuk-table__cell"> <strong class="govuk-tag govuk-tag--grey"> Inactive</strong>V.1</td>
+                            <td class="govuk-table__cell"><a href="/view-all-claims/view-all-claims">V.1</a></td>
+                            <td class="govuk-table__cell">
+                                <p class="govuk-body">V.1- Requirements base only</p>
+                                <ul class="govuk-list govuk-list--bullet">
+                                <li>claim status</li>
+                                <li>claim date</li>
+                            </ul>
+                                </td>
+                          </tr>
+                        </tbody>
+                      </table>
+          
+                    </div>
+          
+                    <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="scenarios">
+                      <h2 class="govuk-heading-l">Scenarios</h2>
+                      <table class="govuk-table">
+                        <thead class="govuk-table__head">
+                          <tr class="govuk-table__row">
+                            <th scope="col" class="govuk-table__header govuk-!-width-one-third">Scenario</th>
+                            <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Prototype</th>
+                            <th scope="col" class="govuk-table__header">Descripton</th>
+                          </tr>
+                        </thead>
+                        <tbody class="govuk-table__body">
+                          <tr class="govuk-table__row">
+                            <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red"> Discontinued</strong> No applications or claims in PIP service</td>
+                            <td class="govuk-table__cell"><a class="govuk-link" href="/view-all-claims/no-claims-available-v1">V.1</a></td>
+                            <td class="govuk-table__cell">DISCONTINUED: No applications or claims in PIP services
+                                After exploring, not a scenario to neededc to account for.</li>
+                          </td>
+                          </tr>
+                        </tbody>
+                      </table>
+          
+                    </div>
+
+                    <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="in-progress">
+                        <h2 class="govuk-heading-l">In progress work</h2>
+                        <p class="govuk-body">This includes conceptual and future design work.</p>
+
+                        <table class="govuk-table">
+                          <thead class="govuk-table__head">
+                            <tr class="govuk-table__row">
+                              <th scope="col" class="govuk-table__header govuk-!-width-one-third">Scenario</th>
+                              <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Prototype</th>
+                              <th scope="col" class="govuk-table__header">Descripton</th>
+                            </tr>
+                          </thead>
+                          <tbody class="govuk-table__body">
+
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green"> Backlog</strong> Filter by status</td>
+                                <td class="govuk-table__cell"><a class="govuk-link" href="/view-all-claims/v3-filter-status">Iteration 3</a></td>
+                                <td class="govuk-table__cell">Filter by events (on pause for tech reqs)
+                              </td>
+                            </tr>
+
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green"> Backlog</strong> Sortable columns, pagination</td>
+                                <td class="govuk-table__cell"><a class="govuk-link" href="/view-all-claims/no-filter-pagination-v1">Iteration 2</a></td>
+                                <td class="govuk-table__cell">Sortable columns, pagination (fast follow iteration)
+                              </td>
+                            </tr>
+
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--grey"> discontinued</strong> Sort by filter component</td>
+                                <td class="govuk-table__cell"><a class="govuk-link" href="/view-all-claims/sort-using-filter-v2">Iteration 1</a></td>
+                                <td class="govuk-table__cell">Sort by filter component (fast follow iteration)</td>
+                              </tr>
+
+                          </tbody>
+                        </table>
+            
+                      </div>
+
+                  </div>
+
+            </div>
+
+        
+        </div>
+     </main>
+
+{% endblock %}
+
+{% block footer %}
+{% from "internal-service-footer/macro.njk" import dwpFooter %}
+
+{{ dwpFooter({
+  meta: {
+    visuallyHiddenTitle: "Meta links",
+    items: [
+    ]
+  }
+}) }} 
+
+{% endblock %}

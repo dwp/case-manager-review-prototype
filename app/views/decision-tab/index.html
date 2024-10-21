@@ -1,0 +1,63 @@
+{% extends "layouts/main-nav.html" %}
+
+{% set pageName="EventHistoryVersions" %}
+
+{% block beforeContent %}
+
+{{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+  {% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  
+    <main class="govuk-main-wrapper">
+       <div class="govuk-grid-row">
+  
+            <div class="govuk-grid-column-full">
+    
+                <h1 class="govuk-heading-l">Decision tab</h1>
+
+                <p class="govuk-body"><a href="/decision-tab/versions">Versions</a></p>
+            
+                <h2 class="govuk-heading-m">Qualifying period/ Prospective test</p>
+                <ul class="govuk-list">
+                <strong class="govuk-tag govuk-tag--green govuk-phase-banner__content__tag">Awarded</strong>
+                <li class="govuk-list">
+                    <p class="govuk-body"><a href="/qppt/met-v2">QP/PT awarded both: standard rate</a></p>
+                </li>
+                <li class="govuk-list">
+                    <p class="govuk-body"><a href="/qppt/met-DL-v2">QP/PT awarded only DL: standard rate</a></p>
+                </li>
+                <li class="govuk-list">
+                    <p class="govuk-body"><a href="/qppt/met-mobility-v2">QP/PT awarded only Mobility: standard rate</a></p>
+                </li>
+                <strong class="govuk-tag govuk-tag--red govuk-phase-banner__content__tag">Nil Award</strong>
+                <li class="govuk-list">
+                    <p class="govuk-body"><a href="/qppt/not-met-kept-in-v2">Not awarded, retained V2: QP/PT some met</a></p>
+                </li>
+                </ul>
+
+            </div>
+
+        
+        </div>
+     </main>
+
+{% endblock %}
+
+{% block footer %}
+{% from "internal-service-footer/macro.njk" import dwpFooter %}
+
+{{ dwpFooter({
+  meta: {
+    visuallyHiddenTitle: "Meta links",
+    items: [
+    ]
+  }
+}) }} 
+
+{% endblock %}
