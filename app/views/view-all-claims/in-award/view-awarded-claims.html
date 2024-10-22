@@ -51,9 +51,17 @@
               <div class="govuk-checkboxes__item">
                   <input class="govuk-checkboxes__input" id="status-3" name="current-status" type="checkbox" value="submitted" {% if checkstatus-3 %} checked {% endif %}>
                   <label class="govuk-label govuk-checkboxes__label" for="status-3">
-                    Completed move to PIPCS (3)
+                    Stopped payment in PIP Service (1)
                   </label>   
               </div>   
+
+              <!-- status 3: Stopped payment in PIP Service -->
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="status-3" name="current-status" type="checkbox" value="submitted" {% if checkstatus-3 %} checked {% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="status-3">
+                  Completed move to PIPCS (3)
+                </label>   
+            </div>  
 
               <!-- status 4: Reached award end date -->
               <div class="govuk-checkboxes__item">
@@ -94,7 +102,7 @@
 
         <h1 class="govuk-heading-xl">View awarded claims</h1>
 
-        <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">Number of claims: <b>11</b></p>
+        <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">Number of claims: <b>12</b></p>
 
         {%- from "govuk/components/table/macro.njk" import govukTable -%}
 
@@ -177,6 +185,24 @@
                 text: "3 days"
               }
             ],
+            [
+            {
+              html: '<a href="/event-history/v2/index" class="govuk-link">QQ 12 34 56 C'
+            },
+            {
+              text: "12 July 2024",
+              format: "numeric",
+              attributes: {
+                "data-sort-value": "01 July 2024"
+              }
+            },
+            {
+              text: "Stopped payment in PIP Service"
+            },
+            {
+              text: "2 days"
+            }
+          ],
             [
             {
               html: '<a href="/event-history/v2/index" class="govuk-link">QQ 1 14 60 C'
