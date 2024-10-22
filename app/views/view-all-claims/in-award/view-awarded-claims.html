@@ -1,0 +1,367 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %} view all claims {% endblock %}
+
+
+{% block content %}
+  
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-one-quarter">
+
+    <h2 class="govuk-heading-m govuk-!-Margin-bottom-5">Filters</h2>
+
+    <div id="filter-hint" class="govuk-hint govuk-!-Marchgin-bottom-4">
+      Select one or more filters to apply to the list.
+    </div>
+
+    <div class="table-filter">
+
+      <form id="filters" action="index" method="post"> 
+
+        <!--Filters-->
+        <div class="govuk-form-group">
+
+          <fieldset class="govuk-fieldset">
+
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+            Current status
+          </legend>
+
+          <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+
+              <!-- status 1: Claim awarded -->
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input govuk-body" id="status-1" name="current-status" type="checkbox" value="registered" {% if checkstatus-2 %} checked {% endif %}>
+                <label class="govuk-label govuk-checkboxes__label " for="status-1">
+                  Claim awarded (3)   
+                </label>
+
+              </div>
+
+               <!-- status 2: Paying claimant -->
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="status-2" name="current-status" type="checkbox" value="health-dis" {% if checkstatus-2 %} checked {% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="status-2">
+                  Paying claimant (2)
+                </label>
+              </div>
+              
+               <!-- status 3: Completed move to PIPCS -->
+              <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="status-3" name="current-status" type="checkbox" value="submitted" {% if checkstatus-3 %} checked {% endif %}>
+                  <label class="govuk-label govuk-checkboxes__label" for="status-3">
+                    Completed move to PIPCS (3)
+                  </label>   
+              </div>   
+
+              <!-- status 4: Reached award end date -->
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="status-6" name="current-status" type="checkbox" value="referred-ap" {% if checkstatus-6 %} checked {% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="status-6">
+                  Reached award end date (2)
+                </label>   
+            </div> 
+
+            <!-- status 5: Stopped award -->
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="status-7" name="current-status" type="checkbox" value="Returned-ap" {% if checkstatus-7 %} checked {% endif %}>
+              <label class="govuk-label govuk-checkboxes__label" for="status-7">
+                Stopped award (1)
+              </label>   
+          </div> 
+
+          <!-- status 6: Paused award -->
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="status-8" name="current-status" type="checkbox" value="Ready-decision" {% if checkstatus-8 %} checked {% endif %}>
+            <label class="govuk-label govuk-checkboxes__label" for="status-8">
+              Paused award (3)
+            </label>   
+        </div> 
+        </fieldset>
+        </div>
+
+        <button class="govuk-button" xmlns="/view-all-claims/days-in-status/index">
+          Apply filters
+        </button>
+
+      </form>
+    </div>
+    </div>
+    
+
+      <div class="govuk-grid-column-three-quarters">
+
+        <h1 class="govuk-heading-xl">View awarded claims</h1>
+
+        <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6">Number of claims: <b>11</b></p>
+
+        {%- from "govuk/components/table/macro.njk" import govukTable -%}
+
+        {{ govukTable({
+          attributes: {
+            'data-module': 'moj-sortable-table'
+          },
+          head: [
+            {
+              text: "National Insurance number"
+            },
+            {
+              text: "Date of claim",
+              attributes: {
+                "aria-sort": "none"
+              }
+            },
+            {
+              text: "Current status"
+            },
+            {
+              text: "Days in current status",
+              attributes: {
+                "aria-sort": "none"
+              }
+          }
+          ],
+          rows: [
+            [
+              {
+                html: '<a href="/event-history/v2/index" class="govuk-link">QQ 56 82 91 F'
+              },
+              {
+                text: "30 June 2024",
+                format: "numeric",
+                attributes: {
+                  "data-sort-value": "30 June 2024"
+                }
+              },
+              {
+                text: "Paying claimant"
+              },
+              {
+                text: "15 days"
+              }
+            ],
+            [
+              {
+                html: '<a href="/event-history/v2/index" class="govuk-link">QQ 23 64 77 A'
+              },
+              {
+                text: "30 June 2024",
+                format: "numeric",
+                attributes: {
+                  "data-sort-value": "30 June 2024"
+                }
+              },
+              {
+                text: "Claim awarded"
+              },
+              {
+                text: "7 days"
+              }
+            ],
+            [
+              {
+                html: '<a href="/event-history/v2/index" class="govuk-link">QQ 12 34 56 C'
+              },
+              {
+                text: "1 July 2024",
+                format: "numeric",
+                attributes: {
+                  "data-sort-value": "01 July 2024"
+                }
+              },
+              {
+                text: "Claim awarded"
+              },
+              {
+                text: "3 days"
+              }
+            ],
+            [
+            {
+              html: '<a href="/event-history/v2/index" class="govuk-link">QQ 1 14 60 C'
+            },
+            {
+              text: "14 May 2024",
+              format: "numeric",
+              attributes: {
+                "data-sort-value": "14 May 2024"
+              }
+            },
+            {
+              text: "Reached award end date"
+            },
+            {
+              text: "4 days"
+            }
+          ],
+          [
+          {
+            html: '<a href="/event-history/v2/index" class="govuk-link">QQ 52 74 36 C'
+          },
+          {
+            text: "14 June 2024",
+            format: "numeric",
+            attributes: {
+              "data-sort-value": "14 June 2024"
+            }
+          },
+          {
+            text: "Completed move to PIPCS"
+          },
+          {
+            text: "4 days"
+          }
+        ],
+        [
+        {
+          html: '<a href="/event-history/v2/index" class="govuk-link">QQ 11 37 66 B'
+        },
+        {
+          text: "27 April 2024",
+          format: "numeric",
+          attributes: {
+            "data-sort-value": "27 April 2024"
+          }
+        },
+        {
+          text: "Paused award"
+        },
+        {
+          text: "1 day"
+        }
+      ],
+      [
+      {
+        html: '<a href="/event-history/v2/index" class="govuk-link">QQ 30 47 88 C'
+      },
+      {
+        text: "15 April 2024",
+        format: "numeric",
+        attributes: {
+          "data-sort-value": "15 April 2024"
+        }
+      },
+      {
+        text: "Reached award end date"
+      },
+      {
+        text: "5 days"
+      }
+    ],
+        [
+        {
+          html: '<a href="/event-history/v2/index" class="govuk-link">QQ 22 94 26 A'
+        },
+        {
+          text: "26 June 2024",
+          format: "numeric",
+          attributes: {
+            "data-sort-value": "26 June 2024"
+          }
+        },
+        {
+          text: "Stopped award"
+        },
+        {
+          text: "8 days"
+        }
+      ],
+          [
+          {
+            html: '<a href="/event-history/v2/index" class="govuk-link">QQ 25 44 31 C'
+          },
+          {
+            text: "15 April 2024",
+            format: "numeric",
+            attributes: {
+              "data-sort-value": "15 April 2024"
+            }
+          },
+          {
+            text: "Paused award"
+          },
+          {
+            text: "4 days"
+          }
+        ],
+        [
+        {
+          html: '<a href="/event-history/v2/index" class="govuk-link">QQ 17 82 96 A'
+        },
+        {
+          text: "4 April 2024",
+          format: "numeric",
+          attributes: {
+            "data-sort-value": "4 April 2024"
+          }
+        },
+        {
+          text: "Paying claimant"
+        },
+        {
+          text: "1 day"
+        }
+        ],
+        [
+        {
+          html: '<a href="/event-history/v2/index" class="govuk-link">QQ 15 64 68 B'
+        },
+        {
+          text: "15 April 2024",
+          format: "numeric",
+          attributes: {
+            "data-sort-value": "15 April 2024"
+          }
+        },
+        {
+          text: "Claim awarded"
+        },
+        {
+          text: "4 days"
+        }
+        ],
+        [
+        {
+          html: '<a href="/event-history/v2/index" class="govuk-link">QQ 15 64 68 B'
+        },
+        {
+          text: "29 May 2024",
+          format: "numeric",
+          attributes: {
+            "data-sort-value": "31 July 2024"
+          }
+        },
+        {
+          text: "Completed move to PIPCS"
+        },
+        {
+          text: "1 day"
+        }
+        ],
+        [
+        {
+          html: '<a href="/event-history/v2/index" class="govuk-link">QQ 15 64 68 B'
+        },
+        {
+          text: "21 April 2024",
+          format: "numeric",
+          attributes: {
+            "data-sort-value": "05 June 2024"
+          }
+        },
+        {
+          text: "Completed move to PIPCS"
+        },
+        {
+          text: "57 days"
+        }
+        ]
+          ]
+        }) }}
+
+      </div>
+
+  </div>
+
+        {% endblock %}
