@@ -30,219 +30,313 @@
 <div class="govuk-width-container">
   
   <main class="govuk-main-wrapper">
-<div class="govuk-grid-row">
+    <div class="govuk-grid-row">
 
-  <div class="govuk-grid-column-two-thirds">
-    <p class="govuk-body"><a href="index-v2" class="govuk-link">Version 2 index</a></p>
-    <div class="govuk-!-padding-bottom-2"></div>
-    <h1 class="govuk-heading-xl">
-      Personal Independence Payment
-    </h1>
-    </div>
-
-    <div class="govuk-grid-column-full">
-
-
-      <h2 class="govuk-heading-m">Case manager review</h2>
-
-    <dl class="govuk-summary-list govuk-summary-list--no-border">
-
-      <div class="govuk-summary-list__row">
-      <dt class="govuk-summary-list__key">
-        <p class="govuk-body"><a href="/case-manager-review/record-details-iteration-4">CMR V.1</a></p>
-        <p class="govuk-body">Includes:</p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>quick reference component (replacing key details)</li>
-          <li>IDV field</li>
-          <li>improved data categories</li>
-        </ul>
-      </dt>
-      <dd class="govuk-summary-list__value">
-        <strong class="govuk-tag ">Built</strong>
-      </dd>
-      </div>
-
-      <p class="govuk-body"><a href="/concepts#scenarios">Scenarios</a></p>
-
-      <h3 class="govuk-heading-m">Decision tab</h3>
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            <p class="govuk-body"><a href="/decision-tab-iteration-3-activity-h3">HTPN-1309: outcome and award added</a></p>
-          </dt>
-          <dd class="govuk-summary-list__value">
-            <strong class="govuk-tag">Built</strong>
-          </dd>
-          </div>
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              <p class="govuk-body"><a href="/decision-tab-iteration-4-evidence">HTPN-1301: Supporting documents added</a></p>
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <strong class="govuk-tag govuk-tag--purple">Build ready</strong>
-            </dd>
-            </div>
-
-            <h3 class="govuk-heading-s">QP/PT fields and process</h3>
-            <p class="govuk-body">Build 1:</p>
-            <li class="govuk-list">
-              <p class="govuk-body"><a href="/qppt/met-v1">Awarded: QP/PT met enough to be awarded</a></p>
-            </li>
-            <li class="govuk-list">
-              <p class="govuk-body"><a href="/qppt/not-met">Ejected: Scenarios where either QP/PT aren't met</a></p>
-            </li>
-            <li class="govuk-list">
-              <p class="govuk-body"><a href="/qppt/not-met-kept-in">Not awarded, retained: QP/PT some met</a></p>
-            </li>
-
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            <p class="govuk-body"><a href="/concepts#versions">Versions</a></p>
-          </dt>   
+      <div class="govuk-grid-column-full">
+        <h1 class="govuk-heading-xl">
+          Personal Independence Payment
+        </h1>
         </div>
+
+        <div class="govuk-grid-column-full">
+
+          <p class="govuk-body-l"><strong>Current status: Private Beta</strong> <br>Iterations, changes and updates listed between versions or testing.</p>
+          <p>This prototype is maintained by <a href="https://dwpdigital.atlassian.net/wiki/spaces/HPDU/pages/133261558699/Team+Pelican">Team Pelican</a>.</p>
+
+          <div class="govuk-!-padding-bottom-4"></div>
+
+          {# CMR main prototype #}
+
+          <table class="govuk-table">
+            <caption class="govuk-table__caption govuk-table__caption--l">Case manager review</caption>
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">current prototype</th>
+                <th scope="col" class="govuk-table__header govuk-!-width-one-half">description</th>
+                <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">design material</th>
+              </tr>
+            </thead>
+
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row ">
+
+                <td class="govuk-table__cell govuk-!-padding-bottom-9">
+                  <p>V.3 CMR full prototype</p>
+                  <a href="/case-manager-review/record-details-iteration-4" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+                    Start now
+                    <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+                      <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+                    </svg>
+                  </a>
+                  
+                  <p class="govuk-body"><a href="/case-manager-review/versions-scenarios#scenarios">scenarios</a>, <a href="/case-manager-review/versions-scenarios#versions">versions</a></p>
+
+                </td>
+
+                <td class="govuk-table__cell">
+                  <p class='govuk-body'>Tabs in CMR:</p>
+                 
+                    <a href='/case-manager-review/record-details-iteration-4'>Personal details</a>, 
+                    <a href='/case-manager-review/supporting-docs'>Supporting documents</a>, 
+                    <a href='/case-manager-review/cons-or-disabilities'>Conditions or disabilities</a>, 
+                    <a href='/case-manager-review/activities'>Activities</a>, 
+                    <a href='/event-history/v5-quick-reference/index'>Event History</a> and
+                    <a href='/decision-tab-iteration-4-evidence'>Decision</a>
+                  </ul>
+                </td>
+
+                <td class="govuk-table__cell">
+                  <p class='govuk-link'><a href="/case-manager-review/index">Decision documentation</a></p>
+                  <p class='govuk-body'>Feature work</p>
+                      <li><a href='/decision-tab/index'>Decision tab</a></li>
+                      <li><a href='/decision-tab/index'>QP/PT</a></li>
+                      <li><a href='/case-manager-review/index'>Edit a claim</a></li>
+                    </ul>
+                </td>
+
+              </tr>
+            </tbody>
+
+            {# Event history #}
+
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+
+                <td class="govuk-table__cell">
+                  <p>V.4 Event History</p>
+
+                  <a href="/event-history/v5-quick-reference/index" role="button" draggable="false" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                    view
+                  </a>
+                  <p class="govuk-body"><a href="/event-history/versions-scenarios#scenarios">scenarios</a>, <a href="/event-history/versions-scenarios#versions">versions</a>
+                </td>
+
+                <td class="govuk-table__cell">
+                  <p class='govuk-body'>Event history documents the activity and state of an application or claim for and agent user to view.</p>
+                  <ul class='govuk-list govuk-list--bullet'>
+                    <li><a href='/event-history/v5-quick-reference/add-an-event-refined'>Add an event</a> <strong class="govuk-tag govuk-tag--light-blue">
+                      Pre-award
+                    </strong>
+                  </li>
+                  <div class="govuk-!-padding-bottom-2"></div>
+                  <li><a href='/event-history/in-payment/v2/event-history'>Add an event</a> <strong class="govuk-tag govuk-tag--purple">
+                    Post-award
+                  </strong>
+                </li>
+                </ul>
+                </td>
+
+                <td class="govuk-table__cell">
+                  <p class="govuk-body"><a href="/event-history">Research links </a></p>
+
+                  <p class='govuk-body'>Feature work</p>
+                <ul class='govuk-list govuk-list--bullet'>
+                  <li><a href='/case-eject/index'>Case eject</a></li>
+                </ul>
+
+                <p class="govuk-body"><a href="/event-history/versions-scenarios#in-progress">in progess work</a></p>
+
+              </td>
+
+              </tr>
+            </tbody>
+
+            {# Decision tab #}
+
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+
+                <td class="govuk-table__cell">
+                  <p>V.3 Decision</p>
+
+                  <a href="/decision-tab-iteration-4-evidence" role="button" draggable="false" class="govuk-button govuk-button--secondary" data-module="govuk-button govuk-button--secondary">
+                    view
+                  </a>
+                  <p class="govuk-body"><a href="/decision-tab/versions">versions</a></p>
+
+                </td>
+
+                <td class="govuk-table__cell">
+                  Decision information from the decide stage of the application is stored here. It caters for case eject post decision to rebuild in PIPCS.<br>
+                  <div class="govuk-!-padding-bottom-2"></div>
+                  <p class='govuk-body'>Information included:</p>
+                  <ul class='govuk-list govuk-list--bullet'>
+                    <li>Outcome, award dates, supporting documents and scores</li>
+                    <li>Qualifying period and prospective test outcome</li>
+                  </ul>
+                </td>
+
+                <td class="govuk-table__cell">
+                  <p class="govuk-body"><a href="/decision-tab/index">in progess work</a></p>
+                </td>
+
+              </tr>
+            </tbody>
+
+          </table>
+
+          <div class="govuk-!-padding-bottom-4"></div>
+
+          {# Find a claimant #}
+
+          <table class="govuk-table">
+            <caption class="govuk-table__caption govuk-table__caption--l">Find an applicant or claimant</caption>
+
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">current prototype</th>
+                <th scope="col" class="govuk-table__header govuk-!-width-one-half">description</th>
+                <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">design material</th>
+              </tr>
+            </thead>
+
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+
+                <td class="govuk-table__cell">
+                  <p>Find an applicant or claimant V.2</p>
+                  <a href="/find-someone/v2/search-claimant-v2" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+                    Start now
+                    <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+                      <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+                    </svg>
+                  </a>
+                  <p class="govuk-body"><a href="/find-someone/versions-scenarios#versions">versions</a>, <a href="/find-someone/versions-scenarios#scenarios">scenarios</a></p>
+                </td>
+
+                <td class="govuk-table__cell">
+                    <p class='govuk-body'>This is how users will find the cases and information related to someone when they need it in e.g. on a call with a claimant about their claim.</p>
+                </td>
+
+                <td class="govuk-table__cell">
+                </td>
+
+              </tr>
+            </tbody>
+
+          </table>
+
+          <div class="govuk-!-padding-bottom-4"></div>
+
+          {# View all cases #}
+
+          <table class="govuk-table">
+            <caption class="govuk-table__caption govuk-table__caption--l">View all cases: application</caption>
+            
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">current prototype</th>
+                <th scope="col" class="govuk-table__header govuk-!-width-one-half">description</th>
+                <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">design material</th>
+              </tr>
+            </thead>
+
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+
+                <td class="govuk-table__cell">
+                  <p>V.5</p>
+                  <a href="/view-all-claims/view-all-application-claims" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+                 View
+                  </a>
+                  <p class="govuk-body"><a href="/view-all-claims/index#versions">versions</a>, <a href="/view-all-claims/index#scenarios">scenarios</a></p>
+                </td>
+
+                <td class="govuk-table__cell">
+                  <p class='govuk-body'>View all cases (pre-award) in new PIP service.
+                  </p>
+                  <strong class="govuk-tag govuk-tag--turquoise">
+                   V.5 Update
+                  </strong>
+                  <div class="govuk-!-padding-bottom-2"></div>
+                  <ul class="govuk-list">
+                    <li>Correction: 'Start of application' removed. </li>
+                  </ul>
+                      <p class="govuk-body">claim information columns:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>national insurance number</li>
+                        <li>date of claim</li>
+                        <li>current status</li>
+                        <li>days in status</li>
+                      </ul>
+                </td>
+
+                <td class="govuk-table__cell">
+                  <p class="govuk-body"><a href="/view-all-claims/index#in-progress">concepts and in progress work</a></p>
+
+                </td>
+
+              </tr>
+            </tbody>
+
+          </table>
+
+          <div class="govuk-!-padding-bottom-4"></div>
+
+          {# View all claims award #}
+
+          <table class="govuk-table">
+            <caption class="govuk-table__caption govuk-table__caption--l">View all cases: award</caption>
+            
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">current prototype</th>
+                <th scope="col" class="govuk-table__header govuk-!-width-one-half">description</th>
+                <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">design material</th>
+              </tr>
+            </thead>
+
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+
+                <td class="govuk-table__cell">
+                  <p>V.1</p>
+                  <a href="/view-all-claims/in-award/view-awarded-claims" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+                 View
+                  </a>
+                </td>
+
+                <td class="govuk-table__cell">
+                  <p class='govuk-body'>View all cases in award in new PIP service.<br>
+                    Statuses to filter by reflect award states.
+                  </p>
+
+                      <p class="govuk-body">claim information categories:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>national insurance number</li>
+                        <li>date of claim</li>
+                        <li>current status</li>
+                        <li>days in status</li>
+                      </ul>
+                </td>
+
+                <td class="govuk-table__cell">
+                </td>
+
+              </tr>
+            </tbody>
+
+          </table>
+
       
-    </div>
-
-    <div class="govuk-grid-column-full">
-
-      <h2 class="govuk-heading-m">Event history and Add an event </h2>
-
-      <dl class="govuk-summary-list govuk-summary-list--no-border">
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            <p class="govuk-body"><a href="/event-history/v5-quick-reference/index">Add an event, Quick reference included (timeline format) V.6</a></p>
-          </dt>
-          <dd class="govuk-summary-list__value">
-            <strong class="govuk-tag">Built</strong>
-          </dd> 
-        </div>
-
-        <h2 class="govuk-heading-s">Case eject</h2>
-  
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              <p class="govuk-body"><a href="/case-eject/event-history">Case eject for structured data</a></p>
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <strong class="govuk-tag govuk-tag--yellow">in design</strong>
-            </dd> 
-          </div>
-  
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            <p class="govuk-body"><a href="/concepts#versions">Versions</a></p>
-            <p class="govuk-body"><a href="/concepts#concepts">Concepts</a></p>
-            <p class="govuk-body"><a href="/concepts#scenarios">Scenarios</a></p>
-          </dt>
-        </div>
-        
-      </dl>
+    <dl class="govuk-summary-list govuk-summary-list--no-border">
 
       <h2 class="govuk-heading-m">Agent UI homepage</h2>
 
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          <p class="govuk-body"><a href="/pip-service-home">September TBC: Links for the homepage</a></p>
+          <p class="govuk-body"><a href="https://pip-end-to-end-84bc0caed567.herokuapp.com/agent/home/entry">E2E prototype Agent UI</a></p>
+          <p class="govuk-body">password: pip-e2e</p>
         </dt>
       </div>
+      
 
-
-    <h2 class="govuk-heading-m">Find a claimant</h2>
-
-<dl class="govuk-summary-list govuk-summary-list--no-border">
-  
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      <p class="govuk-body"><a href="/find-someone/v2/search-claimant-v2">Find an applicant or claimant V.2</a></p>
-    </dt>
-    <dd class="govuk-summary-list__value">
-      <strong class="govuk-tag govuk-tag--purple">build ready</strong>
-    </dd>
-  </div>
-
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      <p class="govuk-body"><a href="/find-someone/v2/no-nino-found">No NINO found V.2</a></p>
-    </dt>
-    <dd class="govuk-summary-list__value">
-      <strong class="govuk-tag govuk-tag--purple">build ready</strong>
-    </dd>
-  </div>
-
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      <p class="govuk-body"><a href="/concepts#versions">Versions</a></p>
-    </dt>
-  </div>
-
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      <p class="govuk-body"><a href="/concepts#scenarios">Scenarios</a></p>
-    </dt>
-  </div>
-  
-</dl>
-
-
-      <h2 class="govuk-heading-m">View all claims</h2>
-  
-<dl class="govuk-summary-list govuk-summary-list--no-border">
-
-  <h3 class="govuk-body"><b>Sort by, no filter:</b> Days in current status</h3>
-
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      <p class="govuk-body"><a href="/view-all-claims/no-filter-v1">V.1 - Sortable columns, no pagination (for thin slice)</a></p>
-    </dt> 
-    <dd class="govuk-summary-list__value">
-      <strong class="govuk-tag">Built</strong>
-    </dd>     
-  </div>
-
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      <p class="govuk-body"><a href="/view-all-claims/days-in-status/days-in-status-v1">V.2 - Filter claim status</a></p>
-    </dt>   
-    <dd class="govuk-summary-list__value">
-      <strong class="govuk-tag govuk-tag--green">in build</strong>
-    </dd>
-  </div>
-
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      <p class="govuk-body"><a href="/concepts#concepts">Concepts</a></p>
-      <p class="govuk-body"><a href="/concepts#scenarios">Scenarios</a></p>
-    </dt>   
-  </div>
-  
-</dl>
-
-<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-
-    <h2 class="govuk-heading-m">Research and testing</h2>
-    <h3 class="govuk-body">Event History</h3>
-    <p class="govuk-body"><a href="/research/event-history/state-change-definitions">State change terms</a></p>
-    <p class="govuk-body"><a href="/research/event-history/sprint-5-list">TBC list sprint 5</a></p>
-
-    <h3 class="govuk-body">Edit a claim- Sprint 4</h3>
-    <ol class="govuk-list govuk-list--number">
-      <li><p class="govuk-body"><a href="/pip-service-home">PIP Agent UI homepage - original</a></p></li>
-      <li><p class="govuk-body"><a href="/edit-claim/pip-service-home">'Edit a claim' - link on homepage V.1</a></p></li>
-      <li><p class="govuk-body"><a href="/case-manager-review/record-details-edit-link">CMR - Edit links</a></p></li>
-      <li><p class="govuk-body"><a href="/case-manager-review/record-details-edit-button">CMR - Edit button</a></p></li>
-    </ol>
-  
-  </div>
-</div>
+    </dl>
+      </div>
+    </div>
+  </main>
 
 </div>
-
-
-   </main>
 
 {% endblock %}
 
@@ -258,5 +352,3 @@
 }) }} 
 
 {% endblock %}
-
-</div>
