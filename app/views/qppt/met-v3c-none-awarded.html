@@ -62,55 +62,18 @@
               </a>
             </li>
             <li class="govuk-tabs__list-item">
+              <a class="govuk-tabs__tab" href="#documents">
+                Supporting documents
+              </a>
+            </li>
+            <li class="govuk-tabs__list-item">
               <a class="govuk-tabs__tab" href="#scoring">
-                Supporting documents and scoring
+                Scoring
               </a>
             </li>
           </ul>
           <div class="govuk-tabs__panel" id="outcome">
-            <h2 class="govuk-heading-l">Outcome: awarded</h2>
-            <dl class="govuk-summary-list">
-              <div class="govuk-summary-list__row">
-                <dt id="decision" class="govuk-summary-list__key">
-                  Award start date
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  2 March 2024
-                </dd>
-              </div>
-              <div class="govuk-summary-list__row">
-                <dt id="decision" class="govuk-summary-list__key">
-                  Award end date
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  1 March 2027
-                </dd>
-              </div>
-              <div class="govuk-summary-list__row">
-                <dt id="decision" class="govuk-summary-list__key">
-                  Review date
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  1 March 2026
-                </dd>
-              </div>
-              <div class="govuk-summary-list__row">
-                <dt id="decision" class="govuk-summary-list__key">
-                  Review period
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  3 years
-                </dd>
-              </div>
-              <div class="govuk-summary-list__row">
-                <dt id="decision" class="govuk-summary-list__key">
-                  Payment schedule
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  Every 4 weeks on a [Day of the week]
-                </dd>
-              </div>
-              </dl>
+            <h2 class="govuk-heading-l">Outcome: not awarded</h2>
               <h3 class="govuk-heading-m">Daily living and mobility</h3>
               <dl class="govuk-summary-list">
                 <div class="govuk-summary-list__row">
@@ -118,13 +81,13 @@
                     Daily living part
                   </dt>
                   <dd class="govuk-summary-list__value">
-                    <strong class="govuk-tag">Standard rate</strong>
+                    <strong class="govuk-tag govuk-tag--red">No payment</strong>
                     <div class="govuk-!-padding-bottom-4"></div>
-                    £72.65 a week <br><br>
-  
-                    10 points<br>
-                    Met 3 month qualifying period<br> 
-                    Met 9 month prospective test
+                    Met  3 month qualifying period
+                    <div class="govuk-!-padding-bottom-2"></div>
+                    <p class="govuk-body"><strong>Reason for no payment:</strong><br>
+                      5 points<br>
+                      Did not meet 9 month prospective test</p>
                   </dd>
                 </div>
     
@@ -133,48 +96,31 @@
                     Mobility part
                   </dt>
                   <dd class="govuk-summary-list__value">
+                    <strong class="govuk-tag govuk-tag--red">No payment</strong>
                     <div class="govuk-!-padding-bottom-4"></div>
-                      <strong class="govuk-tag">Standard rate</strong>
-                      <div class="govuk-!-padding-bottom-4"></div>
-                      £28.70 a week <br><br>
-                      10 points<br>
-                      Met 3 month qualifying period<br> 
-                      Met 9 month prospective test
+                    8 points<br>
+                    Met 3 month qualifying period
+                    <div class="govuk-!-padding-bottom-2"></div>
+                    <p class="govuk-body"><strong>Reason for no payment:</strong><br>
+                      Did not meet 9 month prospective test</p>
                   </dd>
                 </div>
       
                 </dl>
-                <h3 class="govuk-heading-m">Arrears</h3>
-                <dl class="govuk-summary-list">
-                  <div class="govuk-summary-list__row">
-                    <dt id="decision" class="govuk-summary-list__key">
-                      First payment amount
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                      £[Value]
-                    </dd>
-                  </div>
-                  <div class="govuk-summary-list__row">
-                    <dt id="decision" class="govuk-summary-list__key">
-                      Payment period
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                      From [start date] until [end date]
-                    </dd>
-                  </div>
-                  <div class="govuk-summary-list__row">
-                    <dt id="decision" class="govuk-summary-list__key">
-                      Due date
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                      [Day/ Month/ Year]
-                    </dd>
-                  </div>
-                </dl>
           </div>
-          <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="scoring">
+          <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="documents">
             <h2 class="govuk-heading-l">Supporting documents</h2>
-
+            <h3 class="govuk-heading-m">Documents referenced in decision letter</h3>
+            <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-3">
+              <li>Information provided by care home</li>
+              <li>Care plan</li>
+              <li>Certificate of Vision Impairment (CVI)</li>
+              <li>Extra information applicant gave us</li>
+              <li>Letter from GP</li>
+              <li>Health information gather (PIP2)</li>
+              <li>Letter from hospital doctor</li>
+            </ul>
+          <!--
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key govuk-!-margin-bottom-3">
@@ -192,7 +138,13 @@
             </ul>
             </dd>
           </div>
-        </dl>
+        </dl>-->
+
+    
+
+     
+          </div>
+          <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="scoring">
 
     <h2 class="govuk-heading-l">Daily living scoring</h2>
 
@@ -205,6 +157,14 @@
         </dt>
         <dd class="govuk-summary-list__value">
           <strong>B</strong>: Needs to use an aid or appliance to be able to either prepare or cook a simple meal
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Score
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <strong>0</strong> out of <strong>8</strong>
         </dd>
       </div>
       <div class="govuk-summary-list__row">
@@ -226,6 +186,14 @@
               </dt>
               <dd class="govuk-summary-list__value">
                 <strong>A</strong>: Can take nutrition unaided
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Score
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <strong>0</strong> out of <strong>10</strong>
               </dd>
             </div>
             <div class="govuk-summary-list__row">
@@ -253,6 +221,14 @@
       </div>
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
+          Score
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <strong>0</strong> out of <strong>8</strong>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
           Justification
         </dt>
         <dd class="govuk-summary-list__value">
@@ -270,6 +246,14 @@
         </dt>
         <dd class="govuk-summary-list__value">
           <strong>F</strong>: Cannot wash and bathe at all and needs another person to wash their entire body. Needs assistance to be able to wash their body between the shoulders and waist
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Score
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <strong>0</strong> out of <strong>8</strong>
         </dd>
       </div>
       <div class="govuk-summary-list__row">
@@ -295,6 +279,14 @@
       </div>
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
+          Score
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <strong>0</strong> out of <strong>8</strong>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
           Justification
         </dt>
         <dd class="govuk-summary-list__value">
@@ -312,6 +304,14 @@
             </dt>
             <dd class="govuk-summary-list__value">
               <strong>B</strong>: Needs to use an aid or appliance to be able to dress or undress
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Score
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <strong>0</strong> out of <strong>8</strong>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -337,6 +337,14 @@
               </div>
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
+                  Score
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  <strong>0</strong> out of <strong>12</strong>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
                   Justification
                 </dt>
                 <dd class="govuk-summary-list__value">
@@ -356,6 +364,14 @@
                     <strong>B</strong>: Needs to use an aid or appliance, other than spectacles or contact lenses, to be able to read or understand either basic or complex written information
                    </dd>
                  </div>
+                 <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Score
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <strong>0</strong> out of <strong>8</strong>
+                  </dd>
+                </div>
                  <div class="govuk-summary-list__row">
                    <dt class="govuk-summary-list__key">
                      Justification
@@ -385,7 +401,14 @@
               </ul>
             </dd>
           </div>
-
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Score
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <strong>0</strong> out of <strong>8</strong>
+            </dd>
+          </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Justification
@@ -407,7 +430,14 @@
                 <strong>D</strong>: Cannot make any budgeting decisions at all
               </dd>
             </div>
-  
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Score
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <strong>0</strong> out of <strong>6</strong>
+              </dd>
+            </div> 
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Justification
@@ -431,7 +461,14 @@
                       <strong>F</strong>: Cannot follow the route of a familiar journey without another person, an assistance dog or an orientation aid
                       </dd>
                       </div>
-            
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          Score
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          <strong>0</strong> out of <strong>12</strong>
+                        </dd>
+                      </div>           
                       <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
                           Justification
@@ -453,7 +490,14 @@
                     <strong>C</strong>: Can stand and then move unaided more than 20 metres but no more than 50 metres
                      </dd>
                      </div>
-           
+                     <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Score
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        <strong>0</strong> out of <strong>12</strong>
+                      </dd>
+                    </div>          
                      <div class="govuk-summary-list__row">
                        <dt class="govuk-summary-list__key">
                          Justification
