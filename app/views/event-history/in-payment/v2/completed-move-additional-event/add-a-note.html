@@ -1,0 +1,92 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %} Add a note {% endblock %}
+
+{% block main %}
+
+  <div class="govuk-width-container">
+    <div class="column-full">
+          <section class="dwp-quick-reference" aria-label="Case information">
+            <dl class="dwp-quick-reference__block">
+            <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+            <dd class="dwp-quick-reference__primary">Jane Doe</dd>
+            <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">National Insurance number:</dt>
+            <dd class="dwp-quick-reference__secondary">QQ 12 34 56 X</dd>
+            </dl>
+            </section>
+
+    <nav class="navigation-secondary">
+      <ul>
+        <li>
+          <a href="/case-manager-review/record-details-iteration-4" aria-current="section">Personal details</a>
+        </li>
+        <li>
+          <a href="#">Supporting documents</a>
+        </li>
+        <li>
+          <a href="#">Conditions or disabilities</a>
+        </li>
+        <li>
+          <a href="#">Activities</a>
+        </li>
+        <li>
+          <a href="/event-history/v5-quick-reference/index" class="active" aria-current="section">Event history</a>
+        </li>
+        <li>
+          <a href="/decision-tab-iteration-4-evidence" aria-current="section">Decision</a>
+        </li>
+
+        {# <li>
+          <a href="Other-actions">Other actions</a>
+        </li> #}
+
+      </ul>
+    </nav>
+</div>
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+
+ <br><br><br><br>
+
+ <div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="/event-history/in-payment/v2/completed-move-additional-event/added-event" method="post">
+
+        <div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength="2000">
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--xl" for="with-hint">
+              Add a note
+            </label>
+          </h1>
+          <div id="with-hint-hint" class="govuk-hint">
+            Enter more information about this event.
+          </div>
+          <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="eventThree" rows="5" aria-describedby="with-hint-info with-hint-hint"></textarea>
+          <div id="with-hint-info" class="govuk-hint govuk-character-count__message">
+            You have 2000 characters remaining
+          </div>
+        </div>
+
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+      </div>
+
+  </div>
+  </div>
+</form>
+
+<br><br>
+
+</div>
+
+
+{% endblock %}
