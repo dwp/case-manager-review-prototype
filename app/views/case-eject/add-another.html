@@ -65,10 +65,10 @@
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
-        name: "reason",
+        name: "another",
         fieldset: {
           legend: {
-            text: "Why does the claim need to move to PIPCS?",
+            text: "Add another reason?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
@@ -78,76 +78,12 @@
         },
         items: [
         {
-          value: "Alternative format needed",
-          text: "Alternative format needed"
+          value: "Yes",
+          text: "Yes"
         },
         {
-          value: "Appointee added",
-          text: "Appointee added"
-        },
-        {
-          value: "Death of claimant",
-          text: "Death of claimant"
-        },
-        {
-          value: "Special rules for end of life (SREL)",
-          text: "Special rules for end of life (SREL)"
-        },
-        {
-          value: "Evidence of fraud",
-          text: "Evidence of fraud"
-        },
-        {
-          value: "Withdrawn claim",
-          text: "Withdrawn claim"
-        },
-        {
-          value: "Change of claimant details",
-          text: "Change of claimant details"
-        },
-        {
-          value: "Details do not match Searchlight record",
-          text: "Details do not match Searchlight record"
-        },
-        {
-          value: "Residency and presence criteria",
-          text: "Residency and presence criteria"
-        },
-        {
-          value: "Immigration status",
-          text: "Immigration status"
-        },
-        {
-          value: "Working abroad",
-          text: "Working abroad"
-        },
-        {
-          value: "Getting other benefits",
-          text: "Getting other benefits"
-        },
-        {
-          value: "Stays in hospital or other accommodation",
-          text: "Stays in hospital or other accommodation"
-        },
-        {
-          value: "Did not attend health assessment",
-          text: "Did not attend health assessment"
-        },
-        {
-          value: "Did not follow health assessment requirements",
-          text: "Did not follow health assessment requirements"
-        },
-        {
-          value: "Keep customer interactions safe (KCIS) marker",
-          text: "Keep customer interactions safe (KCIS) marker"
-        },
-        {
-          value: "Prison or legal custody",
-          text: "Prison or legal custody"
-        },
-        {
-          value: "Other",
-          text: "Other"
+          value: "No",
+          text: "No"
         }
         ]
       }) }}

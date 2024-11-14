@@ -258,22 +258,58 @@ router.post('/case-eject/add-event',function(request, response) {
     // Add any event
 router.post('/case-eject/reason',function(request, response) {
     var addAny = request.session.data['reason']
-    if (addAny == "change-circs"){
-        response.redirect("/case-eject/add-note")
-    } else if (addAny == "telephony-idv") {
-        response.redirect("/case-eject/add-note")
-    } else if (addAny == "as-identified") {
-        response.redirect("/case-eject/add-note")
-    } else if (addAny == "pre-ref-issues") {
-        response.redirect("/case-eject/add-note")
-    } else if (addAny == "pre-dec-issues") {
-        response.redirect("/case-eject/add-note")
-    } else if (addAny == "mand-recon") {
-        response.redirect("/case-eject/add-note")
-    } else if (addAny == "ap-outcome") {
-        response.redirect("/case-eject/add-note")
+    if (addAny == "Alternative format needed"){
+        response.redirect("/case-eject/add-note");
+    } else if (addAny == "Appointee added") {
+        response.redirect("/case-eject/add-note");
+    } else if (addAny == "Death of claimant") {
+        response.redirect("/case-eject/add-note");
+    } else if (addAny == "Special rules for end of life (SREL)") {
+        response.redirect("/case-eject/add-note");
+    } else if (addAny == "Evidence of fraud") {
+        response.redirect("/case-eject/add-note");
+    } else if (addAny == "Withdrawn claim") {
+        response.redirect("/case-eject/add-note");
+    } else if (addAny == "Change of claimant details") {
+        response.redirect("/case-eject/change");
+    } else if (addAny == "Details do not match Searchlight record") {
+        response.redirect("/case-eject/searchlight");
+    } else if (addAny == "Residency and presence criteria") {
+        response.redirect("/case-eject/add-note");
+    } else if (addAny == "Immigration status") {
+        response.redirect("/case-eject/add-note");
+    } else if (addAny == "Working abroad") {
+        response.redirect("/case-eject/add-note");
+    } else if (addAny == "Getting other benefits") {
+        response.redirect("/case-eject/benefits");
+    } else if (addAny == "Stays in hospital or other accommodation") {
+        response.redirect("/case-eject/hospital");
+    } else if (addAny == "Did not attend health assessment") {
+        response.redirect("/case-eject/add-note");
+    } else if (addAny == "Did not follow health assessment requirements") {
+        response.redirect("/case-eject/add-note");
+    } else if (addAny == "Keep customer interactions safe (KCIS) marker") {
+        response.redirect("/case-eject/add-note");
+    } else if (addAny == "Prison or legal custody") {
+        response.redirect("/case-eject/add-note");
+    } else if (addAny == "Other") {
+        response.redirect("/case-eject/add-note");
+    } else {
+        response.redirect("/case-eject/error");
     }
     })
+
+// Add move to PIPCS notes
+
+router.get('/case-eject/add-note', function (req, res) {
+    //Retrieve form data
+    var addAny =req.session.data['reason'];
+
+    //Display screen and make data available
+    res.render('/case-eject/add-note', {
+        addAny: addAny
+    });
+});
 
 //-------------------------------------------------------------------
     // QPPT
