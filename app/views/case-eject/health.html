@@ -60,30 +60,30 @@
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" action="/another-answer" method="post">
+    <form class="form" action="/health-answer" method="post">
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
-        name: "another",
+        name: "health",
         fieldset: {
           legend: {
-            text: "Add another reason?",
+            text: "Problem with health assessment",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
         },
         hint: {
-          text: "You can keep adding reasons once you've added one..."
+          text: "???"
         },
         items: [
         {
-          value: "Yes",
-          text: "Yes"
+          value: "Did not attend health assessment",
+          text: "Did not attend health assessment"
         },
         {
-          value: "No",
-          text: "No"
+          value: "Did not follow health assessment requirements",
+          text: "Did not follow health assessment requirements"
         }
         ]
       }) }}

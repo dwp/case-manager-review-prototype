@@ -60,15 +60,15 @@
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" action="/another-answer" method="post">
+    <form class="form" action="/reason-answer" method="post">
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
-        name: "another",
+        name: "reason",
         fieldset: {
           legend: {
-            text: "Add another reason?",
+            text: "Why does the [application/ claim] need to move to PIPCS?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
@@ -78,20 +78,85 @@
         },
         items: [
         {
-          value: "Yes",
-          text: "Yes"
+          value: "Alternative format needed",
+          text: "Alternative format needed"
         },
         {
-          value: "No",
-          text: "No"
+          value: "Appointee added",
+          text: "Appointee added"
+        },
+        {
+          value: "Change of personal details",
+          text: "Change of personal details"
+        },
+        {
+          value: "Death of applicant or claimant",
+          text: "Death of applicant or claimant"
+        },
+        {
+          value: "Details do not match Searchlight record",
+          text: "Details do not match Searchlight record"
+        },
+        {
+          value: "Evidence of fraud",
+          text: "Evidence of fraud"
+        },
+        {
+          value: "Getting other benefits",
+          text: "Getting other benefits"
+        },
+        {
+          value: "Immigration status",
+          text: "Immigration status"
+        },
+        {
+          value: "Keep customer interactions safe (KCIS) marker",
+          text: "Keep customer interactions safe (KCIS) marker"
+        },
+        {
+          value: "Problem with health assessment",
+          text: "Problem with health assessment"
+        },
+        {
+          value: "Residence and presence criteria",
+          text: "Residence and presence criteria"
+        },
+        {
+          value: "Special rules for end of life (SREL)",
+          text: "Special rules for end of life (SREL)"
+        },
+        {
+          value: "Stays in prison, hospital or other accommodation",
+          text: "Stays in prison, hospital or other accommodation"
+        },
+        {
+          value: "Withdrawn claim",
+          text: "Withdrawn claim"
+        },
+        {
+          value: "Working abroad",
+          text: "Working abroad"
+        },
+        {
+          divider: "or"
+        },
+        {
+          value: "Other",
+          text: "Other"
         }
         ]
       }) }}
 
       {{ govukButton({
-        text: "Continue"
+        text: "Continue",
+        classes: "govuk-!-margin-right-4"
       }) }}
 
+      {{ govukButton({
+        text: "Save and exit",
+        href: "/case-eject/event-history-movepipcsadded",
+        classes: "govuk-button--secondary"
+      }) }}
 </form>
 
 </div>

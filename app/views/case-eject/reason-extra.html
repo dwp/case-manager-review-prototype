@@ -68,7 +68,7 @@
     name: "reason",
     fieldset: {
       legend: {
-        text: "Why does the application need to move to PIPCS?",
+        text: "Why does the claim need to move to PIPCS?",
         isPageHeading: true,
         classes: "govuk-fieldset__legend--xl"
       }
@@ -152,7 +152,14 @@
   }) }}
 
   {{ govukButton({
-    text: "Continue"
+    text: "Continue",
+    classes: "govuk-!-margin-right-4"
+  }) }}
+
+  {{ govukButton({
+    text: "Save and exit",
+    href: "/case-eject/event-history-movepipcsadded",
+    classes: "govuk-button--secondary"
   }) }}
 
 </form>
@@ -255,7 +262,14 @@
   }) }}
 
   {{ govukButton({
-    text: "Continue"
+    text: "Continue",
+    classes: "govuk-!-margin-right-4"
+  }) }}
+
+  {{ govukButton({
+    text: "Save and exit",
+    href: "/case-eject/event-history-movepipcsadded",
+    classes: "govuk-button--secondary"
   }) }}
 
 </form>

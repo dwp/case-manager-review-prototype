@@ -60,30 +60,43 @@
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" action="/another-answer" method="post">
+    <form class="form" action="/benefits-answer" method="post">
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
-        name: "another",
+        name: "benefits",
         fieldset: {
           legend: {
-            text: "Add another reason?",
+            text: "Which other benefits does the applicant get?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
         },
-        hint: {
-          text: "You can keep adding reasons once you've added one..."
-        },
         items: [
         {
-          value: "Yes",
-          text: "Yes"
+          value: "Armed Forces Independence Payment (AFIP)",
+          text: "Armed Forces Independence Payment (AFIP)"
         },
         {
-          value: "No",
-          text: "No"
+          value: "Child Disability Payment (CDP) or Adult Disability Payment (ADP)",
+          text: "Child Disability Payment (CDP) or Adult Disability Payment (ADP)"
+        },
+        {
+          value: "Constant Attendance Allowance (CAA)",
+          text: "Constant Attendance Allowance (CAA)"
+        },
+        {
+          value: "Disability Living Allowance (DLA)",
+          text: "Disability Living Allowance (DLA)"
+        },
+        {
+          value: "Foreign benefits",
+          text: "Foreign benefits"
+        },
+        {
+          value: "War Pensioners' Mobility Supplement (WPMS)",
+          text: "War Pensioners' Mobility Supplement (WPMS)"
         }
         ]
       }) }}

@@ -60,30 +60,35 @@
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" action="/another-answer" method="post">
+    <form class="form" action="/change-answer" method="post">
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
-        name: "another",
+        name: "change",
         fieldset: {
           legend: {
-            text: "Add another reason?",
+            text: "Which personal details have changed?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
         },
-        hint: {
-          text: "You can keep adding reasons once you've added one..."
-        },
         items: [
         {
-          value: "Yes",
-          text: "Yes"
+          value: "Address",
+          text: "Address"
         },
         {
-          value: "No",
-          text: "No"
+          value: "Name",
+          text: "Name"
+        },
+        {
+          value: "Payment details",
+          text: "Payment details"
+        },
+        {
+          value: "Telephone number",
+          text: "Telephone number"
         }
         ]
       }) }}
