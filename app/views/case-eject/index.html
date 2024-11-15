@@ -8,32 +8,58 @@
     text: "Back",
     href: "javascript:window.history.back()"
   }) }}
+
   {% endblock %}
 
 {% block content %}
+<p class="govuk-body"><strong class="govuk-tag govuk-tag--yellow">in design</strong></p>
 
-<h1 class="govuk-heading-xl">Case eject</h1>
-      
-<div class="govuk-summary-list__row">
-  <dt class="govuk-summary-list__key">
-    <p class="govuk-body"><a href="/case-eject/event-history">Case eject for structured data</a></p>
-  </dt>
-  <dd class="govuk-summary-list__value">
-    <strong class="govuk-tag govuk-tag--yellow">in design</strong>
-  </dd> 
-</div>
+<form class="form" action="/scenario-answer" method="post">
 
-  {% endblock %}
+  {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+  {{ govukRadios({
+    name: "scenario",
+    fieldset: {
+      legend: {
+        text: "Move to PIPCS: select scenario",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+    },
+    hint: {
+      text: "Which scenario do you want to simulate?"
+    },
+    items: [
+    {
+      value: "pre-award",
+      text: "Pre-award"
+    },
+    {
+      value: "post-award",
+      text: "Post-award"
+    }
+    ]
+  }) }}
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+</form>
+
+{% endblock %}
 
 {% block footer %}
 {% from "internal-service-footer/macro.njk" import dwpFooter %}
 
-{{ dwpFooter({
-  meta: {
-    visuallyHiddenTitle: "Meta links",
-    items: [
-    ]
-  }
-}) }} 
+  {{ dwpFooter({
+    meta: {
+      visuallyHiddenTitle: "Meta links",
+      items: [
+      ]
+    }
+  }) }} 
 
 {% endblock %}
+   

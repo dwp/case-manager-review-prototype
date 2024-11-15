@@ -60,30 +60,42 @@
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" action="/another-answer" method="post">
+    <form class="form" action="/prison-answer" method="post">
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
-        name: "another",
+        name: "prison",
         fieldset: {
           legend: {
-            text: "Add another reason?",
+            text: "What type of institution or accommodation did the claimant stay in?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
         },
         hint: {
-          text: "You can keep adding reasons once you've added one..."
+          text: "???"
         },
         items: [
         {
-          value: "Yes",
-          text: "Yes"
+          value: "Care home",
+          text: "Care home"
         },
         {
-          value: "No",
-          text: "No"
+          value: "Hospital or similar institutions",
+          text: "Hospital or similar institutions"
+        },
+        {
+          value: "Nursing home",
+          text: "Nursing home"
+        },
+        {
+          value: "Prison or legal custody",
+          text: "Prison or legal custody"
+        },
+        {
+          value: "Residential school or college",
+          text: "Residential school or college"
         }
         ]
       }) }}

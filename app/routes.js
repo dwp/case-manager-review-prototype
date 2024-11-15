@@ -241,61 +241,214 @@ router.post('/event-history/in-payment/stop-payment-in-pip-service/are-you-sure'
 
 // CASE EJECT
 
-// Add any event
-router.post('/case-eject/add-event',function(request, response) {
-    var addAny = request.session.data['add-any-event']
-    if (addAny == "case-eject"){
-        response.redirect("/case-eject/reason")
-    } else if (addAny == "completed-case-eject") {
-        response.redirect("/event-history/v5-quick-reference/completed-move/add-a-note")
-    } else if (addAny == "extend-hig") {
-        response.redirect("/event-history/v5-quick-reference/completed-move/add-a-note")
-    } else if (addAny == "other-event") {
-        response.redirect("/event-history/v5-quick-reference/other-event/add-a-note")
-    }
-    })
+//Select eject scenario
+router.post('/scenario-answer', function (req, res) {
+    //Store response
+    var scenario = req.session.data['scenario'];
 
-    // Add any event
-router.post('/case-eject/reason',function(request, response) {
+    //Redirect
+    res.redirect('/case-eject/event-history');
+});
+
+//Redirect based on event and scenario
+router.post('/add-event-answer', function (req, res) {
+    //Store responses
+    var addAnyEvent = req.session.data['add-any-event'];
+    //Fetch previous session data
+    var scenario = req.session.data['scenario'];
+
+    if (addAnyEvent === 'case-eject' && scenario === 'pre-award'){
+        res.redirect('/case-eject/reason');
+    }
+    else if (addAnyEvent === 'case-eject' && scenario === 'post-award'){
+        res.redirect('/case-eject/confirmation');
+    }
+});
+
+// Choose event type NB is this needed?
+//router.post('/case-eject/add-event',function(request, response) {
+    //var addAny = request.session.data['add-any-event']
+   // if (addAny == "case-eject"){
+       //response.redirect("/case-eject/confirmation")
+    //} else if (addAny == "completed-case-eject") {
+       // response.redirect("/event-history/v5-quick-reference/completed-move///add-a-note")
+   // } else if (addAny == "extend-hig") {
+       // response.redirect("/event-history/v5-quick-reference/completed-move///add-a-note")
+   // } else if (addAny == "other-event") {
+       //response.redirect("/event-history/v5-quick-reference/other-event/add-a-note")
+   // }
+   // });
+
+
+    // Confirm proceed through identified moved to PIPCS
+    router.post('/confirmation-answer',function(request, response) {
+        var confirmation = request.session.data['confirmation']
+        if (confirmation == "Yes"){
+            response.redirect("/case-eject/reason")
+        } else if (confirmation == "No") {
+            response.redirect("/case-eject/event-history")
+        } else if (!confirmation){
+            response.redirect("/case-eject/confirmation-error");
+        }
+        })
+
+//Make previous responses available to reason screen
+router.get('/case-eject/reason', function(req, res) {
+    //retrieve form data
+    var scenario = req.session.data['scenario'];
+
+    //Display new screen and make form data available to use
+    res.render('case-eject/reason', {
+        scenario: scenario
+    });
+} );
+
+//Make previous responses available to reason screen
+router.get('/case-eject/reason-extra', function(req, res) {
+    //retrieve form data
+    var scenario = req.session.data['scenario'];
+
+    //Display new screen and make form data available to use
+    res.render('case-eject/reason-extra', {
+        scenario: scenario
+    });
+} );
+
+    // Select a reason for identified move to PIPCS
+router.post('/reason-answer',function(request, response) {
     var addAny = request.session.data['reason']
     if (addAny == "Alternative format needed"){
         response.redirect("/case-eject/add-note");
     } else if (addAny == "Appointee added") {
         response.redirect("/case-eject/add-note");
-    } else if (addAny == "Death of claimant") {
-        response.redirect("/case-eject/add-note");
-    } else if (addAny == "Special rules for end of life (SREL)") {
-        response.redirect("/case-eject/add-note");
-    } else if (addAny == "Evidence of fraud") {
-        response.redirect("/case-eject/add-note");
-    } else if (addAny == "Withdrawn claim") {
-        response.redirect("/case-eject/add-note");
-    } else if (addAny == "Change of claimant details") {
+    } else if (addAny == "Change of personal details") {
         response.redirect("/case-eject/change");
+    } else if (addAny == "Mandatory reconsideration") {
+        response.redirect("/case-eject/add-note");
+    } else if (addAny == "Claimant did not receive payment") {
+        response.redirect("/case-eject/add-note");
+    } else if (addAny == "Foreign benefits") {
+        response.redirect("/case-eject/add-note");
+    } else if (addAny == "New evidence sent after decision") {
+        response.redirect("/case-eject/add-note");
+    } else if (addAny == "New Motability agreement") {
+        response.redirect("/case-eject/add-note");
+    } else if (addAny == "Request for split payment") {
+        response.redirect("/case-eject/add-note");
+    }else if (addAny == "Death of applicant or claimant") {
+        response.redirect("/case-eject/add-note");
     } else if (addAny == "Details do not match Searchlight record") {
         response.redirect("/case-eject/searchlight");
-    } else if (addAny == "Residency and presence criteria") {
+    } else if (addAny == "Evidence of fraud") {
         response.redirect("/case-eject/add-note");
-    } else if (addAny == "Immigration status") {
-        response.redirect("/case-eject/add-note");
-    } else if (addAny == "Working abroad") {
-        response.redirect("/case-eject/add-note");
-    } else if (addAny == "Getting other benefits") {
+    } else if (addAny == "Applicant gets other benefits") {
         response.redirect("/case-eject/benefits");
-    } else if (addAny == "Stays in hospital or other accommodation") {
-        response.redirect("/case-eject/hospital");
-    } else if (addAny == "Did not attend health assessment") {
-        response.redirect("/case-eject/add-note");
-    } else if (addAny == "Did not follow health assessment requirements") {
+    } else if (addAny == "Immigration status") {
         response.redirect("/case-eject/add-note");
     } else if (addAny == "Keep customer interactions safe (KCIS) marker") {
         response.redirect("/case-eject/add-note");
-    } else if (addAny == "Prison or legal custody") {
+    } else if (addAny == "Health assessment could not be completed") {
+        response.redirect("/case-eject/health");
+    } else if (addAny == "Residence and presence criteria") {
+        response.redirect("/case-eject/add-note");
+    } else if (addAny == "Special rules for end of life (SREL)") {
+        response.redirect("/case-eject/add-note");
+    } else if (addAny == "Stays in prison, hospital or other accommodation") {
+        response.redirect("/case-eject/prison");
+    } else if (addAny == "Withdrawn claim") {
+        response.redirect("/case-eject/add-note");
+    } else if (addAny == "Working abroad") {
         response.redirect("/case-eject/add-note");
     } else if (addAny == "Other") {
         response.redirect("/case-eject/add-note");
-    } else {
-        response.redirect("/case-eject/error");
+    } else if (!addAny){
+        response.redirect("/case-eject/reason-error");
+    }
+    })
+
+ // Handle change of personal details
+ router.post('/change-answer',function(request, response) {
+    var change = request.session.data['change']
+    if (change == "Address"){
+        response.redirect("/case-eject/add-note");
+    } else if (change == "Name") {
+        response.redirect("/case-eject/add-note");
+    } else if (change == "Payment details") {
+        response.redirect("/case-eject/add-note");
+    } else if (change == "Telephone number") {
+        response.redirect("/case-eject/add-note");
+    } else if (!change){
+        response.redirect("/case-eject/change-error");
+    }
+    })
+
+ // Handle 'Which details do not match the Searchlight record'
+ router.post('/searchlight-answer',function(request, response) {
+    var searchlight = request.session.data['searchlight']
+    if (searchlight == "Address"){
+        response.redirect("/case-eject/add-note");
+    } else if (searchlight == "Date of birth") {
+        response.redirect("/case-eject/add-note");
+    } else if (searchlight == "Name") {
+        response.redirect("/case-eject/add-note");
+    } else if (searchlight == "Multiple details") {
+        response.redirect("/case-eject/multiple");
+    } else if (searchlight == "National Insurance number") {
+        response.redirect("/case-eject/add-note");
+    } else if (searchlight == "Nationality") {
+        response.redirect("/case-eject/add-note");
+    } else if (!searchlight){
+        response.redirect("/case-eject/searchlight-error");
+    }
+    })
+
+ // Handle 'Benefits'
+ router.post('/benefits-answer',function(request, response) {
+    var benefits = request.session.data['benefits']
+    if (benefits == "Armed Forces Independence Payment (AFIP)"){
+        response.redirect("/case-eject/add-note");
+    } else if (benefits == "Child Disability Payment (CDP) or Adult Disability Payment (ADP)") {
+        response.redirect("/case-eject/add-note");
+    } else if (benefits == "Constant Attendance Allowance (CAA)") {
+        response.redirect("/case-eject/add-note");
+    } else if (benefits == "Disability Living Allowance (DLA)") {
+        response.redirect("/case-eject/multiple");
+    } else if (benefits == "Foreign benefits") {
+        response.redirect("/case-eject/add-note");
+    } else if (benefits == "War Pensioners' Mobility Supplement (WPMS)") {
+        response.redirect("/case-eject/add-note");
+    } else if (!benefits){
+        response.redirect("/case-eject/benefits-error");
+    }
+    })
+
+ // Handle 'Health'
+ router.post('/health-answer',function(request, response) {
+    var health = request.session.data['health']
+    if (health == "Did not attend health assessment"){
+        response.redirect("/case-eject/add-note");
+    } else if (health == "Did not follow health assessment requirements") {
+        response.redirect("/case-eject/add-note");
+    } else if (!health){
+        response.redirect("/case-eject/health-error");
+    }
+    })
+
+ // Handle 'Prison'
+ router.post('/prison-answer',function(request, response) {
+    var prison = request.session.data['prison']
+    if (prison == "Care home"){
+        response.redirect("/case-eject/add-note");
+    } else if (prison == "Hospital or similar institutions") {
+        response.redirect("/case-eject/add-note");
+    } else if (prison == "Nursing home") {
+        response.redirect("/case-eject/add-note");
+    } else if (prison == "Prison or legal custody") {
+        response.redirect("/case-eject/multiple");
+    } else if (prison == "Residential school or college") {
+        response.redirect("/case-eject/add-note");
+    } else if (!health){
+        response.redirect("/case-eject/prison-error");
     }
     })
 
@@ -303,13 +456,56 @@ router.post('/case-eject/reason',function(request, response) {
 
 router.get('/case-eject/add-note', function (req, res) {
     //Retrieve form data
-    var addAny =req.session.data['reason'];
+    var addAny = req.session.data['reason'];
+    var prison = req.session.data['prison'];
+    var health = req.session.data['health'];
+    var benefits = req.session.data['benefits'];
+    var searchlight = req.session.data['searchlight'];
+    var change = req.session.data['change'];
 
     //Display screen and make data available
     res.render('/case-eject/add-note', {
-        addAny: addAny
+        addAny: addAny,
+        health: health,
+        benefits: benefits,
+        prison: prison,
+        searchlight: searchlight,
+        change: change
     });
 });
+
+ // Handle 'Add another reason'
+ router.post('/another-answer',function(request, response) {
+    var another = request.session.data['another']
+    if (another == "Yes"){
+        response.redirect("/case-eject/reason-extra");
+    } else if (another == "No") {
+        response.redirect("/case-eject/event-history-movepipcsadded");
+    } else if (!another){
+        response.redirect("/case-eject/add-another-error");
+    }
+    })
+
+
+//Make previous responses available to event history
+router.get('/case-eject/event-history-movepipcsadded', function(req, res) {
+    //retrieve form data
+    var reason = req.session.data['reason'];
+    var prison = req.session.data['prison'];
+    var change = req.session.data['change'];
+    var searchlight = req.session.data['searchlight'];
+    var health = req.session.data['health'];
+
+    //Display new screen and make form data available to use
+    res.render('/case-eject/event-history-movepipcsadded', {
+        reason: reason,
+        prison: prison,
+        change: change,
+        searchlight: searchlight,
+        health: health
+
+    });
+} );
 
 //-------------------------------------------------------------------
     // QPPT

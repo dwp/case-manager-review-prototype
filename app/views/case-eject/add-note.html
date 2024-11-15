@@ -61,7 +61,24 @@
       <div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength="2000">
         <h1 class="govuk-label-wrapper">
           <span class="govuk-caption-xl">
-            <p class="govuk-caption-xl">{{ addAny }}</p>
+            <p class="govuk-caption-xl">{{ addAny }}<span style="text-transform: lowercase;">{% if prison %}: {{ prison }}
+                {% elif change %}:
+                {{ change }}
+                {% elif health %}:
+                {{ health }}
+                {% elif benefits %}:
+                {{ benefits }}
+                {% elif searchlight %}:
+                {{ searchlight }}
+              {% endif %}</span>
+            </p>
+
+            <!-- addAny: addAny,
+        health: health,
+        benefits: benefits,
+        prison: prison,
+        searchlight: searchlight,
+        change: change-->
           </span>
           <label class="govuk-label govuk-label--xl" for="with-hint">
             Add a note

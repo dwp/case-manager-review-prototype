@@ -57,40 +57,29 @@
 
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Are you sure this claim needs to move to PIPCS?</h1>
+    <div class="govuk-warning-text">
+      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+      <strong class="govuk-warning-text__text">
+        <span class="govuk-visually-hidden">Warning</span>
+        If you select yes, this will stop payments in PIP Service.
+      </strong>
+    </div>
 
-    <form class="form" action="/add-event-answer" method="post">
+    <form class="form" action="/confirmation-answer" method="post">
 
-{% from "govuk/components/radios/macro.njk" import govukRadios %}
-
-{{ govukRadios({
-  name: "add-any-event",
-  fieldset: {
-    legend: {
-      text: "Add an event",
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--xl"
-    }
-  },
+  {% from "govuk/components/radios/macro.njk" import govukRadios %}
+ 
+ {{ govukRadios({
+  name: "confirmation",
   items: [
     {
-      value: "case-eject",
-      text: "Identified need to move to PIPCS"
+      value: "Yes",
+      text: "Yes"
     },
     {
-      value: "completed-case-eject",
-      text: "Completed move to PIPCS"
-    },
-    {
-      value: "verified-identity",
-      text: "Verified claimant's identity"
-    },
-    {
-      value: "extend-hig",
-      text: "Extend health information deadline"
-    },
-    {
-      value: "other-event",
-      text: "Other event"
+      value: "No",
+      text: "No"
     }
   ]
 }) }}

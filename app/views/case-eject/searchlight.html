@@ -60,30 +60,43 @@
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" action="/another-answer" method="post">
+    <form class="form" action="/searchlight-answer" method="post">
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
-        name: "another",
+        name: "searchlight",
         fieldset: {
           legend: {
-            text: "Add another reason?",
+            text: "Which details do not match the Searchlight record?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
         },
-        hint: {
-          text: "You can keep adding reasons once you've added one..."
-        },
         items: [
         {
-          value: "Yes",
-          text: "Yes"
+          value: "Address",
+          text: "Address"
         },
         {
-          value: "No",
-          text: "No"
+          value: "Date of birth",
+          text: "Date of birth"
+        },
+        {
+          value: "Name",
+          text: "Name"
+        },
+        {
+          value: "Multiple details",
+          text: "Multiple details"
+        },
+        {
+          value: "National Insurance number",
+          text: "National Insurance number"
+        },
+        {
+          value: "Nationality",
+          text: "Nationality"
         }
         ]
       }) }}
