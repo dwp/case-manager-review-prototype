@@ -292,6 +292,16 @@ router.post('/add-event-answer', function (req, res) {
         res.redirect('/case-eject/reason');
     } else if (addAnyEvent === 'case-eject' && scenario === 'pre-award-reason-added'){
         res.redirect('/case-eject/reason');
+    } else if (addAnyEvent === 'disallow' && scenario === 'pre-award'){
+        res.redirect('/case-eject/add-note');
+    } 
+    else if (addAnyEvent === 'withdraw' && scenario === 'pre-award'){
+        res.redirect('/case-eject/add-note');
+    } else if (addAnyEvent === 'disallow' && scenario === 'pre-award-reason-added'){
+        res.redirect('/case-eject/add-note');
+    } 
+    else if (addAnyEvent === 'withdraw' && scenario === 'pre-award-reason-added'){
+        res.redirect('/case-eject/add-note');
     } 
     else if (addAnyEvent === 'complete' && scenario === 'pre-award-reason-added'){
         res.redirect('/case-eject/reason');
@@ -349,56 +359,108 @@ router.get('/case-eject/reason-extra', function(req, res) {
 } );
 
     // Select a reason for identified move to PIPCS
-router.post('/reason-answer',function(request, response) {
-    var addAny = request.session.data['reason']
-    if (addAny == "Alternative format needed"){
-        response.redirect("/case-eject/add-note");
-    } else if (addAny == "Appointee added") {
-        response.redirect("/case-eject/add-note");
-    } else if (addAny == "Change of personal details") {
-        response.redirect("/case-eject/change");
-    } else if (addAny == "Mandatory reconsideration") {
-        response.redirect("/case-eject/add-note");
-    } else if (addAny == "Claimant did not receive payment") {
-        response.redirect("/case-eject/add-note");
-    } else if (addAny == "Applicant gets foreign benefits") {
-        response.redirect("/case-eject/add-note");
-    } else if (addAny == "New evidence sent after decision") {
-        response.redirect("/case-eject/add-note");
-    } else if (addAny == "New Motability agreement") {
-        response.redirect("/case-eject/add-note");
-    } else if (addAny == "Request for split payment") {
-        response.redirect("/case-eject/add-note");
-    }else if (addAny == "Death of applicant or claimant") {
-        response.redirect("/case-eject/add-note");
-    } else if (addAny == "Details do not match Searchlight record") {
-        response.redirect("/case-eject/searchlight");
-    } else if (addAny == "Evidence of fraud") {
-        response.redirect("/case-eject/add-note");
-    } else if (addAny == "Applicant gets other benefits") {
-        response.redirect("/case-eject/benefits");
-    } else if (addAny == "Immigration status") {
-        response.redirect("/case-eject/add-note");
-    } else if (addAny == "Keep customer interactions safe (KCIS) marker") {
-        response.redirect("/case-eject/add-note");
-    } else if (addAny == "Health assessment could not be completed") {
-        response.redirect("/case-eject/health");
-    } else if (addAny == "Residence and presence criteria") {
-        response.redirect("/case-eject/add-note");
-    } else if (addAny == "Special rules for end of life (SREL)") {
-        response.redirect("/case-eject/add-note");
-    } else if (addAny == "Stays in prison, hospital or other accommodation") {
-        response.redirect("/case-eject/prison");
-    } else if (addAny == "Withdrawn claim") {
-        response.redirect("/case-eject/add-note");
-    } else if (addAny == "Working abroad") {
-        response.redirect("/case-eject/add-note");
-    } else if (addAny == "Other") {
-        response.redirect("/case-eject/add-note");
-    } else if (!addAny){
-        response.redirect("/case-eject/reason-error");
-    }
-    })
+    router.post('/reason-answer',function(request, response) {
+        var addAny = request.session.data['reason']
+        if (addAny == "Alternative format needed"){
+            response.redirect("/case-eject/add-note");
+        } else if (addAny == "Appointee added") {
+            response.redirect("/case-eject/add-note");
+        } else if (addAny == "Change of personal details") {
+            response.redirect("/case-eject/add-note");
+        } else if (addAny == "Mandatory reconsideration") {
+            response.redirect("/case-eject/add-note");
+        } else if (addAny == "Claimant did not receive payment") {
+            response.redirect("/case-eject/add-note");
+        } else if (addAny == "Applicant gets foreign benefits") {
+            response.redirect("/case-eject/add-note");
+        } else if (addAny == "New evidence sent after decision") {
+            response.redirect("/case-eject/add-note");
+        } else if (addAny == "New Motability agreement") {
+            response.redirect("/case-eject/add-note");
+        } else if (addAny == "Request for split payment") {
+            response.redirect("/case-eject/add-note");
+        }else if (addAny == "Death of applicant or claimant") {
+            response.redirect("/case-eject/add-note");
+        } else if (addAny == "Details do not match Searchlight record") {
+            response.redirect("/case-eject/add-note");
+        } else if (addAny == "Evidence of fraud") {
+            response.redirect("/case-eject/add-note");
+        } else if (addAny == "Applicant gets other benefits") {
+            response.redirect("/case-eject/add-note");
+        } else if (addAny == "Immigration status") {
+            response.redirect("/case-eject/add-note");
+        } else if (addAny == "Keep customer interactions safe (KCIS) marker") {
+            response.redirect("/case-eject/add-note");
+        } else if (addAny == "Health assessment could not be completed") {
+            response.redirect("/case-eject/add-note");
+        } else if (addAny == "Residence and presence criteria") {
+            response.redirect("/case-eject/add-note");
+        } else if (addAny == "Special rules for end of life (SREL)") {
+            response.redirect("/case-eject/add-note");
+        } else if (addAny == "Stays in prison, hospital or other accommodation") {
+            response.redirect("/case-eject/add-note");
+        } else if (addAny == "Withdrawn claim") {
+            response.redirect("/case-eject/add-note");
+        } else if (addAny == "Working abroad") {
+            response.redirect("/case-eject/add-note");
+        } else if (addAny == "Other") {
+            response.redirect("/case-eject/add-note");
+        } else if (!addAny){
+            response.redirect("/case-eject/reason-error");
+        }
+        });
+
+    // Select a reason for identified move to PIPCS
+//router.post('/reason-answer',function(request, response) {
+    //var addAny = request.session.data['reason']
+    //if (addAny == "Alternative format needed"){
+        //response.redirect("/case-eject/add-note");
+  //  } else if (addAny == "Appointee added") {
+        //response.redirect("/case-eject/add-note");
+    //} else if (addAny == "Change of personal details") {
+       // response.redirect("/case-eject/change");
+   // } else if (addAny == "Mandatory reconsideration") {
+       // response.redirect("/case-eject/add-note");
+   // } else if (addAny == "Claimant did not receive payment") {
+       // response.redirect("/case-eject/add-note");
+   // } else if (addAny == "Applicant gets foreign benefits") {
+       // response.redirect("/case-eject/add-note");
+   // } else if (addAny == "New evidence sent after decision") {
+        //response.redirect("/case-eject/add-note");
+   // } else if (addAny == "New Motability agreement") {
+       // response.redirect("/case-eject/add-note");
+    //} else if (addAny == "Request for split payment") {
+       // response.redirect("/case-eject/add-note");
+    //}else if (addAny == "Death of applicant or claimant") {
+       // response.redirect("/case-eject/add-note");
+   // } else if (addAny == "Details do not match Searchlight record") {
+      //  response.redirect("/case-eject/searchlight");
+    //} else if (addAny == "Evidence of fraud") {
+       // response.redirect("/case-eject/add-note");
+    //} else if (addAny == "Applicant gets other benefits") {
+        //response.redirect("/case-eject/benefits");
+   // } else if (addAny == "Immigration status") {
+      //  response.redirect("/case-eject/add-note");
+   // } else if (addAny == "Keep customer interactions safe (KCIS) marker") {
+       // response.redirect("/case-eject/add-note");
+   // } else if (addAny == "Health assessment could not be completed") {
+       // response.redirect("/case-eject/health");
+   // } else if (addAny == "Residence and presence criteria") {
+       // response.redirect("/case-eject/add-note");
+   // } else if (addAny == "Special rules for end of life (SREL)") {
+       // response.redirect("/case-eject/add-note");
+    //} else if (addAny == "Stays in prison, hospital or other accommodation") {
+        //response.redirect("/case-eject/prison");
+   // } else if (addAny == "Withdrawn claim") {
+       // response.redirect("/case-eject/add-note");
+   // } else if (addAny == "Working abroad") {
+       // response.redirect("/case-eject/add-note");
+    //} else if (addAny == "Other") {
+       // response.redirect("/case-eject/add-note");
+    //} else if (!addAny){
+        //response.redirect("/case-eject/reason-error");
+   //}
+    //})
 
  // Handle change of personal details
  router.post('/change-answer',function(request, response) {
@@ -531,7 +593,7 @@ router.post('/note-answer', function(req, res){
  router.post('/another-answer',function(request, response) {
     var another = request.session.data['another'];
     if (another == "Yes"){
-        response.redirect("/case-eject/reason-extra");
+        response.redirect("/case-eject/reason");
     } else if (another == "No") {
         response.redirect("/case-eject/event-history-movepipcsadded");
     } else if (!another){

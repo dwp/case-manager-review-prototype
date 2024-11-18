@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% block pageTitle %} Add an event {% endblock %}
+{% block pageTitle %} Why does this application or claim need to move to PIPCS? - PIP Case review - GOV.UK {% endblock %}
 
 {% block main %}
 
@@ -59,10 +59,6 @@
 
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-
-    
-
-    {% if scenario == "pre-award" or scenario == "pre-award-reason-added" %}
 <form class="form" action="/reason-answer" method="post">
 
   {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -71,7 +67,7 @@
     name: "reason",
     fieldset: {
       legend: {
-        text: "Why does the application need to move to PIPCS?",
+        text: "Why does the [application][claim] need to move to PIPCS?",
         isPageHeading: true,
         classes: "govuk-fieldset__legend--xl"
       }
@@ -87,105 +83,6 @@
     {
       value: "Applicant gets other benefits",
       text: "Applicant gets other benefits"
-    },
-    {
-      value: "Appointee added",
-      text: "Appointee added"
-    },
-    {
-      value: "Change of personal details",
-      text: "Change of personal details"
-    },
-    {
-      value: "Death of applicant or claimant",
-      text: "Death of applicant or claimant"
-    },
-    {
-      value: "Details do not match Searchlight record",
-      text: "Details do not match Searchlight record"
-    },
-    {
-      value: "Evidence of fraud",
-      text: "Evidence of fraud"
-    },
-    {
-      value: "Immigration status",
-      text: "Immigration status"
-    },
-    {
-      value: "Keep customer interactions safe (KCIS) marker",
-      text: "Keep customer interactions safe (KCIS) marker"
-    },
-    {
-      value: "Mandatory reconsideration",
-      text: "Mandatory reconsideration"
-    },
-    {
-      value: "Health assessment could not be completed",
-      text: "Health assessment could not be completed"
-    },
-    {
-      value: "Residence and presence criteria",
-      text: "Residence and presence criteria"
-    },
-    {
-      value: "Special rules for end of life (SREL)",
-      text: "Special rules for end of life (SREL)"
-    },
-    {
-      value: "Stays in prison, hospital or other accommodation",
-      text: "Stays in prison, hospital or other accommodation"
-    },
-    {
-      value: "Withdrawn claim",
-      text: "Withdrawn claim"
-    },
-    {
-      value: "Working abroad",
-      text: "Working abroad"
-    },
-    {
-      divider: "or"
-    },
-    {
-      value: "Other",
-      text: "Other"
-    }
-    ]
-  }) }}
-
-  {{ govukButton({
-    text: "Continue"
-  }) }}
-
-</form>
-
-
-{% elif scenario == "post-award" or scenario == "post-award-reason-added" %}
-<form class="form" action="/reason-answer" method="post">
-
-  {% from "govuk/components/radios/macro.njk" import govukRadios %}
-
-  {{ govukRadios({
-    name: "reason",
-    fieldset: {
-      legend: {
-        text: "Why does the claim need to move to PIPCS?",
-        isPageHeading: true,
-        classes: "govuk-fieldset__legend--xl"
-      }
-    },
-    hint: {
-      text: "If there is more than one reason, you can select other reasons after you add this one."
-    },
-    items: [
-    {
-      value: "Alternative format needed",
-      text: "Alternative format needed"
-    },
-    {
-      value: "Applicant gets foreign benefits",
-      text: "Applicant gets foreign benefits"
     },
     {
       value: "Appointee added",
@@ -274,7 +171,7 @@
   }) }}
 
 </form>
-{% endif %}
+
 
 </div>
 </div>

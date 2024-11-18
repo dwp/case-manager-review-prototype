@@ -59,6 +59,7 @@ Add an event - PIP Case review - GOV.UK {% endblock %}
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
+    {% if scenario == "pre-award" %}
     <form class="form" action="/add-event-answer" method="post">
 
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -86,12 +87,49 @@ Add an event - PIP Case review - GOV.UK {% endblock %}
       text: "Extend health information deadline"
     },
     {
-      value: "disallow",
-      text: "Disallow application"
+      value: "other-event",
+      text: "Other event"
+    }
+  ]
+}) }}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+</form>
+{% endif %}
+
+{% if scenario == "pre-award-reason-added" %}
+    <form class="form" action="/add-event-answer" method="post">
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  name: "add-any-event",
+  fieldset: {
+    legend: {
+      text: "Add an event",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--xl"
+    }
+  },
+  items: [
+    {
+      value: "case-eject",
+      text: "Identified need to move to PIPCS"
     },
     {
-      value: "withdraw",
-      text: "Withdraw application"
+      value: "complete",
+      text: "Complete move to PIPCS"
+    },
+    {
+      value: "verified-identity",
+      text: "Verified claimant's identity"
+    },
+    {
+      value: "extend-hig",
+      text: "Extend health information deadline"
     },
     {
       value: "other-event",
@@ -105,6 +143,79 @@ Add an event - PIP Case review - GOV.UK {% endblock %}
 }) }}
 
 </form>
+{% endif %}
+
+
+
+{% if scenario == "post-award" %}
+<form class="form" action="/add-event-answer" method="post">
+
+  {% from "govuk/components/radios/macro.njk" import govukRadios %}
+  
+  {{ govukRadios({
+    name: "add-any-event",
+    fieldset: {
+      legend: {
+        text: "Add an event",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+    },
+    items: [
+      {
+        value: "case-eject",
+        text: "Identified need to move to PIPCS"
+      },
+      {
+        value: "other-event",
+        text: "Other event"
+      }
+    ]
+  }) }}
+  
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+  
+  </form>
+{% endif %}
+
+{% if scenario == "post-award-reason-added" %}
+<form class="form" action="/add-event-answer" method="post">
+
+  {% from "govuk/components/radios/macro.njk" import govukRadios %}
+  
+  {{ govukRadios({
+    name: "add-any-event",
+    fieldset: {
+      legend: {
+        text: "Add an event",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+    },
+    items: [
+      {
+        value: "case-eject",
+        text: "Identified need to move to PIPCS"
+      },
+      {
+        value: "complete",
+        text: "Complete move to PIPCS"
+      },
+      {
+        value: "other-event",
+        text: "Other event"
+      }
+    ]
+  }) }}
+  
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+  
+  </form>
+{% endif %}
 
 </div>
 </div>
