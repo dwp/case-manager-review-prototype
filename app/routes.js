@@ -250,6 +250,37 @@ router.post('/scenario-answer', function (req, res) {
     res.redirect('/case-eject/event-history');
 });
 
+//router.post('/errors-answer', function (req, res) {
+    //Store response
+    //var errors = req.session.data['errors'];
+    //Redirect
+    //res.redirect('/case-eject/event-history');
+//});
+
+
+//Pass scenario information into add event screen
+router.get('/case-eject/add-event', function(req, res) {
+    //retrieve form data
+    var scenario = req.session.data['scenario'];
+
+    //Display new screen and make form data available to use
+    res.render('case-eject/add-event', {
+        scenario: scenario
+    });
+} );
+
+//Make previous responses available to reason screen
+router.get('/case-eject/add-event', function(req, res) {
+    //retrieve form data
+    var scenario = req.session.data['scenario'];
+    var errors = req.session.data['errors'];
+    //Display new screen and make form data available to use
+    res.render('case-eject/add-event', {
+        scenario: scenario,
+        errors: errors
+    });
+} );
+
 //Redirect based on event and scenario
 router.post('/add-event-answer', function (req, res) {
     //Store responses
@@ -259,25 +290,27 @@ router.post('/add-event-answer', function (req, res) {
 
     if (addAnyEvent === 'case-eject' && scenario === 'pre-award'){
         res.redirect('/case-eject/reason');
-    }
+    } else if (addAnyEvent === 'case-eject' && scenario === 'pre-award-reason-added'){
+        res.redirect('/case-eject/reason');
+    } 
+    else if (addAnyEvent === 'complete' && scenario === 'pre-award-reason-added'){
+        res.redirect('/case-eject/reason');
+    } 
     else if (addAnyEvent === 'case-eject' && scenario === 'post-award'){
         res.redirect('/case-eject/confirmation');
+    } 
+    else if (addAnyEvent === 'case-eject' && scenario === 'post-award-reason-added'){
+        res.redirect('/case-eject/confirmation');
+    } 
+    else if (addAnyEvent === 'complete' && scenario === 'post-award-reason-added'){
+        res.redirect('/case-eject/add-note');
+    } else if (addAnyEvent === 'other-event' || addAnyEvent === 'verified-identity' || addAnyEvent === 'extend-hig') {
+        res.redirect('/case-eject/add-note');
+    } 
+    else if (!addAnyEvent){
+        res.redirect("/case-eject/reason-error");
     }
 });
-
-// Choose event type NB is this needed?
-//router.post('/case-eject/add-event',function(request, response) {
-    //var addAny = request.session.data['add-any-event']
-   // if (addAny == "case-eject"){
-       //response.redirect("/case-eject/confirmation")
-    //} else if (addAny == "completed-case-eject") {
-       // response.redirect("/event-history/v5-quick-reference/completed-move///add-a-note")
-   // } else if (addAny == "extend-hig") {
-       // response.redirect("/event-history/v5-quick-reference/completed-move///add-a-note")
-   // } else if (addAny == "other-event") {
-       //response.redirect("/event-history/v5-quick-reference/other-event/add-a-note")
-   // }
-   // });
 
 
     // Confirm proceed through identified moved to PIPCS
@@ -290,16 +323,17 @@ router.post('/add-event-answer', function (req, res) {
         } else if (!confirmation){
             response.redirect("/case-eject/confirmation-error");
         }
-        })
+        });
 
 //Make previous responses available to reason screen
 router.get('/case-eject/reason', function(req, res) {
     //retrieve form data
     var scenario = req.session.data['scenario'];
-
+    var errors = req.session.data['errors'];
     //Display new screen and make form data available to use
     res.render('case-eject/reason', {
-        scenario: scenario
+        scenario: scenario,
+        errors: errors
     });
 } );
 
@@ -327,7 +361,7 @@ router.post('/reason-answer',function(request, response) {
         response.redirect("/case-eject/add-note");
     } else if (addAny == "Claimant did not receive payment") {
         response.redirect("/case-eject/add-note");
-    } else if (addAny == "Foreign benefits") {
+    } else if (addAny == "Applicant gets foreign benefits") {
         response.redirect("/case-eject/add-note");
     } else if (addAny == "New evidence sent after decision") {
         response.redirect("/case-eject/add-note");
@@ -386,21 +420,28 @@ router.post('/reason-answer',function(request, response) {
  router.post('/searchlight-answer',function(request, response) {
     var searchlight = request.session.data['searchlight']
     if (searchlight == "Address"){
-        response.redirect("/case-eject/add-note");
+        response.redirect("/case-eject/searchlight-context");
     } else if (searchlight == "Date of birth") {
-        response.redirect("/case-eject/add-note");
+        response.redirect("/case-eject/searchlight-context");
     } else if (searchlight == "Name") {
-        response.redirect("/case-eject/add-note");
-    } else if (searchlight == "Multiple details") {
-        response.redirect("/case-eject/multiple");
+        response.redirect("/case-eject/searchlight-context");
     } else if (searchlight == "National Insurance number") {
-        response.redirect("/case-eject/add-note");
+        response.redirect("/case-eject/searchlight-context");
     } else if (searchlight == "Nationality") {
-        response.redirect("/case-eject/add-note");
+        response.redirect("/case-eject/searchlight-context");
     } else if (!searchlight){
         response.redirect("/case-eject/searchlight-error");
     }
     })
+
+//Handle searchlight content
+router.post('/searchlight-context-answer', function (req, res) {
+    //Store response
+    var searchlightContext = req.session.data['searchlightContext'];
+
+    //Redirect
+    res.redirect('/case-eject/add-note');
+});
 
  // Handle 'Benefits'
  router.post('/benefits-answer',function(request, response) {
@@ -462,6 +503,7 @@ router.get('/case-eject/add-note', function (req, res) {
     var benefits = req.session.data['benefits'];
     var searchlight = req.session.data['searchlight'];
     var change = req.session.data['change'];
+    var movedNotes = req.session.data['movedNotes'];
 
     //Display screen and make data available
     res.render('/case-eject/add-note', {
@@ -470,13 +512,24 @@ router.get('/case-eject/add-note', function (req, res) {
         benefits: benefits,
         prison: prison,
         searchlight: searchlight,
-        change: change
+        change: change,
+        movedNotes: movedNotes
     });
 });
 
+//Handle note screen
+router.post('/note-answer', function(req, res){
+    var movedNotes = req.session.data['movedNotes'];
+
+     //Redirect
+     res.redirect('/case-eject/add-another');
+});
+
+
+
  // Handle 'Add another reason'
  router.post('/another-answer',function(request, response) {
-    var another = request.session.data['another']
+    var another = request.session.data['another'];
     if (another == "Yes"){
         response.redirect("/case-eject/reason-extra");
     } else if (another == "No") {
@@ -484,7 +537,7 @@ router.get('/case-eject/add-note', function (req, res) {
     } else if (!another){
         response.redirect("/case-eject/add-another-error");
     }
-    })
+    });
 
 
 //Make previous responses available to event history
@@ -495,6 +548,7 @@ router.get('/case-eject/event-history-movepipcsadded', function(req, res) {
     var change = req.session.data['change'];
     var searchlight = req.session.data['searchlight'];
     var health = req.session.data['health'];
+    var benefits = req.session.data['benefits'];
 
     //Display new screen and make form data available to use
     res.render('/case-eject/event-history-movepipcsadded', {
@@ -502,7 +556,8 @@ router.get('/case-eject/event-history-movepipcsadded', function(req, res) {
         prison: prison,
         change: change,
         searchlight: searchlight,
-        health: health
+        health: health,
+        benefits: benefits
 
     });
 } );

@@ -59,7 +59,10 @@
 
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    {% if scenario == "pre-award" %}
+
+    
+
+    {% if scenario == "pre-award" or scenario == "pre-award-reason-added" %}
 <form class="form" action="/reason-answer" method="post">
 
   {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -82,6 +85,10 @@
       text: "Alternative format needed"
     },
     {
+      value: "Applicant gets other benefits",
+      text: "Applicant gets other benefits"
+    },
+    {
       value: "Appointee added",
       text: "Appointee added"
     },
@@ -100,10 +107,6 @@
     {
       value: "Evidence of fraud",
       text: "Evidence of fraud"
-    },
-    {
-      value: "Applicant gets other benefits",
-      text: "Applicant gets other benefits"
     },
     {
       value: "Immigration status",
@@ -156,9 +159,9 @@
   }) }}
 
 </form>
-{% endif %}
 
-{% if scenario == "post-award" %}
+
+{% elif scenario == "post-award" or scenario == "post-award-reason-added" %}
 <form class="form" action="/reason-answer" method="post">
 
   {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -179,6 +182,10 @@
     {
       value: "Alternative format needed",
       text: "Alternative format needed"
+    },
+    {
+      value: "Applicant gets foreign benefits",
+      text: "Applicant gets foreign benefits"
     },
     {
       value: "Appointee added",
@@ -205,10 +212,6 @@
       text: "Evidence of fraud"
     },
     {
-      value: "Foreign benefits",
-      text: "Foreign benefits"
-    },
-    {
       value: "Health assessment could not be completed",
       text: "Health assessment could not be completed"
     },
@@ -225,8 +228,20 @@
       text: "Mandatory reconsideration"
     },
     {
+      value: "New evidence sent after decision",
+      text: "New evidence sent after decision"
+    },
+    {
+      value: "New Motability agreement",
+      text: "New Motability agreement"
+    },
+    {
       value: "Residence and presence criteria",
       text: "Residence and presence criteria"
+    },
+    {
+      value: "Request for split payment",
+      text: "Request for split payment"
     },
     {
       value: "Special rules for end of life (SREL)",

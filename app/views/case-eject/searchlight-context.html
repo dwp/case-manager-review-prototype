@@ -60,46 +60,34 @@
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" action="/prison-answer" method="post">
+    <form class="form" action="/searchlight-context-answer" method="post">
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
-      {{ govukRadios({
-        name: "prison",
-        fieldset: {
-          legend: {
-            text: "What type of institution or accommodation did the claimant stay in?",
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--xl"
-          }
-        },
-        items: [
-        {
-          value: "Care home",
-          text: "Care home"
-        },
-        {
-          value: "Hospital or similar institutions",
-          text: "Hospital or similar institutions"
-        },
-        {
-          value: "Nursing home",
-          text: "Nursing home"
-        },
-        {
-          value: "Prison or legal custody",
-          text: "Prison or legal custody"
-        },
-        {
-          value: "Residential school or college",
-          text: "Residential school or college"
+    {{ govukRadios({
+      name: "searchlightContext",
+      fieldset: {
+        legend: {
+          text: "What task were you doing when you identified the difference from the Searchlight record?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
         }
-        ]
-      }) }}
+      },
+      items: [
+            {
+              value: "Preparing an application for an assessment provider",
+              text: "Preparing an application for an assessment provider"
+            },
+            {
+              value: "Preparing an application for a decision",
+              text: "Preparing an application for a decision"
+            }
+            ]
+    }) }}
 
-      {{ govukButton({
-        text: "Continue"
-      }) }}
+    {{ govukButton({
+      text: "Continue"
+    }) }}
 
 </form>
 

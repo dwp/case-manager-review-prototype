@@ -62,15 +62,17 @@
 
       <p class="govuk-caption-m govuk-!-margin-bottom-1" id="event-1-description">
         {{ reason }}{% if prison %}, {{ prison }}
-        {% elif change %},
+        {% elif change %}:
         {{ change }}
-        {% elif health %},
+        {% elif health %}:
         {{ health }}
-        {% elif benefits %},
+        {% elif benefits %}:
         {{ benefits }}
-        {% elif searchlight %},
+        {% elif searchlight %}:
         {{ searchlight }}
-      {% endif %}: {{ data['movedNotes'] }}
+      {% endif %}
+      <br>
+      {{ data['movedNotes'] }}
       </p>
       <p class="govuk-caption-m">14 November 2024</p>
     </li>
