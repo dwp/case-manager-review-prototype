@@ -59,6 +59,13 @@
 
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">Is there another reason why this application needs to move to PIPCS?</h1>
+    <p class="govuk-body">The reason/ reasons you have already selected is/ are:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        Reason</p>
+      </li>
+    </ul>
 
     <form class="form" action="/another-answer" method="post">
 
@@ -66,16 +73,6 @@
 
       {{ govukRadios({
         name: "another",
-        fieldset: {
-          legend: {
-            text: "Add another reason?",
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--xl"
-          }
-        },
-        hint: {
-          text: "You can keep adding reasons once you've added one..."
-        },
         items: [
         {
           value: "Yes",
