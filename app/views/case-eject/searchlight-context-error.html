@@ -59,7 +59,17 @@
 
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+    {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: [
+        {
+          text: "Enter your full name",
+          href: "#"
+        }
+      ]
+    }) }}
     <form class="form" action="/searchlight-context-answer" method="post">
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -72,6 +82,9 @@
           isPageHeading: true,
           classes: "govuk-fieldset__legend--xl"
         }
+      },
+      hint: {
+        text: "If there is more than one reason, you can select other reasons after you add this one."
       },
       items: [
             {
