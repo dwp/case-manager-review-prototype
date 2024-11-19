@@ -382,7 +382,7 @@ router.get('/case-eject/reason-extra', function(req, res) {
         }else if (addAny == "Death of applicant or claimant") {
             response.redirect("/case-eject/add-note");
         } else if (addAny == "Details do not match Searchlight record") {
-            response.redirect("/case-eject/add-note");
+            response.redirect("/case-eject/searchlight");
         } else if (addAny == "Evidence of fraud") {
             response.redirect("/case-eject/add-note");
         } else if (addAny == "Applicant gets other benefits") {
@@ -482,15 +482,15 @@ router.get('/case-eject/reason-extra', function(req, res) {
  router.post('/searchlight-answer',function(request, response) {
     var searchlight = request.session.data['searchlight']
     if (searchlight == "Address"){
-        response.redirect("/case-eject/searchlight-context");
+        response.redirect("/case-eject/add-note");
     } else if (searchlight == "Date of birth") {
-        response.redirect("/case-eject/searchlight-context");
+        response.redirect("/case-eject/add-note");
     } else if (searchlight == "Name") {
-        response.redirect("/case-eject/searchlight-context");
+        response.redirect("/case-eject/add-note");
     } else if (searchlight == "National Insurance number") {
-        response.redirect("/case-eject/searchlight-context");
+        response.redirect("/case-eject/add-note");
     } else if (searchlight == "Nationality") {
-        response.redirect("/case-eject/searchlight-context");
+        response.redirect("/case-eject/add-note");
     } else if (!searchlight){
         response.redirect("/case-eject/searchlight-error");
     }
@@ -584,7 +584,7 @@ router.post('/note-answer', function(req, res){
     var movedNotes = req.session.data['movedNotes'];
 
      //Redirect
-     res.redirect('/case-eject/add-another');
+     res.redirect('/case-eject/event-history-movepipcsadded');
 });
 
 
