@@ -61,7 +61,7 @@
       <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Added event: identified need to move to PIPCS</h2>
 
       <p class="govuk-caption-m govuk-!-margin-bottom-1" id="event-1-description">
-        {{ reason }}<!--{% if prison %}, {{ prison }}
+        {{ reason }}{% if prison %}, {{ prison }}
         {% elif change %}:
         {{ change }}
         {% elif health %}:
@@ -70,7 +70,7 @@
         {{ benefits }}
         {% elif searchlight %}:
         {{ searchlight }}
-      {% endif %}-->
+      {% endif %}
       <br>
       {{ data['movedNotes'] }}
       </p>
