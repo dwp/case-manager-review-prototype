@@ -290,6 +290,8 @@ router.post('/add-event-answer', function (req, res) {
 
     if (addAnyEvent === 'case-eject' && scenario === 'pre-award'){
         res.redirect('/case-eject/reason');
+    } else if (addAnyEvent === 'case-eject') {
+        res.redirect('/case-eject/reason');
     } else if (addAnyEvent === 'case-eject' && scenario === 'pre-award-reason-added'){
         res.redirect('/case-eject/reason');
     } else if (addAnyEvent === 'disallow' && scenario === 'pre-award'){
