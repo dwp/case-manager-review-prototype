@@ -217,10 +217,53 @@ Add an event - PIP Case review - GOV.UK {% endblock %}
   </form>
 {% endif %}
 
+{% if scenario == "pre-award-disallow" %}
+<form class="form" action="/add-event-answer" method="post">
+
+  {% from "govuk/components/radios/macro.njk" import govukRadios %}
+  
+  {{ govukRadios({
+    name: "add-any-event",
+    fieldset: {
+      legend: {
+        text: "Add an event",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+    },
+    items: [
+      {
+        value: "case-eject",
+        text: "Identified need to move to PIPCS"
+      },
+      {
+        value: "disallow",
+        text: "Disallow"
+      },
+      {
+        value: "verified-identity",
+        text: "Verified claimant's identity"
+      },
+      {
+        value: "extend-hig",
+        text: "Extend health information deadline"
+      },
+      {
+        value: "other-event",
+        text: "Other event"
+      }
+    ]
+  }) }}
+  
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+  
+  </form>
+{% endif %}
+
 </div>
 </div>
-
-
 
 <br><br>
 
