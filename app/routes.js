@@ -247,7 +247,7 @@ router.post('/scenario-answer', function (req, res) {
     var scenario = req.session.data['scenario'];
 
     //Redirect
-    res.redirect('/case-eject/event-history');
+   res.redirect('/case-eject/event-history');
 });
 
 //router.post('/errors-answer', function (req, res) {
@@ -316,6 +316,8 @@ router.post('/add-event-answer', function (req, res) {
         res.redirect('/case-eject/add-note');
     } else if (addAnyEvent === 'other-event' || addAnyEvent === 'verified-identity' || addAnyEvent === 'extend-hig') {
         res.redirect('/case-eject/add-note');
+    } else if (addAnyEvent === 'disallow') {
+        res.redirect('/case-eject/disallow');
     } 
     else if (!addAnyEvent){
         res.redirect("/case-eject/reason-error");
@@ -555,6 +557,22 @@ router.post('/searchlight-context-answer', function (req, res) {
     }
     })
 
+     // Handle 'Disallow'
+ router.post('/disallow-answer',function(request, response) {
+    var disallow = request.session.data['disallow']
+    if (disallow == "Applicant is over State Pension age"){
+        response.redirect("/case-eject/disallow-confirmation");
+    } else if (disallow == "Applicant is under 16 years old") {
+        response.redirect("/case-eject/add-note");
+    } 
+    });
+
+    //Handle disallow confirmation
+router.post('/disallow-confirmation-answer', function (req, res) {
+    //Redirect
+   res.redirect('/case-eject/add-note');
+});
+
 // Add move to PIPCS notes
 
 router.get('/case-eject/add-note', function (req, res) {
@@ -566,6 +584,7 @@ router.get('/case-eject/add-note', function (req, res) {
     var searchlight = req.session.data['searchlight'];
     var change = req.session.data['change'];
     var movedNotes = req.session.data['movedNotes'];
+    var scenario = req.session.data['scenario'];
 
     //Display screen and make data available
     res.render('/case-eject/add-note', {
@@ -575,16 +594,22 @@ router.get('/case-eject/add-note', function (req, res) {
         prison: prison,
         searchlight: searchlight,
         change: change,
-        movedNotes: movedNotes
+        movedNotes: movedNotes,
+        scenario: scenario
     });
 });
 
 //Handle note screen
 router.post('/note-answer', function(req, res){
     var movedNotes = req.session.data['movedNotes'];
-
+    var scenario = req.session.data['scenario'];
      //Redirect
-     res.redirect('/case-eject/event-history-movepipcsadded');
+     //res.redirect('/case-eject/event-history-movepipcsadded');
+     if (scenario === 'pre-award-disallow'){
+        res.redirect('/case-eject/event-history-disallow-added');
+    } else {
+        res.redirect('/case-eject/event-history-movepipcsadded');
+    }
 });
 
 
@@ -621,6 +646,16 @@ router.get('/case-eject/event-history-movepipcsadded', function(req, res) {
         health: health,
         benefits: benefits
 
+    });
+} );
+
+//Make previous responses available to event history
+router.get('/case-eject/event-history-disallow-added', function(req, res) {
+    //retrieve form data
+    var disallow = req.session.data['disallow'];
+    //Display new screen and make form data available to use
+    res.render('/case-eject/event-history-disallow-added', {
+        disallow: disallow,
     });
 } );
 
