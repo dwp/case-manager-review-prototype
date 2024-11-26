@@ -565,15 +565,31 @@ router.post('/searchlight-context-answer', function (req, res) {
     if (disallow == "Applicant is over State Pension age"){
         response.redirect("/case-eject/disallow-confirmation");
     } else if (disallow == "Applicant is under 16 years old") {
-        response.redirect("/case-eject/add-note");
+        response.redirect("/case-eject/disallow-confirmation");
     } 
     });
 
+    //Make previous responses available to disallow confirmation screen
+router.get('/case-eject/disallow-confirmation', function(req, res) {
+    //retrieve form data
+    var disallow = req.session.data['disallow'];
+    //Display new screen and make form data available to use
+    res.render('/case-eject/disallow-confirmation', {
+        disallow: disallow
+    });
+} );
+
     //Handle disallow confirmation
 router.post('/disallow-confirmation-answer', function (req, res) {
-    //Redirect
+    var disallowConfirmation = req.session.data['disallow-confirmation'];
+    if (email === 'true' && letter === 'true'){
    res.redirect('/case-eject/add-note');
+    } else {
+        res.redirect('/case-eject/disallow-error');
+    }
 });
+
+
 
 // Add move to PIPCS notes
 
