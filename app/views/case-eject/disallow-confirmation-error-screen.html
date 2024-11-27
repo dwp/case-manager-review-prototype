@@ -60,8 +60,6 @@
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-
-    {% if disallow == "Applicant is over State Pension age" %}
     <h1 class="govuk-heading-xl">You need to finish the disallow process</h1>
     <p class="govuk-body">Before you disallow the application, you need to:</p>
     <ul class="govuk-list govuk-list--bullet">
@@ -73,7 +71,6 @@
       </li>
     </ul>
     <p class="govuk-body">If you have sent the email and letter already, <a href="/case-eject/disallow-confirmation">confirm that you have taken these actions</a>.</p>
-    {% endif %}
 
     {% if disallow == "Applicant is under 16 years old" %}
     <h1 class="govuk-heading-xl">You need to finish the disallow process for applicants under 16 years old</h1>
