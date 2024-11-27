@@ -76,7 +76,7 @@
           }
         },
         hint: {
-          text: "Select all that apply"
+          text: "Select all that apply."
         },
         items: [
         {
@@ -98,25 +98,26 @@
 {% endif %}
 
 {% if disallow == "Applicant is under 16 years old" %}
-{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+<form class="form" action="/disallow-confirmation-answer2" method="post">
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
 
-      {{ govukCheckboxes({
-        name: "disallow-confirmation",
+      {{ govukRadios({
+        name: "disallow-confirmation2",
         fieldset: {
           legend: {
-            text: "Which actions have you taken in the disallow process for applicants under 16?",
+            text: "Have you sent a disallow letter to the applicant?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
         },
         items: [
         {
-          value: "email",
-          text: "I have sent an email to Attendance Allowance and included the applicant's name and date of claim"
+          value: "Yes",
+          text: "Yes"
         },
         {
-          value: "letter",
-          text: "I have sent the disallow letter to the applicant"
+          value: "No",
+          text: "No"
         }
         ]
       }) }}
@@ -125,7 +126,7 @@
         text: "Continue"
       }) }}
 {% endif %}
-
+</form>
 </div>
 </div>
 

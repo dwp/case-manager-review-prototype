@@ -56,31 +56,47 @@
 
  <br><br><br><br>
 
+
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
+    {% if disallow == "Applicant is over State Pension age" %}
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: [
+        {
+          text: "Select the actions you've taken",
+          href: "#"
+        }
+      ]
+    }) }}
+    <form class="form" action="/disallow-confirmation-answer" method="post">
 
-    <form class="form" action="/disallow-answer" method="post">
+      {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 
-      {% from "govuk/components/radios/macro.njk" import govukRadios %}
-
-      {{ govukRadios({
-        name: "disallow",
+      {{ govukCheckboxes({
+        name: "disallow-confirmation",
         fieldset: {
           legend: {
-            text: "Why do you need to disallow the application?",
+            text: "Which actions have you taken in the disallow process for applicants over State Pension age?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
         },
+        hint: {
+          text: "Select all that apply."
+        },
+        errorMessage: {
+          text: "Select the actions you've taken"
+        },
         items: [
         {
-          value: "Applicant is over State Pension age",
-          text: "Applicant is over State Pension age"
+          value: "email",
+          text: "I have sent an email to Attendance Allowance, and included the applicant's name, National Insurance number, and date of claim"
         },
         {
-          value: "Applicant is under 16 years old",
-          text: "Applicant is under 16 years old"
+          value: "letter",
+          text: "I have sent the disallow letter to the applicant"
         }
         ]
       }) }}
@@ -90,10 +106,52 @@
       }) }}
 
 </form>
+{% endif %}
 
+{% if disallow == "Applicant is under 16 years old" %}
+{{ govukErrorSummary({
+  titleText: "There is a problem",
+  errorList: [
+    {
+      text: "Select yes if you have sent a disallow letter to the applicant
+      ",
+      href: "#"
+    }
+  ]
+}) }}
+<form class="form" action="/disallow-confirmation-answer2" method="post">
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+    
+      {{ govukRadios({
+        name: "disallow-confirmation2",
+        fieldset: {
+          legend: {
+            text: "Have you sent a disallow letter to the applicant?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        errorMessage: {
+          text: "Select yes if you have sent a disallow letter to the applicant
+          "
+        },
+        items: [
+        {
+          value: "Yes",
+          text: "Yes"
+        },
+        {
+          value: "No",
+          text: "No"
+        }
+        ]
+      }) }}
 
-
-
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+{% endif %}
+</form>
 </div>
 </div>
 

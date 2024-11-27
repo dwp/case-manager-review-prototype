@@ -247,7 +247,7 @@ router.post('/scenario-answer', function (req, res) {
     var scenario = req.session.data['scenario'];
 
     //Redirect
-   res.redirect('/case-eject/event-history');
+    res.redirect('/case-eject/assurance-tasks-ur');
 });
 
 //router.post('/errors-answer', function (req, res) {
@@ -579,15 +579,34 @@ router.get('/case-eject/disallow-confirmation', function(req, res) {
     });
 } );
 
-    //Handle disallow confirmation
+
+//Handle //Handle disallow confirmation
 router.post('/disallow-confirmation-answer', function (req, res) {
+    //Store response
     var disallowConfirmation = req.session.data['disallow-confirmation'];
-    if (email === 'true' && letter === 'true'){
-   res.redirect('/case-eject/add-note');
-    } else {
-        res.redirect('/case-eject/disallow-error');
-    }
+    //Redirect
+    res.redirect('/case-eject/add-note');
 });
+
+    //Handle disallow confirmation
+    router.post('/disallow-confirmation-answer2', function (req, res) {
+        var disallowConfirmation2 = req.session.data['disallow-confirmation2'];
+        if (disallowConfirmation2 == "Yes"){
+            res.redirect("/case-eject/add-note");
+        } else if (disallowConfirmation2 == "No") {
+            res.redirect("/case-eject/disallow-confirmation-error-screen");
+        } 
+     });
+
+//Make previous responses available to disallow confirmation error screen
+router.get('/case-eject/disallow-confirmation-error-screen', function(req, res) {
+    //retrieve form data
+    var disallow = req.session.data['disallow'];
+    //Display new screen and make form data available to use
+    res.render('/case-eject/disallow-confirmation-error-screen', {
+        disallow: disallow,
+    });
+} );
 
 
 

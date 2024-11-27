@@ -56,43 +56,30 @@
 
  <br><br><br><br>
 
+
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
 
-    <form class="form" action="/disallow-answer" method="post">
+    {% if disallow == "Applicant is over State Pension age" %}
+    <h1 class="govuk-heading-xl">You need to finish the disallow process</h1>
+    <p class="govuk-body">Before you disallow the application, you need to:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        Send an email to Attendance Allowance, and include the applicant's name, National Insurance number, and date of claim
+      </li>
+      <li>
+        Send a disallow letter to the applicant
+      </li>
+    </ul>
+    <p class="govuk-body">If you have sent the email and letter already, <a href="/case-eject/disallow-confirmation">confirm that you have taken these actions</a>.</p>
+    {% endif %}
 
-      {% from "govuk/components/radios/macro.njk" import govukRadios %}
-
-      {{ govukRadios({
-        name: "disallow",
-        fieldset: {
-          legend: {
-            text: "Why do you need to disallow the application?",
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--xl"
-          }
-        },
-        items: [
-        {
-          value: "Applicant is over State Pension age",
-          text: "Applicant is over State Pension age"
-        },
-        {
-          value: "Applicant is under 16 years old",
-          text: "Applicant is under 16 years old"
-        }
-        ]
-      }) }}
-
-      {{ govukButton({
-        text: "Continue"
-      }) }}
-
-</form>
-
-
-
+    {% if disallow == "Applicant is under 16 years old" %}
+    <h1 class="govuk-heading-xl">You need to finish the disallow process for applicants under 16 years old</h1>
+    <p class="govuk-body">Before you disallow the application, you need to send a disallow letter to the applicant</p>
+    <p class="govuk-body">If you have sent the email already, <a href="/case-eject/disallow-confirmation">confirm that you have taken this action</a>.</p>
+    {% endif %}
 
 </div>
 </div>
