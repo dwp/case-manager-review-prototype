@@ -61,15 +61,10 @@
       <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Added event: disallow application</h2>
 
       <p class="govuk-caption-m govuk-!-margin-bottom-1" id="event-1-description">
-        {{ disallow }}
-        {% if disallow == "Applicant is over State Pension age" %}
-        <br>Sent email to Attendance Allowance. Sent disallow letter to applicant.
-        {% endif %}
-        {% if disallow == "Applicant is under 16 years old" %}
-        <br>Sent disallow letter to applicant.
-        {% endif %}
+        Applicant is over State Pension age<br>
+        Sent email to Attendance Allowance. Sent disallow letter to applicant.
       <br>
-      {{ data['movedNotes'] }}
+      {{ data['movedNotes'] }}<br>
       <!--<br>
       [Other details played back here?]-->
       

@@ -320,7 +320,7 @@ router.post('/add-event-answer', function (req, res) {
     } else if (addAnyEvent === 'other-event' || addAnyEvent === 'verified-identity' || addAnyEvent === 'extend-hig') {
         res.redirect('/case-eject/add-note');
     } else if (addAnyEvent === 'disallow') {
-        res.redirect('/case-eject/disallow');
+        res.redirect('/case-eject/disallow-confirmation');
     } 
     else if (!addAnyEvent){
         res.redirect("/case-eject/reason-error");
@@ -571,14 +571,14 @@ router.post('/searchlight-context-answer', function (req, res) {
     });
 
     //Make previous responses available to disallow confirmation screen
-router.get('/case-eject/disallow-confirmation', function(req, res) {
+//router.get('/case-eject/disallow-confirmation', function(req, res) {
     //retrieve form data
-    var disallow = req.session.data['disallow'];
+    //var disallow = req.session.data['disallow'];
     //Display new screen and make form data available to use
-    res.render('/case-eject/disallow-confirmation', {
-        disallow: disallow
-    });
-} );
+    //res.render('/case-eject/disallow-confirmation', {
+       // disallow: disallow
+    //});
+//} );
 
 
 //Handle //Handle disallow confirmation
