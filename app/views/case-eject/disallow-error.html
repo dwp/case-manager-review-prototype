@@ -58,7 +58,17 @@
 
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+    {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: [
+        {
+          text: "Select the reason why you need to disallow the application",
+          href: "#"
+        }
+      ]
+    }) }}
 
     <form class="form" action="/disallow-answer" method="post">
 
@@ -73,7 +83,7 @@
             classes: "govuk-fieldset__legend--xl"
           }
         },
-        hint: {
+        errorMessage: {
           text: "Select the reason why you need to disallow the application"
         },
         items: [

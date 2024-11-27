@@ -62,6 +62,12 @@
 
       <p class="govuk-caption-m govuk-!-margin-bottom-1" id="event-1-description">
         {{ disallow }}
+        {% if disallow == "Applicant is over State Pension age" %}
+        <br>Sent email to Attendance Allowance. Sent disallow letter to applicant.
+        {% endif %}
+        {% if disallow == "Applicant is under 16 years old" %}
+        <br>Sent disallow letter to applicant.
+        {% endif %}
       <br>
       {{ data['movedNotes'] }}
       <!--<br>

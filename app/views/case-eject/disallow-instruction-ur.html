@@ -1,0 +1,41 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %} Which type of institution or accommodation did the applicant or claimant stay in? - PIP Case review - GOV.UK {% endblock %}
+
+{% block main %}
+
+   <div class="govuk-width-container">
+    <div class="column-full">
+      <section class="dwp-quick-reference" aria-label="Case information">
+        <dl class="dwp-quick-reference__block">
+        <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+        <dd class="dwp-quick-reference__primary">Jane Doe</dd>
+        <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">National Insurance number:</dt>
+        <dd class="dwp-quick-reference__secondary">QQ 12 34 56 X</dd>
+        </dl>
+      </section>
+
+
+  </div>
+
+ <br><br><br><br>
+
+
+ <div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Disallowing this application</h1>
+    <p class="govuk-body">Select the event 'Disallow application' on the next page to complete this action.</p>
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+    {{ govukButton({
+      text: "Continue",
+      href: "/case-eject/add-event"
+    }) }}
+
+
+</div>
+</div>
+</div>
+
+
+{% endblock %}
