@@ -245,10 +245,10 @@ router.post('/event-history/in-payment/stop-payment-in-pip-service/are-you-sure'
 router.post('/scenario-answer', function (req, res) {
     //Store response
     var scenario = req.session.data['scenario'];
-
-    //Redirect
-    res.redirect('/case-eject/assurance-tasks-ur');
-   //res.redirect('/case-eject/event-history');
+    if (scenario === 'pre-award-disallow'){
+        res.redirect('/case-eject/assurance-tasks-ur');
+    }
+    else {res.redirect('/case-eject/event-history');}
 });
 
 //router.post('/errors-answer', function (req, res) {
