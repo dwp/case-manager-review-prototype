@@ -248,6 +248,7 @@ router.post('/scenario-answer', function (req, res) {
 
     //Redirect
     res.redirect('/case-eject/assurance-tasks-ur');
+   //res.redirect('/case-eject/event-history');
 });
 
 //router.post('/errors-answer', function (req, res) {
