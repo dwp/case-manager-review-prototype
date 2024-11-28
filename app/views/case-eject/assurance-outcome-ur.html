@@ -24,6 +24,7 @@
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">There are issues with this application</h1>
+    {% if scenario == "pre-award-disallow" %}
     <p class="govuk-body"><strong>These are the issues</strong></p>
 <ul class="govuk-list govuk-list--bullet">
   <li>They do not meet the age criteria</li>
@@ -67,6 +68,20 @@
         text: "Continue",
         href: "/case-eject/disallow-instruction-ur"
       }) }}
+      {% endif %}
+
+      {% if scenario == "pre-award-disallow-v2" %}
+      <p class="govuk-body"><strong>These are the issues</strong></p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>They do not meet the age criteria: applicant is over State Pension age</li>
+      </ul>
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Disallow application",
+        href: "/case-eject/disallow-confirmation"
+      }) }}
+      {% endif %}
 
 </form>
 

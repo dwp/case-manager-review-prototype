@@ -248,6 +248,9 @@ router.post('/scenario-answer', function (req, res) {
     if (scenario === 'pre-award-disallow'){
         res.redirect('/case-eject/assurance-tasks-ur');
     }
+    else if (scenario === 'pre-award-disallow-v2'){
+        res.redirect('/case-eject/assurance-tasks-ur');
+    }
     else {res.redirect('/case-eject/event-history');}
 });
 
@@ -266,6 +269,17 @@ router.get('/case-eject/add-event', function(req, res) {
 
     //Display new screen and make form data available to use
     res.render('case-eject/add-event', {
+        scenario: scenario
+    });
+} );
+
+//Pass scenario information into assurance outcome screen
+router.get('/case-eject/assurance-outcome-ur', function(req, res) {
+    //retrieve form data
+    var scenario = req.session.data['scenario'];
+
+    //Display new screen and make form data available to use
+    res.render('case-eject/assurance-outcome-ur', {
         scenario: scenario
     });
 } );
@@ -644,6 +658,8 @@ router.post('/note-answer', function(req, res){
      //Redirect
      //res.redirect('/case-eject/event-history-movepipcsadded');
      if (scenario === 'pre-award-disallow'){
+        res.redirect('/case-eject/event-history-disallow-added');
+    } else if (scenario === 'pre-award-disallow-v2'){
         res.redirect('/case-eject/event-history-disallow-added');
     } else {
         res.redirect('/case-eject/event-history-movepipcsadded');
