@@ -594,6 +594,15 @@ router.post('/searchlight-context-answer', function (req, res) {
     //});
 //} );
 
+//Make previous responses available to disallow confirmation error screen
+router.get('/case-eject/disallow-confirmation', function(req, res) {
+    //retrieve form data
+    var scenario = req.session.data['scenario'];
+    //Display new screen and make form data available to use
+    res.render('/case-eject/disallow-confirmation', {
+        scenario: scenario,
+    });
+} );
 
 //Handle //Handle disallow confirmation
 router.post('/disallow-confirmation-answer', function (req, res) {
@@ -617,9 +626,11 @@ router.post('/disallow-confirmation-answer', function (req, res) {
 router.get('/case-eject/disallow-confirmation-error-screen', function(req, res) {
     //retrieve form data
     var disallow = req.session.data['disallow'];
+    var scenario = req.session.data['scenario'];
     //Display new screen and make form data available to use
     res.render('/case-eject/disallow-confirmation-error-screen', {
         disallow: disallow,
+        scenario: scenario
     });
 } );
 
@@ -660,7 +671,7 @@ router.post('/note-answer', function(req, res){
      if (scenario === 'pre-award-disallow'){
         res.redirect('/case-eject/event-history-disallow-added');
     } else if (scenario === 'pre-award-disallow-v2'){
-        res.redirect('/case-eject/event-history-disallow-added');
+        res.redirect('/case-eject/agent-home');
     } else {
         res.redirect('/case-eject/event-history-movepipcsadded');
     }

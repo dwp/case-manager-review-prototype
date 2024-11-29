@@ -17,7 +17,12 @@
 
 
   </div>
-
+  {% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
  <br><br><br><br>
 
 
@@ -75,10 +80,37 @@
       <ul class="govuk-list govuk-list--bullet">
         <li>They do not meet the age criteria: applicant is over State Pension age</li>
       </ul>
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        name: "next",
+        fieldset: {
+          legend: {
+            text: "What do you want to do now?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+        {
+          value: "Send application to assessment provider",
+          text: "Send application to assessment provider"
+        },
+        {
+          value: "Move application to PIPCS",
+          text: "Move application to PIPCS"
+        },
+        {
+          value: "Disallow application",
+          text: "Disallow application"
+        }
+        ]
+      }) }}
+
       {% from "govuk/components/button/macro.njk" import govukButton %}
 
       {{ govukButton({
-        text: "Disallow application",
+        text: "Continue",
         href: "/case-eject/disallow-confirmation"
       }) }}
       {% endif %}
