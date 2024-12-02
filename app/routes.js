@@ -671,7 +671,7 @@ router.post('/note-answer', function(req, res){
      if (scenario === 'pre-award-disallow'){
         res.redirect('/case-eject/event-history-disallow-added');
     } else if (scenario === 'pre-award-disallow-v2'){
-        res.redirect('/case-eject/agent-home');
+        res.redirect('/case-eject/disallow-end-journey');
     } else {
         res.redirect('/case-eject/event-history-movepipcsadded');
     }
