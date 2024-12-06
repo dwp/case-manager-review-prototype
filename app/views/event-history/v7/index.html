@@ -12,7 +12,7 @@
   {% endblock %}
 
 {% block content %}
-<p class="govuk-body"><strong class="govuk-tag govuk-tag--yellow">Version 6</strong></p><p class="govuk-body-s">Adds structured data for moving cases to PIPCS and a confirmation screen for post-award moves</p>
+<p class="govuk-body"><strong class="govuk-tag govuk-tag--yellow">Version 7</strong></p><p class="govuk-body-s">Adds the ability for agents to disallow applicants for being over state pension age</p>
 <form class="form" action="/scenario-answer" method="post">
 
   {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -33,6 +33,13 @@
     {
       value: "pre-award",
       text: "Case is pre-award"
+    },
+    {
+      value: "pre-award-disallow-v2",
+      text: "Case is in pre-award: the application is being disallowed",
+      hint: {
+        text: "Replace last section of URL with event-history-disallow-added to view timeline"
+      }
     },
     {
       value: "pre-award-reason-added",
