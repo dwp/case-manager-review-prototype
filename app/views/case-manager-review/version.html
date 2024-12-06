@@ -12,39 +12,40 @@
   {% endblock %}
 
 {% block content %}
-<p class="govuk-body"><strong class="govuk-tag govuk-tag--yellow">Version 6</strong></p><p class="govuk-body-s">Adds structured data for moving cases to PIPCS and a confirmation screen for post-award moves</p>
-<form class="form" action="/scenario-answer" method="post">
+
+
+<form class="form" action="/version-answer" method="post">
 
   {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
   {{ govukRadios({
-    name: "scenario",
+    name: "version",
     fieldset: {
       legend: {
-        text: "Event history",
+        text: "Case manager review: select a version",
         isPageHeading: true,
         classes: "govuk-fieldset__legend--xl"
       }
     },
     hint: {
-      text: "Which scenario do you want to simulate?"
+      text: "Which version would you like to view?"
     },
     items: [
     {
-      value: "pre-award",
-      text: "Case is pre-award"
+      value: "Version 6",
+      text: "Version 6 (latest)"
     },
     {
-      value: "pre-award-reason-added",
-      text: "Case is in pre-award: a move reason to move to PIPCS has been added"
+      value: "Version 5",
+      text: "Version 5"
     },
     {
-      value: "post-award",
-      text: "Case is in post award"
+      value: "Version 4",
+      text: "Version 4"
     },
     {
-      value: "post-award-reason-added",
-      text: "Case is in post-award: a move reason to move to PIPCS has been added"
+      value: "Version 3",
+      text: "Version 3"
     }
     ]
   }) }}
@@ -54,6 +55,11 @@
   }) }}
 
 </form>
+
+<!--    {
+      value: "pre-award-disallow",
+      text: "Case is in pre-award: the application is being disallowed (version 1)"
+    }, -->
 
 {% endblock %}
 
