@@ -1,0 +1,158 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %} Timeline {% endblock %}
+
+{% block main %}
+
+  <div class="govuk-width-container">
+    <div class="column-full">
+      <section class="dwp-quick-reference" aria-label="Case information">
+        <dl class="dwp-quick-reference__block">
+        <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+        <dd class="dwp-quick-reference__primary">Jane Doe</dd>
+        <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">National Insurance number:</dt>
+        <dd class="dwp-quick-reference__secondary">QQ 12 34 56 X</dd>
+        </dl>
+        </section>
+        
+    <nav class="navigation-secondary">
+      <ul>
+        <li>
+          <a href="/case-manager-review/record-details-iteration-4" aria-current="section">Personal details</a>
+        </li>
+        <li>
+          <a href="/case-manager-review/supporting-docs" >Supporting documents</a>
+        </li>
+        <li>
+          <a href="/case-manager-review/cons-or-disabilities" class="active"> Conditions or disabilities</a>
+        </li>
+        <li>
+          <a href="/case-manager-review/activities">Activities</a>
+        </li>
+        <li>
+          <a href="/event-history/v5-quick-reference/index" aria-current="section">Event history</a>
+        </li>
+        <li>
+          <a href="/decision-tab-iteration-4-evidence" aria-current="section">Decision</a>
+        </li>
+
+        {# <li>
+          <a href="Other-actions">Other actions</a>
+        </li> #}
+
+      </ul>
+    </nav>
+</div>
+
+
+ <br><br><br><br>
+
+<h1 class="govuk-heading-xl">Event history</h1>
+
+{{ govukButton({
+  text: "Add new event",
+  href:"/case-eject/add-event
+  "
+}) }}
+
+{% from "timeline/macro.njk" import dwpTimeline %}
+
+<h1 class="govuk-heading-l">Events</h1>
+{{
+    dwpTimeline({ 
+        items: [
+            {
+                title:  "Completed ‘DP224JP’ form received",
+                byline:  "System",
+                date:  "16 June 2024 at 1:00am"
+            },
+          
+            {
+                title:  "Summary of report including recommendations, suppliers and costs sent to claimant",
+                byline:  "John Goldsmith",
+                date:  "1 June 2024 at 7:14am"
+            },
+            {
+                title:  "Workplace assessment report",
+                byline:  "John Goldsmith",
+                link: {
+                    href: "#",
+                    text: "View details",
+                    visuallyHiddenText: "of the event on 15 May 2024 at 4:01pm"
+                },
+                date:  "15 May 2024 at 4:01pm"
+            },
+           
+           
+            {
+                title:  "Workplace assessment",
+                byline:  "John Goldsmith",
+                description: {
+                    text: "Agreed with the claimant that a workplace assessment is required and confirmed assessor visit on 5 May 2024 at 9:45am – confirmation letter sent"
+                },
+                date:  "26 April 2024 at 12:42pm"
+            },
+           
+          
+            {
+                title:  "Update to: Health condition or disability",
+                byline:  "Jane Doe",
+                link: {
+                    href: "#",
+                    text: "View details",
+                    visuallyHiddenText: "of the event on 21 April 2024 at 1:12pm"
+                },
+                date:  "21 April 2024 at 1:12pm"
+            },
+            {
+                title:  "Telephone call made",
+                byline:  "Jane Doe",
+                description: {
+                    text: "A telephone call was made to the claimant requesting further information to support the claim"
+                },
+                link: {
+                    href: "#",
+                    text: "View details",
+                    visuallyHiddenText: "of the event on 21 April 2024 at 10:15am"
+                },
+                date:  "21 April 2024 at 10:15am"
+            },
+            {
+                title:  "Text message (SMS) sent",
+                byline:  "Jane Doe",
+                description: {
+                    text: "SMS was sent to the claimant to inform them that we require further information and will be in contact on 21 April 2024"
+                },
+                date:  "19 April 2024 at 10:58am"
+            },
+         
+         
+            {
+                title:  "Health condition or disability ",
+                byline:  "Jane Doe",
+                description: {
+                    text: "Contact needed for more information"
+                },
+                date:  "16 April 2024 at 9:00am"
+            },
+           
+            {
+                title:  "Check personal details and add National Insurance number task",
+                byline:  "Jane Doe",
+                date:  "28 March 2024 at 9:12am"
+            },
+            {
+                title:  "Application received",
+                date:  "12 March 2024 at 3:00pm"
+            }
+    ]
+    })
+}}
+
+
+<br><br>
+
+</div>
+
+
+{% endblock %}
