@@ -266,7 +266,7 @@ router.post('/scenario-answer', function (req, res) {
     //Store response
     var scenario = req.session.data['scenario'];
     if (scenario === 'pre-award-disallow'){
-        res.redirect('/case-eject/assurance-tasks-ur');
+        res.redirect('/case-eject/disallow-confirmation');
     }
     else if (scenario === 'pre-award-disallow-v2'){
         res.redirect('/case-eject/assurance-tasks-ur');
