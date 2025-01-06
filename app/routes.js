@@ -269,7 +269,7 @@ router.post('/scenario-answer', function (req, res) {
         res.redirect('/case-eject/assurance-tasks-ur');
     }
     else if (scenario === 'pre-award-disallow-v2'){
-        res.redirect('/case-eject/disallow-confirmation');
+        res.redirect('/case-eject/assurance-tasks-ur');
     }
     else {res.redirect('/case-eject/event-history');}
 });
