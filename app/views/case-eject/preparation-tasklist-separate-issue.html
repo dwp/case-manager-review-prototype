@@ -59,7 +59,7 @@
 
   {% from "govuk/components/task-list/macro.njk" import govukTaskList %}
 
-  {% if pip == "No" %}
+  {% if pip == "No" or AgeCriteria == "No, applicant is under 16 years old" %}
 
   {{ govukTaskList({
     idPrefix: "application-checks",
@@ -707,8 +707,13 @@
 
   <h2 class="govuk-heading-l govuk-!-margin-bottom-6">There is an issue with this application</h2>
 
-    <p class="govuk-body">The applicant is over State Pension age and is not eligible.</p>
+    <p class="govuk-body">They do not meet the age criteria: applicant is over State Pension age and is not eligible for PIP.</p>
 
+  {% endif %}
+
+  {% if AgeCriteria == "No, applicant is under 16 years old" %}
+  <h2 class="govuk-heading-l govuk-!-margin-bottom-6">There is an issue with this application</h2>
+  <p class="govuk-body">They do not meet the age criteria: applicant is under 16 years old.</p>
   {% endif %}
 
   {% if pip == "Yes" %}
