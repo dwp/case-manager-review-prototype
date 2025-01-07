@@ -1,0 +1,414 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %} Process a PIP application - PIP Case review - GOV.UK {% endblock %}
+
+{% block main %}
+
+<div class="govuk-width-container ">
+        
+
+
+  <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
+    
+
+<div class="govuk-grid-row">
+
+
+<div class="govuk-grid-column-two-thirds">
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-three-quarters">
+
+ <h1 class="govuk-heading-l govuk-!-margin-bottom-1">Jeff Bridges</h1>
+
+
+<p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-8">NA 11 22 33 C</p>
+
+</div>
+</div>
+
+
+
+<h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Prepare an application for a decision</h1>
+<!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">Claim attached is what the citizen submitted using AfPC. Do X Y and Z to check against the following tasks</p> -->
+
+
+
+<h1 class="govuk-heading-m govuk-!-margin-bottom-2">Review supplied information</h1>
+<!-- <p class="govuk-body govuk-!-margin-bottom-4">@dave Links will open in a new tab</p> -->
+
+<p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-1"><a href="/v13/case-review/personal-details" target="_blank" rel="noopener">Registration (PIP1) (opens in new tab)</a></p>
+<p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-1"><a href="https://supporting-docs-prototype.herokuapp.com/vStarling-award/document-list" target="_blank" rel="noopener">Supporting documents (opens in new tab)</a></p>
+<p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6"><a href="evidence-6" target="_blank" rel="noopener">Health assessment report (opens in new tab)</a></p>
+
+
+</div>
+</div>
+
+
+
+
+<!------------ ––– ------------>
+
+
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-two-thirds">
+
+  <h2 class="govuk-heading-m govuk-!-padding-top-2 govuk-!-margin-bottom-1">Check application</h2>
+
+  {% from "govuk/components/task-list/macro.njk" import govukTaskList %}
+
+{{ govukTaskList({
+  idPrefix: "application-checks",
+  items: [
+  {
+    title: {
+      text: "Question"
+    },
+    href: "#",
+    status: {
+      tag: {
+        text: "TO DO",
+        classes: "govuk-tag--grey"
+      }
+    }
+  },  {
+    title: {
+      text: "Question"
+    },
+    href: "#",
+    status: {
+      tag: {
+        text: "TO DO",
+        classes: "govuk-tag--grey"
+      }
+    }
+  },  {
+    title: {
+      text: "Question"
+    },
+    href: "#",
+    status: {
+      tag: {
+        text: "TO DO",
+        classes: "govuk-tag--grey"
+      }
+    }
+  },  {
+    title: {
+      text: "Question"
+    },
+    href: "#",
+    status: {
+      tag: {
+        text: "TO DO",
+        classes: "govuk-tag--grey"
+      }
+    }
+  },  {
+    title: {
+      text: "Question"
+    },
+    href: "#",
+    status: {
+      tag: {
+        text: "TO DO",
+        classes: "govuk-tag--grey"
+      }
+    }
+  },  {
+    title: {
+      text: "Question"
+    },
+    href: "#",
+    status: {
+      tag: {
+        text: "TO DO",
+        classes: "govuk-tag--grey"
+      }
+    }
+  },  {
+    title: {
+      text: "Question"
+    },
+    href: "#",
+    status: {
+      tag: {
+        text: "TO DO",
+        classes: "govuk-tag--grey"
+      }
+    }
+  },  {
+    title: {
+      text: "Question"
+    },
+    href: "#",
+    status: {
+      tag: {
+        text: "TO DO",
+        classes: "govuk-tag--grey"
+      }
+    }
+  },  {
+    title: {
+      text: "Question"
+    },
+    href: "#",
+    status: {
+      tag: {
+        text: "TO DO",
+        classes: "govuk-tag--grey"
+      }
+    }
+  },  {
+    title: {
+      text: "Question"
+    },
+    href: "#",
+    status: {
+      tag: {
+        text: "TO DO",
+        classes: "govuk-tag--grey"
+      }
+    }
+  },
+    {
+      title: {
+        text: "Age criteria"
+      },
+      href: "age-criteria",
+      status: {
+        tag: {
+          text: "TO DO",
+          classes: "govuk-tag--grey"
+        }
+      }
+    },
+    {
+      title: {
+        text: "Question"
+      },
+      href: "#",
+      status: {
+        tag: {
+          text: "TO DO",
+          classes: "govuk-tag--grey"
+        }
+      }
+    },{
+      title: {
+        text: "Question"
+      },
+      href: "#",
+      status: {
+        tag: {
+          text: "TO DO",
+          classes: "govuk-tag--grey"
+        }
+      }
+    },{
+      title: {
+        text: "Question"
+      },
+      href: "#",
+      status: {
+        tag: {
+          text: "TO DO",
+          classes: "govuk-tag--grey"
+        }
+      }
+    },{
+      title: {
+        text: "Question"
+      },
+      href: "#",
+      status: {
+        tag: {
+          text: "TO DO",
+          classes: "govuk-tag--grey"
+        }
+      }
+    },{
+      title: {
+        text: "Question"
+      },
+      href: "#",
+      status: {
+        tag: {
+          text: "TO DO",
+          classes: "govuk-tag--grey"
+        }
+      }
+    },{
+      title: {
+        text: "Question"
+      },
+      href: "#",
+      status: {
+        tag: {
+          text: "TO DO",
+          classes: "govuk-tag--grey"
+        }
+      }
+    },{
+      title: {
+        text: "Question"
+      },
+      href: "#",
+      status: {
+        tag: {
+          text: "TO DO",
+          classes: "govuk-tag--grey"
+        }
+      }
+    },{
+      title: {
+        text: "Question"
+      },
+      href: "#",
+      status: {
+        tag: {
+          text: "TO DO",
+          classes: "govuk-tag--grey"
+        }
+      }
+    },{
+      title: {
+        text: "Question"
+      },
+      href: "#",
+      status: {
+        tag: {
+          text: "TO DO",
+          classes: "govuk-tag--grey"
+        }
+      }
+    },{
+      title: {
+        text: "Question"
+      },
+      href: "#",
+      status: {
+        tag: {
+          text: "TO DO",
+          classes: "govuk-tag--grey"
+        }
+      }
+    },{
+      title: {
+        text: "Question"
+      },
+      href: "#",
+      status: {
+        tag: {
+          text: "TO DO",
+          classes: "govuk-tag--grey"
+        }
+      }
+    },{
+      title: {
+        text: "Question"
+      },
+      href: "#",
+      status: {
+        tag: {
+          text: "TO DO",
+          classes: "govuk-tag--grey"
+        }
+      }
+    },{
+      title: {
+        text: "Question"
+      },
+      href: "#",
+      status: {
+        tag: {
+          text: "TO DO",
+          classes: "govuk-tag--grey"
+        }
+      }
+    },{
+      title: {
+        text: "Question"
+      },
+      href: "#",
+      status: {
+        tag: {
+          text: "TO DO",
+          classes: "govuk-tag--grey"
+        }
+      }
+    },{
+      title: {
+        text: "Question"
+      },
+      href: "#",
+      status: {
+        tag: {
+          text: "TO DO",
+          classes: "govuk-tag--grey"
+        }
+      }
+    },{
+      title: {
+        text: "Question"
+      },
+      href: "#",
+      status: {
+        tag: {
+          text: "TO DO",
+          classes: "govuk-tag--grey"
+        }
+      }
+    },{
+      title: {
+        text: "Question"
+      },
+      href: "#",
+      status: {
+        tag: {
+          text: "TO DO",
+          classes: "govuk-tag--grey"
+        }
+      }
+    }
+  ]
+}) }}
+
+
+
+  <!------------ ––– ------------>
+
+
+  {% if scenario == "pre-award-disallow" %}
+  {% endif %}
+
+<p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6"><a href="application-exit-bail" rel="noopener">I need to come back to this application later</a></p>
+
+</div>
+</div>
+
+  </main>
+</div>
+
+
+
+
+
+<!-- <div class="govuk-width-container">
+  <ul class="govuk-footer__list">
+
+    <li class="govuk-footer__list-item">
+      <a class="govuk-footer__link" href="/eject">
+        There is an issue with this applciation
+      </a>
+    </li>
+
+</div> -->
+
+
+<div>
+
+
+{% endblock %}

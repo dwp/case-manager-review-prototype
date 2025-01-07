@@ -269,7 +269,9 @@ router.post('/scenario-answer', function (req, res) {
         res.redirect('/case-eject/assurance-tasks-ur');
     }
     else if (scenario === 'pre-award-disallow-v2'){
-        res.redirect('/case-eject/assurance-tasks-ur');
+        res.redirect('/case-eject/preparation-tasklist-separate');
+    }  else if (scenario === 'pre-award-disallow-v2-b'){
+        res.redirect('/case-eject/preparation-tasklist-separate');
     }
     else {res.redirect('/case-eject/event-history');}
 });
@@ -296,6 +298,85 @@ router.get('/case-eject/assurance-outcome-ur', function(req, res) {
         scenario: scenario
     });
 } );
+
+//Process age criteria
+router.post('/age-criteria-answer', function (req, res) {
+    //Store response
+    var AgeCriteria = req.session.data['AgeCriteria'];
+    if (AgeCriteria === 'Yes'){
+        res.redirect('/case-eject/next-question');
+    }
+    else if (AgeCriteria === 'No, applicant is over State Pension age'){
+        res.redirect('/case-eject/pip');
+    }
+    else if (AgeCriteria === 'No, applicant is under 16 years old'){
+        res.redirect('/case-eject/next-question');
+    }
+    else if (AgeCriteria === 'I need to come back to this later'){
+        res.redirect('/case-eject/preparation-tasklist-separate');
+    }
+});
+
+//PIP in previous 12 months answer
+router.post('/pip-answer', function (req, res) {
+    //Store response
+    var pip = req.session.data['pip'];
+    if (pip === 'Yes'){
+        res.redirect('/case-eject/next-question');
+    }
+    else if (pip === 'No'){
+        res.redirect('/case-eject/next-question');
+    }
+    else if (pip === 'I need to come back to this later'){
+        res.redirect('/case-eject/preparation-tasklist-separate');
+    }
+});
+
+//Make previous responses available to next question
+router.get('/case-eject/next-question', function(req, res) {
+    //retrieve form data
+    var scenario = req.session.data['scenario'];
+    var pip = req.session.data['pip'];
+    var AgeCriteria = req.session.data['AgeCriteria'];
+    
+    //Display new screen and make form data available to use
+    res.render('case-eject/next-question', {
+        scenario: scenario,
+        pip: pip,
+        AgeCriteria: AgeCriteria
+    });
+} );
+
+//Make previous responses available to task list single issue
+router.get('/case-eject/preparation-tasklist-separate-issue', function(req, res) {
+    //retrieve form data
+    var scenario = req.session.data['scenario'];
+    var pip = req.session.data['pip'];
+    var AgeCriteria = req.session.data['AgeCriteria'];
+    
+    //Display new screen and make form data available to use
+    res.render('case-eject/preparation-tasklist-separate-issue', {
+        scenario: scenario,
+        pip: pip,
+        AgeCriteria: AgeCriteria
+    });
+} );
+
+//Make previous responses available to task list multiple issue
+router.get('/case-eject/preparation-tasklist-separate-multiple-issues', function(req, res) {
+    //retrieve form data
+    var scenario = req.session.data['scenario'];
+    var pip = req.session.data['pip'];
+    var AgeCriteria = req.session.data['AgeCriteria'];
+    
+    //Display new screen and make form data available to use
+    res.render('case-eject/preparation-tasklist-separate-multiple-issues', {
+        scenario: scenario,
+        pip: pip,
+        AgeCriteria: AgeCriteria
+    });
+} );
+
 
 //Make previous responses available to reason screen
 router.get('/case-eject/add-event', function(req, res) {
@@ -623,7 +704,11 @@ router.post('/note-answer', function(req, res){
         res.redirect('/case-eject/event-history-disallow-added');
     } else if (scenario === 'pre-award-disallow-v2'){
         res.redirect('/case-eject/disallow-end-journey');
-    } else {
+    }
+        else if (scenario === 'pre-award-disallow-v2-b'){
+            res.redirect('/case-eject/disallow-end-journey');
+        }    
+    else {
         res.redirect('/case-eject/event-history-movepipcsadded');
     }
 });
