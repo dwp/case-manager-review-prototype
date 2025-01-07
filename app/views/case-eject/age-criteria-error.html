@@ -17,7 +17,6 @@
 
 <div class="govuk-grid-row">
 <div class="govuk-grid-column-three-quarters">
-
  <h1 class="govuk-heading-l govuk-!-margin-bottom-1">Jeff Bridges</h1>
 
 
@@ -27,6 +26,9 @@
 </div>
 
 
+
+
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
 {{ govukErrorSummary({
   titleText: "There is a problem",
@@ -39,17 +41,16 @@
 }) }}
 
 
-
 <!------------ ––– ------------>
 
-<form class="form" action="/pip-answer" method="post">
+<form class="form" action="/age-criteria-answer" method="post">
   {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
   {{ govukRadios({
-    name: "pip",
+    name: "AgeCriteria",
     fieldset: {
       legend: {
-        text: "Did they have a PIP claim that ended in the 12 months before their new date of claim?",
+        text: "Do they meet the age criteria?",
         isPageHeading: true,
         classes: "govuk-fieldset__legend--xl"
       }
@@ -57,14 +58,21 @@
     hint: {
       text: "Check Searchlight"
     },
+    errorMessage: {
+      text: "Select if the applicant meets the age criteria"
+    },
     items: [
       {
         value: "Yes",
         text: "Yes"
       },
       {
-        value: "No",
-        text: "No"
+        value: "No, applicant is over State Pension age",
+        text: "No, applicant is over State Pension age"
+      },
+      {
+        value: "No, applicant is under 16 years old",
+        text: "No, applicant is under 16 years old"
       },
       {
         value: "I need to come back to this later",
