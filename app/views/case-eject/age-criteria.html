@@ -34,20 +34,15 @@
 <!------------ ––– ------------>
 
 <form class="form" action="/age-criteria-answer" method="post">
+  <h1 class="govuk-heading-xl govuk-!-margin-bottom-3">Do they meet the age criteria?</h1>
+  <div id="dob-hint" class="govuk-hint">
+    Check Searchlight
+  </div>
+  <p class="govuk-body"><a href="https://www.gov.uk/state-pension-age" class="govuk-link" rel="noreferrer noopener" target="_blank">Check the applicant's State Pension age (opens in new tab)</a></p>
   {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
   {{ govukRadios({
     name: "AgeCriteria",
-    fieldset: {
-      legend: {
-        text: "Do they meet the age criteria?",
-        isPageHeading: true,
-        classes: "govuk-fieldset__legend--xl"
-      }
-    },
-    hint: {
-      text: "Check Searchlight"
-    },
     items: [
       {
         value: "Yes",
