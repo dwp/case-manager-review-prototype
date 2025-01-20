@@ -474,7 +474,9 @@ router.get('/case-eject/reason-extra', function(req, res) {
     // Select a reason for identified move to PIPCS
     router.post('/reason-answer',function(request, response) {
         var addAny = request.session.data['reason']
-        if (addAny == "Alternative format needed"){
+        if (addAny == "Additional support needed"){
+            response.redirect("/case-eject/add-note");
+        } else if (addAny == "Alternative format needed") {
             response.redirect("/case-eject/add-note");
         } else if (addAny == "Appointee added") {
             response.redirect("/case-eject/add-note");
