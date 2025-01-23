@@ -769,12 +769,12 @@ router.post('/address-answer', function (req, res) {
     //Store response
     var address = req.session.data['Address'];
     if (address === 'Yes'){
-        res.redirect('/searchlight/tasks');
+        res.redirect('/searchlight/tasks-2');
     }
     else if (address === 'No'){
         res.redirect('/searchlight/what-do-you-want-do');
     }  else if (address === 'I need to come back to this later'){
-        res.redirect('/searchlight/tasks');
+        res.redirect('/searchlight/tasks-2');
     }
 });
 
@@ -797,10 +797,10 @@ router.post('/what-do-you-want-to-do-answer', function (req, res) {
     //Store response
     var WhatDoYouWantToDo = req.session.data['WhatDoYouWantToDo'];
     if (WhatDoYouWantToDo === 'Try to resolve this task'){
-        res.redirect('/searchlight/tasks');
+        res.redirect('/searchlight/tasks-3');
     }
     else if (WhatDoYouWantToDo === 'Nothing'){
-        res.redirect('/searchlight/tasks');
+        res.redirect('/searchlight/tasks-3');
     }
 });
 
@@ -822,7 +822,7 @@ router.post('/what-did-you-do-answer', function (req, res) {
     }
 });
 
-//TASKS
+//TASKS 1
 //Make previous responses available to tasks screen
 router.get('/searchlight/tasks', function(req, res) {
     //retrieve form data
@@ -834,6 +834,33 @@ router.get('/searchlight/tasks', function(req, res) {
         address: address
     });
 } );
+
+//TASKS 2
+//Make previous responses available to tasks screen
+router.get('/searchlight/tasks-2', function(req, res) {
+    //retrieve form data
+    var WhatDoYouWantToDo = req.session.data['WhatDoYouWantToDo'];
+    var address = req.session.data['Address'];
+    //Display new screen and make form data available to use
+    res.render('/searchlight/tasks-2', {
+        WhatDoYouWantToDo: WhatDoYouWantToDo,
+        address: address
+    });
+} );
+
+//TASKS 3
+//Make previous responses available to tasks screen
+router.get('/searchlight/tasks-3', function(req, res) {
+    //retrieve form data
+    var WhatDoYouWantToDo = req.session.data['WhatDoYouWantToDo'];
+    var address = req.session.data['Address'];
+    //Display new screen and make form data available to use
+    res.render('/searchlight/tasks-3', {
+        WhatDoYouWantToDo: WhatDoYouWantToDo,
+        address: address
+    });
+} );
+
 
 
 //-------------------------------------------------------------------

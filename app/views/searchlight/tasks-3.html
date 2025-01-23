@@ -58,9 +58,7 @@
   <h2 class="govuk-heading-m govuk-!-padding-top-2 govuk-!-margin-bottom-1">Check application</h2>
 
     {% from "govuk/components/task-list/macro.njk" import govukTaskList %}
-
     {{ govukTaskList({
-      idPrefix: "application-checks",
       items: [
       {
         title: {
@@ -84,18 +82,95 @@
             classes: "govuk-tag--blue"
           }
         }
-      },  {
-        title: {
-          text: "Address"
-        },
-        href: "address",
-        status: {
-          tag: {
-            text: "TO DO",
-            classes: "govuk-tag--grey"
+      }
+      ]
+    }) }}
+
+    {% if address == "Yes" %}
+
+    {{ govukTaskList({
+      idPrefix: "application-checks",
+      items: [
+        {
+          title: {
+            text: "Address"
+          },
+          href: "address",
+          status: {
+            tag: {
+              text: "DONE",
+              classes: "govuk-tag--blue"
+            }
           }
         }
-      },  {
+      ]
+    }) }}
+    {% endif %}
+
+    {% if address == "I need to come back to this later" %}
+    {{ govukTaskList({
+      idPrefix: "application-checks",
+      items: [
+        {
+          title: {
+            text: "Address"
+          },
+          href: "address",
+          status: {
+            tag: {
+              text: "PAUSED",
+              classes: "govuk-tag--yellow"
+            }
+          }
+        }
+      ]
+    }) }}
+    {% endif %}
+
+    {% if address == "No" and WhatDoYouWantToDo == "Try to resolve this task" %}
+    {{ govukTaskList({
+      idPrefix: "application-checks",
+      items: [
+        {
+          title: {
+            text: "Address"
+          },
+          href: "address-2",
+          status: {
+            tag: {
+              text: "RESOLVE",
+              classes: "govuk-tag--red"
+            }
+          }
+        }
+      ]
+    }) }}
+    {% endif %}
+
+    {% if address == "No" and WhatDoYouWantToDo == "Nothing" %}
+    {{ govukTaskList({
+      idPrefix: "application-checks",
+      items: [
+        {
+          title: {
+            text: "Address"
+          },
+          href: "address-2",
+          status: {
+            tag: {
+              text: "ISSUE",
+              classes: "govuk-tag--red"
+            }
+          }
+        }
+      ]
+    }) }}
+    {% endif %}
+    
+    {% from "govuk/components/task-list/macro.njk" import govukTaskList %}
+
+    {{ govukTaskList({
+      items: [{
         title: {
           text: "Date of birth"
         },
@@ -320,14 +395,98 @@
         }
       ]
     }) }}
-
   <!------------ ––– ------------>
 
 
+{% if address == "No" and WhatDoYouWantToDo == "Try to resolve this task" %}
+  <h2 class="govuk-heading-l govuk-!-margin-bottom-6">There is an issue with this application</h2>
+  {% from "govuk/components/details/macro.njk" import govukDetails %}
 
-<p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6"><a href="application-exit-bail" rel="noopener">I need to come back to this application later</a></p>
+{{ govukDetails({
+  summaryText: "How to resolve the address if it does not match what we holid in Searchlight",
+  text: "Contact the applicant to verify their identity, and confirm the correct address.  Update the address in Searchlight if it is incorrect"
+}) }}
 
+    <form class="form" method="post">
 
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        name: "next",
+        fieldset: {
+          legend: {
+            text: "What do you want to do now?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+        {
+          value: "Send application to assessment provider",
+          text: "Send application to assessment provider"
+        },
+        {
+          value: "Move application to PIPCS",
+          text: "Move application to PIPCS"
+        },
+        {
+          value: "Disallow application",
+          text: "Disallow application"
+        }
+        ]
+      }) }}
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Continue",
+        href: "/searchlight/check"
+      }) }}
+
+</form>
+{% endif %}
+
+{% if address == "No" and WhatDoYouWantToDo == "Nothing" %}
+  <h2 class="govuk-heading-l govuk-!-margin-bottom-6">There is an issue with this application</h2>
+
+    <form class="form" method="post">
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        name: "next",
+        fieldset: {
+          legend: {
+            text: "What do you want to do now?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+        {
+          value: "Send application to assessment provider",
+          text: "Send application to assessment provider"
+        },
+        {
+          value: "Move application to PIPCS",
+          text: "Move application to PIPCS"
+        },
+        {
+          value: "Disallow application",
+          text: "Disallow application"
+        }
+        ]
+      }) }}
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Continue",
+        href: "#"
+      }) }}
+
+</form>
+{% endif %}
 
 </div>
 </div>
