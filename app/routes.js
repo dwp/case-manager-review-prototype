@@ -762,6 +762,80 @@ router.get('/case-eject/event-history-disallow-added', function(req, res) {
     });
 } );
 
+//-------------------SEARCHLIGHT
+
+//ADDRESS
+router.post('/address-answer', function (req, res) {
+    //Store response
+    var address = req.session.data['Address'];
+    if (address === 'Yes'){
+        res.redirect('/searchlight/tasks');
+    }
+    else if (address === 'No'){
+        res.redirect('/searchlight/what-do-you-want-do');
+    }  else if (address === 'I need to come back to this later'){
+        res.redirect('/searchlight/tasks');
+    }
+});
+
+//ADDRESS 2
+router.post('/address-2-answer', function (req, res) {
+    //Store response
+    var address = req.session.data['Address'];
+    if (address === 'Yes'){
+        res.redirect('/searchlight/what-did-you-do');
+    }
+    else if (address === 'No'){
+        res.redirect('/searchlight/what-do-you-want-do');
+    }  else if (address === 'I need to come back to this later'){
+        res.redirect('/searchlight/tasks');
+    }
+});
+
+//WHAT DO YOU WANT TO DO
+router.post('/what-do-you-want-to-do-answer', function (req, res) {
+    //Store response
+    var WhatDoYouWantToDo = req.session.data['WhatDoYouWantToDo'];
+    if (WhatDoYouWantToDo === 'Try to resolve this task'){
+        res.redirect('/searchlight/tasks');
+    }
+    else if (WhatDoYouWantToDo === 'Nothing'){
+        res.redirect('/searchlight/tasks');
+    }
+});
+
+//WHAT DID YOU DO?
+router.post('/what-did-you-do-answer', function (req, res) {
+    //Store response
+    var WhatDidYouDo = req.session.data['WhatDidYouDo'];
+    if (WhatDidYouDo === 'Changed address in Searchlight'){
+        res.redirect('/searchlight/add-note');
+    }
+    else if (WhatDidYouDo === 'Changed address in PIP service'){
+        res.redirect('/searchlight/add-note');
+    }
+    else if (WhatDidYouDo === 'Changed address in Searchlight and PIP Service'){
+        res.redirect('/searchlight/add-note');
+    }
+    else if (WhatDidYouDo === 'Nothing - the address already matched what we hold in Searchlight'){
+        res.redirect('/searchlight/tasks');
+    }
+});
+
+//TASKS
+//Make previous responses available to tasks screen
+router.get('/searchlight/tasks', function(req, res) {
+    //retrieve form data
+    var WhatDoYouWantToDo = req.session.data['WhatDoYouWantToDo'];
+    var address = req.session.data['Address'];
+    //Display new screen and make form data available to use
+    res.render('/searchlight/tasks', {
+        WhatDoYouWantToDo: WhatDoYouWantToDo,
+        address: address
+    });
+} );
+
+
 //-------------------------------------------------------------------
     // QPPT
     router.post('/qppt/dl-3m9m-check',function(request, response) {
