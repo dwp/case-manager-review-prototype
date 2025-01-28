@@ -16,7 +16,7 @@ Add a note - PIP Case review - GOV.UK {% endblock %}
             </dl>
             </section>
             {% if scenario != "pre-award-disallow-v2" and scenario != "pre-award-disallow-v2-b" %}
-    <nav class="navigation-secondary">
+    <!--<nav class="navigation-secondary">
       <ul>
         <li>
           <a href="/case-manager-review/record-details-iteration-4" aria-current="section">Personal details</a>
@@ -42,7 +42,7 @@ Add a note - PIP Case review - GOV.UK {% endblock %}
         </li> #}
 
       </ul>
-    </nav>
+    </nav>-->
     {% endif %}
 </div>
 
@@ -59,37 +59,18 @@ Add a note - PIP Case review - GOV.UK {% endblock %}
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds"><!--add-another"-->
     <form class="form" action="/searchlight/tasks-resolved" method="post">
-
+     <!--<span class="govuk-caption-l">Address does not match Searchlight record</span>-->
       <div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength="2000">
         <h1 class="govuk-label-wrapper">
-          <!--<span class="govuk-caption-xl">
-            <p class="govuk-caption-xl">{{ addAny }}<span style="text-transform: lowercase;">{% if prison %}: {{ prison }}
-                {% elif change %}:
-                {{ change }}
-                {% elif health %}:
-                {{ health }}
-                {% elif benefits %}:
-                {{ benefits }}
-                {% elif searchlight %}:
-                {{ searchlight }}
-              {% endif %}</span>
-            </p>-->
-
-            <!-- addAny: addAny,
-        health: health,
-        benefits: benefits,
-        prison: prison,
-        searchlight: searchlight,
-        change: change -->
-          <!--</span>-->
           <label class="govuk-label govuk-label--xl" for="with-hint">
             Add a note
           </label>
         </h1>
         
         <div id="with-hint-hint" class="govuk-hint">
-          Enter more information about this event.
+          Enter more information about the actions you have taken.
         </div>
+        <p>Your actions will be added to the applicant's event history.</p>
         <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="movedNotes" rows="5" aria-describedby="with-hint-info with-hint-hint"></textarea>
         <div id="with-hint-info" class="govuk-hint govuk-character-count__message">
           You have 2000 characters remaining
