@@ -34,22 +34,23 @@
 <!------------ ––– ------------>
 
 <form class="form" action="/check" method="post">
-  <h1 class="govuk-heading-xl govuk-!-margin-bottom-3">There are issues flagged to resolve</h1>
-  <div id="dob-hint" class="govuk-hint">
-    Address does not match Searchlight record
-  </div>
+  <h1 class="govuk-heading-xl govuk-!-margin-bottom-3">Are you sure you want to [move this application to PIPCS / disallow this application / send this application to the assessment provider]?</h1>
+<p>There is an issue you said you want to try to resolve:</p>
+<ul>
+  <li>Address does not match Searchlight record</li>
+</ul>
   {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
   {{ govukRadios({
     name: "check",
     items: [
       {
-        value: "Continue",
-        text: "Continue"
+        value: "Yes",
+        text: "Yes"
       },
       {
-        value: "Go back and resolve issues",
-        text: "Go back and resolve issues"
+        value: "No",
+        text: "No"
       }
     ]
   }) }}

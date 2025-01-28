@@ -34,7 +34,37 @@
 <!------------ ––– ------------>
 
 <form class="form" action="/what-did-you-do-answer" method="post">
-  <h1 class="govuk-heading-xl govuk-!-margin-bottom-3">What did you do to resolve this issue?</h1>
+  <span class="govuk-caption-l">Address does not match Searchlight record</span>
+  {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+{{ govukCheckboxes({
+  name: "waste",
+  fieldset: {
+    legend: {
+      text: "What did you do to resolve this issue?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--xl"
+    }
+  },
+  hint: {
+    text: "Select all that apply."
+  },
+  items: [
+    {
+      value: "Verified applicant's identity",
+      text: "Verified applicant's identity"
+    },
+    {
+      value: "Changed address in Searchlight",
+      text: "Changed address in Searchlight"
+    },
+    {
+      value: "Changed address in PIP Service",
+      text: "Changed address in PIP Service"
+    }
+  ]
+}) }}
+  <!--<h1 class="govuk-heading-xl govuk-!-margin-bottom-3">What did you do to resolve this issue?</h1>
   <div id="dob-hint" class="govuk-hint">
     Address does not match Searchlight record
   </div>
@@ -56,7 +86,7 @@
         text: "Changed address in Searchlight and PIP Service"
       }
     ]
-  }) }}
+}) }}-->
 
   {{ govukButton({
     text: "Continue"
