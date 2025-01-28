@@ -127,7 +127,7 @@
     }) }}
     {% endif %}
 
-    {% if address == "No" and WhatDoYouWantToDo == "Try to resolve this task" %}
+    {% if address == "No - I want to try to resolve this issue" %}
     {{ govukTaskList({
       idPrefix: "application-checks",
       items: [
@@ -135,10 +135,10 @@
           title: {
             text: "Address"
           },
-          href: "address-2",
+          href: "address",
           status: {
             tag: {
-              text: "RESOLVE",
+              text: "TO RESOLVE",
               classes: "govuk-tag--red"
             }
           }
@@ -147,7 +147,7 @@
     }) }}
     {% endif %}
 
-    {% if address == "No" and WhatDoYouWantToDo == "Nothing" %}
+    {% if address == "No - I cannot resolve this issue" %}
     {{ govukTaskList({
       idPrefix: "application-checks",
       items: [
@@ -155,7 +155,7 @@
           title: {
             text: "Address"
           },
-          href: "address-2",
+          href: "address",
           status: {
             tag: {
               text: "ISSUE",
@@ -398,14 +398,10 @@
   <!------------ ––– ------------>
 
 
-{% if address == "No" and WhatDoYouWantToDo == "Try to resolve this task" %}
+{% if address == "No - I want to try to resolve this issue" %}
   <h2 class="govuk-heading-l govuk-!-margin-bottom-6">There is an issue with this application</h2>
   {% from "govuk/components/details/macro.njk" import govukDetails %}
 
-{{ govukDetails({
-  summaryText: "How to resolve the address if it does not match what we holid in Searchlight",
-  text: "Contact the applicant to verify their identity, and confirm the correct address.  Update the address in Searchlight if it is incorrect"
-}) }}
 
     <form class="form" method="post">
 
@@ -446,7 +442,7 @@
 </form>
 {% endif %}
 
-{% if address == "No" and WhatDoYouWantToDo == "Nothing" %}
+{% if address == "No - I cannot resolve this issue" %}
   <h2 class="govuk-heading-l govuk-!-margin-bottom-6">There is an issue with this application</h2>
 
     <form class="form" method="post">
