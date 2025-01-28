@@ -90,7 +90,7 @@
         href: "address",
         status: {
           tag: {
-            text: "RESOLVE",
+            text: "TO RESOLVE",
             classes: "govuk-tag--red"
           }
         }
@@ -325,10 +325,6 @@
   <h2 class="govuk-heading-l govuk-!-margin-bottom-6">There is an issue with this application</h2>
   {% from "govuk/components/details/macro.njk" import govukDetails %}
 
-{{ govukDetails({
-  summaryText: "How to resolve the address if it does not match what we holid in Searchlight",
-  text: "Contact the applicant to verify their identity, and confirm the correct address.  Update the address in Searchlight if it is incorrect"
-}) }}
 
     <form class="form" method="post">
 
