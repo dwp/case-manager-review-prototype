@@ -38,6 +38,8 @@
   <div id="dob-hint" class="govuk-hint">
     Check Searchlight
   </div>
+  <p class="govuk-body">If the address does not match, contact the applicant to <a href="#">verify their identity</a> and confirm the correct address.</p>
+  <p class="govuk-body">You can change the address in Searchlight and PIP Service.</p>
   {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
   {{ govukRadios({
@@ -48,8 +50,16 @@
         text: "Yes"
       },
       {
-        value: "No",
-        text: "No"
+        value: "Yes - I have made changes to resolve this issue",
+        text: "Yes - I have made changes to resolve this issue"
+      },
+      {
+        value: "No - I want to try to resolve this issue",
+        text: "No - I want to try to resolve this issue"
+      },
+      {
+        value: "No - I cannot resolve this issue",
+        text: "No - I cannot resolve this issue"
       },
       {
         value: "I need to come back to this later",

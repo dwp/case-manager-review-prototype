@@ -771,9 +771,13 @@ router.post('/address-answer', function (req, res) {
     if (address === 'Yes'){
         res.redirect('/searchlight/tasks-2');
     }
-    else if (address === 'No'){
-        res.redirect('/searchlight/what-do-you-want-do');
-    }  else if (address === 'I need to come back to this later'){
+    else if (address === 'Yes - I have made changes to resolve this issue'){
+        res.redirect('/searchlight/what-did-you-do');
+    }   else if (address === 'No - I want to try to resolve this issue'){
+        res.redirect('/searchlight/tasks-3');
+    }  else if (address === 'No - I cannot resolve this issue'){
+        res.redirect('/searchlight/tasks-3');
+    } else if (address === 'I need to come back to this later'){
         res.redirect('/searchlight/tasks-2');
     }
 });
