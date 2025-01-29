@@ -1,0 +1,140 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %} Process a PIP application - PIP Case review - GOV.UK {% endblock %}
+
+{% block main %}
+
+<div class="govuk-width-container ">
+        
+
+
+  <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
+    
+
+<div class="govuk-grid-row">
+
+<div class="govuk-grid-column-two-thirds">
+
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-three-quarters">
+ <h1 class="govuk-heading-l govuk-!-margin-bottom-1">Jeff Bridges</h1>
+
+
+<p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-8">NA 11 22 33 C</p>
+
+</div>
+</div>
+
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+{{ govukErrorSummary({
+  titleText: "There is a problem",
+  errorList: [
+    {
+      text: "Select the actions you have taken to resolve this issue",
+      href: "#"
+    }
+  ]
+}) }}
+
+
+
+
+
+<!------------ ––– ------------>
+
+<form class="form" action="/what-did-you-do-answer" method="post">
+  
+  {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+    {{ govukCheckboxes({
+      name: "WhatDidYouDo",
+      errorMessage: {
+        text: "Select the actions you have taken to resolve this issue"
+      },
+      fieldset: {
+        legend:{ html: "<span class='govuk-caption-l'>Address does not match Searchlight record</span><h1 class='govuk-heading-xl'>What did you to resolve this issue?</h1>"
+        }
+      },
+      hint: {
+        text: "Select all that apply."
+      },
+
+      items: [
+        {
+          value: "Verified applicant's identity",
+          text: "Verified applicant's identity"
+        },
+        {
+          value: "Changed address in Searchlight",
+          text: "Changed address in Searchlight"
+        },
+        {
+          value: "Changed address in PIP Service",
+          text: "Changed address in PIP Service"
+        }
+      ]
+    }) }}
+
+  
+
+  <!--<h1 class="govuk-heading-xl govuk-!-margin-bottom-3">What did you do to resolve this issue?</h1>
+  <div id="dob-hint" class="govuk-hint">
+    Address does not match Searchlight record
+  </div>
+  {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+  {{ govukRadios({
+    name: "WhatDidYouDo",
+    items: [
+      {
+        value: "Changed address in Searchlight",
+        text: "Changed address in Searchlight"
+      },
+      {
+        value: "Changed address in PIP service",
+        text: "Changed address in PIP service"
+      },
+      {
+        value: "Changed address in Searchlight and PIP Service",
+        text: "Changed address in Searchlight and PIP Service"
+      }
+    ]
+}) }}-->
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+</form>
+<!--,
+      {
+        divider: "or"
+      },
+      {
+        value: "Nothing - the address already matched what we hold in Searchlight",
+        text: "Nothing - the address already matched what we hold in Searchlight"
+      }-->
+
+  </main>
+</div>
+
+
+
+
+
+<!-- <div class="govuk-width-container">
+  <ul class="govuk-footer__list">
+
+    <li class="govuk-footer__list-item">
+      <a class="govuk-footer__link" href="/eject">
+        There is an issue with this applciation
+      </a>
+    </li>
+
+</div> -->
+
+
+<div>
+
+
+{% endblock %}
