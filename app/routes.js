@@ -764,6 +764,14 @@ router.get('/case-eject/event-history-disallow-added', function(req, res) {
 
 //-------------------SEARCHLIGHT
 
+//Version answer
+router.post('/searchlight-scenario', function (req, res) {
+    //Store response
+    var searchlightAnswer = req.session.data['searchlight-scenario'];
+    //Redirect
+    res.redirect('/searchlight/tasks');
+});
+
 //ADDRESS
 router.post('/address-answer', function (req, res) {
     //Store response
@@ -811,18 +819,18 @@ router.post('/what-do-you-want-to-do-answer', function (req, res) {
 //WHAT DID YOU DO?
 router.post('/what-did-you-do-answer', function (req, res) {
     //Store response
-    var WhatDidYouDo = req.session.data['WhatDidYouDo'];
-    if (WhatDidYouDo === 'Changed address in Searchlight'){
+    var searchlightAnswer = req.session.data['searchlight-scenario'];
+    if (searchlightAnswer === 'IDV complete before mismatch identified'){
         res.redirect('/searchlight/add-note');
     }
-    else if (WhatDidYouDo === 'Changed address in PIP service'){
+    else if (searchlightAnswer === 'IDV not complete before mismatch identified'){
         res.redirect('/searchlight/add-note');
     }
-    else if (WhatDidYouDo === 'Changed address in Searchlight and PIP Service'){
-        res.redirect('/searchlight/add-note');
+    else if (searchlightAnswer === 'IDV not complete before mismatch identified: user leaves IDV checkbox blank'){
+        res.redirect('/searchlight/idv-blank');
     }
-    else if (WhatDidYouDo === 'Nothing - the address already matched what we hold in Searchlight'){
-        res.redirect('/searchlight/tasks');
+    else if (searchlightAnswer === 'IDV not complete before mismatch identified: user leaves all checkboxes blank'){
+        res.redirect('/searchlight/checkboxes-blank');
     }
 });
 
@@ -865,6 +873,17 @@ router.get('/searchlight/tasks-3', function(req, res) {
     });
 } );
 
+
+//WHAT DID YOU DO
+//Make previous responses available to what did you do screen
+router.get('/searchlight/what-did-you-do', function(req, res) {
+    //retrieve form data
+    var searchlightAnswer = req.session.data['searchlight-scenario'];
+    //Display new screen and make form data available to use
+    res.render('/searchlight/what-did-you-do', {
+        searchlightAnswer: searchlightAnswer
+    });
+} );
 
 
 //-------------------------------------------------------------------
