@@ -27,37 +27,39 @@
 <form class="form" action="/searchlight-scenario" method="post">
   {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
-{{ govukRadios({
-  name: "searchlight-scenario",
-  fieldset: {
-    legend: {
-      text: "What address mismatch scenario do you want to simulate?",
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--xl"
-    }
-  },
-  hint: {
-    text: "Select all that apply."
-  },
-  items: [
-    {
-      value: "IDV complete before mismatch identified",
-      text: "IDV complete before mismatch identified"
-    },
-    {
-      value: "IDV not complete before mismatch identified",
-      text: "IDV not complete before mismatch identified"
-    },
-    {
-      value: "IDV not complete before mismatch identified: user leaves IDV checkbox blank",
-      text: "IDV not complete before mismatch identified: user leaves IDV checkbox blank"
-    },
-    {
-      value: "IDV not complete before mismatch identified: user leaves all checkboxes blank",
-      text: "IDV not complete before mismatch identified: user leaves all checkboxes blank"
-    }
-  ]
-}) }}
+  
+
+    {{ govukRadios({
+      name: "searchlight-scenario",
+      fieldset: {
+        legend: {
+          text: "What address mismatch scenario do you want to simulate?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      hint: {
+        text: "Select all that apply."
+      },
+      items: [
+        {
+          value: "IDV complete before mismatch identified",
+          text: "IDV complete before mismatch identified"
+        },
+        {
+          value: "IDV not complete before mismatch identified",
+          text: "IDV not complete before mismatch identified"
+        },
+        {
+          value: "IDV not complete before mismatch identified: user leaves IDV checkbox blank",
+          text: "IDV not complete before mismatch identified: user leaves IDV checkbox blank"
+        },
+        {
+          value: "IDV not complete before mismatch identified: user leaves all checkboxes blank",
+          text: "IDV not complete before mismatch identified: user leaves all checkboxes blank"
+        }
+      ]
+    }) }}
   <!--<h1 class="govuk-heading-xl govuk-!-margin-bottom-3">What did you do to resolve this issue?</h1>
   <div id="dob-hint" class="govuk-hint">
     Address does not match Searchlight record
