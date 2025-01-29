@@ -61,19 +61,19 @@
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <!--<h1 class="govuk-heading-xl">You need to finish the disallow process</h1>
-    <p class="govuk-body">Before you disallow the application, you need to:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>
-        Send an email to Attendance Allowance (<a href="mailto:pensions.aapipinterests@dwp.gov.uk"> pensions.aapipinterests@dwp.gov.uk</a>), and include the applicant's name, National Insurance number, and date of claim
-      </li>
-      <li>
-        Send a disallow letter to the applicant
-      </li>
-    </ul>
-    <p class="govuk-body">If you have sent the email and letter already, <a href="/case-eject/disallow-confirmation">confirm that you have taken these actions</a>.</p>
+    <h1 class="govuk-heading-xl">You need to take more actions to resolve this issue</h1>
+    {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
 
-  -->
+    {{ govukWarningText({
+      text: "You must verify the applicant's identity before you change their details in Searchlight",
+      iconFallbackText: "Warning"
+    }) }}
+    <p class="govuk-body">If you have not verified their identity, go to Searchlight and undo any changes you have made to their details.</p>
+
+    {{ govukButton({
+      href: "/searchlight/tasks-3",
+      text: "Continue"
+    }) }}
 
 </div>
 </div>

@@ -830,7 +830,7 @@ router.post('/what-did-you-do-answer', function (req, res) {
         res.redirect('/searchlight/idv-blank');
     }
     else if (searchlightAnswer === 'IDV not complete before mismatch identified: user leaves all checkboxes blank'){
-        res.redirect('/searchlight/checkboxes-blank');
+        res.redirect('/searchlight/idv-only');
     }
 });
 
@@ -866,10 +866,13 @@ router.get('/searchlight/tasks-3', function(req, res) {
     //retrieve form data
     var WhatDoYouWantToDo = req.session.data['WhatDoYouWantToDo'];
     var address = req.session.data['Address'];
+    var searchlightAnswer = req.session.data['searchlight-scenario'];
+    
     //Display new screen and make form data available to use
     res.render('/searchlight/tasks-3', {
         WhatDoYouWantToDo: WhatDoYouWantToDo,
-        address: address
+        address: address,
+        searchlightAnswer: searchlightAnswer
     });
 } );
 

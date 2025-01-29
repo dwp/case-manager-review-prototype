@@ -127,7 +127,7 @@
     }) }}
     {% endif %}
 
-    {% if address == "No - I want to try to resolve this issue" %}
+    {% if address == "No - I want to try to resolve this issue" or searchlightAnswer == "IDV not complete before mismatch identified: user leaves all checkboxes blank" or searchlightAnswer == "IDV not complete before mismatch identified: user leaves IDV checkbox blank" %}
     {{ govukTaskList({
       idPrefix: "application-checks",
       items: [

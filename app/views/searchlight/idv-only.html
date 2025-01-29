@@ -61,19 +61,33 @@
  <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <!--<h1 class="govuk-heading-xl">You need to finish the disallow process</h1>
-    <p class="govuk-body">Before you disallow the application, you need to:</p>
+    <h1 class="govuk-heading-xl">You need to take more actions to resolve this issue</h1>
+    <p class="govuk-body">To resolve this issue: </p>
     <ul class="govuk-list govuk-list--bullet">
       <li>
-        Send an email to Attendance Allowance (<a href="mailto:pensions.aapipinterests@dwp.gov.uk"> pensions.aapipinterests@dwp.gov.uk</a>), and include the applicant's name, National Insurance number, and date of claim
+        contact the applicant to confirm the correct details, and  
       </li>
       <li>
-        Send a disallow letter to the applicant
+        change any incorrect details in Searchlight or PIP Service.
       </li>
     </ul>
-    <p class="govuk-body">If you have sent the email and letter already, <a href="/case-eject/disallow-confirmation">confirm that you have taken these actions</a>.</p>
 
-  -->
+    <p class="govuk-body">If you cannot confirm the correct details:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        return to the question 'Does their address match what we hold in Searchlight?', and 
+      </li>
+      <li>
+        select 'No, I cannot resolve this issue'.
+      </li>
+    </ul>
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  href: "/searchlight/tasks-3",
+  text: "Continue"
+}) }}
 
 </div>
 </div>
