@@ -28,22 +28,40 @@
 
 
 
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+{{ govukErrorSummary({
+  titleText: "There is a problem",
+  errorList: [
+    {
+      text: "Select yes if you want to continue without resolving this issue",
+      href: "#"
+    }
+  ]
+}) }}
 
 
 <!------------ ––– ------------>
 
 <form class="form" action="/searchlight/tasks-3" method="post">
-  <h1 class="govuk-heading-xl govuk-!-margin-bottom-3">Are you sure you want to move this application to PIPCS?</h1>
   <!--<h1 class="govuk-heading-xl govuk-!-margin-bottom-3">Are you sure you want to [move this application to PIPCS / disallow this application / send this application to the assessment provider]?</h1>-->
-  <p class="govuk-body">There is an issue you said you want to try to resolve:</p>
-<ul class="govuk-list govuk-list--bullet">
-
-  <li>Address does not match Searchlight record</li>
-</ul>
+  
   {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
   {{ govukRadios({
     name: "check",
+    fieldset: {
+      legend: {
+        html: "<h1 class='govuk-heading-xl'>Are you sure you want to move this application to PIPCS?</h1><p class='govuk-body'>There is an issue you said you want to try to resolve:</p>
+        <ul class='govuk-list govuk-list--bullet'>
+        
+          <li>Address does not match Searchlight record</li>
+        </ul>"
+      }
+    },
+    errorMessage: {
+      text: "Select yes if you want to continue without resolving this issue"
+    },
     items: [
       {
         value: "Yes",
