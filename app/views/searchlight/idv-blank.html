@@ -1,0 +1,88 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %} Which other benefits does the applicant or claimant get? - PIP Case review - GOV.UK {% endblock %}
+
+{% block main %}
+
+   <div class="govuk-width-container">
+    <div class="column-full">
+      <section class="dwp-quick-reference" aria-label="Case information">
+        <dl class="dwp-quick-reference__block">
+        <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+        <dd class="dwp-quick-reference__primary">Jane Doe</dd>
+        <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">National Insurance number:</dt>
+        <dd class="dwp-quick-reference__secondary">QQ 12 34 56 X</dd>
+        </dl>
+      </section>
+      {% if scenario == "pre-award-disallow" %}  
+      <nav class="navigation-secondary">
+        <ul>
+          <li>
+            <a href="/case-manager-review/record-details-iteration-4" aria-current="section">Personal details</a>
+          </li>
+          <li>
+            <a href="#">Supporting documents</a>
+          </li>
+          <li>
+            <a href="#">Conditions or disabilities</a>
+          </li>
+          <li>
+            <a href="#">Activities</a>
+          </li>
+          <li>
+            <a href="/event-history/v5-quick-reference/index" class="active" aria-current="section">Event history</a>
+          </li>
+          <li>
+            <a href="/decision-tab-iteration-4-evidence" aria-current="section">Decision</a>
+          </li>
+
+          {# <li>
+            <a href="Other-actions">Other actions</a>
+          </li> #}
+
+        </ul>
+      </nav>
+      {% endif %}
+
+  </div>
+
+
+  {% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+
+ <br><br><br><br>
+
+
+ <div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!--<h1 class="govuk-heading-xl">You need to finish the disallow process</h1>
+    <p class="govuk-body">Before you disallow the application, you need to:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        Send an email to Attendance Allowance (<a href="mailto:pensions.aapipinterests@dwp.gov.uk"> pensions.aapipinterests@dwp.gov.uk</a>), and include the applicant's name, National Insurance number, and date of claim
+      </li>
+      <li>
+        Send a disallow letter to the applicant
+      </li>
+    </ul>
+    <p class="govuk-body">If you have sent the email and letter already, <a href="/case-eject/disallow-confirmation">confirm that you have taken these actions</a>.</p>
+
+  -->
+
+</div>
+</div>
+
+
+
+<br><br>
+
+</div>
+
+
+{% endblock %}

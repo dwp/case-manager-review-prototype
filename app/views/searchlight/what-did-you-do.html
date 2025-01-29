@@ -33,37 +33,68 @@
 
 <!------------ ––– ------------>
 
-<form class="form" action="/searchlight/add-note" method="post">
+<form class="form" action="/what-did-you-do-answer" method="post">
   <span class="govuk-caption-l">Address does not match Searchlight record</span>
   {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 
-{{ govukCheckboxes({
-  name: "waste",
-  fieldset: {
-    legend: {
-      text: "What did you do to resolve this issue?",
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--xl"
-    }
-  },
-  hint: {
-    text: "Select all that apply."
-  },
-  items: [
-    {
-      value: "Verified applicant's identity",
-      text: "Verified applicant's identity"
-    },
-    {
-      value: "Changed address in Searchlight",
-      text: "Changed address in Searchlight"
-    },
-    {
-      value: "Changed address in PIP Service",
-      text: "Changed address in PIP Service"
-    }
-  ]
-}) }}
+  {% if searchlightAnswer == "IDV complete before mismatch identified" %}
+    {{ govukCheckboxes({
+      name: "WhatDidYouDo",
+      fieldset: {
+        legend: {
+          text: "What did you do to resolve this issue?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      hint: {
+        text: "Select all that apply."
+      },
+      items: [
+        {
+          value: "Changed address in Searchlight",
+          text: "Changed address in Searchlight"
+        },
+        {
+          value: "Changed address in PIP Service",
+          text: "Changed address in PIP Service"
+        }
+      ]
+    }) }}
+  {% endif %}
+
+  {% if searchlightAnswer == "IDV not complete before mismatch identified" or searchlightAnswer == "IDV not complete before mismatch identified: user leaves IDV checkbox blank" or searchlightAnswer == "IDV not complete before mismatch identified: user leaves all checkboxes blank" %}
+    {{ govukCheckboxes({
+      name: "WhatDidYouDo",
+      fieldset: {
+        legend: {
+          text: "What did you do to resolve this issue?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      hint: {
+        text: "Select all that apply."
+      },
+      items: [
+        {
+          value: "Verified applicant's identity",
+          text: "Verified applicant's identity"
+        },
+        {
+          value: "Changed address in Searchlight",
+          text: "Changed address in Searchlight"
+        },
+        {
+          value: "Changed address in PIP Service",
+          text: "Changed address in PIP Service"
+        }
+      ]
+    }) }}
+  {% endif %}
+
+  
+
   <!--<h1 class="govuk-heading-xl govuk-!-margin-bottom-3">What did you do to resolve this issue?</h1>
   <div id="dob-hint" class="govuk-hint">
     Address does not match Searchlight record
