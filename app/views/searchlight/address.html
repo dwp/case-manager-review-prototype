@@ -40,10 +40,10 @@
   </div>-->
   {% from "govuk/components/details/macro.njk" import govukDetails %}
 
-{{ govukDetails({
+<!--{{ govukDetails({
   summaryText: "Help to resolve this issue",
   text: "If the details do not match, you can contact the applicant to confirm the correct details. If they have verified their identity, you can update their details in Searchlight."
-}) }}
+}) }}-->
 
   {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
@@ -52,23 +52,37 @@
     items: [
       {
         value: "Yes",
-        text: "Yes"
+        text: "Yes",
+        hint: {
+          text: "Select if the address already matches what we hold in Searchlight."
+        }
       },
       {
         value: "Yes - I have made changes to resolve this issue",
-        text: "Yes, I have made changes to resolve this issue"
+        text: "Yes, I have made changes to resolve this issue",
+        hint: {
+          text: "Select if you have updated the correct address in Searchlight or PIP Service."
+        }
       },
       {
         value: "No - I want to try to resolve this issue",
-        text: "No, I want to try to resolve this issue"
+        text: "No, I want to try to resolve this issue",
+        hint: {
+          text: "Select if you want to confirm the correct address and update it in Searchlight or PIP Service."}
       },
       {
         value: "No - I cannot resolve this issue",
-        text: "No, I cannot resolve this issue"
+        text: "No, I cannot resolve this issue",
+        hint: {
+          text: "Select if you cannot confirm the correct address."
+        }
       },
       {
         value: "I need to come back to this later",
-        text: "I need to come back to this later"
+        text: "I need to come back to this later",
+        hint: {
+          text: "Select if you cannot answer this question now."
+        }
       }
     ]
   }) }}
