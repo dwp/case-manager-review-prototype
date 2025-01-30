@@ -782,7 +782,7 @@ router.post('/address-answer', function (req, res) {
     else if (address === 'Yes - I have made changes to resolve this issue'){
         res.redirect('/searchlight/what-did-you-do');
     }   else if (address === 'No - I want to try to resolve this issue'){
-        res.redirect('/searchlight/tasks-3');
+        res.redirect('/searchlight/idv-warning');
     }  else if (address === 'No - I cannot resolve this issue'){
         res.redirect('/searchlight/tasks-3');
     } else if (address === 'I need to come back to this later'){

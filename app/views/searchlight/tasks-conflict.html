@@ -101,8 +101,8 @@
         href: "#",
         status: {
           tag: {
-            text: "TO DO",
-            classes: "govuk-tag--grey"
+            text: "DONE",
+            classes: "govuk-tag--blue"
           }
         }
       },  {
@@ -112,8 +112,8 @@
         href: "#",
         status: {
           tag: {
-            text: "TO DO",
-            classes: "govuk-tag--grey"
+            text: "DONE",
+            classes: "govuk-tag--blue"
           }
         }
       },  {
@@ -123,8 +123,8 @@
         href: "#",
         status: {
           tag: {
-            text: "TO DO",
-            classes: "govuk-tag--grey"
+            text: "DONE",
+            classes: "govuk-tag--blue"
           }
         }
       },  {
@@ -134,8 +134,8 @@
         href: "#",
         status: {
           tag: {
-            text: "TO DO",
-            classes: "govuk-tag--grey"
+            text: "DONE",
+            classes: "govuk-tag--blue"
           }
         }
       },  {
@@ -145,8 +145,8 @@
         href: "#",
         status: {
           tag: {
-            text: "TO DO",
-            classes: "govuk-tag--grey"
+            text: "DONE",
+            classes: "govuk-tag--blue"
           }
         }
       },  {
@@ -156,8 +156,8 @@
         href: "#",
         status: {
           tag: {
-            text: "TO DO",
-            classes: "govuk-tag--grey"
+            text: "DONE",
+            classes: "govuk-tag--blue"
           }
         }
       },  {
@@ -167,8 +167,8 @@
         href: "#",
         status: {
           tag: {
-            text: "TO DO",
-            classes: "govuk-tag--grey"
+            text: "DONE",
+            classes: "govuk-tag--blue"
           }
         }
       },
@@ -179,8 +179,8 @@
           href: "address",
           status: {
             tag: {
-              text: "TO DO",
-              classes: "govuk-tag--grey"
+              text: "DONE",
+              classes: "govuk-tag--blue"
             }
           }
         },
@@ -202,8 +202,8 @@
           href: "#",
           status: {
             tag: {
-              text: "TO DO",
-              classes: "govuk-tag--grey"
+              text: "DONE",
+              classes: "govuk-tag--blue"
             }
           }
         },{
@@ -213,8 +213,8 @@
           href: "#",
           status: {
             tag: {
-              text: "TO DO",
-              classes: "govuk-tag--grey"
+              text: "DONE",
+              classes: "govuk-tag--blue"
             }
           }
         },{
@@ -224,8 +224,8 @@
           href: "#",
           status: {
             tag: {
-              text: "TO DO",
-              classes: "govuk-tag--grey"
+              text: "DONE",
+              classes: "govuk-tag--blue"
             }
           }
         },{
@@ -235,8 +235,8 @@
           href: "#",
           status: {
             tag: {
-              text: "TO DO",
-              classes: "govuk-tag--grey"
+              text: "DONE",
+              classes: "govuk-tag--blue"
             }
           }
         },{
@@ -246,8 +246,8 @@
           href: "#",
           status: {
             tag: {
-              text: "TO DO",
-              classes: "govuk-tag--grey"
+              text: "DONE",
+              classes: "govuk-tag--blue"
             }
           }
         },{
@@ -257,8 +257,8 @@
           href: "#",
           status: {
             tag: {
-              text: "TO DO",
-              classes: "govuk-tag--grey"
+              text: "DONE",
+              classes: "govuk-tag--blue"
             }
           }
         },{
@@ -268,8 +268,8 @@
           href: "#",
           status: {
             tag: {
-              text: "TO DO",
-              classes: "govuk-tag--grey"
+              text: "DONE",
+              classes: "govuk-tag--blue"
             }
           }
         },{
@@ -279,8 +279,8 @@
           href: "#",
           status: {
             tag: {
-              text: "TO DO",
-              classes: "govuk-tag--grey"
+              text: "DONE",
+              classes: "govuk-tag--blue"
             }
           }
         },{
@@ -290,8 +290,8 @@
           href: "#",
           status: {
             tag: {
-              text: "TO DO",
-              classes: "govuk-tag--grey"
+              text: "DONE",
+              classes: "govuk-tag--blue"
             }
           }
         },{
@@ -301,8 +301,8 @@
           href: "#",
           status: {
             tag: {
-              text: "TO DO",
-              classes: "govuk-tag--grey"
+              text: "DONE",
+              classes: "govuk-tag--blue"
             }
           }
         },{
@@ -312,8 +312,8 @@
           href: "#",
           status: {
             tag: {
-              text: "TO DO",
-              classes: "govuk-tag--grey"
+              text: "DONE",
+              classes: "govuk-tag--blue"
             }
           }
         }
@@ -323,6 +323,10 @@
 
 
   <h2 class="govuk-heading-l govuk-!-margin-bottom-6">There is an issue with this application</h2>
+  {{ govukWarningText({
+    text: "If you need to make any updates in Searchlight to resolve this issue, make sure the applicant has verified their identity first.",
+    iconFallbackText: "Warning"
+  }) }}
   {% from "govuk/components/details/macro.njk" import govukDetails %}
 
 
