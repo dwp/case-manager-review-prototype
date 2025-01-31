@@ -34,17 +34,32 @@
 <!------------ ––– ------------>
 
 <form class="form" action="/address-answer" method="post">
-  <h1 class="govuk-heading-xl govuk-!-margin-bottom-3">Does their address match what we hold in Searchlight?</h1>
-  <!--<div id="dob-hint" class="govuk-hint">
-    Check Searchlight.
-  </div>-->
-  {% from "govuk/components/details/macro.njk" import govukDetails %}
+  <h1 class="govuk-heading-l">Does their address match what we hold in Searchlight?</h1>
 
-<!--{{ govukDetails({
-  summaryText: "Help to resolve this issue",
-  text: "If the details do not match, you can contact the applicant to confirm the correct details. If they have verified their identity, you can update their details in Searchlight."
-}) }}-->
+  <!--v2-->
+  {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
+  {{ govukRadios({
+    name: "Address",
+    items: [
+      {
+        value: "Yes",
+        text: "Yes"
+      },
+      {
+        value: "No",
+        text: "No"
+      },
+      {
+        value: "I need to come back to this later",
+        text: "I need to come back to this later"
+
+      }
+    ]
+  }) }}
+
+  <!-- V1 -->
+  <!--
   {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
   {{ govukRadios({
@@ -86,6 +101,7 @@
       }
     ]
   }) }}
+  -->
 
   {{ govukButton({
     text: "Continue"

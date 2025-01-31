@@ -29,7 +29,7 @@
 
 
 
-<h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Prepare an application for an assessment provider</h1>
+<h1 class="govuk-heading-l govuk-!-margin-bottom-6">Prepare an application for an assessment provider</h1>
 <!-- <p class="govuk-body govuk-!-font-size-24 govuk-!-margin-bottom-4">Claim attached is what the citizen submitted using AfPC. Do X Y and Z to check against the following tasks</p> -->
 
 
@@ -56,7 +56,8 @@
 <div class="govuk-grid-column-two-thirds">
 
   <h2 class="govuk-heading-m govuk-!-padding-top-2 govuk-!-margin-bottom-1">Check application</h2>
-  {% if address == "Yes" %}
+  
+  {% if yes == "No, they already matched" %}
   {% from "govuk/components/task-list/macro.njk" import govukTaskList %}
 
   {{ govukTaskList({
@@ -323,7 +324,8 @@
   
     {% endif %}
 
-    {% if address == "I need to come back to this later" %}
+    <!-- Address is come back to this later -->
+    {% if address == "I need to come back to this later" or WhatDoYouWantToDo == "Try to resolve this task" %}
     {% from "govuk/components/task-list/macro.njk" import govukTaskList %}
 
     {{ govukTaskList({
@@ -590,12 +592,287 @@
   
     {% endif %}
 
+    <!-- What do you want to do is nothing -->
+    {% if WhatDoYouWantToDo == "Nothing" %}
+    {% from "govuk/components/task-list/macro.njk" import govukTaskList %}
+
+    {{ govukTaskList({
+      idPrefix: "application-checks",
+      items: [
+      {
+        title: {
+          text: "National Insurance Number"
+        },
+        href: "#",
+        status: {
+          tag: {
+            text: "DONE",
+            classes: "govuk-tag--blue"
+          }
+        }
+      },  {
+        title: {
+          text: "Name"
+        },
+        href: "#",
+        status: {
+          tag: {
+            text: "DONE",
+            classes: "govuk-tag--blue"
+          }
+        }
+      },  {
+        title: {
+          text: "Address"
+        },
+        href: "address",
+        status: {
+          tag: {
+            text: "ISSUE",
+            classes: "govuk-tag--red"
+          }
+        }
+      },  {
+        title: {
+          text: "Date of birth"
+        },
+        href: "#",
+        status: {
+          tag: {
+            text: "TO DO",
+            classes: "govuk-tag--grey"
+          }
+        }
+      },  {
+        title: {
+          text: "Date of death"
+        },
+        href: "#",
+        status: {
+          tag: {
+            text: "TO DO",
+            classes: "govuk-tag--grey"
+          }
+        }
+      },  {
+        title: {
+          text: "Nationality"
+        },
+        href: "#",
+        status: {
+          tag: {
+            text: "TO DO",
+            classes: "govuk-tag--grey"
+          }
+        }
+      },  {
+        title: {
+          text: "Residency and prescence"
+        },
+        href: "#",
+        status: {
+          tag: {
+            text: "TO DO",
+            classes: "govuk-tag--grey"
+          }
+        }
+      },  {
+        title: {
+          text: "Immigration status"
+        },
+        href: "#",
+        status: {
+          tag: {
+            text: "TO DO",
+            classes: "govuk-tag--grey"
+          }
+        }
+      },  {
+        title: {
+          text: "Special Rules End of Life (SREL)"
+        },
+        href: "#",
+        status: {
+          tag: {
+            text: "TO DO",
+            classes: "govuk-tag--grey"
+          }
+        }
+      },  {
+        title: {
+          text: "Representative or appointee"
+        },
+        href: "#",
+        status: {
+          tag: {
+            text: "TO DO",
+            classes: "govuk-tag--grey"
+          }
+        }
+      },
+        {
+          title: {
+            text: "Withdrawn"
+          },
+          href: "address",
+          status: {
+            tag: {
+              text: "TO DO",
+              classes: "govuk-tag--grey"
+            }
+          }
+        },
+        {
+          title: {
+            text: "Age criteria"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "TO DO",
+              classes: "govuk-tag--grey"
+            }
+          }
+        },{
+          title: {
+            text: "Additional support"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "TO DO",
+              classes: "govuk-tag--grey"
+            }
+          }
+        },{
+          title: {
+            text: "Alternative format"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "TO DO",
+              classes: "govuk-tag--grey"
+            }
+          }
+        },{
+          title: {
+            text: "Fraud"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "TO DO",
+              classes: "govuk-tag--grey"
+            }
+          }
+        },{
+          title: {
+            text: "Keep customer interactions safe (KCIS)"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "TO DO",
+              classes: "govuk-tag--grey"
+            }
+          }
+        },{
+          title: {
+            text: "Working abroad"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "TO DO",
+              classes: "govuk-tag--grey"
+            }
+          }
+        },{
+          title: {
+            text: "Foreign benefits"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "TO DO",
+              classes: "govuk-tag--grey"
+            }
+          }
+        },{
+          title: {
+            text: "Disability Living Allowance (DLA)"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "TO DO",
+              classes: "govuk-tag--grey"
+            }
+          }
+        },{
+          title: {
+            text: "Child Disability Payment or Adult Disability Payment"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "TO DO",
+              classes: "govuk-tag--grey"
+            }
+          }
+        },{
+          title: {
+            text: "Armed Forces Independence Payment (AFIP)"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "TO DO",
+              classes: "govuk-tag--grey"
+            }
+          }
+        },{
+          title: {
+            text: "War Pensioners' Mobility Supplement (WPMS)"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "TO DO",
+              classes: "govuk-tag--grey"
+            }
+          }
+        },{
+          title: {
+            text: "Constant Attendance Allowance (CAA)"
+          },
+          href: "#",
+          status: {
+            tag: {
+              text: "TO DO",
+              classes: "govuk-tag--grey"
+            }
+          }
+        }
+      ]
+    }) }}
+  
+    {% endif %}
   <!------------ ––– ------------>
 
 
-
+<!--
 <p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6"><a href="application-exit-bail" rel="noopener">I need to come back to this application later</a></p>
+-->
 
+<!-- What do you want to do is try to update the address -->
+{% if WhatDoYouWantToDo == "Try to resolve this task" %}
+{{ govukWarningText({
+  text: "If you need to make any updates in Searchlight to resolve this issue, make sure the applicant has verified their identity first.",
+  iconFallbackText: "Warning"
+}) }}
+{% endif %}
 
 
 </div>
