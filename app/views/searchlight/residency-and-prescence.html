@@ -30,20 +30,19 @@
 
 
 
+
 <!------------ ––– ------------>
 
-<form class="form" action="/searchlight/tasks-3" method="post">
-  <h1 class="govuk-heading-l govuk-!-margin-bottom-3">Are you sure you want to move this application to PIPCS?</h1>
-  <!--<h1 class="govuk-heading-l govuk-!-margin-bottom-3">Are you sure you want to [move this application to PIPCS / disallow this application / send this application to the assessment provider]?</h1>-->
-  <p class="govuk-body">There is an issue you said you want to try to resolve:</p>
-<ul class="govuk-list govuk-list--bullet">
-
-  <li>Address does not match Searchlight record</li>
-</ul>
+<form class="form" action="/searchlight/date-of-death" method="post">
   {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
   {{ govukRadios({
     name: "check",
+    fieldset: {
+      legend: {
+        html: "<h1 class='govuk-heading-l'>Date of birth</h1>"
+      }
+    },
     items: [
       {
         value: "Yes",
@@ -52,6 +51,10 @@
       {
         value: "No",
         text: "No"
+      },
+      {
+        value: "I need to come back to this later",
+        text: "I need to come back to this later"
       }
     ]
   }) }}
@@ -60,7 +63,6 @@
     text: "Continue"
   }) }}
 </form>
-
 
   </main>
 </div>

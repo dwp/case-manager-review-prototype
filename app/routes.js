@@ -777,15 +777,29 @@ router.post('/address-answer', function (req, res) {
     //Store response
     var address = req.session.data['Address'];
     if (address === 'Yes'){
-        res.redirect('/searchlight/tasks-2');
+        res.redirect('/searchlight/yes');
+    } else if (address === 'No'){
+        res.redirect('/searchlight/what-do-you-want-do');
     }
     else if (address === 'Yes - I have made changes to resolve this issue'){
         res.redirect('/searchlight/what-did-you-do');
     }   else if (address === 'No - I want to try to resolve this issue'){
         res.redirect('/searchlight/idv-warning');
     }  else if (address === 'No - I cannot resolve this issue'){
-        res.redirect('/searchlight/tasks-3');
+        res.redirect('/searchlight/tasks-2');
     } else if (address === 'I need to come back to this later'){
+        res.redirect('/searchlight/tasks-2');
+    }
+});
+
+//YES
+router.post('/yes-answer', function (req, res) {
+    //Store response
+    var yes = req.session.data['Yes'];
+    if (yes === 'Yes'){
+        res.redirect('/searchlight/what-did-you-do');
+    }
+    else if (yes === 'No, they already matched'){
         res.redirect('/searchlight/tasks-2');
     }
 });
@@ -809,10 +823,10 @@ router.post('/what-do-you-want-to-do-answer', function (req, res) {
     //Store response
     var WhatDoYouWantToDo = req.session.data['WhatDoYouWantToDo'];
     if (WhatDoYouWantToDo === 'Try to resolve this task'){
-        res.redirect('/searchlight/tasks-3');
+        res.redirect('/searchlight/idv-warning');
     }
     else if (WhatDoYouWantToDo === 'Nothing'){
-        res.redirect('/searchlight/tasks-3');
+        res.redirect('/searchlight/tasks-2');
     }
 });
 
@@ -853,23 +867,25 @@ router.get('/searchlight/tasks-2', function(req, res) {
     //retrieve form data
     var WhatDoYouWantToDo = req.session.data['WhatDoYouWantToDo'];
     var address = req.session.data['Address'];
+    var yes = req.session.data['Yes'];
     //Display new screen and make form data available to use
     res.render('/searchlight/tasks-2', {
         WhatDoYouWantToDo: WhatDoYouWantToDo,
-        address: address
+        address: address,
+        yes: yes
     });
 } );
 
 //TASKS 3
 //Make previous responses available to tasks screen
-router.get('/searchlight/tasks-3', function(req, res) {
+router.get('/searchlight/tasks-2', function(req, res) {
     //retrieve form data
     var WhatDoYouWantToDo = req.session.data['WhatDoYouWantToDo'];
     var address = req.session.data['Address'];
     var searchlightAnswer = req.session.data['searchlight-scenario'];
     
     //Display new screen and make form data available to use
-    res.render('/searchlight/tasks-3', {
+    res.render('/searchlight/tasks-2', {
         WhatDoYouWantToDo: WhatDoYouWantToDo,
         address: address,
         searchlightAnswer: searchlightAnswer
