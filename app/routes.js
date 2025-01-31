@@ -800,7 +800,7 @@ router.post('/yes-answer', function (req, res) {
         res.redirect('/searchlight/what-did-you-do');
     }
     else if (yes === 'No, they already matched'){
-        res.redirect('/searchlight/tasks-2');
+        res.redirect('/searchlight/date-of-birth');
     }
 });
 
@@ -826,7 +826,7 @@ router.post('/what-do-you-want-to-do-answer', function (req, res) {
         res.redirect('/searchlight/idv-warning');
     }
     else if (WhatDoYouWantToDo === 'Nothing'){
-        res.redirect('/searchlight/tasks-2');
+        res.redirect('/searchlight/date-of-birth');
     }
 });
 
