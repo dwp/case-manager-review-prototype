@@ -41,7 +41,7 @@
   {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
   {{ govukRadios({
-    name: "Address",
+    name: "Address-2",
     items: [
       {
         value: "Yes",
@@ -50,10 +50,6 @@
       {
         value: "No",
         text: "No"
-      },
-      {
-        value: "I need to come back to this later",
-        text: "I need to come back to this later"
       }
     ]
   }) }}

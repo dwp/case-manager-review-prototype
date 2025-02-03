@@ -411,6 +411,49 @@
 
 </form>
 {% endif %}
+<h2 class="govuk-heading-l">There are no issues with this application</h2>
+
+    <p class="govuk-body">It is ready for a decision.</p>
+
+
+
+
+    <form class="form" method="post">
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        name: "next",
+        fieldset: {
+          legend: {
+            text: "What do you want to do now?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+        {
+          value: "Send application to assessment provider",
+          text: "Send application to assessment provider"
+        },
+        {
+          value: "Move application to PIPCS",
+          text: "Move application to PIPCS"
+        },
+        {
+          value: "Disallow application",
+          text: "Disallow application"
+        }
+        ]
+      }) }}
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+</form>
 
 </div>
 </div>
