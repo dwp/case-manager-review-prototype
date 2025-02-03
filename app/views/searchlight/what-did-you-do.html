@@ -42,7 +42,7 @@
       name: "WhatDidYouDo",
       fieldset: {
         legend: {
-          text: "What did you do to make the address match?",
+          text: "Which address records did you change?",
           isPageHeading: true,
           classes: "govuk-fieldset__legend--l"
         }
@@ -68,7 +68,7 @@
       name: "WhatDidYouDo",
       fieldset: {
         legend: {
-          text: "What did you do to make the address match?",
+          text: "Which address records did you change?",
           isPageHeading: true,
           classes: "govuk-fieldset__legend--l"
         }
@@ -77,10 +77,6 @@
         text: "Select all that apply."
       },
       items: [
-        {
-          value: "Verified applicant's identity",
-          text: "Verified applicant's identity"
-        },
         {
           value: "Changed address in Searchlight",
           text: "Changed address in Searchlight"
@@ -93,63 +89,14 @@
     }) }}
   {% endif %}
 
-  
-
-  <!--<h1 class="govuk-heading-l govuk-!-margin-bottom-3">What did you do to resolve this issue?</h1>
-  <div id="dob-hint" class="govuk-hint">
-    Address does not match Searchlight record
-  </div>
-  {% from "govuk/components/radios/macro.njk" import govukRadios %}
-
-  {{ govukRadios({
-    name: "WhatDidYouDo",
-    items: [
-      {
-        value: "Changed address in Searchlight",
-        text: "Changed address in Searchlight"
-      },
-      {
-        value: "Changed address in PIP service",
-        text: "Changed address in PIP service"
-      },
-      {
-        value: "Changed address in Searchlight and PIP Service",
-        text: "Changed address in Searchlight and PIP Service"
-      }
-    ]
-}) }}-->
 
   {{ govukButton({
     text: "Continue"
   }) }}
 </form>
-<!--,
-      {
-        divider: "or"
-      },
-      {
-        value: "Nothing - the address already matched what we hold in Searchlight",
-        text: "Nothing - the address already matched what we hold in Searchlight"
-      }-->
 
   </main>
 </div>
-
-
-
-
-
-<!-- <div class="govuk-width-container">
-  <ul class="govuk-footer__list">
-
-    <li class="govuk-footer__list-item">
-      <a class="govuk-footer__link" href="/eject">
-        There is an issue with this applciation
-      </a>
-    </li>
-
-</div> -->
-
 
 <div>
 

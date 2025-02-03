@@ -32,24 +32,55 @@
 
 
 <!------------ ––– ------------>
-
+<!--    
+    },-->
 <form class="form" action="/what-do-you-want-to-do-answer" method="post">
-  <h1 class="govuk-heading-l">What do you want to do?</h1>
-  <div id="dob-hint" class="govuk-hint">
-    Address does not match Searchlight record
-  </div>
   {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
   {{ govukRadios({
     name: "WhatDoYouWantToDo",
+    fieldset: {
+      legend: {
+        html: "<h1 class='govuk-heading-l'>Confirming the applicant's address</h1>
+        <div class='govuk-warning-text'>
+          <span class='govuk-warning-text__icon' aria-hidden='true'>!</span>
+          <strong class='govuk-warning-text__text'>
+            <span class='govuk-visually-hidden'>Warning</span>
+            You must verify the applicant's identity before you confirm their address.
+          </strong>
+        </div>
+        <p class='govuk-body'>Once the applicant has verified their identity, you can:</p>
+        <ul class='govuk-list govuk-list--bullet'>
+        
+          <li>confirm the correct address</li>
+          <li>change any incorrect details in Searchlight or PIP Service</li>
+
+        </ul>
+        <h2 class='govuk-heading-m'>Have you confirmed and updated the correct address?</h2>
+        "
+      }
+    },
     items: [
       {
         value: "Try to resolve this task",
-        text: "Try confirm and update the correct address"
+        text: "Yes"
       },
       {
         value: "Nothing",
-        text: "Nothing, I was not able to confirm the correct address"
+        text: "No, I am not able to do this"
+      },
+      {
+        value: "I need to come back to this later",
+        text: "I need to come back to this later"
+
+      },
+      {
+        divider: "or"
+      },
+      {
+        value: "No change required, details already matched",
+        text: "No change required, details already matched"
+
       }
     ]
   }) }}

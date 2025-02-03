@@ -57,7 +57,7 @@
 
   <h2 class="govuk-heading-m govuk-!-padding-top-2 govuk-!-margin-bottom-1">Check application</h2>
   
-  {% if yes == "No, they already matched" %}
+  {% if yes == "No, they already matched" or WhatDoYouWantToDo == "No change required, details already matched" %}
   {% from "govuk/components/task-list/macro.njk" import govukTaskList %}
 
   {{ govukTaskList({
@@ -325,7 +325,7 @@
     {% endif %}
 
     <!-- Address is come back to this later -->
-    {% if address == "I need to come back to this later" or WhatDoYouWantToDo == "Try to resolve this task" %}
+    {% if address == "I need to come back to this later" or WhatDoYouWantToDo == "Try to resolve this task" or WhatDoYouWantToDo == "I need to come back to this later" %}
     {% from "govuk/components/task-list/macro.njk" import govukTaskList %}
 
     {{ govukTaskList({
@@ -357,7 +357,7 @@
         title: {
           text: "Address"
         },
-        href: "address",
+        href: "address-2",
         status: {
           tag: {
             text: "PAUSED",
@@ -592,7 +592,7 @@
   
     {% endif %}
 
-    <!-- What do you want DONE is nothing -->
+    <!-- What do you want to do is nothing -->
     {% if WhatDoYouWantToDo == "Nothing" %}
     {% from "govuk/components/task-list/macro.njk" import govukTaskList %}
 
@@ -625,7 +625,7 @@
         title: {
           text: "Address"
         },
-        href: "address",
+        href: "address-2",
         status: {
           tag: {
             text: "ISSUE",
