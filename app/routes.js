@@ -807,12 +807,12 @@ router.post('/yes-answer', function (req, res) {
 //ADDRESS 2
 router.post('/address-2-answer', function (req, res) {
     //Store response
-    var address = req.session.data['Address'];
+    var address = req.session.data['Address-2'];
     if (address === 'Yes'){
-        res.redirect('/searchlight/what-do-you-want-do');
+        res.redirect('/searchlight/what-do-you-want-do-2');
     }
     else if (address === 'No'){
-        res.redirect('/searchlight/what-do-you-want-do');
+        res.redirect('/searchlight/what-do-you-want-do-2');
     }  else if (address === 'I need to come back to this later'){
         res.redirect('/searchlight/tasks');
     }
@@ -823,7 +823,7 @@ router.post('/what-do-you-want-to-do-answer', function (req, res) {
     //Store response
     var WhatDoYouWantToDo = req.session.data['WhatDoYouWantToDo'];
     if (WhatDoYouWantToDo === 'Try to resolve this task'){
-        res.redirect('/searchlight/what-did-you-do');
+        res.redirect('/searchlight/did-you-verify-id');
     }
     else if (WhatDoYouWantToDo === 'Nothing'){
         res.redirect('/searchlight/tasks-2');
@@ -836,15 +836,30 @@ router.post('/what-do-you-want-to-do-answer', function (req, res) {
     }
 });
 
+//WHAT DO YOU WANT TO DO
+//Make previous responses available to what do you want to do screen
+router.get('/searchlight/what-do-you-want-do', function(req, res) {
+    //retrieve form data
+    var address = req.session.data['Address'];
+    var address2 = req.session.data['Address-2'];
+    var scenario = req.session.data['searchlight-scenario'];
+    //Display new screen and make form data available to use
+    res.render('/searchlight/what-do-you-want-do', {
+        address: address,
+        address2: address2,
+        scenario: scenario
+    });
+} );
+
 //WHAT DID YOU DO?
 router.post('/what-did-you-do-answer', function (req, res) {
     //Store response
     var searchlightAnswer = req.session.data['searchlight-scenario'];
     if (searchlightAnswer === 'IDV complete before mismatch identified'){
-        res.redirect('/searchlight/did-you-verify-id');
+        res.redirect('/searchlight/add-note');
     }
     else if (searchlightAnswer === 'IDV not complete before mismatch identified'){
-        res.redirect('/searchlight/did-you-verify-id');
+        res.redirect('/searchlight/add-note');
     }
     else if (searchlightAnswer === 'IDV not complete before mismatch identified: user leaves IDV checkbox blank'){
         res.redirect('/searchlight/idv-blank');
@@ -859,10 +874,10 @@ router.post('/verify-answer', function (req, res) {
     //Store response
     var DidYouVerify = req.session.data['didYouVerify'];
     if (DidYouVerify=== 'Yes'){
-        res.redirect('/searchlight/add-note');
+        res.redirect('/searchlight/what-did-you-do');
     }
     else if (DidYouVerify === 'No'){
-        res.redirect('/searchlight/idv-warning');
+        res.redirect('/searchlight/idv-blank');
     }
 });
 
@@ -896,19 +911,20 @@ router.get('/searchlight/tasks-2', function(req, res) {
 
 //TASKS 3
 //Make previous responses available to tasks screen
-router.get('/searchlight/tasks-2', function(req, res) {
+router.get('/searchlight/tasks-3', function(req, res) {
     //retrieve form data
     var WhatDoYouWantToDo = req.session.data['WhatDoYouWantToDo'];
     var address = req.session.data['Address'];
-    var searchlightAnswer = req.session.data['searchlight-scenario'];
-    
+    var yes = req.session.data['Yes'];
     //Display new screen and make form data available to use
-    res.render('/searchlight/tasks-2', {
+    res.render('/searchlight/tasks-3', {
         WhatDoYouWantToDo: WhatDoYouWantToDo,
         address: address,
-        searchlightAnswer: searchlightAnswer
+        yes: yes
     });
 } );
+
+
 
 
 //WHAT DID YOU DO

@@ -57,7 +57,7 @@
 
   <h2 class="govuk-heading-m govuk-!-padding-top-2 govuk-!-margin-bottom-1">Check application</h2>
   
-  {% if yes == "No, they already matched" or WhatDoYouWantToDo == "No change required, details already matched" %}
+  {% if address == "Yes" or WhatDoYouWantToDo == "No change required, details already matched" %}
   {% from "govuk/components/task-list/macro.njk" import govukTaskList %}
 
   {{ govukTaskList({
@@ -100,7 +100,7 @@
       title: {
         text: "Date of birth"
       },
-      href: "#",
+      href: "date-of-birth",
       status: {
         tag: {
           text: "DONE",
@@ -111,7 +111,7 @@
       title: {
         text: "Date of death"
       },
-      href: "#",
+      href: "date-of-death",
       status: {
         tag: {
           text: "DONE",
@@ -122,7 +122,7 @@
       title: {
         text: "Nationality"
       },
-      href: "#",
+      href: "nationality",
       status: {
         tag: {
           text: "DONE",
@@ -133,7 +133,7 @@
       title: {
         text: "Residency and prescence"
       },
-      href: "#",
+      href: "residency-and-prescence",
       status: {
         tag: {
           text: "DONE",
@@ -324,8 +324,8 @@
   
     {% endif %}
 
-    <!-- Address is come back to this later -->
-    {% if address == "I need to come back to this later" or WhatDoYouWantToDo == "Try to resolve this task" or WhatDoYouWantToDo == "I need to come back to this later" %}
+    <!-- WhatDoYouWantToDo -->
+    {% if WhatDoYouWantToDo == "Try to resolve this task" %}
     {% from "govuk/components/task-list/macro.njk" import govukTaskList %}
 
     {{ govukTaskList({
@@ -357,7 +357,7 @@
         title: {
           text: "Address"
         },
-        href: "address-2",
+        href: "what-do-you-want-do",
         status: {
           tag: {
             text: "PAUSED",
@@ -368,7 +368,7 @@
         title: {
           text: "Date of birth"
         },
-        href: "#",
+        href: "date-of-birth",
         status: {
           tag: {
             text: "DONE",
@@ -379,7 +379,7 @@
         title: {
           text: "Date of death"
         },
-        href: "#",
+        href: "date-of-death",
         status: {
           tag: {
             text: "DONE",
@@ -390,7 +390,7 @@
         title: {
           text: "Nationality"
         },
-        href: "#",
+        href: "nationality",
         status: {
           tag: {
             text: "DONE",
@@ -401,7 +401,7 @@
         title: {
           text: "Residency and prescence"
         },
-        href: "#",
+        href: "residency-and-prescence",
         status: {
           tag: {
             text: "DONE",
@@ -592,6 +592,274 @@
   
     {% endif %}
 
+     <!-- WhatDoYouWantToDo is come back to this later -->
+     {% if WhatDoYouWantToDo == "I need to come back to this later" %}
+     {% from "govuk/components/task-list/macro.njk" import govukTaskList %}
+ 
+     {{ govukTaskList({
+       idPrefix: "application-checks",
+       items: [
+       {
+         title: {
+           text: "National Insurance Number"
+         },
+         href: "#",
+         status: {
+           tag: {
+             text: "DONE",
+             classes: "govuk-tag--blue"
+           }
+         }
+       },  {
+         title: {
+           text: "Name"
+         },
+         href: "#",
+         status: {
+           tag: {
+             text: "DONE",
+             classes: "govuk-tag--blue"
+           }
+         }
+       },  {
+         title: {
+           text: "Address"
+         },
+         href: "what-do-you-want-do",
+         status: {
+           tag: {
+             text: "PAUSED",
+             classes: "govuk-tag--yellow"
+           }
+         }
+       },  {
+         title: {
+           text: "Date of birth"
+         },
+         href: "date-of-birth",
+         status: {
+           tag: {
+             text: "TO DO",
+             classes: "govuk-tag--grey"
+           }
+         }
+       },  {
+         title: {
+           text: "Date of death"
+         },
+         href: "date-of-death",
+         status: {
+           tag: {
+             text: "TO DO",
+             classes: "govuk-tag--grey"
+           }
+         }
+       },  {
+         title: {
+           text: "Nationality"
+         },
+         href: "nationality",
+         status: {
+           tag: {
+             text: "TO DO",
+             classes: "govuk-tag--grey"
+           }
+         }
+       },  {
+         title: {
+           text: "Residency and prescence"
+         },
+         href: "residency-and-prescence",
+         status: {
+           tag: {
+             text: "TO DO",
+             classes: "govuk-tag--grey"
+           }
+         }
+       },  {
+         title: {
+           text: "Immigration status"
+         },
+         href: "#",
+         status: {
+           tag: {
+             text: "TO DO",
+             classes: "govuk-tag--grey"
+           }
+         }
+       },  {
+         title: {
+           text: "Special Rules End of Life (SREL)"
+         },
+         href: "#",
+         status: {
+           tag: {
+             text: "TO DO",
+             classes: "govuk-tag--grey"
+           }
+         }
+       },  {
+         title: {
+           text: "Representative or appointee"
+         },
+         href: "#",
+         status: {
+           tag: {
+             text: "TO DO",
+             classes: "govuk-tag--grey"
+           }
+         }
+       },
+         {
+           title: {
+             text: "Withdrawn"
+           },
+           href: "address",
+           status: {
+             tag: {
+               text: "TO DO",
+               classes: "govuk-tag--grey"
+             }
+           }
+         },
+         {
+           title: {
+             text: "Age criteria"
+           },
+           href: "#",
+           status: {
+             tag: {
+               text: "TO DO",
+               classes: "govuk-tag--grey"
+             }
+           }
+         },{
+           title: {
+             text: "Additional support"
+           },
+           href: "#",
+           status: {
+             tag: {
+               text: "TO DO",
+               classes: "govuk-tag--grey"
+             }
+           }
+         },{
+           title: {
+             text: "Alternative format"
+           },
+           href: "#",
+           status: {
+             tag: {
+               text: "TO DO",
+               classes: "govuk-tag--grey"
+             }
+           }
+         },{
+           title: {
+             text: "Fraud"
+           },
+           href: "#",
+           status: {
+             tag: {
+               text: "TO DO",
+               classes: "govuk-tag--grey"
+             }
+           }
+         },{
+           title: {
+             text: "Keep customer interactions safe (KCIS)"
+           },
+           href: "#",
+           status: {
+             tag: {
+               text: "TO DO",
+               classes: "govuk-tag--grey"
+             }
+           }
+         },{
+           title: {
+             text: "Working abroad"
+           },
+           href: "#",
+           status: {
+             tag: {
+               text: "TO DO",
+               classes: "govuk-tag--grey"
+             }
+           }
+         },{
+           title: {
+             text: "Foreign benefits"
+           },
+           href: "#",
+           status: {
+             tag: {
+               text: "TO DO",
+               classes: "govuk-tag--grey"
+             }
+           }
+         },{
+           title: {
+             text: "Disability Living Allowance (DLA)"
+           },
+           href: "#",
+           status: {
+             tag: {
+               text: "TO DO",
+               classes: "govuk-tag--grey"
+             }
+           }
+         },{
+           title: {
+             text: "Child Disability Payment or Adult Disability Payment"
+           },
+           href: "#",
+           status: {
+             tag: {
+               text: "TO DO",
+               classes: "govuk-tag--grey"
+             }
+           }
+         },{
+           title: {
+             text: "Armed Forces Independence Payment (AFIP)"
+           },
+           href: "#",
+           status: {
+             tag: {
+               text: "TO DO",
+               classes: "govuk-tag--grey"
+             }
+           }
+         },{
+           title: {
+             text: "War Pensioners' Mobility Supplement (WPMS)"
+           },
+           href: "#",
+           status: {
+             tag: {
+               text: "TO DO",
+               classes: "govuk-tag--grey"
+             }
+           }
+         },{
+           title: {
+             text: "Constant Attendance Allowance (CAA)"
+           },
+           href: "#",
+           status: {
+             tag: {
+               text: "TO DO",
+               classes: "govuk-tag--grey"
+             }
+           }
+         }
+       ]
+     }) }}
+   
+     {% endif %}
+
     <!-- What do you want to do is nothing -->
     {% if WhatDoYouWantToDo == "Nothing" %}
     {% from "govuk/components/task-list/macro.njk" import govukTaskList %}
@@ -625,7 +893,7 @@
         title: {
           text: "Address"
         },
-        href: "address-2",
+        href: "what-do-you-want-do",
         status: {
           tag: {
             text: "ISSUE",
@@ -636,7 +904,7 @@
         title: {
           text: "Date of birth"
         },
-        href: "#",
+        href: "date-of-birth",
         status: {
           tag: {
             text: "DONE",
@@ -647,7 +915,7 @@
         title: {
           text: "Date of death"
         },
-        href: "#",
+        href: "date-of-death",
         status: {
           tag: {
             text: "DONE",
@@ -658,7 +926,7 @@
         title: {
           text: "Nationality"
         },
-        href: "#",
+        href: "nationality",
         status: {
           tag: {
             text: "DONE",
@@ -669,7 +937,7 @@
         title: {
           text: "Residency and prescence"
         },
-        href: "#",
+        href: "residency-and-prescence",
         status: {
           tag: {
             text: "DONE",
@@ -862,17 +1130,92 @@
   <!------------ ––– ------------>
 
 
-<!--
-<p class="govuk-body govuk-!-font-size-19 govuk-!-margin-bottom-6"><a href="application-exit-bail" rel="noopener">I need to come back to this application later</a></p>
--->
+  {% if WhatDoYouWantToDo == "No change required, details already matched" %}
+  <h2 class="govuk-heading-l">There are no issues with this application</h2>
 
-<!-- What do you want DONE is try to update the address -->
-{% if WhatDoYouWantToDo == "Try to resolve this task" %}
-{{ govukWarningText({
-  text: "If you need to make any updates in Searchlight to resolve this issue, make sure the applicant has verified their identity first.",
-  iconFallbackText: "Warning"
-}) }}
-{% endif %}
+    <p class="govuk-body">It is ready for a decision.</p>
+
+
+
+
+    <form class="form" method="post">
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        name: "next",
+        fieldset: {
+          legend: {
+            text: "What do you want to do now?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+        {
+          value: "Send application to assessment provider",
+          text: "Send application to assessment provider"
+        },
+        {
+          value: "Move application to PIPCS",
+          text: "Move application to PIPCS"
+        },
+        {
+          value: "Disallow application",
+          text: "Disallow application"
+        }
+        ]
+      }) }}
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+</form>
+  {% endif %}
+
+  {% if WhatDoYouWantToDo == "Nothing" %}
+  <h2 class="govuk-heading-l">There are issues with this application</h2>
+
+    <form class="form" method="post">
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        name: "next",
+        fieldset: {
+          legend: {
+            text: "What do you want to do now?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+        {
+          value: "Send application to assessment provider",
+          text: "Send application to assessment provider"
+        },
+        {
+          value: "Move application to PIPCS",
+          text: "Move application to PIPCS"
+        },
+        {
+          value: "Disallow application",
+          text: "Disallow application"
+        }
+        ]
+      }) }}
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+</form>
+  {% endif %}
 
 
 </div>
@@ -880,22 +1223,6 @@
 
   </main>
 </div>
-
-
-
-
-
-<!-- <div class="govuk-width-container">
-  <ul class="govuk-footer__list">
-
-    <li class="govuk-footer__list-item">
-      <a class="govuk-footer__link" href="/eject">
-        There is an issue with this applciation
-      </a>
-    </li>
-
-</div> -->
-
 
 <div>
 

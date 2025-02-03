@@ -36,7 +36,7 @@
     },-->
 <form class="form" action="/what-do-you-want-to-do-answer" method="post">
   {% from "govuk/components/radios/macro.njk" import govukRadios %}
-
+  {% if scenario == "IDV not complete before mismatch identified" %}
   {{ govukRadios({
     name: "WhatDoYouWantToDo",
     fieldset: {
@@ -46,16 +46,9 @@
           <span class='govuk-warning-text__icon' aria-hidden='true'>!</span>
           <strong class='govuk-warning-text__text'>
             <span class='govuk-visually-hidden'>Warning</span>
-            You must verify the applicant's identity before you confirm their address.
+            You must verify the applicant's identity before you change their address in Searchlight.
           </strong>
         </div>
-        <p class='govuk-body'>Once the applicant has verified their identity, you can:</p>
-        <ul class='govuk-list govuk-list--bullet'>
-        
-          <li>confirm the correct address</li>
-          <li>change any incorrect details in Searchlight or PIP Service</li>
-
-        </ul>
         <h2 class='govuk-heading-m'>Have you confirmed and updated the correct address?</h2>
         "
       }
@@ -70,20 +63,57 @@
         text: "No, I am not able to do this"
       },
       {
-        value: "I need to come back to this later",
-        text: "I need to come back to this later"
+        value: "No change required, details already matched",
+        text: "No, the details already matched"
 
       },
       {
         divider: "or"
       },
       {
-        value: "No change required, details already matched",
-        text: "No change required, details already matched"
+        value: "I need to come back to this later",
+        text: "I need to come back to this later"
 
       }
     ]
   }) }}
+  {% endif %}
+  
+  {% if scenario == "IDV complete before mismatch identified" %}
+  {{ govukRadios({
+    name: "WhatDoYouWantToDo",
+    fieldset: {
+      legend: {
+        html: "
+        <h1 class='govuk-heading-l'>Have you confirmed and updated the correct address?</h1>
+        "
+      }
+    },
+    items: [
+      {
+        value: "Try to resolve this task",
+        text: "Yes"
+      },
+      {
+        value: "Nothing",
+        text: "No, I am not able to do this"
+      },
+      {
+        value: "No change required, details already matched",
+        text: "No, the details already matched"
+
+      },
+      {
+        divider: "or"
+      },
+      {
+        value: "I need to come back to this later",
+        text: "I need to come back to this later"
+
+      }
+    ]
+  }) }}
+  {% endif %}
 
   {{ govukButton({
     text: "Continue"

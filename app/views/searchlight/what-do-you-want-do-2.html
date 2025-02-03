@@ -32,30 +32,44 @@
 
 
 <!------------ ––– ------------>
-
-<form class="form" action="/searchlight/date-of-death" method="post">
+<!--    
+    },-->
+<form class="form" action="/what-do-you-want-to-do-answer" method="post">
   {% from "govuk/components/radios/macro.njk" import govukRadios %}
+<h1>vary this for yes IDV befnore and no idv</h1>
 
   {{ govukRadios({
-    name: "check",
+    name: "WhatDoYouWantToDo",
     fieldset: {
       legend: {
-        html: "<h1 class='govuk-heading-l'>Does the date of birth match what we hold in Searchlight?</h1>"
+        html: "
+        <h1 class='govuk-heading-l'>Have you confirmed and updated the correct address?</h1>
+        "
       }
-    },
+      },
     items: [
       {
-        value: "Yes",
+        value: "Try to resolve this task",
         text: "Yes"
       },
       {
-        value: "No",
-        text: "No"
+        value: "Nothing",
+        text: "No, I am not able to do this"
+      },
+      {
+        value: "No change required, details already matched",
+        text: "No change required, details already matched"
+
+      },
+      {
+        divider: "or"
       },
       {
         value: "I need to come back to this later",
         text: "I need to come back to this later"
+
       }
+
     ]
   }) }}
 
