@@ -777,7 +777,7 @@ router.post('/address-answer', function (req, res) {
     //Store response
     var address = req.session.data['Address'];
     if (address === 'Yes'){
-        res.redirect('/searchlight/yes');
+        res.redirect('/searchlight/date-of-birth');
     } else if (address === 'No'){
         res.redirect('/searchlight/what-do-you-want-do');
     }
@@ -809,7 +809,7 @@ router.post('/address-2-answer', function (req, res) {
     //Store response
     var address = req.session.data['Address'];
     if (address === 'Yes'){
-        res.redirect('/searchlight/what-did-you-do');
+        res.redirect('/searchlight/what-do-you-want-do');
     }
     else if (address === 'No'){
         res.redirect('/searchlight/what-do-you-want-do');
@@ -823,10 +823,16 @@ router.post('/what-do-you-want-to-do-answer', function (req, res) {
     //Store response
     var WhatDoYouWantToDo = req.session.data['WhatDoYouWantToDo'];
     if (WhatDoYouWantToDo === 'Try to resolve this task'){
-        res.redirect('/searchlight/idv-warning');
+        res.redirect('/searchlight/what-did-you-do');
     }
     else if (WhatDoYouWantToDo === 'Nothing'){
-        res.redirect('/searchlight/date-of-birth');
+        res.redirect('/searchlight/tasks-2');
+    } 
+    else if (WhatDoYouWantToDo === 'I need to come back to this later'){
+        res.redirect('/searchlight/tasks-2');
+    }
+    else if (WhatDoYouWantToDo === 'No change required, details already matched'){
+        res.redirect('/searchlight/tasks-2');
     }
 });
 
@@ -835,16 +841,28 @@ router.post('/what-did-you-do-answer', function (req, res) {
     //Store response
     var searchlightAnswer = req.session.data['searchlight-scenario'];
     if (searchlightAnswer === 'IDV complete before mismatch identified'){
-        res.redirect('/searchlight/add-note');
+        res.redirect('/searchlight/did-you-verify-id');
     }
     else if (searchlightAnswer === 'IDV not complete before mismatch identified'){
-        res.redirect('/searchlight/add-note');
+        res.redirect('/searchlight/did-you-verify-id');
     }
     else if (searchlightAnswer === 'IDV not complete before mismatch identified: user leaves IDV checkbox blank'){
         res.redirect('/searchlight/idv-blank');
     }
     else if (searchlightAnswer === 'IDV not complete before mismatch identified: user leaves all checkboxes blank'){
         res.redirect('/searchlight/idv-only');
+    }
+});
+
+//DID YOU VERIFY?
+router.post('/verify-answer', function (req, res) {
+    //Store response
+    var DidYouVerify = req.session.data['didYouVerify'];
+    if (DidYouVerify=== 'Yes'){
+        res.redirect('/searchlight/add-note');
+    }
+    else if (DidYouVerify === 'No'){
+        res.redirect('/searchlight/idv-warning');
     }
 });
 
