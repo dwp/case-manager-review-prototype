@@ -822,8 +822,12 @@ router.post('/address-2-answer', function (req, res) {
 router.post('/what-do-you-want-to-do-answer', function (req, res) {
     //Store response
     var WhatDoYouWantToDo = req.session.data['WhatDoYouWantToDo'];
-    if (WhatDoYouWantToDo === 'Try to resolve this task'){
+    var scenario = req.session.data['searchlight-scenario'];
+    if (WhatDoYouWantToDo === 'Try to resolve this task' && scenario === 'IDV not complete before mismatch identified'){
         res.redirect('/searchlight/did-you-verify-id');
+    }
+    else if (WhatDoYouWantToDo === 'Try to resolve this task' && scenario === 'IDV complete before mismatch identified'){
+        res.redirect('/searchlight/what-did-you-do');
     }
     else if (WhatDoYouWantToDo === 'Nothing'){
         res.redirect('/searchlight/tasks-2');
