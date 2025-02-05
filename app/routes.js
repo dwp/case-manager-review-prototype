@@ -779,7 +779,7 @@ router.post('/address-answer', function (req, res) {
     if (address === 'Yes'){
         res.redirect('/searchlight/date-of-birth');
     } else if (address === 'No'){
-        res.redirect('/searchlight/what-do-you-want-do');
+        res.redirect('/searchlight/idv-warning');
     }
     else if (address === 'Yes - I have made changes to resolve this issue'){
         res.redirect('/searchlight/what-did-you-do');
