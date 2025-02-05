@@ -942,6 +942,18 @@ router.get('/searchlight/what-did-you-do', function(req, res) {
     });
 } );
 
+//WHAT DID YOU DO
+//Make previous responses available to what did you do screen
+router.get('/searchlight/idv-warning', function(req, res) {
+    //retrieve form data
+    var searchlightAnswer = req.session.data['searchlight-scenario'];
+    //Display new screen and make form data available to use
+    res.render('/searchlight/idv-warning', {
+        searchlightAnswer: searchlightAnswer
+    });
+} );
+
+
 
 //-------------------------------------------------------------------
     // QPPT
