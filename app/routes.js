@@ -805,7 +805,7 @@ router.post('/yes-answer', function (req, res) {
 });
 
 //ADDRESS 2
-router.post('/address-2-answer', function (req, res) {
+router.post('/address-2-answer', function (req, res) { 
     //Store response
     var address = req.session.data['Address-2'];
     if (address === 'Yes'){
@@ -827,7 +827,7 @@ router.post('/what-do-you-want-to-do-answer', function (req, res) {
         res.redirect('/searchlight/did-you-verify-id');
     }
     else if (WhatDoYouWantToDo === 'Try to resolve this task' && scenario === 'IDV complete before mismatch identified'){
-        res.redirect('/searchlight/what-did-you-do');
+        res.redirect('/searchlight/add-note');
     }
     else if (WhatDoYouWantToDo === 'Nothing'){
         res.redirect('/searchlight/tasks-2');
@@ -878,7 +878,7 @@ router.post('/verify-answer', function (req, res) {
     //Store response
     var DidYouVerify = req.session.data['didYouVerify'];
     if (DidYouVerify=== 'Yes'){
-        res.redirect('/searchlight/what-did-you-do');
+        res.redirect('/searchlight/add-note');
     }
     else if (DidYouVerify === 'No'){
         res.redirect('/searchlight/idv-blank');
