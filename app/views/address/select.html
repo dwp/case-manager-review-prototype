@@ -1,0 +1,101 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %} 
+Add a note - PIP Case review - GOV.UK {% endblock %}
+
+{% block main %}
+
+<div class="govuk-width-container">
+    {{ govukBackLink({
+        text: "Back",
+        href: "javascript:window.history.back()"
+      }) }}
+    <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
+        
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+                <form class="form" action="/address/confirm" method="post">
+                   {% from "govuk/components/button/macro.njk" import govukButton %}
+                    {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+                    <div class="govuk-width-container">
+
+                    {{ govukRadios({
+                    name: "select-an-address",
+                    classes: "govuk-radios--small",
+                    fieldset: {
+                    legend: {
+                        text: "Select your address",
+                        isPageHeading: true,
+                        classes: "govuk-fieldset__legend--xl"
+                    }
+                    },
+                    formGroup: {
+                    beforeInputs: {
+                        html: "<p>6 addresses found for <b>wr11nl</b> and <b>1</b>. <a href='/address/find-address' >Search again</a></p>"
+                    }
+                    },
+                    items: [
+                    {
+                        value: "1 Washington Street, Worcester, WR1 1NL",
+                        text: "1 Washington Street, Worcester, WR1 1NL",
+                        attributes: {
+                        "data-ga-question": "Select an address",
+                        "data-ga-answer": "Answer 1"
+                        }
+                    },
+                    {
+                        value: "10 Washington Street, Worcester, WR1 1NL",
+                        text: "10 Washington Street, Worcester, WR1 1NL",
+                        attributes: {
+                        "data-ga-question": "Select an address",
+                        "data-ga-answer": "Answer 2"
+                        }
+                    },
+                    {
+                        value: "11 Washington Street, Worcester, WR1 1NL",
+                        text: "11 Washington Street, Worcester, WR1 1NL",
+                        attributes: {
+                        "data-ga-question": "Select an address",
+                        "data-ga-answer": "Answer 2"
+                        }
+                    },
+                    {
+                        value: "101 Washington Street, Worcester, WR1 1NL",
+                        text: "101 Washington Street, Worcester, WR1 1NL",
+                        attributes: {
+                        "data-ga-question": "Select an address",
+                        "data-ga-answer": "Answer 3"
+                        }
+                    },
+                    {
+                        value: "110 Washington Street, Worcester, WR1 1NL",
+                        text: "110 Washington Street, Worcester, WR1 1NL",
+                        attributes: {
+                        "data-ga-question": "Select an address",
+                        "data-ga-answer": "Answer 4"
+                        }
+                    },
+                    {
+                        value: "111 Washington Street, Worcester, WR1 1NL",
+                        text: "111 Washington Street, Worcester, WR1 1NL",
+                        attributes: {
+                        "data-ga-question": "Select an address",
+                        "data-ga-answer": "Answer 5"
+                        }
+                    }
+                    ]
+                    }) }}
+
+                    {{ govukButton({
+                    text: "Use this address"
+                    }) }}
+                    <p class="govuk-body govuk-!-margin-bottom-0"><a href="/address/manual" class="govuk-link">Enter address manually</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
+
+{% endblock %}
