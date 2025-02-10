@@ -1,0 +1,40 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %} 
+Add a note - PIP Case review - GOV.UK {% endblock %}
+
+{% block main %}
+
+<div class="govuk-width-container">
+    {{ govukBackLink({
+        text: "Back",
+        href: "javascript:window.history.back()"
+      }) }}
+    <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
+        
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+                <form class="form" action="/address/can-we-write-to-address" method="post">
+                    {% from "govuk/components/button/macro.njk" import govukButton %}
+                    {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+                    <h1 class="govuk-heading-xl">Confirm your address</h1>
+                    <p>6 addresses found for <b>wr11nl</b> and <b>1</b>. <a href="/address/find-address">Search again</a></p>
+                    
+                    {{ govukInsetText({
+                    html: "1 Washington Street<br>Worcester<br>WR1 1NL"
+                    }) }}
+                    
+                    {{ govukButton({
+                    text: "Use this address"
+                    }) }}
+                    
+                    <p class="govuk-body"><a href="/address/select" class="govuk-link">Use a different address</a></p>
+                    <p class="govuk-body govuk-!-margin-bottom-0"><a href="/address/manual" class="govuk-link">Enter address manually</a></p>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
+
+{% endblock %}

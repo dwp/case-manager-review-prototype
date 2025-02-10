@@ -954,6 +954,44 @@ router.get('/searchlight/idv-warning', function(req, res) {
 } );
 
 
+//------------------------------------------------------------------
+//ADDRESS LOOKUP
+//------------------------------------------------------------------
+
+//index
+router.post('/address-scenario', function (req, res) {
+    //Store response
+    var AddressScenario = req.session.data['address-scenario'];
+    res.redirect('/address/find-address');
+});
+
+//find-address
+router.post('/find-address-answer', function (req, res) {
+    //Store response
+    var AddressScenario = req.session.data['address-scenario'];
+    if (AddressScenario === 'Successful address look-up'){
+        res.redirect('/address/select');
+    }
+    else if (AddressScenario === 'Address not found'){
+        res.redirect('/address/no-results');
+    }
+    else if (AddressScenario === 'Not in eligible postcode'){
+        res.redirect('/address/ineligible');
+    }
+});
+
+//can-we-write-to-address
+router.post('/can-answer', function (req, res) {
+    //Store response
+    var CanAnswer = req.session.data['safe-address'];
+    if (CanAnswer === 'Yes'){
+        res.redirect('/address/contact');
+    }
+    else if (CanAnswer === 'No'){
+        res.redirect('/address/find-address-alt');
+
+    }
+});
 
 //-------------------------------------------------------------------
     // QPPT
