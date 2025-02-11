@@ -972,8 +972,20 @@ router.post('/find-address-answer', function (req, res) {
     if (AddressScenario === 'Successful address look-up'){
         res.redirect('/address/select');
     }
+    else if (AddressScenario === 'Not in eligible postcode'){
+        res.redirect('/address/select');
+    }
     else if (AddressScenario === 'Address not found'){
         res.redirect('/address/no-results');
+    }
+});
+
+//confirm
+router.post('/confirm-address-answer', function (req, res) {
+    //Store response
+    var AddressScenario = req.session.data['address-scenario'];
+    if (AddressScenario === 'Successful address look-up'){
+        res.redirect('/address/can-we-write-to-address');
     }
     else if (AddressScenario === 'Not in eligible postcode'){
         res.redirect('/address/ineligible');

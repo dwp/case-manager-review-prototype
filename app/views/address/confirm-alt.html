@@ -18,8 +18,8 @@ Add a note - PIP Case review - GOV.UK {% endblock %}
                     {% from "govuk/components/button/macro.njk" import govukButton %}
                     {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 
-                    <h1 class="govuk-heading-xl">Confirm your address</h1>
-                    <p>6 addresses found for <b>wr11nl</b> and <b>1</b>. <a href="/address/find-address-alt">Search again</a></p>
+                    <h1 class="govuk-heading-xl">Confirm your contact address</h1>
+                    <p>1 address found for <b>wr11nl</b> and <b>1</b>. <a href="/address/find-address-alt">Search again</a></p>
                     
                     {{ govukInsetText({
                     html: "1 Washington Street<br>Worcester<br>WR1 1NL"
@@ -30,6 +30,7 @@ Add a note - PIP Case review - GOV.UK {% endblock %}
                     }) }}
                     
                     <p class="govuk-body"><a href="/address/manual" class="govuk-link">Use a different address</a></p>
+                    <p class="govuk-body govuk-!-margin-bottom-0"><a href="/address/manual" class="govuk-link">Enter address manually</a></p>
                 </form>
             </div>
         </div>
