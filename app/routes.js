@@ -997,7 +997,7 @@ router.post('/can-answer', function (req, res) {
     //Store response
     var CanAnswer = req.session.data['safe-address'];
     if (CanAnswer === 'Yes'){
-        res.redirect('/address/contact');
+        res.redirect('https://pip-starting.herokuapp.com/v22/claim-registration/personal-details/contact-details');
     }
     else if (CanAnswer === 'No'){
         res.redirect('/address/find-address-alt');
