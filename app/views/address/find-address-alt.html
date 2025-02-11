@@ -17,12 +17,12 @@ Add a note - PIP Case review - GOV.UK {% endblock %}
                 <form class="form" action="/address/confirm-alt" method="post">
                     {% from "govuk/components/button/macro.njk" import govukButton %}
                     {% from "govuk/components/input/macro.njk" import govukInput %}
-                    <h1 class="govuk-heading-xl">What address can we write to?</h1>
+                    <h1 class="govuk-heading-xl">Find your contact address</h1>
                     {{ govukInput({
                     label: {
                     text: "Postcode"
                     },
-                    classes: "govuk-input--width-5",
+                    classes: "govuk-input--width-10",
                     hint: {
                     text: "For example, AA3 1AB."
                     },
@@ -45,7 +45,7 @@ Add a note - PIP Case review - GOV.UK {% endblock %}
                     {{ govukButton({
                     text: "Find address"
                     }) }}
-                    <p class="govuk-body govuk-!-margin-bottom-0"><a href="/address/manual" class="govuk-link">Enter address manually</a></p>
+                    <p class="govuk-body govuk-!-margin-bottom-0"><a href="/address/manual-contact" class="govuk-link">Enter address manually</a></p>
                 </form>
             </div>
         </div>
