@@ -953,6 +953,218 @@ router.get('/searchlight/idv-warning', function(req, res) {
     });
 } );
 
+//-------------------APPLICATION
+
+//Version answer
+router.post('/application-scenario/', function (req, res) {
+    //Store response
+    var searchlightAnswer = req.session.data['application-scenario'];
+    //Redirect
+    res.redirect('/application/tasks');
+});
+
+//nino
+router.post('/nino-answer', function (req, res) {
+    //Store response
+    var application = req.session.data['nino'];
+    if (application === 'Yes'){
+        res.redirect('/application/date-of-birth');
+    } else if (application === 'No'){
+        res.redirect('/application/idv-warning');
+    }
+    else if (application === 'Yes - I have made changes to resolve this issue'){
+        res.redirect('/application/what-did-you-do');
+    }   else if (application === 'No - I want to try to resolve this issue'){
+        res.redirect('/application/idv-warning');
+    }  else if (application === 'No - I cannot resolve this issue'){
+        res.redirect('/application/tasks-2');
+    } else if (application === 'I need to come back to this later'){
+        res.redirect('/application/tasks-2');
+    }
+});
+
+//YES
+router.post('/yes-answer', function (req, res) {
+    //Store response
+    var yes = req.session.data['Yes'];
+    if (yes === 'Yes'){
+        res.redirect('/application/what-did-you-do');
+    }
+    else if (yes === 'No, they already matched'){
+        res.redirect('/application/date-of-birth');
+    }
+});
+
+//address
+router.post('/address-pip-answer', function (req, res) { 
+    //Store response
+    var application = req.session.data['address-2'];
+    if (application === 'Yes'){
+        res.redirect('/application/date-of-birth');
+    }
+    else if (application === 'No'){
+        res.redirect('/application/idv-warning');
+    }
+});
+
+//WHAT DO YOU WANT TO DO
+router.post('/what-do-you-want-to-do-nino-answer', function (req, res) {
+    //Store response
+    var WhatDoYouWantToDo = req.session.data['WhatDoYouWantToDoNino'];
+    var scenario = req.session.data['application-scenario'];
+    if (WhatDoYouWantToDo === 'Try to resolve this task' && scenario === 'IDV not complete before mismatch identified'){
+        res.redirect('/application/tasks-resolved');
+    }
+    else if (WhatDoYouWantToDo === 'Try to resolve this task' && scenario === 'IDV complete before mismatch identified'){
+        res.redirect('/application/tasks-resolved');
+    }
+    else if (WhatDoYouWantToDo === 'Nothing'){
+        res.redirect('/application/tasks-nino-issue');
+    } 
+    else if (WhatDoYouWantToDo === 'I need to come back to this later'){
+        res.redirect('/application/tasks-2');
+    }
+    else if (WhatDoYouWantToDo === 'No change required, details already matched'){
+        res.redirect('/application/tasks-resolved');
+    }
+});
+
+//WHAT DO YOU WANT TO DO
+router.post('/what-do-you-want-to-do-address-answer', function (req, res) {
+    //Store response
+    var WhatDoYouWantToDo = req.session.data['WhatDoYouWantToDoAddress'];
+    var scenario = req.session.data['application-scenario'];
+    if (WhatDoYouWantToDo === 'Try to resolve this task' && scenario === 'IDV not complete before mismatch identified'){
+        res.redirect('/application/did-you-verify-id');
+    }
+    else if (WhatDoYouWantToDo === 'Try to resolve this task' && scenario === 'IDV complete before mismatch identified'){
+        res.redirect('/application/tasks-resolved');
+    }
+    else if (WhatDoYouWantToDo === 'Nothing'){
+        res.redirect('/application/tasks-nino-issue');
+    } 
+    else if (WhatDoYouWantToDo === 'I need to come back to this later'){
+        res.redirect('/application/tasks-2');
+    }
+    else if (WhatDoYouWantToDo === 'No change required, details already matched'){
+        res.redirect('/application/tasks-resolved');
+    }
+});
+
+//WHAT DO YOU WANT TO DO
+//Make previous responses available to what do you want to do screen
+router.get('/application/what-do-you-want-do', function(req, res) {
+    //retrieve form data
+    var application = req.session.data['application'];
+    var application2 = req.session.data['application-2'];
+    var scenario = req.session.data['application-scenario'];
+    //Display new screen and make form data available to use
+    res.render('/application/what-do-you-want-do', {
+        application: application,
+        application2: application2,
+        scenario: scenario
+    });
+} );
+
+//WHAT DID YOU DO?
+router.post('/what-did-you-do-answer-application', function (req, res) {
+    //Store response
+    var searchlightAnswer = req.session.data['application-scenario'];
+    if (searchlightAnswer === 'IDV complete before mismatch identified'){
+        res.redirect('/application/add-note');
+    }
+    else if (searchlightAnswer === 'IDV not complete before mismatch identified'){
+        res.redirect('/application/add-note');
+    }
+    else if (searchlightAnswer === 'IDV not complete before mismatch identified: user leaves IDV checkbox blank'){
+        res.redirect('/application/idv-blank');
+    }
+    else if (searchlightAnswer === 'IDV not complete before mismatch identified: user leaves all checkboxes blank'){
+        res.redirect('/application/idv-only');
+    }
+});
+
+//DID YOU VERIFY?
+router.post('/verify-answer-application', function (req, res) {
+    //Store response
+    var DidYouVerify = req.session.data['didYouVerifyApplication'];
+    if (DidYouVerify=== 'Yes'){
+        res.redirect('/application/what-did-you-do');
+    }
+    else if (DidYouVerify === 'No'){
+        res.redirect('/application/idv-blank');
+    }
+});
+
+//TASKS 1
+//Make previous responses available to tasks screen
+router.get('/application/tasks', function(req, res) {
+    //retrieve form data
+    var WhatDoYouWantToDo = req.session.data['WhatDoYouWantToDo'];
+    var application = req.session.data['application'];
+    //Display new screen and make form data available to use
+    res.render('/application/tasks', {
+        WhatDoYouWantToDo: WhatDoYouWantToDo,
+        application: application
+    });
+} );
+
+//TASKS 2
+//Make previous responses available to tasks screen
+router.get('/application/tasks-2', function(req, res) {
+    //retrieve form data
+    var WhatDoYouWantToDo = req.session.data['WhatDoYouWantToDo'];
+    var application = req.session.data['application'];
+    var yes = req.session.data['Yes'];
+    //Display new screen and make form data available to use
+    res.render('/application/tasks-2', {
+        WhatDoYouWantToDo: WhatDoYouWantToDo,
+        application: application,
+        yes: yes
+    });
+} );
+
+//TASKS 3
+//Make previous responses available to tasks screen
+router.get('/application/tasks-3', function(req, res) {
+    //retrieve form data
+    var WhatDoYouWantToDo = req.session.data['WhatDoYouWantToDo'];
+    var application = req.session.data['application'];
+    var yes = req.session.data['Yes'];
+    //Display new screen and make form data available to use
+    res.render('/application/tasks-3', {
+        WhatDoYouWantToDo: WhatDoYouWantToDo,
+        application: application,
+        yes: yes
+    });
+} );
+
+
+
+
+//WHAT DID YOU DO
+//Make previous responses available to what did you do screen
+router.get('/application/what-did-you-do', function(req, res) {
+    //retrieve form data
+    var searchlightAnswer = req.session.data['application-scenario'];
+    //Display new screen and make form data available to use
+    res.render('/application/what-did-you-do', {
+        searchlightAnswer: searchlightAnswer
+    });
+} );
+
+//WHAT DID YOU DO
+//Make previous responses available to what did you do screen
+router.get('/application/idv-warning', function(req, res) {
+    //retrieve form data
+    var searchlightAnswer = req.session.data['application-scenario'];
+    //Display new screen and make form data available to use
+    res.render('/application/idv-warning', {
+        searchlightAnswer: searchlightAnswer
+    });
+} );
+
+
 
 //------------------------------------------------------------------
 //ADDRESS LOOKUP
