@@ -1,0 +1,43 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Change National Insurance Number
+      </h1>
+
+      <form class="form" action="/path/of/next/page" method="post">
+
+        {{ govukInput({
+          id: "nino",
+          name: "nino",
+          autocomplete: "nino",
+          classes: "govuk-input--width-10",
+          value: "QQ 12 34 56 C"
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue",
+          href: "record-details-link-updated-nino"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

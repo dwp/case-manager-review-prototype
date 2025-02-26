@@ -1,0 +1,47 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="#" method="post">
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+        {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+
+        <div class="govuk-width-container">
+        <h1 class="govuk-heading-xl">Home address </h1>
+
+        {{ govukInsetText({
+          html: "1 Washington Street<br>Worcester<br>WR1 1NL"
+        }) }}
+
+
+
+        {{ govukButton({
+          text: "Save and continue",
+          href: "record-details-link-updated-address"
+          }) }}
+
+        <p class="govuk-body"><a href="change-select-address" class="govuk-link">Select a different address</a></p>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
