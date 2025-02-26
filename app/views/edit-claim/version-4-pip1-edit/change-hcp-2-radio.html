@@ -1,0 +1,182 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "record-details-link#health-professionals"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="#" method="post" novalidate>
+
+        <h1 class="govuk-heading-xl">Change health professional 2 details</h1>
+
+              {% set jobHtml %}
+              {{ govukInput({
+                id: "job",
+                name: "job",
+                type: "tel",
+                autocomplete: "tel",
+                classes: "govuk-!-width-two-thirds",
+                label: {
+                  text: "Enter job title or support role"
+                }
+              }) }}
+              {% endset -%}
+    
+              {{ govukRadios({
+                name: "contact",
+                fieldset: {
+                  legend: {
+                    text: "Health professional type",
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--m"
+                  }
+                },
+                items: [
+                  {
+                    value: "GP",
+                    text: "GP",
+                    checked: "true"
+                  },
+                  {
+                    value: "hospital-doctor",
+                    text: "Hospital doctor"
+                  },
+                  {
+                    value: "specialist-nurse",
+                    text: "Specialist nurse"
+                  },
+                  {
+                    value: "other",
+                    text: "Other job or support role",
+                    conditional: {
+                      html: jobHtml
+                    }
+                  }
+                ]
+              }) }}
+              
+        <div class="govuk-body govuk-!-margin-bottom-6"></div>
+
+        {{ govukInput({
+          label: {
+            text: "Full name",
+            classes: "govuk-label--m",
+            isPageHeading: true
+          },
+          value: "Mr Ramon Niekrash",
+          id: "event-name",
+          name: "eventName"
+        }) }}
+
+        <div class="govuk-body govuk-!-margin-bottom-6"></div>
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        {{ govukInput({
+          label: {
+            text: "Phone number",
+            classes: "govuk-label--m",
+            isPageHeading: true
+          },
+          value: "020 8836 5435",
+          id: "hcp-number",
+          name: "hcp-number"
+        }) }}
+
+        <div class="govuk-body govuk-!-margin-bottom-9"></div>
+
+        {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+        {% call govukFieldset({
+          legend: {
+            text: "Health professsional's address",
+            classes: "govuk-fieldset__legend--m",
+            isPageHeading: true
+          }
+        }) %}
+
+          {{ govukInput({
+            label: {
+              text: "Address line 1"
+            },
+            id: "address-line-1",
+            name: "addressLine1",
+            value: "Queen Elizabeth Hospital",
+            autocomplete: "address-line1"
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "Address line 2 (optional)"
+            },
+            id: "address-line-2",
+            name: "addressLine2",
+            value: "Stadium Rd",
+            autocomplete: "address-line2"
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "Town or city"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "address-town",
+            name: "addressTown",
+            value: "Greenwich",
+            autocomplete: "address-level2"
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "County (optional)"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "address-county",
+            name: "addressCounty",
+            value: "London"
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "Postcode"
+            },
+            classes: "govuk-input--width-10",
+            id: "address-postcode",
+            name: "addressPostcode",
+            value: "SE18 4QH",
+            autocomplete: "postal-code"
+          }) }}
+
+        {% endcall %}
+
+    <div class="govuk-body govuk-!-margin-bottom-6"></div>
+
+    {{ govukButton({
+      text: "Save and continue",
+      href: "record-details-link-updated-hcp-2#health-professionals"
+    }) }}
+
+    </form>
+
+    </div>
+  </div>
+
+  {% endblock %}

@@ -9,7 +9,14 @@
 
 
   <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
-    
+    {%- from "govuk/components/tag/macro.njk" import govukTag -%}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds" style="margin-bottom: 2rem;">
+      {{ govukTag({
+        text: "Scenario selector"
+      }) }}
+      </div>
+    </div>
 
 <div class="govuk-grid-row">
 
@@ -33,7 +40,7 @@
       name: "application-scenario",
       fieldset: {
         legend: {
-          text: "What scenario do you want to simulate?",
+          text: "What PIP service update scenario do you want to simulate?",
           isPageHeading: true,
           classes: "govuk-fieldset__legend--xl"
         }

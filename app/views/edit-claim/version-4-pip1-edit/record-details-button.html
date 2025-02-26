@@ -1,0 +1,557 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %} Personal details {% endblock %}
+{% block main %}
+
+  <div class="govuk-width-container">
+    <div class="column-full">
+
+        <section class="dwp-quick-reference" aria-label="Case information">
+          <dl class="dwp-quick-reference__block">
+          <dt class="dwp-quick-reference__label govuk-visually-hidden">Name:</dt>
+          <dd class="dwp-quick-reference__primary">Jane Doe</dd>
+          <dt class="dwp-quick-reference__label dwp-quick-reference__label--primary govuk-visually-hidden">National Insurance number:</dt>
+          <dd class="dwp-quick-reference__secondary">QQ 12 34 56 X</dd>
+          </dl>
+          </section>
+
+      <nav class="navigation-secondary">
+        <ul>
+          <li>
+            <a href="personal-details" class="active" aria-current="section">Personal details</a>
+          </li>
+          <li>
+            <a href="#">Supporting documents</a>
+          </li>
+          <li>
+            <a href="#">Conditions or disabilities</a>
+          </li>
+          <li>
+            <a href="#">Activities</a>
+          </li>
+          <li>
+            <a href="/event-history/v5-quick-reference/index" aria-current="section">Event history</a>
+          </li>
+          <!--
+          <li>
+            <a href="summary">Questions and answers</a>
+          </li> -->
+        </ul>
+      </nav>
+
+</div>
+
+  <main class="govuk-main-wrapper" id="main-content" role="main">
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+  <h1 class="govuk-heading-l">Personal details</h1>
+
+  {{ govukButton({
+    text: "Change details",
+    href: "record-details-link"
+  }) }}
+
+<div class="govuk-tabs" data-module="govuk-tabs">
+<h2 class="govuk-tabs__title">
+Personal details
+</h2>
+
+<ul class="govuk-tabs__list">
+<li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+<a class="govuk-tabs__tab" href="#claimant">
+  Claimant
+</a>
+</li>
+<li class="govuk-tabs__list-item">
+<a class="govuk-tabs__tab" href="#health-professionals">
+  Health professionals
+</a>
+</li>
+<li class="govuk-tabs__list-item">
+<a class="govuk-tabs__tab" href="#support">
+  Support and communication
+</a>
+</li>
+<li class="govuk-tabs__list-item">
+  <a class="govuk-tabs__tab" href="#payment-details">
+    Payment details
+  </a>
+  </li>
+</ul>
+
+<div class="govuk-tabs__panel" id="claimant">
+  
+  <h2 class="govuk-heading-m">Claim details</h2>
+
+  <table class="govuk-table">
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+        <td class="govuk-table__header" width="42%">Identity verified</td>
+        <td class="govuk-table__cell" >Yes</td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__header" width="42%">Claim date</td>
+        <td class="govuk-table__cell" >20 November 2021</td>
+      </tr>
+  </table>
+  
+  <h2 class="govuk-heading-m">Personal data</h2>
+
+  <table class="govuk-table">
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+        <td class="govuk-table__header" width="42%">National Insurance number</td>
+        <td class="govuk-table__cell" >QQ 12 34 56 C</td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__header">Name</td>
+        <td class="govuk-table__cell">Jane Doe</td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__header">Age</td>
+        <td class="govuk-table__cell">50</td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__header">Date of birth</td>
+        <td class="govuk-table__cell">4 June 1972</td>
+      </tr>
+  </table>
+
+<h2 class="govuk-heading-m">Contact details</h2>
+
+<table class="govuk-table">
+
+<tbody class="govuk-table__body">
+  <tr class="govuk-table__row">
+  <tr class="govuk-table__row">
+    <td class="govuk-table__header " width="42%">Home address</td>
+    <td class="govuk-table__cell">12 Pearl Street <br>
+                                  Bristol  <br>
+                                  BS3 4AB<br>
+                                  United Kingdom</td>
+  </tr>
+  <tr class="govuk-table__row">
+    <td class="govuk-table__header">Can write to this address</td>
+    <td class="govuk-table__cell">Yes</td>
+  </tr>
+  <tr class="govuk-table__row">
+    <td class="govuk-table__header">Correspondence address</td>
+    <td class="govuk-table__cell">Not applicable</td>
+  </tr>
+  <tr class="govuk-table__row">
+    <td class="govuk-table__header">Mobile phone number</td>
+    <td class="govuk-table__cell">07777 7777777</td>
+  </tr>
+  <tr class="govuk-table__row">
+    <td class="govuk-table__header">Wants text updates about claim</td>
+    <td class="govuk-table__cell">No</td>
+  </tr>
+  <tr class="govuk-table__row">
+    <td class="govuk-table__header">Alternative phone number</td>
+    <td class="govuk-table__cell">0777 77777778</td>
+  </tr>
+  <tr class="govuk-table__row">
+    <td class="govuk-table__header">Textphone</td>
+    <td class="govuk-table__cell">0777 77777778</td>
+  </tr>
+   <tr class="govuk-table__row">
+    <td class="govuk-table__header">Currently in health or care accommodation</td>
+    <td class="govuk-table__cell">No</td>
+  </tr>
+  <tr class="govuk-table__row">
+    <td class="govuk-table__header">When they went into health or care accommodation</td>
+    <td class="govuk-table__cell">Not applicable</td>
+  </tr>
+  <tr class="govuk-table__row">
+    <td class="govuk-table__header">Health or care accommodation address</td>
+    <td class="govuk-table__cell">Not applicable</td>
+  </tr>
+</tbody>
+</table>
+
+<br>
+
+<h2 class="govuk-heading-m">Nationality</h2>
+<table class="govuk-table">
+
+<tbody class="govuk-table__body">
+  <tr class="govuk-table__row">
+    <td class="govuk-table__header">Nationality</td>
+    <td class="govuk-table__cell">Swiss</td>
+  </tr>
+  <tr class="govuk-table__row">
+    <td class="govuk-table__header" width="42%">Started living in UK before 1 January 2021</td>
+    <td class="govuk-table__cell">Yes</td>
+  </tr>
+  <tr class="govuk-table__row">
+    <td class="govuk-table__header">Been in UK for at least 2 of the last 3 years</td>
+    <td class="govuk-table__cell">Yes</td>
+  </tr>
+  <tr class="govuk-table__row">
+    <td class="govuk-table__header">Claimant or a family member get pension or benefit from another European Economic Area (EEA) state or Switzerland</td>
+    <td class="govuk-table__cell">No</td>
+  </tr>
+  <tr class="govuk-table__row">
+    <td class="govuk-table__header">Claimant or a family member work, pay, or have paid insurance to another European Economic Area (EEA) state or Switzerland</td>
+    <td class="govuk-table__cell">No</td>
+  </tr>
+
+</tbody>
+</table>
+
+</div>
+
+<div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="health-professionals">
+
+  <h2 class="govuk-heading-m">Consent</h2>
+  <table class="govuk-table">
+
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+        <td class="govuk-table__header" width="42%">Health and care professionals can share information</td>
+        <td class="govuk-table__cell">Yes</td>
+      </tr>
+    </tbody>
+  </table>
+<br>
+<h2 class="govuk-heading-m">Health professional details</h2>
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Health professional 1"
+      },
+      value: {
+      },
+      actions: {
+        items: [
+        {
+        }
+       ]
+      }
+    },
+    {
+      key: {
+        text: "Name"
+      },
+      value: {
+        text: "Dr Camilla Stasiak"
+      },
+      actions: {
+        items: [
+        {
+           }
+      ]
+      }
+    },
+      {
+        key: {
+          text: "Profession"
+        },
+        value: {
+          text: "Doctor"
+        },
+        actions: {
+          items: [
+          {
+          }
+        ]
+        }
+    },
+    {
+      key: {
+        text: "Phone number"
+      },
+      value: {
+        text: "020 8291 7007"
+      },
+      actions: {
+        items: [
+        {
+        }
+      ]
+      }
+  },
+  {
+    key: {
+      text: "Address"
+    },
+    value: {
+      html: "The Vale Medical Centre<br>
+      195-197 Perry Vale<br>
+      Forest Hill<br>
+      London<br>
+      SE23 2JF<br>
+      United Kingdom"
+    },
+    actions: {
+      items: [
+      {
+      }
+    ]
+    }
+},
+{
+  key: {
+    text: "Approximate date of last contact"
+  },
+  value: {
+    text: "No date given"
+  },
+  actions: {
+    items: [
+    {
+    }
+  ]
+  }
+}
+  ]
+}) }}
+
+<br>
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Health professional 2"
+      },
+      value: {
+      },
+      actions: {
+        items: [
+        {
+        }
+       ]
+      }
+    },
+      {
+        key: {
+          text: "Name"
+        },
+        value: {
+          text: "Mr Ramon Niekrash"
+        },
+        actions: {
+          items: [
+          {
+          }
+        ]
+        }
+    },
+      {
+        key: {
+          text: "Profession"
+        },
+        value: {
+          text: "Doctor"
+        },
+        actions: {
+          items: [
+          {
+          }
+        ]
+        }
+    },
+    {
+      key: {
+        text: "Phone number"
+      },
+      value: {
+        text: "020 8836 5435"
+      },
+      actions: {
+        items: [
+        {
+        }
+      ]
+      }
+  },
+  {
+    key: {
+      text: "Address"
+    },
+    value: {
+      html: "Queen Elizabeth Hospital<br>
+      Stadium Rd<br>
+      Greenwich<br>
+      London<br>
+      SE18 4QH<br>
+      United Kingdom"
+    },
+    actions: {
+      items: [
+      {
+      }
+    ]
+    }
+},
+{
+  key: {
+    text: "Approximate date of last contact"
+  },
+  value: {
+    text: "No date given"
+  },
+  actions: {
+    items: [
+    {
+    }
+  ]
+  }
+}
+  ]
+}) }}
+
+</div>
+<div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="support">
+
+<h2 class="govuk-heading-m">Help and support</h2>
+<table class="govuk-table">
+<thead class="govuk-table__head"></thead>
+<tbody class="govuk-table__body">
+  <tr class="govuk-table__row">
+    <td class="govuk-table__header" width="42%">Needs help communicating with us</td>
+    <td class="govuk-table__cell">Yes</td>
+  </tr>
+  <tr class="govuk-table__row">
+    <td class="govuk-table__header">Needs help completing forms and understanding letters</td>
+    <td class="govuk-table__cell">Yes</td>
+  </tr>
+  <tr class="govuk-table__row">
+    <td class="govuk-table__header">Being helped with claim
+</td>
+    <td class="govuk-table__cell">Yes</td>
+  </tr>
+  <tr class="govuk-table__row">
+    <td class="govuk-table__header">Name of person helping with claim</td>
+    <td class="govuk-table__cell">John Doe</td>
+  </tr>
+</tbody>
+</table>
+<br>
+<h2 class="govuk-heading-m">Alternative communication format</h2>
+    <table class="govuk-table">
+    <thead class="govuk-table__head"></thead>
+    <tbody class="govuk-table__body">
+       <tr class="govuk-table__row">
+        <td class="govuk-table__header" width="42%">Needs communications in another format</td>
+        <td class="govuk-table__cell">No</td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__header">Format needed</td>
+        <td class="govuk-table__cell">Not applicable</td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__header">Format details</td>
+        <td class="govuk-table__cell">Not applicable</td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__header">Motability Scheme</td>
+        <td class="govuk-table__cell">Yes</td>
+      </tr>
+    </tbody>
+    </table>
+</div>
+
+<div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="payment-details">
+
+  <h2 class="govuk-heading-m">Payment details</h2>
+  {{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          text: "
+          Can provide bank, building society or credit union account details"
+        },
+        value: {
+          text: "Yes"
+        },
+        actions: {
+          items: [
+          {
+           }
+        ]
+        }
+      }
+      ]
+    }) }}
+
+    {{ govukSummaryList({
+      rows: [
+      {
+        key: {
+          text: "Account details"
+        },
+        value: {
+          text: ""
+        },
+        actions: {
+          items: [
+          {
+           }
+        ]
+        }
+      },
+      {
+        key: {
+          text: "Name on the account"
+        },
+        value: {
+          text: "Jane Doe"
+        },
+        actions: {
+          items: [
+          {
+           }
+        ]
+        }
+      },
+      {
+        key: {
+          text: "Sort code"
+        },
+        value: {
+          text: "055333"
+        },
+        actions: {
+          items: [
+          {
+           
+           }
+        ]
+        }
+      },
+      {
+        key: {
+          text: "Account number"
+        },
+        value: {
+          text: "00001604"
+        },
+        actions: {
+          items: [
+          {
+           }
+        ]
+        }
+      },
+      {
+        key: {
+          text: "Building society roll number"
+        },
+        value: {
+          text: "CXJ-K6 897/98X"
+        }
+      }
+        ]
+      }) }}
+  </div>
+
+</div>
+</div>
+</main>
+     </div>
+
+
+{% endblock %}

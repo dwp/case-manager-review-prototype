@@ -983,6 +983,20 @@ router.post('/nino-answer', function (req, res) {
     }
 });
 
+//DOB
+router.post('/date-of-birth-answer', function (req, res) {
+    //Store response
+    var dob = req.session.data['dateofBirthAnswer'];
+    if (dob === 'Yes'){
+        res.redirect('/application/date-of-death');
+    } else if (dob === 'No'){
+        res.redirect('/application/idv-warning');
+    }
+    else if (dob === 'I need to come back to this later'){
+        res.redirect('/application/tasks-2');
+    }
+});
+
 //YES
 router.post('/yes-answer', function (req, res) {
     //Store response
@@ -1033,6 +1047,28 @@ router.post('/what-do-you-want-to-do-nino-answer', function (req, res) {
 router.post('/what-do-you-want-to-do-address-answer', function (req, res) {
     //Store response
     var WhatDoYouWantToDo = req.session.data['WhatDoYouWantToDoAddress'];
+    var scenario = req.session.data['application-scenario'];
+    if (WhatDoYouWantToDo === 'Try to resolve this task' && scenario === 'IDV not complete before mismatch identified'){
+        res.redirect('/application/did-you-verify-id');
+    }
+    else if (WhatDoYouWantToDo === 'Try to resolve this task' && scenario === 'IDV complete before mismatch identified'){
+        res.redirect('/application/tasks-resolved');
+    }
+    else if (WhatDoYouWantToDo === 'Nothing'){
+        res.redirect('/application/tasks-nino-issue');
+    } 
+    else if (WhatDoYouWantToDo === 'I need to come back to this later'){
+        res.redirect('/application/tasks-2');
+    }
+    else if (WhatDoYouWantToDo === 'No change required, details already matched'){
+        res.redirect('/application/tasks-resolved');
+    }
+});
+
+//WHAT DO YOU WANT TO DO
+router.post('/what-do-you-want-to-do-dob-answer', function (req, res) {
+    //Store response
+    var WhatDoYouWantToDo = req.session.data['WhatDoYouWantToDoDob'];
     var scenario = req.session.data['application-scenario'];
     if (WhatDoYouWantToDo === 'Try to resolve this task' && scenario === 'IDV not complete before mismatch identified'){
         res.redirect('/application/did-you-verify-id');

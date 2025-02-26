@@ -33,14 +33,14 @@
 
 <!------------ ––– ------------>
 
-<form class="form" action="/application/date-of-death" method="post">
+<form class="form" action="/date-of-birth-answer" method="post">
   {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
   {{ govukRadios({
-    name: "check",
+    name: "dateofBirthAnswer",
     fieldset: {
       legend: {
-        html: "<h1 class='govuk-heading-l'>Does the date of birth match what we hold in Searchlight?</h1>"
+        html: "<h1 class='govuk-heading-xl'>Does the date of birth match what we hold in Searchlight?</h1>"
       }
     },
     items: [
@@ -51,10 +51,6 @@
       {
         value: "No",
         text: "No"
-      },
-      {
-        value: "I need to come back to this later",
-        text: "I need to come back to this later"
       }
     ]
   }) }}
