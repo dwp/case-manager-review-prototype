@@ -53,7 +53,11 @@
         Personal data updated
       </h3>
 
-      <p class="govuk-body">Home address<p>
+      <p class="govuk-body">Home address changed to:<p>
+        <p class="govuk-body">	12 Pearl Street<br>
+          Bristol<br>
+          BS3 4AB<br>
+          United Kingdom</p>
     {% endset %}
   
     {{ govukNotificationBanner({
@@ -207,7 +211,21 @@ Personal details
         text: "Home address"
       },
       value: {
-        html: "12 Pearl Street<br>Bristol<br>BS3 4AB<br>United Kingdom"
+        html: "
+        12 Pearl Street<br>Bristol<br>BS3 4AB<br>United Kingdom<br><br><details class='govuk-details'>
+            <summary class='govuk-details__summary'>
+              <span class='govuk-details__summary-text'>
+                View updates
+              </span>
+            </summary>
+            <div class='govuk-details__text'>
+              <dl>
+                <dt>11 Pearl Street<br>Bristol<br>BS3 4AB<br>United Kingdom<br></dt>
+                <dd style='margin-inline-start: 0px; margin-bottom: 1rem' class='govuk-body-s'>Updated 27 February 2025</dd>
+              </dl>
+            </div>
+          </details>
+        "
       },
       actions: {
         items: [

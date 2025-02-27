@@ -53,7 +53,8 @@
         Personal data updated
       </h3>
 
-      <p class="govuk-body">National Insurance Number<p>
+      <p class="govuk-body">National Insurance Number changed to:<p>
+        <p class="govuk-body">QQ 12 34 56 C</p>
     {% endset %}
   
     {{ govukNotificationBanner({
@@ -138,7 +139,22 @@ Personal details
           text: "National Insurance number"
         },
         value: {
-          text: "QQ 12 34 56 C"
+          text: "QQ 12 34 56 C",
+          html: "
+          QQ 12 34 56 C<br><br><details class='govuk-details'>
+              <summary class='govuk-details__summary'>
+                <span class='govuk-details__summary-text'>
+                  View updates
+                </span>
+              </summary>
+              <div class='govuk-details__text'>
+                <dl>
+                  <dt>QS 12 34 56 C</dt>
+                  <dd style='margin-inline-start: 0px; margin-bottom: 1rem' class='govuk-body-s'>Updated 27 February 2025</dd>
+                </dl>
+              </div>
+            </details>
+          "
         },
         actions: {          items: [
           {

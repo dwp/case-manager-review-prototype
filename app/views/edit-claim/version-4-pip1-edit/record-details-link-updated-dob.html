@@ -53,7 +53,8 @@
         Personal data updated
       </h3>
 
-      <p class="govuk-body">Date of birth<p>
+      <p class="govuk-body">Date of birth updated to:<p>
+        <p class="govuk-body">5 January 1978</p>
     {% endset %}
   
     {{ govukNotificationBanner({
@@ -180,7 +181,24 @@ Personal details
           text: "Date of birth"
         },
         value: {
-          text: "5 January 1978"
+          text: "5 January 1978",
+          html: "
+          5 January 1978<br><br><details class='govuk-details'>
+              <summary class='govuk-details__summary'>
+                <span class='govuk-details__summary-text'>
+                  View updates
+                </span>
+              </summary>
+              <div class='govuk-details__text'>
+                <dl>
+                  <dt>5 January 1977</dt>
+                  <dd style='margin-inline-start: 0px; margin-bottom: 1rem' class='govuk-body-s'>Updated 27 February 2025</dd>
+                  <dt>4 January 1933</dt>
+                  <dd style='margin-inline-start: 0px' class='govuk-body-s'>Updated 20 January 2025</dd>
+                </dl>
+              </div>
+            </details>
+          "
         },
         actions: {
           items: [
