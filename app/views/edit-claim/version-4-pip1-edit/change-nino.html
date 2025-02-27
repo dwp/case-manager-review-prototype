@@ -17,8 +17,13 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-xl">
-        Change National Insurance Number
+        Enter correct National Insurance number
       </h1>
+      {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{{ govukInsetText({
+  text: "National Insurance number in PIP Service: QQ 12 34 56 C"
+}) }}
 
       <form class="form" action="/path/of/next/page" method="post">
 
@@ -27,7 +32,7 @@
           name: "nino",
           autocomplete: "nino",
           classes: "govuk-input--width-10",
-          value: "QQ 12 34 56 C"
+          value: ""
         }) }}
 
         {{ govukButton({

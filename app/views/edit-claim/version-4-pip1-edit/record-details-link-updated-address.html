@@ -215,7 +215,7 @@ Personal details
         12 Pearl Street<br>Bristol<br>BS3 4AB<br>United Kingdom<br><br><details class='govuk-details'>
             <summary class='govuk-details__summary'>
               <span class='govuk-details__summary-text'>
-                View updates
+                Previous address
               </span>
             </summary>
             <div class='govuk-details__text'>
@@ -242,23 +242,10 @@ Personal details
         text: "Can write to this address"
       },
       value: {
-        text: data['write-to-home-address'] or "No"
+        text: data['write-to-home-address'] or "Yes"
       },
       actions: {
         items: [
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Correspondence address"
-      },
-      value: {
-        html: "11 Pearl Street<br>Bristol<br>BS3 4AB<br>United Kingdom"
-      },
-      actions: {
-        items: [
-
         ]
       }
     },
