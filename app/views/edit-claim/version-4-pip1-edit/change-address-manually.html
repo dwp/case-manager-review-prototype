@@ -16,17 +16,23 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+      <h1 class="govuk-heading-xl">	
+        Enter the correct address</h1>
+        
+        <div class="govuk-inset-text">
+          Current address in PIP Service:<br><br>
+          Address line 1<br>
+          Address line 2<br>
+          Address line 3<br>
+        </div>
+
       <form class="form" action="/path/of/next/page" method="post">
 
         {% from "govuk/components/input/macro.njk" import govukInput %}
         {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
         
         {% call govukFieldset({
-          legend: {
-            text: "Enter home address",
-            classes: "govuk-fieldset__legend--xl",
-            isPageHeading: true
-          }
+   
         }) %}
         
           {{ govukInput({

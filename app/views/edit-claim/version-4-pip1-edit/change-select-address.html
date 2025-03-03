@@ -17,18 +17,20 @@
     <div class="govuk-grid-column-two-thirds">
 
       <form class="form" action="#" method="post">
+        <h1 class="govuk-heading-xl">	
+          Select the correct address</h1>
+          
+          <div class="govuk-inset-text">
+            Current address in PIP Service:<br><br>
+            Address line 1<br>
+            Address line 2<br>
+            Address line 3<br>
+          </div>
 
         <div class="govuk-width-container">
 
         {{ govukRadios({
         name: "select-an-address",
-        fieldset: {
-          legend: {
-            text: "Select home address",
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--xl"
-          }
-        },
         formGroup: {
           beforeInputs: {
             html: "<p>6 addresses found for <b>wr11nl</b> and <b>1</b>. <a href='change-address' >Search again</a></p>"

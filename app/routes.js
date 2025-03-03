@@ -1027,10 +1027,10 @@ router.post('/what-do-you-want-to-do-nino-answer', function (req, res) {
     var WhatDoYouWantToDo = req.session.data['WhatDoYouWantToDoNino'];
     var scenario = req.session.data['application-scenario'];
     if (WhatDoYouWantToDo === 'Try to resolve this task' && scenario === 'IDV not complete before mismatch identified'){
-        res.redirect('/application/tasks-resolved');
+        res.redirect('/application/add-note');
     }
     else if (WhatDoYouWantToDo === 'Try to resolve this task' && scenario === 'IDV complete before mismatch identified'){
-        res.redirect('/application/tasks-resolved');
+        res.redirect('/application/add-note');
     }
     else if (WhatDoYouWantToDo === 'Nothing'){
         res.redirect('/application/tasks-nino-issue');
@@ -1071,10 +1071,10 @@ router.post('/what-do-you-want-to-do-dob-answer', function (req, res) {
     var WhatDoYouWantToDo = req.session.data['WhatDoYouWantToDoDob'];
     var scenario = req.session.data['application-scenario'];
     if (WhatDoYouWantToDo === 'Try to resolve this task' && scenario === 'IDV not complete before mismatch identified'){
-        res.redirect('/application/did-you-verify-id');
+        res.redirect('/application/add-note');
     }
     else if (WhatDoYouWantToDo === 'Try to resolve this task' && scenario === 'IDV complete before mismatch identified'){
-        res.redirect('/application/tasks-resolved');
+        res.redirect('/application/add-note');
     }
     else if (WhatDoYouWantToDo === 'Nothing'){
         res.redirect('/application/tasks-nino-issue');
