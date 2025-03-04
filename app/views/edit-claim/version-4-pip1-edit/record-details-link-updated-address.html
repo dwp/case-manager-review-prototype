@@ -50,10 +50,10 @@
 
     {% set html %}
       <h3 class="govuk-notification-banner__heading">
-        Personal data updated
+        Address updated
       </h3>
 
-      <p class="govuk-body">Contact address changed to:<p>
+      <p class="govuk-body">New address:<p>
         <p class="govuk-body">	12 Pearl Street<br>
           Bristol<br>
           BS3 4AB<br>
@@ -78,7 +78,7 @@ Personal details
 {{ govukButton({
   text: "Hide change links",
   classes: "govuk-button--secondary",
-  href: "record-details-button"
+  href: "record-details-button-updated"
 }) }}
 
 <ul class="govuk-tabs__list">
@@ -147,7 +147,7 @@ Personal details
         },
         actions: {          items: [
           {
-            href: "change-nino",
+            href: "did-you-verify-id-nino",
             text: "Change",
             visuallyHiddenText: "National Insurance Number"
           }
@@ -190,7 +190,7 @@ Personal details
         actions: {
           items: [
           {     
-            href: "change-dob",
+            href: "did-you-verify-id-dob",
             text: "Change",
             visuallyHiddenText: "Date of birth"
         
@@ -222,7 +222,7 @@ Personal details
             <div class='govuk-details__text'>
               <dl>
                 <dt>11 Pearl Street<br>Bristol<br>BS3 4AB<br>United Kingdom<br></dt>
-                <dd style='margin-inline-start: 0px; margin-bottom: 1rem' class='govuk-body-s'>Updated on 27 February 2025</dd>
+                <dd style='margin-inline-start: 0px; margin-bottom: 1rem' class='govuk-body-s'>Replaced on 27 February 2025</dd>
               </dl>
             </div>
           </details>
@@ -231,7 +231,7 @@ Personal details
       actions: {
         items: [
           {
-            href: "change-address",
+            href: "did-you-verify-id-address",
             text: "Change",
             visuallyHiddenText: "home address"
           }

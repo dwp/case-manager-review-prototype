@@ -53,7 +53,7 @@
         National Insurance number updated
       </h3>
 
-      <p class="govuk-body">New National Insurance number: QQ 12 34 56 C</p>
+      <p class="govuk-body">New National Insurance number:<br><br>QQ 12 34 56 C</p>
     {% endset %}
   
     {{ govukNotificationBanner({
@@ -73,7 +73,7 @@ Personal details
 {{ govukButton({
   text: "Hide change links",
   classes: "govuk-button--secondary",
-  href: "record-details-button"
+  href: "record-details-button-updated"
 }) }}
 
 <ul class="govuk-tabs__list">
@@ -149,7 +149,7 @@ Personal details
               <div class='govuk-details__text'>
                 <dl>
                   <dt>QS 12 34 56 C</dt>
-                  <dd style='margin-inline-start: 0px; margin-bottom: 1rem' class='govuk-body-s'>Updated on 27 February 2025</dd>
+                  <dd style='margin-inline-start: 0px; margin-bottom: 1rem' class='govuk-body-s'>Replaced on 27 February 2025</dd>
                 </dl>
               </div>
             </details>
@@ -157,7 +157,7 @@ Personal details
         },
         actions: {          items: [
           {
-            href: "change-nino",
+            href: "did-you-verify-id-nino",
             text: "Change",
             visuallyHiddenText: "National Insurance Number"
           }
@@ -200,7 +200,7 @@ Personal details
         actions: {
           items: [
           {     
-            href: "change-dob",
+            href: "did-you-verify-id-dob",
             text: "Change",
             visuallyHiddenText: "Date of birth"
         
@@ -227,7 +227,7 @@ Personal details
       actions: {
         items: [
           {
-            href: "change-address",
+            href: "did-you-verify-id-address",
             text: "Change",
             visuallyHiddenText: "home address"
           }
