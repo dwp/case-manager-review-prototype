@@ -50,10 +50,10 @@
 
     {% set html %}
       <h3 class="govuk-notification-banner__heading">
-        Personal data updated
+        Date of birth updated
       </h3>
 
-      <p class="govuk-body">Date of birth updated to:<p>
+      <p class="govuk-body">New date of birth:<p>
         <p class="govuk-body">5 January 1978</p>
     {% endset %}
   
@@ -74,7 +74,7 @@ Personal details
 {{ govukButton({
   text: "Hide change links",
   classes: "govuk-button--secondary",
-  href: "record-details-button"
+  href: "record-details-button-updated"
 }) }}
 
 <ul class="govuk-tabs__list">
@@ -143,7 +143,7 @@ Personal details
         },
         actions: {          items: [
           {
-            href: "change-nino",
+            href: "did-you-verify-id-nino",
             text: "Change",
             visuallyHiddenText: "National Insurance Number"
           }
@@ -192,9 +192,9 @@ Personal details
               <div class='govuk-details__text'>
                 <dl>
                   <dt>5 January 1977</dt>
-                  <dd style='margin-inline-start: 0px; margin-bottom: 1rem' class='govuk-body-s'>Updated on 27 February 2025</dd>
+                  <dd style='margin-inline-start: 0px; margin-bottom: 1rem' class='govuk-body-s'>Replaced on 27 February 2025</dd>
                   <dt>4 January 1933</dt>
-                  <dd style='margin-inline-start: 0px' class='govuk-body-s'>Updated on 20 January 2025</dd>
+                  <dd style='margin-inline-start: 0px' class='govuk-body-s'>Replaced on 20 January 2025</dd>
                 </dl>
               </div>
             </details>
@@ -203,7 +203,7 @@ Personal details
         actions: {
           items: [
           {     
-            href: "change-dob",
+            href: "did-you-verify-id-dob",
             text: "Change",
             visuallyHiddenText: "Date of birth"
         
@@ -230,7 +230,7 @@ Personal details
       actions: {
         items: [
           {
-            href: "change-address",
+            href: "did-you-verify-id-address",
             text: "Change",
             visuallyHiddenText: "home address"
           }
