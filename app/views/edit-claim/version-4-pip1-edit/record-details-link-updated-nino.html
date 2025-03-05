@@ -53,8 +53,9 @@
         National Insurance number updated
       </h3>
 
-      <p class="govuk-body">New National Insurance number:<br><br>QQ 12 34 56 C</p>
-      Go back to 'Prepare an application for an assessment provider' and update the National Insurance Number status.
+      <p class="govuk-body"></p>QQ 12 34 56 C</p>
+      <p class="govuk-body">
+      Go back to 'Prepare an application for an assessment provider'.</p>
     {% endset %}
   
     {{ govukNotificationBanner({
@@ -80,7 +81,7 @@ Personal details
 <ul class="govuk-tabs__list">
 <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
 <a class="govuk-tabs__tab" href="#claimant">
-  Claimant
+  Applicant
 </a>
 </li>
 <li class="govuk-tabs__list-item">
@@ -102,7 +103,7 @@ Personal details
 
 <div class="govuk-tabs__panel" id="claimant">
 
-  <h2 class="govuk-heading-m">Claim details</h2>
+  <h2 class="govuk-heading-m">Application details</h2>
 
   {{ govukSummaryList({
     rows: [
@@ -118,7 +119,7 @@ Personal details
     },
       {
         key: {
-          text: "Claim date"
+          text: "Date of claim"
         },
         value: {
           text: "20 November 2021"
@@ -220,7 +221,7 @@ Personal details
   rows: [
     {
       key: {
-        text: "Contact address"
+        text: "Address"
       },
       value: {
         html: "12 Pearl Street<br>Bristol<br>BS3 4AB<br>United Kingdom"
