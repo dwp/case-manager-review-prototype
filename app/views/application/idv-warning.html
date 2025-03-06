@@ -64,17 +64,17 @@
     <h1 class="govuk-heading-xl">How to resolve this issue</h1>
     {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
 
-    {% if searchlightAnswer == "IDV not complete before mismatch identified" %}
-    <p>Answer the rest of the questions about this application before you try to contact the applicant or change their [address.][date of birth in PIP Service.][National Insurance number in PIP Service.]</p>
+    {% if searchlightAnswer == "IDV not complete before mismatch identified"  or searchlightAnswer == "IDV not complete before mismatch identified PIP" %}
+      <p>Answer the rest of the questions about this application before you try to contact the applicant or change their [address.][date of birth in PIP Service.][National Insurance number in PIP Service.]</p>
 
-    {{ govukWarningText({
-      text: "If you have not verified their identity, the [address][date of birth][National Insurance number] could be wrong.",
-      iconFallbackText: "Warning"
-    }) }}
+      {{ govukWarningText({
+        text: "If you have not verified their identity, the [address][date of birth][National Insurance number] could be wrong.",
+        iconFallbackText: "Warning"
+      }) }}
     {% endif %}
 
     {% if searchlightAnswer == "IDV complete before mismatch identified" %}
-    <p>Answer the rest of the questions about this application before you try to contact the applicant or change their [address][date of birth][National Insurance number] in PIP Service.</p>
+    <p>Answer the rest of the questions about this application before you try to contact the applicant or change their [address.][date of birth in PIP Service.][National Insurance number in PIP Service.]</p>
     {% endif %}
 
     

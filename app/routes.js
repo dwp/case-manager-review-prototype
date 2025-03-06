@@ -1051,6 +1051,9 @@ router.post('/what-do-you-want-to-do-address-answer', function (req, res) {
     if (WhatDoYouWantToDo === 'Try to resolve this task' && scenario === 'IDV not complete before mismatch identified'){
         res.redirect('/application/what-did-you-do');
     }
+    else if (WhatDoYouWantToDo === 'Try to resolve this task' && scenario === 'IDV not complete before mismatch identified PIP'){
+        res.redirect('/application/what-did-you-do');
+    }
     else if (WhatDoYouWantToDo === 'Try to resolve this task' && scenario === 'IDV complete before mismatch identified'){
         res.redirect('/application/what-did-you-do');
     }
@@ -1107,10 +1110,13 @@ router.post('/what-did-you-do-answer-application', function (req, res) {
     //Store response
     var searchlightAnswer = req.session.data['application-scenario'];
     if (searchlightAnswer === 'IDV complete before mismatch identified'){
-        res.redirect('/application/did-you-verify-id');
+        res.redirect('/application/add-note');
     }
     else if (searchlightAnswer === 'IDV not complete before mismatch identified'){
         res.redirect('/application/did-you-verify-id');
+    }
+    else if (searchlightAnswer === 'IDV not complete before mismatch identified PIP'){
+        res.redirect('/application/add-note');
     }
     else if (searchlightAnswer === 'IDV not complete before mismatch identified: user leaves IDV checkbox blank'){
         res.redirect('/application/idv-blank');
