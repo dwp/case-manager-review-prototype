@@ -1138,6 +1138,7 @@ router.post('/verify-answer-application', function (req, res) {
     }
 });
 
+
 //TASKS 1
 //Make previous responses available to tasks screen
 router.get('/application/tasks', function(req, res) {
@@ -1206,6 +1207,33 @@ router.get('/application/idv-warning', function(req, res) {
     });
 } );
 
+//----------
+//EDIT CLAIM
+//----------
+
+//DID YOU VERIFY NINO?
+router.post('/did-you-verify-id-edit-claim-answer-nino', function (req, res) {
+    //Store response
+    var DidYouVerify = req.session.data['didYouVerifyApplication'];
+    if (DidYouVerify=== 'Yes'){
+        res.redirect('/edit-claim/version-4-pip1-edit/change-nino');
+    }
+    else if (DidYouVerify === 'No'){
+        res.redirect('/edit-claim/version-4-pip1-edit/idv-blank');
+    }
+});
+
+//DID YOU VERIFY DOB?
+router.post('/did-you-verify-id-edit-claim-answer-dob', function (req, res) {
+    //Store response
+    var DidYouVerify = req.session.data['didYouVerifyApplication'];
+    if (DidYouVerify=== 'Yes'){
+        res.redirect('/edit-claim/version-4-pip1-edit/change-dob');
+    }
+    else if (DidYouVerify === 'No'){
+        res.redirect('/edit-claim/version-4-pip1-edit/idv-blank');
+    }
+});
 
 
 //------------------------------------------------------------------
