@@ -90,7 +90,7 @@ Personal details
         <td class="govuk-table__cell" >Yes</td>
       </tr>
       <tr class="govuk-table__row">
-        <td class="govuk-table__header" width="42%">Claim date</td>
+        <td class="govuk-table__header" width="42%">Date of claim</td>
         <td class="govuk-table__cell" >20 November 2021</td>
       </tr>
   </table>
@@ -101,11 +101,18 @@ Personal details
     <tbody class="govuk-table__body">
       <tr class="govuk-table__row">
         <td class="govuk-table__header" width="42%">National Insurance number</td>
-        <td class="govuk-table__cell" >QQ 12 34 56 C<br><br>{% from "govuk/components/details/macro.njk" import govukDetails %}
+        <td class="govuk-table__cell" >QQ 12 34 57 C<br><br>{% from "govuk/components/details/macro.njk" import govukDetails %}
 
           {{ govukDetails({
-            summaryText: "Previous National Insurance number",
-            text: ""
+            summaryText: "Previous National Insurance numbers",
+            text: "",
+            html: "
+          
+            <dl>
+              <dt>QS 12 34 56 C</dt>
+              <dd style='margin-inline-start: 0px; margin-bottom: 1rem' class='govuk-body-s'>Replaced on 27 February 2025</dd>
+            </dl>
+           "
           }) }}</td>
 
       </tr>
@@ -122,8 +129,18 @@ Personal details
         <td class="govuk-table__cell">4 June 1972<br><br>{% from "govuk/components/details/macro.njk" import govukDetails %}
 
           {{ govukDetails({
-            summaryText: "Previous date of birth",
-            text: ""
+            summaryText: "Previous dates of birth",
+            text: "",
+            html: "
+          
+                <dl>
+                  <dt>5 January 1977</dt>
+                  <dd style='margin-inline-start: 0px; margin-bottom: 1rem' class='govuk-body-s'>Replaced on 27 February 2025</dd>
+                  <dt>4 January 1933</dt>
+                  <dd style='margin-inline-start: 0px' class='govuk-body-s'>Replaced on 20 January 2025</dd>
+                </dl>
+          "
+            
           }) }}</td>
       </tr>
   </table>
@@ -142,8 +159,22 @@ Personal details
                                   United Kingdom <br><br>{% from "govuk/components/details/macro.njk" import govukDetails %}
 
                                   {{ govukDetails({
-                                    summaryText: "Previous address",
-                                    text: ""
+                                    summaryText: "Previous addresses",
+                                    text: "",
+                                    html: "<p class='govuk-body'>5 most recent:</p>
+                                    <dl>
+                                      <dt>11 Pearl Street<br>Bristol<br>BS3 4AB<br>United Kingdom<br></dt>
+                                      <dd style='margin-inline-start: 0px; margin-bottom: 1rem' class='govuk-body-s'>Replaced on 27 February 2025</dd>
+                                      <dt>11 Pearl Street<br>Bristol<br>BS3 4AB<br>United Kingdom<br></dt>
+                                      <dd style='margin-inline-start: 0px; margin-bottom: 1rem' class='govuk-body-s'>Replaced on 26 February 2025</dd>
+                                      <dt>11 Pearl Street<br>Bristol<br>BS3 4AB<br>United Kingdom<br></dt>
+                                      <dd style='margin-inline-start: 0px; margin-bottom: 1rem' class='govuk-body-s'>Replaced on 25 February 2025</dd>
+                                      <dt>11 Pearl Street<br>Bristol<br>BS3 4AB<br>United Kingdom<br></dt>
+                                      <dd style='margin-inline-start: 0px; margin-bottom: 1rem' class='govuk-body-s'>Replaced on 24 February 2025</dd>
+                                      <dt>11 Pearl Street<br>Bristol<br>BS3 4AB<br>United Kingdom<br></dt>
+                                      <dd style='margin-inline-start: 0px; margin-bottom: 1rem' class='govuk-body-s'>Replaced on 23 February 2025</dd>
+                                    </dl>
+                                   "
                                   }) }}</td>
   </tr>
   <tr class="govuk-table__row">
