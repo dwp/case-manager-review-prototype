@@ -1029,6 +1029,9 @@ router.post('/what-do-you-want-to-do-nino-answer', function (req, res) {
     if (WhatDoYouWantToDo === 'Try to resolve this task' && scenario === 'IDV not complete before mismatch identified'){
         res.redirect('/application/tasks-resolved');
     }
+    else if (WhatDoYouWantToDo === 'Try to resolve this task' && scenario === 'IDV not complete before mismatch identified PIP'){
+        res.redirect('/application/tasks-resolved');
+    }
     else if (WhatDoYouWantToDo === 'Try to resolve this task' && scenario === 'IDV complete before mismatch identified'){
         res.redirect('/application/tasks-resolved');
     }
@@ -1077,6 +1080,9 @@ router.post('/what-do-you-want-to-do-dob-answer', function (req, res) {
         res.redirect('/application/tasks-resolved');
     }
     else if (WhatDoYouWantToDo === 'Try to resolve this task' && scenario === 'IDV complete before mismatch identified'){
+        res.redirect('/application/tasks-resolved');
+    }
+    else if (WhatDoYouWantToDo === 'Try to resolve this task' && scenario === 'IDV not complete before mismatch identified PIP'){
         res.redirect('/application/tasks-resolved');
     }
     else if (WhatDoYouWantToDo === 'Nothing'){
