@@ -1340,9 +1340,9 @@ router.post('/newSignIn', function(request, response) {
 
     var dthScenario = request.session.data['dthScenario'];
     if (dthScenario === "1"){
-        response.redirect("dth/sign-in")
+        response.redirect("DTH/sign-in")
     } else if (dthScenario === "2"){
-      response.redirect("dth/register")
+      response.redirect("DTH/register")
   }
   })
   
