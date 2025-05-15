@@ -1,0 +1,237 @@
+{% if (data['regScenario'] == "agent" ) %}
+    {% extends "layouts/main.html" %}
+{% else %}
+    {% extends "layouts/main-gov.html" %}
+{% endif %}
+
+{% block content %}
+
+<!-- Start row -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    
+    <h1 class="govuk-heading-l">
+      Your second health contact
+    </h1>
+
+    <form class="form" action="#" method="post">
+
+    
+
+<div class="govuk-form-group">
+
+<fieldset class="govuk-fieldset">
+
+<legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+
+  <h1 class="govuk-fieldset__heading">
+    What is their job or their relationship to you?
+  </h1>
+
+</legend>
+
+
+<div class="govuk-radios" data-module="govuk-radios">
+  
+    
+        
+      
+      
+      
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="type" name="type" type="radio" value="GP">
+        <label class="govuk-label govuk-radios__label" for="type">
+      GP
+    </label>
+        
+      </div>
+      
+      
+    
+  
+    
+      
+      
+      
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="type-2" name="type" type="radio" value="hospital-doctor">
+        <label class="govuk-label govuk-radios__label" for="type-2">
+      Hospital doctor
+    </label>
+        
+      </div>
+      
+      
+    
+  
+    
+      
+      
+      
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="type-3" name="type" type="radio" value="specialist-nurse">
+        <label class="govuk-label govuk-radios__label" for="type-3">
+      Specialist nurse
+    </label>
+        
+      </div>
+      
+      
+    
+  
+    
+      
+      
+      
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="type-4" name="type" type="radio" value="other" aria-controls="conditional-type-4" aria-expanded="false">
+        <label class="govuk-label govuk-radios__label" for="type-4">
+      Other job or support role
+    </label>
+        
+      </div>
+      
+        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-type-4">
+          
+    
+
+<div class="govuk-form-group">
+<label class="govuk-label" for="job">
+  Enter job title or support role
+</label>
+
+<input class="govuk-input govuk-!-width-two-thirds" id="job" name="job" type="tel" autocomplete="tel">
+
+</div>
+
+    
+        </div>
+      
+      
+    
+  
+</div>
+
+
+</fieldset>
+
+
+</div>
+
+
+        
+
+<div class="govuk-form-group">
+<h1 class="govuk-label-wrapper">
+  <label class="govuk-label govuk-label--m" for="event-name">
+    What is their full name?
+  </label>
+  </h1>
+
+
+
+<div id="event-name-hint" class="govuk-hint">
+  Enter their position or job title if name is not known. For example, 'Duty GP'.
+</div>
+
+<input class="govuk-input" id="event-name" name="eventName" type="text" aria-describedby="event-name-hint">
+
+</div>
+
+
+            
+
+<div class="govuk-form-group">
+
+<fieldset class="govuk-fieldset">
+
+<legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+
+  <h1 class="govuk-fieldset__heading">
+    Do you know their phone number?
+  </h1>
+
+</legend>
+
+
+<div class="govuk-radios" data-module="govuk-radios">
+  
+    
+        
+      
+      
+      
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="yes" aria-controls="conditional-contact" aria-expanded="false">
+        <label class="govuk-label govuk-radios__label" for="contact">
+      Yes
+    </label>
+        
+      </div>
+      
+        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+          
+            
+
+<div class="govuk-form-group">
+<label class="govuk-label" for="phone-number">
+  Enter phone number
+</label>
+
+
+
+<div id="phone-number-hint" class="govuk-hint">
+  For example, 07700 900 982 or 01632 960 001.
+</div>
+
+<input class="govuk-input govuk-!-width-two-thirds" id="phone-number" name="phoneNumber" type="tel" aria-describedby="phone-number-hint" autocomplete="tel">
+
+</div>
+
+            
+        </div>
+      
+      
+    
+  
+    
+      
+      
+      
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="contact-2">
+      No
+    </label>
+        
+      </div>
+      
+      
+    
+  
+</div>
+
+
+</fieldset>
+
+
+</div>
+
+
+           
+                
+
+
+  
+
+
+<button class="govuk-button" data-module="govuk-button">
+Continue
+</button>
+
+
+    </form>
+
+  </div>
+</div>
+{% endblock %}

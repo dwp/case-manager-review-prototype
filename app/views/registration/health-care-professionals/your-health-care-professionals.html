@@ -1,0 +1,169 @@
+{% if (data['regScenario'] == "agent" ) %}
+    {% extends "layouts/main.html" %}
+{% else %}
+    {% extends "layouts/main-gov.html" %}
+{% endif %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    
+    <h1 class="govuk-heading-l">
+      Your health contact
+    </h1>
+
+    <form class="form" action="#" method="post">
+
+    
+
+<div class="govuk-form-group">
+
+<fieldset class="govuk-fieldset">
+
+<legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+
+  <h1 class="govuk-fieldset__heading">
+    Which health professional knows most about your daily living and mobility needs?
+  </h1>
+
+</legend>
+
+
+<div class="govuk-radios" data-module="govuk-radios">
+  
+    
+        
+      
+      
+      
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="type" name="type" type="radio" value="GP">
+        <label class="govuk-label govuk-radios__label" for="type">
+      GP
+    </label>
+        
+      </div>
+      
+      
+    
+  
+    
+      
+      
+      
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="type-2" name="type" type="radio" value="hospital-doctor">
+        <label class="govuk-label govuk-radios__label" for="type-2">
+      Hospital doctor
+    </label>
+        
+      </div>
+      
+      
+    
+  
+    
+      
+      
+      
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="type-3" name="type" type="radio" value="specialist-nurse">
+        <label class="govuk-label govuk-radios__label" for="type-3">
+      Specialist
+    </label>
+        
+      </div>
+      
+      
+        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-type-4">
+          
+    
+
+<div class="govuk-form-group">
+<label class="govuk-label" for="job">
+  Enter job title or support role
+</label>
+
+<input class="govuk-input govuk-!-width-two-thirds" id="job" name="job" type="tel" autocomplete="tel">
+
+</div>
+
+    
+        </div>
+      
+      
+    
+  
+</div>
+
+
+</fieldset>
+
+
+</div>
+
+
+        
+
+<div class="govuk-form-group">
+<h1 class="govuk-label-wrapper">
+  <label class="govuk-label govuk-label--m" for="event-name">
+    What is their full name?
+  </label>
+  </h1>
+
+
+
+<div id="event-name-hint" class="govuk-hint">
+  Enter their position or job title if name is not known. For example, 'Duty GP'.
+</div>
+
+<input class="govuk-input" id="event-name" name="eventName" type="text" aria-describedby="event-name-hint">
+
+</div>
+
+<div class="govuk-form-group">
+  <h1 class="govuk-label-wrapper">
+    <label class="govuk-label govuk-label--m" for="event-name">
+      What is their work phone number?
+    </label>
+    </h1>
+  
+  
+  
+  <div id="event-name-hint" class="govuk-hint">
+    For example, 07700 900 982 or 01632 960 001.
+  </div>
+  
+  <input class="govuk-input" id="event-name" name="eventName" type="text" aria-describedby="event-name-hint">
+  
+</div>
+
+<div class="govuk-form-group">
+  <h1 class="govuk-label-wrapper">
+    <label class="govuk-label govuk-label--m" for="event-name" for="width-20">
+      When did you last speak to them?
+    </label>
+    </h1>
+  
+  
+  
+  <div id="event-name-hint" class="govuk-hint">
+    This can be approximate - for example January 2025 or 6 months.
+  </div>
+  
+  <input class="govuk-input" id="event-name" name="eventName" type="text" aria-describedby="event-name-hint">
+  
+</div>
+                    
+<button class="govuk-button" data-module="govuk-button">
+Continue
+</button>
+
+
+    </form>
+
+  </div>
+</div>
+{% endblock %}

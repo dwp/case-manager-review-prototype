@@ -1,0 +1,89 @@
+{% if (data['regScenario'] == "agent" ) %}
+    {% extends "layouts/main.html" %}
+{% else %}
+    {% extends "layouts/main-gov.html" %}
+{% endif %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="#" method="post">
+      <div class="govuk-width-container">
+
+        <h1 class="govuk-heading-l">
+          Is there anyone else who knows about your condition and how it affects you?
+        </h1>
+        
+        <fieldset class="govuk-fieldset">
+
+
+
+        <p class="govuk-hint">For example, a community psychiatric nurse, occupational therapist, support worker, social worker, counsellor, carer, or family member or friend. </p>
+
+
+        
+
+<div class="govuk-form-group">
+
+<div class="govuk-radios" data-module="govuk-radios">
+  
+    
+        
+      
+      
+      
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="support-needed" name="support-needed" type="radio" value="yes">
+        <label class="govuk-label govuk-radios__label" for="support-needed">
+      Yes
+    </label>
+        
+      </div>
+      
+      
+    
+  
+    
+      
+      
+      
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="support-needed-2" name="support-needed" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="support-needed-2">
+      No
+    </label>
+        
+      </div>
+      
+      
+    
+  
+</div>
+
+</div>
+
+
+        
+
+</fieldset>
+
+
+          
+
+
+  
+
+
+<button class="govuk-button" data-module="govuk-button">
+Continue
+</button>
+
+
+        
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

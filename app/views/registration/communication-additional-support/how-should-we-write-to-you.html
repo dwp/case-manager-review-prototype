@@ -1,0 +1,72 @@
+{% if (data['regScenario'] == "agent" ) %}
+    {% extends "layouts/main.html" %}
+{% else %}
+    {% extends "layouts/main-gov.html" %}
+{% endif %}
+
+{% block content %}
+
+<!-- Start row -->
+<div class="govuk-grid-row">
+  <!-- Start column -->
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="#" method="post"> 
+        {{ govukRadios({
+            name: "written-format",
+            fieldset: {
+            legend: {
+              text: "How should we write to you?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+            },
+            hint: {
+            html: "<p class='govuk-hint'>Select the best option for you.<p>"  
+            },
+            items: [
+            {
+              value: "Standard letter (12-point Arial text on white paper)",
+              text: "Standard letter (12-point Arial text on white paper)"
+            },
+            {
+              value: "Large print",
+              text:  "Large print"
+            },
+            {
+              value: "Letter with changes to font, paper colour, spacing or print size",
+              text: "Letter with changes to font, paper colour, spacing or print size"
+            },
+            {
+              value: "Audio",
+              text: "Audio"
+            },
+            {
+              value: "Braille",
+              text: "Braille"
+            },
+            {
+              value: "British Sign Language video",
+              text: "British Sign Language video"
+            },
+            
+            {
+              value: "Microsoft Word document",
+              text: "Microsoft Word document"
+            },
+            {
+              value: "PDF with accessible text",
+              text: "PDF with accessible text"
+            }
+            
+            ]
+            }) }}
+            
+            {{ govukButton({
+            text: "Continue"
+            }) }}       
+    </form>
+  </div>
+  <!-- End column -->
+</div>
+<!-- End row -->
+{% endblock %}

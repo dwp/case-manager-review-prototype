@@ -1,0 +1,34 @@
+{% if (data['regScenario'] == "agent" ) %}
+    {% extends "layouts/main.html" %}
+{% else %}
+    {% extends "layouts/main-gov.html" %}
+{% endif %}
+
+{% block content %}
+
+<!-- Start row -->
+<div class="govuk-grid-row">
+  <!-- Start column -->
+  <div class="govuk-grid-column-two-thirds">
+    <form action="#" method="post" novalidate="">
+        
+      <span class="govuk-caption-l">Healthcare and support</span>
+       <h1 class="govuk-heading-l">
+         These next questions are about the people that support you and know about the help you need
+       </h1>
+
+       <p> You will be able to give me details of up to two people during this call.</p>
+
+        <p>You can give more in the form we will send you after this call.</p>
+
+        <button class="govuk-button" data-module="govuk-button">
+        Continue
+        </button>
+
+
+   </form>
+  </div>
+  <!-- End column -->
+</div>
+<!-- End row -->
+{% endblock %}

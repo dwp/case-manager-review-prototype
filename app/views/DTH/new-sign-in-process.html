@@ -1,0 +1,33 @@
+{% extends "layouts/main-gov.html" %}
+
+{% block content %}
+
+<!-- Start row -->
+<div class="govuk-grid-row">
+  
+  <!-- Start column -->
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="/newSignIn" method="post">
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+
+      <h1 class="govuk-heading-xl">We have a new sign in process for PIP applications</h1>
+      <p class="govuk-body">On the next page, you will need to either sign in or register again.</p>
+
+      <h2 class="govuk-heading-m">If you need to sign in</h2>
+
+      <p class="govuk-body">You can use your current password.  Your account already uses the new sign in process.</p>
+
+      <h2 class="govuk-heading-m">If you need to register</h2>
+      <p class="govuk-body">You will need to create a new password and enter your mobile phone number so we can send you a security code.</p>
+      <p class="govuk-body">We've saved your application process. After you sign in or register, you can continue your application.</p>
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+    </form>
+  </div>
+  <!-- End column -->
+</div>
+<!-- End row -->
+{% endblock %}

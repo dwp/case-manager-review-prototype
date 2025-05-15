@@ -1,0 +1,37 @@
+{% if (data['regScenario'] == "agent" ) %}
+    {% extends "layouts/main.html" %}
+{% else %}
+    {% extends "layouts/main-gov.html" %}
+{% endif %}
+
+{% block beforeContent %}
+  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+  {{ govukBackLink({
+  text: "Back",
+  href: "#"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<!-- Start row -->
+<div class="govuk-grid-row">
+  <!-- Start column -->
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="#" method="post">
+        <h1 class="govuk-heading-l">
+            We will now ask some questions about where you are staying at the moment
+          </h1>
+    
+          <p class="govuk-body">This can affect what payments you're entitled to, and when you can start being paid.</p>
+    
+         <button class="govuk-button" data-module="govuk-button">
+            Continue
+        </button>
+    </form>
+  </div>
+  <!-- End column -->
+</div>
+<!-- End row -->
+{% endblock %}

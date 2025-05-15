@@ -1,0 +1,44 @@
+{% if (data['regScenario'] == "agent" ) %}
+    {% extends "layouts/main.html" %}
+{% else %}
+    {% extends "layouts/main-gov.html" %}
+{% endif %}
+
+{% block content %}
+
+<!-- Start row -->
+<div class="govuk-grid-row">
+  <!-- Start column -->
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="/regClaimYourself" method="post">
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          name: "regNewApplication",
+          fieldset: {
+            legend: {
+              text: "Are you calling to claim PIP for yourself",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "forMyself",
+              text: "For myself"
+            },
+            {
+              value: "forSomeoneElse",
+              text: "For someone else"
+            }
+          ]
+        }) }}
+        {{ govukButton({
+          text: "Continue"
+        }) }} 
+    </form>
+  </div>
+  <!-- End column -->
+</div>
+<!-- End row -->
+{% endblock %}

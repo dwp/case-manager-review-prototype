@@ -1,0 +1,76 @@
+{% if (data['regScenario'] == "agent" ) %}
+    {% extends "layouts/main.html" %}
+{% else %}
+    {% extends "layouts/main-gov.html" %}
+{% endif %}
+
+{% block content %}
+
+<!-- Start row -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="#" method="post">
+      <div class="govuk-width-container">
+
+        <fieldset class="govuk-fieldset">
+
+<legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+
+  <h1 class="govuk-fieldset__heading">
+    What is the postcode and name of their work address?
+  </h1>
+
+</legend>
+
+
+
+
+        
+
+<div class="govuk-form-group">
+<label class="govuk-label" for="postcode">
+  Postcode
+</label>
+
+<input class="govuk-input govuk-!-width-two-thirds" id="postcode" name="postcode" type="text">
+
+</div>
+
+
+        
+
+<div class="govuk-form-group">
+<label class="govuk-label" for="searchString">
+  Building number or name (optional)
+</label>
+
+<input class="govuk-input govuk-!-width-two-thirds" id="searchString" name="searchString" type="text">
+
+</div>
+
+        
+
+</fieldset>
+
+
+          
+
+
+  
+
+
+<button class="govuk-button" data-module="govuk-button">
+Find address
+</button>
+
+
+
+        <p class="govuk-body"><a href="/ucd-register/healthcare-professional/enter-address-manually" class="govuk-link">Enter address manually</a></p>
+
+        <p class="govuk-body"><a href="/ucd-register/healthcare-professional/additional-support-needed" class="govuk-link">Applicant does not know the address</a></p>
+        
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

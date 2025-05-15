@@ -1,0 +1,48 @@
+{% extends "layouts/main-gov.html" %}
+
+{% block content %}
+
+<!-- Start row -->
+<div class="govuk-grid-row">
+  
+  <!-- Start column -->
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="#" method="post">
+      <h1 class="govuk-heading-xl">What is your name</h1>
+      <p class="govuk-body">Enter your name as it appears on official documents, like yoru passport or driving licence. If you have no middle names, you can leave it blank.</p>
+      {{ govukInput({
+        label: {
+          text: "First name"
+        },
+        classes: "govuk-input--width-20",
+        id: "width-20",
+        name: "width20"
+      }) }}
+      {{ govukInput({
+        label: {
+          text: "Middle name(s)"
+        },
+        classes: "govuk-input--width-20",
+        id: "width-20",
+        name: "width20"
+      }) }}
+      {{ govukInput({
+        label: {
+          text: "Last name"
+        },
+        classes: "govuk-input--width-20",
+        id: "width-20",
+        name: "width20"
+      }) }}
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    </form>
+    <h2 class="govuk-heading-m">Problems signing in</h2>
+    <p class="govuk-body"><a href="">I did not get a text message</a><br><a href="">I cannot access the mobile phone number I use to sign in</a></p>
+  </div>
+  <!-- End column -->
+</div>
+<!-- End row -->
+{% endblock %}
