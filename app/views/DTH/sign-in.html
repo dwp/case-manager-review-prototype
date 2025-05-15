@@ -1,0 +1,34 @@
+{% extends "layouts/main-gov.html" %}
+
+{% block content %}
+
+<!-- Start row -->
+<div class="govuk-grid-row">
+  
+  <!-- Start column -->
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="check-phone" method="post">
+      <h1 class="govuk-heading-xl">Sign in</h1>
+      <p class="govuk-body">Your email address is <strong>[echo data]</strong></p>
+      {% from "govuk/components/password-input/macro.njk" import govukPasswordInput %}
+
+      {{ govukPasswordInput({
+        label: {
+          text: "Password"
+        },
+        id: "password-input",
+        name: "password"
+      }) }}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+    </form>
+    <h2 class="govuk-heading-m">Problems signing in</h2>
+    <p class="govuk-body"><a href="">I forgot my password</a><br><a href="">I cannot access the email I use to sign in</a></p>
+  </div>
+  <!-- End column -->
+</div>
+<!-- End row -->
+{% endblock %}

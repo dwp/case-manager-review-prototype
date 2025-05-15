@@ -1322,3 +1322,27 @@ router.post('/edit-claim/version-3-button-above/confirm-change-address',function
             response.redirect("/edit-claim/version-3-button-above/change-corr-address")
         } 
     })
+
+//REGISTRATION CONSOLIDATION
+
+//Scenario answer
+router.post('/dthScenario', function (req, res) {
+    //Store response
+    var dthScenario = req.session.data['dthScenario'];
+
+    //Redirect
+    res.redirect('/DTH/new-sign-in-process');
+});
+
+// HIG end
+
+router.post('/newSignIn', function(request, response) {
+
+    var dthScenario = request.session.data['dthScenario'];
+    if (dthScenario === "1"){
+        response.redirect("dth/sign-in")
+    } else if (dthScenario === "2"){
+      response.redirect("dth/register")
+  }
+  })
+  

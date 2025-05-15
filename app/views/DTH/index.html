@@ -1,0 +1,39 @@
+{% extends "layouts/main-gov.html" %}
+
+{% block content %}
+
+<!-- Start row -->
+<div class="govuk-grid-row">
+  <!-- Start column -->
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="/dthScenario" method="post">
+      
+      {{ govukRadios({
+        name: "dthScenario",
+        fieldset: {
+          legend: {
+            text: "Which scenario do you want to simulate?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        items: [
+          {
+            value: "1",
+            text: "Scenario 1"
+          },
+          {
+            value: "2",
+            text: "Scenario 2"
+          }
+        ]
+      }) }}
+      {{ govukButton({
+        text: "Continue"
+      }) }} 
+    </form>
+  </div>
+  <!-- End column -->
+</div>
+<!-- End row -->
+{% endblock %}

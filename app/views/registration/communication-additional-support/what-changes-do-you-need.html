@@ -1,0 +1,69 @@
+{% if (data['regScenario'] == "agent" ) %}
+    {% extends "layouts/main.html" %}
+{% else %}
+    {% extends "layouts/main-gov.html" %}
+{% endif %}
+
+{% block content %}
+
+<!-- Start row -->
+<div class="govuk-grid-row">
+  <!-- Start column -->
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="#" method="post"> 
+      {{ govukCheckboxes({
+        name: "non-standard-letter-options",
+        fieldset: {
+        legend: {
+          text: "What changes do you need?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+        
+        },
+        hint: {
+        text: "You can choose more than one option. We will ask for more detail if necessary."  
+        },
+        
+        items: [
+        {
+          value: "A different font",
+          text: "A different font"
+        },
+        {
+          value: "Bold text",
+          text: "Bold text"
+        },
+        {
+          value: "Coloured paper",
+          text: "Coloured paper"
+        },
+        {
+          value: "Double line spacing",
+          text: "Double line spacing"
+        },
+        
+        {
+          value: "Large print",
+          text: "Large print"
+        },
+        {
+          divider: "or"
+        },
+        {
+          value: "Standard letter (12-point Arial text on white paper)",
+          text: "Standard letter (12-point Arial text on white paper)",
+          behaviour: "exclusive"
+        }
+        ]
+        }) }}
+        
+        {{ govukButton({
+        text: "Continue"
+        }) }}   
+    </form>
+  </div>
+  <!-- End column -->
+</div>
+<!-- End row -->
+{% endblock %}

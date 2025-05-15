@@ -1,0 +1,25 @@
+{% extends "layouts/main-gov.html" %}
+
+{% block content %}
+
+<!-- Start row -->
+<div class="govuk-grid-row">
+  
+  <!-- Start column -->
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="check-email" method="post">
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+
+      <h1 class="govuk-heading-xl">Your email address</h1>
+      <p class="govuk-body">We will send a security code to <strong>data input</strong></p>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+  </div>
+  <!-- End column -->
+</div>
+<!-- End row -->
+{% endblock %}

@@ -1,0 +1,72 @@
+{% if (data['regScenario'] == "agent" ) %}
+    {% extends "layouts/main.html" %}
+{% else %}
+    {% extends "layouts/main-gov.html" %}
+{% endif %}
+
+{% block beforeContent %}
+  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+  {{ govukBackLink({
+  text: "Back",
+  href: "#"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<!-- Start row -->
+<div class="govuk-grid-row">
+  <!-- Start column -->
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="#" method="post"> 
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+    {{ govukRadios({
+      name: "regScenario",
+      fieldset: {
+        legend: {
+          text: "Are you living in a care home or nursing home, sheltered housing, a residential college or a hostel today?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      items: [
+        {
+          value: "none",
+          text: "No, none of these"
+        },
+        {
+          divider: "or"
+        },
+        {
+          value: "Care home",
+          text: "Care home"
+        },
+        {
+          value: "Nursing home",
+          text: "Nursing home"
+        },
+        {
+          value: "Sheltered housing",
+          text: "Sheltered housing"
+        },
+        {
+          value: "Residential college",
+          text: "Residential college"
+        },
+        {
+          value: "Hostel",
+          text: "Hostel"
+        }
+      ]
+    }) }}
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+    </form>
+  </div>
+  <!-- End column -->
+</div>
+<!-- End row -->
+{% endblock %}

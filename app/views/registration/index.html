@@ -1,0 +1,68 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+<!-- Start row -->
+<div class="govuk-grid-row">
+  <!-- Start column -->
+  <div class="govuk-grid-column-two-thirds">
+    <p>
+    {%- from "govuk/components/tag/macro.njk" import govukTag -%}
+
+      {{ govukTag({
+        text: "Scenario selection"
+      }) }}
+    </p>
+
+    <form class="form" action="registration/pre-registration/new-application" method="post">
+    {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+    {{ govukRadios({
+      name: "regScenario",
+      fieldset: {
+        legend: {
+          text: "Which scenario do you want to simulate?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      items: [
+        {
+          value: "citizen",
+          text: "Online citizen"
+        },
+        {
+          value: "agent",
+          text: "Telephony agent"
+        }
+      ]
+    }) }}
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+    <!--
+    
+    ,
+        {
+          value: "repeat-self",
+          text: "Repeat self-serve digital PIP application"
+        }, 
+        {
+          value: "repeat-invited",
+          text: "Repeat invited digital PIP application"
+        }, 
+        {
+          value: "appointee",
+          text: "Appointee journey"
+        }
+    
+    -->
+</form>
+  </div>
+  <!-- End column -->
+</div>
+<!-- End row -->
+{% endblock %}
