@@ -11,19 +11,24 @@
       {% from "govuk/components/input/macro.njk" import govukInput %}
 
       <h1 class="govuk-heading-xl">We have a new sign in process for PIP applications</h1>
-      <p class="govuk-body">On the next page, you will need to either sign in or register again.</p>
+      <p class="govuk-body">On the next page, we will ask you to either sign in or register again.</p>
 
-      <h2 class="govuk-heading-m">If you need to sign in</h2>
+      <h2 class="govuk-heading-m">If we ask you to sign in</h2>
 
-      <p class="govuk-body">You can use your current password.  Your account already uses the new sign in process.</p>
+      <p class="govuk-body">Enter the same password you use for:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Access to Work</li>
+        <li>Pension Credit, or</li>
+        <li>Repay and manage benefit money you owe</li>
+      </ul>
 
-      <h2 class="govuk-heading-m">If you need to register</h2>
+      <h2 class="govuk-heading-m">If we ask you to register</h2>
       <p class="govuk-body">You will need to create a new password and enter your mobile phone number so we can send you a security code.</p>
       <p class="govuk-body">We've saved your application process. After you sign in or register, you can continue your application.</p>
 
-{{ govukButton({
-  text: "Continue"
-}) }}
+      {{ govukButton({
+        text: "Continue"
+      }) }}
 
     </form>
   </div>
