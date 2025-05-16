@@ -1331,7 +1331,7 @@ router.post('/dthScenario', function (req, res) {
     var dthScenario = req.session.data['dthScenario'];
 
     //Redirect
-    res.redirect('/DTH/new-sign-in-process');
+    res.redirect('/DTH/email');
 });
 
 // HIG end
