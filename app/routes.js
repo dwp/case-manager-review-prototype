@@ -6,6 +6,12 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
+//Import from routes folder
+const e2eRoutes = require('./routes/e2eRoutes');
+
+//Use routes
+router.use('/', e2eRoutes);
+
 // Add your routes here
 
 //COMMUNICATION RECORD V.1
@@ -1303,7 +1309,7 @@ router.post('/can-answer', function (req, res) {
       } else if (DlQppt == 'EffectiveDate' || 'NoRestrictions' || DlPt == 'EndBefore9') {
         response.redirect('/qppt/no-decision')
       }
-})
+});
 
 //-------------------------------------------------------------------
 //EDIT A CLAIM
@@ -1311,7 +1317,7 @@ router.post('/can-answer', function (req, res) {
 //Select home address
 router.post('/edit-claim/version-3-button-above/change-select-address',function(request, response) {
         response.redirect("/edit-claim/version-3-button-above/confirm-change-address")
-    })
+    });
 
 //confirm change address
 router.post('/edit-claim/version-3-button-above/confirm-change-address',function(request, response) {
@@ -1321,9 +1327,22 @@ router.post('/edit-claim/version-3-button-above/confirm-change-address',function
      } else if (writeToHome == "no") {
             response.redirect("/edit-claim/version-3-button-above/change-corr-address")
         } 
-    })
+    });
 
 //REGISTRATION CONSOLIDATION
+
+//Scenario answer
+router.post('/regScen', function (request, response) {
+    //Store response
+    var regScena = request.session.data['regScena'];
+    if (regScena === "citizen"){
+        response.redirect("pip-register/welcome-screen")
+    } else if (regScena === "agent"){
+      response.redirect("pip-register/signposting-eligibility/service-start-page")
+  }
+});
+
+//DTH
 
 //Scenario answer
 router.post('/dthScenario', function (req, res) {

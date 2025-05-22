@@ -1,0 +1,144 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "layouts/main.html" %}
+{% else %}
+    {% extends "layouts/main-gov.html" %}
+{% endif %}
+
+{% block pageTitle %}
+Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form action="#" method="post" method="post">
+
+        <h1 class="govuk-heading-xl">I need to check your details for security reasons</h1>
+
+        {{ govukInsetText({
+          classes: 'colour-blue',
+            text: "Action: Ask 3 questions, or stop asking questions if the first 2 answers are correct."
+        }) }}
+
+        <p class="govuk-body">
+          <a href="nino-bau-kickout" class="govuk-link govuk-link--no-visited-state">Not enough applicant data to ask security questions</a>
+        </p>
+
+        {{ govukCheckboxes({
+          name: "security",
+          fieldset: {
+            legend: {
+              text: "Security questions",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "Select the questions you ask the applicant"
+          },
+          items: [
+          {
+          value: "other-benefit",
+          text: "Other benefit or DWP payment received"
+          },
+          {
+          value: "previous-benefit",
+          text: "Benefit claimed previously "
+          },
+          {
+          value: "previous-surname",
+          text: "Previous surname"
+          },
+          {
+          value: "previous-address",
+          text: "Previous address"
+          },
+          {
+          value: "other-benefit-amount",
+          text: "Weekly amount of other benefit"
+          },
+          {
+          value: "other-benefit-date",
+          text: "Date claim for other benefit began"
+          },
+          {
+          value: "last-payment-date",
+          text: "Date of last payment"
+          },
+          {
+          value: "partner-nino",
+          text: "Partner's National Insurance number"
+          },
+          {
+          value: "partner-full-Name",
+          text: "Partner's full Name"
+          },
+          {
+          value: "partner-date-of-birth",
+          text: "Partner's date of birth"
+          },
+          {
+          value: "number-of-dependents",
+          text: "Number of dependents"
+          },
+          {
+          value: "dependent-child-name",
+          text: "Dependent child name"
+          },
+          {
+          value: "dependent-child-dob",
+          text: "Dependent child date of birth"
+          }
+      ]
+        }) }}
+
+
+
+        {{ govukRadios({
+          name: "security-verified",
+          fieldset: {
+            legend: {
+              text: "Applicant answers",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "Select one option"
+          },
+          items: [
+          {
+            value: "2correct",
+            text: "2 correct answers"
+          },
+          {
+            value: "1correct",
+            text: "1 correct answer"
+          },
+          {
+            value: "none",
+            text: "No correct answers"
+          }
+          ]
+        }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
