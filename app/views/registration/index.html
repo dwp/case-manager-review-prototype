@@ -16,7 +16,7 @@
       }) }}
     </p>
 
-    <form class="form" action="registration/pre-registration/new-application" method="post">
+    <form class="form" action="pre-registration/new-application" method="post">
     {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
     {{ govukRadios({
@@ -42,24 +42,7 @@
     {{ govukButton({
       text: "Continue"
     }) }}
-
-    <!--
     
-    ,
-        {
-          value: "repeat-self",
-          text: "Repeat self-serve digital PIP application"
-        }, 
-        {
-          value: "repeat-invited",
-          text: "Repeat invited digital PIP application"
-        }, 
-        {
-          value: "appointee",
-          text: "Appointee journey"
-        }
-    
-    -->
 </form>
   </div>
   <!-- End column -->

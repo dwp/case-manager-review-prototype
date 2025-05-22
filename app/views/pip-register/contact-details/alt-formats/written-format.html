@@ -1,0 +1,82 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "layouts/main.html" %}
+{% else %}
+    {% extends "layouts/main-gov.html" %}
+{% endif %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript: window.history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="#" method="post" novalidate>
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+        
+        <form class="form">
+        
+        {{ govukRadios({
+        name: "written-format",
+        fieldset: {
+        legend: {
+          text: "How should we write to you?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+        },
+        hint: {
+        html: "<p class='govuk-hint'>Select the best option for you.<p>"  
+        },
+        items: [
+        {
+          value: "Standard letter (12-point Arial text on white paper)",
+          text: "Standard letter (12-point Arial text on white paper)"
+        },
+        {
+          value: "Letter with changes to font, paper colour, spacing or print size",
+          text: "Letter with changes to font, paper colour, spacing or print size"
+        },
+        {
+          value: "Audio",
+          text: "Audio"
+        },
+        {
+          value: "Braille",
+          text: "Braille"
+        },
+        {
+          value: "British Sign Language video",
+          text: "British Sign Language video"
+        },
+        {
+          value: "Email",
+          text: "Email"
+        }
+        
+        ]
+        }) }}
+        
+        {{ govukButton({
+        text: "Continue"
+        }) }}
+        </form>
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+Standard letter (12-point Arial text on white paper)
+Large print
+Letter with changes to font, paper colour, spacing or print size
+Audio
+Braille
+British Sign Language video
+Email
