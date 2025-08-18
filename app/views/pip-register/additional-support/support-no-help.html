@@ -24,20 +24,63 @@
         Help and support
       </h1>
 
-      <p class="govuk-body">There are a number of external chartities and suppport organisations that could offer help and support to you. </p>
+      
+        <p class="govuk-body">In the next stage of your application, you need to fill in a form about your health condition or disability and how it affects you. </p>
+        {% if (data['helpers'] == "yes" ) %}
+        <p class="govuk-body">If you need someone to help you fill in the form or to read any letters we send, you could ask [Name].</p>
+        {% else %}
+        <p class="govuk-body">If you need someone to help you fill in the form or to read any letters we send, you could ask a friend, family member or support organisation.</p>
+        {% endif %}
+      
 
-      <p class="govuk-body">If you can, please complete the form to the best of your ability as soon as possible to prevent delay to your claim. </p>
-
-      <p class="govuk-body">Full completion of the form may mean that your claim can sometimes be assessed without you needing an appointment. </p>
-
+        <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              If you need help
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <p class="govuk-body">
+            You can call the DWP to ask for support.
+          </p>
+        <p class="govuk-body">
+          Telephone: 0800 121 6279<br>
+          Textphone 0800 121 4493
+        </p>
+        <p class="govuk-body">
+          <a href="https://www.relayuk.bt.com/" class="govuk-link" rel="noreferrer noopener">
+            Relay UK</a>
+          (if you cannot hear or speak on the phone): 18001 then  0800 121 6279
+        </p>
+        <p class="govuk-body">
+          <a href="https://connect.interpreterslive.co.uk/vrs?ilc=DWP" class="govuk-link" rel="noreferrer noopener">
+            Video relay service</a>
+          for British Sign Language (BSL) users
+          <a href="https://www.youtube.com/watch?v=oELNMfAvDxw" class="govuk-link" rel="noreferrer noopener">
+            (Check you can use the service)</a>
+        </p>
+        <p class="govuk-body">
+          Monday to Friday, 9am to 6pm
+        </p>
+        <p class="govuk-body">
+          <a href="https://www.gov.uk/call-charges" class="govuk-link" rel="noreferrer noopener">
+            Find out about call charges
+          </a>
+        </p>
+        
+          </div>
+        </details>
 
      <form class="form" action="#" method="post">
 
         {{ govukButton({
-          text: "Continue"
+          text: "Save and continue",
+          href: "/pip-register/nationality/start"
         }) }}
 
     </form>
+
+        <p><a href="/pip-register/task-list-cd-done">Go to task list</a></p>
 
     </div>
   </div>

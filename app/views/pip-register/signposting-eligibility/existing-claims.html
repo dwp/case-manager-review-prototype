@@ -21,11 +21,11 @@ href: "javascript:window.history.back()"
   <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-xl">
-      If you want to talk about an existing application
+      If you want to talk about an existing claim or application
     </h1>
 
     <p>
-      You need to call the Enquiry line.
+      You need to call the enquiry line.
     </p>
 
     {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
@@ -33,8 +33,27 @@ href: "javascript:window.history.back()"
     {{ govukInsetText({
       text: "Enquiry line number: 0800 121 4433"
     }) }}
+    <!--
 
-    <p>If you still want to start a new application for PIP, we can <a href="/pip-register/signposting-eligibility/new-application">continue with your application</a>.</p>
+    {{ govukDetails({
+      summaryText: "If caller wants a paper application form",
+      html: "
+        You can start a claim by post instead, but it takes longer to get a decision.<br><br>
+        Send a letter to this freepost address:<br><br>
+        Freepost DWP PIP 1<br><br>
+        Do not write anything except the freepost address on the envelope. You do not need a postcode or a stamp.<br><br>
+        You’ll be sent a form asking for your personal information, such as your address and your age. Fill in and return the form.<br><br>
+        You’ll then be sent a form which asks about your disability or condition.
+      "
+    }) }}
+
+    {{ govukDetails({
+      summaryText: " If caller wants to talk about something else",
+      html: "You need to call the Enquiry line number: 0800 121 4433
+      "
+    }) }}
+
+    -->
 
   </div>
 </div>

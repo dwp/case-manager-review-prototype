@@ -22,11 +22,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       <form class="form" action="#" method="post">
-
-        <h1 class="govuk-heading-xl">If we need to speak to you about your application, we'll usually contact you by phone</h1>
-
-        <h2 class="govuk-heading-m">Your contact details</h2>
-
+        <h1 class="govuk-heading-xl">What is your mobile phone number?</h1>
 
         {{ govukInput({
           label: {
@@ -41,7 +37,7 @@
 
         {{ govukInput({
           label: {
-            text: "Other phone number (optional)"
+            text: "Other phone number"
           },
           hint: {
             text: "For landline, include a dialling code like 01632 960 001."
@@ -53,24 +49,13 @@
           classes: "govuk-input--width-20"
         }) }}
 
-        {{ govukInput({
-          label: {
-            text: "Textphone (optional)"
-          },
-          hint: {
-            text: "Textphones do not accept text messages from mobile phones. They're for people who cannot speak or hear clearly."
-          },
-          id: "textphone-number",
-          name: "textphone-number",
-          type: "text",
-          autocomplete: "textphone",
-          classes: "govuk-input--width-20"
-        }) }}
 
 
         {{ govukButton({
-          text: "Continue"
+          text: "Save and continue"
         }) }}
+
+        <p><a href="/pip-register/task-list">Go to task list</a></p>
 
       </form>
     </div>

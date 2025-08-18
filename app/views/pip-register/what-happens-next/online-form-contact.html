@@ -18,14 +18,25 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-    <<div class="govuk-grid-column-two-thirds">
+    ∂<div class="govuk-grid-column-two-thirds">
 
       <form action="#" method="post">
 
-          <h1 class="govuk-heading-xl">
-            We will now send you an email with a link to the online form
-          </h1>
+        {{ govukInput({
+          label: {
+            text: "What is your email address?",
+            classes: "govuk-label--xl",
+            isPageHeading: true
+          },
+          id: "event-name",
+          name: "eventName",
+          type: "email",
+          autocomplete: "email",
+          spellcheck: false
+        }) }}
+                    
 
+          <!--
           <p class="govuk-body">
             I need to enter some of your details again to <a href="https://www.notifications.service.gov.uk/sign-in" class="govuk-link" rel="noreferrer noopener" target="_blank">send the email invitation (opens in new tab)</a>.
           </p>
@@ -163,7 +174,7 @@
                 </div>
               </div>
             </fieldset>
-          </div>
+          </div>-->
 
 
 
@@ -172,7 +183,7 @@
 
 
 <button class="govuk-button" data-module="govuk-button">
-  Continue
+  Send invitation email
 </button>
 
 

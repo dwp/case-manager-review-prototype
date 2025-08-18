@@ -1,0 +1,118 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "layouts/main.html" %}
+{% else %}
+    {% extends "layouts/main-gov.html" %}
+{% endif %}
+
+{% block pageTitle %}
+Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="#" method="post" method="post">
+      <h1 class="govuk-heading-xl">
+        I'm checking your details on the system before we continue
+      </h1>
+      {{ govukInsetText({
+        classes: 'colour-blue',
+          text: "Action: Check the applicant's Searchlight record for a Special Customer Record, an appointee, or an Armed Forces Independence Payment claim."
+      }) }}
+
+      {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+      {{ govukCheckboxes({
+        name: "waste",
+        items: [
+          {
+            value: "The applicant has a Special Customer Record",
+            text: "The applicant has a Special Customer Record"
+          },
+          {
+            value: "The applicant has an appointee on Searchlight",
+            text: "The applicant has an appointee"
+          },
+          {
+            value: "The applicant gets Armed Forces Independence Payment",
+            text: "The applicant gets Armed Forces Independence Payment"
+          }
+        ]
+      }) }}
+
+      <!--
+      {{ govukInsetText({
+        classes: 'colour-blue',
+          text: "Action: Enter the applicant's National Insurance number in Searchlight, and check which benefits they are getting now, if any."
+      }) }}
+      {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+      {{ govukCheckboxes({
+        name: "waste",
+        hint: {
+          text: "Select all that apply"
+        },
+        items: [
+          {
+            value: "carcasses",
+            text: "Personal Independence Payment (PIP)"
+          },
+          {
+            value: "mines",
+            text: "Adult Disability Payment (ADP)"
+          },
+          {
+            value: "farm",
+            text: "Child Disability Payment (CDP)"
+          },
+          {
+            value: "farm",
+            text: "Armed Forces Independence Payment (AFIP)"
+          },
+          {
+            value: "farm",
+            text: "War Pensioners’ Mobility Supplement"
+          },
+          {
+            value: "farm",
+            text: "Constant Attendance Allowance (CAA)"
+          }
+        ]
+      }) }}
+
+      {{ govukInsetText({
+        classes: 'colour-blue',
+          text: "Action: Check if the applicant has a Special Customer Record."
+      }) }}
+
+      {{ govukCheckboxes({
+        name: "special",
+        items: [
+          {
+            value: "specialRecord",
+            text: "Applicant has a Special Customer Record"
+          }
+        ]
+      }) }}
+    -->
+
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+  </form>
+
+  </div>
+</div>
+
+{% endblock %}

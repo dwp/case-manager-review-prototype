@@ -33,13 +33,13 @@
 
   {% call govukFieldset({
     legend: {
-      text: " What is their work address?",
+      text: " What is their address?",
       classes: "govuk-fieldset__legend--xl",
       isPageHeading: true
     }
   }) %}
 
-  <div class="govuk-hint">You can give us their home address if they’re a friend or family member.</div>
+  <!-- <div class="govuk-hint">You can give us their home address if they’re a friend or family member.</div> -->
 
 
   {{ govukInput({
@@ -107,13 +107,15 @@
 }) }}
 
 
-  {{ govukButton({
-    text: "Confirm this address"
-  }) }}
+<a href="../healthcare-professional/hp-summary-two-remove.html" role="button" draggable="false" class="govuk-button govuk-button" data-module="govuk-button">
+  Confirm this address
+</a>
 
   <div class="govuk-body">
     <a href="/pip-register/healthcare-professional/postcode-support">Search by postcode</a>
   </div>
+
+  <p><a href="/pip-register/task-list-nat-done">Go to task list</a></p> 
 
 {% endcall %}
 {% endblock %}

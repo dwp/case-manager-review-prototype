@@ -33,13 +33,13 @@
           name: "uk-2021",
           fieldset: {
             legend: {
-            text: "Did you start iving in the UK before 1 January 2021?",
+            text: "Did you start living in the UK before 1 January 2021?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl"
             }
           },
           hint: {
-            text: "The UK is Northern Ireland, England, Scotland and Wales."
+            text: "The UK includes England, Scotland, Wales and Northern Ireland."
           },
           items: [
           {
@@ -49,17 +49,25 @@
           {
             value: "no",
             text: "No"
-          },
-          {
-            value: "unsure",
-            text: "I’m not sure"
           }
           ]
         }) }}
 
+        <!--
+        
+        ,
+          {
+            value: "unsure",
+            text: "I’m not sure"
+          }
+        
+        -->
+
           {{ govukButton({
-            text: "Continue"
+            text: "Save and continue"
           }) }}
+
+          <p><a href="/pip-register/task-list-as-done">Go to task list</a></p>
 
 
       </form>

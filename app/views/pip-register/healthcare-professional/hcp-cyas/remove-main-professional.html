@@ -27,7 +27,7 @@
           name: "remove-main-hcp",
           fieldset: {
             legend: {
-              text: "Are you sure you want to remove [name of contact] from your health contacts?",
+              text: "Are you sure you want to remove [name of contact] from your list of health or care professionals?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
@@ -45,8 +45,10 @@
         }) }}
 
         {{ govukButton({
-          text: "Continue"
+          text: "Save and continue"
         }) }}
+
+        <p><a href="/pip-register/task-list-nat-done">Go to task list</a></p> 
       </form>
     </div>
   </div>

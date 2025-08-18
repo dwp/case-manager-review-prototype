@@ -23,7 +23,7 @@ href: "javascript:window.history.back()"
     <form action="#" method="post" method="post">
 
       <h1 class="govuk-heading-xl">
-        Is your application for yourself or for someone else?
+        Is the application for yourself or for someone else?
       </h1>
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -39,27 +39,17 @@ href: "javascript:window.history.back()"
         items: [
           {
             value: "myself",
-            text: "Myself"
+            text: "I am applying for myself"
           },
           {
-            value: "myself",
-            text: "Someone I'm helping to apply",
-            hint: {
-              text: "Select if the third party is in the room with the applicant"
-            }
-          },
-          {
-            value: "external",
-            text: "Someone else, an an external party"
+            value: "someone-else",
+            text: "I am applying for someone else"
           }
         ]
       }) }}
 
 
-      {{ govukInsetText({
-        classes: 'colour-blue',
-          text: "Action: If the caller is helping someone to apply, tell the caller to answer the questions with the applicant's details, not their own."
-      }) }}
+
 
     {{ govukButton({
       text: "Continue"

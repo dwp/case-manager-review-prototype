@@ -25,7 +25,9 @@
       <form class="form" action="#" method="post">
         <div class="govuk-width-container">
 
-          <h1 class="govuk-heading-xl">Are any of the costs to live there paid by a health and social care trust, the Education Authority, a government department, or a charity?</h1>
+          <h1 class="govuk-heading-xl"> Does a local authority, health authority, education authority, charity or
+            Department for Work and Pensions pay any of the costs for you to live there?</h1>
+            <p>Select No if any of the costs are paid by someone else</p>
 
           {% call govukFieldset({
             legend: {
@@ -49,20 +51,24 @@
             divider: "or,"
           },
           {
-            value: "health-trust",
-            text: "Health and social care trust"
+            value: "yes",
+            text: "Local authority"
           },
           {
             value: "yes",
-            text: "Education Authority"
+            text: "Health authority"
           },
             {
               value: "yes",
-              text: "Government department"
+              text: " Education authority"
             },
             {
               value: "yes",
               text: "Charity"
+            },
+            {
+              value: "yes",
+              text: "Department for Work and Pensions"
             }
           ]
           }) }}
@@ -70,9 +76,9 @@
           {% endcall %}
 
             {{ govukButton({
-              text: "Continue"
+              text: "Save and continue"
             }) }}
-
+            <p><a href="/pip-register/task-list-hcp-done">Go to task list</a></p> 
 
         </div>
       </form>

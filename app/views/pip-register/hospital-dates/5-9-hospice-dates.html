@@ -39,6 +39,23 @@
         }) }}
 
         {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+        {% if (data['regScena'] == "citizen" ) %}
+        {{ govukCheckboxes({
+          name: "hospice-date",
+          fieldset: {
+            legend: {
+              isPageHeading: true
+            }
+          },
+          items: [
+            {
+              value: "unknown",
+              text: "I do not know the date"
+            }
+          ]
+        }) }}
+      {% else %}
+    
 
         {{ govukCheckboxes({
           name: "hospice-date",
@@ -54,10 +71,12 @@
             }
           ]
         }) }}
+        {% endif %}
 
         {{ govukButton({
-          text: "Continue"
+          text: "Save and continue"
           }) }}
+          <p><a href="/pip-register/task-list-hcp-done">Go to task list</a></p> 
 
         </div>
       </form>

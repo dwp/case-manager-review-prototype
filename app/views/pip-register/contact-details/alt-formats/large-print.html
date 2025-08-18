@@ -22,7 +22,7 @@
 {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 
       {{ govukCheckboxes({
-      name: "non-standard-letter-options",
+      name: "largePrint",
       fieldset: {
       legend: {
         text: "What changes do you need?",
@@ -69,8 +69,10 @@
 }) }}
 
           {{ govukButton({
-            text: "Continue"
+            text: "Save and continue"
           }) }}
+
+          <p><a href="/pip-register/task-list-cd-done">Go to task list</a></p>
 
       </form>
     </div>

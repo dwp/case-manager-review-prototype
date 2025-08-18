@@ -21,7 +21,7 @@
 {% from "govuk/components/input/macro.njk" import govukInput %}
 
 <div class="govuk-grid-row">
-
+  <div class="govuk-grid-column-two-thirds">
     <form class="form" action="any-other-help-when-we-contact" method="post">
        
     {{ govukInput({
@@ -36,11 +36,13 @@
     }) }}
 
     {{ govukButton({
-      text: "Continue"
+      text: "Save and continue"
       }) }}
 
-    </form>
+      <p><a href="/pip-register/task-list-cd-done">Go to task list</a></p>
 
+    </form>
+    </div>
 </div> 
 
 {% endblock %}

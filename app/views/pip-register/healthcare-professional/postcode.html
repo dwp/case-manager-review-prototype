@@ -21,12 +21,13 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+      {% if (data['regScena'] == "citizen" ) %}
       <form class="form" action="#" method="post">
         <div class="govuk-width-container">
 
           {% call govukFieldset({
             legend: {
-              text: "What is the postcode and name of their work address?",
+              text: "Find their address",
               classes: "govuk-fieldset__legend--xl",
               isPageHeading: true
             }
@@ -59,10 +60,57 @@
 
           <p class="govuk-body"><a href="/pip-register/healthcare-professional/enter-address-manually" class="govuk-link">Enter address manually</a></p>
 
-          <p class="govuk-body"><a href="/pip-register/healthcare-professional/additional-support-needed" class="govuk-link">Applicant does not know the address</a></p>
+          <p class="govuk-body"><a href="/pip-register/healthcare-professional/additional-support-needed" class="govuk-link">I do not know the address</a></p>
 
+          <p><a href="/pip-register/task-list-nat-done">Go to task list</a></p> 
+          
         </div>
       </form>
+      {% else %}
+      <form class="form" action="#" method="post">
+        <div class="govuk-width-container">
+
+          {% call govukFieldset({
+            legend: {
+              text: "What is the postcode and building number of their address?",
+              classes: "govuk-fieldset__legend--xl",
+              isPageHeading: true
+            }
+          }) %}
+
+
+          {{ govukInput({
+            label: {
+              text: "Postcode"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "postcode",
+            name: "postcode"
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "Building number or name (optional)"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "searchString",
+            name: "searchString"
+          }) }}
+          {% endcall %}
+
+            {{ govukButton({
+              text: "Find address"
+            }) }}
+          
+            <p class="govuk-body"><a href="/pip-register/healthcare-professional/additional-support-needed" class="govuk-link">Applicant does not know the address</a></p>
+
+          <p class="govuk-body"><a href="/pip-register/healthcare-professional/enter-address-manually" class="govuk-link">Enter address manually</a></p>
+
+          <p><a href="/pip-register/task-list-nat-done">Go to task list</a></p> 
+          
+        </div>
+      </form>
+      {% endif %}
     </div>
   </div>
 

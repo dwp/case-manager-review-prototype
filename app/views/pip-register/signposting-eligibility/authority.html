@@ -1,0 +1,37 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "layouts/main.html" %}
+{% else %}
+    {% extends "layouts/main-gov.html" %}
+{% endif %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+          <form action="#" method="post" novalidate>
+
+            <h1 class="govuk-heading-xl">Unless we have already seen this authority we will need to see it before we can process the application</h1>
+            <p class="govuk-body">We will contact you about this if we need to.</p>
+
+            {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+            {{ govukInsetText({
+              text: "Action: Register the application in PIPCS, and follow the normal procedure for external party claims.
+              "
+            }) }}
+          </form>
+   </div>
+</div>
+
+{% endblock %}

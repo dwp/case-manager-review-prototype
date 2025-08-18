@@ -23,7 +23,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-xl">
-        Can you confirm the full address?
+        Can you confirm the address?
       </h1>
 
       <form class="form" action="#" method="post">
@@ -62,12 +62,17 @@
 
       </div>
 
-        {{ govukButton({
-          text: "Confirm this address"
-        }) }}
+      <a href="../healthcare-professional/confirm-address" role="button" draggable="false" class="govuk-button govuk-button" data-module="govuk-button">
+        Use this address
+    </a>
+
+
+        
 
 
         <p class="govuk-body govuk-!-margin-bottom-6"><a href="/pip-register/healthcare-professional/enter-address-manually" class="govuk-link">Enter address manually</a></p>
+
+        <p><a href="/pip-register/task-list-nat-done">Go to task list</a></p> 
 
       </form>
 

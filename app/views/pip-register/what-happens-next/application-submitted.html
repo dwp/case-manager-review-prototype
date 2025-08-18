@@ -23,22 +23,22 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {{ govukPanel({
-        titleText: "Application complete"
+        titleText: "Registration complete"
       }) }}
 
-      <h2 class="govuk-heading-m">What to do next</h2>
+      <!--<h2 class="govuk-heading-m">What to do next</h2>-->
 
-      <p class='govuk-body'>If you need to record any more information about this claim, enter it in PIPCS notes.</p>
+      <!--<p class='govuk-body'>If you need to record any more information about this application, enter it in PIPCS notes.</p>-->
 
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
   {{ govukButton({
-    text: "Start new claim",
+    text: "Start new application",
     href: "/pip-register/signposting-eligibility/service-start-page",
     isStartButton: true
   }) }}
 
-<p class="govuk-body"><a class="govuk-link" href="#">Go to homepage</a></p>
+<!--<p class="govuk-body"><a class="govuk-link" href="#">Go to homepage</a></p>-->
 
  </form>
 

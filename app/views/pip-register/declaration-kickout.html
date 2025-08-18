@@ -21,10 +21,16 @@
     <div class="govuk-grid-column-two-thirds">
 
       <form action="#" method="post" method="post">
-
+          {% if (data['regScena'] == "citizen" ) %}
+          <h1 class="govuk-heading-xl">
+            Citizen variant goes here
+          </h1>
+          {% else %}
           <h1 class="govuk-heading-xl">
             We cannot start your application now
           </h1>
+          {% endif %}
+          
 
           <p class="govuk-body">You need to agree to the declaration in order to apply for PIP.</p>
 
@@ -32,13 +38,14 @@
           </p>
 
           {% from "govuk/components/button/macro.njk" import govukButton %}
-
+          <!--
           <div class="govuk-button-group">
             {{ govukButton({
               text: "Stop application",
             classes: "govuk-button--warning",
             href: "signposting-eligibility/service-start-page"
             }) }}
+            -->
 
             <a class="govuk-body govuk-link" href="/pip-register/declaration">Back to declaration</a>
           </div>

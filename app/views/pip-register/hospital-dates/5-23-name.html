@@ -33,14 +33,17 @@
           {% from "govuk/components/input/macro.njk" import govukInput %}
 
         {{ govukInput({
+          label: {
+            text: "Name of authority or charity"
+          },
           id: "event-name",
           name: "eventName"
         }) }}
 
           {{ govukButton({
-            text: "Continue"
+            text: "Save and continue"
           }) }}
-
+          <p><a href="/pip-register/task-list-hcp-done">Go to task list</a></p> 
         </div>
       </form>
     </div>

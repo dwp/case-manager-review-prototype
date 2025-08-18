@@ -20,21 +20,53 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form action="#" method="post" novalidate>
+      <form action="/HCPYesNo" method="post" novalidate>
 
-         <span class="govuk-caption-xl">Healthcare and support</span>
-          <h1 class="govuk-heading-xl">
-            These next questions are about the people that support you and know about the help you need
+        {% if (data['regScena'] == "citizen" ) %}
+          <h1 class="govuk-heading-l">
+            Your health or care professionals
           </h1>
 
-          <p> You will be able to give me details of up to two people during this call.</p>
+          <p>We may need to contact one of your health or care professionals for further information.</p>
 
-           <p>You can give more in the form we will send you after this call.</p>
+        {% else %}
+
+        <h1 class="govuk-heading-l">
+          On this call you can tell us about two health or care professionals
+        </h1>
+
+        <p>You can give more people's details in the next stage of your application if you want to.</p>
+
+         
+        {% endif %}
+
+        {% if (data['regScena'] == "citizen" ) %}
+        <h2 class="govuk-heading-m">
+          Are there any health or care professionals that you want to tell us about?
+        </h2>
+        {% else %}
+        <h2 class="govuk-heading-m">
+          Are there any health or care professionals that you want to tell us about now?
+        </h2>
+        {% endif %}
+
+        {{ govukRadios({
+          name: "HCPYesNo",
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
 
             {{ govukButton({
-              text: "Continue"
+              text: "Save and continue"
             }) }}
-
       </form>
 
     </div>

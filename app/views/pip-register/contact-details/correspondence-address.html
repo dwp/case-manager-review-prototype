@@ -22,12 +22,12 @@
 
       <form class="form" action="#" method="post">
         <h1 class="govuk-heading-xl">
-          Can we write to you at this address?
+          Is this the address we should send letters to?
         </h1>
 
         {{ govukInsetText({
-          text: "1 Washington Street, Worcester, WR1 1NL"
-        }) }}
+          html: "1 Washington Street<br>Worcester<br>WR1 1NL"
+          }) }}
 
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -48,14 +48,16 @@
               },
               {
                 value: "no",
-                text: "No, provide an alternative address "
+                text: "No, provide an alternative address"
               }
             ]
           }) }}
 
         {{ govukButton({
-          text: "Continue"
+          text: "Save and continue"
         }) }}
+
+        <p><a href="/pip-register/task-list">Go to task list</a></p>
 
       </form>
 

@@ -21,15 +21,16 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-xl">
-        Communicating with us
+        Do you have a mental health condition, or a condition that makes it difficult for you to remember things, learn new things, or make everyday decisions?
       </h1>
-
+      <!--
       <p class="govuk-body">We want to understand if you have significant difficulty communicating with us if you have:</p>
       <ul class="govuk-list govuk-list--bullet">
         <li>a mental health condition</li>
         <li>learning, developmental or behavioural difficulties</li>
         <li>a cognitive impairment</li>
       </ul>
+      -->
 
       {{ govukDetails({
         summaryText: "Examples of conditions",
@@ -54,13 +55,6 @@
 
         {{ govukRadios({
             name: "any-condition",
-            fieldset: {
-              legend: {
-                text: "Do you have a mental health condition or a condition that causes you significant difficulties remembering things, learning new things, or making everyday decisions?",
-                isPageHeading: true,
-                classes: "govuk-fieldset__legend--m"
-              }
-            },
             items: [
               {
                 value: "yes",
@@ -73,19 +67,19 @@
             ]
           }) }}
 
-          {{ govukInsetText({
+          <!--{{ govukInsetText({
            classes: 'colour-blue',
              html: '<p class="govuk-body">Action: If no, but they clearly demonstrate a mental or cognitive condition by not following, understanding or engaging with the call then continue as if they answered yes:
     </p>'
-         }) }}
+         }) }}-->
 
           {{ govukButton({
-            text: "Continue"
+            text: "Save and continue"
           }) }}
 
+          <p><a href="/pip-register/task-list-cd-done">Go to task list</a></p>
+
       </form>
-
-
 
     </div>
   </div>

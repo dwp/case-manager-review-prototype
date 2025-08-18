@@ -1,0 +1,59 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "layouts/main.html" %}
+{% else %}
+    {% extends "layouts/main-gov.html" %}
+{% endif %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+Thank you for confirming the address
+      </h1>
+
+      <p>6 addresses found for <b>wr11nl</b> and <b>1</b>. <a href="/pip-register/healthcare-professional/postcode">Search again</a></p>
+
+      <form class="form" action="#" method="post">
+        <div class="govuk-width-container">
+        
+
+      </div>
+
+      <div class="govuk-inset-text">
+        1 Washington Street<br>Worcester<br> WR1 1NL
+      </div>
+      
+      
+      <a href="../healthcare-professional/additional-support-needed" role="button" draggable="false" class="govuk-button govuk-button" data-module="govuk-button">
+        Continue
+    </a>
+
+        
+        <p><a href="..//healthcare-professional/select-your-address">Use a different address</a></p> 
+
+
+        <p class="govuk-body govuk-!-margin-bottom-6"><a href="/pip-register/healthcare-professional/enter-address-manually" class="govuk-link">Enter address manually</a></p>
+
+        <p><a href="/pip-register/task-list-nat-done">Go to task list</a></p> 
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

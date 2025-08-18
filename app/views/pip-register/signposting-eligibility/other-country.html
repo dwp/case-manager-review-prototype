@@ -1,0 +1,47 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "layouts/main.html" %}
+{% else %}
+    {% extends "layouts/main-gov.html" %}
+{% endif %}
+
+{% block pageTitle %}
+Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="#" method="post" method="post">
+
+      <h1 class="govuk-heading-xl">
+        If you live outside the UK, you might not be eligible for PIP
+      </h1>
+
+      <p class="govuk-body">
+        You might still be able to get PIP if you either:
+       </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>live in the <a href="https://www.gov.uk/claim-benefits-abroad/disability-benefits">EU, Switzerland, Norway, Iceland or Liechtenstein</a> (opens in new tab), or</li>
+        <li>work in the Armed Forces, or are a family member of someone who does</li>
+      </ul>
+
+      <p class="govuk-body">
+        If you want to apply for PIP in England or Wales, we can <a href="/pip-register/signposting-eligibility/srel" class="govuk-link">continue with your application</a>.
+    </p>
+
+  </form>
+
+  </div>
+</div>
+
+{% endblock %}

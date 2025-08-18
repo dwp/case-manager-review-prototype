@@ -25,12 +25,14 @@
       {% from "govuk/components/button/macro.njk" import govukButton %}
      {% from "govuk/components/input/macro.njk" import govukInput %}
 
-      <h1 class="govuk-heading-xl">Your account details</h1>
+      <h1 class="govuk-heading-xl">Your bank, building society or credit union account details</h1>
 
-      <h2 class="govuk-heading-m">It is very important you give me the correct details so that any payments you are due are not delayed or lost</h2>
       {{ govukInput({
         label: {
           text: "Name on the account"
+        },
+        hint: {
+          text: "The name must be exactly what is shown on the debit card, chequebook or statement."
         },
         id: "name-on-the-account",
         name: "nameOnTheAccount",
@@ -58,7 +60,7 @@
         },
         classes: "govuk-input--width-10 govuk-input--extra-letter-spacing",
         hint: {
-          text: "Must be 8 digits or less."
+          text: "Must be between 6 and 8 digits long."
         },
         id: "account-number",
         name: "accountNumber",
@@ -68,7 +70,7 @@
 
       {{ govukInput({
         label: {
-          text: "Do you have a building society roll or reference number? (optional)"
+          text: "Building society roll number (if you have one)"
         },
         classes: "govuk-input--width-20 govuk-input--extra-letter-spacing",
         hint: {
@@ -80,11 +82,22 @@
       }) }}
 
       <form class="form" action="#" method="post">
+        
+        {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+   
+        {% if (data['regScena'] == "citizen" ) %}
+        {% else %}
+        {{ govukInsetText({
+          classes: 'colour-blue',
+          text: "Action: Check with the caller that the the details are correct before you continue."
+        }) }}
+        
 
+        {% endif %}
           {{ govukButton({
-            text: "Continue"
+            text: "Save and continue"
           }) }}
-
+          <p><a href="/pip-register/task-list-accom-done">Go to task list</a></p> 
 
       </form>
 

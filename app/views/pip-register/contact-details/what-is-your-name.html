@@ -21,9 +21,9 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form class="form" action="#" method="post">
+      <form class="form" action="/whatIsYourName" method="post">
 
-        <span class="govuk-caption-l">Contact information</span>
+        
         <h1 class="govuk-heading-xl">
           What is your name?
         </h1>
@@ -47,16 +47,6 @@
 
         {{ govukInput({
           label: {
-            text: "Middle name (optional)"
-          },
-          id: "middle-name",
-          name: "middle-name",
-          autocomplete: "name",
-          spellcheck: false
-        }) }}
-
-        {{ govukInput({
-          label: {
             text: "Last name"
           },
           id: "last-name",
@@ -67,16 +57,12 @@
 
         {% endcall %}
 
-        {% from "govuk/components/input/macro.njk" import govukInput %}
-
-       {% from "govuk/components/radios/macro.njk" import govukRadios %}
-
-        {% from "govuk/components/input/macro.njk" import govukInput %}
-
 
         {{ govukButton({
-          text: "Continue"
+          text: "Save and continue"
         }) }}
+
+        <p><a href="/pip-register/task-list">Go to task list</a></p>
 
       </form>
     </div>

@@ -29,7 +29,7 @@
           name: "benefits-abroad",
           fieldset: {
             legend: {
-              text: "Are you or a family member receiving pensions or benefits from a country in the European Economic Area or Switzerland?",
+              text: "Are you or a family member receiving pensions or benefits in the EU, Switzerland, Norway, Iceland or Liechtenstein?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--xl"
             }
@@ -54,11 +54,13 @@
           ]
         }) }}
 
-        <p><a href="https://www.gov.uk/eu-eea" class="govuk-link" rel="noreferrer noopener" target="_blank">Check which countries are in the EEA (opens in new tab)</a></p>
+        <!--<p><a href="https://www.gov.uk/eu-eea" class="govuk-link" rel="noreferrer noopener" target="_blank">Check which countries are in the EEA (opens in new tab)</a></p>-->
 
       {{ govukButton({
-        text: "Continue"
+        text: "Save and continue"
       }) }}
+
+      <p><a href="/pip-register/task-list-as-done">Go to task list</a></p>
 
     </form>
 

@@ -24,15 +24,25 @@
         Help and support
       </h1>
 
-      <p class="govuk-body">Please ask them to help you fill in the form as soon as possible to prevent delays to your application.</p>
+      <p class="govuk-body">In the next stage of your application, you need to fill in a form about your health condition or disability and how it affects you.</p>
 
-      <p class="govuk-body">Full completion of the form may mean that your claim can sometimes be assessed without you needing an appointment. </p>
+      <p class="govuk-body">If you need someone to help you fill in the form or to read any letters we send, you could ask [Name]/[a friend, family member or support organisation].</p>
 
+      {% from "govuk/components/details/macro.njk" import govukDetails %}
+
+      <h2 class="govuk-heading-l">If you need help</h2>
+      <p class="govuk-body">You can call the DWP to ask for support.</p>
+      <p class="govuk-body">Telephone: 0800 121 6279</p>
+      <p class="govuk-body">Textphone: 0800 121 4493</p>
+      <p class="govuk-body">Relay UK (if you cannot hear or speak on the phone): 18001 then 0800 121 6279</p>
+      <p class="govuk-body">Video relay service for British Sign Language (BSL) users - check you can use the service. Monday to Friday, 9am to 5pm.</p>
+      <p class="govuk-body">Find out about call charges</p>
 
      <form class="form" action="#" method="post">
 
         {{ govukButton({
-          text: "Continue"
+          text: "Save and continue",
+          href: "/pip-register/additional-support/add-support-summary"
         }) }}
 
     </form>

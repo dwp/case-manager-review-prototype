@@ -27,12 +27,60 @@
         Health and care contacts
       </h2>
 
+      {{ govukSummaryList({
+        rows: [
+        {
+          key: {
+            text: "Consent to share information"
+          },
+          value: {
+            text: "Yes / No"
+          },
+          actions: {
+            items: [
+              {
+                href: "/pip-register/nationality/insurance-abroad",
+                text: "Change",
+                visuallyHiddenText: "Question 4"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Give health and care professional details during registration"
+          },
+          value: {
+            text: "Yes / No"
+          },
+          actions: {
+            items: [
+              {
+                href: "/pip-register/nationality/benefits-abroad",
+                text: "Change",
+                visuallyHiddenText: "Question 5"
+              }
+            ]
+          }
+        }
+        ]
+      }) }}
+
+
       {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
       {{ govukSummaryList({
         card: {
           title: {
             text: "Dr Smith"
+          },          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Remove",
+                visuallyHiddenText: "name"
+              }
+            ]
           }
         },
         rows: [
@@ -48,14 +96,14 @@
               {
                 href: "#",
                 text: "Change",
-                visuallyHiddenText: "name"
+                visuallyHiddenText: "Remove"
               }
             ]
           }
         },
         {
           key: {
-            text: "Job or support role"
+            text: "Job or relationship to applicant"
           },
           value: {
             html: "General Practitioner"
@@ -143,7 +191,7 @@
         },
           {
             key: {
-              text: "Job or support role"
+              text: "Job or relationship to applicant"
             },
             value: {
               html: "<p class='govuk-body'> Family member</p>"
@@ -195,24 +243,6 @@
         ]
       }) }}
 
-      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            We can contact your health and care professionals
-          </dt>
-          <dd class="govuk-summary-list__value">
-            Yes, I agree
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="./hcps">
-              Change<span class="govuk-visually-hidden"> ..</span>
-            </a>
-          </dd>
-        </div> <!-- govuk-summary-list__row -->
-
-      </dl>
-
 
 
       <form action="#" method="post">
@@ -220,6 +250,8 @@
         {{ govukButton({
           text: "Save and continue"
         }) }}
+
+  
 
       </form>
 

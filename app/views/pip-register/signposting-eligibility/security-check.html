@@ -22,7 +22,7 @@ href: "javascript:window.history.back()"
 
       <form action="#" method="post" method="post">
 
-        <h1 class="govuk-heading-xl">I need to check your details for security reasons</h1>
+        <h1 class="govuk-heading-xl">For security reasons, I need to ask you to confirm some information</h1>
 
         {{ govukInsetText({
           classes: 'colour-blue',
@@ -43,32 +43,47 @@ href: "javascript:window.history.back()"
             }
           },
           hint: {
-            text: "Select the questions you ask the applicant"
+            text: "Select the information you asked the applicant to confirm."
           },
           items: [
           {
-          value: "other-benefit",
-          text: "Other benefit or DWP payment received"
+            value: "other-benefit",
+            text: "Another benefit or DWP payment you get",
+            hint: {
+              text: "A 'none' response is acceptable."
+              }
           },
           {
-          value: "previous-benefit",
-          text: "Benefit claimed previously "
+            value: "previous-benefit",
+            text: "Another benefit you've claimed previously",
+            hint: {
+              text: "Benefits that were never paid are acceptable."
+            }
           },
           {
-          value: "previous-surname",
-          text: "Previous surname"
+            value: "previous-surname",
+            text: "Previous surname"
           },
           {
-          value: "previous-address",
-          text: "Previous address"
+            value: "previous-address",
+            text: "Previous address",
+            hint: {
+              text: "First line of address and name of town or city is acceptable."
+            }
           },
           {
-          value: "other-benefit-amount",
-          text: "Weekly amount of other benefit"
+            value: "other-benefit-amount",
+            text: "Weekly or monthly amount of other benefit payment",
+            hint: {
+              text: "Accept answers within a reasonable range, depending on the amount."
+            }
           },
           {
-          value: "other-benefit-date",
-          text: "Date claim for other benefit began"
+            value: "other-benefit-date",
+            text: "Date when your claim for the other benefit started",
+            hint: {
+              text: "The correct month and year is acceptable."
+            }
           },
           {
           value: "last-payment-date",
@@ -80,7 +95,7 @@ href: "javascript:window.history.back()"
           },
           {
           value: "partner-full-Name",
-          text: "Partner's full Name"
+          text: "Partner's full name"
           },
           {
           value: "partner-date-of-birth",
@@ -88,15 +103,15 @@ href: "javascript:window.history.back()"
           },
           {
           value: "number-of-dependents",
-          text: "Number of dependents"
+          text: "Number of dependents in your claim"
           },
           {
           value: "dependent-child-name",
-          text: "Dependent child name"
+          text: "Name of one of your dependent children"
           },
           {
           value: "dependent-child-dob",
-          text: "Dependent child date of birth"
+          text: "Date of birth of one of your dependent children"
           }
       ]
         }) }}
@@ -113,7 +128,7 @@ href: "javascript:window.history.back()"
             }
           },
           hint: {
-            text: "Select one option"
+            text: "Select one option."
           },
           items: [
           {

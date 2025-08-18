@@ -37,13 +37,16 @@ href: "javascript:window.history.back()"
       }) }}
 
       <p class="govuk-body">
-        <a href="nino-bau-kickout" class="govuk-link govuk-link--no-visited-state">Applicant cannot give a UK National Insurance number</a>
+        <a href="nino-bau-kickout" class="govuk-link govuk-link--no-visited-state">Applicant cannot find their National Insurance number</a></p>
+      <p class="govuk-body">
+        <a href="no-nino-kickout" class="govuk-link govuk-link--no-visited-state">Applicant does not have a National Insurance number</a>
       </p>
 
       {{ govukInsetText({
         classes: 'colour-blue',
-          text: "Action: Enter National Insurance number in Searchlight, and confirm the applicant's name matches their record."
+          text: "Action: Enter the National Insurance number in Searchlight, and check that it is the correct applicant record."
       }) }}
+
 
 
     {{ govukButton({

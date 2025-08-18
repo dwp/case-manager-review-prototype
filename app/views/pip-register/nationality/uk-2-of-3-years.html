@@ -39,7 +39,7 @@
             }
           },
           hint: {
-            text: "The UK is Northern Ireland, England, Scotland and Wales."
+            text: "The UK is England, Scotland, Wales and Northern Ireland."
           },
           items: [
           {
@@ -49,17 +49,21 @@
           {
             value: "no",
             text: "No"
-          },
-          {
-            value: "unsure",
-            text: "I’m not sure"
           }
           ]
         }) }}
 
+        <!--,
+          {
+            value: "unsure",
+            text: "I’m not sure"
+          }-->
+
           {{ govukButton({
-            text: "Continue"
+            text: "Save and continue"
           }) }}
+
+          <p><a href="/pip-register/task-list-as-done">Go to task list</a></p>
 
 
       </form>

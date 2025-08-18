@@ -1,0 +1,56 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "layouts/main.html" %}
+{% else %}
+    {% extends "layouts/main-gov.html" %}
+{% endif %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% if (data['regScena'] == "citizen" ) %}
+      <h1 class="govuk-heading-xl">
+        Confirm your address
+      </h1>
+      {% else %}
+      <h1 class="govuk-heading-xl">
+        Thank you for confirming the address
+      </h1>
+      {% endif %}
+      
+
+      <form class="form" action="#" method="post">
+
+        <p>6 addresses found for <b>wr11nl</b> and <b>1</b>. <a href="/address/find-address">Search again</a></p>
+        
+        {{ govukInsetText({
+        html: "1 Washington Street<br>Worcester<br>WR1 1NL"
+        }) }}
+        
+        {{ govukButton({
+        text: "Use this address"
+        }) }}
+        
+        <p class="govuk-body govuk-!-margin-bottom-6"><a href="/pip-register/contact-details/enter-address-manually-country" class="govuk-link">Enter address manually</a></p>
+        <p><a href="/pip-register/task-list">Go to task list</a></p>
+    </form>
+        
+
+
+    </div>
+  </div>
+
+{% endblock %}

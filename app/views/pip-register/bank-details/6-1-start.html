@@ -21,17 +21,18 @@
     <div class="govuk-grid-column-two-thirds">
 
       <form action="#" method="post" method="post">
-
-        <span class="govuk-caption-xl">Bank details</span>
+        {% if (data['regScena'] == "citizen" ) %}
         <h1 class="govuk-heading-xl">
-          The next questions are about your bank details 
+          Your bank, building society or credit union details 
         </h1>
+        {% else %}
+        <h1 class="govuk-heading-xl">
+          The next questions are about your bank, building society or credit union details 
+        </h1>
+        <p>If your application for PIP is successful, we can use these details to pay you straight away.</p>
 
+        {% endif %}
           {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
-
-          {{ govukInsetText({
-            text: "If your application for a claim is successful, we can use these details to pay you straightaway."
-          }) }}
 
           {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
@@ -39,13 +40,10 @@
             name: "details-now",
             fieldset: {
               legend: {
-                text: "Can you give me your account details now?",
+                text: "Do you want to tell us your account details now?",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--m"
               }
-            },
-            hint: {
-              text: "By account we mean a bank, building society or credit union."
             },
             items: [
               {
@@ -60,8 +58,9 @@
           }) }}
 
             {{ govukButton({
-              text: "Continue"
+              text: "Save and continue"
             }) }}
+            <p><a href="/pip-register/task-list-accom-done">Go to task list</a></p> 
 
 
       </form>

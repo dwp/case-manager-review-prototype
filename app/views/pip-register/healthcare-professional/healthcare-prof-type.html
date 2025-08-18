@@ -26,13 +26,25 @@
 
       <form action="#" method="post" novalidate>
 
-        <h1 class="govuk-heading-xl">Your health and care professionals</h1>
+        <h1 class="govuk-heading-l">Your main health or care professional</h1>
+
+        {% set otherHtml %}
+        {{ govukInput({
+          id: "other-role",
+          name: "otherRole",
+          type: "text",
+          classes: "govuk-!-width-two-thirds",
+          label: {
+            text: "Enter job title or support role"
+          }
+        }) }}
+        {% endset -%}
 
               {{ govukRadios({
                 name: "contact",
                 fieldset: {
                   legend: {
-                    text: "Which health and care professional knows most about your daily living and mobility needs?",
+                    text: "What is their job or relationship to you?",
                     isPageHeading: true,
                     classes: "govuk-fieldset__legend--m"
                   }
@@ -61,7 +73,7 @@
             isPageHeading: true
           },
           hint: {
-            text: "Enter their position or job title if name is not known. For example, 'Duty GP'."
+            text: "Enter their position or job title if you do not know their name. For example, 'Duty GP'."
           },
           id: "event-name",
           name: "eventName"
@@ -71,7 +83,8 @@
 
         {{ govukInput({
           label: {
-            text: "What is their work phone number?",
+            text: "What is their phone number?",
+            hint: " For example, 07700 900 982 or 01632 960 001.",
             classes: "govuk-label--m",
             isPageHeading: true
           },
@@ -83,6 +96,7 @@
           classes: "govuk-input--width-20"
         }) }}
 
+        <!--
         {{ govukInput({
           label: {
             text: "When did you last speak to them?",
@@ -94,14 +108,16 @@
           },
           id: "event-name",
           name: "eventName"
-        }) }}
+        }) }}-->
 
 
     <div class="govuk-body govuk-!-margin-bottom-6"></div>
 
         {{ govukButton({
-          text: "Continue"
+          text: "Save and continue"
         }) }}
+
+        <p><a href="/pip-register/task-list-nat-done">Go to task list</a></p> 
 
     </form>
 

@@ -36,7 +36,7 @@
             }
           }) %}
 
-          <p class="govuk-hint">For example, a community psychiatric nurse, occupational therapist, support worker, social worker, counsellor, carer, or family member or friend. </p>
+          <p class="govuk-hint"> For example, another health or care professional who knows about your living and mobility needs. </p>
 
 
           {{ govukRadios({
@@ -57,9 +57,11 @@
 
           {% endcall %}
 
-            {{ govukButton({
-              text: "Continue"
-            }) }}
+          <a href="../healthcare-professional/additional-support-type.html" role="button" draggable="false" class="govuk-button govuk-button" data-module="govuk-button">
+            Continue
+        </a>
+
+            <p><a href="/pip-register/task-list-nat-done">Go to task list</a></p> 
 
 
         </div>

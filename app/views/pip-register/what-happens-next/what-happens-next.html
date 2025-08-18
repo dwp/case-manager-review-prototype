@@ -29,38 +29,14 @@
           <p class="govuk-body">As I do this, I need to give you some important information about what happens next.</p>
 
           <p class="govuk-body">
-            First, we will confirm we have all the information we need from you. We will contact you if we need any more details to continue with your application.</p>
+            First, we will confirm we have all the information we need from you. We will contact you if we need any more details.</p>
 
             <p class="govuk-body">
-            We will then send you a form called 'How your disability affects you'.
+              Then you need to fill in a form called 'How your disability affects you'.
             </P>
 
-
-          {% from "govuk/components/radios/macro.njk" import govukRadios %}
-
-          {{ govukRadios({
-            name: "previous-online-claim",
-            fieldset: {
-              legend: {
-                text: "Have you previously claimed PIP online?",
-                isPageHeading: true,
-                classes: "govuk-fieldset__legend--m"
-              }
-            },
-            items: [
-              {
-                value: "yes",
-                text: "Yes"
-              },
-              {
-                value: "no",
-                text: "No"
-              }
-            ]
-          }) }}
-
             {{ govukButton({
-              text: "Continue"
+              text: "Save and continue"
             }) }}
 
       </form>

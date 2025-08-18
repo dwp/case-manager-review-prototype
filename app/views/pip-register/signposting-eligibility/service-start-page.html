@@ -16,9 +16,9 @@
       <form action="#" method="post" method="post">
 
       <h1 class="govuk-heading-xl">
-        Hello, you're through to the new applications line for Personal Independence Payment 
+        Hello, you're through to the new applications line for Personal Independence Payment (PIP)
       </h1>
-      <p class="govuk-body">My name is [agent's first name]</p>
+      <p class="govuk-body">My name is [agent's first name].</p>
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
@@ -26,7 +26,7 @@
           name: "new-app",
           fieldset: {
             legend: {
-              text: "Are you calling to start a new application for PIP?",
+              text: "Are you calling to start a new PIP application?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }

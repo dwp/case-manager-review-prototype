@@ -24,7 +24,7 @@
       </h1>
 
       <h2 class="govuk-heading-m">
-        Nationality, residence and living abroad
+        Nationality, work and residence
       </h2>
 
       {{ govukSummaryList({
@@ -82,7 +82,7 @@
           },
         {
           key: {
-            text: "Work or insurance outside UK"
+            text: "Work or insurance in EU, Switzerland, Norway, Iceland or Liechtenstein"
           },
           value: {
             text: "Yes / No"
@@ -99,7 +99,7 @@
         },
         {
           key: {
-            text: "Pensions or benefits outside UK"
+            text: "Pensions or benefits in EU, Switzerland, Norway, Iceland or Liechtenstein"
           },
           value: {
             text: "Yes / No"
@@ -121,8 +121,10 @@
 
         {{ govukButton({
           text: "Save and continue",
-          href: "/pip-register/healthcare-professional/start"
+          href: "/pip-register/healthcare-professional/consent"
         }) }}
+
+        <p><a href="/pip-register/task-list-as-done">Go to task list</a></p>
 
       </form>
 

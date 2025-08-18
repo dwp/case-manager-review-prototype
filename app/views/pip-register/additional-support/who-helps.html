@@ -23,7 +23,7 @@
       <form class="form" action="#" method="post">
 
         <h1 class="govuk-heading-xl">
-          Who is helping you? 
+          What is their relationship to you?
         </h1>
 
         {{ govukRadios({
@@ -31,27 +31,27 @@
           items: [
             {
               value: "family",
-              text: "A family member"
+              text: "Family member"
             },
             {
               value: "friend",
-              text: "A friend"
+              text: "Friend"
             },
             {
               value: "carer",
-              text: "A carer"
+              text: "Carer"
             },
             {
               value: "hp",
-              text: "A health professional"
+              text: "Health professional"
             },
             {
               value: "organisation",
-              text: "A support organisation"
+              text: "Support organisation"
             },
             {
               value: "council",
-              text: "Your local council"
+              text: "Local council"
             },
             {
               value: "other",
@@ -61,7 +61,7 @@
         }) }}
 
         {{ govukButton({
-          text: "Continue"
+          text: "Save and continue"
         }) }}
 
 

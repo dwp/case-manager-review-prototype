@@ -15,13 +15,11 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="#" method="post" novalidate>
-
         {% from "govuk/components/button/macro.njk" import govukButton %}
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
-        
-        <form class="form">
-        
+
+        {% if (data['regScena'] == "citizen" ) %}
+        <form class="form" action="#" method="post">
         {{ govukRadios({
         name: "written-format",
         fieldset: {
@@ -64,11 +62,61 @@
         }) }}
         
         {{ govukButton({
-        text: "Continue"
+        text: "Save and continue"
         }) }}
-        </form>
 
-      </form>
+        <p><a href="/pip-register/task-list-cd-done">Go to task list</a></p>
+        </form>
+        {% else %}
+        <form class="form" action="#" method="post">
+          {{ govukRadios({
+          name: "written-format",
+          fieldset: {
+          legend: {
+            text: "When we write to you, we'll usually send you a printed letter",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+          },
+          hint: {
+            html: "<p class='govuk-body'>Our standard letters are in Arial font size 12.<p><h2 class='govuk-heading-m'>Would you like us to send your letters in another format?</h2>"  
+            },
+          items: [
+          {
+            value: "Standard letter (12-point Arial text on white paper)",
+            text: "Standard letter (12-point Arial text on white paper)"
+          },
+          {
+            value: "Letter with changes to font, paper colour, spacing or print size",
+            text: "Letter with changes to font, paper colour, spacing or print size"
+          },
+          {
+            value: "Audio",
+            text: "Audio"
+          },
+          {
+            value: "Braille",
+            text: "Braille"
+          },
+          {
+            value: "British Sign Language video",
+            text: "British Sign Language video"
+          },
+          {
+            value: "Email",
+            text: "Email"
+          }
+          
+          ]
+          }) }}
+          
+          {{ govukButton({
+          text: "Save and continue"
+          }) }}
+  
+          <p><a href="/pip-register/task-list-cd-done">Go to task list</a></p>
+          </form>
+        {% endif %}
     </div>
   </div>
 {% endblock %}

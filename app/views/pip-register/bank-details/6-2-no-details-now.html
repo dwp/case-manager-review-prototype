@@ -23,15 +23,15 @@
       <form action="#" method="post" method="post">
 
           <h1 class="govuk-heading-xl">
-            You can continue without providing account details now
+            You can continue without telling us your bank details now
           </h1>
 
-        <p class="govuk-body">And you can use the phone number I gave you earlier to provide this information or tell the DWP if you do not have an account.</p>
+        <p class="govuk-body">When you finish your application we will send you an email with the phone number you need to call to give your account details. You should also call this number if you do not have an account.</p>
 
         {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
 
         {{ govukWarningText({
-          text: "You won't be able to receive any payments until you provide your account details.",
+          text: "You won't be able to get any payments until you tell us your account details.",
           iconFallbackText: "Warning"
         }) }}
 
@@ -39,10 +39,10 @@
           {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
             {{ govukButton({
-              text: "Continue",
+              text: "Save and continue",
               href: "/pip-register/bank-details/bank-details-summary"
             }) }}
-
+            <p><a href="/pip-register/task-list-accom-done">Go to task list</a></p> 
       </form>
 
     </div>

@@ -24,6 +24,8 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
+    <!--citizen-->
+    {% if (data['regScena'] == "citizen" ) %}
     <form class="form" action="/contact" method="post">
 
       {{ govukRadios({
@@ -59,10 +61,60 @@
       }) }}
 
       {{ govukButton({
-      text: "Continue"
+      text: "Save and continue"
       }) }}
+
+      <p><a href="/pip-register/task-list-cd-done">Go to task list</a></p>
     
     </form> 
+
+    <!--agent-->
+    {% else %}
+    <form class="form" action="/contact" method="post">
+
+      {{ govukRadios({
+      name: "contact",
+      fieldset: {
+      legend: {
+      text: "If we need to speak to you about your application, we'll usually contact you by phone",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--xl"
+      }
+      },
+        hint: {
+        html: "<p class='govuk-body'>Do you need us to call you on a Relay UK or textphone number, or use a signing or lipspeaking service?</p>"  
+        },
+          items: [
+          {
+          value: "Standard phone call",
+          text: "No, standard phone call"
+          },
+          {
+            divider: "or"
+          },
+          {
+          value: "Relay UK",
+          text: "Relay UK"
+          },
+          {
+          value: "Textphone",
+          text: "Textphone"
+          },
+          {
+          value: "Signing or lipspeaking",
+          text: "Signing or lipspeaking"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+      text: "Save and continue"
+      }) }}
+
+      <p><a href="/pip-register/task-list-cd-done">Go to task list</a></p>
+    
+    </form> 
+    {% endif %}
 
   </div>
 </div> 

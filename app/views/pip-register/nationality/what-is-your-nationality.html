@@ -26,10 +26,6 @@
   <div class="govuk-grid-column-two-thirds">
 
     <form class="form" action="#" method="post">
-
-  <div class="govuk-grid-row">
-
-      <form class="form" action="#" method="post">
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
         {% from "govuk/components/input/macro.njk" import govukInput %}
 
@@ -50,16 +46,12 @@
             value: "british",
             text: "British",
             hint: {
-              text: "Includes Northern Irish, English, Scottish and Welsh."
+              text: "Includes English, Scottish, Welsh and Northern Irish."
             }
           },
           {
             value: "irish",
             text: "Irish"
-          },
-          {
-            value: "eea",
-            text: "A nationality of the European Economic Area (EEA) or Switzerland"
           },
           {
             value: "other",
@@ -69,9 +61,20 @@
         }) }}
 
           {{ govukButton({
-            text: "Continue"
+            text: "Save and continue"
           }) }}
 
+          <!--
+          
+          ,
+          {
+            value: "eea",
+            text: "A nationality of the European Economic Area (EEA) or Switzerland"
+          },
+          
+          -->
+
+          <p><a href="/pip-register/task-list-as-done">Go to task list</a></p>
       </form>
       {% endblock %}
 

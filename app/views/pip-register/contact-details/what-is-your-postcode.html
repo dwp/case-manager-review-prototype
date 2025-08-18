@@ -23,14 +23,51 @@
     <div class="govuk-grid-column-two-thirds">
       <form class="form" action="#" method="post">
         <div class="govuk-width-container">
-
+          {% if (data['regScena'] == "citizen" ) %}
+          <!-- Citizen variant -->
           {% call govukFieldset({
             legend: {
-              text: "What is your home postcode and building number?",
+              text: "Find your home address",
               classes: "govuk-fieldset__legend--xl",
               isPageHeading: true
             }
           }) %}
+
+          <p class="govuk-body govuk-!-margin-bottom-6"> If you do not have a fixed address, <a href="correspondence-postcode" class="govuk-link">skip this question</a>.</p>
+
+
+          {{ govukInput({
+            label: {
+              text: "Postcode"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "postcode",
+            name: "postcode"
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "Building number or name (optional)"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "searchString",
+            name: "searchString"
+          }) }}
+          {% endcall %}
+          <p class="govuk-body govuk-!-margin-bottom-6"><a href="correspondence-postcode" class="govuk-link">Link for no fixed address</a></p>
+          <!-- End citizen variant-->
+
+          <!-- Agent variant -->
+          {% else %}
+          {% call govukFieldset({
+            legend: {
+              text: "What is the postcode and building number of your address?",
+              classes: "govuk-fieldset__legend--xl",
+              isPageHeading: true
+            }
+          }) %}
+
+    
 
 
           {{ govukInput({
@@ -52,11 +89,19 @@
           }) }}
           {% endcall %}
 
+          {% endif %}
+           <!-- End agent variant -->
+           {% if (data['regScena'] == "citizen" ) %}
+           {% else %}
+           <p class="govuk-body govuk-!-margin-bottom-6"><a href="correspondence-postcode" class="govuk-link">Applicant does not have a fixed address</a></p>
+           {% endif %}
           {{ govukButton({
           text: "Find address"
           }) }}
 
-          <p class="govuk-body govuk-!-margin-bottom-3"><a href="enter-address-manually-country" class="govuk-link">Enter address manually</a></p>
+          <p class="govuk-body govuk-!-margin-bottom-6"><a href="enter-address-manually-country" class="govuk-link">Enter address manually</a></p>
+
+          <p><a href="/pip-register/task-list">Go to task list</a></p>
 
         </div>
       </form>
