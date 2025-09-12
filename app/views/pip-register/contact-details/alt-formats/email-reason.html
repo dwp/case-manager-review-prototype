@@ -25,21 +25,29 @@
 
     <form class="form" action="#" method="post">
 
-      {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+     {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
-        {{ govukCharacterCount({
-          name: "moreDetail",
-          id: "more-detail",
-          maxlength: 240,
-          label: {
-            text: "Why do you need us to [contact you by email/send you PDFs] instead of printed letters?",
-            classes: "govuk-label--xl",
-            isPageHeading: true
-          },
-          hint: {
-            text: "Any information you give us will help our 'alternative formats' team assess your request."
-          }
-        }) }}
+{{ govukRadios({
+  name: "When we send you an email, do you need us to attach the letter as a Word document?",
+  fieldset: {
+    legend: {
+      text: "When we send you an email, do you need us to attach the letter as a Word document?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "Yes",
+      text: "Yes"
+    },
+    {
+      value: "No",
+      text: "No"
+    }
+  
+  ]
+}) }}
 
       {{ govukButton({
         text: "Save and continue"

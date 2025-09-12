@@ -28,11 +28,22 @@ href: "javascript:window.history.back()"
       You need to call the enquiry line.
     </p>
 
+    
+
     {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 
     {{ govukInsetText({
       text: "Enquiry line number: 0800 121 4433"
     }) }}
+
+    <!-- {% from "govuk/components/button/macro.njk" import govukButton %}
+
+    {{ govukButton({
+      text: "Start new application",
+      href: "/pip-register/signposting-eligibility/service-start-page.html",
+      isStartButton: true
+    }) }} -->
+
     <!--
 
     {{ govukDetails({

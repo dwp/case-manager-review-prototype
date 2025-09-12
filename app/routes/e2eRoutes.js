@@ -710,7 +710,6 @@ router.post('/HCPYesNo', function(request, response) {
 })
 
 
-
    //start ---> healthcare-prof-type
    router.post('/pip-register/healthcare-professional/start', function(request, response) {
     response.redirect('/pip-register/hospital-dates/5-1-why-we-need-details')

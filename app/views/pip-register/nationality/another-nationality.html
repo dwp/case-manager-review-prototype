@@ -37,7 +37,13 @@
           <label class="govuk-label" for="sort">
             Choose nationality
           </label>
-          <select id="country" name="another-nationality" class="form-control">
+
+          <div id="event-name-hint" class="govuk-hint">
+            Enter the nationality and select it from the list.
+          </div>
+          <select id="country" name="another-nationality">
+            <option value=""></option>
+
             <option value="Afghanistan">Afghan</option>
             <option value="Albania">Albanian</option>
             <option value="Algeria">Algerian</option>

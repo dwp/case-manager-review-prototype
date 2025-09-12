@@ -26,28 +26,33 @@ href: "javascript:window.history.back()"
       </h1>
       {{ govukInsetText({
         classes: 'colour-blue',
-          text: "Action: Check the applicant's Searchlight record for a Special Customer Record, an appointee, or an Armed Forces Independence Payment claim."
+          text: "Action: Check the applicant's Searchlight record for a Special Customer Record or an appointee"
       }) }}
 
-      {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+  
 
-      {{ govukCheckboxes({
-        name: "waste",
-        items: [
-          {
-            value: "The applicant has a Special Customer Record",
-            text: "The applicant has a Special Customer Record"
-          },
-          {
-            value: "The applicant has an appointee on Searchlight",
-            text: "The applicant has an appointee"
-          },
-          {
-            value: "The applicant gets Armed Forces Independence Payment",
-            text: "The applicant gets Armed Forces Independence Payment"
-          }
-        ]
-      }) }}
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  name: "whereDoYouLive",
+  fieldset: {
+    legend: {
+      text: "",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "The applicant has a Special Customer Record",
+      text: "The applicant has a Special Customer Record"
+    },
+    {
+      value: "The applicant has an appointee",
+      text: "The applicant has an appointee"
+    }
+  ]
+}) }}
 
       <!--
       {{ govukInsetText({

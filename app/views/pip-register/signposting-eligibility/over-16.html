@@ -20,40 +20,37 @@ href: "javascript:window.history.back()"
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form action="#" method="post" method="post">
 
-    {% from "govuk/components/radios/macro.njk" import govukRadios %}
+      <form class="form" action="#" method="post">
 
-    {{ govukRadios({
-      name: "age",
-      fieldset: {
-        legend: {
-          text: "Are you over 16 years old, and under State Pension age?",
-          isPageHeading: true,
-          classes: "govuk-fieldset__legend--xl"
-        }
-      },
-      items: [
-        {
-          value: "yes",
-          text: "Yes"
-        },
-        {
-          value: "no-under-16",
-          text: "No, under 16"
-        },
-        {
-          value: "no-over-spa",
-          text: "No, over State Pension age"
-        }
-      ]
-    }) }}
+        
+        {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
 
-    {{ govukButton({
-      text: "Continue"
-    }) }}
+        {{ govukDateInput({
+          id: "passport-issued",
+          namePrefix: "passport-issued",
+          fieldset: {
+            legend: {
+              text: " What is your date of birth?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+            text: "For example, 31 3 1980."
+          }
+        }) }}
+
+        <a href="dla-now.html" class="govuk-button govuk-button" data-module="govuk-button">
+         Save and continue
+      </a>
+
+  
 
   </form>
+
+  <p><a href="/pip-register/task-list-as-done">Go to task list</a></p>
+
 
   </div>
 </div>

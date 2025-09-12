@@ -35,6 +35,18 @@ href: "javascript:window.history.back()"
 
   </form>
 
+  <h3 class="govuk-heading-s">
+    Start new application
+  </h3>
+
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Start now",
+  href: "service-start-page.html",
+  isStartButton: true
+}) }}
+
   </div>
 </div>
 

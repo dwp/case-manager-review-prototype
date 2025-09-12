@@ -28,7 +28,7 @@
 
       <form class="form" action="#" method="post">
         <div class="govuk-width-container">
-          <p>3 addresses found for <b>Guy's Hospital</b> and <b>SE1 9RT</b>. <a href="/pip-register/hospital-dates/5-6-postcode">Search again</a></p>
+          <p><a href="/pip-register/hospital-dates/5-6-postcode">Search again</a></p>
 
         {{ govukRadios({
           name: "select-an-address",
@@ -54,6 +54,9 @@
         {{ govukButton({
           text: "Confirm address"
         }) }}
+
+        <p class="govuk-body govuk-!-margin-bottom-6"><a href="/ucd-register/hospital-dates/5-6-postcode" class="govuk-link">Use a different address</a></p>
+
 
       <p class="govuk-body govuk-!-margin-bottom-6"><a href="/ucd-register/hospital-dates/5-17-hospital-address-manually" class="govuk-link">Enter address manually</a></p>
       <p><a href="/pip-register/task-list-hcp-done">Go to task list</a></p> 

@@ -30,4 +30,17 @@
    </div>
 </div>
 
+<h3 class="govuk-heading-s">
+  Start new application
+</h3>
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+text: "Start now",
+href: "service-start-page.html",
+isStartButton: true
+}) }}
+
+
 {% endblock %}
