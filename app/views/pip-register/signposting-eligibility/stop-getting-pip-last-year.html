@@ -42,19 +42,15 @@ href: "javascript:window.history.back()"
        }) }}
 
        <p class="govuk-body">
-        If you still want to apply for PIP, we can <a href="/pip-register/signposting-eligibility/service-start-page" class="govuk-link">continue with your application</a>.
+        If you still want to apply for PIP, we can <a href="what-is-ni-number" class="govuk-link">continue with your application</a>.
       </p>
 
   </form>
 
-  <h3 class="govuk-heading-s">
-    Start new application
-  </h3>
-
   {% from "govuk/components/button/macro.njk" import govukButton %}
 
 {{ govukButton({
-  text: "Start now",
+  text: "Start new application",
   href: "service-start-page.html",
   isStartButton: true
 }) }}

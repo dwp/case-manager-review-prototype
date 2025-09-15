@@ -36,6 +36,16 @@ href: "javascript:window.history.back()"
       text: "Enquiry line number: 0800 121 4433"
     }) }}
 
+
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Start new application",
+  href: "service-start-page.html",
+  isStartButton: true
+}) }}
+
+
     <!-- {% from "govuk/components/button/macro.njk" import govukButton %}
 
     {{ govukButton({

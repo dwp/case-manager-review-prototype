@@ -12,7 +12,8 @@
   {{ govukBackLink({
   text: "Back",
   href: "javascript:window.history.back()"
-}) }}
+}) }}dev
+
 {% endblock %}
 
 {% block content %}
@@ -26,10 +27,13 @@
               name: "dlaNow",
               fieldset: {
                 legend: {
-                  text: "Are you getting Disability Living Allowance now?",
+                  text: "Are you getting Disability Living Allowance (DLA) now?",
                   isPageHeading: true,
                   classes: "govuk-fieldset__legend--xl"
                 }
+                },
+  hint: {
+    text: "If you get DLA, you may have received a letter telling you to apply for PIP."
               },
               items: [
                 {
