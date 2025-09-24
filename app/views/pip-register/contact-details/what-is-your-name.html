@@ -57,10 +57,18 @@
 
         {% endcall %}
 
+  <h3 class="govuk-heading-s">
+    Start new application
+  </h3>
 
-        {{ govukButton({
-          text: "Save and continue"
-        }) }}
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Start now",
+  href: "what-is-your-postcode.html",
+  isStartButton: true
+}) }}
+
 
         <p><a href="/pip-register/task-list">Go to task list</a></p>
 

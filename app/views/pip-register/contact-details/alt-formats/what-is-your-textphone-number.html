@@ -27,8 +27,11 @@
     {{ govukInput({
       label: {
         text: "What is your Textphone number?",
-        classes: "govuk-label--xl",
+        classes: "govuk-label--l",
         isPageHeading: true
+      },
+      hint: {
+        html: '<p class="govuk-body">If DWP need to use a prefix such as 18001, include it at the beginning of your textphone number.</p>'
       },
       classes: "govuk-!-width-two-thirds",
       id: "event-name",

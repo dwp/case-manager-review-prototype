@@ -20,32 +20,34 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl">
-        Are you able to complete online and paper forms without getting help from another person?
+      <h1 class="govuk-heading-l">
+        Are you able to fill in forms?
       </h1>
 
       <form class="form" action="#" method="post">
 
+        <div class="govuk-hint">
+          This includes online and paper forms.
+        </div>
         {{ govukRadios({
             name: "forms",
             fieldset: {
               legend: {
-
-                isPageHeading: true,
-                classes: "govuk-fieldset__legend--l"
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
               }
             },
             items: [
               {
-                value: "yes",
-                text: "Yes"
+          value: "yes",
+          text: "Yes"
               },
               {
-                value: "no",
-                text: "No"
+          value: "no",
+          text: "No"
               }
             ]
-          }) }}
+        }) }}
 
           {{ govukButton({
             text: "Save and continue"

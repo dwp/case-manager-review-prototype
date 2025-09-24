@@ -24,12 +24,30 @@
       </h1>
 
       <h2 class="govuk-heading-m">
-        Contact details
+        Contact information
       </h2>
 
       {{ govukSummaryList({
         rows: [
-          {
+
+        {
+            key: {
+              text: "Date of birth"
+            },
+            value: {
+              text: "21/05/1979"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/pip-register/contact-details/what-is-your-dob",
+                  text: "Change",
+                  visuallyHiddenText: "Question 1"
+                }
+              ]
+            }
+        },
+        {
             key: {
               text: "Name"
             },
@@ -46,143 +64,7 @@
               ]
             }
           },
-          {
-            key: {
-              text: "Same name for contact"
-            },
-            value: {
-              text: "Yes / No"
-            },
-            actions: {
-              items: [
-                {
-                  href: "/pip-register/contact-details/what-is-your-name#no",
-                  text: "Change",
-                  visuallyHiddenText: "Question 1"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Preferred name"
-            },
-            value: {
-              text: "Eliza Smith"
-            },
-            actions: {
-              items: [
-                {
-                  href: "/pip-register/contact-details/what-is-your-name",
-                  text: "Change",
-                  visuallyHiddenText: "Question 1"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Date of birth"
-            },
-            value: {
-              text: "21/05/1979"
-            },
-            actions: {
-              items: [
-                {
-                  href: "/pip-register/contact-details/what-is-your-dob",
-                  text: "Change",
-                  visuallyHiddenText: "Question 1"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Need textphone or interpreter"
-            },
-            value: {
-              text: "No / Textphone / Interpreter"
-            },
-            actions: {
-              items: [
-                {
-                  href: "/pip-register/contact-details/change-what-is-your-phone-number",
-                  text: "Change",
-                  visuallyHiddenText: "Question 2"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Textphone number"
-            },
-            value: {
-              text: "18002 876546"
-            },
-            actions: {
-              items: [
-                {
-                  href: "/pip-register/contact-details/change-what-is-your-phone-number",
-                  text: "Change",
-                  visuallyHiddenText: "Question 2"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Mobile phone number"
-            },
-            value: {
-              html: "<p class='govuk-body'>07700 900457</p>"
-            },
-            actions: {
-              items: [
-                {
-                  href: "/pip-register/contact-details/what-is-your-phone-number",
-                  text: "Change",
-                  visuallyHiddenText: "Question 2"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Other phone number"
-            },
-            value: {
-              html: "<p class='govuk-body'>01622 563219</p>"
-            },
-            actions: {
-              items: [
-                {
-                  href: "/pip-register/contact-details/what-is-your-phone-number",
-                  text: "Change",
-                  visuallyHiddenText: "Question 2"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Text message updates"
-            },
-            value: {
-              text: "Yes"
-            },
-            actions: {
-              items: [
-                {
-                  href: "/pip-register/contact-details/do-you-want-to-receive-text-updates",
-                  text: "Change",
-                  visuallyHiddenText: "Question 2"
-                }
-              ]
-            }
-          },
-          {
+           {
             key: {
               text: "Address"
             },
@@ -199,6 +81,7 @@
               ]
             }
           },
+
           {
             key: {
               text: "Same address for letters"
@@ -216,6 +99,7 @@
               ]
             }
           },
+
           {
             key: {
               text: "Address for letters"
@@ -233,12 +117,13 @@
               ]
             }
           },
+
           {
             key: {
               text: "Alternative letter format"
             },
             value: {
-              text: "No / Large print / Audio CD / Braille type 1 / Email / PDF"
+              text: "Bold text / Double line spacing"
             },
             actions: {
               items: [
@@ -250,63 +135,264 @@
               ]
             }
           },
-          {
+
+           {
             key: {
-              text: "Large print letter size"
+              text: "Paper colour for letters"
             },
             value: {
-              text: "16 / [size entered in conditional reveal textbox]"
+              text: "Peach"
             },
             actions: {
               items: [
                 {
-                  href: "/pip-register/contact-details/correspondence-address",
+                  href: "/pip-register/contact-details/what-is-your-name",
                   text: "Change",
-                  visuallyHiddenText: "Question 3"
+                  visuallyHiddenText: "Question 1"
                 }
               ]
             }
           },
-          {
+
+           {
             key: {
-              text: "Need for email"
+              text: "Print size for letters"
             },
             value: {
-              text: "[text entered in text area]"
+              text: "Large"
             },
             actions: {
               items: [
                 {
-                  href: "/pip-register/contact-details/correspondence-address",
+                  href: "/pip-register/contact-details/what-is-your-name",
                   text: "Change",
-                  visuallyHiddenText: "Question 3"
+                  visuallyHiddenText: "Question 1"
                 }
               ]
             }
           },
-          {
+
+           {
             key: {
-              text: "Need for PDF"
+              text: "Audio format for letters"
             },
             value: {
-              text: "[text entered in text area]"
+              text: "MP3 by email"
             },
             actions: {
               items: [
                 {
-                  href: "/pip-register/contact-details/correspondence-address",
+                  href: "/pip-register/contact-details/what-is-your-name",
                   text: "Change",
-                  visuallyHiddenText: "Question 3"
+                  visuallyHiddenText: "Question 1"
                 }
               ]
             }
           },
+
           {
             key: {
               text: "Email address"
             },
             value: {
-              text: "example@gmail.com"
+              text: "example@email.com"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/pip-register/contact-details/what-is-your-email",
+                  text: "Change",
+                  visuallyHiddenText: "Question 1"
+                }
+              ]
+            }
+          },
+          
+
+          {
+            key: {
+              text: "Braile type for letters"
+            },
+            value: {
+              text: "uncontracted braille (grade 1)"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/pip-register/contact-details/what-is-your-email",
+                  text: "Change",
+                  visuallyHiddenText: "Question 1"
+                }
+              ]
+            }
+          },
+
+{
+            key: {
+              text: "Video format for letters"
+            },
+            value: {
+              text: "DVD"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/pip-register/contact-details/what-video-format-do-you-need",
+                  text: "Change",
+                  visuallyHiddenText: "Question 1"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Alternative format for phone calls"
+            },
+            value: {
+              text: "example"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/pip-register/contact-details/what-video-format-do-you-need",
+                  text: "Change",
+                  visuallyHiddenText: "Question 1"
+                }
+              ]
+            }
+          },
+
+           {
+            key: {
+              text: "Textphone number"
+            },
+            value: {
+              text: "18002 876546"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/pip-register/contact-details/change-what-is-your-phone-number",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Relay UK number"
+            },
+            value: {
+              text: "18002 876546"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/pip-register/contact-details/change-what-is-your-re",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Signing or lipspeaking service for phone calls"
+            },
+            value: {
+              text: "Yes / No"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/pip-register/contact-details/what-is-your-name#no",
+                  text: "Change",
+                  visuallyHiddenText: "Question 1"
+                }
+              ]
+            }
+          },
+         
+         
+          {
+            key: {
+              text: "Other contact needs"
+            },
+            value: {
+              text: "Example"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/pip-register/contact-details/what-is-your-name",
+                  text: "Change",
+                  visuallyHiddenText: "Question 1"
+                }
+              ]
+            }
+          },
+      
+
+
+
+          {
+            key: {
+              text: "Text message updates"
+            },
+            value: {
+              text: "Yes / No"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/pip-register/contact-details/change-what-is-your-phone-number",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          },
+         
+          {
+            key: {
+              text: "Mobile phone number"
+            },
+            value: {
+              html: "<p class='govuk-body'>07700 900457</p>"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/pip-register/contact-details/what-is-your-phone-number",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          
+
+
+          },
+          
+          
+          
+          
+          
+       
+          
+
+         
+          
+          {
+             key: {
+              text: "Other phone number"
+            },
+            value: {
+              html: "<p class='govuk-body'>01622 563219</p>"
             },
             actions: {
               items: [
