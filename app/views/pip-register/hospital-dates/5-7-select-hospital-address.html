@@ -22,43 +22,30 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl">
-        Can you confirm the hospital's address?
+      <h1 class="govuk-heading-l">
+        Can you confirm the address?
       </h1>
 
       <form class="form" action="#" method="post">
         <div class="govuk-width-container">
           <p><a href="/pip-register/hospital-dates/5-6-postcode">Search again</a></p>
 
-        {{ govukRadios({
-          name: "select-an-address",
-          items: [
-          {
-            value: "Great Maze Pond, London SE1 9RT",
-            text: "Guy's Hospital, Great Maze Pond, London SE1 9RT"
-            },
-            {
-            value: "Westminster Bridge Road, London SE1 9RT",
-            text: "Westminster Bridge Road, London SE1 9RT"
-            },
-            {
-            value: "Evelina London Children's Hospital, Westminster Bridge Road, London SE1 9RT",
-            text: "Evelina London Children's Hospital, Westminster Bridge Road, London SE1 9RT"
-            }
-          ]
-        }) }}
-
+       <div class="govuk-inset-text">
+        1 Washington Street<br>Worcester<br> WR1 1NL
       </div>
 
+      </div>
 
         {{ govukButton({
           text: "Confirm address"
         }) }}
 
-        <p class="govuk-body govuk-!-margin-bottom-6"><a href="/ucd-register/hospital-dates/5-6-postcode" class="govuk-link">Use a different address</a></p>
+        <p class="govuk-body govuk-!-margin-bottom-6"><a href="/5-6-postcode" class="govuk-link">Use a different address</a></p>
 
 
-      <p class="govuk-body govuk-!-margin-bottom-6"><a href="/ucd-register/hospital-dates/5-17-hospital-address-manually" class="govuk-link">Enter address manually</a></p>
+      <p class="govuk-body govuk-!-margin-bottom-6"><a href="/pip-register/hospital-dates/5-17-hospital-address-manually" class="govuk-link">Enter address manually</a></p>
+
+      
       <p><a href="/pip-register/task-list-hcp-done">Go to task list</a></p> 
       </form>
 
