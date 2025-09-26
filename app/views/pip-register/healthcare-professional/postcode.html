@@ -10,12 +10,7 @@
   Question page template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
-{% block beforeContent %}
-  {{ govukBackLink({
-  text: "Back",
-  href: "javascript:window.history.back()"
-}) }}
-{% endblock %}
+
 
 {% block content %}
 
@@ -28,7 +23,7 @@
           {% call govukFieldset({
             legend: {
               text: "Find their address",
-              classes: "govuk-fieldset__legend--xl",
+              classes: "govuk-fieldset__legend--l",
               isPageHeading: true
             }
           }) %}
@@ -73,7 +68,7 @@
           {% call govukFieldset({
             legend: {
               text: "What is the postcode and building number of their address?",
-              classes: "govuk-fieldset__legend--xl",
+              classes: "govuk-fieldset__legend--l",
               isPageHeading: true
             }
           }) %}

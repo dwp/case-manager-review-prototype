@@ -1,5 +1,8 @@
 {% if (data['regScena'] == "agent" ) %}
     {% extends "layouts/main.html" %}
+
+
+
 {% else %}
     {% extends "layouts/main-gov.html" %}
 {% endif %}
@@ -18,7 +21,7 @@
     text: "Back"
   }) }}
 
-  <a style=" float:right; text-align: right; display: inline-block; margin-top: 0.5rem;"  href="radios.html" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  <a style=" float:right; text-align: right;  margin-top: 0.5rem;"  href="radios.html" class="govuk-button govuk-button--secondary" data-module="govuk-button">
     Stop this application
 </a>
 

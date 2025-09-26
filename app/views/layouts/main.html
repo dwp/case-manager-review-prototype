@@ -12,6 +12,8 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
     {% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
      
     {% from "internal-service-header/macro.njk" import dwpHeader %}
+   
+   
     {% block header %}
       {{ dwpHeader({
       name: "Personal Independence Payment",
@@ -20,8 +22,30 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
       actionHref: "/pip-service-home",
       container: true
       }) }}
+
     {% endblock %}
      
+    {% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back"
+  }) }}
+
+   {% if data['declarationMade'] == 'true' %}
+  <a style=" float:right; text-align: right; margin-top: 0.5rem;"  href="radios.html" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+    Stop this application
+</a> 
+
+{% else %} 
+  <a style=" float:right; text-align: right; margin-top: 0.5rem;"  href="radios-pre.html" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+    Stop this application - PRE
+</a> 
+
+{% endif %}
+
+{% endblock %}
+     
+
+
     {% from "internal-service-footer/macro.njk" import dwpFooter %}
      
     {% block footer %}
