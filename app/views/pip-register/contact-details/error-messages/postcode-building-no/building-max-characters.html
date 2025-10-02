@@ -1,8 +1,11 @@
 {% if (data['regScena'] == "agent" ) %}
-    {% extends "layouts/main.html" %}
+    {% extends "../../layouts/main.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
 {% else %}
-    {% extends "layouts/main-gov.html" %}
+    {% extends "../../layouts/main.html" %}
 {% endif %}
+
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
 
