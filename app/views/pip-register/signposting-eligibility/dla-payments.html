@@ -4,16 +4,12 @@
     {% extends "layouts/main-gov.html" %}
 {% endif %}
 
+{% set isDeclarationPre = true %}
+
 {% block pageTitle %}
-  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+Question page template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
-{% block beforeContent %}
-  {{ govukBackLink({
-  text: "Back",
-  href: "javascript:window.history.back()"
-}) }}
-{% endblock %}
 
 {% block content %}
 

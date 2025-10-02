@@ -1,19 +1,11 @@
-{% if (data['regScena'] == "agent" ) %}
-    {% extends "layouts/main.html" %}
-{% else %}
-    {% extends "layouts/main-gov.html" %}
-{% endif %}
+{% extends "../../layouts/main.html" %}
+
+{% set isDeclarationPre = true %}
 
 {% block pageTitle %}
 Content page template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
-{% block beforeContent %}
-{{ govukBackLink({
-text: "Back",
-href: "javascript:window.history.back()"
-}) }}
-{% endblock %}
 
 {% block content %}
 

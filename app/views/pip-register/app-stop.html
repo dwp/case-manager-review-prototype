@@ -1,0 +1,68 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "layouts/main.html" %}
+{% else %}
+    {% extends "layouts/main-gov.html" %}
+{% endif %}
+
+
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="/HCPYesNo" method="post" novalidate>
+
+        {% if (data['regScena'] == "citizen" ) %}
+          <h1 class="govuk-heading-l">
+            Your health or care professionals
+          </h1>
+
+          <p>We may need to contact one of your health or care professionals for further information.</p>
+
+        {% else %}
+
+        <h1 class="govuk-heading-l">
+     Application stopped  
+        </h1>
+
+
+    
+        {% endif %}
+
+        {% if (data['regScena'] == "citizen" ) %}
+        <h1 class="govuk-heading-m">
+          Are there any health or care professionals that you would like to tell us about?
+        </h1>
+        {% else %}
+       
+        {% endif %}
+
+       
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Start new application",
+  href: "/pip-register/signposting-eligibility/service-start-page.html",
+  isStartButton: true
+}) }}
+
+        
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

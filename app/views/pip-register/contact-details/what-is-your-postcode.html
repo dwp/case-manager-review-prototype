@@ -10,12 +10,6 @@
   Question page template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
-{% block beforeContent %}
-  {{ govukBackLink({
-  text: "Back",
-  href: "javascript:window.history.back()"
-}) }}
-{% endblock %}
 
 {% block content %}
 
@@ -89,15 +83,16 @@
           }) }}
           {% endcall %}
 
-          {% endif %}
-           <!-- End agent variant -->
-           {% if (data['regScena'] == "citizen" ) %}
-           {% else %}
-           <p class="govuk-body govuk-!-margin-bottom-6"><a href="correspondence-postcode" class="govuk-link">Applicant does not have a fixed address</a></p>
+        
+        
+
+           
            {% endif %}
           {{ govukButton({
           text: "Find address"
           }) }}
+
+             <p class="govuk-body govuk-!-margin-bottom-6"><a href="correspondence-postcode" class="govuk-link">Applicant does not have a fixed address</a></p>
 
           <p class="govuk-body govuk-!-margin-bottom-6"><a href="enter-address-manually-country" class="govuk-link">Enter address manually</a></p>
 

@@ -197,7 +197,7 @@ router.post('/pip-register/declaration', function(request, response) {
 // What is your name
 
 router.post('/whatIsYourName', function(request, response) {
-  response.redirect('/pip-register/contact-details/what-is-your-dob')
+  response.redirect('/pip-register/contact-details/what-is-your-postcode')
 })
 
 //Do you have a previous surname?

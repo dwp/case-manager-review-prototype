@@ -1,7 +1,7 @@
 {% if (data['regScena'] == "agent" ) %}
-    {% extends "../../../layouts/main.html" %}
+    {% extends "layouts/main.html" %}
 {% else %}
-    {% extends "../../../layouts/main-gov.html" %}
+    {% extends "layouts/main-gov.html" %}
 {% endif %}
 
 {% block pageTitle %}
@@ -33,12 +33,7 @@
 
         <p>You cannot return to the applicant's answers after you do this. </p>
 
-    
-        {{ govukInsetText({
-          classes: 'colour-blue',
-            text: "Action: Create a new application in PIPCS before you confirm."
-        }) }}
-         
+
   
        
         {% endif %}
@@ -49,21 +44,37 @@
             
             </legend>
            
-            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses">
-                <label class="govuk-label govuk-checkboxes__label" for="waste">
-                  I have created an application in PIPCS
-                </label>
+
               </div>
            
             </div>
           </fieldset>
         </div>
 
-       
+       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
-        <a href="app-stop.html" role="button" draggable="false" class="govuk-button govuk-button" data-module="govuk-button">
+{{ govukRadios({
+  name: "StopApplication",
+  fieldset: {
+    legend: {
+      text: "",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "Yes",
+      text: "Yes"
+    },
+    {
+      value: "No",
+      text: "No"
+    }
+  ]
+}) }}
+
+        <a href="/pip-register/app-stop.html" role="button" draggable="false" class="govuk-button govuk-button" data-module="govuk-button">
           Confirm and stop application
       </a>
         

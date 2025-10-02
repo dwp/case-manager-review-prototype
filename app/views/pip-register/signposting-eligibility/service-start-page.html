@@ -1,8 +1,10 @@
 {% if (data['regScena'] == "agent" ) %}
-    {% extends "layouts/main.html" %}
+    {% extends "../../layouts/main.html" %}
 {% else %}
-    {% extends "layouts/main-gov.html" %}
+    {% extends "../../layouts/main-gov.html" %}
 {% endif %}
+
+{% set isDeclarationPre = true %}
 
 {% block pageTitle %}
   Start page template – {{ serviceName }} – GOV.UK Prototype Kit

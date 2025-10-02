@@ -30,14 +30,14 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
     text: "Back"
   }) }}
 
-   {% if data['declarationMade'] == 'true' %}
-  <a style=" float:right; text-align: right; margin-top: 0.5rem;"  href="radios.html" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+   {% if isDeclarationPre == true %}
+  <a style=" float:right; text-align: right; margin-top: 0.5rem;"  href="../stop-app-pre.html" class="govuk-button govuk-button--secondary" data-module="govuk-button">
     Stop this application
 </a> 
 
 {% else %} 
-  <a style=" float:right; text-align: right; margin-top: 0.5rem;"  href="radios-pre.html" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-    Stop this application - PRE
+  <a style=" float:right; text-align: right; margin-top: 0.5rem;"  href="../stop-app.html" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+    Stop this application
 </a> 
 
 {% endif %}
