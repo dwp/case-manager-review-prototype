@@ -23,13 +23,13 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
       <h1 class="govuk-heading-l">
         I can see that someone else is appointed to manage your benefits
       </h1>
-      <p class="govuk-body">If you want to manage your own benefits instead, we can start your application now. Someone from DWP will then call you to check your details.</p>
+      <p class="govuk-body">That means your appointee needs to call us to apply for you instead.</p>
 
       {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 
       {{ govukInsetText({
         classes: 'colour-blue',
-          text: "Action: Register the application in PIPCS."
+          text: "Action: If the applicant still wants to continue, stop this application and continue in PIPCS. Follow the procedure for applicants whose appointee is not present."
       }) }}
 
   </form>
