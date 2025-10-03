@@ -1,23 +1,13 @@
 {% if (data['regScena'] == "agent" ) %}
-    {% extends "layouts/main.html" %}
+    {% extends "../../layouts/main.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
 {% else %}
-    {% extends "layouts/main-gov.html" %}
+    {% extends "../../layouts/main.html" %}
 {% endif %}
 
 {% block pageTitle %}
-  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
-{% endblock %}
-
-{% block head %}
-  {{ super() }}
-  <link rel="stylesheet" href="/public/sass/accessible-autocomplete.min.css">
-{% endblock %}
-
-{% block beforeContent %}
-  {{ govukBackLink({
-  text: "Back",
-  href: "javascript:window.history.back()"
-}) }}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
@@ -35,7 +25,7 @@
             legend: {
             text: "Have you left the UK for more than 4 weeks at a time, in the last 3 years?",
               isPageHeading: true,
-              classes: "govuk-fieldset__legend--xl"
+              classes: "govuk-fieldset__legend--l"
             }
           },
           items: [
