@@ -1,18 +1,13 @@
 {% if (data['regScena'] == "agent" ) %}
-    {% extends "layouts/main.html" %}
+    {% extends "../../layouts/main.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
 {% else %}
-    {% extends "layouts/main-gov.html" %}
+    {% extends "../../layouts/main.html" %}
 {% endif %}
 
 {% block pageTitle %}
-  Check your answers template – {{ serviceName }} – GOV.UK Prototype Kit
-{% endblock %}
-
-{% block beforeContent %}
-  {{ govukBackLink({
-    text: "Back",
-    href: "javascript:window.history.back()"
-  }) }}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
