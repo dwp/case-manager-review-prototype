@@ -1,7 +1,9 @@
 {% if (data['regScena'] == "agent" ) %}
-    {% extends "layouts/main.html" %}
+    {% extends "../../layouts/main.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
 {% else %}
-    {% extends "layouts/main-gov.html" %}
+    {% extends "../../layouts/main.html" %}
 {% endif %}
 
 {% block pageTitle %}
@@ -11,13 +13,6 @@
 {% block head %}
   {{ super() }}
   <link rel="stylesheet" href="/public/sass/accessible-autocomplete.min.css">
-{% endblock %}
-
-{% block beforeContent %}
-  {{ govukBackLink({
-  text: "Back",
-  href: "javascript:window.history.back()"
-}) }}
 {% endblock %}
 
 {% block content %}

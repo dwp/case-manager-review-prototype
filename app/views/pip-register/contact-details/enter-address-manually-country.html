@@ -44,6 +44,8 @@
   }
 }) %}
 
+
+
   {{ govukInput({
     label: {
       text: 'Address line 1'
@@ -91,21 +93,11 @@
     autocomplete: "postal-code"
   }) }}
 
-  {% from "govuk/components/select/macro.njk" import govukSelect %}
+  
 
-  {{ govukSelect({
-    id: "country",
-    name: "country",
-    label: {
-      text: "Country"
-    },
-    items: [
-      {
-        value: "select-country",
-        text: "Select a country"
-      }
-    ]
-  }) }}
+
+
+  
 
 {{ govukButton({
 text: "Confirm this address"
@@ -179,30 +171,28 @@ autocomplete: "postal-code"
 
 
 
-
-
 <div class="govuk-form-group">
-          <label class="govuk-label" for="sort">
-          Country
-          </label>
-
-      
-          <select id="country" name="another-nationality">
-            <option value=""></option>
-
-            <option value="Afghanistan">Afghan</option>
-            <option value="Albania">Albanian</option>
-            <option value="Algeria">Algerian</option>
-            <option value="American">American</option>
-            <option value="Andorran">Andorran</option>
-            <option value="Angolan">Angolan</option>
-            <option value="Anguillan">Anguillan</option>
-            <option value="Antigua and Barbuda">Citizen of Antigua and Barbuda</option>
-            <option value="Argentina">Argentine</option>
-            <option value="Armenia">Armenian</option>
-            <option value="Australia">Australian</option>
-            <option value="Austria">Austrian</option>
-            <option value="Azerbaijan">Azerbaijani</option>
+  <label class="govuk-label" for="sort">
+    Country
+  </label>
+  <div id="country-hint" class="govuk-hint">
+   Enter country and select it from the list
+  </div>
+  <select id="country" name="another-nationality" aria-describedby="country-hint">
+    <option value=""></option>
+    <option value="Afghanistan">Afghan</option>
+    <option value="Albania">Albanian</option>
+    <option value="Algeria">Algerian</option>
+    <option value="American">American</option>
+    <option value="Andorran">Andorran</option>
+    <option value="Angolan">Angolan</option>
+    <option value="Anguillan">Anguillan</option>
+    <option value="Antigua and Barbuda">Citizen of Antigua and Barbuda</option>
+    <option value="Argentina">Argentine</option>
+    <option value="Armenia">Armenian</option>
+    <option value="Australia">Australian</option>
+    <option value="Austria">Austrian</option>
+    <option value="Azerbaijan">Azerbaijani</option>
 
 
 
@@ -460,6 +450,10 @@ autocomplete: "postal-code"
         {{ govukButton({
 text: "Use this address"
 }) }}
+
+
+
+
 
 <div class="govuk-body govuk-!-margin-bottom-6">
 <a href="/pip-register/contact-details/what-is-your-postcode">Search by postcode</a>

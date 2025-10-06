@@ -1,9 +1,10 @@
 {% if (data['regScena'] == "agent" ) %}
-    {% extends "layouts/main.html" %}
+    {% extends "../../layouts/main-2.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
 {% else %}
-    {% extends "layouts/main-gov.html" %}
+    {% extends "../layouts/main-2.html" %}
 {% endif %}
-
 {% block pageTitle %}
   Task list template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
