@@ -11,12 +11,7 @@
   Check your answers template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
-{% block beforeContent %}
-  {{ govukBackLink({
-    text: "Back",
-    href: "javascript:window.history.back()"
-  }) }}
-{% endblock %}
+
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -84,6 +79,25 @@
               ]
             }
           },
+
+          {
+            key: {
+              text: "Textphone number"
+            },
+            value: {
+              text: "18002 876546"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/pip-register/contact-details/change-what-is-your-phone-number",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          },
+
           {
             key: {
               text: "Text message updates"
@@ -130,23 +144,6 @@
               items: [
                 {
                   href: "/pip-register/contact-details/what-is-your-phone-number",
-                  text: "Change",
-                  visuallyHiddenText: "Question 2"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Textphone number"
-            },
-            value: {
-              text: "18002 876546"
-            },
-            actions: {
-              items: [
-                {
-                  href: "/pip-register/contact-details/change-what-is-your-phone-number",
                   text: "Change",
                   visuallyHiddenText: "Question 2"
                 }

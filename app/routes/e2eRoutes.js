@@ -460,15 +460,16 @@ router.post('/pip-register/additional-support/support-with-help', function(reque
 // Would you like us to send your letters in another way, like larger text, audio or braille?
 router.post('/pip-register/contact-details/alt-formats/written-format', function(request, response) {
     var writtenFormat = request.session.data['written-format']
-    if (writtenFormat == 'Standard letter (12-point Arial text on white paper)'){
-        response.redirect('/pip-register/contact-details/alt-formats/how-should-we-contact-you.html')
-    } else if (writtenFormat == 'Letter with changes to font, paper colour, spacing or print size') {
+    console.log('writtenFormat:'+ writtenFormat)
+    if (writtenFormat === 'Standard letter (12-point Arial text on white paper)'){
+        response.redirect('/pip-register/contact-details/alt-formats/how-should-we-contact-you')
+    } else if (writtenFormat === 'Letter with changes to colour or print size') {
         response.redirect('/pip-register/contact-details/alt-formats/large-print')
-     } else if (writtenFormat == 'Audio') {
+     } else if (writtenFormat === 'Audio') {
         response.redirect('/pip-register/contact-details/alt-formats/what-type-of-audio-format')
-    } else if (writtenFormat == 'Braille') {
+    } else if (writtenFormat === 'Braille') {
         response.redirect('/pip-register/contact-details/alt-formats/what-type-of-braille-do-you-need')
-    } else if (writtenFormat == 'British Sign Language video') {
+    } else if (writtenFormat === 'British Sign Language video') {
       response.redirect('/pip-register/contact-details/alt-formats/what-video-format-do-you-need')
     } else if (writtenFormat == 'Email') {
         response.redirect('/pip-register/contact-details/alt-formats/email-reason')

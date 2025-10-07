@@ -25,24 +25,33 @@
       <form class="form" action="#" method="post">
         <h1 class="govuk-heading-l">When you were outside the UK in the last 3 years</h1>
         <h2 class="govuk-heading-m">Which country did you go to?</h2>
-        <div class="govuk-form-group">
-          <label class="govuk-label" for="sort">
-            Choose country
-          </label>
-          <select id="country" name="another-nationality" class="form-control">
-            <option value="Afghanistan">Afghan</option>
-            <option value="Albania">Albanian</option>
-            <option value="Algeria">Algerian</option>
-            <option value="American">American</option>
-            <option value="Andorran">Andorran</option>
-            <option value="Angolan">Angolan</option>
-            <option value="Anguillan">Anguillan</option>
-            <option value="Antigua and Barbuda">Citizen of Antigua and Barbuda</option>
-            <option value="Argentina">Argentine</option>
-            <option value="Armenia">Armenian</option>
-            <option value="Australia">Australian</option>
-            <option value="Austria">Austrian</option>
-            <option value="Azerbaijan">Azerbaijani</option>
+        {% from "govuk/components/select/macro.njk" import govukSelect %}
+
+
+
+<div class="govuk-form-group">
+  <label class="govuk-label" for="sort">
+    Country
+  </label>
+  <div id="country-hint" class="govuk-hint">
+   Enter country and select it from the list
+  </div>
+  <select id="country" class="govuk-select" name="another-nationality" aria-describedby="country-hint">
+
+    <option value=""></option>
+    <option value="Afghanistan">Afghan</option>
+    <option value="Albania">Albanian</option>
+    <option value="Algeria">Algerian</option>
+    <option value="American">American</option>
+    <option value="Andorran">Andorran</option>
+    <option value="Angolan">Angolan</option>
+    <option value="Anguillan">Anguillan</option>
+    <option value="Antigua and Barbuda">Citizen of Antigua and Barbuda</option>
+    <option value="Argentina">Argentine</option>
+    <option value="Armenia">Armenian</option>
+    <option value="Australia">Australian</option>
+    <option value="Austria">Austrian</option>
+    <option value="Azerbaijan">Azerbaijani</option>
 
 
 
