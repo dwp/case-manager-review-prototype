@@ -16,12 +16,6 @@
   <link rel="stylesheet" href="/public/sass/accessible-autocomplete.min.css">
 {% endblock %}
 
-{% block beforeContent %}
-  {{ govukBackLink({
-  text: "Back",
-  href: "javascript:window.history.back()"
-}) }}
-{% endblock %}
 
 {% block content %}
 
@@ -176,7 +170,7 @@ autocomplete: "postal-code"
     Country
   </label>
   <div id="country-hint" class="govuk-hint">
-   Enter country and select it from the list
+   Enter country and select it from the list.
   </div>
   <select id="country" class="govuk-select" name="another-nationality" aria-describedby="country-hint">
 

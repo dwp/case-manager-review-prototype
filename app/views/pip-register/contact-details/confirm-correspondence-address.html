@@ -11,12 +11,7 @@
   Question page template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
-{% block beforeContent %}
-  {{ govukBackLink({
-  text: "Back",
-  href: "javascript:window.history.back()"
-}) }}
-{% endblock %}
+
 
 {% block content %}
 
@@ -35,7 +30,7 @@
 
     <form class="form" action="#" method="post">
       <div class="govuk-width-container">
-<a href="/pip-register/contact-details/correspondence-postcode">Search again</a></p>
+<a href="/pip-register/contact-details/correspondence-postcode"><p> Search again</a></p>
 
        {{ govukInsetText({
         html: "1 Washington Street<br>Worcester<br>WR1 1NL"
