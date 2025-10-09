@@ -38,10 +38,13 @@
         
     
 
+  {% from "govuk/components/button/macro.njk" import govukButton %}
 
-    {{ govukButton({
-      text: "Confirm this address"
-      }) }}
+{{ govukButton({
+  text: "Use this address",
+  href: "alt-formats/written-format",
+  isStartButton: false
+}) }}
 
         
 
