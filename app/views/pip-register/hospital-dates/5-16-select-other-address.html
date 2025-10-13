@@ -5,6 +5,9 @@
 {% else %}
     {% extends "../../layouts/main.html" %}
 {% endif %}
+
+
+
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
@@ -13,17 +16,26 @@
 {% endblock %}
 
 
+
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-
+      {% if (data['regScena'] == "citizen" ) %}
+      <h1 class="govuk-heading-l">
+        Select your address
+      </h1>
+      {% else %}
       <h1 class="govuk-heading-l">
         Can you confirm the [place type]'s address?
       </h1>
+      {% endif %}
+      
 
       <form class="form" action="#" method="post">
         <div class="govuk-width-container">
+
+
           <p>6 addresses found for <b>wr11nl</b> and <b>1</b>. <a href="/ucd-register/contact-details/what-is-your-postcode">Search again</a></p>
 
         {{ govukRadios({
@@ -42,30 +54,36 @@
             text: "11 Washington Street, Worcester, WR1 1NL"
             },
             {
-            value: "101 Washington Street, Worcester, WR1 1NL",
-            text: "101 Washington Street, Worcester, WR1 1NL"
+            value: "12 Washington Street, Worcester, WR1 1NL",
+            text: "12 Washington Street, Worcester, WR1 1NL"
             },
             {
-            value: "110 Washington Street, Worcester, WR1 1NL",
-            text: "110 Washington Street, Worcester, WR1 1NL"
+            value: "13 Washington Street, Worcester, WR1 1NL",
+            text: "13 Washington Street, Worcester, WR1 1NL"
             },
             {
-            value: "111 Washington Street, Worcester, WR1 1NL",
-            text: "111 Washington Street, Worcester, WR1 1NL"
+            value: "14 Washington Street, Worcester, WR1 1NL",
+            text: "14 Washington Street, Worcester, WR1 1NL"
             }
+
           ]
         }) }}
 
       </div>
 
-        {{ govukButton({
-          text: "Confirm this address"
-        }) }}
+  {% from "govuk/components/button/macro.njk" import govukButton %}
 
+{{ govukButton({
+  text: "Use this address",
+  href: "5-16b-confirmation.html",
+  isStartButton: false
+}) }}
 
-        <p class="govuk-body govuk-!-margin-bottom-6"><a href="/pip-register/hospital-dates/5-19-other-address-manually" class="govuk-link">Enter address manually</a></p>
+        <p class="govuk-body govuk-!-margin-bottom-6"><a href="/pip-register/contact-details/enter-address-manually-country" class="govuk-link">Enter address manually</a></p>
+        <p><a href="/pip-register/task-list">Go to task list</a></p>
+
       </form>
-      <p><a href="/pip-register/task-list-hcp-done">Go to task list</a></p> 
+
     </div>
   </div>
 
