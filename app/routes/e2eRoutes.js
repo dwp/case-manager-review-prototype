@@ -320,14 +320,41 @@ router.post('/pip-register/contact-details/contact-details-summary', function(re
 
 //Alt formats
 
-  //Large print
-  router.post('/large-print', function (req, res) {
-    //Store response
-    var largePrint = req.session.data['largePrint'];
+ router.post('/large-print', function (req, res) {
+  const selectedOptions = req.session.data['largePrint'];
 
-    //Redirect
-    res.redirect('/pip-register/contact-details/alt-formats/font');
-  });
+  // Handle no selection
+  if (!selectedOptions) {
+    return res.redirect('/pip-register/contact-details/alt-formats/how-should-we-contact-you');
+  }
+
+  // Normalize to array
+  const options = Array.isArray(selectedOptions) ? selectedOptions : [selectedOptions];
+
+  // If "neither" is selected, ignore other options and redirect to 'none'
+  if (options.includes('none')) {
+    return res.redirect('/pip-register/contact-details/alt-formats/how-should-we-contact-you');
+  }
+
+  // If both A and B are selected, go to a summary page
+  if (options.includes('coloured-paper') && options.includes('large-print')) {
+    return res.redirect('/pip-register/contact-details/alt-formats/what-size-print-do-you-need');
+  }
+
+  // If only coloured paper (A)
+  if (options.includes('coloured-paper')) {
+    return res.redirect('/pip-register/contact-details/alt-formats/what-colour-paper-do-you-need');
+  }
+
+  // If only large print (B)
+  if (options.includes('large-print')) {
+    return res.redirect('/pip-register/contact-details/alt-formats/what-size-print-do-you-need');
+  }
+
+  // Fallback
+  res.redirect('/pip-register/contact-details/alt-formats/how-should-we-contact-you');
+});
+
 
   //font
   router.post('/font', function (req, res) {
