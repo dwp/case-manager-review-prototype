@@ -20,8 +20,7 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form class="form" action="" method="post">
-
+    <form class="form" action="/pip-register/contact-details/what-is-your-phone-2" method="post">
 
 
       <h1 class="govuk-heading-l">
@@ -31,7 +30,7 @@
     {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
 {{ govukRadios({
-  name: "whereDoYouLive",
+  name: "extraPhone",
   fieldset: {
     legend: {
       text: "",
@@ -56,11 +55,9 @@
 
   {% from "govuk/components/button/macro.njk" import govukButton %}
 
-{{ govukButton({
-  text: "Save and continue",
-  href: "what-is-your-phone-3",
-  isStartButton: false
-}) }}
+    {{ govukButton({
+          text: "Save and continue"
+        }) }}
 
 
 

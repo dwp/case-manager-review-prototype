@@ -1,7 +1,7 @@
 {% if (data['regScena'] == "agent" ) %}
-    {% extends "../layouts/main-2.html" %}
+    {% extends "layouts/main-2.html" %}
 {% elseif (data['regScena'] == "citizen") %}
-{% extends "../layouts/main-gov.html" %}
+{% extends "layouts/main-gov.html" %}
 {% else %}
     {% extends "../layouts/main-2.html" %}
 {% endif %}

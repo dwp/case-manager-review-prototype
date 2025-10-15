@@ -415,16 +415,36 @@ router.post('/pip-register/contact-details/contact-details-summary', function(re
     })
 
     //Do you need any other help when we contact you?
-    router.post('/other-help', function(request, response) {
-      var otherHelp = request.session.data['other-help']
-      if (otherHelp == 'Yes'){
-          response.redirect('/pip-register/contact-details/alt-formats/what-other-help-when-we-contact')
-      } else if (otherHelp == 'No') {
-          response.redirect('/pip-register/contact-details/do-you-want-to-receive-text-updates')
-      }
-    })
-//----------------------------------------------------------------------------------
+router.post('/other-help', function(request, response) {
+  var otherHelp = request.session.data['other-help'];
+  if (otherHelp === 'Yes') {
+    response.redirect('/pip-register/contact-details/alt-formats/what-other-help-when-we-contact');
+  } else if (otherHelp === 'No') {
+    response.redirect('/pip-register/contact-details/do-you-want-to-receive-text-updates');
+  } else {
+    response.redirect('/pip-register/contact-details/contact-details-summary');
+  }
+});
 //pip-register/ADDITIONAL-SUPPORT
+
+router.post('/pip-register/contact-details/what-other-help-when-we-contact', function(request, response) {
+  var otherHelpDetails = request.session.data['other-help-details'];
+  // You can log or use this data if needed
+  response.redirect('/pip-register/contact-details/do-you-want-to-receive-text-updates');
+});
+
+    //What is your phone number - 2
+router.post('/pip-register/contact-details/what-is-your-phone-2', function(request, response) {
+  var extraPhone = request.session.data['extraPhone'];
+
+  if (extraPhone === 'yes') {
+    response.redirect('/pip-register/contact-details/what-is-your-phone-3');
+  } else if (extraPhone === 'no') {
+    response.redirect('/pip-register/contact-details/contact-details-summary');
+  } else {
+    response.redirect('/pip-register/contact-details/contact-details-summary');
+  }
+});
 
 // start
 router.post('/pip-register/additional-support/start-info', function(request, response) {
