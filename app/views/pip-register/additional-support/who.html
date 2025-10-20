@@ -23,14 +23,11 @@
       <form class="form" action="#" method="post">
         {% from "govuk/components/details/macro.njk" import govukDetails %}
 
-        {{ govukDetails({
-          summaryText: "Why we are asking this",
-          text: "If we need more information about your application and we have not been able to contact you, we can call the person who's helping you and ask them to tell you."
-        }) }}
+     
 
         {{ govukInput({
           label: {
-            text: "Name of helper"
+            text: ""
           },
           id: "first-name",
           name: "first-name",
