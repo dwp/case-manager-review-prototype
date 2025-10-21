@@ -457,17 +457,36 @@ router.post('/pip-register/additional-support/do-you-have-a-condition', function
     if (anyCondition == 'yes'){
         response.redirect('/pip-register/additional-support/complete-forms')
     } else if (anyCondition == 'no') {
-        response.redirect('/pip-register/additional-support/add-support-summary')
+        response.redirect('/pip-register/additional-support/helpers')
     }
 })
 
-// can you complete forms
+// can you complete forms - working
 router.post('/pip-register/additional-support/complete-forms', function(request, response) {
-    response.redirect('/pip-register/additional-support/read-letters')
+    var forms = request.session.data['forms']
+
+    if (forms === 'no') {
+        response.redirect('/pip-register/additional-support/helpers')
+    } else if (forms === 'yes') {
+        response.redirect('/pip-register/additional-support/read-letters')
+    } else {
+        // fallback if nothing selected
+        response.redirect('/pip-register/additional-support/complete-forms')
+    }
 })
 
+// not working
 router.post('/pip-register/additional-support/read-letters', function(request, response) {
-    response.redirect('/pip-register/additional-support/post')
+    var forms = request.session.data['forms']
+
+    if (letters === 'no') {
+        response.redirect('/pip-register/additional-support/helpers')
+    } else if (letters === 'yes') {
+        response.redirect('/pip-register/additional-support/post')
+    } else {
+        // fallback if nothing selected
+        response.redirect('/pip-register/additional-support/complete-forms')
+    }
 })
 
 router.post('/pip-register/additional-support/post', function(request, response) {
@@ -830,6 +849,23 @@ router.post('/pip-register/healthcare-professional/consent', function(request, r
     response.redirect('/pip-register/healthcare-professional/start')
 })
 
+//healthcare-professional/confirm-remove 
+router.post('/pip-register/healthcare-professional/confirm-remove', function(request, response) {
+    console.log('HCPYesNo:', request.body.HCPYesNo);
+    var HCPYesNo = request.body.HCPYesNo;
+
+    if (HCPYesNo === 'yes') {
+        response.redirect('/pip-register/healthcare-professional/hp-summary');
+    } else if (HCPYesNo === 'no') {
+        response.redirect('/pip-register/healthcare-professional/hp-summary-two-remove');
+    } else {
+        response.redirect('/error'); // fallback
+    }
+});
+
+
+
+
 //---------------------------------------------------------------------------------
 //pip-register/HEALTHCARE-PROFESSIONAL/CYAS
 
@@ -930,7 +966,7 @@ router.post('/pip-register/hospital-dates/5-18-hospice-address-manually', functi
 
 // other manually > start bank
 router.post('/pip-register/hospital-dates/5-19-other-address-manually', function(request, response) {
-    response.redirect('/pip-register/hospital-dates/hospital-residence-summary')
+    response.redirect('/pip-register/hospital-dates/5-13-third-party-pay')
 })
 
 // Were you in hospice yesterday?

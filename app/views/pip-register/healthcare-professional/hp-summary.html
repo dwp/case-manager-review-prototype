@@ -12,8 +12,6 @@
 
 
 {% block content %}
-
-<form action="#" method="post">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
@@ -25,6 +23,47 @@
         Health and care contacts
       </h2>
 
+      {{ govukSummaryList({
+        rows: [
+        {
+          key: {
+            text: "Consent to share information"
+          },
+          value: {
+            text: "Yes / No"
+          },
+          actions: {
+            items: [
+              {
+                href: "/pip-register/healthcare-professional/consent-2",
+                text: "Change",
+                visuallyHiddenText: "Question 4"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Give health and care professional details during registration"
+          },
+          value: {
+            text: "Yes / No"
+          },
+          actions: {
+            items: [
+              {
+                href: "/pip-register/healthcare-professional/start",
+                text: "Change",
+                visuallyHiddenText: "Question 5"
+              }
+            ]
+          }
+        }
+        ]
+      }) }}
+
+
+
       {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
       {{ govukSummaryList({
@@ -35,8 +74,8 @@
           actions: {
             items: [
               {
-                href: "/research/sprint-12/new-order/healthcare-professional/healthcare-prof-type",
-                text: "Change",
+                href: "/pip-register/healthcare-professional/confirm-remove",
+                text: "Remove",
                 visuallyHiddenText: "of University of Bristol"
               }
             ]
@@ -99,7 +138,7 @@
 
 
       <p class="govuk-body">
-        <a href="/ucd-register/healthcare-professional/additional-support-type" class="govuk-link govuk-link--no-visited-state">Add another healthcare professional</a>
+        <a href="/pip-register/healthcare-professional/healthcare-prof-details">Add another healthcare professional</a>
       </p>
 
         {{ govukButton({
