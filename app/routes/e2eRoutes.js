@@ -476,18 +476,21 @@ router.post('/pip-register/additional-support/complete-forms', function(request,
 })
 
 // not working
+
 router.post('/pip-register/additional-support/read-letters', function(request, response) {
-    var forms = request.session.data['forms']
+    var forms = request.session.data['forms'];
+    var letters = request.body.letters;
 
     if (letters === 'no') {
-        response.redirect('/pip-register/additional-support/helpers')
+        response.redirect('/pip-register/additional-support/helpers');
     } else if (letters === 'yes') {
-        response.redirect('/pip-register/additional-support/post')
+        response.redirect('/pip-register/additional-support/post');
     } else {
         // fallback if nothing selected
-        response.redirect('/pip-register/additional-support/complete-forms')
+        response.redirect('/pip-register/additional-support/complete-forms');
     }
-})
+});
+
 
 router.post('/pip-register/additional-support/post', function(request, response) {
   var post = request.session.data['post']
@@ -782,6 +785,19 @@ router.post('/HCPYesNo', function(request, response) {
     response.redirect('/pip-register/hospital-dates/5-1-why-we-need-details')
 })
 
+//healthcare-professional/consent-2
+router.post('/pip-register/healthcare-professional/consent', function(request, response) {
+    console.log('consent:', request.body.consent); 
+    const consent = request.body.consent;
+
+    if (consent === 'yes') {
+        response.redirect('/pip-register/healthcare-professional/start');
+    } else if (consent === 'no') {
+        response.redirect('/pip-register/healthcare-professional/hp-summary-two-remove');
+    } else {
+        response.redirect('/pip-register/healthcare-professional/start'); // optional fallback
+    }
+});
 
 //healthcare-prof-type ---> what is their postcode
 router.post('/pip-register/healthcare-professional/healthcare-prof-type', function(request, response) {
