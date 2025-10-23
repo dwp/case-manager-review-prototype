@@ -1,0 +1,169 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "/layouts/main.html" %}
+{% endif %}
+
+{% set isDeclarationPre = true %}
+
+{% block pageTitle %}
+Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="#" method="post" method="post">
+      <h1 class="govuk-heading-l">
+        I'm checking your details on the system before we continue
+      </h1>
+      {{ govukInsetText({
+        classes: 'colour-blue',
+          text: "Action: Check the applicant's Searchlight details, and select whether they have a Special Customer Record, an appointee, or none of the above."
+      }) }}
+
+  
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  name: "whereDoYouLive",
+  fieldset: {
+    legend: {
+      text: "",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "Special Customer Record",
+      text: "Special Customer Record"
+    },
+    {
+      value: "Appointee",
+      text: "Appointee"
+    },
+    {
+          divider: "or"
+        },
+     {
+      value: "None of the above",
+      text: "None of the above"
+    }  ]
+}) }}
+
+      <!--
+      {{ govukInsetText({
+        classes: 'colour-blue',
+          text: "Action: Enter the applicant's National Insurance number in Searchlight, and check which benefits they are getting now, if any."
+      }) }}
+      {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+      {{ govukCheckboxes({
+        name: "waste",
+        hint: {
+          text: "Select all that apply"
+        },
+        items: [
+          {
+            value: "carcasses",
+            text: "Personal Independence Payment (PIP)"
+          },
+          {
+            value: "mines",
+            text: "Adult Disability Payment (ADP)"
+          },
+          {
+            value: "farm",
+            text: "Child Disability Payment (CDP)"
+          },
+          {
+            value: "farm",
+            text: "Armed Forces Independence Payment (AFIP)"
+          },
+          {
+            value: "farm",
+            text: "War Pensioners’ Mobility Supplement"
+          },
+          {
+            value: "farm",
+            text: "Constant Attendance Allowance (CAA)"
+          }
+        ]
+      }) }}
+
+      {{ govukInsetText({
+        classes: 'colour-blue',
+          text: "Action: Check if the applicant has a Special Customer Record."
+      }) }}
+
+      {{ govukCheckboxes({
+        name: "special",
+        items: [
+          {
+            value: "specialRecord",
+            text: "Applicant has a Special Customer Record"
+          }
+        ]
+      }) }}
+    -->
+
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+  </form>
+
+  <!DOCTYPE html> 
+<html lang="en"> 
+  <head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>GOV.UK Dashed Border Container</title> 
+    <!-- GOV.UK Frontend CSS --> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/govuk-frontend/4.7.0/govuk-frontend.min.css"> 
+     <style> .dashed-container { 
+      border: 2px dashed #b1b4b6; /* GOV.UK border colour */ 
+      padding: 20px; 
+      margin: 20px 0; 
+      background-color: #f3f2f1; /* GOV.UK light grey background */ 
+      } 
+      
+      .dashed-container h3 { 
+        margin-top: 0; 
+      } 
+      .dashed-container ul { 
+          margin-bottom: 0; }
+           </style> 
+           </head> 
+           <body class="govuk-template__body"> 
+            <div class="govuk-width-container"> 
+              <main class="govuk-main-wrapper"> <!-- Example usage of the dashed container --> 
+  <div class="dashed-container"> 
+    <h3 class="govuk-heading-m">Quick links</h3> 
+    <ul class="govuk-list"> 
+      <li><a href="scr-kickout.html" class="govuk-link">Special customer record kickout</a></li>
+      <li><a href="existing-appointee-kickout.html" class="govuk-link">Appointee kickout</a></li>
+
+    </a></li> 
+     
+    </ul> 
+  </div> <!-- Another example with different content --> 
+    
+    
+  </main>
+ </div> 
+</body>
+
+
+  </div>
+</div>
+
+{% endblock %}

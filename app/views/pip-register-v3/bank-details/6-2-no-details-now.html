@@ -1,0 +1,47 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../layouts/main.html" %}
+{% endif %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="#" method="post" method="post">
+
+          <h1 class="govuk-heading-l">
+            You can continue without telling us your bank details now
+          </h1>
+
+        <p class="govuk-body">When you finish your application we will tell you the phone number you need to call to give your account details. You should also call this number if you do not have an account.</p>
+
+        {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
+        {{ govukWarningText({
+          text: "You won't be able to get any payments until you tell us your account details.",
+          iconFallbackText: "Warning"
+        }) }}
+
+
+          {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+            {{ govukButton({
+              text: "Save and continue",
+              href: "bank-details/bank-details-summary"
+            }) }}
+            <p><a href="task-list-accom-done">Go to task list</a></p> 
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,113 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../../layouts/main.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../../layouts/main.html" %}
+{% endif %}
+
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="/paper" method="post">
+
+      {{ govukRadios({
+      name: "paper",
+      fieldset: {
+      legend: {
+      text: "What colour paper do you need?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--xl"
+      }
+      },
+      items: [
+      {
+        value: "Primary yellow",
+        text: "Primary yellow"
+        },
+      {
+        value: "Pastel yellow",
+        text: "Pastel yellow"
+      },
+      {
+        value: "Primary green",
+        text: "Primary green"
+      },
+      {
+        value: "Pastel green",
+        text: "Pastel green"
+      },
+      {
+        value: "Orange",
+        text: "Orange"
+      },
+      {
+        value: "Peach",
+        text: "Peach"
+      },
+      {
+        value: "Primary blue",
+        text: "Primary blue"
+      },
+      {
+        value: "Light blue",
+        text: "Light blue"
+      },
+      {
+        value: "Bright pink",
+        text: "Bright pink"
+      },
+      {
+        value: "Pastel pink",
+        text: "Pastel pink"
+      },
+          {
+            value: "Purple",
+            text: "Purple"
+            },
+
+      {
+      value: "Lilac",
+      text: "Lilac"
+      },
+      {
+      value: "Light grey",
+      text:  "Light grey"
+      },
+      {
+        value: "Cream",
+        text:  "Cream"
+        },
+        {
+          value: "Red",
+          text:  "Red"
+          }
+      ]
+      }) }}
+
+      {{ govukButton({
+      text: "Save and continue"
+      }) }}
+
+      <p><a href="task-list-cd-done">Go to task list</a></p>
+
+   </form> 
+
+   </div>
+ </div> 
+
+{% endblock %}
+

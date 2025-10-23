@@ -1,0 +1,76 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../layouts/main.html" %}
+{% endif %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/leftUK" method="post">
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        {{ govukRadios({
+          name: "leftUK",
+          fieldset: {
+            legend: {
+            text: "Have you left the UK for more than 4 weeks at a time, in the last 3 years?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+          ]
+        }) }}
+
+        <!--
+        
+        ,
+          {
+            value: "unsure",
+            text: "I’m not sure"
+          }
+        
+        -->
+
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+
+          <p><a href="task-list-as-done">Go to task list</a></p>
+
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script src="/public/javascripts/accessible-autocomplete.min.js"></script>
+  <script type="text/javascript">
+    element = document.querySelector('#country')
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: element
+    })
+  </script>
+{% endblock %}

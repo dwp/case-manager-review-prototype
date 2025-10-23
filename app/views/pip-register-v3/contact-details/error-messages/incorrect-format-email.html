@@ -1,0 +1,63 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../layouts/main.html" %}
+{% endif %}
+
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+{{ govukErrorSummary({
+  titleText: "There is a problem",
+  errorList: [
+    {
+      text: "Enter an email address in the correct format",
+      href: "#eventName"
+    }
+  ]
+}) }}
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="#" method="post">
+    {{ govukInput({
+      label: {
+        text: "What is your email address?",
+        classes: "govuk-label--l",
+        isPageHeading: true
+      },
+      classes: "govuk-!-width-two-thirds",
+      hint: {
+        text: "For example, name@example.com."
+      },
+      errorMessage: {
+        text: "Enter an email address in the correct format"
+      },
+      id: "event-name",
+      name: "eventName"
+    }) }}
+
+    {{ govukButton({
+      text: "Save and continue"
+      }) }}
+
+    </form>
+  </div>
+</div> 
+
+{% endblock %}
+

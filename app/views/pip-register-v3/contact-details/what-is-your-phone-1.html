@@ -1,0 +1,59 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../layouts/main.html" %}
+{% endif %}
+
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="any-other-help-when-we-contact" method="post">
+       
+    {{ govukInput({
+      label: {
+        text: "What is your mobile phone number?",
+        classes: "govuk-label--l",
+        isPageHeading: true
+      },
+      hint: {
+        html: '<p class="govuk-body">Mobile phone number</p>'
+      },
+      classes: "govuk-!-width-two-thirds",
+      id: "event-name",
+      name: "eventName"
+    }) }}
+
+{{ govukButton({
+  text: "Save and continue",
+  href: "what-is-your-phone-2",
+  isStartButton: false
+}) }}
+
+
+
+      <p><a href="contact-details/what-is-your-phone-3.html">Applicant does not have a mobile phone number</a></p>
+
+            <p><a href="task-list.html">Go to task list</a></p>
+
+
+
+
+    </form>
+    </div>
+</div> 
+
+{% endblock %}
+

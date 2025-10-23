@@ -1,0 +1,78 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "/layouts/main.html" %}
+{% endif %}
+
+{% set isDeclarationPre = true %}
+
+{% block pageTitle %}
+Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/external-route" method="post" method="post">
+      <h1 class="govuk-heading-l">
+        What is your relationship to the person you're applying for?
+      </h1>
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        name: "external-route",
+        fieldset: {
+          legend: {
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        items: [
+          {
+            value: "friendFamily",
+            text: "I am a friend or family member who is helping the applicant with the application"
+          },
+          {
+            value: "org",
+            text: "I work for a charity or organisation who is helping the applicant with the application"
+          },
+          {
+            value: "attorney",
+            text: "I have Power of Attorney (Property and Finance)"
+          },
+          {
+            value: "appointee",
+            text: "I have been appointed by DWP to deal with benefits of someone who cannot manage their own affairs"
+          },
+          {
+            value: "wantAppointee",
+            text: "I want to be a DWP appointee"
+          },
+          {
+            value: "corp",
+            text: "I am a Corporate Acting Body or appointee for the applicant"
+          },
+          {
+            value: "curator",
+            text: "I am a curator bonis or judicial factor (under Scottish law)"
+          }
+        ]
+      }) }}
+
+    {{ govukButton({
+      text: "Save and continue"
+    }) }}
+
+  </form>
+    
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,127 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../../layouts/main.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../../layouts/main.html" %}
+{% endif %}
+
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {% if (data['regScena'] == "citizen" ) %}
+        <form class="form" action="#" method="post">
+        {{ govukRadios({
+        name: "written-format",
+        fieldset: {
+        legend: {
+          text: "How should we write to you?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+        },
+        hint: {
+        html: "<p class='govuk-hint'>Select the best option for you.<p>"  
+        },
+        items: [
+        {
+          value: "Standard letter (12-point Arial text on white paper)",
+          text: "Standard letter (12-point Arial text on white paper)"
+        },
+        {
+          value: "Letter with changes to colour or print size",
+          text: "Letter with changes to colour or print size"
+        },
+        {
+          value: "Audio",
+          text: "Audio"
+        },
+        {
+          value: "Braille",
+          text: "Braille"
+        },
+        {
+          value: "British Sign Language video",
+          text: "British Sign Language video"
+        },
+        {
+          value: "Email",
+          text: "Email"
+        }
+        
+        ]
+        }) }}
+        
+        {{ govukButton({
+        text: "Save and continue"
+        }) }}
+
+        <p><a href="task-list-cd-done">Go to task list</a></p>
+        </form>
+        {% else %}
+        <form class="form" action="#" method="post">
+          {{ govukRadios({
+          name: "written-format",
+          fieldset: {
+          legend: {
+            text: "When we write to you, we'll usually send you a printed letter",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+          },
+          hint: {
+            html: "<p class='govuk-body'>Our standard letters are in Arial font size 12.<p><h2 class='govuk-heading-m'>Do you need us to send your letters in another format?</h2>"  
+            },
+          items: [
+          {
+            value: "Standard letter (12-point Arial text on white paper)",
+            text: "No, standard letter (12-point Arial text on white paper)"
+          },
+          {
+            value: "Letter with changes to colour or print size",
+            text: "Letter with changes to colour or print size"
+          },
+          {
+            value: "Audio",
+            text: "Audio"
+          },
+          {
+            value: "Braille",
+            text: "Braille"
+          },
+          {
+            value: "British Sign Language video",
+            text: "British Sign Language video"
+          },
+          {
+            value: "Email",
+            text: "Email"
+          }
+          
+          ]
+          }) }}
+          
+          {{ govukButton({
+          text: "Save and continue"
+          }) }}
+  
+          <p><a href="task-list-cd-done">Go to task list</a></p>
+          </form>
+        {% endif %}
+    </div>
+  </div>
+{% endblock %}
+
+Standard letter (12-point Arial text on white paper)
+Large print
+Letter with changes to font, paper colour, spacing or print size
+Audio
+Braille
+British Sign Language video
+Email

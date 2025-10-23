@@ -1,0 +1,386 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../layouts/main.html" %}
+{% endif %}
+
+
+{% block pageTitle %}
+  Check your answers template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">
+        Check your answers
+      </h1>
+
+      <h2 class="govuk-heading-m">
+        Contact information
+      </h2>
+
+      {{ govukSummaryList({
+        rows: [
+
+        
+        
+           {
+            key: {
+              text: "Address"
+            },
+            value: {
+              html: "1 Washington Street,<br>Worcester<br>WR1 1NL"
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details/select-your-address",
+                  text: "Change",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Same address for letters"
+            },
+            value: {
+              text: "No"
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details/correspondence-address",
+                  text: "Change",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Address for letters"
+            },
+            value: {
+              html: "	10 Downing Street<br>Worcester<br>WNR 1MT"
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details/correspondence-address",
+                  text: "Change",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Alternative letter format"
+            },
+            value: {
+              text: "Bold text / Double line spacing"
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details/correspondence-address",
+                  text: "Change",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          },
+
+           {
+            key: {
+              text: "Paper colour for letters"
+            },
+            value: {
+              text: "Peach"
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details/what-is-your-name",
+                  text: "Change",
+                  visuallyHiddenText: "Question 1"
+                }
+              ]
+            }
+          },
+
+           {
+            key: {
+              text: "Print size for letters"
+            },
+            value: {
+              text: "Large"
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details/what-is-your-name",
+                  text: "Change",
+                  visuallyHiddenText: "Question 1"
+                }
+              ]
+            }
+          },
+
+           {
+            key: {
+              text: "Audio format for letters"
+            },
+            value: {
+              text: "MP3 by email"
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details/what-is-your-name",
+                  text: "Change",
+                  visuallyHiddenText: "Question 1"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              text: "example@email.com"
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details/what-is-your-email",
+                  text: "Change",
+                  visuallyHiddenText: "Question 1"
+                }
+              ]
+            }
+          },
+          
+
+          {
+            key: {
+              text: "Braile type for letters"
+            },
+            value: {
+              text: "uncontracted braille (grade 1)"
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details/what-is-your-email",
+                  text: "Change",
+                  visuallyHiddenText: "Question 1"
+                }
+              ]
+            }
+          },
+
+{
+            key: {
+              text: "Video format for letters"
+            },
+            value: {
+              text: "DVD"
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details/what-video-format-do-you-need",
+                  text: "Change",
+                  visuallyHiddenText: "Question 1"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Alternative format for phone calls"
+            },
+            value: {
+              text: "example"
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details/what-video-format-do-you-need",
+                  text: "Change",
+                  visuallyHiddenText: "Question 1"
+                }
+              ]
+            }
+          },
+
+           {
+            key: {
+              text: "Textphone number"
+            },
+            value: {
+              text: "18002 876546"
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details/change-what-is-your-phone-number",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Relay UK number"
+            },
+            value: {
+              text: "18002 876546"
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details/change-what-is-your-re",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Signing or lipspeaking service for phone calls"
+            },
+            value: {
+              text: "Yes / No"
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details/what-is-your-name#no",
+                  text: "Change",
+                  visuallyHiddenText: "Question 1"
+                }
+              ]
+            }
+          },
+         
+         
+          {
+            key: {
+              text: "Other contact needs"
+            },
+            value: {
+              text: "Example"
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details/what-is-your-name",
+                  text: "Change",
+                  visuallyHiddenText: "Question 1"
+                }
+              ]
+            }
+          },
+      
+
+
+
+          {
+            key: {
+              text: "Text message updates"
+            },
+            value: {
+              text: "Yes / No"
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details/change-what-is-your-phone-number",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          },
+         
+          {
+            key: {
+              text: "Mobile phone number"
+            },
+            value: {
+              html: "<p class='govuk-body'>07700 900457</p>"
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details/what-is-your-phone-number",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          
+
+
+          },
+          
+          
+          
+          
+          
+       
+          
+
+         
+          
+          {
+             key: {
+              text: "Other phone number"
+            },
+            value: {
+              html: "<p class='govuk-body'>01622 563219</p>"
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details/correspondence-address",
+                  text: "Change",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <form action="task-list-as-done" method="post">
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

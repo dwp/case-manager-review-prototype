@@ -1,0 +1,59 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../layouts/main.html" %}
+{% endif %}
+
+{% block pageTitle %}
+  Check your answers template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<!--test comment-->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">
+        Check your answers
+      </h1>
+
+      <h2 class="govuk-heading-m">
+        Motability Scheme
+      </h2>
+
+      {{ govukSummaryList({
+        rows: [
+        {
+          key: {
+            text: "Send Motability Scheme information"
+          },
+          value: {
+            text: "Yes"
+          },
+          actions: {
+            items: [
+              {
+                href: "motability/motability",
+                text: "Change",
+                visuallyHiddenText: "Question 1"
+              }
+            ]
+          }
+        }
+        ]
+      }) }}
+
+      <form action="#" method="post">
+
+        {{ govukButton({
+          text: "Save and continue",
+          href: "task-list-motability-done"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

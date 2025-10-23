@@ -1,0 +1,101 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "/layouts/main.html" %}
+{% endif %}
+
+{% set isDeclarationPre = true %}
+
+{% block pageTitle %}
+Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="#" method="post" method="post">
+
+      {{ govukInput({
+        label: {
+          text: "What is your National Insurance number?",
+          classes: "govuk-label--l",
+          isPageHeading: true
+        },
+        classes: "govuk-input--width-10",
+        hint: {
+          text: "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’"
+        },
+        id: "ni-number",
+        name: "niNumber"
+      }) }}
+
+      <p class="govuk-body">
+        <a href="nino-bau-kickout" class="govuk-link govuk-link--no-visited-state">Applicant cannot find their National Insurance number</a></p>
+      <p class="govuk-body">
+        <a href="no-nino-kickout" class="govuk-link govuk-link--no-visited-state">Applicant does not have a National Insurance number</a>
+      </p>
+
+      {{ govukInsetText({
+        classes: 'colour-blue',
+          text: "Action: Enter the National Insurance number in Searchlight, and check that it is the correct applicant record."
+      }) }}
+
+
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+  </form>
+
+
+<!DOCTYPE html> 
+<html lang="en"> 
+  <head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>GOV.UK Dashed Border Container</title> 
+    <!-- GOV.UK Frontend CSS --> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/govuk-frontend/4.7.0/govuk-frontend.min.css"> 
+     <style> .dashed-container { 
+      border: 2px dashed #b1b4b6; /* GOV.UK border colour */ 
+      padding: 20px; 
+      margin: 20px 0; 
+      background-color: #f3f2f1; /* GOV.UK light grey background */ 
+      } 
+      
+      .dashed-container h3 { 
+        margin-top: 0; 
+      } 
+      .dashed-container ul { 
+          margin-bottom: 0; }
+           </style> 
+           </head> 
+           <body class="govuk-template__body"> 
+            <div class="govuk-width-container"> 
+              <main class="govuk-main-wrapper"> <!-- Example usage of the dashed container --> 
+  <div class="dashed-container"> 
+    <h3 class="govuk-heading-m">Quick links</h3> 
+    <ul class="govuk-list"> 
+      <li><a href="ci-iom-kickout.html" class="govuk-link">CI / IoM Kickout
+      </a></li> 
+     
+    </ul> 
+  </div> <!-- Another example with different content --> 
+    
+    
+  </main>
+ </div> 
+</body>
+
+
+
+  </div>
+</div>
+
+{% endblock %}

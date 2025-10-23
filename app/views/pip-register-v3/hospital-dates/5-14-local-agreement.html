@@ -1,0 +1,64 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../layouts/main.html" %}
+{% endif %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="#" method="post">
+        <div class="govuk-width-container">
+
+          <h1 class="govuk-heading-l">Do you have an agreement with [name of local authority] to pay back any of the costs?</h1>
+
+          
+          {% call govukFieldset({
+            legend: {
+              classes: "govuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          {{ govukRadios({
+            name: "third-party-pay",
+            items: [
+              {
+              value: "yes",
+              text: "Yes"
+              },
+              {
+              value: "no",
+              text: "No"
+              },
+              {
+                value: "unsure",
+                text: "I don't know"
+                }
+            ]
+          }) }}
+
+          {% endcall %}
+
+            {{ govukButton({
+              text: "Save and continue"
+            }) }}
+            <p><a href="task-list-hcp-done">Go to task list</a></p> 
+            
+        </div>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

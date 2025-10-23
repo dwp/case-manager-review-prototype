@@ -9,7 +9,11 @@ const router = govukPrototypeKit.requests.setupRouter()
 // Add your routes here
 //Import from routes folder
 const e2eRoutes = require('./routes/e2eRoutes');
- 
+
+
+require(`./views/${'pip-register-v3'}/_e2eRoutes-v3`)('pip-register-v3', 'pip', router)
+module.exports = router;
+
 //Use routes
 router.use('/', e2eRoutes);
 

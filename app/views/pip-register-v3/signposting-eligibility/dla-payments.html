@@ -1,0 +1,32 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "/layouts/main.html" %}
+{% endif %}
+
+{% set isDeclarationPre = true %}
+
+{% block pageTitle %}
+Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+          <form action="#" method="post" novalidate>
+
+            <h1 class="govuk-heading-l">Your DLA payments will continue while we make a decision on your PIP application</h1>
+            {{ govukInsetText({
+              classes: 'colour-blue',
+              text: "Action: Register the application in PIPCS, and follow the normal procedure for reassessments."
+            }) }}
+          </form>
+   </div>
+</div>
+
+
+{% endblock %}
