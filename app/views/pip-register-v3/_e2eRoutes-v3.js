@@ -28,6 +28,10 @@ module.exports = function (folderForViews, urlPrefix, router) {
       response.redirect(`/${folderForViews}/signposting-eligibility/other-country`)
     }
 
+      else {
+    response.redirect(`/${folderForViews}/signposting-eligibility/new-application`)
+    }
+
   })
 
   router.post(`/${folderForViews}/signposting-eligibility/claiming-self`, function (request, response) {
@@ -43,6 +47,8 @@ module.exports = function (folderForViews, urlPrefix, router) {
     else if (claimingSelf == "external") {
       response.redirect(`/${folderForViews}/signposting-eligibility/someone-else-bau-kickout`)
     }
+
+    
   })
 
   //external route
@@ -70,17 +76,21 @@ module.exports = function (folderForViews, urlPrefix, router) {
     else if (externalRoute == "curator") {
       response.redirect(`/${folderForViews}/signposting-eligibility/authority`)
     }
+    
   })
 
-  router.post(`/${folderForViews}/inRoom`, function (request, response) {
-    var externalRoute = request.session.data['inRoom']
-    if (externalRoute == "yes") {
-      response.redirect(`/${folderForViews}/signposting-eligibility/over-16`)
-    }
-    else if (externalRoute == "no") {
-      response.redirect(`/${folderForViews}/signposting-eligibility/not-in-room`)
-    }
-  })
+router.post(`/${folderForViews}/inRoom`, function (request, response) {
+  var externalRoute = request.session.data['inRoom'];
+
+  if (externalRoute == "yes") {
+    response.redirect(`/${folderForViews}/signposting-eligibility/over-16`);
+  } else if (externalRoute == "no") {
+    response.redirect(`/${folderForViews}/signposting-eligibility/not-in-room`);
+  } else {
+    // Fallback: no option selected
+    response.redirect(`/${folderForViews}/inRoom`);
+  }
+})
 
   //last 12 months
   router.post(`/${folderForViews}/last12months`, function (request, response) {
@@ -141,14 +151,20 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
 
   // How many security questions were answered?
-  router.post(`/${folderForViews}/signposting-eligibility/security-check`, function (request, response) {
-    var secVerified = request.session.data['security-verified']
-    if (secVerified == '2correct') {
-      response.redirect(`/${folderForViews}/welcome-screen`)
-    } else {
-      response.redirect(`/${folderForViews}/signposting-eligibility/failed-security`)
-    }
-  })
+
+router.post(`/${folderForViews}/signposting-eligibility/security-check`, function (request, response) {
+  var secVerified = request.session.data['security-verified'];
+
+  if (secVerified == '2correct') {
+    response.redirect(`/${folderForViews}/welcome-screen`);
+  } else if (secVerified == 'incorrect') {
+    response.redirect(`/${folderForViews}/signposting-eligibility/failed-security`);
+  } else {
+    // Fallback: no option selected
+    response.redirect(`/${folderForViews}/signposting-eligibility/security-check`);
+  }
+})
+
 
   router.post(`/${folderForViews}/signposting-eligibility/failed-security`, function (request, response) {
     response.redirect(`/${folderForViews}/welcome-screen`)
@@ -223,7 +239,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
   })
 
   // Enter address manually page
-  router.post(`/${folderForViews}/contact-details/enter-address-manually-country`, function (request, response) {
+  router.post(`/${folderForViews}/contact-details/enter-address-manually-country`, function (_request, response) {
     response.redirect(`/${folderForViews}/contact-details/correspondence-address`)
   })
 
@@ -355,16 +371,18 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
     //Redirect
     response.redirect(`/${folderForViews}/contact-details/alt-formats/what-colour-paper-do-you-need`);
-  });
+  })
 
   //Paper
   router.post(`/${folderForViews}/paper`, function (req, response) {
     //Store response
     var paper = req.session.data['paper'];
 
+    
+
     //Redirect
     response.redirect(`/${folderForViews}/contact-details/alt-formats/what-size-print-do-you-need`);
-  });
+  })
 
   //Audio format
   router.post(`/${folderForViews}/audio`, function (request, response) {
@@ -385,11 +403,20 @@ module.exports = function (folderForViews, urlPrefix, router) {
   //Video format
   router.post(`/${folderForViews}/video`, function (request, response) {
     var audio = request.session.data['video']
-    if (audio == 'DVD') {
-      response.redirect(`/${folderForViews}/contact-details/alt-formats/how-should-we-contact-you`)
-    } else if (audio == 'MPEG file by email') {
-      response.redirect(`/${folderForViews}/contact-details/alt-formats/what-is-your-email`)
+
+    // Handle no selection
+    if (video) {
+      return response.redirect(`/${folderForViews}/contact-details/alt-formats/how-should-we-contact-you`)
     }
+
+    if (video === 'DVD') {
+      return response.redirect(`/${folderForViews}/contact-details/alt-formats/how-should-we-contact-you`)
+    } else if (video === 'MPEG file by email') {
+      return response.redirect(`/${folderForViews}/contact-details/alt-formats/what-is-your-email`)
+    }
+
+    // Fallback
+    response.redirect(`/${folderForViews}/contact-details/alt-formats/how-should-we-contact-you`)
   })
 
   //How should we contact you if we need to speak to you?
@@ -407,16 +434,18 @@ module.exports = function (folderForViews, urlPrefix, router) {
   })
 
   //Do you need any other help when we contact you?
-  router.post(`/${folderForViews}/other-help`, function (request, response) {
-    var otherHelp = request.session.data['other-help'];
-    if (otherHelp === 'Yes') {
-      response.redirect(`/${folderForViews}/contact-details/alt-formats/what-other-help-when-we-contact`);
-    } else if (otherHelp === 'No') {
-      response.redirect(`/${folderForViews}/contact-details/do-you-want-to-receive-text-updates`);
-    } else {
-      response.redirect(`/${folderForViews}/contact-details/contact-details-summary`);
-    }
-  })
+router.post(`/${folderForViews}/other-help`, function (request, response) {
+  var otherHelp = request.session.data['other-help'];
+
+  if (otherHelp === 'Yes') {
+    response.redirect(`/${folderForViews}/contact-details/alt-formats/what-other-help-when-we-contact`);
+  } else if (otherHelp === 'No') {
+    response.redirect(`/${folderForViews}/contact-details/do-you-want-to-receive-text-updates`);
+  } else {
+    // Fallback: no option selected
+    response.redirect(`/${folderForViews}/contact-details/contact-details-summary`);
+  }
+});
 
   // pip-register/ADDITIONAL-SUPPORT
 
@@ -502,11 +531,18 @@ module.exports = function (folderForViews, urlPrefix, router) {
     } else if (anyoneHelp == 'no') {
       response.redirect(`/${folderForViews}/additional-support/support-no-help`)
     }
+
+    else {
+    response.redirect(`/${folderForViews}/additional-support/helpers`)
+    }
+
   })
 
-  router.post(`/${folderForViews}/additional-support/who-helps`, function (request, response) {
-    response.redirect(`/${folderForViews}/additional-support/who`)
-  })
+
+router.post(`/${folderForViews}/additional-support/who-helps`, function (_request, response) {
+  response.redirect(`/${folderForViews}/additional-support/who`)
+})
+
 
   router.post(`/${folderForViews}/additional-support/support-no-help`, function (request, response) {
     response.redirect(`/${folderForViews}/contact-details/alt-formats/written-format`)
@@ -520,25 +556,27 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
 
   // Would you like us to send your letters in another way, like larger text, audio or braille?
-  router.post(`/${folderForViews}/contact-details/alt-formats/written-format`, function (request, response) {
-    var writtenFormat = request.session.data['written-format']
-    console.log('writtenFormat:' + writtenFormat)
-    if (writtenFormat === 'Standard letter (12-point Arial text on white paper)') {
-      response.redirect(`/${folderForViews}/contact-details/alt-formats/how-should-we-contact-you`)
-    } else if (writtenFormat === 'Letter with changes to colour or print size') {
-      response.redirect(`/${folderForViews}/contact-details/alt-formats/large-print`)
-    } else if (writtenFormat === 'Audio') {
-      response.redirect(`/${folderForViews}/contact-details/alt-formats/what-type-of-audio-format`)
-    } else if (writtenFormat === 'Braille') {
-      response.redirect(`/${folderForViews}/contact-details/alt-formats/what-type-of-braille-do-you-need`)
-    } else if (writtenFormat === 'British Sign Language video') {
-      response.redirect(`/${folderForViews}/contact-details/alt-formats/what-video-format-do-you-need`)
-    } else if (writtenFormat == 'Email') {
-      response.redirect(`/${folderForViews}/contact-details/alt-formats/email-reason`)
-    }
+router.post(`/${folderForViews}/contact-details/alt-formats/written-format`, function (request, response) {
+  var writtenFormat = request.session.data['written-format'];
+  console.log('writtenFormat: ' + writtenFormat);
 
-  })
-
+  if (writtenFormat === 'Standard letter (12-point Arial text on white paper)') {
+    response.redirect(`/${folderForViews}/contact-details/alt-formats/how-should-we-contact-you`);
+  } else if (writtenFormat === 'Letter with changes to colour or print size') {
+    response.redirect(`/${folderForViews}/contact-details/alt-formats/large-print`);
+  } else if (writtenFormat === 'Audio') {
+    response.redirect(`/${folderForViews}/contact-details/alt-formats/what-type-of-audio-format`);
+  } else if (writtenFormat === 'Braille') {
+    response.redirect(`/${folderForViews}/contact-details/alt-formats/what-type-of-braille-do-you-need`);
+  } else if (writtenFormat === 'British Sign Language video') {
+    response.redirect(`/${folderForViews}/contact-details/alt-formats/what-video-format-do-you-need`);
+  } else if (writtenFormat === 'Email') {
+    response.redirect(`/${folderForViews}/contact-details/alt-formats/email-reason`);
+  } else {
+    // Fallback: no option selected
+    response.redirect(`/${folderForViews}/contact-details/alt-formats/written-format`);
+  }
+})
   // What size print do you need?
   router.post(`/${folderForViews}/contact-details/alt-formats/large-print`, function (request, response) {
     response.redirect(`/${folderForViews}/additional-support/add-support-summary`)
@@ -648,19 +686,30 @@ module.exports = function (folderForViews, urlPrefix, router) {
   })
 
   //What country are you receiving pensions or benefits in?
-  router.post(`/${folderForViews}/nationality/exportability/what-country-benefits`, function (request, response) {
-    response.redirect(`/${folderForViews}/task-list-nat-done`)
-  })
+router.post(`/${folderForViews}/nationality/exportability/what-country-benefits`, function (request, response) {
+  const selectedCountry = request.session.data['country-benefits'];
+
+  if (selectedCountry) {
+    response.redirect(`/${folderForViews}/task-list-nat-done`);
+  } else {
+    // Fallback: no country selected
+    response.redirect(`/${folderForViews}/nationality/exportability/what-country-benefits`);
+  }
+})
 
   //Are any of your family members receiving pensions or benefits in another country?
   router.post(`/${folderForViews}/nationality/exportability/family-receiving-benefits`, function (request, response) {
-    var payingBenefits = request.session.data['family-receiving-benefits']
-    if (payingBenefits == 'no') {
-      response.redirect(`/${folderForViews}/task-list-nat-done`)
-    } else if (payingBenefits == 'yes') {
-      response.redirect(`/${folderForViews}/nationality/exportability/family-country-benefits`)
-    }
-  })
+  var payingBenefits = request.session.data['family-receiving-benefits'];
+
+  if (payingBenefits === 'no') {
+    response.redirect(`/${folderForViews}/task-list-nat-done`);
+  } else if (payingBenefits === 'yes') {
+    response.redirect(`/${folderForViews}/nationality/exportability/family-country-benefits`);
+  } else {
+    // Fallback: no option selected
+    response.redirect(`/${folderForViews}/nationality/exportability/family-receiving-benefits`);
+  }
+})
 
   //What country are your family members receiving pensions or benefits in?
   router.post(`/${folderForViews}/nationality/exportability/family-country-benefits`, function (request, response) {
@@ -750,6 +799,9 @@ module.exports = function (folderForViews, urlPrefix, router) {
       response.redirect(`/${folderForViews}/versions/devs/nationality/nationality-summary`)
     } else if (insuranceAbroad == 'no') {
       response.redirect(`/${folderForViews}/versions/devs/nationality/nationality-summary`)
+    }
+    else {
+    response.redirect(`/${folderForViews}/versions/devs/nationality/insurance-abroad`)
     }
   })
 
@@ -879,14 +931,19 @@ module.exports = function (folderForViews, urlPrefix, router) {
   //pip-register/HEALTHCARE-PROFESSIONAL/CYAS
 
   //remove 2nd hcp
-  router.post(`/${folderForViews}/healthcare-professional/hcp-cyas/remove-health-professional-2`, function (request, response) {
-    var removeHcp = request.session.data['remove-second-hcp']
-    if (removeHcp == 'yes') {
-      response.redirect(`/${folderForViews}/healthcare-professional/healthcare-prof-type`)
-    } else if (removeHcp == 'no') {
-      response.redirect(`/${folderForViews}/healthcare-professional/hcp-cyas/remove-second-hcp`)
-    }
-  })
+router.post(`/${folderForViews}/healthcare-professional/hcp-cyas/remove-health-professional-2`, function (request, response) {
+  var removeHcp = request.session.data['remove-second-hcp'];
+
+  if (removeHcp == 'yes') {
+    response.redirect(`/${folderForViews}/healthcare-professional/healthcare-prof-type`);
+  } else if (removeHcp == 'no') {
+    response.redirect(`/${folderForViews}/healthcare-professional/hcp-cyas/remove-second-hcp`);
+  } else {
+    // Fallback: no option selected
+    response.redirect(`/${folderForViews}/healthcare-professional/hcp-cyas/remove-health-professional-2`);
+  }
+})
+
 
   //remove main hcp
   router.post(`/${folderForViews}/healthcare-professional/hcp-cyas/remove-health-professional`, function (request, response) {
@@ -950,7 +1007,16 @@ module.exports = function (folderForViews, urlPrefix, router) {
 
   // are you a private patient? > What is the name and address of the hospital?
   router.post(`/${folderForViews}/hospital-dates/5-5-private-patient`, function (request, response) {
-    response.redirect(`/${folderForViews}/hospital-dates/5-6-postcode`)
+    // Read the user's answer from session data or form body
+    var privatePatient = request.session.data['private-patient'] || request.body['private-patient']
+
+    // If an option was selected, continue to the postcode step; if not, stay on the same page
+    if (privatePatient) {
+      response.redirect(`/${folderForViews}/hospital-dates/5-6-postcode`)
+    } else {
+      // Fallback: no option selected — redisplay the same page (avoid open redirect)
+      response.redirect(`/${folderForViews}/hospital-dates/5-5-private-patient`)
+    }
   })
 
   // postcode > select address
@@ -959,9 +1025,10 @@ module.exports = function (folderForViews, urlPrefix, router) {
   })
 
   // postcode > select address
-  router.post(`/${folderForViews}/hospital-dates/5-7-select-hospital-address`, function (request, response) {
-    response.redirect(`/${folderForViews}/hospital-dates/hospital-residence-summary`)
-  })
+router.post(`/${folderForViews}/hospital-dates/5-7-select-hospital-address`, function (_request, response) {
+  // Always redirect to the hospital residence summary from the select address page
+  response.redirect(`/${folderForViews}/hospital-dates/hospital-residence-summary`)
+})
 
   // hospital manually > start bank
   router.post(`/${folderForViews}/hospital-dates/5-17-hospital-address-manually`, function (request, response) {
@@ -974,7 +1041,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
   })
 
   // other manually > start bank
-  router.post(`/${folderForViews}/hospital-dates/5-19-other-address-manually`, function (request, response) {
+  router.post(`/${folderForViews}/hospital-dates/5-19-other-address-manually`, function (_request, response) {
     response.redirect(`/${folderForViews}/hospital-dates/5-13-third-party-pay`)
   })
 
@@ -985,7 +1052,12 @@ module.exports = function (folderForViews, urlPrefix, router) {
       response.redirect(`/${folderForViews}/hospital-dates/5-9-hospice-dates`)
     } else if (otherYesterday == 'no') {
       response.redirect(`/${folderForViews}/hospital-dates/5-10-hospice-postcode`)
+    
+      } else {
+      // Fallback: no option selected — redisplay the same page (avoid open redirect)
+      response.redirect(`/${folderForViews}/hospital-dates/5-8-hospice-yesterday`)
     }
+
   })
 
   // Do you know the date you went into the hospice?
@@ -999,7 +1071,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
   })
 
   // select hospice address
-  router.post(`/${folderForViews}/hospital-dates/5-10-hospice-postcode`, function (request, response) {
+  router.post(`/${folderForViews}/hospital-dates/5-10-hospice-postcode`, function (_request, response) {
     response.redirect(`/${folderForViews}/hospital-dates/5-11-select-hospice-address`)
   })
 
@@ -1016,6 +1088,10 @@ module.exports = function (folderForViews, urlPrefix, router) {
     } else if (otherToday == 'no') {
       response.redirect(`/${folderForViews}/hospital-dates/hospital-residence-summary`)
     }
+  else {
+    response.redirect(`/${folderForViews}/hospital-dates/5-3-other-housing-today`)
+    }
+    
   })
 
   // Were you living in this place yesterday?
@@ -1066,14 +1142,19 @@ module.exports = function (folderForViews, urlPrefix, router) {
   })
 
   // Do you have an agreement with the local authority to repay any of the costs?
-  router.post(`/${folderForViews}/hospital-dates/hospital-dates/5-14-local-agreement`, function (request, response) {
-    response.redirect(`/${folderForViews}/hospital-dates/hospital-residence-summary`)
-  })
+router.post(`/${folderForViews}/hospital-dates/hospital-dates/5-14-local-agreement`, function (request, response) {
 
+
+    if (request.body['local-agreement'] === 'yes') {
+        return response.redirect(`/${folderForViews}/hospital-dates/hospital-residence-summary`)
+    } else {
+        return response.redirect(`/${folderForViews}/hospital-dates/hospital-dates/5-14-local-agreement`)
+    }
+})
 
   // -------------------------------------------------------------------------------------
 
-  //pip-register/BANK-DETAILS/MAIN-ACCOUNT-DETAILS
+
 
   // Can you give me your account details now?
   router.post(`/${folderForViews}/bank-details/6-1-start`, function (request, response) {
@@ -1083,6 +1164,9 @@ module.exports = function (folderForViews, urlPrefix, router) {
     } else if (detailsNow == 'no') {
       response.redirect(`/${folderForViews}/bank-details/6-2-no-details-now`)
     }
+    else {
+    response.redirect(`/${folderForViews}/bank-details/6-1-start`)
+      } 
   })
 
   // You can continue without entering account details
