@@ -1,0 +1,50 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../../layouts/main.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../../layouts/main.html" %}
+{% endif %}
+
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="any-other-help-when-we-contact" method="post">
+       
+    {{ govukInput({
+      label: {
+        text: "What is your textphone number?",
+        classes: "govuk-label--l",
+        isPageHeading: true
+      },
+      hint: {
+        html: '<p class="govuk-body">If DWP need to use a prefix such as 18001, include it at the beginning of your textphone number.</p>'
+      },
+      classes: "govuk-!-width-two-thirds",
+      id: "event-name",
+      name: "eventName"
+    }) }}
+
+    {{ govukButton({
+      text: "Save and continue"
+      }) }}
+
+      <p><a href="task-list-cd-done">Go to task list</a></p>
+
+    </form>
+    </div>
+</div> 
+
+{% endblock %}
+

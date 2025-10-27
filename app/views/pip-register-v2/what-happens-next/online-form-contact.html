@@ -1,0 +1,49 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../layouts/main.html" %}
+{% endif %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="#" method="post">
+
+        {{ govukInput({
+          label: {
+            text: "What is your email address?",
+            classes: "govuk-label--xl",
+            isPageHeading: true
+          },
+          id: "event-name",
+          name: "eventName",
+          type: "email",
+          autocomplete: "email",
+          spellcheck: false
+        }) }}
+                    
+
+
+
+
+<button class="govuk-button" data-module="govuk-button">
+  Send invitation email
+</button>
+
+
+      </form>
+                      <p><a href="task-list-motability-done">Go to task list</a></p> 
+    </div>
+  </div>
+
+{% endblock %}

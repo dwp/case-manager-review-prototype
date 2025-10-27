@@ -1,0 +1,65 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../layouts/main.html" %}
+{% endif %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <
+      <h1 class="govuk-heading-l">
+        Are you in hospital or a hospice as an in-patient today?
+      </h1>
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          name: "hosp-all-today",
+          fieldset: {
+            legend: {
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "yes-hospital",
+              text: "Yes, hospital"
+            },
+            {
+              value: "yes-hospice",
+              text: "Yes, hospice"
+            },
+            {
+              value: "no",
+              text: "No"
+            }
+          ]
+        }) }}
+
+
+     <form class="form" action="#" method="post">
+
+    {{ govukButton({
+      text: "Save and continue",
+      href: "/ucd-register/hospital-dates/today",
+      isButton: true
+    }) }}
+    <p><a href="task-list-hcp-done">Go to task list</a></p> 
+    </form>
+
+    </div>
+  </div>
+
+{% endblock %}

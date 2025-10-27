@@ -1,0 +1,57 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "/layouts/main.html" %}
+{% endif %}
+
+{% set isDeclarationPre = true %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+          <form action="#" method="post" novalidate>
+
+
+            {{ govukRadios({
+              name: "dlaNow",
+              fieldset: {
+                legend: {
+                  text: "Are you getting Disability Living Allowance (DLA) now?",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--l"
+                }
+                },
+  hint: {
+    text: "If you get DLA, you may have received a letter telling you to apply for PIP."
+              },
+              items: [
+                {
+                  value: "yes",
+                  text: "Yes"
+                },
+                {
+                  value: "no",
+                  text: "No"
+                }
+              ]
+            }) }}
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+          </form>
+   </div>
+</div>
+
+{% endblock %}

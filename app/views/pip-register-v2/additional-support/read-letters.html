@@ -1,0 +1,58 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../layouts/main.html" %}
+{% endif %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Are you able to read and respond to letters?
+      </h1>
+
+      <div class="govuk-hint">This includes answering questions we ask in letters, remembering to read and respond to letters, and responding to letters by post or phone.</div>
+
+      <form class="form" action="additional-support/read-letters" method="post">
+
+        {{ govukRadios({
+            name: "letters",
+            fieldset: {
+              legend: {
+
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            items: [
+              {
+                value: "yes",
+                text: "Yes"
+              },
+              {
+                value: "no",
+                text: "No"
+              }
+            ]
+          }) }}
+
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+
+          <p><a href="task-list-cd-done">Go to task list</a></p>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,130 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../layouts/main.html" %}
+{% endif %}
+
+{% block pageTitle %}
+  Check your answers template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">
+        Check your answers
+      </h1>
+
+      <h2 class="govuk-heading-m">
+        Bank details
+      </h2>
+
+      {{ govukSummaryList({
+        rows: [
+        {
+          key: {
+            text: "Give bank details during registration"
+          },
+          value: {
+            text: "Yes/No"
+          },
+          actions: {
+            items: [
+              {
+                href: "bank-details/6-1-start",
+                text: "Change",
+                visuallyHiddenText: "Question 1"
+              }
+            ]
+          }
+        }
+        ]
+      }) }}
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Name on account"
+            },
+            value: {
+              text: "John Smith"
+            },
+            actions: {
+              items: [
+                {
+                  href: "bank-details/6-3-main-account-details-v2",
+                  text: "Change",
+                  visuallyHiddenText: "Question 1"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Sort code"
+            },
+            value: {
+              html: "<p class='govuk-body'>45-32-06</p>"
+            },
+            actions: {
+              items: [
+                {
+                  href: "bank-details/6-3-main-account-details-v2",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Account number"
+            },
+            value: {
+              text: "31510604"
+            },
+            actions: {
+              items: [
+                {
+                  href: "bank-details/6-3-main-account-details-v2",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Building society roll number"
+            },
+            value: {
+              text: "12345672"
+            },
+            actions: {
+              items: [
+                {
+                  href: "bank-details/6-3-main-account-details-v2",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <form action="motability/motability" method="post">
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "/layouts/main.html" %}
+{% endif %}
+
+{% set isDeclarationPre = true %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+          <form action="/inRoom" method="post" novalidate>
+
+            <h1 class="govuk-heading-l">You should answer all questions as if you are the person who wants to apply for PIP</h1>
+            <p class="govuk-body">Do not tell us your own details. The questions in this application relate to the person you are helping to apply. 
+          </p>
+
+            {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+            {{ govukRadios({
+              name: "inRoom",
+              fieldset: {
+                legend: {
+                  text: "Are you with them now?",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--m"
+                }
+              },
+              items: [
+                {
+                  value: "yes",
+                  text: "Yes"
+                },
+                {
+                  value: "no",
+                  text: "No"
+                }
+              ]
+            }) }}
+
+            {{ govukButton({
+              text: "Save and continue"
+            }) }}
+          </form>
+   </div>
+</div>
+
+{% endblock %}

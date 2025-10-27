@@ -1,0 +1,81 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../../layouts/main.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../../layouts/main.html" %}
+{% endif %}
+
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <form class="form" action="/large-print" method="post" novalidate>
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+      {{ govukCheckboxes({
+      name: "largePrint",
+      fieldset: {
+      legend: {
+        text: "What changes do you need?",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+
+      },
+      hint: {
+      text: "You can choose more than one option. We will ask for more detail if necessary."  
+      },
+
+      items: [
+      
+      
+      {
+        value: "coloured-paper",
+        text: "Coloured paper"
+      },
+     
+
+      {
+        value: "large-print",
+        text: "Large print"
+      },
+      {
+        divider: "or"
+      },
+      {
+        value: "none",
+        text: "None of the above",
+        behaviour: "exclusive"
+      }
+      ]
+}) }}
+
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+
+          <p><a href="task-list-cd-done">Go to task list</a></p>
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+
+{#
+
+, {
+    checked: data["altFormats"]["written"]["large-print-other"],
+    text: "Other",
+    conditional: {
+      html: fontSizeHtml
+    }
+  }
+
+#}

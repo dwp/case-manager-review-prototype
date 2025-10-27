@@ -1,0 +1,54 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "/layouts/main.html" %}
+{% endif %}
+
+{% set isDeclarationPre = true %}
+
+{% block pageTitle %}
+Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="#" method="post" method="post">
+
+      <h1 class="govuk-heading-l">
+        I can see you are getting Armed Forces Independence Payment (AFIP)
+      </h1>
+      <p class="govuk-body">You cannot get AFIP at the same time as PIP.</p>
+
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            If you want to discuss your AFIP claim
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p class="govuk-body">
+            The Ministry of Defence’s Veterans UK helpline provides assistance on many issues including benefits, housing and welfare.
+        </p>
+      <p class="govuk-body">
+        Freephone (UK only): 0808 1914 218<br>
+        Telephone (overseas): +44 1253 866 043
+      </p>
+      <p class="govuk-body">
+        Normal Service 8am to 4pm Monday to Friday
+      </p>      
+        </div>
+      </details>
+
+  </form>
+
+  </div>
+</div>
+
+{% endblock %}
