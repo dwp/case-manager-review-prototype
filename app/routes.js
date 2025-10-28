@@ -3,6 +3,42 @@
 // https://prototype-kit.service.gov.uk/docs/create-routes
 //
 
+const express = require('express');
+const app = express();
+
+
+
+const originalRedirect = express.response.redirect;
+
+express.response.redirect = function patchedRedirect(url) {
+  try {
+    if (typeof url !== 'string') {
+      return originalRedirect.call(this, '/');
+    }
+
+    // Block protocol-based or protocol-relative redirects
+    if (url.includes('://') || url.startsWith('//')) {
+      console.warn('Blocked unsafe redirect:', url);
+      return originalRedirect.call(this, '/');
+    }
+
+    // Ensure it starts with a single forward slash (internal only)
+    if (!url.startsWith('/')) {
+      console.warn('Blocked non-internal redirect:', url);
+      return originalRedirect.call(this, '/');
+    }
+
+    // Normalise slashes and remove dot-segments (optional)
+    const normalised = '/' + url.replace(/^\/+/, '').replace(/\/{2,}/g, '/');
+
+    return originalRedirect.call(this, normalised);
+  } catch (err) {
+    console.error('Redirect sanitisation error:', err);
+    return originalRedirect.call(this, '/');
+  }
+};
+
+
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
