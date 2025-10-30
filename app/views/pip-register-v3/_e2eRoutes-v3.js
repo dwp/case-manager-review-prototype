@@ -9,16 +9,25 @@ module.exports = function (folderForViews, urlPrefix, router) {
   router.post(`/${folderForViews}/signposting-eligibility/service-start-page`, function (request, response) {
     var newApp = request.session.data['new-app']
     if (newApp == 'yes') {
-      response.redirect(`/${folderForViews}/signposting-eligibility/claiming-self`)
+      response.redirect(`/${folderForViews}/signposting-eligibility/what-is-your-name`)
     } else if (newApp == "no") {
       response.redirect(`/${folderForViews}/signposting-eligibility/existing-claims`)
     }
   })
 
+router.post('/whatIsYourName', function (request, response) {
+  const firstName = request.session.data['first-name'];
+  const lastName = request.session.data['last-name'];
+
+  response.redirect(`/${folderForViews}/signposting-eligibility/new-application`);
+});
+
+
+
   router.post(`/${folderForViews}/signposting-eligibility/new-application`, function (request, response) {
     var gbPIP = request.session.data['gb-pip']
     if (gbPIP == 'yes') {
-      response.redirect(`/${folderForViews}/signposting-eligibility/srel`)
+      response.redirect(`/${folderForViews}/signposting-eligibility/claiming-self`)
     } else if (gbPIP == "n-ireland") {
       response.redirect(`/${folderForViews}/signposting-eligibility/northern-ireland`)
     } else if (gbPIP == "scotland") {
@@ -37,7 +46,7 @@ module.exports = function (folderForViews, urlPrefix, router) {
   router.post(`/${folderForViews}/signposting-eligibility/claiming-self`, function (request, response) {
     var claimingSelf = request.session.data['claiming-self']
     if (claimingSelf == 'myself') {
-      response.redirect(`/${folderForViews}/signposting-eligibility/new-application`)
+      response.redirect(`/${folderForViews}/signposting-eligibility/srel`)
     } else if (claimingSelf == "someone-else") {
       response.redirect(`/${folderForViews}/signposting-eligibility/someone-else-bau-kickout`)
     }

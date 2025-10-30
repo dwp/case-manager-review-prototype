@@ -1,9 +1,9 @@
 {% if (data['regScena'] == "agent" ) %}
-    {% extends "../../layouts/main.html" %}
+    {% extends "../../layouts/main-v3.html" %}
 {% elseif (data['regScena'] == "citizen") %}
 {% extends "../../layouts/main-gov.html" %}
 {% else %}
-    {% extends "/layouts/main.html" %}
+    {% extends "/layouts/main-v3.html" %}
 {% endif %}
 
 {% set isDeclarationPre = true %}
@@ -20,7 +20,7 @@
   <div class="govuk-grid-column-two-thirds">
           <form action="#" method="post" novalidate>
 
-            <h1 class="govuk-heading-l">There are special rules for people applying for PIP at end of life</h1>
+            <h1 class="govuk-heading-l">There are special rules for people at end of life</h1>
 
             {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 
@@ -32,7 +32,7 @@
               name: "srel",
               fieldset: {
                 legend: {
-                  text: " Do you want to apply under the Special Rules for end of life?",
+                  text: "Do you want to claim PIP under the Special Rules for end of life?",
                   isPageHeading: true,
                   classes: "govuk-fieldset__legend--m"
                 }

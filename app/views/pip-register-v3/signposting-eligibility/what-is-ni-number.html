@@ -1,9 +1,9 @@
 {% if (data['regScena'] == "agent" ) %}
-    {% extends "../../layouts/main.html" %}
+    {% extends "../../layouts/main-v3.html" %}
 {% elseif (data['regScena'] == "citizen") %}
 {% extends "../../layouts/main-gov.html" %}
 {% else %}
-    {% extends "/layouts/main.html" %}
+    {% extends "/layouts/main-v3.html" %}
 {% endif %}
 
 {% set isDeclarationPre = true %}
@@ -36,15 +36,14 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
       }) }}
 
       <p class="govuk-body">
-        <a href="nino-bau-kickout" class="govuk-link govuk-link--no-visited-state">Applicant cannot find their National Insurance number</a></p>
-      <p class="govuk-body">
-        <a href="no-nino-kickout" class="govuk-link govuk-link--no-visited-state">Applicant does not have a National Insurance number</a>
+        <a href="no-nino-kickout" class="govuk-link govuk-link--no-visited-state">Applicant cannot give a UK National Insurance number</a></p>
+ 
       </p>
 
-      {{ govukInsetText({
+      <!-- {{ govukInsetText({
         classes: 'colour-blue',
           text: "Action: Enter the National Insurance number in Searchlight, and check that it is the correct applicant record."
-      }) }}
+      }) }} -->
 
 
 
@@ -84,7 +83,12 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
     <ul class="govuk-list"> 
       <li><a href="ci-iom-kickout.html" class="govuk-link">CI / IoM Kickout
       </a></li> 
+      <li><a href="advanced-duplicate-claim.html" class="govuk-link">Advanced duplicate claim
+      </a></li> 
      
+
+
+
     </ul> 
   </div> <!-- Another example with different content --> 
     

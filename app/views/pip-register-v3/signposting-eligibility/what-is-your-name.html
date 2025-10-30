@@ -3,7 +3,7 @@
 {% elseif (data['regScena'] == "citizen") %}
 {% extends "../../layouts/main-gov.html" %}
 {% else %}
-    {% extends "../../layouts/main-v3.html" %}
+    {% extends "/layouts/main-v3.html" %}
 {% endif %}
 
 {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
@@ -13,16 +13,15 @@
 {% endblock %}
 
 
-
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form class="form" action="do-you-have-a-previous-name" method="post">
+      <form class="form" action="/whatIsYourName" method="post">
 
-        <!---->
+        
         <h1 class="govuk-heading-l">
-          What is your preferred name?
+          What is your name?
         </h1>
 
         {% call govukFieldset({
@@ -44,16 +43,6 @@
 
         {{ govukInput({
           label: {
-            text: "Middle name (optional)"
-          },
-          id: "middle-name",
-          name: "middle-name",
-          autocomplete: "name",
-          spellcheck: false
-        }) }}
-
-        {{ govukInput({
-          label: {
             text: "Last name"
           },
           id: "last-name",
@@ -64,12 +53,14 @@
 
         {% endcall %}
 
+ {% from "govuk/components/button/macro.njk" import govukButton %}
 
-        {{ govukButton({
-          text: "Save and continue"
-        }) }}
+{{ govukButton({
+  text: "Continue"
+}) }}
 
-        <p><a href="task-list">Go to task list</a></p>
+
+        <p><a href="/pip-register-v3/task-list.html">Go to task list</a></p>
 
       </form>
     </div>
