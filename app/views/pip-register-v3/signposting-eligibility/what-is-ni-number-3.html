@@ -19,13 +19,15 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
       <h1 class="govuk-heading-l">
-        Can you confirm your details before we continue?
+        I'm looking up your details on the system
       </h1>
 
-      <!-- <h2 class="govuk-heading-m">
-        Contact information
-      </h2> -->
+ {{ govukInsetText({
+            classes: "colour-blue",
+            text: "Action: Enter the National Insurance number in Searchlight."
+          }) }}
 
+  
       {{ govukSummaryList({
         rows: [
           
@@ -40,7 +42,7 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
               items: [
                 {
                   href: "what-is-ni-number",
-                  text: "Change",
+                  text: "",
                   visuallyHiddenText: "Question 3"
                 }
               ]
@@ -59,7 +61,7 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
               items: [
                 {
                   href: "what-is-your-name",
-                  text: "Change",
+                  text: "",
                   visuallyHiddenText: "Question 2"
                 }
               ]
@@ -77,7 +79,7 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
               items: [
                 {
                   href: "over-16",
-                  text: "Change",
+                  text: "",
                   visuallyHiddenText: "Question 2"
                 }
               ]
@@ -89,50 +91,52 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
         ]
       }) }}
 
-      <form action="#" method="post">
+      <form action="/pip-register-v3/what-is-ni-number-3" method="post">
+
+         {{ govukInsetText({
+            classes: "colour-blue",
+            text: "Action: Select whether the name and date of birth are the same as the details in Searchlight."
+          }) }}
+
+          {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  name: "ni3",
+  fieldset: {
+    legend: {
+      text: "",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "same-dob",
+      text: "Same name and date of birth",
+      hint: {
+        text: "Short versions of the first name count as the same, such as 'Sue' instead of 'Susan'."
+      }
+    },
+    {
+      value: "different-dob",
+      text: "Different name and date of birth"
+    },
+    {
+      value: "scr",
+      text: "Applicant has a Special Customer Record"
+    },
+    {
+      value: "no-searchlight",
+      text: "Applicant does not have a Searchlight record"
+    }
+  ]
+}) }}
 
         {{ govukButton({
           text: "Continue"
         }) }}
 
       </form>
-
-      <!DOCTYPE html> 
-<html lang="en"> 
-  <head> 
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>GOV.UK Dashed Border Container</title> 
-    <!-- GOV.UK Frontend CSS --> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/govuk-frontend/4.7.0/govuk-frontend.min.css"> 
-     <style> .dashed-container { 
-      border: 2px dashed #b1b4b6; /* GOV.UK border colour */ 
-      padding: 20px; 
-      margin: 20px 0; 
-      background-color: #f3f2f1; /* GOV.UK light grey background */ 
-      } 
-      
-      .dashed-container h3 { 
-        margin-top: 0; 
-      } 
-      .dashed-container ul { 
-          margin-bottom: 0; }
-           </style> 
-           </head> 
-           <body class="govuk-template__body"> 
-            <div class="govuk-width-container"> 
-              <main class="govuk-main-wrapper"> <!-- Example usage of the dashed container --> 
-  <div class="dashed-container"> 
-    <h3 class="govuk-heading-m">Quick links</h3> 
-    <ul class="govuk-list"> 
-
-      <li><a href="ci-iom-kickout.html" class="govuk-link">Ci / IoM kickout</a></li>
-
-      <li><a href="advanced-duplicate-claim.html" class="govuk-link">Advanced duplicate claim
-    </ul> 
-  </div> <!-- Another example with different content --> 
-    
-    
-  </main>
 
     </div>
   </div>

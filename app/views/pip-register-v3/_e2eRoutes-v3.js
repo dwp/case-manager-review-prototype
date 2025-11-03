@@ -102,18 +102,54 @@ router.post(`/${folderForViews}/inRoom`, function (request, response) {
 })
 
   //last 12 months
-  router.post(`/${folderForViews}/last12months`, function (request, response) {
+  router.post(`/${folderForViews}/last-12-months`, function (request, response) {
     var externalRoute = request.session.data['last12months']
     if (externalRoute == "yes") {
-      response.redirect(`/${folderForViews}/signposting-eligibility/dla-now`)
+      response.redirect(`/pip-register-v3/signposting-eligibility/dla-now`)
     }
     else if (externalRoute == "no") {
-      response.redirect(`/${folderForViews}/signposting-eligibility/stop-getting-pip-last-year`)
+      response.redirect(`/pip-register-v3/signposting-eligibility/stop-getting-pip-last-year`)
     }
+    console.log('last12months value:', request.session.data['last12months']);
+console.log('Redirecting to:', folderForViews);
   })
 
-  //DLA now
 
+//what-is-ni-number-3
+router.post(`/${folderForViews}/what-is-ni-number-3`, function (request, response) {
+  var externalRoute = request.session.data['ni3']
+  if (externalRoute == "same-dob") {
+    response.redirect(`/pip-register-v3/signposting-eligibility/appointee`)
+  }
+  else if (externalRoute == "different-dob") {
+    response.redirect(`/pip-register-v3/signposting-eligibility/no-match-ni-kickout`)
+  }
+  else if (externalRoute == "scr") {
+    response.redirect(`/pip-register-v3/signposting-eligibility/scr-kickout`)
+  }
+  else if (externalRoute == "no-searchlight") {
+    response.redirect(`/pip-register-v3/signposting-eligibility/no-match-ni-kickout`)
+  }
+  console.log('ni3 value:', request.session.data['ni3']);
+  console.log('Redirecting to:', folderForViews);
+})
+
+  //appointee
+  router.post(`/${folderForViews}/appointee`, function (request, response) {
+    var externalRoute = request.session.data['appointeeYn']
+    if (externalRoute == "yes") {
+      response.redirect(`/pip-register-v3/signposting-eligibility/appointee-kickout`)
+    }
+    else if (externalRoute == "no") {
+      response.redirect(`/pip-register-v3/signposting-eligibility/security-check`)
+    }
+    console.log('appointeeYn value:', request.session.data['appointeeYn']);
+console.log('Redirecting to:', folderForViews);
+  })
+
+
+
+  //DLA now
   router.post(`/${folderForViews}/signposting-eligibility/dla-now`, function (request, response) {
     var dlaNow = request.session.data['dlaNow']
     if (dlaNow == "yes") {
@@ -148,8 +184,13 @@ router.post(`/${folderForViews}/inRoom`, function (request, response) {
 
   //NI
   router.post(`/${folderForViews}/signposting-eligibility/what-is-ni-number`, function (request, response) {
-    response.redirect(`/${folderForViews}/signposting-eligibility/searchlight-check`)
+    response.redirect(`/${folderForViews}/signposting-eligibility/what-is-ni-number-2`)
   })
+  
+router.post(`/${folderForViews}/signposting-eligibility/what-is-ni-number-2`, function (request, response) {
+  response.redirect(`/${folderForViews}/signposting-eligibility/what-is-ni-number-3`);
+});
+
   //
   //Serchlight check
   router.post(`/${folderForViews}/signposting-eligibility/searchlight-check`, function (request, response) {
@@ -166,7 +207,11 @@ router.post(`/${folderForViews}/signposting-eligibility/security-check`, functio
 
   if (secVerified == '2correct') {
     response.redirect(`/${folderForViews}/welcome-screen`);
-  } else if (secVerified == 'incorrect') {
+ 
+  } else if (secVerified == '1correct') {
+    response.redirect(`/${folderForViews}/signposting-eligibility/failed-security`);
+  
+  } else if (secVerified == 'none') {
     response.redirect(`/${folderForViews}/signposting-eligibility/failed-security`);
   } else {
     // Fallback: no option selected

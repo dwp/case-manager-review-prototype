@@ -14,7 +14,6 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
 
 
 
-
 {% block content %}
 
 <div class="govuk-grid-row">
@@ -23,18 +22,17 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
     <form action="#" method="post" method="post">
 
       <h1 class="govuk-heading-l">
-        I need to collect some more details to continue the application
+        I can see that someone else is appointed to manage your benefits
       </h1>
+      <p class="govuk-body">That means your appointee needs to call us to apply for you instead. </p>
 
-      {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 
       {{ govukInsetText({
         classes: 'colour-blue',
-          text: "Action: Register the claim in PIPCS, and follow normal procedure for third party and external party claims."
+          text: "Action: If the applicant still wants to continue, stop this application and continue in PIPCS. Follow the procedure for applicants whose appointee is not present."
       }) }}
 
   </form>
-
 
 
 

@@ -14,7 +14,6 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
 
 
 
-
 {% block content %}
 
 <div class="govuk-grid-row">
@@ -23,18 +22,17 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
     <form action="#" method="post" method="post">
 
       <h1 class="govuk-heading-l">
-        I need to collect some more details to continue the application
+        I cannot find a matching record on the system
       </h1>
+      <p class="govuk-body">Someone will need to call you back to continue your application.</p>
 
-      {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 
       {{ govukInsetText({
         classes: 'colour-blue',
-          text: "Action: Register the claim in PIPCS, and follow normal procedure for third party and external party claims."
+          text: "Action: Follow the normal procedure for mismatched Searchlight details or applicants with no Searchlight record."
       }) }}
 
   </form>
-
 
 
 

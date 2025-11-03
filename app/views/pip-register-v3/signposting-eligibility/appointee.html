@@ -18,33 +18,33 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-          <form action="#" method="post" novalidate>
+          <form action="/pip-register-v3/appointee" method="post" novalidate>
 
-            <h1 class="govuk-heading-l">There are special rules for people at end of life</h1>
+            <h1 class="govuk-heading-l">I've found your record on the system</h1>
 
-            {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
-
-            {{ govukInsetText({
-              text: "This means people who are not expected to live more than 12 months."
-            }) }}
+                   {{ govukInsetText({
+            classes: "colour-blue",
+            text: "Action: Select whether the applicant has an appointee in Searchlight."
+          }) }}
 
             {{ govukRadios({
-              name: "srel",
+              name: "appointeeYn",
               fieldset: {
                 legend: {
-                  text: "Do you want to claim PIP under the Special Rules for end of life?",
+                  text: "",
                   isPageHeading: true,
-                  classes: "govuk-fieldset__legend--m"
+                  classes: "govuk-fieldset__legend--l"
                 }
               },
+
               items: [
                 {
                   value: "yes",
-                  text: "Yes"
+                  text: "Yes, they have an appointee"
                 },
                 {
                   value: "no",
-                  text: "No"
+                  text: "No, they do not have an appointee"
                 }
               ]
             }) }}
@@ -52,7 +52,7 @@
             {{ govukButton({
               text: "Continue"
             }) }}
-      </form>
+          </form>
    </div>
 </div>
 
