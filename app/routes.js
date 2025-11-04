@@ -64,3 +64,34 @@ router.post('/regScen', function (request, response) {
       response.redirect("pip-register/signposting-eligibility/service-start-page")
   }
 });
+
+import path from 'path';
+
+export const allowedPaths = [
+  'scotland',
+  'signposting-eligibility/new-application'
+];
+
+export const validatePath = (res, redirectPath, hasApplicationId = true) => {
+  const basePath = getBasePath(redirectPath, hasApplicationId);
+
+  if (allowedPaths.includes(basePath)) {
+    return res.redirect(redirectPath);
+  } else {
+    const error = new Error('Client Error - Path not found on allowed path list');
+    error.clientError = 404;
+    throw error;
+  }
+};
+
+const getBasePath = (redirectPath, hasApplicationId) => {
+  if (redirectPath.indexOf('?') > -1) {
+    return redirectPath.split(path.sep).pop().split('?')[0];
+  }
+  if (hasApplicationId) {
+    return path.dirname(redirectPath).split(path.sep).pop();
+  } else {
+    return redirectPath.split(path.sep).pop();
+  }
+};
+ 
