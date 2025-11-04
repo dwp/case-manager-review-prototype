@@ -1,5 +1,40 @@
 // add motability routes here
+
+  import path from 'path';
+
+export const allowedPaths = [
+  'signposting-eligibility/scotland',
+  'signposting-eligibility/new-application',
+  'welcome-screen'
+];
+
+export const validatePath = (res, redirectPath, hasApplicationId = true) => {
+  const basePath = getBasePath(redirectPath, hasApplicationId);
+
+  if (allowedPaths.includes(basePath)) {
+    return res.redirect(redirectPath);
+  } else {
+    const error = new Error('Client Error - Path not found on allowed path list');
+    error.clientError = 404;
+    throw error;
+  }
+};
+
+const getBasePath = (redirectPath, hasApplicationId) => {
+  if (redirectPath.indexOf('?') > -1) {
+    return redirectPath.split(path.sep).pop().split('?')[0];
+  }
+  if (hasApplicationId) {
+    return path.dirname(redirectPath).split(path.sep).pop();
+  } else {
+    return redirectPath.split(path.sep).pop();
+  }
+};
+
 module.exports = function (folderForViews, urlPrefix, router) {
+
+
+ 
 
   // GB Telephony routes
 
