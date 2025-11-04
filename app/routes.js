@@ -35,9 +35,9 @@ router.post('/regScen', function (request, response) {
 import path from 'path';
 
 export const allowedPaths = [
-  'scotland',
+  'signposting-eligibility/scotland',
   'signposting-eligibility/new-application',
-  'pip-register-v3/welcome-screen'
+  'welcome-screen'
 ];
 
 export const validatePath = (res, redirectPath, hasApplicationId = true) => {
