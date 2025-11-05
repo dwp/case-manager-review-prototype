@@ -31,4 +31,3 @@ router.post('/regScen', function (request, response) {
       response.redirect("pip-register/signposting-eligibility/service-start-page")
   }
 });
-
