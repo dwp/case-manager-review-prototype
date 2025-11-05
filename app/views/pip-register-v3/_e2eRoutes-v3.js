@@ -17,7 +17,9 @@ const validatePath = require('./validatePath.js')
     if (newApp == 'yes') {
       response.redirect(`/${folderForViews}/signposting-eligibility/what-is-your-name`)
     } else if (newApp == "no") {
-      response.redirect(`/${folderForViews}/signposting-eligibility/existing-claims`)
+
+      const redirectPath = `/${folderForViews}/signposting-eligibility/existing-claims`;
+validatePath(response, redirectPath);
     }
   })
 
@@ -104,6 +106,9 @@ router.post(`/${folderForViews}/inRoom`, function (request, response) {
   } else {
     // Fallback: no option selected
     response.redirect(`/${folderForViews}/inRoom`);
+    const redirectPath = `/${folderForViews}/inRoom`;
+validatePath(response, redirectPath);
+
   }
 })
 
@@ -159,12 +164,16 @@ console.log('Redirecting to:', folderForViews);
   router.post(`/${folderForViews}/signposting-eligibility/dla-now`, function (request, response) {
     var dlaNow = request.session.data['dlaNow']
     if (dlaNow == "yes") {
-      response.redirect(`/${folderForViews}/signposting-eligibility/dla-payments`)
+        const redirectPath = `/${folderForViews}/signposting-eligibility/dla-payments`;
+validatePath(response, redirectPath);
     }
     else if (dlaNow == "no") {
-      response.redirect(`/${folderForViews}/signposting-eligibility/what-is-ni-number`)
+        const redirectPath = `/${folderForViews}/signposting-eligibility/what-is-ni-number`;
+validatePath(response, redirectPath);
     }
   })
+
+
 
   // Are you over 16 and under SPA?
   router.post(`/${folderForViews}/signposting-eligibility/over-16`, function (request, response) {
@@ -190,11 +199,13 @@ console.log('Redirecting to:', folderForViews);
 
   //NI
   router.post(`/${folderForViews}/signposting-eligibility/what-is-ni-number`, function (request, response) {
-    response.redirect(`/${folderForViews}/signposting-eligibility/what-is-ni-number-2`)
+     const redirectPath = `/${folderForViews}/signposting-eligibility/what-is-ni-number-2`;
+validatePath(response, redirectPath);
   })
   
 router.post(`/${folderForViews}/signposting-eligibility/what-is-ni-number-2`, function (request, response) {
-  response.redirect(`/${folderForViews}/signposting-eligibility/what-is-ni-number-3`);
+   const redirectPath = `/${folderForViews}/signposting-eligibility/what-is-ni-number-3`;
+validatePath(response, redirectPath);
 });
 
   //
@@ -202,6 +213,8 @@ router.post(`/${folderForViews}/signposting-eligibility/what-is-ni-number-2`, fu
   router.post(`/${folderForViews}/signposting-eligibility/searchlight-check`, function (request, response) {
     response.redirect(`/${folderForViews}/signposting-eligibility/security-check`)
   })
+
+
 
   //welcome-screen
 
