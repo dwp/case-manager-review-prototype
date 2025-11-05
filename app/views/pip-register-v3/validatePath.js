@@ -1,8 +1,8 @@
 const path = require('path')
-
-module.exports = function (res,redirectPath) {
   const allowedPaths = ['5-2-today']
-  const validatePath = (res, redirectPath) => {
+
+function validatePath(res, redirectPath) {
+
     console.log("INSIDE VALIDATEPATH");
     JSON.stringify(allowedPaths)
     const basePath = getBasePath(redirectPath);
@@ -17,9 +17,11 @@ module.exports = function (res,redirectPath) {
       error.clientError = 404;
       throw error;
     }
-  };
+};
 
-  const getBasePath = (redirectPath) => {
+
+
+  function getBasePath (redirectPath) {
     console.log("INSIDE GETBASEPATH");
     if (redirectPath.indexOf('?') > -1) {
       console.log("DOES HAVE QUESTION MARK");
@@ -30,4 +32,4 @@ module.exports = function (res,redirectPath) {
   };
 
 
-}
+module.exports = validatePath;
