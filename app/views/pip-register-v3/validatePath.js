@@ -1,5 +1,6 @@
 const path = require('path')
-  const allowedPaths = ['5-2-today']
+  const allowedPaths = ['5-2-today','what-colour-paper-do-you-need']
+
 
 function validatePath(res, redirectPath) {
 

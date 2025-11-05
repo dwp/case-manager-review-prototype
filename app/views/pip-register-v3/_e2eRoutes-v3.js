@@ -430,7 +430,9 @@ router.post(`/${folderForViews}/signposting-eligibility/security-check`, functio
     var font = req.session.data['font'];
 
     //Redirect
-    response.redirect(`/${folderForViews}/contact-details/alt-formats/what-colour-paper-do-you-need`);
+      const redirectPath = `/${folderForViews}/contact-details/alt-formats/what-colour-paper-do-you-need`;
+validatePath(response, redirectPath);
+
   })
 
   //Paper
@@ -1045,7 +1047,7 @@ router.post(`/${folderForViews}/healthcare-professional/hcp-cyas/remove-health-p
 
   //hospital and accom start ----> Are you in hospital or hospice as an in-patient today?
   router.post(`/${folderForViews}/hospital-dates/5-1-why-we-need-details`, function (request, response) {
-console.log('redirect to hospital today');
+
     const redirectPath = `/${folderForViews}/hospital-dates/5-2-today`;
 validatePath(response, redirectPath);
   })
