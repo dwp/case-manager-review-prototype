@@ -1,3 +1,7 @@
+const path = require('path')
+
+const allowedPaths=['5-2-today']
+
 const validatePath = (res, redirectPath) => {
   const basePath = getBasePath(redirectPath);
 
