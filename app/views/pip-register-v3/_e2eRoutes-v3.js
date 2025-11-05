@@ -4,7 +4,7 @@
 
 module.exports = function (folderForViews, urlPrefix, router) {
 
-
+const validatePath = require('./validatePath')
  
 
   // GB Telephony routes
@@ -1045,7 +1045,8 @@ router.post(`/${folderForViews}/healthcare-professional/hcp-cyas/remove-health-p
 
   //hospital and accom start ----> Are you in hospital or hospice as an in-patient today?
   router.post(`/${folderForViews}/hospital-dates/5-1-why-we-need-details`, function (request, response) {
-    response.redirect(`/${folderForViews}/hospital-dates/5-2-today`)
+const redirectPath = `/${folderForViews}/hospital-dates/5-2-today`;
+validatePath(response, redirectPath);
   })
   // Are you in hospital or hospice as an in-patient today?
   router.post(`/${folderForViews}/hospital-dates/5-2-today`, function (request, response) {
