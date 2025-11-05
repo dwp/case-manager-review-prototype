@@ -567,9 +567,12 @@ validatePath(response, redirectPath);
   });
 
   // start
-  router.post(`/${folderForViews}/additional-support/start-info`, function (request, response) {
-    response.redirect(`/${folderForViews}/additional-support/do-you-have-a-condition`)
-  })
+router.post(`/${folderForViews}/additional-support/start-info`, function (_request, response) {
+  const redirectPath = `/${folderForViews}/additional-support/do-you-have-a-condition`;
+  validatePath(response, redirectPath);
+});
+
+
 
   // do you have a condition
   router.post(`/${folderForViews}/additional-support/do-you-have-a-condition`, function (request, response) {
@@ -586,14 +589,19 @@ validatePath(response, redirectPath);
     var forms = request.session.data['forms']
 
     if (forms === 'no') {
-      response.redirect(`/${folderForViews}/additional-support/helpers`)
+  const redirectPath = `/${folderForViews}/additional-support/helpers`;
+validatePath(response, redirectPath);
     } else if (forms === 'yes') {
-      response.redirect(`/${folderForViews}/additional-support/read-letters`)
+        const redirectPath = `/${folderForViews}/additional-support/read-letters`;
+validatePath(response, redirectPath);
     } else {
       // fallback if nothing selected
-      response.redirect(`/${folderForViews}/additional-support/complete-forms`)
+        const redirectPath = `/${folderForViews}/additional-support/complete-forms`;
+validatePath(response, redirectPath);
     }
   })
+
+
 
   // not working
 
@@ -625,16 +633,18 @@ validatePath(response, redirectPath);
   router.post(`/${folderForViews}/additional-support/helpers`, function (request, response) {
     var anyoneHelp = request.session.data['helpers']
     if (anyoneHelp == 'yes') {
-      response.redirect(`/${folderForViews}/additional-support/who`)
+          const redirectPath = `/${folderForViews}/additional-support/who`;
+validatePath(response, redirectPath);
     } else if (anyoneHelp == 'no') {
-      response.redirect(`/${folderForViews}/additional-support/support-no-help`)
+         const redirectPath = `/${folderForViews}/additional-support/support-no-help`;
+validatePath(response, redirectPath);
     }
 
     else {
     response.redirect(`/${folderForViews}/additional-support/helpers`)
     }
-
   })
+
 
 
 router.post(`/${folderForViews}/additional-support/who-helps`, function (_request, response) {
@@ -735,11 +745,15 @@ router.post(`/${folderForViews}/contact-details/alt-formats/written-format`, fun
   router.post(`/${folderForViews}/leftUK`, function (request, response) {
     var leftUK = request.session.data['leftUK']
     if (leftUK == 'yes') {
-      response.redirect(`/${folderForViews}/nationality/where`)
+            const redirectPath = `/${folderForViews}/nationality/where`;
+validatePath(response, redirectPath);
     } else if (leftUK == 'no') {
-      response.redirect(`/${folderForViews}/nationality/benefits-abroad`)
+            const redirectPath = `/${folderForViews}/nationality/benefits-abroad`;
+validatePath(response, redirectPath);
     }
   })
+
+
 
   //Select eea nationality
   router.post(`/${folderForViews}/nationality/eea-nationality`, function (request, response) {
@@ -759,8 +773,11 @@ router.post(`/${folderForViews}/contact-details/alt-formats/written-format`, fun
 
   //Were you living in the UK on or before 31/12/20?
   router.post(`/${folderForViews}/nationality/living-in-uk`, function (request, response) {
-    response.redirect(`/${folderForViews}/nationality/uk-2-of-3-years`)
+      const redirectPath = `/${folderForViews}/nationality/uk-2-of-3-years`;
+validatePath(response, redirectPath);
   })
+
+
 
   //Are you working or paying national insurance in another country?
 
@@ -791,23 +808,31 @@ router.post(`/${folderForViews}/nationality/exportability/what-country-benefits`
     response.redirect(`/${folderForViews}/task-list-nat-done`);
   } else {
     // Fallback: no country selected
-    response.redirect(`/${folderForViews}/nationality/exportability/what-country-benefits`);
+    const redirectPath = `/${folderForViews}/nationality/exportability/what-country-benefits`;
+validatePath(response, redirectPath);
   }
 })
+
+
 
   //Are any of your family members receiving pensions or benefits in another country?
   router.post(`/${folderForViews}/nationality/exportability/family-receiving-benefits`, function (request, response) {
   var payingBenefits = request.session.data['family-receiving-benefits'];
 
   if (payingBenefits === 'no') {
-    response.redirect(`/${folderForViews}/task-list-nat-done`);
+    const redirectPath = `/${folderForViews}/task-list-nat-done`;
+validatePath(response, redirectPath)
   } else if (payingBenefits === 'yes') {
-    response.redirect(`/${folderForViews}/nationality/exportability/family-country-benefits`);
+    const redirectPath = `/${folderForViews}/nationality/exportability/family-country-benefits`;
+validatePath(response, redirectPath);
   } else {
     // Fallback: no option selected
-    response.redirect(`/${folderForViews}/nationality/exportability/family-receiving-benefits`);
+    const redirectPath = `/${folderForViews}/nationality/exportability/family-receiving-benefits`;
+validatePath(response, redirectPath);
   }
 })
+
+
 
   //What country are your family members receiving pensions or benefits in?
   router.post(`/${folderForViews}/nationality/exportability/family-country-benefits`, function (request, response) {
@@ -876,9 +901,12 @@ router.post(`/${folderForViews}/nationality/exportability/what-country-benefits`
     if (livedAbroad == 'yes') {
       response.redirect('#')
     } else if (livedAbroad == 'no') {
-      response.redirect(`/${folderForViews}/versions/devs/nationality/benefits-abroad`)
+        const redirectPath = `/${folderForViews}/versions/devs/nationality/benefits-abroad`;
+validatePath(response, redirectPath);
     }
   })
+
+
 
   //benefits abroad
   router.post(`/${folderForViews}/versions/devs/nationality/benefits-abroad`, function (request, response) {
@@ -890,25 +918,6 @@ router.post(`/${folderForViews}/nationality/exportability/what-country-benefits`
     }
   })
 
-  //are you or a family member working or paying insurance from Switzerland or EEA?
-  router.post(`/${folderForViews}/versions/devs/nationality/insurance-abroad`, function (request, response) {
-    var insuranceAbroad = request.session.data['insurance-abroad']
-    if (insuranceAbroad == 'yes') {
-      response.redirect(`/${folderForViews}/versions/devs/nationality/nationality-summary`)
-    } else if (insuranceAbroad == 'no') {
-      response.redirect(`/${folderForViews}/versions/devs/nationality/nationality-summary`)
-    }
-    else {
-    response.redirect(`/${folderForViews}/versions/devs/nationality/insurance-abroad`)
-    }
-  })
-
-  //summary to task list
-  router.post(`/${folderForViews}/versions/devs/nationality/nationality-summary`, function (request, response) {
-    response.redirect(`/${folderForViews}/versions/devs/task-list-nat-done`)
-  })
-
-  // -------------------------------------------------------------------------------------
 
   //pip-register/HEALTHCARE-PROFESSIONAL
 
@@ -916,17 +925,22 @@ router.post(`/${folderForViews}/nationality/exportability/what-country-benefits`
   router.post(`/${folderForViews}/HCPYesNo`, function (request, response) {
     var HCPYesNo = request.session.data['HCPYesNo']
     if (HCPYesNo == 'Yes') {
-      response.redirect(`/${folderForViews}/healthcare-professional/healthcare-prof-type`)
+       const redirectPath = `/${folderForViews}/healthcare-professional/healthcare-prof-type`;
+validatePath(response, redirectPath);
     } else if (HCPYesNo == 'No') {
-      response.redirect(`/${folderForViews}/hospital-dates/5-1-why-we-need-details`)
+        const redirectPath = `/${folderForViews}/hospital-dates/5-1-why-we-need-details`;
+validatePath(response, redirectPath);
     }
   })
 
 
   //start ---> healthcare-prof-type
   router.post(`/${folderForViews}/healthcare-professional/start`, function (request, response) {
-    response.redirect(`/${folderForViews}/hospital-dates/5-1-why-we-need-details`)
+        const redirectPath = `/${folderForViews}/hospital-dates/5-1-why-we-need-details`;
+validatePath(response, redirectPath);
   })
+
+
 
   //healthcare-professional/consent-2
   router.post(`/${folderForViews}/healthcare-professional/consent`, function (request, response) {
@@ -934,18 +948,26 @@ router.post(`/${folderForViews}/nationality/exportability/what-country-benefits`
     const consent = request.body.consent;
 
     if (consent === 'yes') {
-      response.redirect(`/${folderForViews}/healthcare-professional/start`);
+        const redirectPath = `/${folderForViews}/healthcare-professional/start`;
+validatePath(response, redirectPath);
     } else if (consent === 'no') {
-      response.redirect(`/${folderForViews}/healthcare-professional/hp-summary-two-remove`);
+        const redirectPath = `/${folderForViews}/healthcare-professional/hp-summary-two-remove`;
+validatePath(response, redirectPath);
     } else {
-      response.redirect(`/${folderForViews}/healthcare-professional/start`); // optional fallback
+        const redirectPath = `/${folderForViews}/healthcare-professional/start`;
+validatePath(response, redirectPath); // optional fallback
     }
   });
 
+
+
   //healthcare-prof-type ---> what is their postcode
   router.post(`/${folderForViews}/healthcare-professional/healthcare-prof-type`, function (request, response) {
-    response.redirect(`/${folderForViews}/healthcare-professional/postcode`)
+      const redirectPath = `/${folderForViews}/healthcare-professional/postcode`;
+validatePath(response, redirectPath);
   })
+
+
 
   //healthcare-prof-type ---> find address
   router.post(`/${folderForViews}/healthcare-professional/healthcare-prof-type`, function (request, response) {
