@@ -225,16 +225,20 @@ router.post(`/${folderForViews}/signposting-eligibility/security-check`, functio
   var secVerified = request.session.data['security-verified'];
 
   if (secVerified == '2correct') {
-    response.redirect(`/${folderForViews}/welcome-screen`);
- 
+
+ const redirectPath = `/${folderForViews}/welcome-screen`;
+validatePath(response, redirectPath);
   } else if (secVerified == '1correct') {
-    response.redirect(`/${folderForViews}/signposting-eligibility/failed-security`);
-  
+      const redirectPath = `/${folderForViews}/signposting-eligibility/failed-security`;
+validatePath(response, redirectPath);
+
   } else if (secVerified == 'none') {
-    response.redirect(`/${folderForViews}/signposting-eligibility/failed-security`);
+         const redirectPath = `/${folderForViews}/signposting-eligibility/failed-security`;
+validatePath(response, redirectPath);
   } else {
     // Fallback: no option selected
-    response.redirect(`/${folderForViews}/signposting-eligibility/security-check`);
+         const redirectPath = `/${folderForViews}/signposting-eligibility/security-check`;
+validatePath(response, redirectPath);
   }
 })
 
@@ -254,17 +258,7 @@ router.post(`/${folderForViews}/signposting-eligibility/security-check`, functio
     response.redirect(`/${folderForViews}/declaration`)
   })
 
-  // // Welcome screen 2
-  // router.post(`/${folderForViews}/welcome-screens/welcome-screen-ni-2', function(request, response) {
-  //     response.redirect(`/${folderForViews}/welcome-screens/welcome-screen-ni-3')
-  // })
-  //
-  // // Welcome screen 3
-  // router.post(`/${folderForViews}/welcome-screens/welcome-screen-ni-3', function(request, response) {
-  //     response.redirect(`/${folderForViews}/declaration')
-  // })
 
-  //---------------------------------------------------------------------------------------------
 
   // Declaration
   router.post(`/${folderForViews}/declaration`, function (request, response) {
@@ -285,9 +279,13 @@ router.post(`/${folderForViews}/signposting-eligibility/security-check`, functio
   router.post(`/${folderForViews}/previousNameYesNo`, function (request, response) {
     var previousNameYesNo = request.session.data['previousNameYesNo']
     if (previousNameYesNo == 'Yes') {
-      response.redirect(`/${folderForViews}/contact-details/what-is-your-previous-surname`)
+
+      const redirectPath = `/${folderForViews}/contact-details/what-is-your-previous-surname`;
+validatePath(response, redirectPath);
+
     } else if (previousNameYesNo == 'No') {
-      response.redirect(`/${folderForViews}/contact-details/what-is-your-dob`)
+            const redirectPath = `/${folderForViews}/contact-details/what-is-your-dob`;
+validatePath(response, redirectPath);
     }
   })
 
@@ -303,7 +301,8 @@ router.post(`/${folderForViews}/signposting-eligibility/security-check`, functio
 
   // What is your postcode page
   router.post(`/${folderForViews}/contact-details/what-is-your-postcode`, function (request, response) {
-    response.redirect(`/${folderForViews}/contact-details/select-your-address`)
+    const redirectPath = `/${folderForViews}/contact-details/select-your-address`;
+validatePath(response, redirectPath)
   })
 
   // Select your address page
@@ -341,7 +340,8 @@ router.post(`/${folderForViews}/signposting-eligibility/security-check`, functio
 
   // Confirm correspondence address > correspondence alt formats page
   router.post(`/${folderForViews}/contact-details/confirm-correspondence-address`, function (request, response) {
-    response.redirect(`/${folderForViews}/contact-details/confirm-correspondence`)
+    const redirectPath = `/${folderForViews}/contact-details/confirm-correspondence`;
+validatePath(response, redirectPath)
   })
 
   // Confirm s > correspondence alt formats page
@@ -396,7 +396,9 @@ router.post(`/${folderForViews}/signposting-eligibility/security-check`, functio
 
   // Contact details summary
   router.post(`/${folderForViews}/contact-details/contact-details-summary`, function (request, response) {
-    response.redirect(`/${folderForViews}/additional-support/start-info`)
+const redirectPath = `/${folderForViews}/additional-support/start-info`;
+validatePath(response, redirectPath);
+
   })
 
   //Alt formats
@@ -463,17 +465,28 @@ validatePath(response, redirectPath);
   router.post(`/${folderForViews}/audio`, function (request, response) {
     var audio = request.session.data['audio']
     if (audio == 'CD') {
-      response.redirect(`/${folderForViews}/contact-details/alt-formats/how-should-we-contact-you`)
+       const redirectPath = `/${folderForViews}/contact-details/alt-formats/how-should-we-contact-you`;
+validatePath(response, redirectPath);
+
     } else if (audio == 'MP3 by email') {
-      response.redirect(`/${folderForViews}/contact-details/alt-formats/what-is-your-email`)
+       const redirectPath = `/${folderForViews}/contact-details/alt-formats/what-is-your-email`;
+validatePath(response, redirectPath);
+
     } else if (audio == 'USB stick') {
-      response.redirect(`/${folderForViews}/contact-details/alt-formats/how-should-we-contact-you`)
+        const redirectPath = `/${folderForViews}/contact-details/alt-formats/how-should-we-contact-you`;
+validatePath(response, redirectPath);
+      
     } else if (audio == 'Casette tape') {
-      response.redirect(`/${folderForViews}/contact-details/alt-formats/how-should-we-contact-you`)
+      const redirectPath = `/${folderForViews}/contact-details/alt-formats/how-should-we-contact-you`;
+validatePath(response, redirectPath);
+
     } else if (audio == 'DVD') {
-      response.redirect(`/${folderForViews}/contact-details/alt-formats/how-should-we-contact-you`)
+         const redirectPath = `/${folderForViews}/contact-details/alt-formats/how-should-we-contact-you`;
+validatePath(response, redirectPath);
     }
   })
+
+
 
   //Video format
   router.post(`/${folderForViews}/video`, function (request, response) {
@@ -513,22 +526,32 @@ router.post(`/${folderForViews}/other-help`, function (request, response) {
   var otherHelp = request.session.data['other-help'];
 
   if (otherHelp === 'Yes') {
-    response.redirect(`/${folderForViews}/contact-details/alt-formats/what-other-help-when-we-contact`);
+    const redirectPath = `/${folderForViews}/contact-details/alt-formats/what-other-help-when-we-contact`;
+validatePath(response, redirectPath);
   } else if (otherHelp === 'No') {
-    response.redirect(`/${folderForViews}/contact-details/do-you-want-to-receive-text-updates`);
+       const redirectPath = `/${folderForViews}/contact-details/do-you-want-to-receive-text-updates`;
+validatePath(response, redirectPath);
   } else {
     // Fallback: no option selected
-    response.redirect(`/${folderForViews}/contact-details/contact-details-summary`);
+       const redirectPath = `/${folderForViews}/contact-details/contact-details-summary`;
+validatePath(response, redirectPath);
   }
 });
+
+
 
   // pip-register/ADDITIONAL-SUPPORT
 
   router.post(`/${folderForViews}/contact-details/what-other-help-when-we-contact`, function (request, response) {
     var otherHelpDetails = request.session.data['other-help-details'];
     // You can log or use this data if needed
-    response.redirect(`/${folderForViews}/contact-details/do-you-want-to-receive-text-updates`);
+         const redirectPath = `/${folderForViews}/contact-details/do-you-want-to-receive-text-updates`;
+validatePath(response, redirectPath);
   });
+
+
+
+
 
   //What is your phone number - 2
   router.post(`/${folderForViews}/contact-details/what-is-your-phone-2`, function (request, response) {
