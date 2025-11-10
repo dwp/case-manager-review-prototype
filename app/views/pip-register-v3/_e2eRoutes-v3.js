@@ -307,7 +307,7 @@ validatePath(response, redirectPath)
 
   // Select your address page
   router.post(`/${folderForViews}/contact-details/select-your-address`, function (request, response) {
-    response.redirect(`/${folderForViews}/contact-details/confirm`)
+    response.redirect(`/${folderForViews}/contact-details/correspondence-address`)
   })
 
   // Enter address manually page
@@ -333,8 +333,17 @@ validatePath(response, redirectPath)
     }
   })
 
-  // What is your correspondence postcode page
+
   router.post(`/${folderForViews}/contact-details/correspondence-postcode`, function (request, response) {
+    response.redirect(`/${folderForViews}/contact-details/select-your-address-correspondence`)
+  })
+
+       router.post(`/${folderForViews}/contact-details/select-your-address-correspondence`, function (request, response) {
+    response.redirect(`/${folderForViews}/contact-details/alt-formats/written-format`)
+  })
+
+  // What is your correspondence postcode page
+  router.post(`/${folderForViews}/contact-details/correspondence-address`, function (request, response) {
     response.redirect(`/${folderForViews}/contact-details/confirm-correspondence-address`)
   })
 
@@ -860,7 +869,8 @@ validatePath(response, redirectPath);
 
   // Another nationality
   router.post(`/${folderForViews}/versions/devs/nationality/another-nationality`, function (request, response) {
-    response.redirect(`/${folderForViews}/versions/devs/nationality/what-country-do-you-live-in`)
+   const redirectPath = `/${folderForViews}/versions/devs/nationality/what-country-do-you-live-in`;
+validatePath(response, redirectPath);
   })
 
   //what country do you normally live in page
@@ -987,6 +997,8 @@ validatePath(response, redirectPath);
   router.post(`/${folderForViews}/healthcare-professional/select-your-address`, function (request, response) {
     response.redirect(`/${folderForViews}/healthcare-professional/additional-support-needed`)
   })
+
+  
 
   //enter-address-manually ----> second support needed?
   router.post(`/${folderForViews}/healthcare-professional/enter-address-manually`, function (request, response) {
