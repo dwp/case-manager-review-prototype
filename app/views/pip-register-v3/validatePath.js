@@ -38,33 +38,38 @@ const path = require('path')
 '5-12-other-yesterday','5-15-other-postcode','5-16-select-other-address','5-13-third-party-pay','5-23-name','5-23-name-local','5-14-local-agreement','6-1-start','6-2-no-details-now',
 '6-3-main-account-details-v2','bank-details-summary','motability-question','motability-summary','save-application','what-happens-next','online-form-option','online-form-contact',
 'online-whn-1','online-whn-2','previously-claimed-online','paper-whn-1','paper-whn-2','after-form-sent','application-submitted','over-16','dla-now','under-16-ineligible','last-12-months','srel','srel-bau-kickout','what-is-ni-number','what-is-ni-number-2','what-is-ni-number-3','searchlight-check','security-check',
-'failed-security','welcome-screen','declaration','task-list','whatIsYourName','what-is-your-postcode'];
-
-const allowedPathsUnique = [...new Set(allowedPaths)];
+'failed-security','welcome-screen','declaration','task-list','whatIsYourName','what-is-your-postcode']
 
 
 function validatePath(res, redirectPath) {
-  console.log("INSIDE VALIDATEPATH");
-  const basePath = getBasePath(redirectPath);
-  console.log("THE BASE PATH ", basePath);
 
-  if (allowedPathsUnique.includes(basePath)) {
-    console.log("IN ALLOWED PATHS");
-    return res.redirect(redirectPath);
-  } else {
-    console.log("NOT IN ALLOWED PATHS");
-    const error = new Error('Client Error - Path not found on allowed path list');
-    error.clientError = 404;
-    throw error;
-  }
-}
+    console.log("INSIDE VALIDATEPATH");
+    JSON.stringify(allowedPaths)
+    const basePath = getBasePath(redirectPath);
+    console.log("THE BASE PATH ",basePath)
 
-function getBasePath(redirectPath) {
-  console.log("INSIDE GETBASEPATH");
-  if (redirectPath.indexOf('?') > -1) {
-    return redirectPath.split(path.sep).pop().split('?')[0];
-  }
-  return redirectPath.split(path.sep).pop();
-}
+    if (allowedPaths.includes(basePath)) {
+      console.log("IN ALLOWED PATHS");
+      return res.redirect(redirectPath);
+    } else {
+      console.log("NOT IN ALLOWED PATHS");
+      const error = new Error('Client Error - Path not found on allowed path list');
+      error.clientError = 404;
+      throw error;
+    }
+};
+
+
+
+  function getBasePath (redirectPath) {
+    console.log("INSIDE GETBASEPATH");
+    if (redirectPath.indexOf('?') > -1) {
+      console.log("DOES HAVE QUESTION MARK");
+      return redirectPath.split(path.sep).pop().split('?')[0];
+    }
+    console.log("ORIGINAL REDIRECT PATH ",redirectPath)
+    return redirectPath.split(path.sep).pop()
+  };
+
 
 module.exports = validatePath;
