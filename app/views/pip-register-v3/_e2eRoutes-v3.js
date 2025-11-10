@@ -15,7 +15,8 @@ const validatePath = require('./validatePath.js')
   router.post(`/${folderForViews}/signposting-eligibility/service-start-page`, function (request, response) {
     var newApp = request.session.data['new-app']
     if (newApp == 'yes') {
-      response.redirect(`/${folderForViews}/signposting-eligibility/what-is-your-name`)
+      const redirectPath = `/${folderForViews}/signposting-eligibility/what-is-your-name`;
+validatePath(response, redirectPath);
     } else if (newApp == "no") {
 
       const redirectPath = `/${folderForViews}/signposting-eligibility/existing-claims`;
@@ -27,7 +28,8 @@ router.post('/whatIsYourName', function (request, response) {
   const firstName = request.session.data['first-name'];
   const lastName = request.session.data['last-name'];
 
-  response.redirect(`/${folderForViews}/signposting-eligibility/new-application`);
+  const redirectPath = `/${folderForViews}/signposting-eligibility/new-application`;
+validatePath(response, redirectPath);;
 });
 
 
@@ -35,18 +37,23 @@ router.post('/whatIsYourName', function (request, response) {
   router.post(`/${folderForViews}/signposting-eligibility/new-application`, function (request, response) {
     var gbPIP = request.session.data['gb-pip']
     if (gbPIP == 'yes') {
-      response.redirect(`/${folderForViews}/signposting-eligibility/claiming-self`)
+      const redirectPath = `/${folderForViews}/signposting-eligibility/claiming-self`;
+validatePath(response, redirectPath);
     } else if (gbPIP == "n-ireland") {
-      response.redirect(`/${folderForViews}/signposting-eligibility/northern-ireland`)
+      const redirectPath = `/${folderForViews}/signposting-eligibility/northern-ireland`;
+validatePath(response, redirectPath);
     } else if (gbPIP == "scotland") {
-      response.redirect(`/${folderForViews}/signposting-eligibility/scotland`)
+      const redirectPath = `/${folderForViews}/signposting-eligibility/scotland`;
+validatePath(response, redirectPath);
     }
     else if (gbPIP == "other-country") {
-      response.redirect(`/${folderForViews}/signposting-eligibility/other-country`)
+      const redirectPath = `/${folderForViews}/signposting-eligibility/other-country`;
+validatePath(response, redirectPath);
     }
 
       else {
-    response.redirect(`/${folderForViews}/signposting-eligibility/new-application`)
+    const redirectPath = `/${folderForViews}/signposting-eligibility/new-application`;
+validatePath(response, redirectPath);
     }
 
   })
@@ -54,15 +61,19 @@ router.post('/whatIsYourName', function (request, response) {
   router.post(`/${folderForViews}/signposting-eligibility/claiming-self`, function (request, response) {
     var claimingSelf = request.session.data['claiming-self']
     if (claimingSelf == 'myself') {
-      response.redirect(`/${folderForViews}/signposting-eligibility/srel`)
+      const redirectPath = `/${folderForViews}/signposting-eligibility/srel`;
+validatePath(response, redirectPath);
     } else if (claimingSelf == "someone-else") {
-      response.redirect(`/${folderForViews}/signposting-eligibility/someone-else-bau-kickout`)
+      const redirectPath = `/${folderForViews}/signposting-eligibility/someone-else-bau-kickout`;
+validatePath(response, redirectPath);
     }
     else if (claimingSelf == "unofficial") {
-      response.redirect(`/${folderForViews}/signposting-eligibility/someone-else-bau-kickout`)
+      const redirectPath = `/${folderForViews}/signposting-eligibility/someone-else-bau-kickout`;
+validatePath(response, redirectPath);
     }
     else if (claimingSelf == "external") {
-      response.redirect(`/${folderForViews}/signposting-eligibility/someone-else-bau-kickout`)
+      const redirectPath = `/${folderForViews}/signposting-eligibility/someone-else-bau-kickout`;
+validatePath(response, redirectPath);
     }
 
     
@@ -73,53 +84,48 @@ router.post('/whatIsYourName', function (request, response) {
   router.post(`/${folderForViews}/external-route`, function (request, response) {
     var externalRoute = request.session.data['external-route']
     if (externalRoute == "friendFamily") {
-      response.redirect(`/${folderForViews}/signposting-eligibility/answer-questions-as-person`)
+      const redirectPath = `/${folderForViews}/signposting-eligibility/answer-questions-as-person`;
+validatePath(response, redirectPath);
     }
     else if (externalRoute == "org") {
-      response.redirect(`/${folderForViews}/signposting-eligibility/answer-questions-as-person`)
+      const redirectPath = `/${folderForViews}/signposting-eligibility/answer-questions-as-person`;
+validatePath(response, redirectPath);
     }
     else if (externalRoute == "attorney") {
-      response.redirect(`/${folderForViews}/signposting-eligibility/authority`)
+      const redirectPath = `/${folderForViews}/signposting-eligibility/authority`;
+validatePath(response, redirectPath);
     }
     else if (externalRoute == "appointee") {
-      response.redirect(`/${folderForViews}/signposting-eligibility/authority`)
+      const redirectPath = `/${folderForViews}/signposting-eligibility/authority`;
+validatePath(response, redirectPath);
     }
     else if (externalRoute == "wantAppointee") {
-      response.redirect(`/${folderForViews}/signposting-eligibility/authority`)
+      const redirectPath = `/${folderForViews}/signposting-eligibility/authority`;
+validatePath(response, redirectPath);
     }
     else if (externalRoute == "corp") {
-      response.redirect(`/${folderForViews}/signposting-eligibility/authority`)
+      const redirectPath = `/${folderForViews}/signposting-eligibility/authority`;
+validatePath(response, redirectPath);
     }
     else if (externalRoute == "curator") {
-      response.redirect(`/${folderForViews}/signposting-eligibility/authority`)
+      const redirectPath = `/${folderForViews}/signposting-eligibility/authority`;
+validatePath(response, redirectPath);
     }
     
   })
 
-router.post(`/${folderForViews}/inRoom`, function (request, response) {
-  var externalRoute = request.session.data['inRoom'];
 
-  if (externalRoute == "yes") {
-    response.redirect(`/${folderForViews}/signposting-eligibility/over-16`);
-  } else if (externalRoute == "no") {
-    response.redirect(`/${folderForViews}/signposting-eligibility/not-in-room`);
-  } else {
-    // Fallback: no option selected
-    response.redirect(`/${folderForViews}/inRoom`);
-    const redirectPath = `/${folderForViews}/inRoom`;
-validatePath(response, redirectPath);
-
-  }
-})
 
   //last 12 months
   router.post(`/${folderForViews}/last-12-months`, function (request, response) {
     var externalRoute = request.session.data['last12months']
     if (externalRoute == "yes") {
-      response.redirect(`/pip-register-v3/signposting-eligibility/dla-now`)
+      const redirectPath = `/pip-register-v3/signposting-eligibility/dla-now`;
+validatePath(response, redirectPath);
     }
     else if (externalRoute == "no") {
-      response.redirect(`/pip-register-v3/signposting-eligibility/stop-getting-pip-last-year`)
+      const redirectPath = `/pip-register-v3/signposting-eligibility/stop-getting-pip-last-year`;
+validatePath(response, redirectPath);
     }
     console.log('last12months value:', request.session.data['last12months']);
 console.log('Redirecting to:', folderForViews);
@@ -130,16 +136,20 @@ console.log('Redirecting to:', folderForViews);
 router.post(`/${folderForViews}/what-is-ni-number-3`, function (request, response) {
   var externalRoute = request.session.data['ni3']
   if (externalRoute == "same-dob") {
-    response.redirect(`/pip-register-v3/signposting-eligibility/appointee`)
+    const redirectPath = `/pip-register-v3/signposting-eligibility/appointee`;
+validatePath(response, redirectPath);
   }
   else if (externalRoute == "different-dob") {
-    response.redirect(`/pip-register-v3/signposting-eligibility/no-match-ni-kickout`)
+    const redirectPath = `/pip-register-v3/signposting-eligibility/no-match-ni-kickout`;
+validatePath(response, redirectPath);
   }
   else if (externalRoute == "scr") {
-    response.redirect(`/pip-register-v3/signposting-eligibility/scr-kickout`)
+    const redirectPath = `/pip-register-v3/signposting-eligibility/scr-kickout`;
+validatePath(response, redirectPath);
   }
   else if (externalRoute == "no-searchlight") {
-    response.redirect(`/pip-register-v3/signposting-eligibility/no-match-ni-kickout`)
+    const redirectPath = `/pip-register-v3/signposting-eligibility/no-match-ni-kickout`;
+validatePath(response, redirectPath);
   }
   console.log('ni3 value:', request.session.data['ni3']);
   console.log('Redirecting to:', folderForViews);
@@ -149,10 +159,12 @@ router.post(`/${folderForViews}/what-is-ni-number-3`, function (request, respons
   router.post(`/${folderForViews}/appointee`, function (request, response) {
     var externalRoute = request.session.data['appointeeYn']
     if (externalRoute == "yes") {
-      response.redirect(`/pip-register-v3/signposting-eligibility/appointee-kickout`)
+      const redirectPath = `/pip-register-v3/signposting-eligibility/appointee-kickout`;
+validatePath(response, redirectPath);
     }
     else if (externalRoute == "no") {
-      response.redirect(`/pip-register-v3/signposting-eligibility/security-check`)
+      const redirectPath = `/pip-register-v3/signposting-eligibility/security-check`;
+validatePath(response, redirectPath);
     }
     console.log('appointeeYn value:', request.session.data['appointeeYn']);
 console.log('Redirecting to:', folderForViews);
@@ -179,11 +191,14 @@ validatePath(response, redirectPath);
   router.post(`/${folderForViews}/signposting-eligibility/over-16`, function (request, response) {
     var correctAge = request.session.data['age']
     if (correctAge == 'yes') {
-      response.redirect(`/${folderForViews}/signposting-eligibility/dla-now`)
+      const redirectPath = `/${folderForViews}/signposting-eligibility/dla-now`;
+validatePath(response, redirectPath);
     } else if (correctAge == "no-under-16") {
-      response.redirect(`/${folderForViews}/signposting-eligibility/under-16-ineligible`)
+      const redirectPath = `/${folderForViews}/signposting-eligibility/under-16-ineligible`;
+validatePath(response, redirectPath);
     } else if (correctAge == "no-over-spa") {
-      response.redirect(`/${folderForViews}/signposting-eligibility/last-12-months`)
+      const redirectPath = `/${folderForViews}/signposting-eligibility/last-12-months`;
+validatePath(response, redirectPath);
     }
   })
 
@@ -191,9 +206,11 @@ validatePath(response, redirectPath);
   router.post(`/${folderForViews}/signposting-eligibility/srel`, function (request, response) {
     var srel = request.session.data['srel']
     if (srel == 'yes') {
-      response.redirect(`/${folderForViews}/signposting-eligibility/srel-bau-kickout`)
+      const redirectPath = `/${folderForViews}/signposting-eligibility/srel-bau-kickout`;
+validatePath(response, redirectPath);
     } else if (srel == "no") {
-      response.redirect(`/${folderForViews}/signposting-eligibility/over-16`)
+      const redirectPath = `/${folderForViews}/signposting-eligibility/over-16`;
+validatePath(response, redirectPath);
     }
   })
 
@@ -211,7 +228,8 @@ validatePath(response, redirectPath);
   //
   //Serchlight check
   router.post(`/${folderForViews}/signposting-eligibility/searchlight-check`, function (request, response) {
-    response.redirect(`/${folderForViews}/signposting-eligibility/security-check`)
+    const redirectPath = `/${folderForViews}/signposting-eligibility/security-check`;
+validatePath(response, redirectPath);
   })
 
 
@@ -244,7 +262,8 @@ validatePath(response, redirectPath);
 
 
   router.post(`/${folderForViews}/signposting-eligibility/failed-security`, function (request, response) {
-    response.redirect(`/${folderForViews}/welcome-screen`)
+    const redirectPath = `/${folderForViews}/welcome-screen`;
+validatePath(response, redirectPath);
   })
 
 
@@ -255,14 +274,16 @@ validatePath(response, redirectPath);
 
   // Welcome screen GB
   router.post(`/${folderForViews}/welcome-screen`, function (request, response) {
-    response.redirect(`/${folderForViews}/declaration`)
+    const redirectPath = `/${folderForViews}/declaration`;
+validatePath(response, redirectPath);
   })
 
 
 
   // Declaration
   router.post(`/${folderForViews}/declaration`, function (request, response) {
-    response.redirect(`/${folderForViews}/task-list`)
+    const redirectPath = `/${folderForViews}/task-list`;
+validatePath(response, redirectPath);
   })
 
   // --------------------------------------------------------------------------------------
@@ -272,7 +293,8 @@ validatePath(response, redirectPath);
   // What is your name
 
   router.post(`/${folderForViews}/whatIsYourName`, function (request, response) {
-    response.redirect(`/${folderForViews}/contact-details/what-is-your-postcode`)
+    const redirectPath = `/${folderForViews}/contact-details/what-is-your-postcode`;
+validatePath(response, redirectPath);
   })
 
   //Do you have a previous surname?
@@ -291,12 +313,14 @@ validatePath(response, redirectPath);
 
   // What is your previous surname
   router.post(`/${folderForViews}/whatIsYourPreviousSurname`, function (request, response) {
-    response.redirect(`/${folderForViews}/contact-details/what-is-your-dob`)
+    const redirectPath = `/${folderForViews}/contact-details/what-is-your-dob`;
+validatePath(response, redirectPath);
   })
 
   // What is your DOB
   router.post(`/${folderForViews}/contact-details/what-is-your-dob`, function (request, response) {
-    response.redirect(`/${folderForViews}/contact-details/what-is-your-postcode`)
+    const redirectPath = `/${folderForViews}/contact-details/what-is-your-postcode`;
+validatePath(response, redirectPath);
   })
 
   // What is your postcode page
@@ -307,17 +331,20 @@ validatePath(response, redirectPath)
 
   // Select your address page
   router.post(`/${folderForViews}/contact-details/select-your-address`, function (request, response) {
-    response.redirect(`/${folderForViews}/contact-details/correspondence-address`)
+    const redirectPath = `/${folderForViews}/contact-details/correspondence-address`;
+validatePath(response, redirectPath);
   })
 
   // Enter address manually page
   router.post(`/${folderForViews}/contact-details/enter-address-manually-country`, function (_request, response) {
-    response.redirect(`/${folderForViews}/contact-details/correspondence-address`)
+    const redirectPath = `/${folderForViews}/contact-details/correspondence-address`;
+validatePath(response, redirectPath);
   })
 
   // Confirm address
   router.post(`/${folderForViews}/contact-details/confirm`, function (request, response) {
-    response.redirect(`/${folderForViews}/contact-details/correspondence-address`)
+    const redirectPath = `/${folderForViews}/contact-details/correspondence-address`;
+validatePath(response, redirectPath);
   })
 
 
@@ -325,26 +352,32 @@ validatePath(response, redirectPath)
   router.post(`/${folderForViews}/contact-details/correspondence-address`, function (request, response) {
     var sendLettersElsewhere = request.session.data['should-we-write-to-you']
     if (sendLettersElsewhere == 'yes') {
-      response.redirect(`/${folderForViews}/contact-details/alt-formats/written-format`)
+      const redirectPath = `/${folderForViews}/contact-details/alt-formats/written-format`;
+validatePath(response, redirectPath);
     } else if (sendLettersElsewhere == 'no') {
-      response.redirect(`/${folderForViews}/contact-details/correspondence-postcode`)
+      const redirectPath = `/${folderForViews}/contact-details/correspondence-postcode`;
+validatePath(response, redirectPath);
     } else if (sendLettersElsewhere == 'No, I dont have a home address') {
-      response.redirect(`/${folderForViews}/contact-details/alt-formats/written-format`)
+      const redirectPath = `/${folderForViews}/contact-details/alt-formats/written-format`;
+validatePath(response, redirectPath);
     }
   })
 
 
   router.post(`/${folderForViews}/contact-details/correspondence-postcode`, function (request, response) {
-    response.redirect(`/${folderForViews}/contact-details/select-your-address-correspondence`)
+    const redirectPath = `/${folderForViews}/contact-details/select-your-address-correspondence`;
+validatePath(response, redirectPath);
   })
 
        router.post(`/${folderForViews}/contact-details/select-your-address-correspondence`, function (request, response) {
-    response.redirect(`/${folderForViews}/contact-details/alt-formats/written-format`)
+    const redirectPath = `/${folderForViews}/contact-details/alt-formats/written-format`;
+validatePath(response, redirectPath);
   })
 
   // What is your correspondence postcode page
   router.post(`/${folderForViews}/contact-details/correspondence-address`, function (request, response) {
-    response.redirect(`/${folderForViews}/contact-details/confirm-correspondence-address`)
+    const redirectPath = `/${folderForViews}/contact-details/confirm-correspondence-address`;
+validatePath(response, redirectPath);
   })
 
   // Confirm correspondence address > correspondence alt formats page
@@ -355,12 +388,14 @@ validatePath(response, redirectPath)
 
   // Confirm s > correspondence alt formats page
   router.post(`/${folderForViews}/contact-details/confirm-correspondence`, function (request, response) {
-    response.redirect(`/${folderForViews}/contact-details/alt-formats/written-format`)
+    const redirectPath = `/${folderForViews}/contact-details/alt-formats/written-format`;
+validatePath(response, redirectPath);
   })
 
   // Confirm correspondence address page
   router.post(`/${folderForViews}/contact-details/correspondence-enter-address-manually`, function (request, response) {
-    response.redirect(`/${folderForViews}/contact-details/alt-formats/written-format`)
+    const redirectPath = `/${folderForViews}/contact-details/alt-formats/written-format`;
+validatePath(response, redirectPath);
   })
 
   // What is your phone number page
@@ -372,9 +407,11 @@ validatePath(response, redirectPath)
   router.post(`/${folderForViews}/mobile`, function (request, response) {
     var mobileYesNo = request.session.data['mobileYesNo']
     if (mobileYesNo == 'Yes') {
-      response.redirect(`/${folderForViews}/contact-details/what-is-your-phone-number`)
+      const redirectPath = `/${folderForViews}/contact-details/what-is-your-phone-number`;
+validatePath(response, redirectPath);
     } else if (mobileYesNo == 'No') {
-      response.redirect(`/${folderForViews}/contact-details/other-number`)
+      const redirectPath = `/${folderForViews}/contact-details/other-number`;
+validatePath(response, redirectPath);
     }
   })
 
@@ -385,22 +422,26 @@ validatePath(response, redirectPath)
 
   // Do you want to receive text updates
   router.post(`/${folderForViews}/contact-details/do-you-want-to-receive-text-updates`, function (request, response) {
-    response.redirect(`/${folderForViews}/contact-details/what-is-your-phone-number`)
+    const redirectPath = `/${folderForViews}/contact-details/what-is-your-phone-number`;
+validatePath(response, redirectPath);
   })
 
   // Do you have another number
   router.post(`/${folderForViews}/otherNumber`, function (request, response) {
     var otherNumberYesNo = request.session.data['otherNumberYesNo']
     if (otherNumberYesNo == 'Yes') {
-      response.redirect(`/${folderForViews}/contact-details/what-is-your-other-phone-number`)
+      const redirectPath = `/${folderForViews}/contact-details/what-is-your-other-phone-number`;
+validatePath(response, redirectPath);
     } else if (otherNumberYesNo == 'No') {
-      response.redirect(`/${folderForViews}/contact-details/contact-details-summary`)
+      const redirectPath = `/${folderForViews}/contact-details/contact-details-summary`;
+validatePath(response, redirectPath);
     }
   })
 
   // Contact details summary
   router.post(`/${folderForViews}/contact-details/contact-details-summary`, function (request, response) {
-    response.redirect(`/${folderForViews}/additional-support/start-info`)
+    const redirectPath = `/${folderForViews}/additional-support/start-info`;
+validatePath(response, redirectPath);
   })
 
   // Contact details summary
@@ -411,42 +452,6 @@ validatePath(response, redirectPath);
   })
 
   //Alt formats
-
-  router.post(`/${folderForViews}/large-print`, function (req, response) {
-    const selectedOptions = req.session.data['largePrint'];
-
-    // Handle no selection
-    if (!selectedOptions) {
-      return response.redirect(`/${folderForViews}/contact-details/alt-formats/how-should-we-contact-you`);
-    }
-
-    // Normalize to array
-    const options = Array.isArray(selectedOptions) ? selectedOptions : [selectedOptions];
-
-    // If "neither" is selected, ignore other options and redirect to 'none'
-    if (options.includes('none')) {
-      return response.redirect(`/${folderForViews}/contact-details/alt-formats/how-should-we-contact-you`);
-    }
-
-    // If both A and B are selected, go to a summary page
-    if (options.includes('coloured-paper') && options.includes('large-print')) {
-      return response.redirect(`/${folderForViews}/contact-details/alt-formats/what-size-print-do-you-need`);
-    }
-
-    // If only coloured paper (A)
-    if (options.includes('coloured-paper')) {
-      return response.redirect(`/${folderForViews}/contact-details/alt-formats/what-colour-paper-do-you-need`);
-    }
-
-    // If only large print (B)
-    if (options.includes('large-print')) {
-      return response.redirect(`/${folderForViews}/contact-details/alt-formats/what-size-print-do-you-need`);
-    }
-
-    // Fallback
-    response.redirect(`/${folderForViews}/contact-details/alt-formats/how-should-we-contact-you`);
-  });
-
 
   //font
   router.post(`/${folderForViews}/font`, function (req, response) {
@@ -467,7 +472,8 @@ validatePath(response, redirectPath);
     
 
     //Redirect
-    response.redirect(`/${folderForViews}/contact-details/alt-formats/what-size-print-do-you-need`);
+    const redirectPath = `/${folderForViews}/contact-details/alt-formats/what-size-print-do-you-need`;
+validatePath(response, redirectPath);;
   })
 
   //Audio format
@@ -497,36 +503,22 @@ validatePath(response, redirectPath);
 
 
 
-  //Video format
-  router.post(`/${folderForViews}/video`, function (request, response) {
-    var audio = request.session.data['video']
-
-    // Handle no selection
-    if (video) {
-      return response.redirect(`/${folderForViews}/contact-details/alt-formats/how-should-we-contact-you`)
-    }
-
-    if (video === 'DVD') {
-      return response.redirect(`/${folderForViews}/contact-details/alt-formats/how-should-we-contact-you`)
-    } else if (video === 'MPEG file by email') {
-      return response.redirect(`/${folderForViews}/contact-details/alt-formats/what-is-your-email`)
-    }
-
-    // Fallback
-    response.redirect(`/${folderForViews}/contact-details/alt-formats/how-should-we-contact-you`)
-  })
 
   //How should we contact you if we need to speak to you?
   router.post(`/${folderForViews}/contact`, function (request, response) {
     var contact = request.session.data['contact']
     if (contact == 'Standard phone call') {
-      response.redirect(`/${folderForViews}/contact-details/alt-formats/any-other-help-when-we-contact`)
+      const redirectPath = `/${folderForViews}/contact-details/alt-formats/any-other-help-when-we-contact`;
+validatePath(response, redirectPath);
     } else if (contact == 'Relay UK') {
-      response.redirect(`/${folderForViews}/contact-details/alt-formats/what-is-relay-uk-number`)
+      const redirectPath = `/${folderForViews}/contact-details/alt-formats/what-is-relay-uk-number`;
+validatePath(response, redirectPath);
     } else if (contact == 'Textphone') {
-      response.redirect(`/${folderForViews}/contact-details/alt-formats/what-is-your-textphone-number`)
+      const redirectPath = `/${folderForViews}/contact-details/alt-formats/what-is-your-textphone-number`;
+validatePath(response, redirectPath);
     } else if (contact == 'Signing or lipspeaking') {
-      response.redirect(`/${folderForViews}/contact-details/alt-formats/signing-lipspeaking`)
+      const redirectPath = `/${folderForViews}/contact-details/alt-formats/signing-lipspeaking`;
+validatePath(response, redirectPath);
     }
   })
 
@@ -567,11 +559,14 @@ validatePath(response, redirectPath);
     var extraPhone = request.session.data['extraPhone'];
 
     if (extraPhone === 'yes') {
-      response.redirect(`/${folderForViews}/contact-details/what-is-your-phone-3`);
+      const redirectPath = `/${folderForViews}/contact-details/what-is-your-phone-3`;
+validatePath(response, redirectPath);;
     } else if (extraPhone === 'no') {
-      response.redirect(`/${folderForViews}/contact-details/contact-details-summary`);
+      const redirectPath = `/${folderForViews}/contact-details/contact-details-summary`;
+validatePath(response, redirectPath);;
     } else {
-      response.redirect(`/${folderForViews}/contact-details/contact-details-summary`);
+      const redirectPath = `/${folderForViews}/contact-details/contact-details-summary`;
+validatePath(response, redirectPath);;
     }
   });
 
@@ -587,9 +582,11 @@ router.post(`/${folderForViews}/additional-support/start-info`, function (_reque
   router.post(`/${folderForViews}/additional-support/do-you-have-a-condition`, function (request, response) {
     var anyCondition = request.session.data['any-condition']
     if (anyCondition == 'yes') {
-      response.redirect(`/${folderForViews}/additional-support/complete-forms`)
+      const redirectPath = `/${folderForViews}/additional-support/complete-forms`;
+validatePath(response, redirectPath);
     } else if (anyCondition == 'no') {
-      response.redirect(`/${folderForViews}/additional-support/helpers`)
+      const redirectPath = `/${folderForViews}/additional-support/helpers`;
+validatePath(response, redirectPath);
     }
   })
 
@@ -619,12 +616,15 @@ validatePath(response, redirectPath);
     var letters = request.body.letters;
 
     if (letters === 'no') {
-      response.redirect(`/${folderForViews}/additional-support/helpers`);
+      const redirectPath = `/${folderForViews}/additional-support/helpers`;
+validatePath(response, redirectPath);;
     } else if (letters === 'yes') {
-      response.redirect(`/${folderForViews}/additional-support/post`);
+      const redirectPath = `/${folderForViews}/additional-support/post`;
+validatePath(response, redirectPath);;
     } else {
       // fallback if nothing selected
-      response.redirect(`/${folderForViews}/additional-support/complete-forms`);
+      const redirectPath = `/${folderForViews}/additional-support/complete-forms`;
+validatePath(response, redirectPath);;
     }
   });
 
@@ -632,9 +632,11 @@ validatePath(response, redirectPath);
   router.post(`/${folderForViews}/additional-support/post`, function (request, response) {
     var post = request.session.data['post']
     if (post == 'yes') {
-      response.redirect(`/${folderForViews}/additional-support/add-support-summary`)
+      const redirectPath = `/${folderForViews}/additional-support/add-support-summary`;
+validatePath(response, redirectPath);
     } else if (post == 'no') {
-      response.redirect(`/${folderForViews}/additional-support/helpers`)
+      const redirectPath = `/${folderForViews}/additional-support/helpers`;
+validatePath(response, redirectPath);
     }
   })
 
@@ -650,22 +652,26 @@ validatePath(response, redirectPath);
     }
 
     else {
-    response.redirect(`/${folderForViews}/additional-support/helpers`)
+    const redirectPath = `/${folderForViews}/additional-support/helpers`;
+validatePath(response, redirectPath);
     }
   })
 
 
 
 router.post(`/${folderForViews}/additional-support/who-helps`, function (_request, response) {
-  response.redirect(`/${folderForViews}/additional-support/who`)
+  const redirectPath = `/${folderForViews}/additional-support/who`;
+validatePath(response, redirectPath);
 })
 
 
   router.post(`/${folderForViews}/additional-support/support-no-help`, function (request, response) {
-    response.redirect(`/${folderForViews}/contact-details/alt-formats/written-format`)
+    const redirectPath = `/${folderForViews}/contact-details/alt-formats/written-format`;
+validatePath(response, redirectPath);
   })
   router.post(`/${folderForViews}/additional-support/support-with-help`, function (request, response) {
-    response.redirect(`/${folderForViews}/contact-details/alt-formats/written-format`)
+    const redirectPath = `/${folderForViews}/contact-details/alt-formats/written-format`;
+validatePath(response, redirectPath);
   })
   // -------------------------------------------------------------------------------------
 
@@ -678,40 +684,51 @@ router.post(`/${folderForViews}/contact-details/alt-formats/written-format`, fun
   console.log('writtenFormat: ' + writtenFormat);
 
   if (writtenFormat === 'Standard letter (12-point Arial text on white paper)') {
-    response.redirect(`/${folderForViews}/contact-details/alt-formats/how-should-we-contact-you`);
+    const redirectPath = `/${folderForViews}/contact-details/alt-formats/how-should-we-contact-you`;
+validatePath(response, redirectPath);;
   } else if (writtenFormat === 'Letter with changes to colour or print size') {
-    response.redirect(`/${folderForViews}/contact-details/alt-formats/large-print`);
+    const redirectPath = `/${folderForViews}/contact-details/alt-formats/large-print`;
+validatePath(response, redirectPath);;
   } else if (writtenFormat === 'Audio') {
-    response.redirect(`/${folderForViews}/contact-details/alt-formats/what-type-of-audio-format`);
+    const redirectPath = `/${folderForViews}/contact-details/alt-formats/what-type-of-audio-format`;
+validatePath(response, redirectPath);;
   } else if (writtenFormat === 'Braille') {
-    response.redirect(`/${folderForViews}/contact-details/alt-formats/what-type-of-braille-do-you-need`);
+    const redirectPath = `/${folderForViews}/contact-details/alt-formats/what-type-of-braille-do-you-need`;
+validatePath(response, redirectPath);;
   } else if (writtenFormat === 'British Sign Language video') {
-    response.redirect(`/${folderForViews}/contact-details/alt-formats/what-video-format-do-you-need`);
+    const redirectPath = `/${folderForViews}/contact-details/alt-formats/what-video-format-do-you-need`;
+validatePath(response, redirectPath);;
   } else if (writtenFormat === 'Email') {
-    response.redirect(`/${folderForViews}/contact-details/alt-formats/email-reason`);
+    const redirectPath = `/${folderForViews}/contact-details/alt-formats/email-reason`;
+validatePath(response, redirectPath);;
   } else {
     // Fallback: no option selected
-    response.redirect(`/${folderForViews}/contact-details/alt-formats/written-format`);
+    const redirectPath = `/${folderForViews}/contact-details/alt-formats/written-format`;
+validatePath(response, redirectPath);;
   }
 })
   // What size print do you need?
   router.post(`/${folderForViews}/contact-details/alt-formats/large-print`, function (request, response) {
-    response.redirect(`/${folderForViews}/additional-support/add-support-summary`)
+    const redirectPath = `/${folderForViews}/additional-support/add-support-summary`;
+validatePath(response, redirectPath);
   })
 
   // Why do you need us to contact you by email instead of printed letters?
   router.post(`/${folderForViews}/contact-details/alt-formats/email-reason`, function (request, response) {
-    response.redirect(`/${folderForViews}/contact-details/alt-formats/what-is-your-email`)
+    const redirectPath = `/${folderForViews}/contact-details/alt-formats/what-is-your-email`;
+validatePath(response, redirectPath);
   })
 
   // What is your email address?
   router.post(`/${folderForViews}/contact-details/alt-formats/what-is-your-email`, function (request, response) {
-    response.redirect(`/${folderForViews}/additional-support/add-support-summary`)
+    const redirectPath = `/${folderForViews}/additional-support/add-support-summary`;
+validatePath(response, redirectPath);
   })
 
   // Summary
   router.post(`/${folderForViews}/additional-support/add-support-summary`, function (request, response) {
-    response.redirect(`/${folderForViews}/nationality/start`)
+    const redirectPath = `/${folderForViews}/nationality/start`;
+validatePath(response, redirectPath);
   })
 
   //pip-register/NATIONALITY
@@ -721,20 +738,25 @@ router.post(`/${folderForViews}/contact-details/alt-formats/written-format`, fun
 
   //start
   router.post(`/${folderForViews}/nationality/start`, function (request, response) {
-    response.redirect(`/${folderForViews}/nationality/what-is-your-nationality`)
+    const redirectPath = `/${folderForViews}/nationality/what-is-your-nationality`;
+validatePath(response, redirectPath);
   })
 
   //what is your nationality
   router.post(`/${folderForViews}/nationality/what-is-your-nationality`, function (request, response) {
     var nationality = request.session.data['nationality']
     if (nationality == 'british') {
-      response.redirect(`/${folderForViews}/nationality/uk-2-of-3-years`)
+      const redirectPath = `/${folderForViews}/nationality/uk-2-of-3-years`;
+validatePath(response, redirectPath);
     } else if (nationality == 'irish') {
-      response.redirect(`/${folderForViews}/nationality/uk-2-of-3-years`)
+      const redirectPath = `/${folderForViews}/nationality/uk-2-of-3-years`;
+validatePath(response, redirectPath);
     } else if (nationality == 'eea') {
-      response.redirect(`/${folderForViews}/nationality/eea-nationality`)
+      const redirectPath = `/${folderForViews}/nationality/eea-nationality`;
+validatePath(response, redirectPath);
     } else if (nationality == 'other') {
-      response.redirect(`/${folderForViews}/nationality/another-nationality`)
+      const redirectPath = `/${folderForViews}/nationality/another-nationality`;
+validatePath(response, redirectPath);
     }
   })
 
@@ -742,11 +764,14 @@ router.post(`/${folderForViews}/contact-details/alt-formats/written-format`, fun
   router.post(`/${folderForViews}/nationality/uk-2-of-3-years`, function (request, response) {
     var ukYears = request.session.data['uk-years']
     if (ukYears == 'yes') {
-      response.redirect(`/${folderForViews}/nationality/benefits-abroad`)
+      const redirectPath = `/${folderForViews}/nationality/benefits-abroad`;
+validatePath(response, redirectPath);
     } else if (ukYears == 'no') {
-      response.redirect(`/${folderForViews}/nationality/benefits-abroad`)
+      const redirectPath = `/${folderForViews}/nationality/benefits-abroad`;
+validatePath(response, redirectPath);
     } else if (ukYears == 'unsure') {
-      response.redirect(`/${folderForViews}/nationality/insurance-abroad`)
+      const redirectPath = `/${folderForViews}/nationality/insurance-abroad`;
+validatePath(response, redirectPath);
     }
   })
 
@@ -766,17 +791,20 @@ validatePath(response, redirectPath);
 
   //Select eea nationality
   router.post(`/${folderForViews}/nationality/eea-nationality`, function (request, response) {
-    response.redirect(`/${folderForViews}/nationality/living-in-uk`)
+    const redirectPath = `/${folderForViews}/nationality/living-in-uk`;
+validatePath(response, redirectPath);
   })
 
   //Select other nationality
   router.post(`/${folderForViews}/nationality/another-nationality`, function (request, response) {
     var anotherNationality = request.session.data['another-nationality']
     if (anotherNationality == 'Norway' || anotherNationality == 'Iceland') {
-      response.redirect(`/${folderForViews}/nationality/living-in-uk`)
+      const redirectPath = `/${folderForViews}/nationality/living-in-uk`;
+validatePath(response, redirectPath);
     }
     if (anotherNationality == 'Australia' || anotherNationality == 'Brazil' || anotherNationality == 'Bangladesh') {
-      response.redirect(`/${folderForViews}/nationality/uk-2-of-3-years`)
+      const redirectPath = `/${folderForViews}/nationality/uk-2-of-3-years`;
+validatePath(response, redirectPath);
     }
   })
 
@@ -793,9 +821,11 @@ validatePath(response, redirectPath);
   router.post(`/${folderForViews}/nationality/insurance-abroad`, function (request, response) {
     var payingInsurance = request.session.data['insurance-abroad']
     if (payingInsurance == 'no') {
-      response.redirect(`/${folderForViews}/nationality/nationality-summary`)
+      const redirectPath = `/${folderForViews}/nationality/nationality-summary`;
+validatePath(response, redirectPath);
     } else if (payingInsurance == 'yes') {
-      response.redirect(`/${folderForViews}/nationality/nationality-summary`)
+      const redirectPath = `/${folderForViews}/nationality/nationality-summary`;
+validatePath(response, redirectPath);
     }
   })
 
@@ -803,9 +833,11 @@ validatePath(response, redirectPath);
   router.post(`/${folderForViews}/nationality/benefits-abroad`, function (request, response) {
     var payingBenefits = request.session.data['benefits-abroad']
     if (payingBenefits == 'no') {
-      response.redirect(`/${folderForViews}/nationality/insurance-abroad`)
+      const redirectPath = `/${folderForViews}/nationality/insurance-abroad`;
+validatePath(response, redirectPath);
     } else if (payingBenefits == 'yes') {
-      response.redirect(`/${folderForViews}/nationality/insurance-abroad`)
+      const redirectPath = `/${folderForViews}/nationality/insurance-abroad`;
+validatePath(response, redirectPath);
     }
   })
 
@@ -814,7 +846,8 @@ router.post(`/${folderForViews}/nationality/exportability/what-country-benefits`
   const selectedCountry = request.session.data['country-benefits'];
 
   if (selectedCountry) {
-    response.redirect(`/${folderForViews}/task-list-nat-done`);
+    const redirectPath = `/${folderForViews}/task-list-nat-done`;
+validatePath(response, redirectPath);;
   } else {
     // Fallback: no country selected
     const redirectPath = `/${folderForViews}/nationality/exportability/what-country-benefits`;
@@ -845,25 +878,30 @@ validatePath(response, redirectPath);
 
   //What country are your family members receiving pensions or benefits in?
   router.post(`/${folderForViews}/nationality/exportability/family-country-benefits`, function (request, response) {
-    response.redirect(`/${folderForViews}/task-list-nat-done`)
+    const redirectPath = `/${folderForViews}/task-list-nat-done`;
+validatePath(response, redirectPath);
   })
 
 
   //--------------------------------------------------------------------------------------------------------------
   //nationality start
   router.post(`/${folderForViews}/nationality/start`, function (request, response) {
-    response.redirect(`/${folderForViews}/nationality/what-is-your-nationality`)
+    const redirectPath = `/${folderForViews}/nationality/what-is-your-nationality`;
+validatePath(response, redirectPath);
   })
 
   //what is your nationality
   router.post(`/${folderForViews}/nationality/what-is-your-nationality`, function (request, response) {
     var nationality = request.session.data['nationality']
     if (nationality == 'british') {
-      response.redirect(`/${folderForViews}/nationality/what-country-do-you-live-in`)
+      const redirectPath = `/${folderForViews}/nationality/what-country-do-you-live-in`;
+validatePath(response, redirectPath);
     } else if (nationality == 'irish') {
-      response.redirect(`/${folderForViews}/nationality/what-country-do-you-live-in`)
+      const redirectPath = `/${folderForViews}/nationality/what-country-do-you-live-in`;
+validatePath(response, redirectPath);
     } else if (nationality == 'other') {
-      response.redirect(`/${folderForViews}/nationality/another-nationality`)
+      const redirectPath = `/${folderForViews}/nationality/another-nationality`;
+validatePath(response, redirectPath);
     }
   })
 
@@ -877,21 +915,27 @@ validatePath(response, redirectPath);
   router.post(`/${folderForViews}/versions/devs/nationality/what-country-do-you-live-in`, function (request, response) {
     var nationality = request.session.data['country']
     if (nationality == 'northern-ireland') {
-      response.redirect(`/${folderForViews}/versions/devs/nationality/lived-elsewhere`)
+      const redirectPath = `/${folderForViews}/versions/devs/nationality/lived-elsewhere`;
+validatePath(response, redirectPath);
     } else if (nationality == 'england') {
-      response.redirect(`/${folderForViews}/versions/devs/nationality/lived-elsewhere`)
+      const redirectPath = `/${folderForViews}/versions/devs/nationality/lived-elsewhere`;
+validatePath(response, redirectPath);
     } else if (nationality == 'wales') {
-      response.redirect(`/${folderForViews}/versions/devs/nationality/lived-elsewhere`)
+      const redirectPath = `/${folderForViews}/versions/devs/nationality/lived-elsewhere`;
+validatePath(response, redirectPath);
     } else if (nationality == 'scotland') {
-      response.redirect(`/${folderForViews}/versions/devs/nationality/lived-elsewhere`)
+      const redirectPath = `/${folderForViews}/versions/devs/nationality/lived-elsewhere`;
+validatePath(response, redirectPath);
     } else if (nationality == 'another-country') {
-      response.redirect(`/${folderForViews}/versions/devs/nationality/another-country-lived-in`)
+      const redirectPath = `/${folderForViews}/versions/devs/nationality/another-country-lived-in`;
+validatePath(response, redirectPath);
     }
   })
 
   // Another country
   router.post(`/${folderForViews}/versions/devs/another-country-lived-in`, function (request, response) {
-    response.redirect(`/${folderForViews}/versions/devs/nationality/lived-elsewhere`)
+    const redirectPath = `/${folderForViews}/versions/devs/nationality/lived-elsewhere`;
+validatePath(response, redirectPath);
   })
 
 
@@ -901,7 +945,8 @@ validatePath(response, redirectPath);
     if (livedElsewhere == 'yes') {
       response.redirect('#')
     } else if (livedElsewhere == 'no') {
-      response.redirect(`/${folderForViews}/versions/devs/nationality/abroad-over-four-weeks`)
+      const redirectPath = `/${folderForViews}/versions/devs/nationality/abroad-over-four-weeks`;
+validatePath(response, redirectPath);
     }
   })
 
@@ -922,9 +967,11 @@ validatePath(response, redirectPath);
   router.post(`/${folderForViews}/versions/devs/nationality/benefits-abroad`, function (request, response) {
     var benefitsAbroad = request.session.data['benefits-abroad']
     if (benefitsAbroad == 'yes') {
-      response.redirect(`/${folderForViews}/versions/devs/nationality/insurance-abroad`)
+      const redirectPath = `/${folderForViews}/versions/devs/nationality/insurance-abroad`;
+validatePath(response, redirectPath);
     } else if (benefitsAbroad == 'no') {
-      response.redirect(`/${folderForViews}/versions/devs/nationality/insurance-abroad`)
+      const redirectPath = `/${folderForViews}/versions/devs/nationality/insurance-abroad`;
+validatePath(response, redirectPath);
     }
   })
 
@@ -981,28 +1028,33 @@ validatePath(response, redirectPath);
 
   //healthcare-prof-type ---> find address
   router.post(`/${folderForViews}/healthcare-professional/healthcare-prof-type`, function (request, response) {
-    response.redirect(`/${folderForViews}/healthcare-professional/healthcare-prof-details`)
+    const redirectPath = `/${folderForViews}/healthcare-professional/healthcare-prof-details`;
+validatePath(response, redirectPath);
   })
 
   router.post(`/${folderForViews}/healthcare-professional/healthcare-prof-details`, function (request, response) {
-    response.redirect(`/${folderForViews}/healthcare-professional/postcode`)
+    const redirectPath = `/${folderForViews}/healthcare-professional/postcode`;
+validatePath(response, redirectPath);
   })
 
   //find address ---> select address
   router.post(`/${folderForViews}/healthcare-professional/postcode`, function (request, response) {
-    response.redirect(`/${folderForViews}/healthcare-professional/select-your-address`)
+    const redirectPath = `/${folderForViews}/healthcare-professional/select-your-address`;
+validatePath(response, redirectPath);
   })
 
   //select address ---> addiitonal support needed
   router.post(`/${folderForViews}/healthcare-professional/select-your-address`, function (request, response) {
-    response.redirect(`/${folderForViews}/healthcare-professional/additional-support-needed`)
+    const redirectPath = `/${folderForViews}/healthcare-professional/additional-support-needed`;
+validatePath(response, redirectPath);
   })
 
   
 
   //enter-address-manually ----> second support needed?
   router.post(`/${folderForViews}/healthcare-professional/enter-address-manually`, function (request, response) {
-    response.redirect(`/${folderForViews}/healthcare-professional/additional-support-needed`)
+    const redirectPath = `/${folderForViews}/healthcare-professional/additional-support-needed`;
+validatePath(response, redirectPath);
   })
 
 
@@ -1010,36 +1062,43 @@ validatePath(response, redirectPath);
   router.post(`/${folderForViews}/healthcare-professional/additional-support-needed`, function (request, response) {
     var hcpTwoNeeded = request.session.data['support-needed']
     if (hcpTwoNeeded == 'yes') {
-      response.redirect(`/${folderForViews}/healthcare-professional/additional-support-type`)
+      const redirectPath = `/${folderForViews}/healthcare-professional/additional-support-type`;
+validatePath(response, redirectPath);
     } else if (hcpTwoNeeded == 'no') {
-      response.redirect(`/${folderForViews}/healthcare-professional/hp-summary-two-remove`)
+      const redirectPath = `/${folderForViews}/healthcare-professional/hp-summary-two-remove`;
+validatePath(response, redirectPath);
     }
   })
 
   //additional-support-type ---> find address
   router.post(`/${folderForViews}/healthcare-professional/additional-support-type`, function (request, response) {
-    response.redirect(`/${folderForViews}/healthcare-professional/postcode-support`)
+    const redirectPath = `/${folderForViews}/healthcare-professional/postcode-support`;
+validatePath(response, redirectPath);
   })
 
   //find address ---> select address
   router.post(`/${folderForViews}/healthcare-professional/postcode-support`, function (request, response) {
-    response.redirect(`/${folderForViews}/healthcare-professional/select-support-address`)
+    const redirectPath = `/${folderForViews}/healthcare-professional/select-support-address`;
+validatePath(response, redirectPath);
   })
 
   //enter-address-manually ----> hospital and accom start
   router.post(`/${folderForViews}/healthcare-professional/support-address-manually`, function (request, response) {
-    response.redirect(`/${folderForViews}/healthcare-professional/consent-NI`)
+    const redirectPath = `/${folderForViews}/healthcare-professional/consent-NI`;
+validatePath(response, redirectPath);
   })
 
 
   //select support address ---> hospital and accom start
   router.post(`/${folderForViews}/healthcare-professional/select-support-address`, function (request, response) {
-    response.redirect(`/${folderForViews}/healthcare-professional/hp-summary-two-remove`)
+    const redirectPath = `/${folderForViews}/healthcare-professional/hp-summary-two-remove`;
+validatePath(response, redirectPath);
   })
 
   //consent NI ----> hcp cya 2 person
   router.post(`/${folderForViews}/healthcare-professional/consent`, function (request, response) {
-    response.redirect(`/${folderForViews}/healthcare-professional/start`)
+    const redirectPath = `/${folderForViews}/healthcare-professional/start`;
+validatePath(response, redirectPath);
   })
 
   //healthcare-professional/confirm-remove 
@@ -1048,11 +1107,14 @@ validatePath(response, redirectPath);
     var HCPYesNo = request.body.HCPYesNo;
 
     if (HCPYesNo === 'yes') {
-      response.redirect(`/${folderForViews}/healthcare-professional/hp-summary`);
+      const redirectPath = `/${folderForViews}/healthcare-professional/hp-summary`;
+validatePath(response, redirectPath);;
     } else if (HCPYesNo === 'no') {
-      response.redirect(`/${folderForViews}/healthcare-professional/hp-summary-two-remove`);
+      const redirectPath = `/${folderForViews}/healthcare-professional/hp-summary-two-remove`;
+validatePath(response, redirectPath);;
     } else {
-      response.redirect(`/${folderForViews}/error`); // fallback
+      const redirectPath = `/${folderForViews}/error`;
+validatePath(response, redirectPath);; // fallback
     }
   });
 
@@ -1067,12 +1129,15 @@ router.post(`/${folderForViews}/healthcare-professional/hcp-cyas/remove-health-p
   var removeHcp = request.session.data['remove-second-hcp'];
 
   if (removeHcp == 'yes') {
-    response.redirect(`/${folderForViews}/healthcare-professional/healthcare-prof-type`);
+    const redirectPath = `/${folderForViews}/healthcare-professional/healthcare-prof-type`;
+validatePath(response, redirectPath);;
   } else if (removeHcp == 'no') {
-    response.redirect(`/${folderForViews}/healthcare-professional/hcp-cyas/remove-second-hcp`);
+    const redirectPath = `/${folderForViews}/healthcare-professional/hcp-cyas/remove-second-hcp`;
+validatePath(response, redirectPath);;
   } else {
     // Fallback: no option selected
-    response.redirect(`/${folderForViews}/healthcare-professional/hcp-cyas/remove-health-professional-2`);
+    const redirectPath = `/${folderForViews}/healthcare-professional/hcp-cyas/remove-health-professional-2`;
+validatePath(response, redirectPath);;
   }
 })
 
@@ -1081,9 +1146,11 @@ router.post(`/${folderForViews}/healthcare-professional/hcp-cyas/remove-health-p
   router.post(`/${folderForViews}/healthcare-professional/hcp-cyas/remove-health-professional`, function (request, response) {
     var removeHcp = request.session.data['remove-hcp']
     if (removeHcp == 'yes') {
-      response.redirect(`/${folderForViews}/healthcare-professional/hcp-cyas/remove-main-hcp`)
+      const redirectPath = `/${folderForViews}/healthcare-professional/hcp-cyas/remove-main-hcp`;
+validatePath(response, redirectPath);
     } else if (removeHcp == 'no') {
-      response.redirect(`/${folderForViews}/healthcare-professional/hcp-cyas/hp-summary-two`)
+      const redirectPath = `/${folderForViews}/healthcare-professional/hcp-cyas/hp-summary-two`;
+validatePath(response, redirectPath);
     }
   })
 
@@ -1091,9 +1158,11 @@ router.post(`/${folderForViews}/healthcare-professional/hcp-cyas/remove-health-p
   router.post(`/${folderForViews}/healthcare-professional/hcp-cyas/remove-add-health-professional`, function (request, response) {
     var removeHcp = request.session.data['remove-final-hcp']
     if (removeHcp == 'yes') {
-      response.redirect(`/${folderForViews}/healthcare-professional/hcp-cyas/add-new/healthcare-prof-type`)
+      const redirectPath = `/${folderForViews}/healthcare-professional/hcp-cyas/add-new/healthcare-prof-type`;
+validatePath(response, redirectPath);
     } else if (removeHcp == 'no') {
-      response.redirect(`/${folderForViews}/healthcare-professional/hcp-cyas/remove-main-hcp`)
+      const redirectPath = `/${folderForViews}/healthcare-professional/hcp-cyas/remove-main-hcp`;
+validatePath(response, redirectPath);
     }
   })
 
@@ -1102,15 +1171,18 @@ router.post(`/${folderForViews}/healthcare-professional/hcp-cyas/remove-health-p
   router.post(`/${folderForViews}/healthcare-professional/hcp-cyas/add-new/additional-support-needed`, function (request, response) {
     var removeHcp = request.session.data['support-needed']
     if (removeHcp == 'yes') {
-      response.redirect(`/${folderForViews}/healthcare-professional/hcp-cyas/add-new/additional-support-type`)
+      const redirectPath = `/${folderForViews}/healthcare-professional/hcp-cyas/add-new/additional-support-type`;
+validatePath(response, redirectPath);
     } else if (removeHcp == 'no') {
-      response.redirect(`/${folderForViews}/healthcare-professional/hcp-cyas/remove-second-hcp`)
+      const redirectPath = `/${folderForViews}/healthcare-professional/hcp-cyas/remove-second-hcp`;
+validatePath(response, redirectPath);
     }
   })
 
 
   router.post(`/${folderForViews}/healthcare-professional/hp-summary-two-remove`, function (request, response) {
-    response.redirect(`/${folderForViews}/hospital-dates/5-1-why-we-need-details`)
+    const redirectPath = `/${folderForViews}/hospital-dates/5-1-why-we-need-details`;
+validatePath(response, redirectPath);
   })
 
   //pip-register/HOSPITAL-DATES
@@ -1129,17 +1201,21 @@ validatePath(response, redirectPath);
   router.post(`/${folderForViews}/hospital-dates/5-2-today`, function (request, response) {
     var hospitalToday = request.session.data['hospital-today']
     if (hospitalToday == 'yes-hospital') {
-      response.redirect(`/${folderForViews}/hospital-dates/5-4-yesterday`)
+      const redirectPath = `/${folderForViews}/hospital-dates/5-4-yesterday`;
+validatePath(response, redirectPath);
     } else if (hospitalToday == 'no') {
-      response.redirect(`/${folderForViews}/hospital-dates/5-3-other-housing-today`)
+      const redirectPath = `/${folderForViews}/hospital-dates/5-3-other-housing-today`;
+validatePath(response, redirectPath);
     } else if (hospitalToday == 'yes-hospice') {
-      response.redirect(`/${folderForViews}/hospital-dates/5-8-hospice-yesterday`)
+      const redirectPath = `/${folderForViews}/hospital-dates/5-8-hospice-yesterday`;
+validatePath(response, redirectPath);
     }
   })
 
   // Were you in hospital yesterday?
   router.post(`/${folderForViews}/hospital-dates/5-4-yesterday`, function (request, response) {
-    response.redirect(`/${folderForViews}/hospital-dates/5-5-private-patient`)
+    const redirectPath = `/${folderForViews}/hospital-dates/5-5-private-patient`;
+validatePath(response, redirectPath);
   })
 
 
@@ -1150,84 +1226,101 @@ validatePath(response, redirectPath);
 
     // If an option was selected, continue to the postcode step; if not, stay on the same page
     if (privatePatient) {
-      response.redirect(`/${folderForViews}/hospital-dates/5-6-postcode`)
+      const redirectPath = `/${folderForViews}/hospital-dates/5-6-postcode`;
+validatePath(response, redirectPath);
     } else {
       // Fallback: no option selected — redisplay the same page (avoid open redirect)
-      response.redirect(`/${folderForViews}/hospital-dates/5-5-private-patient`)
+      const redirectPath = `/${folderForViews}/hospital-dates/5-5-private-patient`;
+validatePath(response, redirectPath);
     }
   })
 
   // postcode > select address
   router.post(`/${folderForViews}/hospital-dates/5-6-postcode`, function (request, response) {
-    response.redirect(`/${folderForViews}/hospital-dates/5-7-select-hospital-address`)
+    const redirectPath = `/${folderForViews}/hospital-dates/5-7-select-hospital-address`;
+validatePath(response, redirectPath);
   })
 
   // postcode > select address
 router.post(`/${folderForViews}/hospital-dates/5-7-select-hospital-address`, function (_request, response) {
   // Always redirect to the hospital residence summary from the select address page
-  response.redirect(`/${folderForViews}/hospital-dates/hospital-residence-summary`)
+  const redirectPath = `/${folderForViews}/hospital-dates/hospital-residence-summary`;
+validatePath(response, redirectPath);
 })
 
   // hospital manually > start bank
   router.post(`/${folderForViews}/hospital-dates/5-17-hospital-address-manually`, function (request, response) {
-    response.redirect(`/${folderForViews}/hospital-dates/hospital-residence-summary`)
+    const redirectPath = `/${folderForViews}/hospital-dates/hospital-residence-summary`;
+validatePath(response, redirectPath);
   })
 
   // hospice manually > start bank
   router.post(`/${folderForViews}/hospital-dates/5-18-hospice-address-manually`, function (request, response) {
-    response.redirect(`/${folderForViews}/hospital-dates/hospital-residence-summary`)
+    const redirectPath = `/${folderForViews}/hospital-dates/hospital-residence-summary`;
+validatePath(response, redirectPath);
   })
 
   // other manually > start bank
   router.post(`/${folderForViews}/hospital-dates/5-19-other-address-manually`, function (_request, response) {
-    response.redirect(`/${folderForViews}/hospital-dates/5-13-third-party-pay`)
+    const redirectPath = `/${folderForViews}/hospital-dates/5-13-third-party-pay`;
+validatePath(response, redirectPath);
   })
 
   // Were you in hospice yesterday?
   router.post(`/${folderForViews}/hospital-dates/5-8-hospice-yesterday`, function (request, response) {
     var otherYesterday = request.session.data['hospice-yesterday']
     if (otherYesterday == 'yes') {
-      response.redirect(`/${folderForViews}/hospital-dates/5-9-hospice-dates`)
+      const redirectPath = `/${folderForViews}/hospital-dates/5-9-hospice-dates`;
+validatePath(response, redirectPath);
     } else if (otherYesterday == 'no') {
-      response.redirect(`/${folderForViews}/hospital-dates/5-10-hospice-postcode`)
+      const redirectPath = `/${folderForViews}/hospital-dates/5-10-hospice-postcode`;
+validatePath(response, redirectPath);
     
       } else {
       // Fallback: no option selected — redisplay the same page (avoid open redirect)
-      response.redirect(`/${folderForViews}/hospital-dates/5-8-hospice-yesterday`)
+      const redirectPath = `/${folderForViews}/hospital-dates/5-8-hospice-yesterday`;
+validatePath(response, redirectPath);
     }
 
   })
 
   // Do you know the date you went into the hospice?
   router.post(`/${folderForViews}/hospital-dates/5-9-hospice-dates`, function (request, response) {
-    response.redirect(`/${folderForViews}/hospital-dates/5-10-hospice-postcode`)
+    const redirectPath = `/${folderForViews}/hospital-dates/5-10-hospice-postcode`;
+validatePath(response, redirectPath);
   })
 
   // select hospice address
   router.post(`/${folderForViews}/hospital-dates/5-10-hospice-postcode`, function (request, response) {
-    response.redirect(`/${folderForViews}/hospital-dates/5-11-select-hospice-address`)
+    const redirectPath = `/${folderForViews}/hospital-dates/5-11-select-hospice-address`;
+validatePath(response, redirectPath);
   })
 
   // select hospice address
   router.post(`/${folderForViews}/hospital-dates/5-10-hospice-postcode`, function (_request, response) {
-    response.redirect(`/${folderForViews}/hospital-dates/5-11-select-hospice-address`)
+    const redirectPath = `/${folderForViews}/hospital-dates/5-11-select-hospice-address`;
+validatePath(response, redirectPath);
   })
 
   //  Can you confirm the first line of the address place you are staying in?
   router.post(`/${folderForViews}/hospital-dates/5-11-select-hospice-address`, function (request, response) {
-    response.redirect(`/${folderForViews}/hospital-dates/hospital-residence-summary`)
+    const redirectPath = `/${folderForViews}/hospital-dates/hospital-residence-summary`;
+validatePath(response, redirectPath);
   })
 
   // Are you living in a care home or nursing home, sheltered housing, a residential college or a hostel today?
   router.post(`/${folderForViews}/hospital-dates/5-3-other-housing-today`, function (request, response) {
     var otherToday = request.session.data['other-today']
     if (otherToday == 'yes') {
-      response.redirect(`/${folderForViews}/hospital-dates/5-12-other-yesterday`)
+      const redirectPath = `/${folderForViews}/hospital-dates/5-12-other-yesterday`;
+validatePath(response, redirectPath);
     } else if (otherToday == 'no') {
-      response.redirect(`/${folderForViews}/hospital-dates/hospital-residence-summary`)
+      const redirectPath = `/${folderForViews}/hospital-dates/hospital-residence-summary`;
+validatePath(response, redirectPath);
     }
   else {
-    response.redirect(`/${folderForViews}/hospital-dates/5-3-other-housing-today`)
+    const redirectPath = `/${folderForViews}/hospital-dates/5-3-other-housing-today`;
+validatePath(response, redirectPath);
     }
     
   })
@@ -1236,61 +1329,58 @@ router.post(`/${folderForViews}/hospital-dates/5-7-select-hospital-address`, fun
   router.post(`/${folderForViews}/hospital-dates/5-12-other-yesterday`, function (request, response) {
     var otherYesterday = request.session.data['other-yesterday']
     if (otherYesterday == 'yes') {
-      response.redirect(`/${folderForViews}/hospital-dates/5-15-other-postcode`)
+      const redirectPath = `/${folderForViews}/hospital-dates/5-15-other-postcode`;
+validatePath(response, redirectPath);
     } else if (otherYesterday == 'no') {
-      response.redirect(`/${folderForViews}/hospital-dates/5-15-other-postcode`)
+      const redirectPath = `/${folderForViews}/hospital-dates/5-15-other-postcode`;
+validatePath(response, redirectPath);
     }
   })
 
   //  Can you confirm the first line of the address place you are staying in?
   router.post(`/${folderForViews}/hospital-dates/5-15-other-postcode`, function (request, response) {
-    response.redirect(`/${folderForViews}/hospital-dates/5-16-select-other-address`)
+    const redirectPath = `/${folderForViews}/hospital-dates/5-16-select-other-address`;
+validatePath(response, redirectPath);
   })
 
   // Select other address > tasklist
   router.post(`/${folderForViews}/hospital-dates/5-16-select-other-address`, function (request, response) {
-    response.redirect(`/${folderForViews}/hospital-dates/5-13-third-party-pay`)
+    const redirectPath = `/${folderForViews}/hospital-dates/5-13-third-party-pay`;
+validatePath(response, redirectPath);
   })
 
   // Does a local authority, health authority, Jobcentre Plus, or a charity pay any of the costs for you to live there?
   router.post(`/${folderForViews}/hospital-dates/5-13-third-party-pay`, function (request, response) {
     var thirdPartyPay = request.session.data['third-party-pay']
     if (thirdPartyPay == 'health-trust') {
-      response.redirect(`/${folderForViews}/hospital-dates/5-23-name-local`)
+      const redirectPath = `/${folderForViews}/hospital-dates/5-23-name-local`;
+validatePath(response, redirectPath);
     } else if (thirdPartyPay == 'no') {
-      response.redirect(`/${folderForViews}/hospital-dates/hospital-residence-summary`)
+      const redirectPath = `/${folderForViews}/hospital-dates/hospital-residence-summary`;
+validatePath(response, redirectPath);
     } else if (thirdPartyPay == 'yes') {
-      response.redirect(`/${folderForViews}/hospital-dates/5-23-name`)
+      const redirectPath = `/${folderForViews}/hospital-dates/5-23-name`;
+validatePath(response, redirectPath);
     }
   })
 
   // What is the name of the [organisation type]?
   router.post(`/${folderForViews}/hospital-dates/5-23-name`, function (request, response) {
-    response.redirect(`/${folderForViews}/hospital-dates/hospital-residence-summary`)
+    const redirectPath = `/${folderForViews}/hospital-dates/hospital-residence-summary`;
+validatePath(response, redirectPath);
   })
 
   // local auth ---> What is the name -----> agreement?
   router.post(`/${folderForViews}/hospital-dates/5-23-name-local`, function (request, response) {
-    response.redirect(`/${folderForViews}/hospital-dates/5-14-local-agreement`)
+    const redirectPath = `/${folderForViews}/hospital-dates/5-14-local-agreement`;
+validatePath(response, redirectPath);
   })
 
   // agreement to task list
   router.post(`/${folderForViews}/hospital-dates/5-14-local-agreement`, function (request, response) {
-    response.redirect(`/${folderForViews}/hospital-dates/hospital-residence-summary`)
+    const redirectPath = `/${folderForViews}/hospital-dates/hospital-residence-summary`;
+validatePath(response, redirectPath);
   })
-
-  // Do you have an agreement with the local authority to repay any of the costs?
-router.post(`/${folderForViews}/hospital-dates/hospital-dates/5-14-local-agreement`, function (request, response) {
-
-
-    if (request.body['local-agreement'] === 'yes') {
-        return response.redirect(`/${folderForViews}/hospital-dates/hospital-residence-summary`)
-    } else {
-        return response.redirect(`/${folderForViews}/hospital-dates/hospital-dates/5-14-local-agreement`)
-    }
-})
-
-  // -------------------------------------------------------------------------------------
 
 
 
@@ -1298,87 +1388,105 @@ router.post(`/${folderForViews}/hospital-dates/hospital-dates/5-14-local-agreeme
   router.post(`/${folderForViews}/bank-details/6-1-start`, function (request, response) {
     var detailsNow = request.session.data['details-now']
     if (detailsNow == 'yes') {
-      response.redirect(`/${folderForViews}/bank-details/6-3-main-account-details-v2`)
+      const redirectPath = `/${folderForViews}/bank-details/6-3-main-account-details-v2`;
+validatePath(response, redirectPath);
     } else if (detailsNow == 'no') {
-      response.redirect(`/${folderForViews}/bank-details/6-2-no-details-now`)
+      const redirectPath = `/${folderForViews}/bank-details/6-2-no-details-now`;
+validatePath(response, redirectPath);
     }
     else {
-    response.redirect(`/${folderForViews}/bank-details/6-1-start`)
+    const redirectPath = `/${folderForViews}/bank-details/6-1-start`;
+validatePath(response, redirectPath);
       } 
   })
 
   // You can continue without entering account details
   router.post(`/${folderForViews}/bank-details/6-2-no-details-now`, function (request, response) {
-    response.redirect(`/${folderForViews}/task-list-bank-done`)
+    const redirectPath = `/${folderForViews}/task-list-bank-done`;
+validatePath(response, redirectPath);
   })
 
   // Main account details
   router.post(`/${folderForViews}/bank-details/6-3-main-account-details-v2`, function (request, response) {
-    response.redirect(`/${folderForViews}/bank-details/bank-details-summary`)
+    const redirectPath = `/${folderForViews}/bank-details/bank-details-summary`;
+validatePath(response, redirectPath);
   })
 
   // Bank details CYA to task list
   router.post(`/${folderForViews}/bank-details/bank-details-summary`, function (request, response) {
-    response.redirect(`/${folderForViews}/motability/motability`)
+    const redirectPath = `/${folderForViews}/motability/motability`;
+validatePath(response, redirectPath);
   })
 
   //Motability to Motability CYA
   router.post(`/${folderForViews}/motability-question`, function (request, response) {
-    response.redirect(`/${folderForViews}/motability/motability-summary`)
+    const redirectPath = `/${folderForViews}/motability/motability-summary`;
+validatePath(response, redirectPath);
   })
 
   // -------------------------------------------------------------------------------------
 
   // Save application- i will now submit
   router.post(`/${folderForViews}/what-happens-next/save-application`, function (request, response) {
-    response.redirect(`/${folderForViews}/what-happens-next/what-happens-next`)
+    const redirectPath = `/${folderForViews}/what-happens-next/what-happens-next`;
+validatePath(response, redirectPath);
   })
   //design-updates/sprint-20/what-happens-next/what-happens-next
   router.post(`/${folderForViews}/what-happens-next/what-happens-next`, function (request, response) {
-    response.redirect(`/${folderForViews}/what-happens-next/online-form-option`)
+    const redirectPath = `/${folderForViews}/what-happens-next/online-form-option`;
+validatePath(response, redirectPath);
   })
 
   router.post(`/${folderForViews}/what-happens-next/online-form-option`, function (request, response) {
     var previousOnline = request.session.data['form-online']
     if (previousOnline == 'online') {
-      response.redirect(`/${folderForViews}/what-happens-next/online-form-contact`)
+      const redirectPath = `/${folderForViews}/what-happens-next/online-form-contact`;
+validatePath(response, redirectPath);
     } else if (previousOnline == 'paper') {
-      response.redirect(`/${folderForViews}/what-happens-next/paper-whn-1`)
+      const redirectPath = `/${folderForViews}/what-happens-next/paper-whn-1`;
+validatePath(response, redirectPath);
     }
   })
 
   // Online whn1 (form contact details)
   router.post(`/${folderForViews}/what-happens-next/online-form-contact`, function (request, response) {
-    response.redirect(`/${folderForViews}/what-happens-next/online-whn-1`)
+    const redirectPath = `/${folderForViews}/what-happens-next/online-whn-1`;
+validatePath(response, redirectPath);
   })
 
   // Online whn 1- whn 2
   router.post(`/${folderForViews}/what-happens-next/online-whn-1`, function (request, response) {
-    response.redirect(`/${folderForViews}/what-happens-next/online-whn-2`)
+    const redirectPath = `/${folderForViews}/what-happens-next/online-whn-2`;
+validatePath(response, redirectPath);
   })
 
   // Online whn 2- paper-after-sent
   router.post(`/${folderForViews}/what-happens-next/online-whn-2`, function (request, response) {
-    response.redirect(`/${folderForViews}/what-happens-next/after-form-sent`)
+    const redirectPath = `/${folderForViews}/what-happens-next/after-form-sent`;
+validatePath(response, redirectPath);
   })
 
   router.post(`/${folderForViews}/what-happens-next/previously-claimed-online`, function (request, response) {
-    response.redirect(`/${folderForViews}/what-happens-next/paper-whn-1`)
+    const redirectPath = `/${folderForViews}/what-happens-next/paper-whn-1`;
+validatePath(response, redirectPath);
   })
 
   // Paper whn 1- whn 2
   router.post(`/${folderForViews}/what-happens-next/paper-whn-1`, function (request, response) {
-    response.redirect(`/${folderForViews}/what-happens-next/paper-whn-2`)
+    const redirectPath = `/${folderForViews}/what-happens-next/paper-whn-2`;
+validatePath(response, redirectPath);
   })
 
   // Paper whn 2- paper-after-sent
   router.post(`/${folderForViews}/what-happens-next/paper-whn-2`, function (request, response) {
-    response.redirect(`/${folderForViews}/what-happens-next/after-form-sent`)
+    const redirectPath = `/${folderForViews}/what-happens-next/after-form-sent`;
+validatePath(response, redirectPath);
   })
 
   // After-form-sent > end claim and clear session
   router.post(`/${folderForViews}/what-happens-next/after-form-sent`, function (request, response) {
-    response.redirect(`/${folderForViews}/what-happens-next/application-submitted`)
+    const redirectPath = `/${folderForViews}/what-happens-next/application-submitted`;
+validatePath(response, redirectPath);
   })
 
   // -------------------------------------------------------------------------------------
@@ -1398,4 +1506,4 @@ router.post(`/${folderForViews}/hospital-dates/hospital-dates/5-14-local-agreeme
   })
 
   //export routes
-} 
+}
