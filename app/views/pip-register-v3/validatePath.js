@@ -37,7 +37,8 @@ const path = require('path')
 
 '5-12-other-yesterday','5-15-other-postcode','5-16-select-other-address','5-13-third-party-pay','5-23-name','5-23-name-local','5-14-local-agreement','6-1-start','6-2-no-details-now',
 '6-3-main-account-details-v2','bank-details-summary','motability-question','motability-summary','save-application','what-happens-next','online-form-option','online-form-contact',
-'online-whn-1','online-whn-2','previously-claimed-online','paper-whn-1','paper-whn-2','after-form-sent','application-submitted']
+'online-whn-1','online-whn-2','previously-claimed-online','paper-whn-1','paper-whn-2','after-form-sent','application-submitted','over-16','dla-now','under-16-ineligible','last-12-months','srel','srel-bau-kickout','what-is-ni-number','what-is-ni-number-2','what-is-ni-number-3','searchlight-check','security-check',
+'failed-security','welcome-screen','declaration','task-list','whatIsYourName','what-is-your-postcode']
 
 
 function validatePath(res, redirectPath) {
