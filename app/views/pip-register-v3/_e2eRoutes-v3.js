@@ -120,11 +120,11 @@ validatePath(response, redirectPath);
   router.post(`/${folderForViews}/last-12-months`, function (request, response) {
     var externalRoute = request.session.data['last12months']
     if (externalRoute == "yes") {
-      const redirectPath = `/pip-register-v3/signposting-eligibility/dla-now`;
+      const redirectPath = `/${folderForViews}/signposting-eligibility/dla-now`;
 validatePath(response, redirectPath);
     }
     else if (externalRoute == "no") {
-      const redirectPath = `/pip-register-v3/signposting-eligibility/stop-getting-pip-last-year`;
+      const redirectPath = `/${folderForViews}/signposting-eligibility/stop-getting-pip-last-year`;
 validatePath(response, redirectPath);
     }
     console.log('last12months value:', request.session.data['last12months']);
@@ -136,19 +136,19 @@ console.log('Redirecting to:', folderForViews);
 router.post(`/${folderForViews}/what-is-ni-number-3`, function (request, response) {
   var externalRoute = request.session.data['ni3']
   if (externalRoute == "same-dob") {
-    const redirectPath = `/pip-register-v3/signposting-eligibility/appointee`;
+    const redirectPath = `/${folderForViews}/signposting-eligibility/appointee`;
 validatePath(response, redirectPath);
   }
   else if (externalRoute == "different-dob") {
-    const redirectPath = `/pip-register-v3/signposting-eligibility/no-match-ni-kickout`;
+    const redirectPath = `/${folderForViews}/signposting-eligibility/no-match-ni-kickout`;
 validatePath(response, redirectPath);
   }
   else if (externalRoute == "scr") {
-    const redirectPath = `/pip-register-v3/signposting-eligibility/scr-kickout`;
+    const redirectPath = `/${folderForViews}/signposting-eligibility/scr-kickout`;
 validatePath(response, redirectPath);
   }
   else if (externalRoute == "no-searchlight") {
-    const redirectPath = `/pip-register-v3/signposting-eligibility/no-match-ni-kickout`;
+    const redirectPath = `/${folderForViews}/signposting-eligibility/no-match-ni-kickout`;
 validatePath(response, redirectPath);
   }
   console.log('ni3 value:', request.session.data['ni3']);
@@ -159,11 +159,11 @@ validatePath(response, redirectPath);
   router.post(`/${folderForViews}/appointee`, function (request, response) {
     var externalRoute = request.session.data['appointeeYn']
     if (externalRoute == "yes") {
-      const redirectPath = `/pip-register-v3/signposting-eligibility/appointee-kickout`;
+      const redirectPath = `/${folderForViews}/signposting-eligibility/appointee-kickout`;
 validatePath(response, redirectPath);
     }
     else if (externalRoute == "no") {
-      const redirectPath = `/pip-register-v3/signposting-eligibility/security-check`;
+      const redirectPath = `/${folderForViews}/signposting-eligibility/security-check`;
 validatePath(response, redirectPath);
     }
     console.log('appointeeYn value:', request.session.data['appointeeYn']);
