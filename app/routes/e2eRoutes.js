@@ -325,7 +325,7 @@ router.post('/pip-register/contact-details/contact-details-summary', function(re
 
   // Handle no selection
   if (!selectedOptions) {
-    return res.redirect('/pip-register/contact-details/alt-formats/how-should-we-contact-you');
+    return validatePath(response,'/pip-register/contact-details/alt-formats/how-should-we-contact-you');
   }
 
   // Normalize to array
@@ -333,26 +333,26 @@ router.post('/pip-register/contact-details/contact-details-summary', function(re
 
   // If "neither" is selected, ignore other options and redirect to 'none'
   if (options.includes('none')) {
-    return res.redirect('/pip-register/contact-details/alt-formats/how-should-we-contact-you');
+    return validatePath(response,'/pip-register/contact-details/alt-formats/how-should-we-contact-you');
   }
 
   // If both A and B are selected, go to a summary page
   if (options.includes('coloured-paper') && options.includes('large-print')) {
-    return res.redirect('/pip-register/contact-details/alt-formats/what-size-print-do-you-need');
+    return validatePath(response,'/pip-register/contact-details/alt-formats/what-size-print-do-you-need');
   }
 
   // If only coloured paper (A)
   if (options.includes('coloured-paper')) {
-    return res.redirect('/pip-register/contact-details/alt-formats/what-colour-paper-do-you-need');
+    return validatePath(response,'/pip-register/contact-details/alt-formats/what-colour-paper-do-you-need');
   }
 
   // If only large print (B)
   if (options.includes('large-print')) {
-    return res.redirect('/pip-register/contact-details/alt-formats/what-size-print-do-you-need');
+    return validatePath(response,'/pip-register/contact-details/alt-formats/what-size-print-do-you-need');
   }
 
   // Fallback
-  res.redirect('/pip-register/contact-details/alt-formats/how-should-we-contact-you');
+  validatePath(response,'/pip-register/contact-details/alt-formats/how-should-we-contact-you');
 });
 
 
@@ -362,7 +362,7 @@ router.post('/pip-register/contact-details/contact-details-summary', function(re
     var font = req.session.data['font'];
 
     //Redirect
-    res.redirect('/pip-register/contact-details/alt-formats/what-colour-paper-do-you-need');
+    validatePath(response,'/pip-register/contact-details/alt-formats/what-colour-paper-do-you-need');
   });
 
     //Paper
@@ -371,7 +371,7 @@ router.post('/pip-register/contact-details/contact-details-summary', function(re
       var paper = req.session.data['paper'];
   
       //Redirect
-      res.redirect('/pip-register/contact-details/alt-formats/what-size-print-do-you-need');
+      validatePath(response,'/pip-register/contact-details/alt-formats/what-size-print-do-you-need');
     });
 
     //Audio format
@@ -1179,17 +1179,17 @@ router.post('/select-activities-router', function(req, res, next){
 const selectActivity = req.session.data['daily-activity']
 
   if (selectActivity == 'prep-food') {
-    res.redirect('/sprint-1/preparing-food/choose-method')
+    validatePath(response,'/sprint-1/preparing-food/choose-method')
   }
   if (selectActivity == 'dressing') {
-    res.redirect('/sprint-1/dressing/choose-method')
+    validatePath(response,'/sprint-1/dressing/choose-method')
   }
   if (selectActivity == 'moving-around') {
-    res.redirect('/sprint-1/moving-around/choose-method')
+    validatePath(response,'/sprint-1/moving-around/choose-method')
   }
 
   else {
-    res.redirect('/sprint-1/preparing-food/choose-method')
+    validatePath(response,'/sprint-1/preparing-food/choose-method')
   }
 })
 
@@ -1199,17 +1199,17 @@ router.post('/choose-method-router', function(req, res, next){
     const chooseMethod = req.session.data['choose-method-preparing-food']
 
       if (chooseMethod == 'nhs') {
-        res.redirect('/sprint-1/ask-nhs/preparing-food')
+        validatePath(response,'/sprint-1/ask-nhs/preparing-food')
       }
       if (chooseMethod == 'someone-i-know') {
-        res.redirect('/sprint-1/vouch-for-me/preparing-food')
+        validatePath(response,'/sprint-1/vouch-for-me/preparing-food')
       }
       if (chooseMethod == 'diary') {
-        res.redirect('/sprint-1/preparing-food/diary/good/problems-prep-food')
+        validatePath(response,'/sprint-1/preparing-food/diary/good/problems-prep-food')
       }
 
       else {
-        res.redirect('/sprint-1/preparing-food/choose-method')
+        validatePath(response,'/sprint-1/preparing-food/choose-method')
       }
     })
 
@@ -1219,17 +1219,17 @@ router.post('/choose-method-dressing-router', function(req, res, next){
   const chooseMethod = req.session.data['choose-method-dressing']
 
     if (chooseMethod == 'nhs') {
-      res.redirect('/sprint-1/ask-nhs/dressing')
+      validatePath(response,'/sprint-1/ask-nhs/dressing')
     }
     if (chooseMethod == 'someone-i-know') {
-      res.redirect('/sprint-1/vouch-for-me/dressing')
+      validatePath(response,'/sprint-1/vouch-for-me/dressing')
     }
     if (chooseMethod == 'diary') {
-      res.redirect('/sprint-1/dressing/diary/good/problems-dressing')
+      validatePath(response,'/sprint-1/dressing/diary/good/problems-dressing')
     }
 
     else {
-      res.redirect('/sprint-1/dressing/choose-method')
+      validatePath(response,'/sprint-1/dressing/choose-method')
     }
   })
 
@@ -1239,17 +1239,17 @@ router.post('/choose-method-dressing-router', function(req, res, next){
     const chooseMethod = req.session.data['choose-method-moving-around']
 
       if (chooseMethod == 'nhs') {
-        res.redirect('/sprint-1/ask-nhs/moving-around')
+        validatePath(response,'/sprint-1/ask-nhs/moving-around')
       }
       if (chooseMethod == 'someone-i-know') {
-        res.redirect('/sprint-1/vouch-for-me/moving-around')
+        validatePath(response,'/sprint-1/vouch-for-me/moving-around')
       }
       if (chooseMethod == 'diary') {
-        res.redirect('/sprint-1/moving-around/diary/good/problems-moving-around')
+        validatePath(response,'/sprint-1/moving-around/diary/good/problems-moving-around')
       }
 
       else {
-        res.redirect('/sprint-1/moving-around/choose-method')
+        validatePath(response,'/sprint-1/moving-around/choose-method')
       }
     })
 
@@ -1259,20 +1259,20 @@ router.post('/how-contact-router', function(req, res, next){
     const howContact = req.session.data['how-contact']
 
       if (howContact == 'email') {
-        res.redirect('/sprint-1/vouch-for-me/email')
+        validatePath(response,'/sprint-1/vouch-for-me/email')
       }
       if (howContact == 'phone') {
-        res.redirect('/sprint-1/vouch-for-me/phone')
+        validatePath(response,'/sprint-1/vouch-for-me/phone')
       }
       if (howContact == 'text') {
-        res.redirect('/sprint-1/vouch-for-me/mobile')
+        validatePath(response,'/sprint-1/vouch-for-me/mobile')
       }
       if (howContact == 'letter') {
-        res.redirect('/sprint-1/vouch-for-me/address')
+        validatePath(response,'/sprint-1/vouch-for-me/address')
       }
 
       else {
-        res.redirect('/sprint-1/vouch-for-me/email')
+        validatePath(response,'/sprint-1/vouch-for-me/email')
       }
     })
 
@@ -1288,31 +1288,31 @@ router.post('/good-problems-prep-food-router', function(req, res, next){
     const problemsFoodGood = req.session.data['problems-food']
 
       if (problemsFoodGood == 'good-pain') {
-        res.redirect('/sprint-1/preparing-food/diary/good/pain-preparing-food')
+        validatePath(response,'/sprint-1/preparing-food/diary/good/pain-preparing-food')
       }
       if (problemsFoodGood == 'tired') {
-        res.redirect('/sprint-1/preparing-food/diary/good/pain-preparing-food')
+        validatePath(response,'/sprint-1/preparing-food/diary/good/pain-preparing-food')
       }
       if (problemsFoodGood == 'good-hurt') {
-        res.redirect('/sprint-1/preparing-food/diary/good/hurt-preparing-food')
+        validatePath(response,'/sprint-1/preparing-food/diary/good/hurt-preparing-food')
       }
 
       if (problemsFoodGood == 'good-supervision') {
-        res.redirect('/sprint-1/preparing-food/diary/good/supervision-preparing-food')
+        validatePath(response,'/sprint-1/preparing-food/diary/good/supervision-preparing-food')
       }
       if (problemsFoodGood == 'good-help') {
-        res.redirect('/sprint-1/preparing-food/diary/good/supervision-preparing-food')
+        validatePath(response,'/sprint-1/preparing-food/diary/good/supervision-preparing-food')
       }
 
       if (problemsFoodGood == 'good-reminder') {
-        res.redirect('/sprint-1/preparing-food/diary/good/reminder-preparing-food')
+        validatePath(response,'/sprint-1/preparing-food/diary/good/reminder-preparing-food')
       }
       if (problemsFoodGood == 'good-unable') {
-        res.redirect('/sprint-1/preparing-food/diary/good/unable-preparing-food')
+        validatePath(response,'/sprint-1/preparing-food/diary/good/unable-preparing-food')
       }
 
       else {
-        res.redirect('/sprint-1/preparing-food/diary/good/pain-preparing-food')
+        validatePath(response,'/sprint-1/preparing-food/diary/good/pain-preparing-food')
       }
     })
 
@@ -1324,31 +1324,31 @@ router.post('/good-problems-dressing-router', function(req, res, next){
   const problemsDressingGood = req.session.data['problems-dressing']
 
     if (problemsDressingGood == 'good-pain') {
-      res.redirect('/sprint-1/dressing/diary/good/pain-dressing')
+      validatePath(response,'/sprint-1/dressing/diary/good/pain-dressing')
     }
     if (problemsDressingGood == 'good-tired') {
-      res.redirect('/sprint-1/dressing/diary/good/pain-dressing')
+      validatePath(response,'/sprint-1/dressing/diary/good/pain-dressing')
     }
     if (problemsDressingGood == 'good-hurt') {
-      res.redirect('/sprint-1/dressing/diary/good/hurt-dressing')
+      validatePath(response,'/sprint-1/dressing/diary/good/hurt-dressing')
     }
 
     if (problemsDressingGood == 'good-supervision') {
-      res.redirect('/sprint-1/dressing/diary/good/supervision-dressing')
+      validatePath(response,'/sprint-1/dressing/diary/good/supervision-dressing')
     }
     if (problemsDressingGood == 'good-help') {
-      res.redirect('/sprint-1/dressing/diary/good/supervision-dressing')
+      validatePath(response,'/sprint-1/dressing/diary/good/supervision-dressing')
     }
 
     if (problemsDressingGood == 'good-reminder') {
-      res.redirect('/sprint-1/dressing/diary/good/reminder-dressing')
+      validatePath(response,'/sprint-1/dressing/diary/good/reminder-dressing')
     }
     if (problemsDressingGood == 'good-unable') {
-      res.redirect('/sprint-1/dressing/diary/good/unable-dressing')
+      validatePath(response,'/sprint-1/dressing/diary/good/unable-dressing')
     }
 
     else {
-      res.redirect('/sprint-1/dressing/diary/good/pain-dressing')
+      validatePath(response,'/sprint-1/dressing/diary/good/pain-dressing')
     }
   })
 
@@ -1360,31 +1360,31 @@ router.post('/good-problems-moving-around-router', function(req, res, next){
   const problemsMovingAroundGood = req.session.data['problems-moving-around']
 
     if (problemsMovingAroundGood == 'good-pain') {
-      res.redirect('/sprint-1/moving-around/diary/good/pain-moving-around')
+      validatePath(response,'/sprint-1/moving-around/diary/good/pain-moving-around')
     }
     if (problemsMovingAroundGood == 'good-tired') {
-      res.redirect('/sprint-1/moving-around/diary/good/pain-moving-around')
+      validatePath(response,'/sprint-1/moving-around/diary/good/pain-moving-around')
     }
     if (problemsMovingAroundGood == 'good-hurt') {
-      res.redirect('/sprint-1/moving-around/diary/good/hurt-moving-around')
+      validatePath(response,'/sprint-1/moving-around/diary/good/hurt-moving-around')
     }
 
     if (problemsMovingAroundGood == 'good-supervision') {
-      res.redirect('/sprint-1/moving-around/diary/good/supervision-moving-around')
+      validatePath(response,'/sprint-1/moving-around/diary/good/supervision-moving-around')
     }
     if (problemsMovingAroundGood == 'good-help') {
-      res.redirect('/sprint-1/moving-around/diary/good/supervision-moving-around')
+      validatePath(response,'/sprint-1/moving-around/diary/good/supervision-moving-around')
     }
 
     if (problemsMovingAroundGood == 'good-reminder') {
-      res.redirect('/sprint-1/moving-around/diary/good/reminder-moving-around')
+      validatePath(response,'/sprint-1/moving-around/diary/good/reminder-moving-around')
     }
     if (problemsMovingAroundGood == 'good-unable') {
-      res.redirect('/sprint-1/moving-around/diary/good/unable-moving-around')
+      validatePath(response,'/sprint-1/moving-around/diary/good/unable-moving-around')
     }
 
     else {
-      res.redirect('/sprint-1/moving-around/diary/good/pain-moving-around')
+      validatePath(response,'/sprint-1/moving-around/diary/good/pain-moving-around')
     }
   })
 
@@ -1398,31 +1398,31 @@ router.post('/bad-problems-prep-food-router', function(req, res, next){
     const problemsFoodBad = req.session.data['problems-food']
 
       if (problemsFoodBad == 'bad-pain') {
-        res.redirect('/sprint-1/preparing-food/diary/bad/pain-preparing-food')
+        validatePath(response,'/sprint-1/preparing-food/diary/bad/pain-preparing-food')
       }
       if (problemsFoodBad == 'bad-tired') {
-        res.redirect('/sprint-1/preparing-food/diary/bad/pain-preparing-food')
+        validatePath(response,'/sprint-1/preparing-food/diary/bad/pain-preparing-food')
       }
       if (problemsFoodBad == 'bad-hurt') {
-        res.redirect('/sprint-1/preparing-food/diary/bad/hurt-preparing-food')
+        validatePath(response,'/sprint-1/preparing-food/diary/bad/hurt-preparing-food')
       }
 
       if (problemsFoodBad == 'bad-supervision') {
-        res.redirect('/sprint-1/preparing-food/diary/bad/supervision-preparing-food')
+        validatePath(response,'/sprint-1/preparing-food/diary/bad/supervision-preparing-food')
       }
       if (problemsFoodBad == 'bad-help') {
-        res.redirect('/sprint-1/preparing-food/diary/bad/supervision-preparing-food')
+        validatePath(response,'/sprint-1/preparing-food/diary/bad/supervision-preparing-food')
       }
 
       if (problemsFoodBad == 'bad-reminder') {
-        res.redirect('/sprint-1/preparing-food/diary/bad/reminder-preparing-food')
+        validatePath(response,'/sprint-1/preparing-food/diary/bad/reminder-preparing-food')
       }
       if (problemsFoodBad == 'bad-unable') {
-        res.redirect('/sprint-1/preparing-food/diary/bad/unable-preparing-food')
+        validatePath(response,'/sprint-1/preparing-food/diary/bad/unable-preparing-food')
       }
 
       else {
-        res.redirect('/sprint-1/preparing-food/diary/bad/pain-preparing-food')
+        validatePath(response,'/sprint-1/preparing-food/diary/bad/pain-preparing-food')
       }
     })
 
@@ -1434,32 +1434,32 @@ router.post('/bad-problems-dressing-router', function(req, res, next){
   const problemsDressingBad = req.session.data['problems-dressing']
 
     if (problemsDressingBad == 'bad-pain') {
-      res.redirect('/sprint-1/dressing/diary/bad/pain-dressing')
+      validatePath(response,'/sprint-1/dressing/diary/bad/pain-dressing')
     }
 
     if (problemsDressingBad == 'bad-tired') {
-      res.redirect('/sprint-1/dressing/diary/bad/pain-dressing')
+      validatePath(response,'/sprint-1/dressing/diary/bad/pain-dressing')
     }
     if (problemsDressingBad == 'bad-hurt') {
-      res.redirect('/sprint-1/dressing/diary/bad/hurt-dressing')
+      validatePath(response,'/sprint-1/dressing/diary/bad/hurt-dressing')
     }
 
     if (problemsDressingBad == 'bad-supervision') {
-      res.redirect('/sprint-1/dressing/diary/bad/supervision-dressing')
+      validatePath(response,'/sprint-1/dressing/diary/bad/supervision-dressing')
     }
     if (problemsDressingBad == 'bad-help') {
-      res.redirect('/sprint-1/dressing/diary/bad/supervision-dressing')
+      validatePath(response,'/sprint-1/dressing/diary/bad/supervision-dressing')
     }
 
     if (problemsDressingBad == 'bad-reminder') {
-      res.redirect('/sprint-1/dressing/diary/bad/reminder-dressing')
+      validatePath(response,'/sprint-1/dressing/diary/bad/reminder-dressing')
     }
     if (problemsDressingBad == 'bad-unable') {
-      res.redirect('/sprint-1/dressing/diary/bad/unable-dressing')
+      validatePath(response,'/sprint-1/dressing/diary/bad/unable-dressing')
     }
 
     else {
-      res.redirect('/sprint-1/dressing/diary/bad/pain-dressing')
+      validatePath(response,'/sprint-1/dressing/diary/bad/pain-dressing')
     }
   })
 
@@ -1471,31 +1471,31 @@ router.post('/bad-problems-moving-around-router', function(req, res, next){
   const problemsMovingBad = req.session.data['problems-moving-around']
 
     if (problemsMovingBad == 'bad-pain') {
-      res.redirect('/sprint-1/moving-around/diary/bad/pain-moving-around')
+      validatePath(response,'/sprint-1/moving-around/diary/bad/pain-moving-around')
     }
     if (problemsMovingBad == 'bad-tired') {
-      res.redirect('/sprint-1/moving-around/diary/bad/pain-moving-around')
+      validatePath(response,'/sprint-1/moving-around/diary/bad/pain-moving-around')
     }
     if (problemsMovingBad == 'bad-hurt') {
-      res.redirect('/sprint-1/moving-around/diary/bad/hurt-moving-around')
+      validatePath(response,'/sprint-1/moving-around/diary/bad/hurt-moving-around')
     }
 
     if (problemsMovingBad == 'bad-supervision') {
-      res.redirect('/sprint-1/moving-around/diary/bad/supervision-moving-around')
+      validatePath(response,'/sprint-1/moving-around/diary/bad/supervision-moving-around')
     }
     if (problemsMovingBad == 'bad-help') {
-      res.redirect('/sprint-1/moving-around/diary/bad/supervision-moving-around')
+      validatePath(response,'/sprint-1/moving-around/diary/bad/supervision-moving-around')
     }
 
     if (problemsMovingBad == 'bad-reminder') {
-      res.redirect('/sprint-1/moving-around/diary/bad/reminder-moving-around')
+      validatePath(response,'/sprint-1/moving-around/diary/bad/reminder-moving-around')
     }
     if (problemsMovingBad == 'bad-unable') {
-      res.redirect('/sprint-1/moving-around/diary/bad/unable-moving-around')
+      validatePath(response,'/sprint-1/moving-around/diary/bad/unable-moving-around')
     }
 
     else {
-      res.redirect('/sprint-1/moving-around/diary/bad/pain-moving-around')
+      validatePath(response,'/sprint-1/moving-around/diary/bad/pain-moving-around')
     }
   })
 
@@ -1508,28 +1508,28 @@ router.post('/bad-problems-moving-around-router', function(req, res, next){
     const dailyActivityCheck = req.session.data['daily-activity']
 
       if (dailyActivityCheck == 'work') {
-        res.redirect('/h1/it1/v1/work-support')
+        validatePath(response,'/h1/it1/v1/work-support')
       }
       if (dailyActivityCheck == 'travel') {
-        res.redirect('/h1/it1/v1/travel-support')
+        validatePath(response,'/h1/it1/v1/travel-support')
       }
       if (dailyActivityCheck == 'shopping') {
-        res.redirect('/h1/it1/v1/shopping-support')
+        validatePath(response,'/h1/it1/v1/shopping-support')
       }
       if (dailyActivityCheck == 'housework') {
-        res.redirect('/h1/it1/v1/housework-support')
+        validatePath(response,'/h1/it1/v1/housework-support')
       }
       if (dailyActivityCheck == 'medical-appointments') {
-        res.redirect('/h1/it1/v1/medical-support')
+        validatePath(response,'/h1/it1/v1/medical-support')
       }
       if (dailyActivityCheck == 'prepare-meals') {
-        res.redirect('/h1/it1/v1/food-support')
+        validatePath(response,'/h1/it1/v1/food-support')
       }
       if (dailyActivityCheck == 'budgeting') {
-        res.redirect('/h1/it1/v1/budgeting-support')
+        validatePath(response,'/h1/it1/v1/budgeting-support')
       }
       else {
-        res.redirect('/h1/it1/v1/none')
+        validatePath(response,'/h1/it1/v1/none')
       }
     })
 
@@ -1540,13 +1540,13 @@ router.post('/bad-problems-moving-around-router', function(req, res, next){
               const workCheck = req.session.data['work-help']
 
                 if (workCheck == 'need-help') {
-                  res.redirect('/h1/it1/v1/work-help')
+                  validatePath(response,'/h1/it1/v1/work-help')
                 }
                 if (workCheck == 'use-aids') {
-                  res.redirect('/h1/it1/v1/work-aids')
+                  validatePath(response,'/h1/it1/v1/work-aids')
                 }
                 else {
-                  res.redirect('/h1/it1/v1/food-support')
+                  validatePath(response,'/h1/it1/v1/food-support')
                 }
               })
 
@@ -1557,13 +1557,13 @@ router.post('/bad-problems-moving-around-router', function(req, res, next){
       const travelCheck = req.session.data['travel-help']
 
         if (travelCheck == 'need-help') {
-          res.redirect('/h1/it1/v1/travel-help')
+          validatePath(response,'/h1/it1/v1/travel-help')
         }
         if (travelCheck == 'use-aids') {
-          res.redirect('/h1/it1/v1/travel-aids')
+          validatePath(response,'/h1/it1/v1/travel-aids')
         }
         else {
-          res.redirect('/h1/it1/v1/shopping-support')
+          validatePath(response,'/h1/it1/v1/shopping-support')
         }
       })
 
@@ -1576,13 +1576,13 @@ router.post('/bad-problems-moving-around-router', function(req, res, next){
       const shoppingCheck = req.session.data['shopping-help']
 
         if (shoppingCheck == 'need-help') {
-          res.redirect('/h1/it1/v1/shopping-help')
+          validatePath(response,'/h1/it1/v1/shopping-help')
         }
         if (shoppingCheck == 'use-aids') {
-          res.redirect('/h1/it1/v1/shopping-aids')
+          validatePath(response,'/h1/it1/v1/shopping-aids')
         }
         else {
-          res.redirect('/h1/it1/v1/housework-support')
+          validatePath(response,'/h1/it1/v1/housework-support')
         }
       })
 
@@ -1595,13 +1595,13 @@ router.post('/bad-problems-moving-around-router', function(req, res, next){
       const houseworkCheck = req.session.data['housework-help']
 
         if (houseworkCheck == 'need-help') {
-          res.redirect('/h1/it1/v1/housework-help')
+          validatePath(response,'/h1/it1/v1/housework-help')
         }
         if (houseworkCheck == 'use-aids') {
-          res.redirect('/h1/it1/v1/housework-aids')
+          validatePath(response,'/h1/it1/v1/housework-aids')
         }
         else {
-          res.redirect('/h1/it1/v1/medical-support')
+          validatePath(response,'/h1/it1/v1/medical-support')
         }
       })
 
@@ -1614,13 +1614,13 @@ router.post('/bad-problems-moving-around-router', function(req, res, next){
         const medicalCheck = req.session.data['medical-help']
 
           if (medicalCheck == 'need-help') {
-            res.redirect('/h1/it1/v1/medical-help')
+            validatePath(response,'/h1/it1/v1/medical-help')
           }
           if (medicalCheck == 'use-aids') {
-            res.redirect('/h1/it1/v1/medical-aids')
+            validatePath(response,'/h1/it1/v1/medical-aids')
           }
           else {
-            res.redirect('/h1/it1/v1/work-support')
+            validatePath(response,'/h1/it1/v1/work-support')
           }
         })
 
@@ -1636,13 +1636,13 @@ router.post('/bad-problems-moving-around-router', function(req, res, next){
             const workCheck = req.session.data['food-help']
 
               if (workCheck == 'need-help') {
-                res.redirect('/h1/it1/v1/food-help')
+                validatePath(response,'/h1/it1/v1/food-help')
               }
               if (workCheck == 'use-aids') {
-                res.redirect('/h1/it1/v1/food-aids')
+                validatePath(response,'/h1/it1/v1/food-aids')
               }
               else {
-                res.redirect('/h1/it1/v1/budgeting-support')
+                validatePath(response,'/h1/it1/v1/budgeting-support')
               }
             })
 
@@ -1655,13 +1655,13 @@ router.post('/bad-problems-moving-around-router', function(req, res, next){
     const budgetingCheck = req.session.data['budgeting-help']
 
       if (budgetingCheck == 'need-help') {
-        res.redirect('/h1/it1/budgeting-help')
+        validatePath(response,'/h1/it1/budgeting-help')
       }
       if (budgetingCheck == 'use-aids') {
-        res.redirect('/h1/it1/budgeting-aids')
+        validatePath(response,'/h1/it1/budgeting-aids')
       }
       else {
-        res.redirect('/h1/it1/cya')
+        validatePath(response,'/h1/it1/cya')
       }
     })
 
@@ -1672,10 +1672,10 @@ router.post('/bad-problems-moving-around-router', function(req, res, next){
 
   router.get(/travelSelect/ , function (req, res) {
     if (req.query.radioGroup === "yes") {
-        res.redirect('travel-support')
+        validatePath(response,'travel-support')
     }
     else {
-        res.redirect('travel-no')
+        validatePath(response,'travel-no')
     }
 })
 
@@ -1684,13 +1684,13 @@ router.post('/travel-how-router', function(req, res, next){
   const travelCheck = req.session.data['travel-help']
 
     if (travelCheck == 'need-help') {
-      res.redirect('/h1/it1/travel-help')
+      validatePath(response,'/h1/it1/travel-help')
     }
     if (travelCheck == 'use-aids') {
-      res.redirect('/h1/it1/travel-aids')
+      validatePath(response,'/h1/it1/travel-aids')
     }
     else {
-      res.redirect('/h1/it1/shopping')
+      validatePath(response,'/h1/it1/shopping')
     }
   })
 
@@ -1699,10 +1699,10 @@ router.post('/travel-how-router', function(req, res, next){
 
   router.get(/shoppingSelect/ , function (req, res) {
     if (req.query.radioGroup === "yes") {
-        res.redirect('shopping-support')
+        validatePath(response,'shopping-support')
     }
     else {
-        res.redirect('shopping-no')
+        validatePath(response,'shopping-no')
     }
 })
 
@@ -1711,13 +1711,13 @@ router.post('/shopping-how-router', function(req, res, next){
   const shoppingCheck = req.session.data['shopping-help']
 
     if (shoppingCheck == 'need-help') {
-      res.redirect('/h1/it1/shopping-help')
+      validatePath(response,'/h1/it1/shopping-help')
     }
     if (shoppingCheck == 'use-aids') {
-      res.redirect('/h1/it1/shopping-aids')
+      validatePath(response,'/h1/it1/shopping-aids')
     }
     else {
-      res.redirect('/h1/it1/housework')
+      validatePath(response,'/h1/it1/housework')
     }
   })
 
@@ -1726,10 +1726,10 @@ router.post('/shopping-how-router', function(req, res, next){
 
   router.get(/houseworkSelect/ , function (req, res) {
     if (req.query.radioGroup === "yes") {
-        res.redirect('housework-support')
+        validatePath(response,'housework-support')
     }
     else {
-        res.redirect('housework-no')
+        validatePath(response,'housework-no')
     }
 })
 
@@ -1738,13 +1738,13 @@ router.post('/housework-how-router', function(req, res, next){
   const houseworkCheck = req.session.data['housework-help']
 
     if (houseworkCheck == 'need-help') {
-      res.redirect('/h1/it1/housework-help')
+      validatePath(response,'/h1/it1/housework-help')
     }
     if (houseworkCheck == 'use-aids') {
-      res.redirect('/h1/it1/housework-aids')
+      validatePath(response,'/h1/it1/housework-aids')
     }
     else {
-      res.redirect('/h1/it1/medical-appts')
+      validatePath(response,'/h1/it1/medical-appts')
     }
   })
 
@@ -1753,10 +1753,10 @@ router.post('/housework-how-router', function(req, res, next){
 
     router.get(/medicalApptsSelect/ , function (req, res) {
       if (req.query.radioGroup === "yes") {
-          res.redirect('medical-support')
+          validatePath(response,'medical-support')
       }
       else {
-          res.redirect('medical-no')
+          validatePath(response,'medical-no')
       }
   })
 
@@ -1765,13 +1765,13 @@ router.post('/housework-how-router', function(req, res, next){
     const medicalCheck = req.session.data['medical-help']
 
       if (medicalCheck == 'need-help') {
-        res.redirect('/h1/it1/medical-help')
+        validatePath(response,'/h1/it1/medical-help')
       }
       if (medicalCheck == 'use-aids') {
-        res.redirect('/h1/it1/medical-aids')
+        validatePath(response,'/h1/it1/medical-aids')
       }
       else {
-        res.redirect('/h1/it1/work')
+        validatePath(response,'/h1/it1/work')
       }
     })
 
@@ -1779,10 +1779,10 @@ router.post('/housework-how-router', function(req, res, next){
 
         router.get(/workSelect/ , function (req, res) {
           if (req.query.radioGroup === "yes") {
-              res.redirect('work-support')
+              validatePath(response,'work-support')
           }
           else {
-              res.redirect('work-no')
+              validatePath(response,'work-no')
           }
       })
 
@@ -1791,13 +1791,13 @@ router.post('/housework-how-router', function(req, res, next){
         const workCheck = req.session.data['work-help']
 
           if (workCheck == 'need-help') {
-            res.redirect('/h1/it1/work-help')
+            validatePath(response,'/h1/it1/work-help')
           }
           if (workCheck == 'use-aids') {
-            res.redirect('/h1/it1/work-aids')
+            validatePath(response,'/h1/it1/work-aids')
           }
           else {
-            res.redirect('/h1/it1/food')
+            validatePath(response,'/h1/it1/food')
           }
         })
 
@@ -1806,10 +1806,10 @@ router.post('/housework-how-router', function(req, res, next){
 
         router.get(/foodSelect/ , function (req, res) {
           if (req.query.radioGroup === "yes") {
-              res.redirect('food-support')
+              validatePath(response,'food-support')
           }
           else {
-              res.redirect('food-no')
+              validatePath(response,'food-no')
           }
       })
 
@@ -1818,13 +1818,13 @@ router.post('/housework-how-router', function(req, res, next){
         const workCheck = req.session.data['food-help']
 
           if (workCheck == 'need-help') {
-            res.redirect('/h1/it1/food-help')
+            validatePath(response,'/h1/it1/food-help')
           }
           if (workCheck == 'use-aids') {
-            res.redirect('/h1/it1/food-aids')
+            validatePath(response,'/h1/it1/food-aids')
           }
           else {
-            res.redirect('/h1/it1/budgeting')
+            validatePath(response,'/h1/it1/budgeting')
           }
         })
 
@@ -1832,10 +1832,10 @@ router.post('/housework-how-router', function(req, res, next){
 
 router.get(/budgetingSelect/ , function (req, res) {
   if (req.query.radioGroup === "yes") {
-      res.redirect('budgeting-support')
+      validatePath(response,'budgeting-support')
   }
   else {
-      res.redirect('budgeting-no')
+      validatePath(response,'budgeting-no')
   }
 })
 
@@ -1844,13 +1844,13 @@ router.post('/budgeting-how-router', function(req, res, next){
 const budgetingCheck = req.session.data['budgeting-help']
 
   if (budgetingCheck == 'need-help') {
-    res.redirect('/h1/it1/budgeting-help')
+    validatePath(response,'/h1/it1/budgeting-help')
   }
   if (budgetingCheck == 'use-aids') {
-    res.redirect('/h1/it1/budgeting-aids')
+    validatePath(response,'/h1/it1/budgeting-aids')
   }
   else {
-    res.redirect('/h1/it1/cya')
+    validatePath(response,'/h1/it1/cya')
   }
 })
 
