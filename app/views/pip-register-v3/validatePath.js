@@ -7,12 +7,14 @@ function validatePath(res, redirectPath) {
     console.log("INSIDE VALIDATEPATH");
     const basePath = getBasePath(redirectPath);
     console.log("THE BASE PATH ",basePath)
+    const folderForViews = redirectPath.split('/')[1];
+    console.log("THE FOLDER FOR VIEWS ",folderForViews)
+
+
 
     if (allowedPaths.includes(basePath)) {
       console.log("IN ALLOWED PATHS");
-      const safeRedirect = ensureSafeRedirectPath(redirectPath);
-      console.log('safeRedirect');
-      return res.redirect(safeRedirect);
+      return res.redirect(redirectPath);
     } else {
       console.log("NOT IN ALLOWED PATHS");
       const error = new Error('Client Error - Path not found on allowed path list');
@@ -20,6 +22,7 @@ function validatePath(res, redirectPath) {
       throw error;
     }
 };
+
 
 
 
