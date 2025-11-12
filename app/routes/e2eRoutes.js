@@ -6,6 +6,46 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
+const path = require('path')
+const allowedPaths = ['5-2-today','what-colour-paper-do-you-need','inRoom','existing-claims','what-is-ni-number','dla-payments','what-is-ni-number-2','what-is-ni-number-3','welcome-screen','failed-security','security-check','what-is-your-dob','what-is-your-previous-surname','contact-details','select-your-address','confirm-correspondence','start-info','do-you-want-to-receive-text-updates','contact-details-summary','do-you-want-to-receive-text-updates','what-other-help-when-we-contact','how-should-we-contact-you','what-is-your-email','start-info','do-you-have-a-condition','helpers','read-letters','complete-forms','support-no-help','who','where','benefits-abroad','uk-2-of-3-years','what-country-benefits','family-receiving-benefits','task-list-nat-done','family-country-benefits','benefits-abroad','5-1-why-we-need-details','start','hp-summary-two-remove','consent','postcode','srel-bau-kickout','what-country-do-you-live-in','service-start-page','what-is-your-name','existing-claims','new-application','claiming-self','northern-ireland','scotland','other-country','srel','someone-else-bau-kickout','external-route','answer-questions-as-person','authority','last-12-months','dla-now','stop-getting-pip-last-year','appointee','appointee-kickout','security-check','dla-payments','over-16','under-16-ineligible','no-match-ni-kickout','scr-kickout','srel','srel-bau-kickout','over-16','what-is-ni-number','searchlight-check','security-check','failed-security','welcome-screen','declaration','task-list','whatIsYourName','previousNameYesNo','whatIsYourPreviousSurname','what-is-your-dob','what-is-your-postcode','select-your-address','enter-address-manually-country','confirm','correspondence-address','correspondence-postcode','select-your-address-correspondence','confirm-correspondence-address','confirm-correspondence','written-format','correspondence-enter-address-manually','what-is-your-phone-number','mobile','other-number','what-is-your-other-phone-number','do-you-want-to-receive-text-updates','contact-details-summary','font','paper','audio','contact','other-help','what-other-help-when-we-contact','what-is-relay-uk-number','what-is-your-textphone-number','signing-lipspeaking','how-should-we-contact-you','what-is-your-email','what-colour-paper-do-you-need','what-size-print-do-you-need','any-other-help-when-we-contact','what-is-your-phone-2','what-is-your-phone-3','contact-details-summary','start-info','do-you-have-a-condition','complete-forms','read-letters','post','helpers','who','who-helps','support-no-help','support-with-help','written-format','large-print','email-reason','what-is-your-email','what-type-of-audio-format','what-type-of-braille-do-you-need','what-video-format-do-you-need','add-support-summary','start','what-is-your-nationality','what-is-your-nationality','uk-2-of-3-years','leftUK','eea-nationality','another-nationality','living-in-uk','insurance-abroad','benefits-abroad','what-country-benefits','task-list-nat-done','family-receiving-benefits','family-country-benefits','start','what-is-your-nationality','another-nationality','what-country-do-you-live-in','lived-elsewhere','another-country-lived-in','abroad-over-four-weeks','abroad-over-four-weeks','benefits-abroad','HCPYesNo','healthcare-prof-type','healthcare-prof-details','postcode','select-your-address','enter-address-manually','additional-support-needed','additional-support-type','postcode-support','select-support-address','support-address-manually','consent','start','hp-summary-two-remove','consent','confirm-remove','remove-health-professional-2','remove-health-professional','remove-add-health-professional','additional-support-needed','additional-support-type','remove-second-hcp','hp-summary-two-remove','hp-summary','add-new','5-1-why-we-need-details','5-2-today','5-2-today','5-4-yesterday','5-5-private-patient','5-6-postcode','5-7-select-hospital-address','5-17-hospital-address-manually','5-18-hospice-address-manually','5-19-other-address-manually','5-8-hospice-yesterday','5-9-hospice-dates','5-10-hospice-postcode','5-11-select-hospice-address','hospital-residence-summary','5-13-third-party-pay','5-12-other-yesterday','5-15-other-postcode','5-16-select-other-address','5-13-third-party-pay','5-23-name','5-23-name-local','5-14-local-agreement','6-1-start','6-2-no-details-now','6-3-main-account-details-v2','bank-details-summary','motability-question','motability-summary','save-application','what-happens-next','online-form-option','online-form-contact','online-whn-1','online-whn-2','previously-claimed-online','paper-whn-1','paper-whn-2','after-form-sent','application-submitted','over-16','dla-now','under-16-ineligible','last-12-months','srel','srel-bau-kickout','searchlight-check','security-check','failed-security','welcome-screen','declaration','task-list','whatIsYourName','what-is-your-postcode']
+
+
+function validatePath(response, redirectPath) {
+
+    console.log("INSIDE VALIDATEPATH");
+    const basePath = getBasePath(redirectPath);
+    console.log("THE BASE PATH ",basePath)
+    const folderForViews = redirectPath.split('/')[1];
+    console.log("THE FOLDER FOR VIEWS ",folderForViews)
+
+
+
+    if (allowedPaths.includes(basePath)) {
+      console.log("IN ALLOWED PATHS");
+      return response.redirect(redirectPath);
+    } else {
+      console.log("NOT IN ALLOWED PATHS");
+      const error = new Error('Client Error - Path not found on allowed path list');
+      error.clientError = 404;
+      throw error;
+    }
+};
+
+
+
+
+  function getBasePath (redirectPath) {
+    console.log("INSIDE GETBASEPATH");
+    if (redirectPath.indexOf('?') > -1) {
+      console.log("DOES HAVE QUESTION MARK");
+      return redirectPath.split(path.sep).pop().split('?')[0];
+    }
+    console.log("ORIGINAL REDIRECT PATH ",redirectPath)
+    return redirectPath.split(path.sep).pop()
+  };
+
+
+module.exports = validatePath;
 // add motability routes here
 
 
@@ -320,7 +360,7 @@ router.post('/pip-register/contact-details/contact-details-summary', function(re
 
 //Alt formats
 
- router.post('/large-print', function (req, res) {
+ router.post('/large-print', function (req, response) {
   const selectedOptions = req.session.data['largePrint'];
 
   // Handle no selection
@@ -357,7 +397,7 @@ router.post('/pip-register/contact-details/contact-details-summary', function(re
 
 
   //font
-  router.post('/font', function (req, res) {
+  router.post('/font', function (req, response) {
     //Store response
     var font = req.session.data['font'];
 
@@ -366,7 +406,7 @@ router.post('/pip-register/contact-details/contact-details-summary', function(re
   });
 
     //Paper
-    router.post('/paper', function (req, res) {
+    router.post('/paper', function (req, response) {
       //Store response
       var paper = req.session.data['paper'];
   
@@ -1174,7 +1214,7 @@ router.post('/pip-register/what-happens-next/after-form-sent', function(request,
 // IGNORE BELOW THIS LINE
 
 //routing for activities screen
-router.post('/select-activities-router', function(req, res, next){
+router.post('/select-activities-router', function(req, response, next){
 
 const selectActivity = req.session.data['daily-activity']
 
@@ -1194,7 +1234,7 @@ const selectActivity = req.session.data['daily-activity']
 })
 
 //routing for choose method prep food screen
-router.post('/choose-method-router', function(req, res, next){
+router.post('/choose-method-router', function(req, response, next){
 
     const chooseMethod = req.session.data['choose-method-preparing-food']
 
@@ -1214,7 +1254,7 @@ router.post('/choose-method-router', function(req, res, next){
     })
 
   //routing for choose method dressing screen
-router.post('/choose-method-dressing-router', function(req, res, next){
+router.post('/choose-method-dressing-router', function(req, response, next){
 
   const chooseMethod = req.session.data['choose-method-dressing']
 
@@ -1234,7 +1274,7 @@ router.post('/choose-method-dressing-router', function(req, res, next){
   })
 
   //routing for choose method moving around screen
-  router.post('/choose-method-moving-around-router', function(req, res, next){
+  router.post('/choose-method-moving-around-router', function(req, response, next){
 
     const chooseMethod = req.session.data['choose-method-moving-around']
 
@@ -1254,7 +1294,7 @@ router.post('/choose-method-dressing-router', function(req, res, next){
     })
 
 //routing for how to contact screen
-router.post('/how-contact-router', function(req, res, next){
+router.post('/how-contact-router', function(req, response, next){
 
     const howContact = req.session.data['how-contact']
 
@@ -1283,7 +1323,7 @@ router.post('/how-contact-router', function(req, res, next){
 //GOOD DAY PREP FOOD
 
 //routing for food prep problems on a good day screen
-router.post('/good-problems-prep-food-router', function(req, res, next){
+router.post('/good-problems-prep-food-router', function(req, response, next){
 
     const problemsFoodGood = req.session.data['problems-food']
 
@@ -1319,7 +1359,7 @@ router.post('/good-problems-prep-food-router', function(req, res, next){
 //GOOD DAY DRESS AND UNDRESS
 
 //routing for dressing problems on a good day screen
-router.post('/good-problems-dressing-router', function(req, res, next){
+router.post('/good-problems-dressing-router', function(req, response, next){
 
   const problemsDressingGood = req.session.data['problems-dressing']
 
@@ -1355,7 +1395,7 @@ router.post('/good-problems-dressing-router', function(req, res, next){
 //GOOD DAY MOVE AROUND
 
 //routing for moving-around problems on a good day screen
-router.post('/good-problems-moving-around-router', function(req, res, next){
+router.post('/good-problems-moving-around-router', function(req, response, next){
 
   const problemsMovingAroundGood = req.session.data['problems-moving-around']
 
@@ -1393,7 +1433,7 @@ router.post('/good-problems-moving-around-router', function(req, res, next){
 //BAD DAY PREP FOOD
 
 //routing for food prep problems on a bad day screen
-router.post('/bad-problems-prep-food-router', function(req, res, next){
+router.post('/bad-problems-prep-food-router', function(req, response, next){
 
     const problemsFoodBad = req.session.data['problems-food']
 
@@ -1429,7 +1469,7 @@ router.post('/bad-problems-prep-food-router', function(req, res, next){
 //BAD DAY DRESSING
 
 //routing for dressing problems on a bad day screen
-router.post('/bad-problems-dressing-router', function(req, res, next){
+router.post('/bad-problems-dressing-router', function(req, response, next){
 
   const problemsDressingBad = req.session.data['problems-dressing']
 
@@ -1466,7 +1506,7 @@ router.post('/bad-problems-dressing-router', function(req, res, next){
 //BAD DAY MOVING AROUND
 
 //routing for moving around problems on a bad day screen
-router.post('/bad-problems-moving-around-router', function(req, res, next){
+router.post('/bad-problems-moving-around-router', function(req, response, next){
 
   const problemsMovingBad = req.session.data['problems-moving-around']
 
@@ -1503,7 +1543,7 @@ router.post('/bad-problems-moving-around-router', function(req, res, next){
 
   //activity selector routing
 
-  router.post('/daily-activity-select', function(req, res, next){
+  router.post('/daily-activity-select', function(req, response, next){
 
     const dailyActivityCheck = req.session.data['daily-activity']
 
@@ -1535,7 +1575,7 @@ router.post('/bad-problems-moving-around-router', function(req, res, next){
 
             // work
 
-            router.post('/work-router', function(req, res, next){
+            router.post('/work-router', function(req, response, next){
 
               const workCheck = req.session.data['work-help']
 
@@ -1552,7 +1592,7 @@ router.post('/bad-problems-moving-around-router', function(req, res, next){
 
  // travel
 
-    router.post('/travel-router', function(req, res, next){
+    router.post('/travel-router', function(req, response, next){
 
       const travelCheck = req.session.data['travel-help']
 
@@ -1571,7 +1611,7 @@ router.post('/bad-problems-moving-around-router', function(req, res, next){
       // shopping
 
 
-    router.post('/shopping-router', function(req, res, next){
+    router.post('/shopping-router', function(req, response, next){
 
       const shoppingCheck = req.session.data['shopping-help']
 
@@ -1590,7 +1630,7 @@ router.post('/bad-problems-moving-around-router', function(req, res, next){
       // housework
 
 
-    router.post('/housework-router', function(req, res, next){
+    router.post('/housework-router', function(req, response, next){
 
       const houseworkCheck = req.session.data['housework-help']
 
@@ -1609,7 +1649,7 @@ router.post('/bad-problems-moving-around-router', function(req, res, next){
         // medical appointments
 
 
-      router.post('/medical-router', function(req, res, next){
+      router.post('/medical-router', function(req, response, next){
 
         const medicalCheck = req.session.data['medical-help']
 
@@ -1631,7 +1671,7 @@ router.post('/bad-problems-moving-around-router', function(req, res, next){
 
 
 
-          router.post('/food-router', function(req, res, next){
+          router.post('/food-router', function(req, response, next){
 
             const workCheck = req.session.data['food-help']
 
@@ -1650,7 +1690,7 @@ router.post('/bad-problems-moving-around-router', function(req, res, next){
 
 
 
-    router.post('/budgeting-router', function(req, res, next){
+    router.post('/budgeting-router', function(req, response, next){
 
     const budgetingCheck = req.session.data['budgeting-help']
 
@@ -1670,7 +1710,7 @@ router.post('/bad-problems-moving-around-router', function(req, res, next){
 
   // travelling
 
-  router.get(/travelSelect/ , function (req, res) {
+  router.get(/travelSelect/ , function (req, response) {
     if (req.query.radioGroup === "yes") {
         validatePath(response,'travel-support')
     }
@@ -1679,7 +1719,7 @@ router.post('/bad-problems-moving-around-router', function(req, res, next){
     }
 })
 
-router.post('/travel-how-router', function(req, res, next){
+router.post('/travel-how-router', function(req, response, next){
 
   const travelCheck = req.session.data['travel-help']
 
@@ -1697,7 +1737,7 @@ router.post('/travel-how-router', function(req, res, next){
 
   // shopping
 
-  router.get(/shoppingSelect/ , function (req, res) {
+  router.get(/shoppingSelect/ , function (req, response) {
     if (req.query.radioGroup === "yes") {
         validatePath(response,'shopping-support')
     }
@@ -1706,7 +1746,7 @@ router.post('/travel-how-router', function(req, res, next){
     }
 })
 
-router.post('/shopping-how-router', function(req, res, next){
+router.post('/shopping-how-router', function(req, response, next){
 
   const shoppingCheck = req.session.data['shopping-help']
 
@@ -1724,7 +1764,7 @@ router.post('/shopping-how-router', function(req, res, next){
 
   // housework
 
-  router.get(/houseworkSelect/ , function (req, res) {
+  router.get(/houseworkSelect/ , function (req, response) {
     if (req.query.radioGroup === "yes") {
         validatePath(response,'housework-support')
     }
@@ -1733,7 +1773,7 @@ router.post('/shopping-how-router', function(req, res, next){
     }
 })
 
-router.post('/housework-how-router', function(req, res, next){
+router.post('/housework-how-router', function(req, response, next){
 
   const houseworkCheck = req.session.data['housework-help']
 
@@ -1751,7 +1791,7 @@ router.post('/housework-how-router', function(req, res, next){
 
     // medical appointments
 
-    router.get(/medicalApptsSelect/ , function (req, res) {
+    router.get(/medicalApptsSelect/ , function (req, response) {
       if (req.query.radioGroup === "yes") {
           validatePath(response,'medical-support')
       }
@@ -1760,7 +1800,7 @@ router.post('/housework-how-router', function(req, res, next){
       }
   })
 
-  router.post('/medical-how-router', function(req, res, next){
+  router.post('/medical-how-router', function(req, response, next){
 
     const medicalCheck = req.session.data['medical-help']
 
@@ -1777,7 +1817,7 @@ router.post('/housework-how-router', function(req, res, next){
 
         // work
 
-        router.get(/workSelect/ , function (req, res) {
+        router.get(/workSelect/ , function (req, response) {
           if (req.query.radioGroup === "yes") {
               validatePath(response,'work-support')
           }
@@ -1786,7 +1826,7 @@ router.post('/housework-how-router', function(req, res, next){
           }
       })
 
-      router.post('/work-how-router', function(req, res, next){
+      router.post('/work-how-router', function(req, response, next){
 
         const workCheck = req.session.data['work-help']
 
@@ -1804,7 +1844,7 @@ router.post('/housework-how-router', function(req, res, next){
 
 // preparing food
 
-        router.get(/foodSelect/ , function (req, res) {
+        router.get(/foodSelect/ , function (req, response) {
           if (req.query.radioGroup === "yes") {
               validatePath(response,'food-support')
           }
@@ -1813,7 +1853,7 @@ router.post('/housework-how-router', function(req, res, next){
           }
       })
 
-      router.post('/food-how-router', function(req, res, next){
+      router.post('/food-how-router', function(req, response, next){
 
         const workCheck = req.session.data['food-help']
 
@@ -1830,7 +1870,7 @@ router.post('/housework-how-router', function(req, res, next){
 
 // budgeting
 
-router.get(/budgetingSelect/ , function (req, res) {
+router.get(/budgetingSelect/ , function (req, response) {
   if (req.query.radioGroup === "yes") {
       validatePath(response,'budgeting-support')
   }
@@ -1839,7 +1879,7 @@ router.get(/budgetingSelect/ , function (req, res) {
   }
 })
 
-router.post('/budgeting-how-router', function(req, res, next){
+router.post('/budgeting-how-router', function(req, response, next){
 
 const budgetingCheck = req.session.data['budgeting-help']
 
@@ -1857,7 +1897,7 @@ const budgetingCheck = req.session.data['budgeting-help']
 // Logging session data
  
  
-router.use((req, res, next) => {
+router.use((req, response, next) => {
 const log = {
 method: req.method,
 url: req.originalUrl,

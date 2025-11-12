@@ -422,7 +422,7 @@ validatePath(response, redirectPath);
 
   // Do you want to receive text updates
   router.post(`/${folderForViews}/contact-details/do-you-want-to-receive-text-updates`, function (request, response) {
-    const redirectPath = `/${folderForViews}/contact-details/what-is-your-phone-number`;
+    const redirectPath = `/${folderForViews}/what-is-your-phone-number-1`;
 validatePath(response, redirectPath);
   })
 
@@ -465,15 +465,16 @@ validatePath(response, redirectPath);
   })
 
   //Paper
-  router.post(`/${folderForViews}/paper`, function (req, response) {
+  router.post(`/${folderForViews}/what-colour-paper-do-you-need`, function (req, response) {
     //Store response
     var paper = req.session.data['paper'];
+  })
 
-    
 
-    //Redirect
-    const redirectPath = `/${folderForViews}/contact-details/alt-formats/what-size-print-do-you-need`;
-validatePath(response, redirectPath);;
+    router.post(`/${folderForViews}/contact-details/alt-formats/what-size-print-do-you-need`, function (request, response) {
+const redirectPath = `/${folderForViews}/contact-details/do-you-want-to-receive-text-updates`;
+validatePath(response, redirectPath);
+
   })
 
   //Audio format
@@ -687,7 +688,7 @@ router.post(`/${folderForViews}/contact-details/alt-formats/written-format`, fun
     const redirectPath = `/${folderForViews}/contact-details/alt-formats/how-should-we-contact-you`;
 validatePath(response, redirectPath);;
   } else if (writtenFormat === 'Letter with changes to colour or print size') {
-    const redirectPath = `/${folderForViews}/contact-details/alt-formats/large-print`;
+    const redirectPath = `/${folderForViews}/contact-details/alt-formats/what-colour-paper-do-you-need`;
 validatePath(response, redirectPath);;
   } else if (writtenFormat === 'Audio') {
     const redirectPath = `/${folderForViews}/contact-details/alt-formats/what-type-of-audio-format`;
@@ -1504,6 +1505,4 @@ validatePath(response, redirectPath);
 
     next()
   })
-
-  //export routes
-}
+  }
