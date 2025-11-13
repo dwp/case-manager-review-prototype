@@ -16,29 +16,18 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        Local advice services may be able to help you fill in the forms we send to you
+        Do you have anyone to help you with these tasks? 
       </h1>
 
-      <p class="govuk-body">
-        Their details can be found on your council website.
-      </p>
-
-      <p class="govuk-body">'Make the Call' is the Department's own service, and can support people who need help with forms.  </p>
-
-      {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
-
-      {{ govukInsetText({
-        text:  "'Make the Call' phone number: 0800 232 1271"
-      }) }}
+      <form class="form" action="advice-as-marker" method="post">
 
 
-
-    <h2 class="govuk-heading-m">
+    <!-- <h2 class="govuk-heading-m">
       Would you like assistance from the Make the Call service?
-    </h2>
+    </h2> -->
 
     {{ govukRadios({
-      name: "makeTheCall",
+      name: "tasksYn",
       fieldset: {
         legend: {
           isPageHeading: true,
@@ -46,7 +35,7 @@
         }
       },
       hint: {
-        text: "If yes, someone from Make the Call will contact you to help you fill in the forms."
+        text: ""
       },
       items: [
         {
@@ -59,12 +48,13 @@
         }
       ]
     }) }}
-            
-          {{ govukButton({
-            text: "Save and continue",
-            href: "/ucd-register/task-list-as-done"
-          }) }}
+    
+ 
 
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+ </form>
     </div>
   </div>
 

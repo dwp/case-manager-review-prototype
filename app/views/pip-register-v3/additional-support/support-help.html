@@ -14,7 +14,6 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-
     <form class="form" action="support-no-help" method="post">
 
       <h1 class="govuk-heading-l">
@@ -24,9 +23,9 @@
       
         <p class="govuk-body">In the next stage of your application, you need to fill in a form about your health condition or disability and how it affects you. </p>
         {% if (data['helpers'] == "yes" ) %}
-        <p class="govuk-body">If you need someone to help you fill in the form or to read any letters we send, you could ask [Name].</p>
+        
         {% else %}
-        <p class="govuk-body">If you need someone to help you fill in the form or to read any letters we send, you could ask a friend, family member or support organisation.</p>
+        <p class="govuk-body">If you need someone to help you fill in the form or to read any letters we send, you could ask [Name of helper].</p>
         {% endif %}
       
 
@@ -67,6 +66,8 @@
         
           </div>
         </details>
+
+     <form class="form" action="#" method="post">
 
         {{ govukButton({
           text: "Save and continue"

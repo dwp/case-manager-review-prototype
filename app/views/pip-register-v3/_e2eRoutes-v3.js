@@ -562,9 +562,6 @@ validatePath(response, redirectPath);
   });
 
 
-
-
-
   //What is your phone number - 2
   router.post(`/${folderForViews}/contact-details/what-is-your-phone-2`, function (request, response) {
     var extraPhone = request.session.data['extraPhone'];
@@ -596,29 +593,70 @@ router.post(`/${folderForViews}/additional-support/start-info`, function (_reque
       const redirectPath = `/${folderForViews}/additional-support/complete-forms`;
 validatePath(response, redirectPath);
     } else if (anyCondition == 'no') {
-      const redirectPath = `/${folderForViews}/additional-support/helpers`;
+      const redirectPath = `/${folderForViews}/additional-support/add-support-summary`;
 validatePath(response, redirectPath);
     }
   })
 
   // can you complete forms - working
-  router.post(`/${folderForViews}/additional-support/complete-forms`, function (request, response) {
-    var forms = request.session.data['forms']
+//   router.post(`/${folderForViews}/additional-support/complete-forms`, function (request, response) {
+//     var forms = request.session.data['forms']
 
-    if (forms === 'no') {
-  const redirectPath = `/${folderForViews}/additional-support/helpers`;
-validatePath(response, redirectPath);
-    } else if (forms === 'yes') {
-        const redirectPath = `/${folderForViews}/additional-support/read-letters`;
-validatePath(response, redirectPath);
-    } else {
-      // fallback if nothing selected
-        const redirectPath = `/${folderForViews}/additional-support/complete-forms`;
-validatePath(response, redirectPath);
-    }
-  })
+//     if (forms === 'no') {
+//   const redirectPath = `/${folderForViews}/additional-support/helpers`;
+// validatePath(response, redirectPath);
+//     } else if (forms === 'yes') {
+//         const redirectPath = `/${folderForViews}/additional-support/read-letters`;
+// validatePath(response, redirectPath);
+//     } else {
+//       // fallback if nothing selected
+//         const redirectPath = `/${folderForViews}/additional-support/complete-forms`;
+// validatePath(response, redirectPath);
+//     }
+//   })
 
+//mad 3 radio screen
+router.post(`/${folderForViews}/additional-support/complete-forms`, function (req, res) {
+  const forms = req.body.forms;
+  const letters = req.body.letters;
+  const post = req.body.post;
 
+  console.log({ forms, letters, post });
+
+  // Check if all three are "yes"
+  if (forms === 'yes' && letters === 'yes' && post === 'yes') {
+    const redirectPath = `/${folderForViews}/additional-support/add-support-summary`;
+    return validatePath(res, redirectPath);
+  }
+
+  // If any is "no" or missing, go to advice-as-marker
+  const redirectPath = `/${folderForViews}/additional-support/advice-as-marker`;
+  return validatePath(res, redirectPath);
+});
+
+router.post(`/${folderForViews}/additional-support/advice-as-marker`, function (request, response) {
+  // Save to session
+  request.session.data['tasksYn'] = request.body.tasksYn;
+
+  const tasksYn = request.body.tasksYn;
+
+  if (tasksYn === 'yes') {
+    const redirectPath = `/${folderForViews}/additional-support/support-help`;
+    validatePath(response, redirectPath);
+  } else if (tasksYn === 'no') {
+    const redirectPath = `/${folderForViews}/additional-support/support-no-help`;
+    validatePath(response, redirectPath);
+  } else {
+    // fallback if nothing selected
+    const redirectPath = `/${folderForViews}/additional-support/support-no-help`;
+    validatePath(response, redirectPath);
+  }
+});
+
+router.post(`/${folderForViews}/additional-support/complete-forms`, function (_request, response) {
+  const redirectPath = `/${folderForViews}/additional-support/add-support-summary`;
+  validatePath(response, redirectPath);
+});
 
   // not working
 
@@ -638,6 +676,19 @@ validatePath(response, redirectPath);;
 validatePath(response, redirectPath);;
     }
   });
+  
+
+
+  router.post(`/${folderForViews}/additional-support/task-helper`, function (request, response) {
+    var taskHelper = request.session.data['taskHelper']
+    if (taskHelper == 'yes') {
+      const redirectPath = `/${folderForViews}/additional-support/support-no-help`;
+validatePath(response, redirectPath);
+    } else if (taskHelper == 'no') {
+      const redirectPath = `/${folderForViews}/additional-support/who`;
+validatePath(response, redirectPath);
+    }
+  })
 
 
   router.post(`/${folderForViews}/additional-support/post`, function (request, response) {
@@ -677,16 +728,17 @@ validatePath(response, redirectPath);
 
 
   router.post(`/${folderForViews}/additional-support/support-no-help`, function (request, response) {
-    const redirectPath = `/${folderForViews}/contact-details/alt-formats/written-format`;
+    const redirectPath = `/${folderForViews}/additional-support/add-support-summary`;
 validatePath(response, redirectPath);
+
   })
-  router.post(`/${folderForViews}/additional-support/support-with-help`, function (request, response) {
-    const redirectPath = `/${folderForViews}/contact-details/alt-formats/written-format`;
+
+  
+    router.post(`/${folderForViews}/additional-support/support-help`, function (request, response) {
+    const redirectPath = `/${folderForViews}/additional-support/add-support-summary`;
 validatePath(response, redirectPath);
+
   })
-  // -------------------------------------------------------------------------------------
-
-
 
 
   // Would you like us to send your letters in another way, like larger text, audio or braille?

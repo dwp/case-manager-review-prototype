@@ -16,18 +16,18 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        What is the name of the person helping you?
+        Who will you ask for help?
 
       </h1>
 
       <form class="form" action="#" method="post">
         {% from "govuk/components/details/macro.njk" import govukDetails %}
 
-     
+
 
         {{ govukInput({
           label: {
-            text: ""
+            text: "Name of helper"
           },
           id: "first-name",
           name: "first-name",
@@ -35,7 +35,6 @@
           spellcheck: false
         }) }}
 
- 
 
             
 
