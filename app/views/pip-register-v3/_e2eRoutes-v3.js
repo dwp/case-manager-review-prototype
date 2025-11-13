@@ -399,7 +399,7 @@ validatePath(response, redirectPath);
   })
 
   // What is your phone number page
-  router.post(`/${folderForViews}/contact-details/what-is-your-phone-number`, function (request, response) {
+  router.post(`/${folderForViews}/contact-details/what-is-your-phone-number-1`, function (request, response) {
     response.redirect("contact-details/contact-details-summary")
   })
 
@@ -422,7 +422,13 @@ validatePath(response, redirectPath);
 
   // Do you want to receive text updates
   router.post(`/${folderForViews}/contact-details/do-you-want-to-receive-text-updates`, function (request, response) {
-    const redirectPath = `/${folderForViews}/what-is-your-phone-number-1`;
+    const redirectPath = `/${folderForViews}/contact-details/what-is-your-phone-1`;
+validatePath(response, redirectPath);
+  })
+
+  // what is your phone 1
+  router.post(`/${folderForViews}/contact-details/what-is-your-phone-1`, function (request, response) {
+    const redirectPath = `/${folderForViews}/contact-details/what-is-your-phone-2`;
 validatePath(response, redirectPath);
   })
 
@@ -464,6 +470,8 @@ validatePath(response, redirectPath);
 
   })
 
+
+
   //Paper
   router.post(`/${folderForViews}/what-colour-paper-do-you-need`, function (req, response) {
     //Store response
@@ -472,7 +480,7 @@ validatePath(response, redirectPath);
 
 
     router.post(`/${folderForViews}/contact-details/alt-formats/what-size-print-do-you-need`, function (request, response) {
-const redirectPath = `/${folderForViews}/contact-details/do-you-want-to-receive-text-updates`;
+const redirectPath = `/${folderForViews}/contact-details/alt-formats/do-you-want-to-receive-text-updates`;
 validatePath(response, redirectPath);
 
   })
@@ -524,14 +532,14 @@ validatePath(response, redirectPath);
   })
 
   //Do you need any other help when we contact you?
-router.post(`/${folderForViews}/other-help`, function (request, response) {
+router.post(`/${folderForViews}/contact-details/alt-formats/any-other-help-when-we-contact`, function (request, response) {
   var otherHelp = request.session.data['other-help'];
 
-  if (otherHelp === 'Yes') {
-    const redirectPath = `/${folderForViews}/contact-details/alt-formats/what-other-help-when-we-contact`;
+  if (otherHelp === 'yes') {
+    const redirectPath = `/${folderForViews}/contact-details/what-is-your-phone-3`;
 validatePath(response, redirectPath);
-  } else if (otherHelp === 'No') {
-       const redirectPath = `/${folderForViews}/contact-details/do-you-want-to-receive-text-updates`;
+  } else if (otherHelp === 'no') {
+       const redirectPath = `/${folderForViews}/contact-details/contact-details-summary`;
 validatePath(response, redirectPath);
   } else {
     // Fallback: no option selected
@@ -539,6 +547,8 @@ validatePath(response, redirectPath);
 validatePath(response, redirectPath);
   }
 });
+
+
 
 
 
@@ -685,10 +695,10 @@ router.post(`/${folderForViews}/contact-details/alt-formats/written-format`, fun
   console.log('writtenFormat: ' + writtenFormat);
 
   if (writtenFormat === 'Standard letter (12-point Arial text on white paper)') {
-    const redirectPath = `/${folderForViews}/contact-details/alt-formats/how-should-we-contact-you`;
+    const redirectPath = `/${folderForViews}/contact-details/do-you-want-to-receive-text-updates`;
 validatePath(response, redirectPath);;
   } else if (writtenFormat === 'Letter with changes to colour or print size') {
-    const redirectPath = `/${folderForViews}/contact-details/alt-formats/what-colour-paper-do-you-need`;
+    const redirectPath = `/${folderForViews}/contact-details/alt-formats/large-print`;
 validatePath(response, redirectPath);;
   } else if (writtenFormat === 'Audio') {
     const redirectPath = `/${folderForViews}/contact-details/alt-formats/what-type-of-audio-format`;
@@ -708,11 +718,102 @@ validatePath(response, redirectPath);;
 validatePath(response, redirectPath);;
   }
 })
-  // What size print do you need?
-  router.post(`/${folderForViews}/contact-details/alt-formats/large-print`, function (request, response) {
-    const redirectPath = `/${folderForViews}/additional-support/add-support-summary`;
+
+  // Would you like us to send your letters in another way, like larger text, audio or braille?
+router.post(`/${folderForViews}/contact-details/alt-formats/what-type-of-audio-format`, function (request, response) {
+  var audio = request.session.data['audio'];
+  console.log('audio: ' + audio);
+
+  if (audio === 'CD') {
+    const redirectPath = `/${folderForViews}/contact-details/do-you-want-to-receive-text-updates`;
+validatePath(response, redirectPath);;
+  } else if (audio === 'MP3 by email') {
+    const redirectPath = `/${folderForViews}/contact-details/alt-formats/what-is-your-email`;
+validatePath(response, redirectPath);;
+  } else if (audio === 'Casette tape') {
+    const redirectPath = `/${folderForViews}/contact-details/do-you-want-to-receive-text-updates`;
+validatePath(response, redirectPath);;
+  } else if (audio === 'DVD') {
+    const redirectPath = `/${folderForViews}/contact-details/do-you-want-to-receive-text-updates`;
+validatePath(response, redirectPath);;
+  } else {
+    // Fallback: no option selected
+    const redirectPath = `./${folderForViews}/contact-details/do-you-want-to-receive-text-updates`;
+validatePath(response, redirectPath);;
+  }
+})
+
+
+// type of braille needed 
+  router.post(`/${folderForViews}/contact-details/alt-formats/what-type-of-braille-do-you-need`, function (request, response) {
+    const redirectPath = `/${folderForViews}/contact-details/alt-formats/any-other-help-when-we-contact`;
 validatePath(response, redirectPath);
   })
+
+
+  router.post(`/${folderForViews}/contact-details/alt-formats/large-print`, function (request, response) {
+  var largePrint = request.session.data['largePrint'];
+  console.log('largePrint: ' + largePrint);
+
+  if (largePrint === 'coloured-paper') {
+    const redirectPath = `/${folderForViews}/contact-details/alt-formats/what-colour-paper-do-you-need`;
+validatePath(response, redirectPath);;
+
+  } else if (largePrint === 'large-print') {
+    const redirectPath = `/${folderForViews}/contact-details/alt-formats/what-size-print-do-you-need`;
+validatePath(response, redirectPath);;
+
+  } else if (largePrint === 'none') {
+    const redirectPath = `/${folderForViews}/contact-details/do-you-want-to-receive-text-updates`;
+validatePath(response, redirectPath);;
+
+  } else {
+    // Fallback: no option selected
+    const redirectPath = `/${folderForViews}/contact-details/do-you-want-to-receive-text-updates`;
+validatePath(response, redirectPath);;
+  }
+})
+
+//old original route from colour to size
+//       router.post(`/${folderForViews}/contact-details/alt-formats/what-colour-paper-do-you-need`, function (request, response) {
+//     const redirectPath = `/${folderForViews}/contact-details/alt-formats/what-size-print-do-you-need`;
+// validatePath(response, redirectPath);
+//   })
+
+
+
+
+
+
+//   router.post(`/${folderForViews}/contact-details/alt-formats/large-print`, function (request, response) {
+//   const largePrint = request.session.data['largePrint'];
+//   console.log('largePrint:', largePrint);
+
+//   // Normalize to array for checkbox handling
+//   const selections = Array.isArray(largePrint) ? largePrint : (largePrint ? [largePrint] : []);
+
+//   // Store remaining steps in sessio n
+//   request.session.data['altFormatSteps'] = [];
+
+//   if (selections.includes('coloured-paper')) {
+//     request.session.data['altFormatSteps'].push(`/${folderForViews}/contact-details/alt-formats/what-colour-paper-do-you-need`);
+//   }
+//   if (selections.includes('large-print')) {
+//     request.session.data['altFormatSteps'].push(`/${folderForViews}/contact-details/alt-formats/what-size-print-do-you-need`);
+//   }
+
+//   // If nothing selected, go straight to text updates
+//   if (request.session.data['altFormatSteps'].length === 0) {
+//     const redirectPath = `/${folderForViews}/contact-details/do-you-want-to-receive-text-updates`;
+//     return validatePath(response, redirectPath);
+//   }
+
+//   // Redirect to the first step
+//   const nextPath = request.session.data['altFormatSteps'].shift();
+//   validatePath(response, nextPath);
+// });
+
+
 
   // Why do you need us to contact you by email instead of printed letters?
   router.post(`/${folderForViews}/contact-details/alt-formats/email-reason`, function (request, response) {
@@ -722,7 +823,7 @@ validatePath(response, redirectPath);
 
   // What is your email address?
   router.post(`/${folderForViews}/contact-details/alt-formats/what-is-your-email`, function (request, response) {
-    const redirectPath = `/${folderForViews}/additional-support/add-support-summary`;
+    const redirectPath = `/${folderForViews}/contact-details/do-you-want-to-receive-text-updates`;
 validatePath(response, redirectPath);
   })
 
