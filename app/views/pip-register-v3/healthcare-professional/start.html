@@ -16,7 +16,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form action="/HCPYesNo" method="post" novalidate>
+      <form action="start" method="post" novalidate>
 
         {% if (data['regScena'] == "citizen" ) %}
           <h1 class="govuk-heading-l">
@@ -50,11 +50,11 @@
           name: "HCPYesNo",
           items: [
             {
-              value: "Yes",
+              value: "yes",
               text: "Yes"
             },
             {
-              value: "No",
+              value: "no",
               text: "No"
             }
           ]

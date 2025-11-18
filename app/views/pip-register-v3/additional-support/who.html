@@ -20,7 +20,7 @@
 
       </h1>
 
-      <form class="form" action="#" method="post">
+      <form class="form" action="who" method="post">
         {% from "govuk/components/details/macro.njk" import govukDetails %}
 
 
@@ -38,15 +38,14 @@
 
             
 
-      </form>
+
 
       {{ govukButton({
-        text: "Save and continue",
-        href: "additional-support/support-no-help"
+        text: "Save and continue"
       }) }}
 
-      <p><a href="task-list-cd-done">Go to task list</a></p>
-
+                <p><a href="/pip-register-v3/task-list-as-done">Go to task list</a></p>
+      </form>
     </div>
   </div>
 

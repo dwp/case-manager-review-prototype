@@ -641,7 +641,7 @@ router.post(`/${folderForViews}/additional-support/advice-as-marker`, function (
   const tasksYn = request.body.tasksYn;
 
   if (tasksYn === 'yes') {
-    const redirectPath = `/${folderForViews}/additional-support/support-help`;
+    const redirectPath = `/${folderForViews}/additional-support/who`;
     validatePath(response, redirectPath);
   } else if (tasksYn === 'no') {
     const redirectPath = `/${folderForViews}/additional-support/support-no-help`;
@@ -677,6 +677,10 @@ validatePath(response, redirectPath);;
     }
   });
   
+router.post(`/${folderForViews}/additional-support/who`, function (_request, response) {
+  const redirectPath = `/${folderForViews}/additional-support/support-help`;
+  validatePath(response, redirectPath);
+});
 
 
   router.post(`/${folderForViews}/additional-support/task-helper`, function (request, response) {
@@ -795,10 +799,27 @@ validatePath(response, redirectPath);;
   }
 })
 
+  // video preferences 
+router.post(`/${folderForViews}/contact-details/alt-formats/what-video-format-do-you-need`, function (request, response) {
+  var video = request.session.data['video'];
+  console.log('audio: ' + video);
+
+  if (video === 'dvd') {
+    const redirectPath = `/${folderForViews}/contact-details/do-you-want-to-receive-text-updates`;
+validatePath(response, redirectPath);;
+  } else if (video === 'mpeg') {
+    const redirectPath = `/${folderForViews}/contact-details/alt-formats/what-is-your-email`;
+validatePath(response, redirectPath);;
+  } else {
+    // Fallback: no option selected
+    const redirectPath = `./${folderForViews}/contact-details/alt-formats/what-is-your-email`;
+validatePath(response, redirectPath);;
+  }
+})
 
 // type of braille needed 
   router.post(`/${folderForViews}/contact-details/alt-formats/what-type-of-braille-do-you-need`, function (request, response) {
-    const redirectPath = `/${folderForViews}/contact-details/alt-formats/any-other-help-when-we-contact`;
+    const redirectPath = `/${folderForViews}/contact-details/do-you-want-to-receive-text-updates`;
 validatePath(response, redirectPath);
   })
 
@@ -949,18 +970,11 @@ validatePath(response, redirectPath);
 validatePath(response, redirectPath);
   })
 
-  //Select other nationality
   router.post(`/${folderForViews}/nationality/another-nationality`, function (request, response) {
-    var anotherNationality = request.session.data['another-nationality']
-    if (anotherNationality == 'Norway' || anotherNationality == 'Iceland') {
-      const redirectPath = `/${folderForViews}/nationality/living-in-uk`;
+    const redirectPath = `/${folderForViews}/nationality/living-in-uk`;
 validatePath(response, redirectPath);
-    }
-    if (anotherNationality == 'Australia' || anotherNationality == 'Brazil' || anotherNationality == 'Bangladesh') {
-      const redirectPath = `/${folderForViews}/nationality/uk-2-of-3-years`;
-validatePath(response, redirectPath);
-    }
   })
+ 
 
   //Were you living in the UK on or before 31/12/20?
   router.post(`/${folderForViews}/nationality/living-in-uk`, function (request, response) {
@@ -969,6 +983,10 @@ validatePath(response, redirectPath);
   })
 
 
+  router.post(`/${folderForViews}/nationality/nationality-summary`, function (request, response) {
+      const redirectPath = `/${folderForViews}/healthcare-professional/consent-1`;
+validatePath(response, redirectPath);
+  })
 
   //Are you working or paying national insurance in another country?
 
@@ -1130,29 +1148,6 @@ validatePath(response, redirectPath);
   })
 
 
-  //pip-register/HEALTHCARE-PROFESSIONAL
-
-  //pip-register/healthcare-professional/start
-  router.post(`/${folderForViews}/HCPYesNo`, function (request, response) {
-    var HCPYesNo = request.session.data['HCPYesNo']
-    if (HCPYesNo == 'Yes') {
-       const redirectPath = `/${folderForViews}/healthcare-professional/healthcare-prof-type`;
-validatePath(response, redirectPath);
-    } else if (HCPYesNo == 'No') {
-        const redirectPath = `/${folderForViews}/hospital-dates/5-1-why-we-need-details`;
-validatePath(response, redirectPath);
-    }
-  })
-
-
-  //start ---> healthcare-prof-type
-  router.post(`/${folderForViews}/healthcare-professional/start`, function (request, response) {
-        const redirectPath = `/${folderForViews}/hospital-dates/5-1-why-we-need-details`;
-validatePath(response, redirectPath);
-  })
-
-
-
   //healthcare-professional/consent-2
   router.post(`/${folderForViews}/healthcare-professional/consent`, function (request, response) {
     console.log('consent:', request.body.consent);
@@ -1170,7 +1165,21 @@ validatePath(response, redirectPath); // optional fallback
     }
   });
 
+//healthcare-professional/start
+  router.post(`/${folderForViews}/healthcare-professional/start`, function (request, response) {
+    const HCPYesNo = request.body.HCPYesNo;
 
+    if (HCPYesNo === 'yes') {
+        const redirectPath = `/${folderForViews}/healthcare-professional/healthcare-prof-type`;
+validatePath(response, redirectPath);
+    } else if (HCPYesNo === 'no') {
+        const redirectPath = `/${folderForViews}/healthcare-professional/hp-summary-two-remove`;
+validatePath(response, redirectPath);
+    } else {
+        const redirectPath = `/${folderForViews}/healthcare-professional/healthcare-prof-type`;
+validatePath(response, redirectPath); // optional fallback
+    }
+  });
 
   //healthcare-prof-type ---> what is their postcode
   router.post(`/${folderForViews}/healthcare-professional/healthcare-prof-type`, function (request, response) {
@@ -1214,11 +1223,11 @@ validatePath(response, redirectPath);
 
   //additional-support-needed ---> additional-support-type
   router.post(`/${folderForViews}/healthcare-professional/additional-support-needed`, function (request, response) {
-    var hcpTwoNeeded = request.session.data['support-needed']
-    if (hcpTwoNeeded == 'yes') {
+    var supportNeeded = request.session.data['supportNeeded']
+    if (supportNeeded == 'yes') {
       const redirectPath = `/${folderForViews}/healthcare-professional/additional-support-type`;
 validatePath(response, redirectPath);
-    } else if (hcpTwoNeeded == 'no') {
+    } else if (supportNeeded == 'no') {
       const redirectPath = `/${folderForViews}/healthcare-professional/hp-summary-two-remove`;
 validatePath(response, redirectPath);
     }
@@ -1249,11 +1258,7 @@ validatePath(response, redirectPath);
 validatePath(response, redirectPath);
   })
 
-  //consent NI ----> hcp cya 2 person
-  router.post(`/${folderForViews}/healthcare-professional/consent`, function (request, response) {
-    const redirectPath = `/${folderForViews}/healthcare-professional/start`;
-validatePath(response, redirectPath);
-  })
+
 
   //healthcare-professional/confirm-remove 
   router.post(`/${folderForViews}/healthcare-professional/confirm-remove`, function (request, response) {

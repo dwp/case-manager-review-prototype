@@ -19,7 +19,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="#" method="post">
+      <form class="form" action="additional-support-needed" method="post">
         <div class="govuk-width-container">
 
           <h1 class="govuk-heading-l">
@@ -37,7 +37,7 @@
 
 
           {{ govukRadios({
-            name: "support-needed",
+            name: "supportNeeded",
 
 
             items: [
@@ -54,11 +54,11 @@
 
           {% endcall %}
 
-          <a href="../healthcare-professional/additional-support-type.html" role="button" draggable="false" class="govuk-button govuk-button" data-module="govuk-button">
-            Save and continue
-        </a>
+            {{ govukButton({
+              text: "Save and continue"
+            }) }}
 
-            <p><a href="task-list-nat-done">Go to task list</a></p> 
+          <p><a href="/pip-register-v3/task-list-nat-done">Go to task list</a></p> 
 
 
         </div>

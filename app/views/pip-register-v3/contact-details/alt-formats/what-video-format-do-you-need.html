@@ -22,7 +22,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="/video" method="post">
+      <form class="form" action="what-video-format-do-you-need" method="post">
 
       {{ govukRadios({
       name: "video",
@@ -30,7 +30,7 @@
       legend: {
       text: "What video format do you need?",
       isPageHeading: true,
-      classes: "govuk-fieldset__legend--xl"
+      classes: "govuk-fieldset__legend--l"
       }
       },
       hint: {
@@ -38,11 +38,11 @@
       },
       items: [
       {
-      value: "DVD",
+      value: "dvd",
       text: "DVD"
       },
       {
-      value: "MPEG file by email",
+      value: "mpeg",
       text:  "MPEG file by email"
       }
       ]

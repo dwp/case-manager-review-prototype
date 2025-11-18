@@ -56,11 +56,12 @@
               text: "Find address"
             }) }}
 
-          <p class="govuk-body"><a href="healthcare-professional/support-address-manually" class="govuk-link">Enter address manually</a></p>
+          <p class="govuk-body"><a href="/pip-register-v3/healthcare-professional/support-address-manually" class="govuk-link">Enter address manually</a></p>
 
-          <p class="govuk-body"><a href="healthcare-professional/consent" class="govuk-link">Applicant does not know the address</a></p>
+          <p class="govuk-body"><a href="consent-1"
+            class="govuk-link"> Applicant does not know the address</a></p>
 
-          <p><a href="task-list-nat-done">Go to task list</a></p> 
+          <p><a href="/pip-register-v3/task-list-nat-done">Go to task list</a></p> 
 
         </div>
       </form>
@@ -98,16 +99,16 @@
           }) }}
           {% endcall %}
 
-          <a href="../healthcare-professional/confirm-address-2.html" role="button" draggable="false" class="govuk-button govuk-button" data-module="govuk-button">
-            Continue
-        </a>
+           {{ govukButton({
+              text: "Find address"
+            }) }}
 
-            <p class="govuk-body"><a href="healthcare-professional/consent class="govuk-link">Applicant does not know the address</a></p>
+            <p class="govuk-body"><a href="hp-summary-two-remove.html" class="govuk-link">Applicant does not know the address</a></p>
 
-          <p class="govuk-body"><a href="healthcare-professional/support-address-manually" class="govuk-link">Enter address manually</a></p>
+          <p class="govuk-body"><a href="support-address-manually" class="govuk-link">Enter address manually</a></p>
 
-          <p><a href="task-list-nat-done">Go to task list</a></p> 
-
+          <p><a href="/pip-register-v3/task-list-nat-done">Go to task list</a></p> 
+          
         </div>
       </form>
 

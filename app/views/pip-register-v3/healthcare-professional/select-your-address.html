@@ -61,15 +61,15 @@
 
       </div>
 
-      <a href="../healthcare-professional/confirm-address" role="button" draggable="false" class="govuk-button govuk-button" data-module="govuk-button">
-        Use this address
-    </a>
-
+   {{ govukButton({
+            text: "Use this address"
+          }) }}
 
         
 
 
-        <p class="govuk-body govuk-!-margin-bottom-6"><a href="healthcare-professional/enter-address-manually" class="govuk-link">Enter address manually</a></p>
+          <p class="govuk-body"><a href="enter-address-manually" class="govuk-link">Enter address manually</a></p>
+
 
         <p><a href="task-list-nat-done">Go to task list</a></p> 
 

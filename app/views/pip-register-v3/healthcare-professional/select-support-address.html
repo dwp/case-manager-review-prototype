@@ -14,9 +14,6 @@
 {% endblock %}
 
 
-
-{% endblock %}
-
 {% block content %}
 
   <div class="govuk-grid-row">
@@ -61,14 +58,15 @@
 
       </div>
 
-      <a href="../healthcare-professional/confirm-address-multiple-2.html" role="button" draggable="false" class="govuk-button govuk-button" data-module="govuk-button">
-        Use this address
-    </a>
+      {{ govukButton({
+              text: "Use this address"
+            }) }}
 
-      <p><a href="task-list-nat-done">Enter address manually</a></p> 
 
-        <p><a href="task-list-nat-done">Go to task list</a></p> 
+          <p class="govuk-body"><a href="support-address-manually" class="govuk-link">Enter address manually</a></p>
 
+          <p><a href="/pip-register-v3/task-list-nat-done">Go to task list</a></p> 
+          
       </form>
 
     </div>
