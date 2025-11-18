@@ -13,6 +13,7 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
+      <form action="bank-details-summary" method="post" novalidate>
 
       <h1 class="govuk-heading-l">
         Check your answers
@@ -34,7 +35,7 @@
           actions: {
             items: [
               {
-                href: "bank-details/6-1-start",
+                href: "6-1-start",
                 text: "Change",
                 visuallyHiddenText: "Question 1"
               }
@@ -56,7 +57,7 @@
             actions: {
               items: [
                 {
-                  href: "bank-details/6-3-main-account-details-v2",
+                  href: "6-3-main-account-details-v2",
                   text: "Change",
                   visuallyHiddenText: "Question 1"
                 }
@@ -73,7 +74,7 @@
             actions: {
               items: [
                 {
-                  href: "bank-details/6-3-main-account-details-v2",
+                  href: "6-3-main-account-details-v2",
                   text: "Change",
                   visuallyHiddenText: "Question 2"
                 }
@@ -90,7 +91,7 @@
             actions: {
               items: [
                 {
-                  href: "bank-details/6-3-main-account-details-v2",
+                  href: "6-3-main-account-details-v2",
                   text: "Change",
                   visuallyHiddenText: "Question 2"
                 }
@@ -107,7 +108,7 @@
             actions: {
               items: [
                 {
-                  href: "bank-details/6-3-main-account-details-v2",
+                  href: "6-3-main-account-details-v2",
                   text: "Change",
                   visuallyHiddenText: "Question 2"
                 }
@@ -117,7 +118,7 @@
         ]
       }) }}
 
-      <form action="motability/motability" method="post">
+
 
         {{ govukButton({
           text: "Save and continue"

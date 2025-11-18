@@ -1389,14 +1389,14 @@ validatePath(response, redirectPath);
 validatePath(response, redirectPath);
     } else {
       // Fallback: no option selected — redisplay the same page (avoid open redirect)
-      const redirectPath = `/${folderForViews}/hospital-dates/5-5-private-patient`;
+      const redirectPath = `/${folderForViews}/hospital-dates/5-6-postcode`;
 validatePath(response, redirectPath);
     }
   })
 
   // postcode > select address
   router.post(`/${folderForViews}/hospital-dates/5-6-postcode`, function (request, response) {
-    const redirectPath = `/${folderForViews}/hospital-dates/5-7-select-hospital-address`;
+    const redirectPath = `/${folderForViews}/hospital-dates/5-16b-confirmation`;
 validatePath(response, redirectPath);
   })
 
@@ -1415,7 +1415,19 @@ validatePath(response, redirectPath);
 
   // hospice manually > start bank
   router.post(`/${folderForViews}/hospital-dates/5-18-hospice-address-manually`, function (request, response) {
-    const redirectPath = `/${folderForViews}/hospital-dates/hospital-residence-summary`;
+    const redirectPath = `/${folderForViews}/hospital-dates/hospice-residence-summary`;
+validatePath(response, redirectPath);
+  })
+
+    // hospice manually > start bank
+  router.post(`/${folderForViews}/hospital-dates/hospice-residence-summary`, function (request, response) {
+    const redirectPath = `/${folderForViews}/bank-details/6-1-start`;
+validatePath(response, redirectPath);
+  })
+
+      // hospice manually > start bank
+  router.post(`/${folderForViews}/hospital-dates/hospital-residence-summary`, function (request, response) {
+    const redirectPath = `/${folderForViews}/bank-details/6-1-start`;
 validatePath(response, redirectPath);
   })
 
@@ -1429,7 +1441,7 @@ validatePath(response, redirectPath);
   router.post(`/${folderForViews}/hospital-dates/5-8-hospice-yesterday`, function (request, response) {
     var otherYesterday = request.session.data['hospice-yesterday']
     if (otherYesterday == 'yes') {
-      const redirectPath = `/${folderForViews}/hospital-dates/5-9-hospice-dates`;
+      const redirectPath = `/${folderForViews}/hospital-dates/5-10-hospice-postcode`;
 validatePath(response, redirectPath);
     } else if (otherYesterday == 'no') {
       const redirectPath = `/${folderForViews}/hospital-dates/5-10-hospice-postcode`;
@@ -1437,7 +1449,7 @@ validatePath(response, redirectPath);
     
       } else {
       // Fallback: no option selected — redisplay the same page (avoid open redirect)
-      const redirectPath = `/${folderForViews}/hospital-dates/5-8-hospice-yesterday`;
+      const redirectPath = `/${folderForViews}/hospital-dates/5-10-hospice-postcode`;
 validatePath(response, redirectPath);
     }
 

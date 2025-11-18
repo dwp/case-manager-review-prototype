@@ -16,6 +16,7 @@
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
       <div class="govuk-body govuk-!-margin-bottom-9">
+      <form class="form" action="hospice-residence-summary" method="post">
 
         <h1 class="govuk-heading-l">
           Check your answers
@@ -37,7 +38,7 @@
               actions: {
                 items: [
                   {
-                    href: "/ucd-register/hospital-dates/today",
+                    href: "5-2-today",
                     text: "Change",
                     visuallyHiddenText: "Question 1"
                   }
@@ -55,29 +56,13 @@
               actions: {
                 items: [
                   {
-                    href: "/v2-ucd-register/hospital-dates/hospice-yesterday",
+                    href: "5-8-hospice-yesterday",
                     text: "Change",
                     visuallyHiddenText: "Question 2"
                   }
                 ]
               }
-            },
-            {
-              key: {
-                text: "Date of admission"
-              },
-              value: {
-                text: "21/10/2022"
-              },
-              actions: {
-                items: [
-                  {
-                    href: "/v2-ucd-register/hospital-dates/hospice-dates",
-                    text: "Change",
-                    visuallyHiddenText: "Question 2"
-                  }
-                ]
-              }
+
             },
             {
               key: {
@@ -90,7 +75,7 @@
               actions: {
                 items: [
                   {
-                    href: "/v2-ud-register/hospital-dates/select-hospice-address",
+                    href: "5-10-hospice-postcode",
                     text: "Change",
                     visuallyHiddenText: "Question 3"
                   }
@@ -103,8 +88,7 @@
 
 
             {{ govukButton({
-              text: "Save and continue",
-              href: "bank-details/6-1-start"
+              text: "Save and continue"
             }) }}
 
 

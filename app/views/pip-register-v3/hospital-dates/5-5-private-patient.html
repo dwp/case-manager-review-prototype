@@ -23,7 +23,7 @@
         Are you a private patient paying all your own costs?
       </h1>
 
-      <form class="form" action="#" method="post">
+      <form class="form" action="5-5-private-patient" method="post">
         <div class="govuk-width-container">
 
           {% call govukFieldset({
@@ -46,7 +46,7 @@
               },
               {
                 value: "do-not-know",
-                text: "I don't know"
+                text: "Don't know"
                 }
             ]
           }) }}
@@ -57,7 +57,8 @@
               text: "Save and continue"
             }) }}
 
-            <p><a href="task-list-hcp-done">Go to task list</a></p> 
+            <p><a href="/pip-register-v3/task-list-hcp-done">Go to task list</a></p>
+ 
 
         </div>
       </form>
