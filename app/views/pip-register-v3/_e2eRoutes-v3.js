@@ -472,17 +472,21 @@ validatePath(response, redirectPath);
 
 
 
-  //Paper
-  router.post(`/${folderForViews}/what-colour-paper-do-you-need`, function (req, response) {
-    //Store response
-    var paper = req.session.data['paper'];
-  })
+  // Contact details summary
+  router.post(`/${folderForViews}/contact-details/alt-formats/what-colour-paper-do-you-need`, function (request, response) { 
+    var largePrint = request.session.data['largePrint'];
+    if (largePrint == 'large-print,coloured-paper') {
+      const redirectPath = `/${folderForViews}/contact-details/alt-formats/large-print`;
+      validatePath(response, redirectPath);
+    }
+    else {
+      const redirectPath = `/${folderForViews}/contact-details/do-you-want-to-receive-text-updates`;
+      validatePath(response, redirectPath);
+    }})
 
-
-    router.post(`/${folderForViews}/contact-details/alt-formats/what-size-print-do-you-need`, function (request, response) {
-const redirectPath = `/${folderForViews}/contact-details/alt-formats/do-you-want-to-receive-text-updates`;
-validatePath(response, redirectPath);
-
+  router.post(`/${folderForViews}/contact-details/alt-formats/what-size-print-do-you-need`, function (request, response) {
+    const redirectPath = `/${folderForViews}/contact-details/alt-formats/do-you-want-to-receive-text-updates`;
+    validatePath(response, redirectPath);
   })
 
   //Audio format
@@ -826,24 +830,24 @@ validatePath(response, redirectPath);
 
   router.post(`/${folderForViews}/contact-details/alt-formats/large-print`, function (request, response) {
   var largePrint = request.session.data['largePrint'];
-  console.log('largePrint: ' + largePrint);
+  console.log('YTYTYT: ' + largePrint);
 
-  if (largePrint === 'coloured-paper') {
+  if (largePrint == 'coloured-paper'|| largePrint == 'coloured-paper,large-print') {
     const redirectPath = `/${folderForViews}/contact-details/alt-formats/what-colour-paper-do-you-need`;
-validatePath(response, redirectPath);;
+validatePath(response, redirectPath);
 
-  } else if (largePrint === 'large-print') {
+  } else if (largePrint == 'large-print') {
     const redirectPath = `/${folderForViews}/contact-details/alt-formats/what-size-print-do-you-need`;
-validatePath(response, redirectPath);;
+validatePath(response, redirectPath);
 
-  } else if (largePrint === 'none') {
+  } else if (largePrint == 'none') {
     const redirectPath = `/${folderForViews}/contact-details/do-you-want-to-receive-text-updates`;
-validatePath(response, redirectPath);;
+validatePath(response, redirectPath);
 
   } else {
     // Fallback: no option selected
     const redirectPath = `/${folderForViews}/contact-details/do-you-want-to-receive-text-updates`;
-validatePath(response, redirectPath);;
+validatePath(response, redirectPath);
   }
 })
 
