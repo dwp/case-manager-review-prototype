@@ -1,9 +1,9 @@
 {% if (data['regScena'] == "agent" ) %}
-  {% extends "../../layouts/main.html" %}
+    {% extends "../../layouts/main-v3.html" %}
 {% elseif (data['regScena'] == "citizen") %}
-  {% extends "../../layouts/main-gov.html" %}
+{% extends "../../layouts/main-gov.html" %}
 {% else %}
-  {% extends "../../layouts/main.html" %}
+    {% extends "../../layouts/main-v3.html" %}
 {% endif %}
 
 {% block pageTitle %}
@@ -14,10 +14,8 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form action="healthcare-professional/confirm-remove" method="post" novalidate
-          <h1 class="govuk-heading-l">
-            Your health or care professionals
-          </h1>
+      <form action="confirm-remove" method="post" novalidate
+
 
           <h1 class="govuk-heading-l">
             Are you sure you want to remove [name of contact] from your list of health or care professionals?

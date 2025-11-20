@@ -1431,6 +1431,8 @@ validatePath(response, redirectPath);
 validatePath(response, redirectPath);
   })
 
+
+
   // other manually > start bank
   router.post(`/${folderForViews}/hospital-dates/5-19-other-address-manually`, function (_request, response) {
     const redirectPath = `/${folderForViews}/hospital-dates/5-13-third-party-pay`;
@@ -1514,6 +1516,12 @@ validatePath(response, redirectPath);
 validatePath(response, redirectPath);
   })
 
+    //  other res summary
+  router.post(`/${folderForViews}/hospital-dates/other-residence-summary`, function (request, response) {
+    const redirectPath = `/${folderForViews}/bank-details/6-1-start`;
+validatePath(response, redirectPath);
+  })
+
   // Select other address > tasklist
   router.post(`/${folderForViews}/hospital-dates/5-16-select-other-address`, function (request, response) {
     const redirectPath = `/${folderForViews}/hospital-dates/5-13-third-party-pay`;
@@ -1523,23 +1531,44 @@ validatePath(response, redirectPath);
   // Does a local authority, health authority, Jobcentre Plus, or a charity pay any of the costs for you to live there?
   router.post(`/${folderForViews}/hospital-dates/5-13-third-party-pay`, function (request, response) {
     var thirdPartyPay = request.session.data['third-party-pay']
-    if (thirdPartyPay == 'health-trust') {
+    if (thirdPartyPay == 'healthAuth') {
       const redirectPath = `/${folderForViews}/hospital-dates/5-23-name-local`;
+
 validatePath(response, redirectPath);
-    } else if (thirdPartyPay == 'no') {
-      const redirectPath = `/${folderForViews}/hospital-dates/hospital-residence-summary`;
+    } else if (thirdPartyPay == 'dontKnow') {
+      const redirectPath = `/${folderForViews}/hospital-dates/other-residence-summary`;
+
 validatePath(response, redirectPath);
-    } else if (thirdPartyPay == 'yes') {
+    } else if (thirdPartyPay == 'charity') {
+      const redirectPath = `/${folderForViews}/hospital-dates/5-23-name-local`;
+
+validatePath(response, redirectPath);
+    } else if (thirdPartyPay == 'localAuth') {
       const redirectPath = `/${folderForViews}/hospital-dates/5-23-name`;
+
+validatePath(response, redirectPath);
+    } else if (thirdPartyPay == 'edAuth') {
+      const redirectPath = `/${folderForViews}/hospital-dates/other-residence-summary`;
+
+      validatePath(response, redirectPath);
+    } else if (thirdPartyPay == 'no') {
+      const redirectPath = `/${folderForViews}/hospital-dates/other-residence-summary`;
+
+validatePath(response, redirectPath);
+    } else if (thirdPartyPay == 'dwp') {
+      const redirectPath = `/${folderForViews}/hospital-dates/other-residence-summary`;
+
 validatePath(response, redirectPath);
     }
   })
 
   // What is the name of the [organisation type]?
   router.post(`/${folderForViews}/hospital-dates/5-23-name`, function (request, response) {
-    const redirectPath = `/${folderForViews}/hospital-dates/hospital-residence-summary`;
+    const redirectPath = `/${folderForViews}/hospital-dates/5-14-local-agreement`;
 validatePath(response, redirectPath);
   })
+
+   
 
   // local auth ---> What is the name -----> agreement?
   router.post(`/${folderForViews}/hospital-dates/5-23-name-local`, function (request, response) {
@@ -1549,7 +1578,7 @@ validatePath(response, redirectPath);
 
   // agreement to task list
   router.post(`/${folderForViews}/hospital-dates/5-14-local-agreement`, function (request, response) {
-    const redirectPath = `/${folderForViews}/hospital-dates/hospital-residence-summary`;
+    const redirectPath = `/${folderForViews}/hospital-dates/other-residence-summary`;
 validatePath(response, redirectPath);
   })
 
