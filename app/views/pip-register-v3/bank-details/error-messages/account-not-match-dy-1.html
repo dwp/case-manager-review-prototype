@@ -1,7 +1,9 @@
 {% if (data['regScena'] == "agent" ) %}
-    {% extends "layouts/main.html" %}
+    {% extends "../../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../../layouts/main-gov.html" %}
 {% else %}
-    {% extends "layouts/main-gov.html" %}
+    {% extends "../../../layouts/main-v3.html" %}
 {% endif %}
 
 {% block pageTitle %}
@@ -26,8 +28,8 @@
 
   <p>There is a problem with the details you entered.</p>
   
-  <p><a href="bank-details/6-3-main-account-details-v2.html">Enter bank details again</a></p>
-  <p><a href="/error-messages/6-2-no-details-now">Continue without providing bank details</a></p>
+  <p><a href="/pip-register-v3/bank-details/6-3-main-account-details-v2">Enter bank details again</a></p>
+  <p><a href="/pip-register-v3/bank-details/6-2-no-details-now">Continue without providing bank details</a></p>
 
 </form>
 

@@ -1606,7 +1606,7 @@ validatePath(response, redirectPath);
 
   // You can continue without entering account details
   router.post(`/${folderForViews}/bank-details/6-2-no-details-now`, function (request, response) {
-    const redirectPath = `/${folderForViews}/task-list-bank-done`;
+    const redirectPath = `/${folderForViews}/bank-details/bank-details-summary`;
 validatePath(response, redirectPath);
   })
 
@@ -1623,12 +1623,16 @@ validatePath(response, redirectPath);
   })
 
   //Motability to Motability CYA
-  router.post(`/${folderForViews}/motability-question`, function (request, response) {
+  router.post(`/${folderForViews}/motability/motability`, function (request, response) {
     const redirectPath = `/${folderForViews}/motability/motability-summary`;
 validatePath(response, redirectPath);
   })
 
-  // -------------------------------------------------------------------------------------
+  //Motability to Motability CYA
+  router.post(`/${folderForViews}/motability/motability-summary`, function (request, response) {
+    const redirectPath = `/${folderForViews}/task-list-motability-done`;
+validatePath(response, redirectPath);
+  })
 
   // Save application- i will now submit
   router.post(`/${folderForViews}/what-happens-next/save-application`, function (request, response) {
