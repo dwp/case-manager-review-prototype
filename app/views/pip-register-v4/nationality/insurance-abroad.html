@@ -1,0 +1,63 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../layouts/main-v3.html" %}
+{% endif %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="#" method="post">
+
+      {{ govukRadios({
+        name: "insurance-abroad",
+        fieldset: {
+          legend: {
+            text: "Are you or a family member working or paying insurance in the EU, Switzerland, Norway, Iceland or Liechtenstein?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+          hint: {
+            html:'
+            <p class="govuk-body govuk-hint">By family member we mean:</p>
+            <ul class="govuk-hint govuk-list govuk-list--bullet">
+              <li>A husband, wife or civil partner, or</li>
+              <li>A parent you are dependent on</li>
+            </ul>'
+          },
+        items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ]
+      }) }}
+
+      <!--<p><a href="https://www.gov.uk/eu-eea" class="govuk-link" rel="noreferrer noopener" target="_blank">Check which countries are in the EEA (opens in new tab)</a></p>-->
+
+    {{ govukButton({
+      text: "Save and continue"
+    }) }}
+
+          <p><a href="/pip-register-v4/task-list-as-done">Go to task list</a></p>
+
+  </form>
+
+  </div>
+</div>
+
+
+{% endblock %}

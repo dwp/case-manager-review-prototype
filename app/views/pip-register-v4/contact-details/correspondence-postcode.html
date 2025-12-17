@@ -1,0 +1,106 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../layouts/main-v3.html" %}
+{% endif %}
+
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="#" method="post">
+      <div class="govuk-width-container">
+
+        {% if (data['regScena'] == "citizen" ) %}
+        <!-- Citizen variant -->
+        {% call govukFieldset({
+          legend: {
+            text: "Find the address we should send letters to",
+            classes: "govuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+
+  
+
+
+        {{ govukInput({
+          label: {
+            text: "Postcode"
+          },
+          classes: "govuk-!-width-two-thirds",
+          id: "postcode",
+          name: "postcode"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Building number or name (optional)"
+          },
+          classes: "govuk-!-width-two-thirds",
+          id: "searchString",
+          name: "searchString"
+        }) }}
+        {% endcall %}
+        <!-- End citizen variant-->
+
+        <!-- Agent variant -->
+        {% else %}
+        {% call govukFieldset({
+          legend: {
+            text: "What is the postcode and building number of the address we should use to contact you?",
+            classes: "govuk-fieldset__legend--l",
+            isPageHeading: true
+          },
+          hint: {
+          }
+        }) %}
+
+  {{ govukHint({
+    text: "This can be the applicant's local Jobcentre, if there is no other address."
+  }) }}
+
+
+        {{ govukInput({
+          label: {
+            text: "Postcode"
+          },
+          classes: "govuk-!-width-two-thirds",
+          id: "postcode",
+          name: "postcode"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Building number or name (optional)"
+          },
+          classes: "govuk-!-width-two-thirds",
+          id: "searchString",
+          name: "searchString"
+        }) }}
+        {% endcall %}
+        {% endif %}
+         <!-- End agent variant -->
+
+        {{ govukButton({
+        text: "Find address"
+        }) }}
+
+        <p class="govuk-body govuk-!-margin-bottom-6"><a href="correspondence-enter-address-manually" class="govuk-link">Enter address manually</a></p>
+
+        <p><a href="/pip-register-v4/task-list">Go to task list</a></p>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

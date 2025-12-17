@@ -1,0 +1,44 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "/layouts/main-v3.html" %}
+{% endif %}
+
+{% set isDeclarationPre = true %}
+
+{% block pageTitle %}
+Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="#" method="post" method="post">
+
+      <h1 class="govuk-heading-l">We can continue with your application, but we have not been able to confirm your identity</h1>
+
+      <p class="govuk-body">After this call, you will need to call the enquiry line to confirm your identity.</p>
+
+      {{ govukInsetText({
+        classes: '',
+          text: "Enquiry line: 0800 121 4433"
+      }) }}
+      <p class="govuk-body">We will not be able to make a decision on your application until we can confirm your identity.</p>
+      <p class="govuk-body">If you are unable to call, we may call you or we will write to you and ask for identity documents. </p>
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+  </form>
+
+  
+
+  </div>
+</div>
+
+{% endblock %}

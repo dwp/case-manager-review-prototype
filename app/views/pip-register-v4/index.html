@@ -1,0 +1,69 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../layouts/main-v3.html" %}
+{% endif %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+{% set html %}
+  <p class="govuk-notification-banner__heading">
+    This page is for internal demo purposes only
+  </p>
+{% endset %}
+
+{{ govukNotificationBanner({
+  html: html
+}) }}
+
+<!-- Start row -->
+<div class="govuk-grid-row">
+  <!-- Start column -->
+  <div class="govuk-grid-column-two-thirds">
+    <p>
+    {%- from "govuk/components/tag/macro.njk" import govukTag -%}
+
+      {{ govukTag({
+        text: "Scenario selectionsss"
+      }) }}
+    </p>
+
+    <form class="form" action="/regScen" method="post">
+    {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+    {{ govukRadios({
+      name: "regScena",
+      fieldset: {
+        legend: {
+          text: "Which scenario do you want to simulate?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      items: [
+        {
+          value: "citizen",
+          text: "Online citizen"
+        },
+        {
+          value: "agent",
+          text: "Telephony agent"
+        }
+      ]
+    }) }}
+    {{ govukButton({
+      text: "Save and continue"
+    }) }}
+    
+</form>
+  </div>
+  <!-- End column -->
+</div>
+<!-- End row -->
+{% endblock %}

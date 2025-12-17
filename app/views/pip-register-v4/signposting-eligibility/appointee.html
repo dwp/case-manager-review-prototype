@@ -1,0 +1,59 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "/layouts/main-v3.html" %}
+{% endif %}
+
+{% set isDeclarationPre = true %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+          <form action="/pip-register-v4/appointee" method="post" novalidate>
+
+            <h1 class="govuk-heading-l">I've found your record on the system</h1>
+
+                   {{ govukInsetText({
+            classes: "colour-blue",
+            text: "Action: Select whether the applicant has an appointee in Searchlight."
+          }) }}
+
+            {{ govukRadios({
+              name: "appointeeYn",
+              fieldset: {
+                legend: {
+                  text: "",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--l"
+                }
+              },
+
+              items: [
+                {
+                  value: "yes",
+                  text: "Yes, they have an appointee"
+                },
+                {
+                  value: "no",
+                  text: "No, they do not have an appointee"
+                }
+              ]
+            }) }}
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+          </form>
+   </div>
+</div>
+
+{% endblock %}

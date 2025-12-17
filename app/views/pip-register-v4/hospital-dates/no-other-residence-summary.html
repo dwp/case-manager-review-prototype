@@ -1,0 +1,77 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../layouts/main-v3.html" %}
+{% endif %}
+
+{% block pageTitle %}
+  Check your answers template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <div class="govuk-body govuk-!-margin-bottom-9">
+
+        <h1 class="govuk-heading-l">
+          Check your answers
+        </h1>
+
+        <h2 class="govuk-heading-m">
+          Hospital and care facilities
+        </h2>
+
+              {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "In hospital or hospice today"
+              },
+              value: {
+                text: "No"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/v2-ucd-register/additional-support/do-you-have-a-condition",
+                    text: "Change",
+                    visuallyHiddenText: "Question 1"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "In other accommodation today"
+              },
+              value: {
+                text: "No"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/v2-ucd-register/additional-support/complete-forms",
+                    text: "Change",
+                    visuallyHiddenText: "Question 2"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+      </div>
+
+      <form action="#" method="post">
+            {{ govukButton({
+              text: "Save and continue",
+              href: "bank-details/6-1-start"
+            }) }}
+        </form>
+
+    </div>
+  </div>
+{% endblock %}

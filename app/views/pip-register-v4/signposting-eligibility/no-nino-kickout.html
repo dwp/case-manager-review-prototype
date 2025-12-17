@@ -1,0 +1,40 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "/layouts/main-v3.html" %}
+{% endif %}
+
+{% set isDeclarationPre = true %}
+
+{% block pageTitle %}
+Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="#" method="post" method="post">
+
+      <h1 class="govuk-heading-l">
+        You can apply for PIP if you don't have a National Insurance number
+      </h1>
+
+      <p class="govuk-body">But we will need to call you back to register your application.</p>
+
+      {{ govukInsetText({
+        classes: 'colour-blue',
+          text: "Action:  Follow the normal procedure for applicants who do not have a National Insurance number."
+      }) }}
+
+  </form>
+
+  </div>
+</div>
+
+{% endblock %}

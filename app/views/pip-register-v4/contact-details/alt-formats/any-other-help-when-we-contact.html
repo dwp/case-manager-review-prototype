@@ -1,0 +1,63 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../../layouts/main-v3.html" %}
+{% endif %}
+
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="/pip-register-v4/contact-details/alt-formats/any-other-help-when-we-contact" method="post">
+
+      {{ govukRadios({
+      name: "other-help",
+      fieldset: {
+      legend: {
+      text: "Do you want to tell us another phone number?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+      }
+      },
+        hint: {
+        text: "We may use this if we cannot reach you on your mobile phone."  
+        },
+          items: [
+          {
+          value: "yes",
+          text: "Yes"
+          },
+          {
+          value: "no",
+          text: "No"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+      text: "Save and continue"
+      }) }}
+
+      <p><a href="/pip-register-v4/task-list-cd-done">Go to task list</a></p>
+    
+    </form> 
+
+  </div>
+</div> 
+
+{% endblock %}
+

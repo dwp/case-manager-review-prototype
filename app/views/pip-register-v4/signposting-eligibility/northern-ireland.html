@@ -1,0 +1,51 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "/layouts/main-v3.html" %}
+{% endif %}
+
+{% set isDeclarationPre = true %}
+
+{% block pageTitle %}
+Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="#" method="post" method="post">
+      <h1 class="govuk-heading-l">
+        You need to call a different phone line if you live in Northern Ireland
+      </h1>
+      <p class="govuk-body">
+        This is the phone line for England and Wales only.
+       </p>
+      <p class="govuk-body">
+        If you want to apply for PIP in Northern Ireland, you need to call the Personal Independence Payment Centre.
+       </p>
+
+      {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+      {{ govukInsetText({
+        text: "Apply for PIP in Northern Ireland: 0800 012 1573"
+      }) }}
+
+      <p class="govuk-body">
+        If you want to apply for PIP in England or Wales, we can <a href="claiming-self.html" class="govuk-link">continue with your application</a>.
+      </p>
+
+  </form>
+
+ 
+
+
+  </div>
+</div>
+
+{% endblock %}
