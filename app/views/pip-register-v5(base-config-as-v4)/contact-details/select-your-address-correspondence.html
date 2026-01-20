@@ -1,0 +1,88 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../layouts/main-v3.html" %}
+{% endif %}
+
+
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% if (data['regScena'] == "citizen" ) %}
+      <h1 class="govuk-heading-l">
+        Select your address
+      </h1>
+      {% else %}
+      <h1 class="govuk-heading-l">
+        Can you confirm the address we should use to contact you?
+      </h1>
+      {% endif %}
+      
+
+      <form class="form" action="#" method="post">
+        <div class="govuk-width-container">
+
+
+        <p>6 addresses found for <b>wr11nl</b> and <b>1</b>. <a href="/pip-register-v4/contact-details/correspondence-postcode">Search again</a></p>
+
+        {{ govukRadios({
+          name: "select-an-address",
+          items: [
+            {
+            value: "1 Washington Street, Worcester, WR1 1NL",
+            text: "1 Washington Street, Worcester, WR1 1NL"
+            },
+            {
+            value: "10 Washington Street, Worcester, WR1 1NL",
+            text: "10 Washington Street, Worcester, WR1 1NL"
+            },
+            {
+            value: "11 Washington Street, Worcester, WR1 1NL",
+            text: "11 Washington Street, Worcester, WR1 1NL"
+            },
+            {
+            value: "12 Washington Street, Worcester, WR1 1NL",
+            text: "12 Washington Street, Worcester, WR1 1NL"
+            },
+            {
+            value: "13 Washington Street, Worcester, WR1 1NL",
+            text: "13 Washington Street, Worcester, WR1 1NL"
+            },
+            {
+            value: "14 Washington Street, Worcester, WR1 1NL",
+            text: "14 Washington Street, Worcester, WR1 1NL"
+            }
+
+          ]
+        }) }}
+
+      </div>
+
+        {{ govukButton({
+        text: "Use this address"
+        }) }}
+
+        <p class="govuk-body govuk-!-margin-bottom-6"><a href="correspondence-enter-address-manually" class="govuk-link">Enter address manually</a></p>
+
+
+        <p><a href="/pip-register-v4/task-list">Go to task list</a></p>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

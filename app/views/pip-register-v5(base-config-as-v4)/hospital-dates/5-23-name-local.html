@@ -1,0 +1,47 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../layouts/main-v3.html" %}
+{% endif %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="#" method="post">
+        <div class="govuk-width-container">
+
+          <h1 class="govuk-heading-l">
+            What is the name of the [organisation type]?
+          </h1>
+
+
+          {% from "govuk/components/input/macro.njk" import govukInput %}
+          {{ govukInput({
+            label: {
+            text: "Name of authority or charity"
+          },
+            id: "event-name",
+            name: "eventName"
+          }) }}
+
+            {{ govukButton({
+              text: "Save and continue"
+            }) }}
+            <p><a href="/pip-register-v4/task-list-hcp-done">Go to task list</a></p>
+ 
+        </div>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

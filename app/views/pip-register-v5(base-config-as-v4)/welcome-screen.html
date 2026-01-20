@@ -1,0 +1,92 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../layouts/main-v3.html" %}
+{% endif %}
+
+{% set isDeclarationPre = true %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <!-- cit-->
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="#" method="post" method="post">
+
+          <!--cit-->
+          {% if (data['regScena'] == "citizen" ) %}
+          <h1 class="govuk-heading-l">
+            Apply for Personal Independence Payment (PIP)
+          </h1>
+    
+          <p>Use this service to:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>make a claim for PIP</li>
+              <li>describe how your health conditions or disabilities affect your ability to do certain everyday tasks and get around</li>
+              <li>upload any supporting evidence you have of your conditions or disabilities and how they affect you</li>
+            </ul>
+    
+          <h2 class="govuk-heading-l">Before you start</h2>
+    
+          <p>You do not have to answer all the questions in one go. You can save your progress at any point and continue later.</p>
+    
+          <p>The date you submit this first stage will be the date of claim. The sooner you do this, the earlier your payments could begin if you're awarded PIP.</p>
+    
+          <p>For the first stage you will need:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>your address and contact details</li>
+            <li>the name and address of your health and care professionals, and</li>
+            <li>your bank or building society account details</li>
+          
+          <!--cit-->
+          {% else %}
+          <h1 class="govuk-heading-l">
+            I will briefly explain to you about Personal Independence Payment
+          </h1>
+          <p>PIP is for people who:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            
+            <li>have a long-term health condition or disability, and</li>
+            <li>need help doing everyday activities</li>
+          </ul>
+          {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+        {{ govukInsetText({
+          text: "The amount you may get depends on how your conditions affect you, not the conditions themselves."
+        }) }}
+          <h2 class="govuk-heading-m">
+            On this call
+          </h2>
+
+          <p class="govuk-body">You will need:</p>
+            <ul class="govuk-list govuk-list--bullet">
+            
+              <li>your address and contact details</li>
+              <li>the name and address of your health and care professionals, and</li>
+              <li>your bank or building society account details</li>
+            </ul>
+
+            
+          
+          {% endif %}
+
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

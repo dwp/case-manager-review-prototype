@@ -1,0 +1,137 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../layouts/main-v3.html" %}
+{% endif %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="#" method="post" novalidate></form>
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+     {% from "govuk/components/input/macro.njk" import govukInput %}
+
+      <h1 class="govuk-heading-l">Your bank, building society or credit union account details</h1>
+
+      {{ govukInput({
+        label: {
+          text: "Name on the account"
+        },
+        hint: {
+          text: "The name must be exactly what is shown on the debit card, chequebook or statement."
+        },
+        id: "name-on-the-account",
+        name: "nameOnTheAccount",
+        autocomplete: "name",
+        spellcheck: false
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Sort code"
+        },
+        classes: "govuk-input--width-5 govuk-input--extra-letter-spacing",
+        hint: {
+          text: "Must be 6 digits long."
+        },
+        id: "sort-code",
+        name: "sortCode",
+        inputmode: "numeric",
+        spellcheck: false
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Account number "
+        },
+        classes: "govuk-input--width-10 govuk-input--extra-letter-spacing",
+        hint: {
+          text: "Must be between 6 and 8 digits long."
+        },
+        id: "account-number",
+        name: "accountNumber",
+        inputmode: "numeric",
+        spellcheck: false
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Building society roll number (if you have one)"
+        },
+        classes: "govuk-input--width-20 govuk-input--extra-letter-spacing",
+        hint: {
+          text: "You can find it on your card, statement or passbook."
+        },
+        id: "roll-number",
+        name: "rollNumber",
+        spellcheck: false
+      }) }}
+
+      <form class="form" action="#" method="post">
+        
+        {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+   
+        {% if (data['regScena'] == "citizen" ) %}
+        {% else %}
+        {{ govukInsetText({
+          classes: 'colour-blue',
+          text: "Action: Check with the caller that the details are correct before you continue."
+        }) }}
+        
+
+        {% endif %}
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+            <p><a href="/pip-register-v4/task-list-accom-done">Go to task list</a></p> 
+
+      </form>
+
+      <!DOCTYPE html> 
+<html lang="en"> 
+  <head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>GOV.UK Dashed Border Container</title> 
+    <!-- GOV.UK Frontend CSS --> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/govuk-frontend/4.7.0/govuk-frontend.min.css"> 
+     <style> .dashed-container { 
+      border: 2px dashed #b1b4b6; /* GOV.UK border colour */ 
+      padding: 20px; 
+      margin: 20px 0; 
+      background-color: #f3f2f1; /* GOV.UK light grey background */ 
+      } 
+      
+      .dashed-container h3 { 
+        margin-top: 0; 
+      } 
+      .dashed-container ul { 
+          margin-bottom: 0; }
+           </style> 
+           </head> 
+           <body class="govuk-template__body"> 
+            <div class="govuk-width-container"> 
+              <main class="govuk-main-wrapper"> <!-- Example usage of the dashed container --> 
+  <div class="dashed-container"> 
+    <h3 class="govuk-heading-m">Quick links</h3> 
+    <ul class="govuk-list"> 
+      <li><a href="error-messages/account-not-match-dy-1.html" class="govuk-link">Account details incorrect
+      </a></li> 
+     
+    </ul> 
+  </div>
+
+    </div>
+  </div>
+
+{% endblock %}

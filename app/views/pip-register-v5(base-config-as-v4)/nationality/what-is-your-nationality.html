@@ -1,0 +1,89 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../layouts/main-v3.html" %}
+{% endif %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" href="/public/sass/accessible-autocomplete.min.css">
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="#" method="post">
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        <h1 class="govuk-heading-l">
+          What is your nationality?
+        </h1>
+
+        {{ govukRadios({
+          name: "nationality",
+          fieldset: {
+            legend: {
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+          {
+            value: "british",
+            text: "British",
+            hint: {
+              text: "Includes English, Scottish, Welsh and Northern Irish."
+            }
+          },
+          {
+            value: "irish",
+            text: "Irish"
+          },
+          {
+            value: "other",
+            text: "Another nationality"
+          }
+          ]
+        }) }}
+
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+
+          <!--
+          
+          ,
+          {
+            value: "eea",
+            text: "A nationality of the European Economic Area (EEA) or Switzerland"
+          },
+          
+          -->
+
+          <p><a href="/pip-register-v4/task-list-as-done">Go to task list</a></p>
+      </form>
+      {% endblock %}
+
+  </div>
+
+{% block scripts %}
+  {{ super() }}
+  <script src="/public/javascripts/accessible-autocomplete.min.js"></script>
+  <script type="text/javascript">
+    element = document.querySelector('#country')
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: element
+    })
+  </script>
+{% endblock %}

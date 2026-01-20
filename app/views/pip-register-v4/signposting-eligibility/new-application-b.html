@@ -1,0 +1,110 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "/layouts/main-v3.html" %}
+{% endif %}
+
+
+{% set isDeclarationPre = true %}
+
+{% block pageTitle %}
+Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="#" method="post" method="post">
+
+{% from "components/header-caption.njk" import headerWithCaption %}
+
+{{ headerWithCaption({
+  caption: "Application on behalf of Montgommery Burns",
+  heading: "Which nation in the UK do you live in?"
+}) }}
+
+    {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+    {{ govukRadios({
+      name: "gb-pip",
+      fieldset: {
+        legend: {
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      items: [
+        {
+          value: "eng",
+          text: "England"
+        },
+        {
+          value: "wales",
+          text: "Wales"
+        },
+        {
+          value: "scot",
+          text: "Scotland"
+        },
+        {
+          value: "nire",
+          text: "Northern Ireland"
+        },
+        {
+          divider: "or"
+        },
+        {
+          value: "other-country",
+          text: "A country outside the UK"
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+  </form>
+
+    <!DOCTYPE html> 
+<html lang="en"> 
+  <head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>GOV.UK Dashed Border Container</title> 
+    <!-- GOV.UK Frontend CSS --> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/govuk-frontend/4.7.0/govuk-frontend.min.css"> 
+     <style> .dashed-container { 
+      border: 2px dashed #b1b4b6; /* GOV.UK border colour */ 
+      padding: 20px; 
+      margin: 20px 0; 
+      background-color: #f3f2f1; /* GOV.UK light grey background */ 
+      } 
+      
+      .dashed-container h3 { 
+        margin-top: 0; 
+      } 
+      .dashed-container ul { 
+          margin-bottom: 0; }
+           </style> 
+           </head> 
+           <body class="govuk-template__body"> 
+            <div class="govuk-width-container"> 
+              <main class="govuk-main-wrapper"> <!-- Example usage of the dashed container --> 
+  <div class="dashed-container"> 
+    <h3 class="govuk-heading-m">Quick links</h3> 
+    <ul class="govuk-list"> 
+      <li><a href="new-application.html" class="govuk-link">If 3rd party name given</a></li> 
+
+    </ul> 
+  </div> <!-- Another example with different content --> 
+    
+
+  </div>
+</div>
+
+{% endblock %}

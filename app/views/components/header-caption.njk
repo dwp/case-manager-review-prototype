@@ -1,0 +1,4 @@
+{% macro headerWithCaption(params) %}
+  <div class="{{ params.captionClass | default('govuk-caption-l') }}">{{ params.caption | default('') }}</div>
+  <h1 class="{{ params.headingClass | default('govuk-heading-l') }}">{{ params.heading | default('') }}</h1>
+{% endmacro %}

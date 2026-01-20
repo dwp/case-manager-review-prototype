@@ -1,0 +1,169 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "/layouts/main-v3.html" %}
+{% endif %}
+
+{% set isDeclarationPre = true %}
+
+{% block pageTitle %}
+Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <form action="#" method="post" method="post">
+
+        <h1 class="govuk-heading-l">For security reasons, I need to ask you to confirm some information</h1>
+
+        {{ govukInsetText({
+          classes: 'colour-blue',
+            text: "Action: Ask 3 questions, or stop asking questions if the first 2 answers are correct."
+        }) }}
+
+        <p class="govuk-body">
+          <a href="failed-security" class="govuk-link govuk-link--no-visited-state">Not enough applicant data to ask security questions</a>
+        </p>
+
+        {{ govukCheckboxes({
+          name: "security",
+          fieldset: {
+            legend: {
+              text: "Security questions",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "Select the information you asked the applicant to confirm."
+          },
+          items: [
+          {
+            value: "other-benefit",
+            text: "Another benefit or DWP payment you get",
+            hint: {
+              text: "A 'none' response is acceptable."
+              }
+          },
+          {
+            value: "previous-benefit",
+            text: "Another benefit you've claimed previously",
+            hint: {
+              text: "Benefits that were never paid are acceptable."
+            }
+          },
+          {
+            value: "previous-surname",
+            text: "Previous surname"
+          },
+          {
+            value: "previous-address",
+            text: "Previous address",
+            hint: {
+              text: "First line of address and name of town or city is acceptable."
+            }
+          },
+          {
+            value: "other-benefit-amount",
+            text: "Weekly or monthly amount of other benefit payment",
+            hint: {
+              text: "Accept answers within a reasonable range, depending on the amount."
+            }
+          },
+          {
+            value: "other-benefit-date",
+            text: "Date when your claim for the other benefit started",
+            hint: {
+              text: "The correct month and year is acceptable."
+            }
+          },
+          {
+          value: "last-payment-date",
+          text: "Date of last payment"
+          },
+          {
+          value: "partner-nino",
+          text: "Partner's National Insurance number"
+          },
+          {
+          value: "partner-full-Name",
+          text: "Partner's full name"
+          },
+          {
+          value: "partner-date-of-birth",
+          text: "Partner's date of birth"
+          },
+          {
+          value: "number-of-dependents",
+          text: "Number of dependents in your claim"
+          },
+          {
+          value: "dependent-child-name",
+          text: "Name of one of your dependent children"
+          },
+          {
+          value: "dependent-child-dob",
+          text: "Date of birth of one of your dependent children"
+          }
+      ]
+        }) }}
+
+
+
+        {{ govukRadios({
+          name: "security-verified",
+          fieldset: {
+            legend: {
+              text: "Applicant answers",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "Select one option."
+          },
+          items: [
+          {
+            value: "2correct",
+            text: "2 correct answers"
+          },
+          {
+            value: "1correct",
+            text: "1 correct answer"
+          },
+          {
+            value: "none",
+            text: "No correct answers"
+          }
+          ]
+        }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+
+
+    </ul> 
+  </div> <!-- Another example with different content --> 
+    
+    
+  </main>
+ </div> 
+</body>
+
+
+  </div>
+</div>
+
+{% endblock %}

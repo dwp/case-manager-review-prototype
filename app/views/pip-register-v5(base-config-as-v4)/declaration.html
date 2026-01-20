@@ -1,0 +1,94 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../layouts/main-v3.html" %}
+{% endif %}
+
+{% set isDeclarationPre = true %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="#" method="post" method="post">
+          {% if (data['regScena'] == "citizen" ) %}
+          <h1 class="govuk-heading-l">
+            Declaration
+          </h1>
+          {% else %}
+
+
+          
+
+          <h1 class="govuk-heading-l">
+            I will now read out the declaration then I will ask if you agree to it</h1>
+
+          {% endif %}<!--
+          <p class="govuk-body">You have told me that you are calling on behalf of someone. I just need to speak to them briefly before we can continue with this call.</p>
+          <p class="govuk-body">Hello, my name is [agent name], I just need to confirm you are happy for the person who called us to speak on your behalf today?</p>
+          {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+          {{ govukInsetText({
+            text: "Action: Wait for the caller to pass the phone to applicant, then continue with the script."
+          }) }}
+          <p class="govuk-body">Before you hand the phone back to them I need you to listen to the following statements and then tell me if you agree .</p>
+
+          <p class="govuk-body"><em>[End if third party]</em></p>-->
+
+          <h2 class="govuk-body">You declare that the information you give will be correct and complete as far as you know and believe.​
+          </h2>
+
+          <p class="govuk-body">You understand that if you knowingly give false information your benefit may be stopped and you may be liable to prosecution or other action.
+            
+          </p>
+
+          <p class="govuk-body">You understand that you must promptly tell the Department for Work and Pensions (DWP) that pays your Personal Independence Payment of anything that may affect your entitlement to, or the amount of, that benefit.</p>
+
+          <p class="govuk-body">You understand that the DWP may use the information which it has now or may get in future to decide whether you are entitled to:
+          </p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>the benefit you are claiming, </li>
+            <li>any other benefit you have claimed, or</li>
+            <li>any other benefit you may claim or be awarded in the future.</li>
+          </ul>
+          <h2 class="govuk-heading-m">
+            Do you agree?
+          </h2>
+
+          {% from "govuk/components/button/macro.njk" import govukButton %}
+          <!--
+          <p class="govuk-body">If you agree, we can continue to gather the information needed for your claim.</p>-->
+
+          <div class="govuk-button-group">
+         
+
+          {% if (data['regScena'] == "citizen" ) %}
+          <h2 class="govuk-heading-l">
+            Do you agree?
+          </h2>
+          {{ govukButton({
+            text: "Agree and continue"
+            }) }}
+          <a class="govuk-link" href="declaration-kickout">I do not agree</a>
+          {% else %}
+          
+          {{ govukButton({
+            text: "Agree and continue"
+            }) }}
+          <a class="govuk-link" href="declaration-kickout">Applicant does not agree</a>
+          {% endif %}
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "/layouts/main-v3.html" %}
+{% endif %}
+
+{% set isDeclarationPre = true %}
+
+{% block pageTitle %}
+Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="#" method="post" method="post">
+
+      <h1 class="govuk-heading-l">
+        I cannot find a matching record on the system
+      </h1>
+      <p class="govuk-body">Someone will need to call you back to continue your application.</p>
+
+
+      {{ govukInsetText({
+        classes: 'colour-blue',
+          text: "Action: Follow the normal procedure for mismatched Searchlight details or applicants with no Searchlight record."
+      }) }}
+
+  </form>
+
+
+
+  </div>
+</div>
+
+{% endblock %}

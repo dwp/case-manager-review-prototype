@@ -21,10 +21,12 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
 
     <form action="#" method="post" method="post">
 
-    <h1 class="govuk-heading-l">
-      Do you live in England or Wales?
-    </h1>
+{% from "components/header-caption.njk" import headerWithCaption %}
 
+{{ headerWithCaption({
+  caption: "Weylon Smithers on behalf of Montgommery Burns",
+  heading: "Which nation in the UK do you live in?"
+}) }}
 
     {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
@@ -33,28 +35,32 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
       fieldset: {
         legend: {
           isPageHeading: true,
-          classes: "govuk-fieldset__legend--xl"
+          classes: "govuk-fieldset__legend--l"
         }
       },
       items: [
         {
-          value: "yes",
-          text: "Yes, England or Wales"
+          value: "eng",
+          text: "England"
         },
         {
-          value: "scotland",
-          text: "No, Scotland"
+          value: "wales",
+          text: "Wales"
         },
         {
-          value: "n-ireland",
-          text: "No, Northern Ireland"
+          value: "scot",
+          text: "Scotland"
+        },
+        {
+          value: "nire",
+          text: "Northern Ireland"
         },
         {
           divider: "or"
         },
         {
           value: "other-country",
-          text: "No, a country outside the UK"
+          text: "A country outside the UK"
         }
       ]
     }) }}
@@ -64,6 +70,43 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
     }) }}
 
   </form>
+
+  <!DOCTYPE html> 
+<html lang="en"> 
+  <head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>GOV.UK Dashed Border Container</title> 
+    <!-- GOV.UK Frontend CSS --> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/govuk-frontend/4.7.0/govuk-frontend.min.css"> 
+     <style> .dashed-container { 
+      border: 2px dashed #b1b4b6; /* GOV.UK border colour */ 
+      padding: 20px; 
+      margin: 20px 0; 
+      background-color: #f3f2f1; /* GOV.UK light grey background */ 
+      } 
+      
+      .dashed-container h3 { 
+        margin-top: 0; 
+      } 
+      .dashed-container ul { 
+          margin-bottom: 0; }
+           </style> 
+           </head> 
+           <body class="govuk-template__body"> 
+            <div class="govuk-width-container"> 
+              <main class="govuk-main-wrapper"> <!-- Example usage of the dashed container --> 
+  <div class="dashed-container"> 
+    <h3 class="govuk-heading-m">Quick links</h3> 
+    <ul class="govuk-list"> 
+      <li><a href="new-application-b.html" class="govuk-link">If 3rd party name not given</a></li> 
+
+    </ul> 
+  </div> <!-- Another example with different content --> 
+    
+    
+  </main>
+ </div> 
+</body>
 
   </div>
 </div>

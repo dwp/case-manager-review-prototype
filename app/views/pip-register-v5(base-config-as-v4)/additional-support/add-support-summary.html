@@ -1,0 +1,146 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../layouts/main-v3.html" %}
+{% endif %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <div class="govuk-body govuk-!-margin-bottom-9">
+
+        <h1 class="govuk-heading-l">
+          Check your answers
+        </h1>
+
+        <h2 class="govuk-heading-m">
+          Additional support needs
+        </h2>
+
+              {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Mental health condition or other condition that causes difficulty"
+              },
+              value: {
+                text: "Yes / No"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "additional-support/do-you-have-a-condition",
+                    text: "Change",
+                    visuallyHiddenText: "Question 1"
+                  }
+                ]
+              }
+            }
+            ,
+            {
+              key: {
+                text: "Able to complete forms"
+              },
+              value: {
+                text: "Yes / No"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "additional-support/complete-forms",
+                    text: "Change",
+                    visuallyHiddenText: "Question 2"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Able to read and respond to letters"
+              },
+              value: {
+                text: "Yes / No"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "additional-support/complete-forms",
+                    text: "Change",
+                    visuallyHiddenText: "Question 3"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Able to manage post"
+              },
+              value: {
+                text: "Yes / No"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "additional-support/complete-forms",
+                    text: "Change",
+                    visuallyHiddenText: "Question 4"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Anyone to help with these tasks"
+              },
+              value: {
+                text: "Yes / No"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "additional-support/helpers",
+                    text: "Change",
+                    visuallyHiddenText: "Question 5"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Helper name"
+              },
+              value: {
+                text: "Firstname Surname"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "additional-support/helpers",
+                    text: "Change",
+                    visuallyHiddenText: "Question 5"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+      </div>
+
+            {{ govukButton({
+              text: "Save and continue",
+              href: "/pip-register-v4/nationality/start"
+            }) }}
+
+
+        </form>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "/layouts/main-v3.html" %}
+{% endif %}
+
+
+{% set isDeclarationPre = true %}
+
+{% block pageTitle %}
+Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="#" method="post" method="post">
+
+    <h1 class="govuk-heading-l">
+      Do you live in England or Wales?
+    </h1>
+
+
+    {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+    {{ govukRadios({
+      name: "gb-pip",
+      fieldset: {
+        legend: {
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      items: [
+        {
+          value: "yes",
+          text: "Yes, England or Wales"
+        },
+        {
+          value: "scotland",
+          text: "No, Scotland"
+        },
+        {
+          value: "n-ireland",
+          text: "No, Northern Ireland"
+        },
+        {
+          divider: "or"
+        },
+        {
+          value: "other-country",
+          text: "No, a country outside the UK"
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+  </form>
+
+  </div>
+</div>
+
+{% endblock %}

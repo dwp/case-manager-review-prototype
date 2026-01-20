@@ -1,0 +1,47 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "/layouts/main-v3.html" %}
+{% endif %}
+
+{% set isDeclarationPre = true %}
+
+{% block pageTitle %}
+Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="#" method="post" method="post">
+
+      <h1 class="govuk-heading-l">
+        We need your consent for [helper] to start your application
+      </h1>
+
+      <p class="govuk-body">
+       You can either agree that you want them to answer questions for you, or you can <a href="#">continue the application for yourself.</a>
+
+      <!-- {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+      {{ govukInsetText({
+        classes: 'colour-blue',
+          text: "Action: ________"
+      }) }} -->
+
+  </form>
+
+
+
+
+  </div>
+</div>
+
+{% endblock %}

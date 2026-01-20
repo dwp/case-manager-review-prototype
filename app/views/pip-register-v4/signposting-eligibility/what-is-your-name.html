@@ -17,7 +17,7 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form class="form" action="/whatIsYourName" method="post">
+      <form class="form" action="what-is-your-name" method="post">
 
         
         <h1 class="govuk-heading-l">
@@ -33,20 +33,10 @@
 
         {{ govukInput({
           label: {
-            text: "First name"
+            text: "Name"
           },
-          id: "first-name",
+          id: "name-optional",
           name: "first-name",
-          autocomplete: "name",
-          spellcheck: false
-        }) }}
-
-        {{ govukInput({
-          label: {
-            text: "Last name"
-          },
-          id: "last-name",
-          name: "last-name",
           autocomplete: "name",
           spellcheck: false
         }) }}

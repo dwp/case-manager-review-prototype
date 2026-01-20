@@ -15,11 +15,23 @@ const validatePath = require('./validatePath.js')
   router.post(`/${folderForViews}/signposting-eligibility/service-start-page`, function (request, response) {
     var newApp = request.session.data['new-app']
     if (newApp == 'yes') {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/what-is-your-name`;
+      const redirectPath = `/${folderForViews}/signposting-eligibility/claiming-self`;
 validatePath(response, redirectPath);
     } else if (newApp == "no") {
 
       const redirectPath = `/${folderForViews}/signposting-eligibility/existing-claims`;
+validatePath(response, redirectPath);
+    }
+  })
+
+  // Eligibility launched from main UI
+  router.post(`/${folderForViews}/signposting-eligibility/with-applicant`, function (request, response) {
+    var withApp = request.session.data['with-app']
+    if (withApp == 'yes') {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/srel`;
+validatePath(response, redirectPath);
+    } else if (withApp == "no") {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/third-party-caller-kickout`;
 validatePath(response, redirectPath);
     }
   })
@@ -33,21 +45,54 @@ validatePath(response, redirectPath);;
 });
 
 
+  router.post(`/${folderForViews}/signposting-eligibility/welsh-prefs`, function (request, response) {
+    var welshPrefs = request.session.data['welsh-prefs']
+    if (welshPrefs == 'yes') {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/over-16`;
+validatePath(response, redirectPath);
+    } else if (welshPrefs == "no") {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/welsh-prefs-kickout`;
+validatePath(response, redirectPath);
+    }
+  })
 
   router.post(`/${folderForViews}/signposting-eligibility/new-application`, function (request, response) {
     var gbPIP = request.session.data['gb-pip']
-    if (gbPIP == 'yes') {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/claiming-self`;
+    if (gbPIP == 'eng') {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/over-16`;
 validatePath(response, redirectPath);
-    } else if (gbPIP == "n-ireland") {
+    } else if (gbPIP == "nire") {
       const redirectPath = `/${folderForViews}/signposting-eligibility/northern-ireland`;
 validatePath(response, redirectPath);
-    } else if (gbPIP == "scotland") {
+    } else if (gbPIP == "scot") {
       const redirectPath = `/${folderForViews}/signposting-eligibility/scotland`;
+validatePath(response, redirectPath);
+    } else if (gbPIP == "wales") {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/welsh-prefs`;
 validatePath(response, redirectPath);
     }
     else if (gbPIP == "other-country") {
       const redirectPath = `/${folderForViews}/signposting-eligibility/other-country`;
+validatePath(response, redirectPath);
+    }
+
+      else {
+    const redirectPath = `/${folderForViews}/signposting-eligibility/new-application`;
+validatePath(response, redirectPath);
+    }
+
+  })
+
+    router.post(`/${folderForViews}/signposting-eligibility/someone-else`, function (request, response) {
+    var someoneElse = request.session.data['someone-else']
+    if (someoneElse == 'third') {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/with-applicant`;
+validatePath(response, redirectPath);
+    } else if (someoneElse == "individual") {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/someone-else-bau-kickout`;
+validatePath(response, redirectPath);
+    } else if (someoneElse == "org") {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/someone-else-bau-kickout`;
 validatePath(response, redirectPath);
     }
 
@@ -64,7 +109,7 @@ validatePath(response, redirectPath);
       const redirectPath = `/${folderForViews}/signposting-eligibility/srel`;
 validatePath(response, redirectPath);
     } else if (claimingSelf == "someone-else") {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/someone-else-bau-kickout`;
+      const redirectPath = `/${folderForViews}/signposting-eligibility/someone-else`;
 validatePath(response, redirectPath);
     }
     else if (claimingSelf == "unofficial") {
@@ -78,6 +123,7 @@ validatePath(response, redirectPath);
 
     
   })
+
 
   //external route
 
@@ -163,7 +209,7 @@ validatePath(response, redirectPath);
 validatePath(response, redirectPath);
     }
     else if (externalRoute == "no") {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/security-check`;
+      const redirectPath = `/${folderForViews}/signposting-eligibility/phone-passback`;
 validatePath(response, redirectPath);
     }
     console.log('appointeeYn value:', request.session.data['appointeeYn']);
@@ -209,9 +255,61 @@ validatePath(response, redirectPath);
       const redirectPath = `/${folderForViews}/signposting-eligibility/srel-bau-kickout`;
 validatePath(response, redirectPath);
     } else if (srel == "no") {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/over-16`;
+      const redirectPath = `/${folderForViews}/signposting-eligibility/what-is-your-name`;
 validatePath(response, redirectPath);
     }
+  })
+
+    // Eligibility launched from main UI
+  router.post(`/${folderForViews}/signposting-eligibility/thank-you-phone`, function (request, response) {
+    var consent = request.session.data['consent']
+    if (consent == 'yes') {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/stay-with-party`;
+validatePath(response, redirectPath);
+    } else if (consent == "no") {
+
+      const redirectPath = `/${folderForViews}/signposting-eligibility/third-party-consent-kickout`;
+validatePath(response, redirectPath);
+    }
+  })
+
+    // your name
+  //NI
+  router.post(`/${folderForViews}/signposting-eligibility/what-is-your-name`, function (request, response) {
+     const redirectPath = `/${folderForViews}/signposting-eligibility/what-is-your-name-third`;
+validatePath(response, redirectPath);
+  })
+
+    router.post(`/${folderForViews}/signposting-eligibility/answer-like-them`, function (request, response) {
+     const redirectPath = `/${folderForViews}/signposting-eligibility/new-application`;
+validatePath(response, redirectPath);
+  })
+
+  router.post(`/${folderForViews}/signposting-eligibility/stay-with-party`, function (request, response) {
+     const redirectPath = `/${folderForViews}/signposting-eligibility/answer-like-them`;
+validatePath(response, redirectPath);
+  })
+
+    router.post(`/${folderForViews}/signposting-eligibility/what-is-your-name-fl`, function (request, response) {
+     const redirectPath = `/${folderForViews}/signposting-eligibility/new-application`;
+validatePath(response, redirectPath);
+  })
+
+  // third party speak
+    router.post(`/${folderForViews}/signposting-eligibility/third-party-speak`, function (request, response) {
+     const redirectPath = `/${folderForViews}/signposting-eligibility/thank-you-phone`;
+validatePath(response, redirectPath);
+  })
+
+
+    router.post(`/${folderForViews}/signposting-eligibility/phone-passback`, function (request, response) {
+     const redirectPath = `/${folderForViews}/signposting-eligibility/security-check`;
+validatePath(response, redirectPath);
+  })
+
+    router.post(`/${folderForViews}/signposting-eligibility/what-is-your-name-third`, function (request, response) {
+     const redirectPath = `/${folderForViews}/signposting-eligibility/third-party-speak`;
+validatePath(response, redirectPath);
   })
 
   //NI
@@ -244,7 +342,7 @@ router.post(`/${folderForViews}/signposting-eligibility/security-check`, functio
 
   if (secVerified == '2correct') {
 
- const redirectPath = `/${folderForViews}/welcome-screen`;
+ const redirectPath = `/${folderForViews}/declaration`;
 validatePath(response, redirectPath);
   } else if (secVerified == '1correct') {
       const redirectPath = `/${folderForViews}/signposting-eligibility/failed-security`;
@@ -274,15 +372,19 @@ validatePath(response, redirectPath);
 
   // Welcome screen GB
   router.post(`/${folderForViews}/welcome-screen`, function (request, response) {
-    const redirectPath = `/${folderForViews}/declaration`;
+    const redirectPath = `/${folderForViews}/task-list`;
 validatePath(response, redirectPath);
   })
 
-
+  // Welcome screen GB
+  router.post(`/${folderForViews}/signposting-eligibility/ready-application`, function (request, response) {
+    const redirectPath = `/${folderForViews}/welcome-screen`;
+validatePath(response, redirectPath);
+  })
 
   // Declaration
   router.post(`/${folderForViews}/declaration`, function (request, response) {
-    const redirectPath = `/${folderForViews}/task-list`;
+    const redirectPath = `/${folderForViews}/signposting-eligibility/ready-application`;
 validatePath(response, redirectPath);
   })
 
@@ -979,6 +1081,7 @@ validatePath(response, redirectPath);
 validatePath(response, redirectPath);
   })
  
+  
 
   //Were you living in the UK on or before 31/12/20?
   router.post(`/${folderForViews}/nationality/living-in-uk`, function (request, response) {

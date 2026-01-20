@@ -42,7 +42,7 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
               items: [
                 {
                   href: "what-is-ni-number",
-                  text: "",
+                  text: "Change",
                   visuallyHiddenText: "Question 3"
                 }
               ]
@@ -52,16 +52,34 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
 
           {
             key: {
-              text: "Name"
+              text: "Third party name"
             },
             value: {
-              text: "Weylon Smithers"
+              text: "Weylon Smithers / [not provided]"
             },
             actions: {
               items: [
                 {
                   href: "what-is-your-name",
-                  text: "",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Applicant name"
+            },
+            value: {
+              text: "Montgommery Burns"
+            },
+            actions: {
+              items: [
+                {
+                  href: "what-is-your-name-third",
+                  text: "Change",
                   visuallyHiddenText: "Question 2"
                 }
               ]
@@ -79,7 +97,7 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
               items: [
                 {
                   href: "over-16",
-                  text: "",
+                  text: "Change",
                   visuallyHiddenText: "Question 2"
                 }
               ]
@@ -119,7 +137,7 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
     },
     {
       value: "different-dob",
-      text: "Different name and date of birth"
+      text: "Details do not fully match"
     },
     {
       value: "scr",
