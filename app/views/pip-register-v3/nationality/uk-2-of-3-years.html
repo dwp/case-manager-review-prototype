@@ -23,20 +23,27 @@
     <div class="govuk-grid-column-two-thirds">
 
       <form class="form" action="#" method="post">
+
+          <h1 class="govuk-heading-l">We need to know how much time you've spent in countries outside the UK in the last 3 years</h1>
+
+          <p class="govuk-body">We only need to know about times you have left the UK for four weeks or longer, and if those trips add up to at least one year.</p>
+
+
+<br>
+
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
         {% from "govuk/components/input/macro.njk" import govukInput %}
-
         {{ govukRadios({
           name: "uk-years",
           fieldset: {
             legend: {
-            text: "Have you been in the UK for at least 2 of the last 3 years?",
+            text: "Since [dynamic date: today minus 3 years], have you travelled or lived outside the UK for a total of one year or more?",
               isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
+              classes: "govuk-fieldset__legend--m"
             }
           },
           hint: {
-            text: "The UK is England, Scotland, Wales and Northern Ireland."
+            text: ""
           },
           items: [
           {

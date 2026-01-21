@@ -36,18 +36,22 @@ validatePath(response, redirectPath);;
 
   router.post(`/${folderForViews}/signposting-eligibility/new-application`, function (request, response) {
     var gbPIP = request.session.data['gb-pip']
-    if (gbPIP == 'yes') {
+    if (gbPIP == 'eng') {
       const redirectPath = `/${folderForViews}/signposting-eligibility/claiming-self`;
 validatePath(response, redirectPath);
-    } else if (gbPIP == "n-ireland") {
+    } else if (gbPIP == "nire") {
       const redirectPath = `/${folderForViews}/signposting-eligibility/northern-ireland`;
 validatePath(response, redirectPath);
-    } else if (gbPIP == "scotland") {
+    } else if (gbPIP == "scot") {
       const redirectPath = `/${folderForViews}/signposting-eligibility/scotland`;
 validatePath(response, redirectPath);
     }
     else if (gbPIP == "other-country") {
       const redirectPath = `/${folderForViews}/signposting-eligibility/other-country`;
+validatePath(response, redirectPath);
+    }
+    else if (gbPIP == "wales") {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/welsh-prefs`;
 validatePath(response, redirectPath);
     }
 
@@ -185,7 +189,21 @@ validatePath(response, redirectPath);
     }
   })
 
+  router.post(`/${folderForViews}/signposting-eligibility/welsh-prefs`, function (request, response) {
+    var welshPrefs = request.session.data['welsh-prefs']
+    if (welshPrefs == 'no') {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/over-16`;
+validatePath(response, redirectPath);
+    } else if (welshPrefs == "yes") {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/welsh-prefs-kickout`;
+validatePath(response, redirectPath);
+    }
+  })
 
+  router.post(`/${folderForViews}/signposting-eligibility/what-is-your-name`, function (request, response) {
+   const redirectPath = `/${folderForViews}/signposting-eligibility/new-application`;
+validatePath(response, redirectPath);
+});
 
   // Are you over 16 and under SPA?
   router.post(`/${folderForViews}/signposting-eligibility/over-16`, function (request, response) {
