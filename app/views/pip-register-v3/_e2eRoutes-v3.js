@@ -192,7 +192,7 @@ validatePath(response, redirectPath);
   router.post(`/${folderForViews}/signposting-eligibility/welsh-prefs`, function (request, response) {
     var welshPrefs = request.session.data['welsh-prefs']
     if (welshPrefs == 'no') {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/over-16`;
+      const redirectPath = `/${folderForViews}/signposting-eligibility/claiming-self`;
 validatePath(response, redirectPath);
     } else if (welshPrefs == "yes") {
       const redirectPath = `/${folderForViews}/signposting-eligibility/welsh-prefs-kickout`;
