@@ -23,14 +23,14 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
     <form action="#" method="post" method="post">
 
       <h1 class="govuk-heading-l">
-        You need to call back when you are with the applicant 
+        We cannot start your application now
       </h1>
 
       {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 
       {{ govukInsetText({
         classes: 'colour-blue',
-          text: "Action: ________"
+          text: "Action: Please call back when the person you're applying for is with you."
       }) }}
 
   </form>
