@@ -8,21 +8,21 @@
     "@dwp/dwp-frontend": "3.3.0",
     "@govuk-prototype-kit/common-templates": "2.0.1",
     "axios": "1.12.0",
-    "body-parser": "^1.20.3",
-    "braces": "^3.0.3",
-    "cross-spawn": "^7.0.6",
-    "eazy-logger": "^4.1.0",
-    "express": "^4.21.2",
-    "govuk-frontend": "^5.13.0",
+    "body-parser": "1.20.4",
+    "braces": "3.0.3",
+    "cross-spawn": "7.0.6",
+    "eazy-logger": "4.1.0",
+    "express": "4.22.1",
+    "govuk-frontend": "5.14.0",
     "govuk-prototype-kit": "13.18.1",
-    "hmrc-frontend": "^6.104.0",
-    "path": "^0.12.7",
-    "path-to-regexp": "^0.1.12",
-    "qs": "^6.14.1",
-    "ws": "^8.17.1"
+    "hmrc-frontend": "6.109.0",
+    "path": "0.12.7",
+    "path-to-regexp": "0.1.12",
+    "qs": "6.14.1",
+    "ws": "8.19.0"
   },
   "overrides": {
     "axios": "1.12.0",
-    "qs": "^6.14.1"
+    "qs": "6.14.1"
   }
 }
