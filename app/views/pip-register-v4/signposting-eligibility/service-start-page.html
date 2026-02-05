@@ -23,6 +23,10 @@
         Hello, you're through to the new claims line for Personal Independence Payment (PIP)
       </h1>
 
+{{ govukInsetText({
+        classes: 'colour-blue',
+          text: "Action: Tell your name to the applicant."
+      }) }}
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 

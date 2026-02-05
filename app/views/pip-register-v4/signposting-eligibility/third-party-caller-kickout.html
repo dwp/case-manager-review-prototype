@@ -26,13 +26,7 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
         We cannot start your application now
       </h1>
 
-      {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
-
-      {{ govukInsetText({
-        classes: 'colour-blue',
-          text: "Action: Please call back when the person you're applying for is with you."
-      }) }}
-
+<p class="govuk-body">Please call back when the person you're applying for is with you.</p>
   </form>
 
 
