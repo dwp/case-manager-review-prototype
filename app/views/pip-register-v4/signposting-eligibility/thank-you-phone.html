@@ -26,7 +26,7 @@
 
       {{ govukInsetText({
         classes: 'colour-blue',
-          text: "Action: Tell your name to the applicant"
+          text: "Action: Tell your name to the applicant."
       }) }}
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -35,7 +35,7 @@
         name: "consent",
         fieldset: {
           legend: {
-            text: "Can you confirm you want [third party] to answer questions for you on this call?",
+            text: "Can you confirm you want [third party / the person who is with you] to answer questions for you on this call?",
             isPageHeading: false,
             classes: "govuk-fieldset__legend--m"
           }
