@@ -72,21 +72,20 @@
         </form>
         {% else %}
         <form class="form" action="#" method="post">
-            <div class="govuk-form-group">
-                <fieldset class="govuk-fieldset" aria-describedby="consent-hint">
-                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                        <h1 class="govuk-fieldset__heading">
-                            I just need to ask you about giving your consent to share your information
-                        </h1>
-                    </legend>
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="consent-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                  I just need to ask you about giving your consent to share your information
+                </h1>
+              </legend>
 
-                    <p>I will now explain how your medical professionals share your details with the DWP. Let me know if you need me to repeat anything.</p>
-                    
+              {% if (data['journey'] == "3rd") %}
+                <p>I will now explain how your medical professionals share your details with the DWP. Let me know if you need me to repeat anything.</p>
+              {% endif %}
 
-                    <p>The DWP, or approved healthcare professionals that work for DWP, might need more information about your health condition and how it affects you. </p>
-                    
-                   
-
+              <p>The DWP, or approved healthcare professionals that work for DWP, might need more information about your health condition and how it affects you.</p>
+              
               <h2 class="govuk-heading-m"> They might ask for relevant information from your doctor, or any other relevant professional you tell them about. </h2>
                 
               <p>DWP uses this information to process and to make a decision on your claim, or any
@@ -134,14 +133,15 @@
                 Enquiry line number: 0800 121 4433
               </div>
 
+              {% if (data['journey'] == "3rd") %}
+                <p>You can now pass the phone back to {{ data['thirdPartyName'] or "the person who’s helping you" }}.</p>
+              {% endif %}
 
-                    <p>You can now pass the phone back to [third party name / the person who’s helping you].</p>
-
-              <a href="start.html" role="button" draggable="false" class="govuk-button govuk-button" data-module="govuk-button">
-                Save and continue
-            </a>
-
-
+              <form action="consent-2" method="post">
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+        </form>
           <p><a href="/pip-register-v4/task-list-nat-done">Go to task list</a></p> 
         </form>
         {% endif %}

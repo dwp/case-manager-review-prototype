@@ -25,7 +25,7 @@
     <form class="form" action="what-size-print-do-you-need" method="post">
 
       {{ govukRadios({
-      name: "braille-format",
+      name: "sizing",
       fieldset: {
       legend: {
       text: "What size print do you need?",
@@ -38,15 +38,15 @@
         },
       items: [
       {
-      value: "16 point",
+      value: "16",
       text: "16 point"
       },
       {
-      value: "18 point",
+      value: "18",
       text:  "18 point"
       },
       {
-      value: "25 point",
+      value: "25",
       text:  "25 point"
       }
       ]

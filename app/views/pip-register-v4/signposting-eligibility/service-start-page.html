@@ -1,10 +1,4 @@
-{% if (data['regScena'] == "agent" ) %}
-    {% extends "../../layouts/main-v3.html" %}
-{% elseif (data['regScena'] == "citizen") %}
-{% extends "../../layouts/main-gov.html" %}
-{% else %}
-    {% extends "/layouts/main-v3.html" %}
-{% endif %}
+{% extends "/layouts/main-v3.html" %}
 
 {% set isDeclarationPre = true %}
 
@@ -17,16 +11,18 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form action="#" method="post" method="post">
+      <form action="service-start-page" method="post" method="post">
 
       <h1 class="govuk-heading-l">
         Hello, you're through to the new claims line for Personal Independence Payment (PIP)
       </h1>
 
+
 {{ govukInsetText({
         classes: 'colour-blue',
-          text: "Action: Tell your name to the caller."
+          text: "Action: Tell your name to the applicant. "
       }) }}
+
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
@@ -59,5 +55,6 @@
 
     </div>
   </div>
+
 
 {% endblock %}

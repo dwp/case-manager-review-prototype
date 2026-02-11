@@ -34,26 +34,26 @@
       }) }}
     </p>
 
-    <form class="form" action="/regScen" method="post">
+    <form class="form" action="/journey" method="post">
     {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
     {{ govukRadios({
-      name: "regScena",
+      name: "journey",
       fieldset: {
         legend: {
           text: "Which scenario do you want to simulate?",
           isPageHeading: true,
-          classes: "govuk-fieldset__legend--xl"
+          classes: "govuk-fieldset__legend--l"
         }
       },
       items: [
         {
-          value: "citizen",
-          text: "Online citizen"
+          value: "core",
+          text: "Core journey"
         },
         {
-          value: "agent",
-          text: "Telephony agent"
+          value: "3rd",
+          text: "3rd party"
         }
       ]
     }) }}

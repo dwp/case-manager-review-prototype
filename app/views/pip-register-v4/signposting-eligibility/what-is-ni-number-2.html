@@ -22,39 +22,27 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
         Can you confirm your details before we continue?
       </h1>
 
-      <!-- <h2 class="govuk-heading-m">
-        Contact information
-      </h2> -->
+      {% set summaryRows = [
+        {
+          key: { text: "National Insurance number" },
+          value: { html: "AB 12 34 56 C" },
+          actions: {
+            items: [
+              {
+                href: "what-is-ni-number",
+                text: "Change",
+                visuallyHiddenText: "Question 3"
+              }
+            ]
+          }
+        }
+      ] %}
 
-      {{ govukSummaryList({
-        rows: [
-          
+      {% if data['journey'] != "core" %}
+        {% set summaryRows = summaryRows.concat([
           {
-            key: {
-              text: "National Insurance number"
-            },
-            value: {
-              html: "AB 12 34 56 C"
-            },
-            actions: {
-              items: [
-                {
-                  href: "what-is-ni-number",
-                  text: "Change",
-                  visuallyHiddenText: "Question 3"
-                }
-              ]
-            }
-          },
-      
-
-          {
-            key: {
-              text: "Third party name"
-            },
-            value: {
-              text: "Weylon Smithers / [not provided]"
-            },
+            key: { text: "Third party name" },
+            value: { text: "Weylon Smithers / [not provided]" },
             actions: {
               items: [
                 {
@@ -64,59 +52,46 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
                 }
               ]
             }
-          },
-
-          {
-            key: {
-              text: "Applicant name"
-            },
-            value: {
-              text: "Montgommery Burns"
-            },
-            actions: {
-              items: [
-                {
-                  href: "what-is-your-name-third",
-                  text: "Change",
-                  visuallyHiddenText: "Question 2"
-                }
-              ]
-            }
-          },
-
-          {
-            key: {
-              text: "Date of birth"
-            },
-            value: {
-              html: "<p>14 January 1956</p>"
-            },
-            actions: {
-              items: [
-                {
-                  href: "over-16",
-                  text: "Change",
-                  visuallyHiddenText: "Question 2"
-                }
-              ]
-            }
           }
-          
-            
-          
-        ]
-      }) }}
+        ]) %}
+      {% endif %}
+
+      {% set summaryRows = summaryRows.concat([
+        {
+          key: { text: "Applicant name" },
+          value: { text: "Montgommery Burns" },
+          actions: {
+            items: [
+              {
+                href: "what-is-your-name-third",
+                text: "Change",
+                visuallyHiddenText: "Question 2"
+              }
+            ]
+          }
+        },
+        {
+          key: { text: "Date of birth" },
+          value: { html: "<p>14 January 1956</p>" },
+          actions: {
+            items: [
+              {
+                href: "over-16",
+                text: "Change",
+                visuallyHiddenText: "Question 2"
+              }
+            ]
+          }
+        }
+      ]) %}
+
+      {{ govukSummaryList({ rows: summaryRows }) }}
 
       <form action="#" method="post">
-
         {{ govukButton({
           text: "Continue"
         }) }}
-
       </form>
-    
-  </main>
-
     </div>
   </div>
 {% endblock %}

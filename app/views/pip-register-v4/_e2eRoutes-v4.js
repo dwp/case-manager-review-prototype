@@ -104,24 +104,16 @@ validatePath(response, redirectPath);
   })
 
   router.post(`/${folderForViews}/signposting-eligibility/claiming-self`, function (request, response) {
-    var claimingSelf = request.session.data['claiming-self']
-    if (claimingSelf == 'myself') {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/srel`;
-validatePath(response, redirectPath);
-    } else if (claimingSelf == "someone-else") {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/someone-else`;
-validatePath(response, redirectPath);
+    const claimingSelf = request.body['claiming-self'];
+    if (claimingSelf === 'myself') {
+      request.session.data['journey'] = 'core';
+      response.redirect('/pip-register-v4/signposting-eligibility/srel');
+    } else if (claimingSelf === 'someone-else') {
+      request.session.data['journey'] = '3rd';
+      response.redirect('/pip-register-v4/signposting-eligibility/someone-else');
+    } else {
+      response.redirect('/pip-register-v4/signposting-eligibility/claiming-self');
     }
-    else if (claimingSelf == "unofficial") {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/someone-else-bau-kickout`;
-validatePath(response, redirectPath);
-    }
-    else if (claimingSelf == "external") {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/someone-else-bau-kickout`;
-validatePath(response, redirectPath);
-    }
-
-    
   })
 
 
@@ -273,12 +265,7 @@ validatePath(response, redirectPath);
     }
   })
 
-    // your name
-  //NI
-  router.post(`/${folderForViews}/signposting-eligibility/what-is-your-name`, function (request, response) {
-     const redirectPath = `/${folderForViews}/signposting-eligibility/what-is-your-name-third`;
-validatePath(response, redirectPath);
-  })
+
 
     router.post(`/${folderForViews}/signposting-eligibility/answer-like-them`, function (request, response) {
      const redirectPath = `/${folderForViews}/signposting-eligibility/new-application`;
@@ -290,10 +277,22 @@ validatePath(response, redirectPath);
 validatePath(response, redirectPath);
   })
 
-    router.post(`/${folderForViews}/signposting-eligibility/what-is-your-name-fl`, function (request, response) {
-     const redirectPath = `/${folderForViews}/signposting-eligibility/new-application`;
-validatePath(response, redirectPath);
-  })
+    router.post(`/${folderForViews}/signposting-eligibility/what-is-your-name`, function (request, response) {
+  const journey = request.session.data['journey'];
+  let redirectPath;
+
+  if (journey === 'core') {
+    redirectPath = `/${folderForViews}/signposting-eligibility/new-application`;
+  } else if (journey === '3rd') {
+    redirectPath = `/${folderForViews}/signposting-eligibility/what-is-your-name-third`;
+  } else {
+    // fallback if journey not set
+    redirectPath = `/${folderForViews}/signposting-eligibility/new-application`;
+  }
+
+  validatePath(response, redirectPath);
+});
+
 
   // third party speak
     router.post(`/${folderForViews}/signposting-eligibility/third-party-speak`, function (request, response) {
@@ -586,10 +585,7 @@ validatePath(response, redirectPath);
       validatePath(response, redirectPath);
     }})
 
-  router.post(`/${folderForViews}/contact-details/alt-formats/what-size-print-do-you-need`, function (request, response) {
-    const redirectPath = `/${folderForViews}/contact-details/alt-formats/do-you-want-to-receive-text-updates`;
-    validatePath(response, redirectPath);
-  })
+
 
   //Audio format
   router.post(`/${folderForViews}/audio`, function (request, response) {
@@ -616,6 +612,27 @@ validatePath(response, redirectPath);
     }
   })
 
+  //What size print u need 
+  router.post(`/${folderForViews}/contact-details/alt-formats/what-size-print-do-you-need`, function (request, response) {
+    var sizing = request.session.data['sizing'];
+
+    if (sizing === '16') {
+      const redirectPath = `/${folderForViews}/contact-details/do-you-want-to-receive-text-updates`;
+validatePath(response, redirectPath);;
+
+    } else if (sizing === '18') {
+      const redirectPath = `/${folderForViews}/contact-details/do-you-want-to-receive-text-updates`;
+validatePath(response, redirectPath);;
+
+    } else if (sizing === '25') {
+      const redirectPath = `/${folderForViews}/contact-details/do-you-want-to-receive-text-updates`;
+validatePath(response, redirectPath);;
+
+} else {
+      const redirectPath = `/${folderForViews}/contact-details/do-you-want-to-receive-text-updates`;
+validatePath(response, redirectPath);;
+    }
+  });
 
 
 
@@ -930,6 +947,8 @@ validatePath(response, redirectPath);
   })
 
 
+
+
   router.post(`/${folderForViews}/contact-details/alt-formats/large-print`, function (request, response) {
   var largePrint = request.session.data['largePrint'];
   console.log('YTYTYT: ' + largePrint);
@@ -953,44 +972,6 @@ validatePath(response, redirectPath);
   }
 })
 
-//old original route from colour to size
-//       router.post(`/${folderForViews}/contact-details/alt-formats/what-colour-paper-do-you-need`, function (request, response) {
-//     const redirectPath = `/${folderForViews}/contact-details/alt-formats/what-size-print-do-you-need`;
-// validatePath(response, redirectPath);
-//   })
-
-
-
-
-
-
-//   router.post(`/${folderForViews}/contact-details/alt-formats/large-print`, function (request, response) {
-//   const largePrint = request.session.data['largePrint'];
-//   console.log('largePrint:', largePrint);
-
-//   // Normalize to array for checkbox handling
-//   const selections = Array.isArray(largePrint) ? largePrint : (largePrint ? [largePrint] : []);
-
-//   // Store remaining steps in sessio n
-//   request.session.data['altFormatSteps'] = [];
-
-//   if (selections.includes('coloured-paper')) {
-//     request.session.data['altFormatSteps'].push(`/${folderForViews}/contact-details/alt-formats/what-colour-paper-do-you-need`);
-//   }
-//   if (selections.includes('large-print')) {
-//     request.session.data['altFormatSteps'].push(`/${folderForViews}/contact-details/alt-formats/what-size-print-do-you-need`);
-//   }
-
-//   // If nothing selected, go straight to text updates
-//   if (request.session.data['altFormatSteps'].length === 0) {
-//     const redirectPath = `/${folderForViews}/contact-details/do-you-want-to-receive-text-updates`;
-//     return validatePath(response, redirectPath);
-//   }
-
-//   // Redirect to the first step
-//   const nextPath = request.session.data['altFormatSteps'].shift();
-//   validatePath(response, nextPath);
-// });
 
 
 
@@ -1089,6 +1070,15 @@ validatePath(response, redirectPath);
 validatePath(response, redirectPath);
   })
 
+  router.post(`/${folderForViews}/healthcare-professional/consent-2`, function (request, response) {
+      const redirectPath = `/${folderForViews}/healthcare-professional/start`;
+validatePath(response, redirectPath);
+  })
+
+    router.post(`/${folderForViews}/healthcare-professional/consent-1`, function (request, response) {
+      const redirectPath = `/${folderForViews}/healthcare-professional/consent-2`;
+validatePath(response, redirectPath);
+  })
 
   router.post(`/${folderForViews}/nationality/nationality-summary`, function (request, response) {
       const redirectPath = `/${folderForViews}/healthcare-professional/consent-1`;

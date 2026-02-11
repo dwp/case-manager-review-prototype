@@ -32,4 +32,20 @@ router.post('/regScen', function (request, response) {
     } else if (regScena === "agent"){
       response.redirect("pip-register/signposting-eligibility/service-start-page")
   }
+  
+});
+
+// New route for journey
+router.post('/journey', function (request, response) {
+    var journey = request.body.journey; // expects 'core', '3rd', or 'dla'
+    request.session.data['journey'] = journey;
+
+    if (journey === '3rd') {
+        response.redirect("/pip-register-v4/signposting-eligibility/with-applicant");
+    } else if (journey === 'dla') {
+        response.redirect("/pip-register-v4/signposting-eligibility/dla-now");
+    } else if (journey === 'core') {
+        response.redirect("/pip-register-v4/signposting-eligibility/service-start-page");
+    } else {
+    }
 });

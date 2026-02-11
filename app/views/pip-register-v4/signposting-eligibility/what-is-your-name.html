@@ -12,14 +12,11 @@
   Question page template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
-
 {% block content %}
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form class="form" action="what-is-your-name" method="post">
 
-        
         <h1 class="govuk-heading-l">
           What is your name? 
         </h1>
@@ -31,34 +28,56 @@
           }
         }) %}
 
-        {{ govukInput({
-          label: {
-            text: ""
-          },
-          id: "name-optional",
-          name: "first-name",
-          autocomplete: "name",
-          spellcheck: false
-        }) }}
+        {% if data['journey'] == "core" %}
+          {{ govukInput({
+            label: {
+              text: "First name"
+            },
+            id: "first-name",
+            name: "first-name",
+            autocomplete: "given-name",
+            spellcheck: false
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "Last name"
+            },
+            id: "last-name",
+            name: "last-name",
+            autocomplete: "family-name",
+            spellcheck: false
+          }) }}
+        {% else %}
+          {{ govukInput({
+            label: {
+              text: ""
+            },
+            id: "name-optional",
+            name: "first-name",
+            autocomplete: "name",
+            spellcheck: false
+          }) }}
+        {% endif %}
 
         {% endcall %}
 
- {% from "govuk/components/button/macro.njk" import govukButton %}
+        {% from "govuk/components/button/macro.njk" import govukButton %}
 
-{{ govukButton({
-  text: "Continue"
-}) }}
-
+        {{ govukButton({
+          text: "Continue"
+        }) }}
 
         <!-- <p><a href="/pip-register-v4/task-list.html">Go to task list</a></p> -->
 
       </form>
 
-<p class="govuk-body">
-<a href="what-is-your-name-third.html" class="govuk-link">Third party did not give their name</a>
-    </p>
-
-    </div>
-  </div>
-
+      {% if data['journey'] == "3rd" %}
+        <p class="govuk-body">
+          <a href="what-is-your-name-third.html" class="govuk-link">Third party did not give their name</a>
+        </p>
+      {% else %}
+        </div>
+      </div>
+      {% endif %}
 {% endblock %}
