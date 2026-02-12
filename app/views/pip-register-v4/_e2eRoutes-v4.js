@@ -193,20 +193,7 @@ validatePath(response, redirectPath);
   console.log('Redirecting to:', folderForViews);
 })
 
-  //appointee
-  router.post(`/${folderForViews}/appointee`, function (request, response) {
-    var externalRoute = request.session.data['appointeeYn']
-    if (externalRoute == "yes") {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/appointee-kickout`;
-validatePath(response, redirectPath);
-    }
-    else if (externalRoute == "no") {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/phone-passback`;
-validatePath(response, redirectPath);
-    }
-    console.log('appointeeYn value:', request.session.data['appointeeYn']);
-console.log('Redirecting to:', folderForViews);
-  })
+
 
 
 
@@ -293,6 +280,32 @@ validatePath(response, redirectPath);
   validatePath(response, redirectPath);
 });
 
+router.post(`/${folderForViews}/signposting-eligibility/appointee`, function (req, res) {
+  const journey = req.session.data['journey'];   
+  const appointeeYn = req.session.data['appointeeYn']; 
+
+  let redirectPath;
+
+
+  if (appointeeYn === 'yes') {
+    redirectPath = `/${folderForViews}/signposting-eligibility/appointee-kickout`;
+
+  } else {
+
+    if (journey === 'core') {
+      redirectPath = `/${folderForViews}/signposting-eligibility/security-check`;
+    } else if (journey === '3rd') {
+      redirectPath = `/${folderForViews}/signposting-eligibility/phone-passback`;
+    } else {
+      // Default fallback
+      redirectPath = `/${folderForViews}/signposting-eligibility/security-check`;
+    }
+  }
+
+  validatePath(res, redirectPath);
+});
+``
+
 
   // third party speak
     router.post(`/${folderForViews}/signposting-eligibility/third-party-speak`, function (request, response) {
@@ -300,9 +313,24 @@ validatePath(response, redirectPath);
 validatePath(response, redirectPath);
   })
 
+      router.post(`/${folderForViews}/declaration`, function (request, response) {
+  const journey = request.session.data['journey'];
+  let redirectPath;
+
+  if (journey === 'core') {
+    redirectPath = `/${folderForViews}/welcome-screen`;
+  } else if (journey === '3rd') {
+    redirectPath = `/${folderForViews}/signposting-eligibility/phone-passback`;
+  } else {
+
+    redirectPath = `/${folderForViews}/welcome-screen`;
+  }
+
+  validatePath(response, redirectPath);
+});
 
     router.post(`/${folderForViews}/signposting-eligibility/phone-passback`, function (request, response) {
-     const redirectPath = `/${folderForViews}/signposting-eligibility/security-check`;
+     const redirectPath = `/${folderForViews}/welcome-screen`;
 validatePath(response, redirectPath);
   })
 
@@ -359,7 +387,7 @@ validatePath(response, redirectPath);
 
 
   router.post(`/${folderForViews}/signposting-eligibility/failed-security`, function (request, response) {
-    const redirectPath = `/${folderForViews}/welcome-screen`;
+    const redirectPath = `/${folderForViews}/declaration`;
 validatePath(response, redirectPath);
   })
 
@@ -381,11 +409,6 @@ validatePath(response, redirectPath);
 validatePath(response, redirectPath);
   })
 
-  // Declaration
-  router.post(`/${folderForViews}/declaration`, function (request, response) {
-    const redirectPath = `/${folderForViews}/signposting-eligibility/ready-application`;
-validatePath(response, redirectPath);
-  })
 
   // --------------------------------------------------------------------------------------
 
