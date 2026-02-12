@@ -28,7 +28,7 @@ validatePath(response, redirectPath);
   router.post(`/${folderForViews}/signposting-eligibility/with-applicant`, function (request, response) {
     var withApp = request.session.data['with-app']
     if (withApp == 'yes') {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/srel`;
+      const redirectPath = `/${folderForViews}/signposting-eligibility/what-is-your-name`;
 validatePath(response, redirectPath);
     } else if (withApp == "no") {
       const redirectPath = `/${folderForViews}/signposting-eligibility/third-party-caller-kickout`;
@@ -86,7 +86,7 @@ validatePath(response, redirectPath);
     router.post(`/${folderForViews}/signposting-eligibility/someone-else`, function (request, response) {
     var someoneElse = request.session.data['someone-else']
     if (someoneElse == 'third') {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/with-applicant`;
+      const redirectPath = `/${folderForViews}/signposting-eligibility/srel`;
 validatePath(response, redirectPath);
     } else if (someoneElse == "individual") {
       const redirectPath = `/${folderForViews}/signposting-eligibility/someone-else-bau-kickout`;
@@ -227,15 +227,51 @@ validatePath(response, redirectPath);
     }
   })
 
-  // Claiming under SREL?
-  router.post(`/${folderForViews}/signposting-eligibility/srel`, function (request, response) {
-    var srel = request.session.data['srel']
-    if (srel == 'yes') {
+// Claiming under SREL?
+router.post(`/${folderForViews}/signposting-eligibility/srel`, function (request, response) {
+
+  // Get the value selected on the form
+  const srel = request.body['srel'];
+  // Read the journey already stored
+  const journey = request.session.data['journey'];
+  // Safety check: ensure radios were selected
+  if (!srel) {
+    const redirectPath = `/${folderForViews}/signposting-eligibility/srel`;
+    return validatePath(response, redirectPath);
+  }
+  // ────────────────────────────────────────
+  // JOURNEY LOGIC
+  // ────────────────────────────────────────
+  // CORE JOURNEY BEHAVIOUR
+  if (journey === 'core') {
+    const redirectPath = `/${folderForViews}/signposting-eligibility/new-application`;
+    return validatePath(response, redirectPath);
+  }
+  // THIRD-PARTY JOURNEY BEHAVIOUR
+  if (journey === '3rd') {
+    if (srel === 'no') {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/with-applicant`;
+      return validatePath(response, redirectPath);
+    }
+    if (srel === 'yes') {
       const redirectPath = `/${folderForViews}/signposting-eligibility/srel-bau-kickout`;
-validatePath(response, redirectPath);
-    } else if (srel == "no") {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/what-is-your-name`;
-validatePath(response, redirectPath);
+      return validatePath(response, redirectPath);
+    }
+  }
+});
+
+
+
+  router.post(`/${folderForViews}/signposting-eligibility/claiming-self`, function (request, response) {
+    const claimingSelf = request.body['claiming-self'];
+    if (claimingSelf === 'myself') {
+      request.session.data['journey'] = 'core';
+      response.redirect('/pip-register-v4/signposting-eligibility/srel');
+    } else if (claimingSelf === 'someone-else') {
+      request.session.data['journey'] = '3rd';
+      response.redirect('/pip-register-v4/signposting-eligibility/someone-else');
+    } else {
+      response.redirect('/pip-register-v4/signposting-eligibility/claiming-self');
     }
   })
 
