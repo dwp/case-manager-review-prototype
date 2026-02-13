@@ -38,23 +38,7 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
         }
       ] %}
 
-      {% if data['journey'] != "core" %}
-        {% set summaryRows = summaryRows.concat([
-          {
-            key: { text: "Third party name" },
-            value: { text: "Weylon Smithers / [not provided]" },
-            actions: {
-              items: [
-                {
-                  href: "what-is-your-name",
-                  text: "Change",
-                  visuallyHiddenText: "Question 2"
-                }
-              ]
-            }
-          }
-        ]) %}
-      {% endif %}
+
 
       {% set summaryRows = summaryRows.concat([
         {

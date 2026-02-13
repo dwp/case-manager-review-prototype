@@ -334,7 +334,7 @@ router.post(`/${folderForViews}/signposting-eligibility/appointee`, function (re
       redirectPath = `/${folderForViews}/signposting-eligibility/phone-passback`;
     } else {
       // Default fallback
-      redirectPath = `/${folderForViews}/signposting-eligibility/security-check`;
+      redirectPath = `/${folderForViews}/signposting-eligibility/phone-passback`;
     }
   }
 
@@ -356,7 +356,7 @@ validatePath(response, redirectPath);
   if (journey === 'core') {
     redirectPath = `/${folderForViews}/welcome-screen`;
   } else if (journey === '3rd') {
-    redirectPath = `/${folderForViews}/signposting-eligibility/phone-passback`;
+    redirectPath = `/${folderForViews}/signposting-eligibility/ready-application`;
   } else {
 
     redirectPath = `/${folderForViews}/welcome-screen`;
@@ -366,7 +366,7 @@ validatePath(response, redirectPath);
 });
 
     router.post(`/${folderForViews}/signposting-eligibility/phone-passback`, function (request, response) {
-     const redirectPath = `/${folderForViews}/welcome-screen`;
+     const redirectPath = `/${folderForViews}/signposting-eligibility/security-check`;
 validatePath(response, redirectPath);
   })
 

@@ -7,7 +7,7 @@
   "dependencies": {
     "@dwp/dwp-frontend": "3.4.0",
     "@govuk-prototype-kit/common-templates": "2.0.1",
-    "axios": "^1.13.5",
+    "axios": "1.13.5",
     "body-parser": "1.20.4",
     "braces": "3.0.3",
     "cross-spawn": "7.0.6",
