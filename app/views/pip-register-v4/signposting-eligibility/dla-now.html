@@ -1,13 +1,10 @@
-{% if (data['regScena'] == "agent" ) %}
-    {% extends "../../layouts/main-v3.html" %}
-{% elseif (data['regScena'] == "citizen") %}
-{% extends "../../layouts/main-gov.html" %}
-{% else %}
-    {% extends "/layouts/main-v3.html" %}
-{% endif %}
+{% extends "/layouts/main-v3.html" %}
+{% from "components/third-party-name.njk" import thirdPartyCaption %}
+{% set thirdPartyName = data['thirdPartyName'] %}
+{% set applicantName = data['applicantName'] %}
+
 
 {% set isDeclarationPre = true %}
-
 {% block pageTitle %}
   Question page template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
@@ -22,19 +19,16 @@
   <div class="govuk-grid-column-two-thirds">
           <form action="#" method="post" novalidate>
 
+                    {{ thirdPartyCaption({
+            thirdPartyName: thirdPartyName,
+            applicantName: applicantName,
+            heading: "Are you getting Disability Living Allowance (DLA) now?",
+              hint: "If you get DLA, you may have received a letter telling you to apply for PIP."
+        }) }}
 
             {{ govukRadios({
               name: "dlaNow",
-              fieldset: {
-                legend: {
-                  text: "Are you getting Disability Living Allowance (DLA) now?",
-                  isPageHeading: true,
-                  classes: "govuk-fieldset__legend--l"
-                }
-                },
-  hint: {
-    text: "If you get DLA, you may have received a letter telling you to apply for PIP."
-              },
+              
               items: [
                 {
                   value: "yes",

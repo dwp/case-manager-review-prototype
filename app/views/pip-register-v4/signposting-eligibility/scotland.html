@@ -1,10 +1,8 @@
-{% if (data['regScena'] == "agent" ) %}
-    {% extends "../../layouts/main-v3.html" %}
-{% elseif (data['regScena'] == "citizen") %}
-{% extends "../../layouts/main-gov.html" %}
-{% else %}
-    {% extends "/layouts/main-v3.html" %}
-{% endif %}
+{% extends "/layouts/main-v3.html" %}
+{% from "components/third-party-name.njk" import thirdPartyCaption %}
+{% set thirdPartyName = data['thirdPartyName'] %}
+{% set applicantName = data['applicantName'] %}
+
 
 {% set isDeclarationPre = true %}
 
@@ -21,9 +19,12 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
 
     <form action="#" method="post" method="post">
 
-      <h1 class="govuk-heading-l">
-        You need to call a different phone line if you live in Scotland
-      </h1>
+                    {{ thirdPartyCaption({
+            thirdPartyName: thirdPartyName,
+            applicantName: applicantName,
+            heading: "You need to call a different phone line if you live in Scotland"
+        }) }}
+
 
       <p class="govuk-body">
         Personal Independence Payment is for people living in England, Wales or Northern Ireland.

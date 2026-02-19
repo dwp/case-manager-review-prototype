@@ -214,16 +214,16 @@ validatePath(response, redirectPath);
 
   // Are you over 16 and under SPA?
   router.post(`/${folderForViews}/signposting-eligibility/over-16`, function (request, response) {
-    var correctAge = request.session.data['age']
-    if (correctAge == 'yes') {
+    const correctAge = request.session.data['age']
+    if (correctAge === 'yes') {
       const redirectPath = `/${folderForViews}/signposting-eligibility/dla-now`;
-validatePath(response, redirectPath);
-    } else if (correctAge == "no-under-16") {
+      validatePath(response, redirectPath);
+    } else if (correctAge === "no-under-16") {
       const redirectPath = `/${folderForViews}/signposting-eligibility/under-16-ineligible`;
-validatePath(response, redirectPath);
-    } else if (correctAge == "no-over-spa") {
+      validatePath(response, redirectPath);
+    } else if (correctAge === "no-over-spa") {
       const redirectPath = `/${folderForViews}/signposting-eligibility/last-12-months`;
-validatePath(response, redirectPath);
+      validatePath(response, redirectPath);
     }
   })
 
@@ -234,6 +234,10 @@ router.post(`/${folderForViews}/signposting-eligibility/srel`, function (request
   const srel = request.body['srel'];
   // Read the journey already stored
   const journey = request.session.data['journey'];
+
+      console.log('SREL value is:', srel);
+  console.log('Journey value is:', journey);
+
   // Safety check: ensure radios were selected
   if (!srel) {
     const redirectPath = `/${folderForViews}/signposting-eligibility/srel`;
@@ -244,7 +248,7 @@ router.post(`/${folderForViews}/signposting-eligibility/srel`, function (request
   // ────────────────────────────────────────
   // CORE JOURNEY BEHAVIOUR
   if (journey === 'core') {
-    const redirectPath = `/${folderForViews}/signposting-eligibility/new-application`;
+    const redirectPath = `/${folderForViews}/signposting-eligibility/what-is-your-name`;
     return validatePath(response, redirectPath);
   }
   // THIRD-PARTY JOURNEY BEHAVIOUR
@@ -301,6 +305,7 @@ validatePath(response, redirectPath);
   })
 
     router.post(`/${folderForViews}/signposting-eligibility/what-is-your-name`, function (request, response) {
+              request.session.data['thirdPartyName'] = request.body['first-name']
   const journey = request.session.data['journey'];
   let redirectPath;
 
@@ -371,6 +376,8 @@ validatePath(response, redirectPath);
   })
 
     router.post(`/${folderForViews}/signposting-eligibility/what-is-your-name-third`, function (request, response) {
+        request.session.data['applicantName'] = request.body['first-name'] + ' ' + request.body['last-name'];
+
      const redirectPath = `/${folderForViews}/signposting-eligibility/third-party-speak`;
 validatePath(response, redirectPath);
   })

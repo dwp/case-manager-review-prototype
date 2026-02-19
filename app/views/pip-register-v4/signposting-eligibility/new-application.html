@@ -1,14 +1,12 @@
-{% if (data['regScena'] == "agent" ) %}
-    {% extends "../../layouts/main-v3.html" %}
-{% elseif (data['regScena'] == "citizen") %}
-    {% extends "../../layouts/main-gov.html" %}
-{% else %}
-    {% extends "/layouts/main-v3.html" %}
-{% endif %}
+{% extends "/layouts/main-v3.html" %}
+{% from "components/third-party-name.njk" import thirdPartyCaption %}
+{% set thirdPartyName = data['thirdPartyName'] %}
+{% set applicantName = data['applicantName'] %}
+
 
 {% set isDeclarationPre = true %}
-
 {% block pageTitle %}
+
 Content page template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
@@ -17,15 +15,12 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
   <div class="govuk-grid-column-two-thirds">
 
     <form action="#" method="post">
-      {% if data['journey'] == "3rd" %}
-        {% from "components/header-caption.njk" import headerWithCaption %}
-        {{ headerWithCaption({
-          caption: "Weylon Smithers on behalf of Montgommery Burns",
-          heading: "Which nation in the UK do you live in?"
+        {{ thirdPartyCaption({
+            thirdPartyName: thirdPartyName,
+            applicantName: applicantName,
+            heading: "Which nation in the UK do you live in?"
         }) }}
-      {% else %}
-        <h1 class="govuk-heading-l">Which nation in the UK do you live in?</h1>
-      {% endif %}
+
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
       {{ govukRadios({

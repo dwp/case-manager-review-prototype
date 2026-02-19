@@ -1,10 +1,8 @@
-{% if (data['regScena'] == "agent" ) %}
-    {% extends "../../layouts/main-v3.html" %}
-{% elseif (data['regScena'] == "citizen") %}
-{% extends "../../layouts/main-gov.html" %}
-{% else %}
-    {% extends "/layouts/main-v3.html" %}
-{% endif %}
+{% extends "/layouts/main-v3.html" %}
+{% from "components/third-party-name.njk" import thirdPartyCaption %}
+{% set thirdPartyName = data['thirdPartyName'] %}
+{% set applicantName = data['applicantName'] %}
+
 
 {% set isDeclarationPre = true %}
 
@@ -18,9 +16,13 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form action="#" method="post" method="post">
+              {{ thirdPartyCaption({
+            thirdPartyName: thirdPartyName,
+            applicantName: applicantName,
+            heading: "We can continue with your application, but we have not been able to confirm your identity"
+        }) }}
 
-      <h1 class="govuk-heading-l">We can continue with your application, but we have not been able to confirm your identity</h1>
+    <form action="#" method="post" method="post">
 
       <p class="govuk-body">After this call, you will need to call the enquiry line to confirm your identity.</p>
 
@@ -35,8 +37,6 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
       }) }}
 
   </form>
-
-  
 
   </div>
 </div>

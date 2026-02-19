@@ -1,10 +1,9 @@
-{% if (data['regScena'] == "agent" ) %}
-    {% extends "../layouts/main-v3.html" %}
-{% elseif (data['regScena'] == "citizen") %}
-{% extends "../layouts/main-gov.html" %}
-{% else %}
-    {% extends "../layouts/main-v3.html" %}
-{% endif %}
+{% extends "/layouts/main-v3.html" %}
+{% from "components/third-party-name.njk" import thirdPartyCaption %}
+{% set thirdPartyName = data['thirdPartyName'] %}
+{% set applicantName = data['applicantName'] %}
+
+{% set isDeclarationPre = true %}
 
 {% block pageTitle %}
   Content page template – {{ serviceName }} – GOV.UK Prototype Kit
@@ -16,16 +15,11 @@
     <div class="govuk-grid-column-two-thirds">
 
       <form action="#" method="post" method="post">
-          {% if (data['regScena'] == "citizen" ) %}
-          <h1 class="govuk-heading-l">
-            Citizen variant goes here
-          </h1>
-          {% else %}
-          <h1 class="govuk-heading-l">
-            We cannot start your application now
-          </h1>
-          {% endif %}
-          
+                                 {{ thirdPartyCaption({
+            thirdPartyName: thirdPartyName,
+            applicantName: applicantName,
+            heading: "We cannot start your application now"
+        }) }}
 
           <p class="govuk-body">You need to agree to the declaration in order to apply for PIP.</p>
 

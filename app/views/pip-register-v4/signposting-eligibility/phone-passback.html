@@ -1,10 +1,8 @@
-{% if (data['regScena'] == "agent" ) %}
-    {% extends "../../layouts/main-v3.html" %}
-{% elseif (data['regScena'] == "citizen") %}
-{% extends "../../layouts/main-gov.html" %}
-{% else %}
-    {% extends "/layouts/main-v3.html" %}
-{% endif %}
+{% extends "/layouts/main-v3.html" %}
+{% from "components/third-party-name.njk" import thirdPartyCaption %}
+{% set thirdPartyName = data['thirdPartyName'] %}
+{% set applicantName = data['applicantName'] %}
+
 
 {% set isDeclarationPre = true %}
 
@@ -20,9 +18,11 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
 
     <form action="phone-passback" method="post" method="post">
 
-      <h1 class="govuk-heading-l">
-        Please pass the phone to [applicant]</h1>
-
+             {{ thirdPartyCaption({
+            thirdPartyName: thirdPartyName,
+            applicantName: applicantName,
+            heading: "Please pass the phone to [applicant]"
+        }) }}
 
       <p class="govuk-body">
        They need to answer some questions to confirm their identity. Do not help them answer these questions.</p>

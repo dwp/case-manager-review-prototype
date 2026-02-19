@@ -1,10 +1,8 @@
-{% if (data['regScena'] == "agent" ) %}
-    {% extends "../../layouts/main-v3.html" %}
-{% elseif (data['regScena'] == "citizen") %}
-{% extends "../../layouts/main-gov.html" %}
-{% else %}
-    {% extends "/layouts/main-v3.html" %}
-{% endif %}
+{% extends "/layouts/main-v3.html" %}
+{% from "components/third-party-name.njk" import thirdPartyCaption %}
+{% set thirdPartyName = data['thirdPartyName'] %}
+{% set applicantName = data['applicantName'] %}
+
 
 {% set isDeclarationPre = true %}
 
@@ -22,9 +20,13 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
 
     <form action="#" method="post" method="post">
 
-      <h1 class="govuk-heading-l">
-I need to collect some more details to continue
-      </h1>
+                    {{ thirdPartyCaption({
+            thirdPartyName: thirdPartyName,
+            applicantName: applicantName,
+            heading: "I need to collect some more details to continue"
+        }) }}
+
+
 
       {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 

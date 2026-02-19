@@ -1,0 +1,13 @@
+{% macro thirdPartyCaption(params) %} 
+  {% if params.thirdPartyName and params.applicantName %}
+    <div class="{{ params.captionClass | default('govuk-caption-l') }}">{{ params.thirdPartyName + ' on behalf of ' + params.applicantName | default('') }}</div>
+  {% elif params.thirdPartyName %}
+    <div class="{{ params.captionClass | default('govuk-caption-l') }}">{{ 'Application on behalf of ' + params.applicantName | default('') }}</div>
+  {% endif %}
+  {% if params.hint %}
+    <h1 class="{{ params.headingClass | default('govuk-heading-l') }} govuk-!-margin-bottom-2">{{ params.heading | default('') }}</h1>
+    <div class="govuk-hint govuk-!-margin-bottom-4">{{params.hint}}</div>
+  {% else %}
+      <h1 class="{{ params.headingClass | default('govuk-heading-l') }}">{{ params.heading | default('') }}</h1>
+  {% endif %}
+{% endmacro %}
