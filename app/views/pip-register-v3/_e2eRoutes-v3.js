@@ -119,6 +119,39 @@ validatePath(response, redirectPath);
   })
 
 
+// stop-application
+router.post(`/${folderForViews}/stop-app`, function (request, response) {
+    var StopApplication = request.session.data['StopApplication'];
+    if (StopApplication == "yes") {
+        const redirectPath = `/${folderForViews}/app-stop`;
+        validatePath(response, redirectPath);
+    }
+    else if (StopApplication == "no") {
+        const redirectPath = `/${folderForViews}/app-stop`;
+        validatePath(response, redirectPath);
+    }
+
+    // 3. Debugging logs
+    console.log('StopApplication value:', StopApplication);
+    console.log('Target folder:', folderForViews);
+});
+
+
+    //stop-application
+  router.post(`/${folderForViews}/stop-app-pre`, function (request, response) {
+    var StopApplicationPre = request.session.data['StopApplicationPre']
+    if (StopApplicationPre == "yes") {
+        const redirectPath = `/${folderForViews}/app-stop`;
+validatePath(response, redirectPath);
+    }
+    else if (StopApplicationPre == "no") {
+        const redirectPath = `/${folderForViews}/app-stop`;
+validatePath(response, redirectPath);
+    }
+    console.log('StopApplicationPost value:', request.session.data['stop-app']);
+console.log('Redirecting to:', folderForViews);
+  })
+
 
   //last 12 months
   router.post(`/${folderForViews}/last-12-months`, function (request, response) {
@@ -792,7 +825,7 @@ validatePath(response, redirectPath);;
 validatePath(response, redirectPath);;
   } else {
     // Fallback: no option selected
-    const redirectPath = `./${folderForViews}/contact-details/alt-formats/written-format`;
+    const redirectPath = `./${folderForViews}/contact-details/do-you-want-to-receive-text-updates`;
 validatePath(response, redirectPath);;
   }
 })
