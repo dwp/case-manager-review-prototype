@@ -1,4 +1,4 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-nav.html" %}
 
 {% set pageName="Home" %}
 
@@ -6,14 +6,83 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        AAR - Agent Assisted Registration </h1>
 
-    {% include "govuk-prototype-kit/includes/homepage-top.njk" %}
+<p class='govuk-body'>This service / prototype is managed by<a href="https://dwpdigital.atlassian.net/wiki/spaces/HPDU/pages/133261558699/Team+Pelican" class="govuk-link" rel="noreferrer noopener" target="_blank"> Team Pelican (opens in new tab)</a>.</p>
 
-    <h1 class="govuk-heading-l">
-      {{ serviceName }}
-    </h1>
 
-    {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}
+<p class='govuk-body'>Gitlab <a href="https://gitlab.com/dwp/user-centred-design/case-manager-review-prototype" class="govuk-link" rel="noreferrer noopener" target="_blank"> Repo</a></p>
+
+
+
+<br>
+            <h3 class="govuk-heading-m">
+                                    Current version live prototype - V4</h3>
+
+{{ govukButton({
+  text: "Latest prototype",
+  href: "/pip-register-v4/signposting-eligibility/service-start-page",
+  isStartButton: true
+}) }}
+
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+{{ govukTable({
+  caption: "Prototype versions",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: true,
+  head: [
+    {
+      text: "Name"
+    },
+    {
+      text: "Notes"
+    },
+    {
+      text: "Journey"
+    }
+  ],
+  rows: [
+    [
+      {
+        text: "V3"
+      },
+       {
+        text: "Core Journey, mirroring build. Used for 2 agent trial"
+      },
+      {
+        html: '<a href="/pip-register-v3/signposting-eligibility/service-start-page" class="govuk-link">Prototype</a>'
+      }
+    ],
+    [
+      {
+        text: "V4"
+      },
+       {
+        text: "Core journey + 3rd party"
+      },
+      {
+        html: '<a href="/pip-register-v4/signposting-eligibility/service-start-page" class="govuk-link">Prototype</a>'
+      }
+    ],
+    [
+      {
+        text: "V5"
+      },
+       {
+        text: "Core journey + 3rd party + DLA"
+      },
+      {
+        text: "Coming soon"
+      }
+    ]
+  ]
+}) }}
+
+
+
+
   </div>
 </div>
 
