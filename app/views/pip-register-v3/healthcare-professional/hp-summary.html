@@ -92,7 +92,7 @@
           actions: {
             items: [
               {
-                href: "healthcare-professional/consent-2",
+                href: "/pip-register-v3/healthcare-professional/healthcare-prof-type",
                 text: "Change",
                 visuallyHiddenText: "jobRole"
               }
@@ -109,13 +109,14 @@
             actions: {
               items: [
                 {
-                  href: "healthcare-professional/consent-2",
+                  href: "/pip-register-v3/healthcare-professional/healthcare-prof-type",
                   text: "Change",
                   visuallyHiddenText: "phoneNumber"
                 }
               ]
             }
           },
+
           {
             key: {
               text: "Address"
@@ -126,9 +127,28 @@
             actions: {
               items: [
                 {
-                  href: "healthcare-professional/postcode",
+                  href: "/pip-register-v3/healthcare-professional/postcode",
                   text: "Change",
-                  visuallyHiddenText: "age"
+                  visuallyHiddenText: "address"
+                }
+              ]
+            }
+          },
+
+
+          {
+            key: {
+              text: "Last contact"
+            },
+            value: {
+              html: "<p class='govuk-body'>6 Months ago</p>"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/pip-register-v3/healthcare-professional/healthcare-prof-type",
+                  text: "Change",
+                  visuallyHiddenText: "lastContact"
                 }
               ]
             }

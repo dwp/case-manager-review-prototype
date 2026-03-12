@@ -93,6 +93,22 @@
           id: "contact",
           name: "contact",
           classes: "govuk-input--width-20"
+          }) }}
+
+          {{ govukInput({
+          label: {
+            text: "When did you last speak to them?",
+            hint: "",
+            classes: "govuk-label--m",
+            isPageHeading: true
+          },
+          hint: {
+            text: "This can be approximate - for example, March 2021 or 18 months ago."
+          },
+          id: "last-speak",
+          name: "last-speak",
+          classes: "govuk-input--width-20"
+
         }) }}
 
         <!--
