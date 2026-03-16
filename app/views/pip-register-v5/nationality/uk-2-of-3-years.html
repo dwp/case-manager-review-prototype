@@ -1,0 +1,89 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../layouts/main-v3.html" %}
+{% endif %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" href="/public/sass/accessible-autocomplete.min.css">
+{% endblock %}
+
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="#" method="post">
+
+          <h1 class="govuk-heading-l">We need to know how much time you've spent in countries outside the UK in the last 3 years</h1>
+
+          <p class="govuk-body">We only need to know about times you have left the UK for four weeks or longer, and if those trips add up to at least one year.</p>
+
+
+<br>
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+        {{ govukRadios({
+          name: "uk-years",
+          fieldset: {
+            legend: {
+            text: "Since [dynamic date: today minus 3 years], have you travelled or lived outside the UK for a total of one year or more?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+          ]
+        }) }}
+
+        <!--,
+          {
+            value: "unsure",
+            text: "I’m not sure"
+          }-->
+
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+
+          <p><a href="/pip-register-v3/task-list-as-done">Go to task list</a></p>
+
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script src="/public/javascripts/accessible-autocomplete.min.js"></script>
+  <script type="text/javascript">
+    element = document.querySelector('#country')
+    accessibleAutocomplete.enhanceSelectElement({
+      selectElement: element
+    })
+  </script>
+{% endblock %}

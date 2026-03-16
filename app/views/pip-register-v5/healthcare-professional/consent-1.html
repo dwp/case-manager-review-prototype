@@ -1,0 +1,57 @@
+{% extends "../../layouts/main-v3.html" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
+  Consent – {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+  {% set journey = (data['journey'] | default('') | trim | lower) %}
+
+
+  <p class="govuk-visually-hidden">journey (normalized) = “{{ journey }}”</p>
+    <form action="consent-1" method="post" method="post">
+
+  {% if journey == "core" %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">The next questions are about your health or care professionals</h1>
+        <p>First I will explain how the DWP shares information with them. Then I will ask about the people who know the most about your health conditions.</p>
+        <p>If you need me to repeat anything, let me know.</p>
+
+
+          {{ govukButton({ text: "Save and continue" }) }}
+        </form>
+      </div>
+    </div>
+
+  {% elseif journey == "3rd" %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">The next questions are about [applicant Firstname]'s health or care professionals</h1>
+        <p>Before I ask for the details of those professionals, I need to speak to [applicant Firstname], to explain how the DWP shares their information.</p>
+        <p>Please pass the phone to them now.</p>
+
+{{ govukButton({ text: "Save and continue" }) }}        </form>
+      </div>
+    </div>
+
+  {% else %}
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">We didn’t get your journey</h1>
+
+        <p>Set it to <code>core</code> or <code>3rd</code> in your route/session.</p>
+
+
+          {{ govukButton({ text: "Save and continue" }) }}
+        </form>
+      </div>
+    </div>
+
+  {% endif %}
+{% endblock %}
