@@ -14,12 +14,17 @@ const validatePath = require('./validatePath.js')
   // Eligibility launched from main UI
   router.post(`/${folderForViews}/signposting-eligibility/service-start-page`, function (request, response) {
     var newApp = request.session.data['new-app']
-    if (newApp == 'yes') {
+    
+    if (newApp == 'pip') {
       const redirectPath = `/${folderForViews}/signposting-eligibility/claiming-self`;
 validatePath(response, redirectPath);
-    } else if (newApp == "no") {
-
+    
+} else if (newApp == "existing") {
       const redirectPath = `/${folderForViews}/signposting-eligibility/existing-claims`;
+validatePath(response, redirectPath);
+
+} else if (newApp == "dla") {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/dla-1-change`;
 validatePath(response, redirectPath);
     }
   })
