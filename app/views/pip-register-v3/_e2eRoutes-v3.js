@@ -146,7 +146,7 @@ validatePath(response, redirectPath);
     }
     else if (StopApplicationPre == "no") {
         const redirectPath = `/${folderForViews}/app-stop`;
-validatePath(response, redirectPath);
+validgfvc==atePath(response, redirectPath);
     }
     console.log('StopApplicationPost value:', request.session.data['stop-app']);
 console.log('Redirecting to:', folderForViews);

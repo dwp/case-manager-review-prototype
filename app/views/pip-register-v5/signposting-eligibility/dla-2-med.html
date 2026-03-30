@@ -1,0 +1,51 @@
+{% extends "/layouts/main-v3.html" %}
+{% from "components/third-party-name.njk" import thirdPartyCaption %}
+{% set thirdPartyName = data['thirdPartyName'] %}
+{% set applicantName = data['applicantName'] %}
+
+
+{% set isDeclarationPre = true %}
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+          <form action="#" method="post" novalidate>
+
+                    {{ thirdPartyCaption({
+            thirdPartyName: thirdPartyName,
+            applicantName: applicantName,
+            heading: "Would you like us to use the medical evidence you provided for your DLA claim?",
+              hint: "We will still ask you to send us evidence when you apply for PIP."
+        }) }}
+
+            {{ govukRadios({
+              name: "dlaMed",
+              
+              items: [
+                {
+                  value: "yes",
+                  text: "Yes"
+                },
+                {
+                  value: "no",
+                  text: "No"
+                }
+              ]
+            }) }}
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+          </form>
+   
+          <p class="govuk-body"><a href="signposting-eligibility/over-16">Applicant does not want to continue with their PIP application</a></p>
+
+        </div>
+</div>
+
+{% endblock %}

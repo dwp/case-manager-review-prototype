@@ -1,0 +1,54 @@
+{% extends "/layouts/main-v3.html" %}
+{% from "components/third-party-name.njk" import thirdPartyCaption %}
+{% set thirdPartyName = data['thirdPartyName'] %}
+{% set applicantName = data['applicantName'] %}
+
+
+{% set isDeclarationPre = true %}
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+          <form action="#" method="post" novalidate>
+
+                    {{ thirdPartyCaption({
+            thirdPartyName: thirdPartyName,
+            applicantName: applicantName,
+            heading: "Has your health condition improved, stayed the same or got worse?",
+              hint: ""
+        }) }}
+
+            {{ govukRadios({
+              name: "dlaNeeds",
+              
+              items: [
+                {
+                  value: "improved",
+                  text: "Improved"
+                },
+                {
+                  value: "same",
+                  text: "Stayed the same"
+                },
+                {
+                  value: "same",
+                  text: "Got worse"
+                }
+              ]
+            }) }}
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+          </form>
+   
+
+        </div>
+</div>
+
+{% endblock %}

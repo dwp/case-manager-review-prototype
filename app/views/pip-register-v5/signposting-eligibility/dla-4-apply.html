@@ -1,0 +1,58 @@
+{% extends "/layouts/main-v3.html" %}
+{% from "components/third-party-name.njk" import thirdPartyCaption %}
+{% set thirdPartyName = data['thirdPartyName'] %}
+{% set applicantName = data['applicantName'] %}
+
+
+{% set isDeclarationPre = true %}
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+          <form action="#" method="post" novalidate>
+
+                    {{ thirdPartyCaption({
+            thirdPartyName: thirdPartyName,
+            applicantName: applicantName,
+            heading: "You can apply for PIP today or wait until you receive your invitation letter",
+              hint: ""
+        }) }}
+
+<p class="govuk-body">If you apply for PIP today, your DLA will continue to be paid while we are making our decision.
+
+<br>
+<br>
+Do you want to apply for PIP today?
+
+</p>  
+
+    {{ govukRadios({
+              name: "dlaApply",
+              
+              items: [
+                {
+                  value: "yes",
+                  text: "Yes"
+                },
+                {
+                  value: "no",
+                  text: "No"
+                }
+              ]
+            }) }}
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+          </form>
+   
+
+        </div>
+</div>
+
+{% endblock %}
