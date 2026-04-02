@@ -16,7 +16,7 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
 
     
 
-      <form class="form" action="#" method="post">
+      <form action="over-16" method="post">
       {{ thirdPartyCaption({
             thirdPartyName: thirdPartyName,
             applicantName: applicantName,
@@ -32,11 +32,11 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
           
         }) }}
 
-        <a href="dla-now.html" class="govuk-button govuk-button" data-module="govuk-button">
-        Continue
-      </a>
-
-  
+{{ govukButton({
+  text: "Continue",
+  href: "",
+  isStartButton: false
+}) }}
 
   </form>
 
@@ -68,7 +68,7 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
     <h3 class="govuk-heading-m">Quick links</h3> 
     <ul class="govuk-list"> 
       <li><a href="under-16-ineligible.html" class="govuk-link">Under 16</a></li> 
-      <li><a href="last-12-months.html" class="govuk-link">Over State Pension age</a></li>
+  <a href="age-check-logic?age=over" class="govuk-link">Over State Pension age</a>
     </ul> 
   </div> <!-- Another example with different content --> 
     
@@ -76,6 +76,12 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
   </main>
  </div> 
 </body>
+
+  {# Temporary debug block - remove before research! #}
+<div class="govuk-inset-text" style="border-color: #f00;">
+  <strong>Debug:</strong> Journey type is currently: <code>{{ data['new-app'] }}</code>
+</div>
+
 
 
   </div>

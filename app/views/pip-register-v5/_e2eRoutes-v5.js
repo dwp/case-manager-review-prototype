@@ -108,19 +108,31 @@ validatePath(response, redirectPath);
 
   })
 
-  router.post(`/${folderForViews}/signposting-eligibility/claiming-self`, function (request, response) {
-    const claimingSelf = request.body['claiming-self'];
-    if (claimingSelf === 'myself') {
-      request.session.data['journey'] = 'core';
-      response.redirect('/pip-register-v4/signposting-eligibility/srel');
-    } else if (claimingSelf === 'someone-else') {
-      request.session.data['journey'] = '3rd';
-      response.redirect('/pip-register-v4/signposting-eligibility/someone-else');
-    } else {
-      response.redirect('/pip-register-v4/signposting-eligibility/claiming-self');
-    }
-  })
+router.post(`/${folderForViews}/signposting-eligibility/claiming-self`, function (request, response) {
+  const claimingSelf = request.body['claiming-self'];
 
+  if (claimingSelf === 'myself') {
+    // 1. Set the user role for later use
+    request.session.data['journey'] = 'core';
+    
+    // 2. Redirect to SREL (Shared page for both DLA and Standard flows)
+    const redirectPath = `/${folderForViews}/signposting-eligibility/srel`;
+    validatePath(response, redirectPath);
+
+  } else if (claimingSelf === 'someone-else') {
+    // 1. Set the user role
+    request.session.data['journey'] = '3rd';
+    
+    // 2. Redirect to Someone Else (Shared page)
+    const redirectPath = `/${folderForViews}/signposting-eligibility/someone-else`;
+    validatePath(response, redirectPath);
+
+  } else {
+    // Error state: Re-render the current page (Stay in v5!)
+    const redirectPath = `/${folderForViews}/signposting-eligibility/claiming-self`;
+    validatePath(response, redirectPath);
+  }
+})
 
   //external route
 
@@ -157,7 +169,10 @@ validatePath(response, redirectPath);
     
   })
 
-
+router.post(`/${folderForViews}/signposting-eligibility/dla-1-change`, function (request, response) {
+     const redirectPath = `/${folderForViews}/signposting-eligibility/claiming-self`;
+validatePath(response, redirectPath);
+  })
 
   //last 12 months
   router.post(`/${folderForViews}/last-12-months`, function (request, response) {
@@ -174,29 +189,32 @@ validatePath(response, redirectPath);
 console.log('Redirecting to:', folderForViews);
   })
 
+router.post(`/${folderForViews}/signposting-eligibility/what-is-ni-number-3`, function (request, response) {
+  const externalRoute = request.session.data['ni3'];
+  let redirectPath;
 
-//what-is-ni-number-3
-router.post(`/${folderForViews}/what-is-ni-number-3`, function (request, response) {
-  var externalRoute = request.session.data['ni3']
-  if (externalRoute == "same-dob") {
-    const redirectPath = `/${folderForViews}/signposting-eligibility/appointee`;
-validatePath(response, redirectPath);
+  // Use a switch or if/else, but let's be explicit with the folder names
+  if (externalRoute === "same-dob") {
+    // Ensure there are no double slashes if folderForViews already has one
+    redirectPath = `/${folderForViews}/signposting-eligibility/dla-0-pre`;
+  } else if (externalRoute === "different-dob" || externalRoute === "no-searchlight") {
+    redirectPath = `/${folderForViews}/signposting-eligibility/no-match-ni-kickout`;
+  } else if (externalRoute === "scr") {
+    redirectPath = `/${folderForViews}/signposting-eligibility/scr-kickout`;
+  } else {
+    // If no radio is selected, stay on the current page
+    redirectPath = `/${folderForViews}/signposting-eligibility/what-is-ni-number-3`;
   }
-  else if (externalRoute == "different-dob") {
-    const redirectPath = `/${folderForViews}/signposting-eligibility/no-match-ni-kickout`;
-validatePath(response, redirectPath);
-  }
-  else if (externalRoute == "scr") {
-    const redirectPath = `/${folderForViews}/signposting-eligibility/scr-kickout`;
-validatePath(response, redirectPath);
-  }
-  else if (externalRoute == "no-searchlight") {
-    const redirectPath = `/${folderForViews}/signposting-eligibility/no-match-ni-kickout`;
-validatePath(response, redirectPath);
-  }
-  console.log('ni3 value:', request.session.data['ni3']);
-  console.log('Redirecting to:', folderForViews);
-})
+
+  console.log('--- DEBUG START ---');
+  console.log('Value of ni3:', externalRoute);
+  console.log('Sending user to:', redirectPath);
+  console.log('--- DEBUG END ---');
+
+  validatePath(response, redirectPath);
+});
+
+
 
 
 
@@ -217,55 +235,91 @@ validatePath(response, redirectPath);
 
 
 
-  // Are you over 16 and under SPA?
-  router.post(`/${folderForViews}/signposting-eligibility/over-16`, function (request, response) {
-    const correctAge = request.session.data['age']
-    if (correctAge === 'yes') {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/dla-now`;
-      validatePath(response, redirectPath);
-    } else if (correctAge === "no-under-16") {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/under-16-ineligible`;
-      validatePath(response, redirectPath);
-    } else if (correctAge === "no-over-spa") {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/last-12-months`;
-      validatePath(response, redirectPath);
-    }
-  })
+// Date of Birth / Age Confirmation (The Green "Continue" Button)
+router.post(`/${folderForViews}/signposting-eligibility/over-16`, function (request, response) {
+  
+  // 1. Resurface the early "Master Switch" from the start of the journey
+  const journeyType = request.session.data['new-app']
 
-// Claiming under SREL?
+  // 2. The Logic Fork (The first Purple Diamond in your diagram)
+  if (journeyType === 'dla') {
+    // ENTER SUB-FLOW: This is a DLA claimant reporting a change
+    const redirectPath = `/${folderForViews}/signposting-eligibility/what-is-ni-number`;
+    validatePath(response, redirectPath);
+  } else {
+    // STANDARD FLOW: This is a standard PIP applicant
+    const redirectPath = `/${folderForViews}/signposting-eligibility/dla-now`;
+    validatePath(response, redirectPath);
+  }
+})
+
+
+// This catches the 'Quick Link' click for Over State Pension Age
+router.get(`/${folderForViews}/signposting-eligibility/age-check-logic`, function (request, response) {
+  const journeyType = request.session.data['new-app'];
+
+  // Check the 'Resurfaced' flag
+  if (journeyType === 'dla') {
+    // DLA users go to the question (Last 12 months)
+    const redirectPath = `/${folderForViews}/signposting-eligibility/last-12-months`;
+    validatePath(response, redirectPath);
+  } else {
+    // Standard users go to the kickout
+    const redirectPath = `/${folderForViews}/signposting-eligibility/pension-age-kickout`;
+    validatePath(response, redirectPath);
+  }
+});
+
+// DLA-0-PRE logic
+router.post(`/${folderForViews}/signposting-eligibility/dla-0-pre`, function (request, response) {
+  const dlaChoice = request.session.data['dla-pre-choice'];
+
+  if (dlaChoice === 'yes') {
+    // Send them to the invitation/next step
+    const redirectPath = `/${folderForViews}/signposting-eligibility/dla-1-inv`;
+    response.redirect(redirectPath); 
+    // Note: Swap back to validatePath(response, redirectPath) once whitelist is updated!
+  } else {
+    // Send them to the appointee/third party check
+    const redirectPath = `/${folderForViews}/signposting-eligibility/appointee`;
+    response.redirect(redirectPath);
+  }
+});
+
+
 router.post(`/${folderForViews}/signposting-eligibility/srel`, function (request, response) {
-
-  // Get the value selected on the form
   const srel = request.body['srel'];
-  // Read the journey already stored
   const journey = request.session.data['journey'];
-
-      console.log('SREL value is:', srel);
+  console.log('SREL value is:', srel);
   console.log('Journey value is:', journey);
-
-  // Safety check: ensure radios were selected
+  // 1. Validation: If they didn't pick an option, reload the page
   if (!srel) {
-    const redirectPath = `/${folderForViews}/signposting-eligibility/srel`;
-    return validatePath(response, redirectPath);
+    return response.redirect(`/${folderForViews}/signposting-eligibility/srel`);
   }
-  // ────────────────────────────────────────
-  // JOURNEY LOGIC
-  // ────────────────────────────────────────
-  // CORE JOURNEY BEHAVIOUR
-  if (journey === 'core') {
-    const redirectPath = `/${folderForViews}/signposting-eligibility/what-is-your-name`;
-    return validatePath(response, redirectPath);
-  }
-  // THIRD-PARTY JOURNEY BEHAVIOUR
+  // 2. Logic for 3rd Party journey
   if (journey === '3rd') {
     if (srel === 'no') {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/with-applicant`;
-      return validatePath(response, redirectPath);
+      return response.redirect(`/${folderForViews}/signposting-eligibility/with-applicant`);
     }
     if (srel === 'yes') {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/srel-bau-kickout`;
-      return validatePath(response, redirectPath);
+      return response.redirect(`/${folderForViews}/signposting-eligibility/srel-bau-kickout`);
     }
+  } 
+  // 3. Logic for Core journey 
+  else if (journey === 'core') {
+    if (srel === 'no') {
+      // Send core users to the next standard screen (e.g., over-16 or residency)
+      return response.redirect(`/${folderForViews}/signposting-eligibility/what-is-your-name`);
+    }
+    if (srel === 'yes') {
+      return response.redirect(`/${folderForViews}/signposting-eligibility/srel-bau-kickout`);
+    }
+  }
+
+  // 4. Emergency Backup
+  else {
+    console.log('Error: Journey type not recognized');
+    return response.redirect(`/${folderForViews}/signposting-eligibility/srel`);
   }
 });
 
@@ -350,12 +404,28 @@ router.post(`/${folderForViews}/signposting-eligibility/appointee`, function (re
 
   validatePath(res, redirectPath);
 });
-``
 
+  //Do you have a mobile number
+  router.post(`/${folderForViews}/signposting-eligibility/dla-1-inv`, function (request, response) {
+    var dlaLetter = request.session.data['dlaLetter']
+    if (dlaLetter == 'yes') {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/dla-1b`;
+validatePath(response, redirectPath);
+    } else if (dlaLetter == 'no') {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/dla-3-needs`;
+validatePath(response, redirectPath);
+    }
+  })
 
   // third party speak
     router.post(`/${folderForViews}/signposting-eligibility/third-party-speak`, function (request, response) {
      const redirectPath = `/${folderForViews}/signposting-eligibility/thank-you-phone`;
+validatePath(response, redirectPath);
+  })
+
+    // third party speak
+    router.post(`/${folderForViews}/signposting-eligibility/dla-1b`, function (request, response) {
+     const redirectPath = `/${folderForViews}/signposting-eligibility/dla-2-med`;
 validatePath(response, redirectPath);
   })
 
@@ -407,7 +477,21 @@ validatePath(response, redirectPath);
 
 
 
-  //welcome-screen
+// DLA-0-PRE logic
+router.post(`/${folderForViews}/signposting-eligibility/dla-2-med`, function (request, response) {
+  const dlaMed = request.session.data['dlaMed'];
+
+  if (dlaMed === 'yes') {
+    // Send them to the invitation/next step
+    const redirectPath = `/${folderForViews}/signposting-eligibility/appointee`;
+    response.redirect(redirectPath); 
+
+  } else {
+
+    const redirectPath = `/${folderForViews}/signposting-eligibility/appointee`;
+    response.redirect(redirectPath);
+  }
+});
 
 
   // How many security questions were answered?
@@ -433,6 +517,65 @@ validatePath(response, redirectPath);
   }
 })
 
+router.post(`/${folderForViews}/signposting-eligibility/dla-3-needs`, function (request, response) {
+  var dlaNeeds = request.session.data['dlaNeeds'];
+
+  if (dlaNeeds == 'improved') {
+
+ const redirectPath = `/${folderForViews}/signposting-eligibility/dla-6-next-steps`;
+validatePath(response, redirectPath);
+  } else if (dlaNeeds == 'same') {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/dla-4-apply`;
+validatePath(response, redirectPath);
+
+  } else if (dlaNeeds == 'worse') {
+         const redirectPath = `/${folderForViews}/signposting-eligibility/dla-5-rate`;
+validatePath(response, redirectPath);
+  } else {
+    // Fallback: no option selected
+         const redirectPath = `/${folderForViews}/signposting-eligibility/dla-3-needs`;
+validatePath(response, redirectPath);
+  }
+})
+
+router.post(`/${folderForViews}/signposting-eligibility/dla-4-apply`, function (request, response) {
+  var dlaApply = request.session.data['dlaApply'];
+
+  if (dlaApply == 'yes') {
+
+ const redirectPath = `/${folderForViews}/signposting-eligibility/dla-1b`;
+validatePath(response, redirectPath);
+  } else if (dlaApply == 'no') {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/dla-4-kickout`;
+validatePath(response, redirectPath);
+
+  } else {
+    // Fallback: no option selected
+         const redirectPath = `/${folderForViews}/signposting-eligibility/dla-4-apply`;
+validatePath(response, redirectPath);
+  }
+})
+
+router.post(`/${folderForViews}/signposting-eligibility/dla-5-rate`, function (request, response) {
+  var dlaRates = request.session.data['dlaRates'];
+
+  if (dlaRates == 'highest') {
+
+ const redirectPath = `/${folderForViews}/signposting-eligibility/dla-8-no-apply`;
+validatePath(response, redirectPath);
+  } else if (dlaRates == 'highLow') {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/dla-6-next-steps`;
+validatePath(response, redirectPath);
+
+  } else if (dlaRates == 'lower') {
+         const redirectPath = `/${folderForViews}/signposting-eligibility/dla-6-next-steps`;
+validatePath(response, redirectPath);
+  } else {
+    // Fallback: no option selected
+         const redirectPath = `/${folderForViews}/signposting-eligibility/dla-5-rate`;
+validatePath(response, redirectPath);
+  }
+})
 
   router.post(`/${folderForViews}/signposting-eligibility/failed-security`, function (request, response) {
     const redirectPath = `/${folderForViews}/declaration`;
@@ -440,8 +583,11 @@ validatePath(response, redirectPath);
   })
 
 
+    router.post(`/${folderForViews}/signposting-eligibility/dla-6-next-steps`, function (request, response) {
+    const redirectPath = `/${folderForViews}/signposting-eligibility/dla-2-med`;
+validatePath(response, redirectPath);
+  })
 
-  //---------------------------------------------------------------------------------------------
 
   // Welcome screens
 

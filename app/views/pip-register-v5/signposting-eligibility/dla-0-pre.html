@@ -14,30 +14,32 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-          <form action="#" method="post" novalidate>
+          <form action="dla-0-pre" method="post" novalidate>
 
                     {{ thirdPartyCaption({
             thirdPartyName: thirdPartyName,
             applicantName: applicantName,
-            heading: "Has your health condition improved, stayed the same or got worse?",
+            heading: "I've found your record on the system",
               hint: ""
         }) }}
 
+             {{ govukInsetText({
+              classes: 'colour-blue',
+              text: "Action: Check whether the applicant is getting DLA."
+            }) }}
+          
+
             {{ govukRadios({
-              name: "dlaNeeds",
+              name: "dla-pre-choice",
               
               items: [
                 {
-                  value: "improved",
-                  text: "Improved"
+                  value: "yes",
+                  text: "Yes, they are getting DLA"
                 },
                 {
-                  value: "same",
-                  text: "Stayed the same"
-                },
-                {
-                  value: "worse",
-                  text: "Got worse"
+                  value: "no",
+                  text: "No, they are not getting DLA"
                 }
               ]
             }) }}
@@ -46,9 +48,7 @@
               text: "Continue"
             }) }}
           </form>
-   
-
-        </div>
+   </div>
 </div>
 
 {% endblock %}

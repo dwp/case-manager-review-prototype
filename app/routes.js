@@ -39,6 +39,9 @@ router.post('/journey', function (request, response) {
     var journey = request.body.journey; // expects 'core', '3rd', or 'dla'
     request.session.data['journey'] = journey;
 
+        var isDla = request.body['is-dla']; 
+    request.session.data['is-dla'] = isDla;
+
     if (journey === '3rd') {
         response.redirect("/pip-register-v4/signposting-eligibility/with-applicant");
     } else if (journey === 'dla') {
