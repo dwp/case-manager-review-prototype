@@ -277,12 +277,11 @@ router.post(`/${folderForViews}/signposting-eligibility/dla-0-pre`, function (re
   if (dlaChoice === 'yes') {
     // Send them to the invitation/next step
     const redirectPath = `/${folderForViews}/signposting-eligibility/dla-1-inv`;
-    response.redirect(redirectPath); 
-    // Note: Swap back to validatePath(response, redirectPath) once whitelist is updated!
+    return validatePath(response, redirectPath); 
   } else {
     // Send them to the appointee/third party check
     const redirectPath = `/${folderForViews}/signposting-eligibility/appointee`;
-    response.redirect(redirectPath);
+    return validatePath(response, redirectPath);
   }
 });
 
@@ -488,12 +487,11 @@ router.post(`/${folderForViews}/signposting-eligibility/dla-2-med`, function (re
   if (dlaMed === 'yes') {
     // Send them to the invitation/next step
     const redirectPath = `/${folderForViews}/signposting-eligibility/appointee`;
-    response.redirect(redirectPath); 
+    return validatePath(response, redirectPath); 
 
   } else {
-
     const redirectPath = `/${folderForViews}/signposting-eligibility/appointee`;
-    response.redirect(redirectPath);
+    return validatePath(response, redirectPath);
   }
 });
 
