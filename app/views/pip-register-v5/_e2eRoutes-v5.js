@@ -290,38 +290,42 @@ router.post(`/${folderForViews}/signposting-eligibility/dla-0-pre`, function (re
 router.post(`/${folderForViews}/signposting-eligibility/srel`, function (request, response) {
   const srel = request.body['srel'];
   const journey = request.session.data['journey'];
-  console.log('SREL value is:', srel);
-  console.log('Journey value is:', journey);
+  
   // 1. Validation: If they didn't pick an option, reload the page
   if (!srel) {
-    return response.redirect(`/${folderForViews}/signposting-eligibility/srel`);
+    const redirectPath = `/${folderForViews}/signposting-eligibility/srel`;
+    return validatePath(response, redirectPath);
   }
+
   // 2. Logic for 3rd Party journey
   if (journey === '3rd') {
     if (srel === 'no') {
-      return response.redirect(`/${folderForViews}/signposting-eligibility/with-applicant`);
+      const redirectPath = `/${folderForViews}/signposting-eligibility/with-applicant`;
+      return validatePath(response, redirectPath);
     }
     if (srel === 'yes') {
-      return response.redirect(`/${folderForViews}/signposting-eligibility/srel-bau-kickout`);
+      const redirectPath = `/${folderForViews}/signposting-eligibility/srel-bau-kickout`;
+      return validatePath(response, redirectPath);
     }
   } 
   // 3. Logic for Core journey 
   else if (journey === 'core') {
     if (srel === 'no') {
-      // Send core users to the next standard screen (e.g., over-16 or residency)
-      return response.redirect(`/${folderForViews}/signposting-eligibility/what-is-your-name`);
+      const redirectPath = `/${folderForViews}/signposting-eligibility/what-is-your-name`;
+      return validatePath(response, redirectPath);
     }
     if (srel === 'yes') {
-      return response.redirect(`/${folderForViews}/signposting-eligibility/srel-bau-kickout`);
+      const redirectPath = `/${folderForViews}/signposting-eligibility/srel-bau-kickout`;
+      return validatePath(response, redirectPath);
     }
   }
-
   // 4. Emergency Backup
   else {
-    console.log('Error: Journey type not recognized');
-    return response.redirect(`/${folderForViews}/signposting-eligibility/srel`);
+    const redirectPath = `/${folderForViews}/signposting-eligibility/srel`;
+    return validatePath(response, redirectPath);
   }
 });
+
 
 
 
