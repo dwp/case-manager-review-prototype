@@ -25,33 +25,36 @@
 
      {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
-{{ govukRadios({
-  name: "When we send you an email, do you need us to attach the letter as a Word document?",
-  fieldset: {
-    legend: {
-      text: "When we send you an email, do you need us to attach the letter as a Word document?",
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--l"
-    }
+<h1 class="govuk-heading-l govuk-!-margin-bottom-2">Please tell me the reason you need to receive letters by email</h1>
+</h1>
+
+
+          {{ govukInsetText({
+        classes: 'colour-blue',
+        text: "Action: Enter the reason. If the claimant does not want to give one, this option cannot be selected."
+      }) }}
+
+  {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+
+{{ govukCharacterCount({
+  name: "withHint",
+  id: "with-hint",
+  maxlength: 190,
+  label: {
+    text: "Reason for requesting emails",
+    classes: "govuk-label--m",
+    isPageHeading: true
   },
-  items: [
-    {
-      value: "Yes",
-      text: "Yes"
-    },
-    {
-      value: "No",
-      text: "No"
-    }
-  
-  ]
+  hint: {
+    text: ""
+  }
 }) }}
 
       {{ govukButton({
         text: "Save and continue"
       }) }}
 
-      <p><a href="/pip-register-v5/task-list-cd-done">Go to task list</a></p>
+      <p><a href="/pip-register-v4/task-list-cd-done">Go to task list</a></p>
 
     </form>
 

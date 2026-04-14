@@ -62,57 +62,68 @@
         text: "Save and continue"
         }) }}
 
-        <p><a href="/pip-register-v4/task-list-cd-done">Go to task list</a></p>
+        <p><a href="/pip-register-v5/task-list-cd-done">Go to task list</a></p>
         </form>
         {% else %}
-        <form class="form" action="#" method="post">
-          {{ govukRadios({
-          name: "written-format",
-          fieldset: {
-          legend: {
-            text: "When we write to you, we'll usually send you a printed letter",
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--l"
-          }
-          },
-          hint: {
-            html: "<p class='govuk-body'>Our standard letters are in Arial font size 12.<p><h2 class='govuk-heading-m'>Do you need us to send your letters in another format?</h2>"  
-            },
-          items: [
-          {
-            value: "Standard letter (12-point Arial text on white paper)",
-            text: "No, standard letter (12-point Arial text on white paper)"
-          },
-          {
-            value: "Letter with changes to colour or print size",
-            text: "Letter with changes to colour or print size"
-          },
-          {
-            value: "Audio",
-            text: "Audio"
-          },
-          {
-            value: "Braille",
-            text: "Braille"
-          },
-          {
-            value: "British Sign Language video",
-            text: "British Sign Language video"
-          },
-          {
-            value: "Email",
-            text: "Email"
-          }
+<form class="form" action="#" method="post">
+
+  {# 1. Manually add the H1 heading #}
+  <h1 class="govuk-heading-l">
+    When we write to you, we'll usually send you a printed letter
+  </h1>
+
+
+  {{ govukInsetText({
+    classes: 'colour-blue',
+    text: "Action: Do not offer email as an option. The claimant can request it, but they must give a reason."
+  }) }}
+
+
+  {{ govukRadios({
+    name: "written-format",
+    hint: {
+      html: "<p class='govuk-body'>Our standard letters are in Arial font size 12.</p><h2 class='govuk-heading-m'>Do you need us to send your letters in another format?</h2>"  
+    },
+    items: [
+      {
+        value: "Standard letter (12-point Arial text on white paper)",
+        text: "No, standard letter (12-point Arial text on white paper)"
+      },
+      {
+        value: "Letter with changes to colour or print size",
+        text: "Letter with changes to colour or print size"
+      },
+      {
+        value: "Audio",
+        text: "Audio"
+      },
+      {
+        value: "Braille",
+        text: "Braille"
+      },
+      {
+        value: "British Sign Language video",
+        text: "British Sign Language video"
+      },
+      {
+        divider: "or"
+      },
+      {
+        value: "Email",
+        text: "Email"
+      }
+    ]
+  }) }}
           
-          ]
-          }) }}
-          
-          {{ govukButton({
-          text: "Save and continue"
-          }) }}
+  {{ govukButton({
+    text: "Save and continue"
+  }) }}
   
-  <p><a href="/pip-register-v4/task-list-cd-done">Go to task list</a></p>
-          </form>
+  <p><a href="/pip-register-v5/task-list-cd-done">Go to task list</a></p>
+
+</form>
+
+
         {% endif %}
     </div>
   </div>

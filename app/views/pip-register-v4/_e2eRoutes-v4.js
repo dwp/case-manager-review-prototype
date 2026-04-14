@@ -934,6 +934,11 @@ validatePath(response, redirectPath);
   })
 
 
+   router.post(`/${folderForViews}/contact-details/alt-formats/email-reason-1`, function (request, response) {
+    const redirectPath = `/${folderForViews}/contact-details/alt-formats/email-reason`;
+validatePath(response, redirectPath);
+  })
+
   // Would you like us to send your letters in another way, like larger text, audio or braille?
 router.post(`/${folderForViews}/contact-details/alt-formats/written-format`, function (request, response) {
   var writtenFormat = request.session.data['written-format'];
@@ -955,7 +960,7 @@ validatePath(response, redirectPath);;
     const redirectPath = `/${folderForViews}/contact-details/alt-formats/what-video-format-do-you-need`;
 validatePath(response, redirectPath);;
   } else if (writtenFormat === 'Email') {
-    const redirectPath = `/${folderForViews}/contact-details/alt-formats/email-reason`;
+    const redirectPath = `/${folderForViews}/contact-details/alt-formats/email-reason-1`;
 validatePath(response, redirectPath);;
   } else {
     // Fallback: no option selected
