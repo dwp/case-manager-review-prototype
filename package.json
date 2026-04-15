@@ -3,12 +3,12 @@
     "dev": "govuk-prototype-kit dev",
     "serve": "govuk-prototype-kit serve",
     "start": "govuk-prototype-kit start"
-    },
+  },
   "dependencies": {
     "@dwp/dwp-frontend": "3.4.0",
     "@govuk-prototype-kit/common-templates": "2.0.1",
     "audit": "^0.0.6",
-    "axios": "^0.27.2",
+    "axios": "^1.15.0",
     "body-parser": "1.20.4",
     "express": "4.22.1",
     "govuk-frontend": "5.14.0",

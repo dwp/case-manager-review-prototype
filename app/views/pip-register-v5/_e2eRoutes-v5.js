@@ -195,8 +195,9 @@ router.post(`/${folderForViews}/signposting-eligibility/what-is-ni-number-3`, fu
 
   // Use a switch or if/else, but let's be explicit with the folder names
   if (externalRoute === "same-dob") {
-    // Ensure there are no double slashes if folderForViews already has one
-    redirectPath = `/${folderForViews}/signposting-eligibility/dla-0-pre`;
+
+    redirectPath = `/${folderForViews}/signposting-eligibility/dla-1-inv`;
+
   } else if (externalRoute === "different-dob" || externalRoute === "no-searchlight") {
     redirectPath = `/${folderForViews}/signposting-eligibility/no-match-ni-kickout`;
   } else if (externalRoute === "scr") {
