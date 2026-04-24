@@ -16,7 +16,7 @@
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
         {% if (data['regScena'] == "citizen" ) %}
-        <form class="form" action="#" method="post">
+        <form class="form" action="written-format" method="post">
         {{ govukRadios({
         name: "written-format",
         fieldset: {
@@ -65,7 +65,7 @@
         <p><a href="/pip-register-v3/task-list-cd-done">Go to task list</a></p>
         </form>
         {% else %}
-        <form class="form" action="#" method="post">
+        <form class="form" action="written-format" method="post">
 
   {# 1. Manually add the H1 heading #}
   <h1 class="govuk-heading-l">
@@ -127,10 +127,3 @@
   </div>
 {% endblock %}
 
-Standard letter (12-point Arial text on white paper)
-Large print
-Letter with changes to font, paper colour, spacing or print size
-Audio
-Braille
-British Sign Language video
-Email

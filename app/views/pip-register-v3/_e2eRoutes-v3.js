@@ -830,7 +830,7 @@ validatePath(response, redirectPath);;
 validatePath(response, redirectPath);;
   } else {
     // Fallback: no option selected
-    const redirectPath = `./${folderForViews}/contact-details/alt-formats/written-format`;
+    const redirectPath = `/${folderForViews}/contact-details/alt-formats/written-format`;
 validatePath(response, redirectPath);;
   }
 })
