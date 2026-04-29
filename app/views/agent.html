@@ -7,20 +7,14 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">
-        Agent Assisted Registration (AAR) prototype index</h1>
+        Agent Assisted Registration (AAR) prototype index, Agent</h1>
 
-<p class='govuk-body'>This service / prototype is managed by<a href="https://dwpdigital.atlassian.net/wiki/spaces/HPDU/pages/133261558699/Team+Pelican" class="govuk-link" rel="noreferrer noopener" target="_blank"> Team Pelican (opens in new tab)</a>.</p>
-
-
-<p class='govuk-body'>This index provides access to all the AAR prototype versions. 
+<p class='govuk-body'>This page gives you access to the current in-build, next release and being developed versions of the AAR prototype.  
+<br>
+<br> 
+The prototypes work in a similar way to the live service but some screens may have prefilled ‘dummy’ data. 
 <br>
 <br>  
-
-It also shows which versions each of the three user groups can access.  
-<br>
-<br>
-
-To avoid confusion, each user group has its own index page with access only to the prototype versions they need to see.</p>
 
 
 <br>
@@ -40,7 +34,7 @@ To avoid confusion, each user group has its own index page with access only to t
   head: [
     { text: "Active Prototypes" },
     { text: "Status" },
-    { text: "User Group" },
+    { text: "" },
     { text: "Link" }
   ],
   rows: [
@@ -49,42 +43,10 @@ To avoid confusion, each user group has its own index page with access only to t
       { text: "Mirror of live service" },
       {
         html: '<ul class="govuk-list govuk-list--bullet">
-                <li>Team Pelican</li>
-                <li>Implementation</li>
-                <li>GS4 L&D training</li>
-                <li>GS4 agents</li>
               </ul>'
       },
       {
-        html: '<a href="/pip-register-v3/signposting-eligibility/service-start-page" class="govuk-link">Index page</a>'
-      }
-    ],
-    [
-      { text: "Next release" },
-      { text: "Completed/signed off but not yet live" },
-      {
-        html: '<ul class="govuk-list govuk-list--bullet">
-                <li>Team Pelican</li>
-                <li>Implementation</li>
-                <li>GS4 L&D training</li>
-                <li>GS4 agents</li>
-              </ul>'
-      },
-      {
-        html: '<a href="/pip-register-v3/signposting-eligibility/service-start-page" class="govuk-link">Index page</a>'
-      }
-    ],
-    [
-      { text: "Being developed" },
-      { text: "Currently being worked on/ revised /developed" },
-      {
-        html: '<ul class="govuk-list govuk-list--bullet">
-                <li>Team Pelican</li>
-                <li>Implementation</li> 
-              </ul>'
-      },
-      {
-        html: '<a href="/pip-register-v3/signposting-eligibility/service-start-page" class="govuk-link">Index page</a>'
+        html: '<a href="/pip-register-v3/signposting-eligibility/service-start-page" class="govuk-link">Go to start page</a>'
       }
     ]
   ]
@@ -94,29 +56,6 @@ To avoid confusion, each user group has its own index page with access only to t
 <br>
 <br>
 <br>
-
-{{ govukTable({
-  caption: "",
-  captionClasses: "govuk-table__caption--m",
-  firstCellIsHeader: true,
-  head: [
-    { text: "Archived versions" },
-    { text: "" },
-    { text: "" },
-    { text: "Link" }
-  ],
-  rows: [
-    [
-      { text: "Previous versions no longer used and superseded designs" },
-      { text: "" },
-      {
-      },
-      {
-        html: '<a href="/pip-register-v3/signposting-eligibility/service-start-page" class="govuk-link">Open page</a>'
-      }
-]
-  ]
-}) }}
 
 
   </div>
