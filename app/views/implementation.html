@@ -4,15 +4,33 @@
 
 {% block content %}
 
+
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-l">
-        Agent Assisted Registration (AAR) prototype index, Implementation</h1>
 
-<p class='govuk-body'>This page gives you access to the current in-build, next release and being developed versions of the AAR prototype.  
+    <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+  <div class="govuk-notification-banner__header">
+    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+      Important
+    </h2>
+  </div>
+  <div class="govuk-notification-banner__content">
+    <p class="govuk-notification-banner__heading">
+     These prototypes are managed by Team Pelican.
+      <a class="govuk-notification-banner__link" href="#"></a>
+    </p>
+  </div>
+</div>
+      <h1 class="govuk-heading-l">
+        Agent Assisted Registration (AAR) prototypes - For implementation teams </h1>
+
+        
+
+<p class='govuk-body'>Use this page to access current, upcoming and in-development versions of the AAR prototype. 
 <br>
 <br> 
-The prototypes work in a similar way to the live service but some screens may have prefilled ‘dummy’ data. 
+Some prototype include pre-filled dummy data for testing purposes. 
 <br>
 <br>  
 
@@ -28,48 +46,35 @@ The prototypes work in a similar way to the live service but some screens may ha
 {% from "govuk/components/table/macro.njk" import govukTable %}
 
 {{ govukTable({
-  caption: "Development ready",
+  caption: "Available prototype versions",
   captionClasses: "govuk-table__caption--m",
   firstCellIsHeader: true,
   head: [
-    { text: "Active Prototypes" },
-    { text: "Status" },
-    { text: "" },
-    { text: "Link" }
+    { text: "Version" },
+    { text: "Included journeys" },
+    { text: "Description" },
+    { text: "Start" }
   ],
   rows: [
     [
-      { text: "In build" },
+      { text: "V3" },
+       { text: "Core journey initial" },
       { text: "Mirror of live service" },
-      {
-        html: '<ul class="govuk-list govuk-list--bullet">
-              </ul>'
-      },
-      {
-        html: '<a href="/pip-register-v3/signposting-eligibility/service-start-page" class="govuk-link">Go to start page</a>'
-      }
+       {  html: '<a href="/pip-register-v3/signposting-eligibility/service-start-page" class="govuk-link">Start prototype</a>'
+       }
     ],
     [
-      { text: "Next release" },
-      { text: "Completed/signed off but not yet live" },
-      {
-        html: '<ul class="govuk-list govuk-list--bullet">
-                </ul>'
-      },
-      {
-        html: '<a href="/pip-register-v4/signposting-eligibility/service-start-page" class="govuk-link">Go to start page</a>'
-      }
+      { text: "V4" },
+      { text: "Core journey redesigned" },
+      { text: "Next release completed but not yet live " },
+       { html: '<a href="/pip-register-v4/signposting-eligibility/new-pip-application" class="govuk-link">Start prototype</a>'
+       }
     ],
     [
-      { text: "Being developed" },
-      { text: "Currently being worked on/ revised /developed" },
-      {
-        html: '<ul class="govuk-list govuk-list--bullet">
-               </ul>'
-      },
-      {
-        html: '<a href="/pip-register-v5/signposting-eligibility/service-start-page" class="govuk-link">Go to start page</a>'
-      }
+      { text: "V5" },
+       { text: "Core journey + third-party flow" },
+      { text: "Adds support for third-party. Currently being worked on" },
+       { html: '<a href="#" class="govuk-link">Not available</a>'}
     ]
   ]
 }) }}

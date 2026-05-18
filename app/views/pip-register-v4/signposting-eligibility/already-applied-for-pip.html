@@ -13,8 +13,6 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 
-
-
 {% block content %}
 
 <div class="govuk-grid-row">
@@ -23,20 +21,18 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
     <form action="#" method="post" method="post">
 
       <h1 class="govuk-heading-l">
-        I need to collect some more details to continue
+        I can see you have already applied for PIP
       </h1>
+      <p class="govuk-body">I just need to check your details before we continue.</p>
 
       {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 
       {{ govukInsetText({
         classes: 'colour-blue',
-          text: "Action: Register the claim in PIPCS."
+          text: "Action: Register the application in PIPCS."
       }) }}
 
   </form>
-
-
-
 
   </div>
 </div>

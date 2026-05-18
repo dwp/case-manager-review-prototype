@@ -5,85 +5,131 @@
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">
-        AAR - Agent Assisted Registration </h1>
+  <div class="govuk-grid-full-width">
+
+    <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+  <div class="govuk-notification-banner__header">
+    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+      Important
+    </h2>
+  </div>
+  <div class="govuk-notification-banner__content">
+    <p class="govuk-notification-banner__heading">
+      For Team Pelican use only.
+      <a class="govuk-notification-banner__link" href="#"></a>
+    </p>
+  </div>
+</div>
+      <h1 class="govuk-heading-l">
+        Agent Assisted Registration (AAR) prototype access</h1>
 
 <p class='govuk-body'>This service / prototype is managed by<a href="https://dwpdigital.atlassian.net/wiki/spaces/HPDU/pages/133261558699/Team+Pelican" class="govuk-link" rel="noreferrer noopener" target="_blank"> Team Pelican (opens in new tab)</a>.</p>
 
 
-<p class='govuk-body'>Gitlab <a href="https://gitlab.com/dwp/user-centred-design/case-manager-review-prototype" class="govuk-link" rel="noreferrer noopener" target="_blank"> Repo</a></p>
+<p class='govuk-body'>Use this page to access AAR prototype versions.
+<br>
+<br>  
 
+Prototype access is grouped by user role to ensure users only see versions relevant to them.
+</p>
 
 
 <br>
-            <h3 class="govuk-heading-m">
-                                    Current version live prototype - V4</h3>
 
-{{ govukButton({
-  text: "Latest prototype",
-  href: "/pip-register-v4/signposting-eligibility/service-start-page",
-  isStartButton: true
-}) }}
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-full-width">
 
 {% from "govuk/components/table/macro.njk" import govukTable %}
 
 {{ govukTable({
-  caption: "Prototype versions",
+  caption: "Prototype access by user group",
   captionClasses: "govuk-table__caption--m",
   firstCellIsHeader: true,
   head: [
-    {
-      text: "Name"
-    },
-    {
-      text: "Notes"
-    },
-    {
-      text: "Journey"
-    }
+  { text: "User Group" },
+    { text: "Available versions" },
+    
+    
+    { text: "Access" }
   ],
   rows: [
     [
-      {
-        text: "V3"
+     {
+        html: '<p class="govuk-body">
+                Team Pelican / <br>
+                Implementation
+                </p>
+              '
       },
-       {
-        text: "Core Journey, mirroring build. Used for 2 agent trial"
-      },
+      { text: "V3, V4, V5" },
+      
+     
       {
-        html: '<a href="/pip-register-v3/signposting-eligibility/service-start-page" class="govuk-link">Prototype</a>'
+        html: '<a href="/implementation" class="govuk-link">View prototypes</a>'
       }
     ],
     [
-      {
-        text: "V4"
+    {
+        html: '<p class="govuk-body">
+               
+                G4S L&D training</p>'
       },
-       {
-        text: "Core journey + 3rd party"
-      },
+      { text: "V3, V4" },
+     
+      
       {
-        html: '<a href="/pip-register-v4/signposting-eligibility/service-start-page" class="govuk-link">Prototype</a>'
+        html: '<a href="/training" class="govuk-link">View training prototypes</a>'
       }
     ],
     [
-      {
-        text: "V5"
+     {
+        html: '<p class="govuk-body">
+             
+         G4S agents</p>'
       },
-       {
-        text: "Core journey + 3rd party + DLA"
-      },
+      { text: "V3" },
+      
+     
       {
-        text: "Coming soon"
+        html: '<a href="/agent" class="govuk-link">View agent prototypes</a>'
       }
     ]
   ]
 }) }}
 
+<br>
+<br>
+<br>
+<br>
 
+{{ govukTable({
+  caption: "",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: true,
+  head: [
+    { text: "Archived versions" },
+    { text: "" },
+    { text: "" },
+    { text: "Archive Access" }
+  ],
+  rows: [
+    [
+      {  html: '<p class="govuk-body">Previous versions</p>' },
+      { text: "" },
+      {
+      },
+      {
+        html: '<a href="#" class="govuk-link">Not yet available</a>'
+      }
+]
+  ]
+}) }}
 
 
   </div>
 </div>
-
+</div>
+</div>
 {% endblock %}

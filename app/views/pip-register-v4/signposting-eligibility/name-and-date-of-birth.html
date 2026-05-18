@@ -1,0 +1,154 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "/layouts/main-v3.html" %}
+{% endif %}
+
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" action="/pip-register-v4/signposting-eligibility/name-and-date-of-birth" method="post">
+
+        <h1 class="govuk-heading-l">
+          Can you confirm your details before we continue?
+        </h1>
+
+ {{ govukInsetText({
+        classes: 'colour-blue',
+          text: "Action: Check Searchlight. Make sure the record found is the caller's record."
+      }) }}
+      {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+        {% call govukFieldset({
+          legend: {
+            classes: "govuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+
+        {% if data['journey'] == "core" %}
+          {{ govukInput({
+            label: {
+              html: "<strong>First name</strong>"
+            },
+            id: "first-name",
+            name: "first-name",
+            autocomplete: "given-name",
+            spellcheck: false
+          }) }}
+
+          {{ govukInput({
+            label: {
+              html: "<strong>Last name</strong>"
+            },
+            id: "last-name",
+            name: "last-name",
+            autocomplete: "family-name",
+            spellcheck: false
+          }) }}
+        {% else %}
+          {{ govukInput({
+            label: {
+              text: ""
+            },
+            id: "name-optional",
+            name: "first-name",
+            autocomplete: "name",
+            spellcheck: false
+          }) }}
+        {% endif %}
+
+        {% endcall %}
+
+       
+
+        <!-- <p><a href="/pip-register-v4/task-list.html">Go to task list</a></p> -->
+
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+
+{{ govukDateInput({
+  id: "passport-issued",
+  namePrefix: "passport-issued",
+  fieldset: {
+    legend: {
+      html: "Date of birth",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  hint: {
+    text: ""
+  }
+}) }}
+
+ {% from "govuk/components/button/macro.njk" import govukButton %}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+        
+      </form>
+ <p class="govuk-body">
+        <a href="different-or-no-searchlight-record" class="govuk-link govuk-link--no-visited-state">Searchlight record found is not the caller's record</a>
+      </p>
+      {% if data['journey'] == "3rd" %}
+        <p class="govuk-body">
+          <a href="different-or-no-searchlight-record" class="govuk-link">Searchlight record found is not the caller's record</a>
+        </p>
+      {% else %}
+        </div>
+      </div>
+
+      
+      <!DOCTYPE html> 
+<html lang="en"> 
+  <head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>GOV.UK Dashed Border Container</title> 
+    <!-- GOV.UK Frontend CSS --> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/govuk-frontend/4.7.0/govuk-frontend.min.css"> 
+     <style> .dashed-container { 
+      border: 2px dashed #b1b4b6; /* GOV.UK border colour */ 
+      padding: 20px; 
+      margin: 20px 0; 
+      background-color: #f3f2f1; /* GOV.UK light grey background */ 
+      } 
+      
+      .dashed-container h3 { 
+        margin-top: 0; 
+      } 
+      .dashed-container ul { 
+          margin-bottom: 0; }
+           </style> 
+           </head> 
+           <body class="govuk-template__body"> 
+            <div class="govuk-width-container"> 
+              <main class="govuk-main-wrapper"> <!-- Example usage of the dashed container --> 
+  <div class="dashed-container"> 
+    <h3 class="govuk-heading-m">Quick links</h3> 
+    <ul class="govuk-list"> 
+      <li><a href="under-16s-not-eligible.html" class="govuk-link">Under 16</a></li> 
+      <li><a href="pip-or-dla-in-last-12-months.html" class="govuk-link">Over State Pension age</a></li>
+      
+      
+    </ul> 
+  </div> <!-- Another example with different content --> 
+    
+    
+  </main>
+ </div> 
+</body>
+
+
+  </div>
+</div>
+      {% endif %}
+{% endblock %}

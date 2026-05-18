@@ -1,0 +1,61 @@
+{% extends "/layouts/main-v3.html" %}
+{% from "components/third-party-name.njk" import thirdPartyCaption %}
+{% set thirdPartyName = data['thirdPartyName'] %}
+{% set applicantName = data['applicantName'] %}
+
+
+{% set isDeclarationPre = true %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+          <form action="/pip-register-v4/signposting-eligibility/appointee-check" method="post" novalidate>
+
+                          {{ thirdPartyCaption({
+            thirdPartyName: thirdPartyName,
+            applicantName: applicantName,
+            heading: "I’m just viewing your record on the system now"
+        }) }}
+
+                   {{ govukInsetText({
+            classes: "colour-blue",
+            text: "Action: Check Seachlight. Confirm if there is an appointee in Relationships section."
+          }) }}
+
+            {{ govukRadios({
+              name: "appointeecheck",
+              fieldset: {
+                legend: {
+                  text: "",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--l"
+                }
+              },
+
+              items: [
+                {
+                  value: "yes",
+                  text: "Yes, they have an appointee"
+                },
+                {
+                  value: "no",
+                  text: "No, they do not have an appointee"
+                }
+              ]
+            }) }}
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+          </form>
+   </div>
+</div>
+
+{% endblock %}

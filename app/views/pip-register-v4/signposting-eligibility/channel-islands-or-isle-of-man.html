@@ -13,8 +13,6 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 
-
-
 {% block content %}
 
 <div class="govuk-grid-row">
@@ -23,20 +21,18 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
     <form action="#" method="post" method="post">
 
       <h1 class="govuk-heading-l">
-        I need to collect some more details to continue
+       You can apply for PIP [with a Guernsey]/[with a Jersey]/[with an Isle of Man] National Insurance number
       </h1>
+      <p class="govuk-body">I'll continue with your application now.</p>
 
       {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 
       {{ govukInsetText({
         classes: 'colour-blue',
-          text: "Action: Register the claim in PIPCS."
+          text: "Action: Register the application in PIPCS, and follow the normal procedure for applicants who do not have a UK National Insurance number."
       }) }}
 
   </form>
-
-
-
 
   </div>
 </div>
