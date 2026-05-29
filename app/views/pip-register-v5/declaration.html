@@ -1,47 +1,29 @@
-{% if (data['regScena'] == "agent" ) %}
-    {% extends "../layouts/main-v3.html" %}
-{% elseif (data['regScena'] == "citizen") %}
-{% extends "../layouts/main-gov.html" %}
-{% else %}
-    {% extends "../layouts/main-v3.html" %}
-{% endif %}
+{% extends "/layouts/main-v3.html" %}
+{% from "components/third-party-name.njk" import thirdPartyCaption %}
+{% set thirdPartyName = data['thirdPartyName'] %}
+{% set applicantName = data['applicantName'] %}
 
 {% set isDeclarationPre = true %}
 
 {% block pageTitle %}
+
   Content page template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
-
-
 
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form action="#" method="post" method="post">
-          {% if (data['regScena'] == "citizen" ) %}
-          <h1 class="govuk-heading-l">
-            Declaration
-          </h1>
-          {% else %}
+      
 
+      <form action="declaration" method="post" method="post">
 
-          
-
-          <h1 class="govuk-heading-l">
-            I will now read out the declaration then I will ask if you agree to it</h1>
-
-          {% endif %}<!--
-          <p class="govuk-body">You have told me that you are calling on behalf of someone. I just need to speak to them briefly before we can continue with this call.</p>
-          <p class="govuk-body">Hello, my name is [agent name], I just need to confirm you are happy for the person who called us to speak on your behalf today?</p>
-          {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
-          {{ govukInsetText({
-            text: "Action: Wait for the caller to pass the phone to applicant, then continue with the script."
-          }) }}
-          <p class="govuk-body">Before you hand the phone back to them I need you to listen to the following statements and then tell me if you agree .</p>
-
-          <p class="govuk-body"><em>[End if third party]</em></p>-->
+                        {{ thirdPartyCaption({
+            thirdPartyName: thirdPartyName,
+            applicantName: applicantName,
+            heading: "I will now read out the declaration then I will ask if you agree to it"
+        }) }}
 
           <h2 class="govuk-body">You declare that the information you give will be correct and complete as far as you know and believe.​
           </h2>
@@ -55,8 +37,8 @@
           <p class="govuk-body">You understand that the DWP may use the information which it has now or may get in future to decide whether you are entitled to:
           </p>
           <ul class="govuk-list govuk-list--bullet">
-            <li>the benefit you are claiming, </li>
-            <li>any other benefit you have claimed, or</li>
+            <li>the benefit you are claiming,</li>
+            <li>any other benefit you have claimed, or</li>
             <li>any other benefit you may claim or be awarded in the future.</li>
           </ul>
           <h2 class="govuk-heading-m">
@@ -77,18 +59,59 @@
           {{ govukButton({
             text: "Agree and continue"
             }) }}
-          <a class="govuk-link" href="declaration-kickout">I do not agree</a>
+          <a class="govuk-link" href="cannot-start-application">I do not agree</a>
           {% else %}
           
           {{ govukButton({
             text: "Agree and continue"
             }) }}
-          <a class="govuk-link" href="declaration-kickout">Applicant does not agree</a>
+          <a class="govuk-link" href="cannot-start-application">Applicant does not agree</a>
           {% endif %}
         </div>
       </form>
 
     </div>
   </div>
+
+  <!DOCTYPE html> 
+<html lang="en"> 
+  <head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>GOV.UK Dashed Border Container</title> 
+    <!-- GOV.UK Frontend CSS --> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/govuk-frontend/4.7.0/govuk-frontend.min.css"> 
+     <style> .dashed-container { 
+      border: 2px dashed #b1b4b6; /* GOV.UK border colour */ 
+      padding: 20px; 
+      margin: 20px 0; 
+      background-color: #f3f2f1; /* GOV.UK light grey background */ 
+      } 
+      
+      .dashed-container h3 { 
+        margin-top: 0; 
+      } 
+      .dashed-container ul { 
+          margin-bottom: 0; }
+           </style> 
+           </head> 
+           <body class="govuk-template__body"> 
+            <div class="govuk-width-container"> 
+              <main class="govuk-main-wrapper"> <!-- Example usage of the dashed container --> 
+  <div class="dashed-container"> 
+    <h3 class="govuk-heading-m">Quick links</h3> 
+    <ul class="govuk-list"> 
+      <li><a href="/pip-register-v5/signposting-eligibility/pass-phone-to-third-party-to-start-application.html" class="govuk-link">Third party</a> - Agree and continue</li> 
+     
+    </ul> 
+  </div> <!-- Another example with different content --> 
+    
+    
+  </main>
+ </div> 
+</body>
+
+
+  </div>
+</div>
 
 {% endblock %}

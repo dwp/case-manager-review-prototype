@@ -10,34 +10,33 @@
 {% endblock %}
 
 
+
+
+
 {% block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-          <form action="#" method="post" novalidate>
+          <form action="" method="post" novalidate>
 
                     {{ thirdPartyCaption({
             thirdPartyName: thirdPartyName,
             applicantName: applicantName,
-            heading: "Do you get the highest rate of DLA payments for both the care component and mobility component?",
-              hint: ""
+            heading: "Are you getting Disability Living Allowance (DLA) now?",
+              hint: "If you get DLA, you may have received a letter telling you to apply for PIP."
         }) }}
 
             {{ govukRadios({
-              name: "dlaRates",
+              name: "claimingdla",
               
               items: [
                 {
-                  value: "highest",
-                  text: "Highest rate for both"
+                  value: "yes",
+                  text: "Yes"
                 },
                 {
-                  value: "highLow",
-                  text: "Highest rate for one, lower rate for the other"
-                },
-                {
-                  value: "lower",
-                  text: "Lower rate for both"
+                  value: "no",
+                  text: "No"
                 }
               ]
             }) }}
@@ -46,9 +45,7 @@
               text: "Continue"
             }) }}
           </form>
-   
-
-        </div>
+   </div>
 </div>
 
 {% endblock %}

@@ -34,12 +34,48 @@ Prototype access is grouped by user role to ensure users only see versions relev
 </p>
 
 
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+{{ govukTable({
+  caption: "Available prototype versions",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: true,
+  head: [
+    { text: "Version" },
+    { text: "Included journeys" },
+    { text: "Description" },
+    { text: "" }
+  ],
+  rows: [
+    [
+      { text: "V3" },
+       { text: "Core journey initial" },
+      { text: "Mirror of live service" },
+       {  html: '<a href="" class="govuk-link"></a>'
+       }
+    ],
+    [
+      { text: "V4" },
+      { text: "Core journey redesigned" },
+      { text: "Next release completed but not yet live " },
+       { html: '<a href="" class="govuk-link"></a>'
+       }
+    ],
+    [
+      { text: "V5" },
+       { text: "Core journey + third-party flow" },
+      { text: "Adds support for third-party." },
+       { html: '<a href="" class="govuk-link"></a>'}
+    ]
+  ]
+}) }}
+
+
 <br>
 
-</div>
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-full-width">
+
+
 
 {% from "govuk/components/table/macro.njk" import govukTable %}
 
@@ -128,8 +164,7 @@ Prototype access is grouped by user role to ensure users only see versions relev
 }) }}
 
 
-  </div>
-</div>
+ 
 </div>
 </div>
 {% endblock %}

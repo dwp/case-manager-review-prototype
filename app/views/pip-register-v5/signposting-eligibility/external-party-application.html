@@ -13,6 +13,8 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 
+
+
 {% block content %}
 
 <div class="govuk-grid-row">
@@ -21,26 +23,20 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
     <form action="#" method="post" method="post">
 
       <h1 class="govuk-heading-l">
-        We no longer accept a change of circumstances for DLA 
+        I need to collect some more details to continue
       </h1>
-      <p class="govuk-body">We will have to send you a letter inviting you to claim PIP.
-        <br> 
-        <br>
-        You can choose to claim PIP or not but either way, your DLA payments will stop.
-      </p>
 
       {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
-{{ govukInsetText({
-  classes: 'colour-blue',
-  html: 'Action: Complete a task in PIPCS for back office to issue a claim invitation. 
-         <br>
-         Include the claimant’s name and NINO.
-         <br> 
-         Enter in notes: "REASSESSMENT CASE. In Scope. Change in needs reported. Issue clerical invite."' | safe
-}) }}
 
+      {{ govukInsetText({
+        classes: 'colour-blue',
+          text: "Action: Register the claim in PIPCS."
+      }) }}
 
   </form>
+
+
+
 
   </div>
 </div>

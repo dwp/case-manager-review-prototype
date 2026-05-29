@@ -1,5 +1,7 @@
 // add motability routes here
 
+const { response } = require('express');
+
 
 
 module.exports = function (folderForViews, urlPrefix, router) {
@@ -11,23 +13,144 @@ const validatePath = require('./validatePath.js')
 
   // DEV READY
 
-  // Eligibility launched from main UI
-  router.post(`/${folderForViews}/signposting-eligibility/service-start-page`, function (request, response) {
-    var newApp = request.session.data['new-app']
-    
-    if (newApp == 'pip') {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/claiming-self`;
-validatePath(response, redirectPath);
-    
-} else if (newApp == "existing") {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/existing-claims`;
-validatePath(response, redirectPath);
 
-} else if (newApp == "dla") {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/dla-1-change`;
+
+
+
+//third party flows begin
+
+// someone else third party
+ router.post(`/${folderForViews}/signposting-eligibility/applying-for-someone-else`, function (request, response) {
+    const applysomeoneelse = request.body['claiming-self'];
+    if (applysomeoneelse === 'myself') {
+      request.session.data['journey'] = 'core';
+      response.redirect('/pip-register-v5/signposting-eligibility/third-party-with-applicant');
+    } else if (applysomeoneelse === 'someone-else') {
+      request.session.data['journey'] = '3rd';
+      response.redirect('/pip-register-v5/signposting-eligibility/applying-for-someone-else');
+    } else {
+      response.redirect('/pip-register-v5/signposting-eligibility/applying-for-someone-else');
+    }
+  })
+
+
+  //  third party with applicant
+ router.post(`/${folderForViews}/signposting-eligibility/third-party-with-applicant`, function (request, response) {
+    const applysomeoneelse = request.body['claiming-self'];
+    if (applysomeoneelse === 'myself') {
+      request.session.data['journey'] = 'core';
+      response.redirect('/pip-register-v5/signposting-eligibility/third-party-name');
+    } else if (applysomeoneelse === 'someone-else') {
+      request.session.data['journey'] = '3rd';
+      response.redirect('/pip-register-v5/signposting-eligibility/special-rules-for-end-of-life-application-third-party');
+    } else {
+      response.redirect('/pip-register-v5/signposting-eligibility/third-party-with-applicant');
+    }
+  })
+
+
+
+  // third party name
+router.post(`/${folderForViews}/signposting-eligibility/third-party-name`, function (request, response) {
+  const redirectPath = `/${folderForViews}/signposting-eligibility/i-need-to-speak-to-the-applicant`;
+validatePath(response, redirectPath);;
+})
+
+  // i-need-to-speak-to-the-applicant
+router.post(`/${folderForViews}/signposting-eligibility/i-need-to-speak-to-the-applicant`, function (request, response) {
+  const redirectPath = `/${folderForViews}/signposting-eligibility/consent-for-third-party-to-answer-questions`;
+validatePath(response, redirectPath);;
+})
+
+
+// consent-for-third-party-to-answer-questions
+ router.post(`/${folderForViews}/signposting-eligibility/consent-for-third-party-to-answer-questions`, function (request, response) {
+    const claimingSelf = request.body['claiming-self'];
+    if (claimingSelf === 'myself') {
+      request.session.data['journey'] = 'core';
+      response.redirect('/pip-register-v5/signposting-eligibility/stay-with-third-party-until-call-ends');
+    } else if (claimingSelf === 'someone-else') {
+      request.session.data['journey'] = '3rd';
+      response.redirect('/pip-register-v5/signposting-eligibility/consent-for-third-party-or-answer-questions-for-yourself');
+    } else {
+      response.redirect('/pip-register-v5/signposting-eligibility/stay-with-third-party-until-call-ends');
+    }
+  })
+
+  // stay-with-third-party-until-call-ends
+router.post(`/${folderForViews}/signposting-eligibility/stay-with-third-party-until-call-ends`, function (request, response) {
+  const redirectPath = `/${folderForViews}/signposting-eligibility/answer-for-the-applicant`;
+validatePath(response, redirectPath);;
+})
+
+  // answer for the applicant
+router.post(`/${folderForViews}/signposting-eligibility/answer-for-the-applicant`, function (request, response) {
+  const redirectPath = `/${folderForViews}/signposting-eligibility/national-insurance-number`;
+validatePath(response, redirectPath);;
+})
+
+
+
+  // SREL-third party
+   router.post(`/${folderForViews}/signposting-eligibility/special-rules-for-end-of-life-application-third-party`, function (request, response) {
+    var srel = request.session.data['special-rules-for-end-of-life-application-third-party']
+    if (srel == 'no') {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/third-party-cannot-continue-application`;
+validatePath(response, redirectPath);
+    } else if (srel == "yes") {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/srel-team-handover`;
 validatePath(response, redirectPath);
     }
   })
+
+  // third party - pass-phone-to-applicant-for-security
+router.post(`/${folderForViews}/signposting-eligibility/pass-phone-to-applicant-for-security`, function (request, response) {
+  const firstName = request.session.data['first-name'];
+  const lastName = request.session.data['last-name'];
+
+  const redirectPath = `/${folderForViews}/signposting-eligibility/security-questions`;
+validatePath(response, redirectPath);;
+})
+
+
+ // third party pass-phone-to-third-party-to-start-application
+    router.post(`/${folderForViews}/signposting-eligibility/pass-phone-to-third-party-to-start-application`, function (request, response) {
+     const redirectPath = `/${folderForViews}/task-list`;
+validatePath(response, redirectPath);
+  })
+
+  router.post(`/${folderForViews}/healthcare-professional/pass-phone-to-applicant-for-consent`, function (request, response) {
+      const redirectPath = `/${folderForViews}/healthcare-professional/consent-2`;
+validatePath(response, redirectPath);
+  })
+
+ // third party pass-phone-to-third-party-to-complete-application
+    router.post(`/${folderForViews}/healthcare-professional/pass-phone-to-third-party-to-complete-application`, function (request, response) {
+     const redirectPath = `/${folderForViews}/healthcare-professional/start`;
+validatePath(response, redirectPath);
+  })
+
+
+
+
+//third party flows end - some third party routes are still below this line
+
+
+  //NEW CORE PROTOTYPE JOURNEY ROUTES - 10 MAY 2026
+
+  // Eligibility launched from main UI
+  router.post(`/${folderForViews}/signposting-eligibility/new-pip-application`, function (request, response) {
+    var newApp = request.session.data['new-app']
+    if (newApp == 'yes') {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/for-yourself-or-someone-else`;
+validatePath(response, redirectPath);
+    } else if (newApp == "no") {
+
+      const redirectPath = `/${folderForViews}/signposting-eligibility/existing-claims`;
+validatePath(response, redirectPath);
+    }
+  })
+
 
   // Eligibility launched from main UI
   router.post(`/${folderForViews}/signposting-eligibility/with-applicant`, function (request, response) {
@@ -50,16 +173,215 @@ validatePath(response, redirectPath);;
 });
 
 
-  router.post(`/${folderForViews}/signposting-eligibility/welsh-prefs`, function (request, response) {
-    var welshPrefs = request.session.data['welsh-prefs']
-    if (welshPrefs == 'no') {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/over-16`;
+
+// for yourself or someone else
+ router.post(`/${folderForViews}/signposting-eligibility/for-yourself-or-someone-else`, function (request, response) {
+    const claimingSelf = request.body['claiming-self'];
+    if (claimingSelf === 'myself') {
+      request.session.data['journey'] = 'core';
+      response.redirect('/pip-register-v5/signposting-eligibility/national-insurance-number');
+    } else if (claimingSelf === 'someone-else') {
+      request.session.data['journey'] = '3rd';
+      response.redirect('/pip-register-v5/signposting-eligibility/applying-for-someone-else');
+    } else {
+      response.redirect('/pip-register-v5/signposting-eligibility/for-yourself-or-someone-else');
+    }
+  })
+
+
+
+// Name and DOB
+router.post(`/${folderForViews}/signposting-eligibility/name-and-date-of-birth`, function (request, response) {
+  const firstName = request.session.data['first-name'];
+  const lastName = request.session.data['last-name'];
+
+  const redirectPath = `/${folderForViews}/signposting-eligibility/check-personal-details`;
+validatePath(response, redirectPath);;
+})
+
+// Check personal details
+router.post(`/${folderForViews}/signposting-eligibility/check-personal-details`, function (request, response) {
+  const firstName = request.session.data['first-name'];
+  const lastName = request.session.data['last-name'];
+
+  const redirectPath = `/${folderForViews}/signposting-eligibility/which-uk-nation`;
+validatePath(response, redirectPath);;
+})
+
+
+//welsh communication
+  router.post(`/${folderForViews}/signposting-eligibility/welsh-communication`, function (request, response) {
+    var welshcommunication = request.session.data['welshcommunication']
+    if (welshcommunication == 'no') {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/special-rules-for-end-of-life-application`;
 validatePath(response, redirectPath);
-    } else if (welshPrefs == "yes") {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/welsh-prefs-kickout`;
+    } else if (welshcommunication == "yes") {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/applicant-lives-in-wales`;
 validatePath(response, redirectPath);
     }
   })
+
+  //pip or dla in last 12 months
+  router.post(`/${folderForViews}/signposting-eligibility/pip-or-dla-in-last-12-months`, function (request, response) {
+    var last12months = request.session.data['last12months']
+    if (last12months == 'no') {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/over-state-pension-age-not-eligible`;
+validatePath(response, redirectPath);
+    } else if (last12months == "yes") {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/check-personal-details`;
+validatePath(response, redirectPath);
+    }
+  })
+
+
+  // SREL
+   router.post(`/${folderForViews}/signposting-eligibility/special-rules-for-end-of-life-application`, function (request, response) {
+    var srel = request.session.data['special-rules-for-end-of-life-application']
+    if (srel == 'no') {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/claiming-dla`;
+validatePath(response, redirectPath);
+    } else if (srel == "yes") {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/srel-team-handover`;
+validatePath(response, redirectPath);
+    }
+  })
+
+ 
+
+  //claming dla
+  router.post(`/${folderForViews}/signposting-eligibility/claiming-dla`, function (request, response) {
+    var claimingdla = request.session.data['claimingdla']
+    if (claimingdla == "yes") {
+        const redirectPath = `/${folderForViews}/signposting-eligibility/dla-payments-continue`;
+validatePath(response, redirectPath);
+    }
+    else if (claimingdla == "no") {
+        const redirectPath = `/${folderForViews}/signposting-eligibility/appointee-check`;
+validatePath(response, redirectPath);
+    }
+  })
+
+
+  //appointee check
+ router.post(`/${folderForViews}/signposting-eligibility/appointee-check`, function (request, response) {
+    var appointeecheck = request.session.data['appointeecheck']
+    if (appointeecheck == "yes") {
+        const redirectPath = `/${folderForViews}/signposting-eligibility/applicant-has-appointee`;
+validatePath(response, redirectPath);
+    }
+    else if (appointeecheck == "no") {
+        const redirectPath = `/${folderForViews}/signposting-eligibility/security-questions`;
+validatePath(response, redirectPath);
+    }
+  }) 
+
+
+
+
+
+router.post(`/${folderForViews}/signposting-eligibility/appointee-check`, function (request, response) {
+    const appointeecheck = request.body['appointee-check'];
+    if (appointeecheck === 'yes') {
+      request.session.data['journey'] = 'core';
+      response.redirect('/pip-register-v4/signposting-eligibility/applicant-has-appointee');
+    } else if (appointeecheck === 'security-questions') {
+      request.session.data['journey'] = '3rd';
+      response.redirect('/pip-register-v4/signposting-eligibility/test');
+    } else {
+      response.redirect('/pip-register-v4/signposting-eligibility/test');
+    }
+  })
+
+
+
+
+
+  // Security questions
+
+router.post(`/${folderForViews}/signposting-eligibility/security-questions`, function (request, response) {
+  var secVerified = request.session.data['security-verified'];
+
+  if (secVerified == '2correct') {
+
+ const redirectPath = `/${folderForViews}/pip-explanation`;
+validatePath(response, redirectPath);
+  } else if (secVerified == '1correct') {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/contact-to-confirm-identity`;
+validatePath(response, redirectPath);
+
+  } else if (secVerified == 'none') {
+         const redirectPath = `/${folderForViews}/signposting-eligibility/contact-to-confirm-identity`;
+validatePath(response, redirectPath);
+  } else {
+    // Fallback: no option selected
+         const redirectPath = `/${folderForViews}/signposting-eligibility/security-questions`;
+validatePath(response, redirectPath);
+  }
+})
+
+
+// contact to confirm identity
+
+router.post(`/${folderForViews}/signposting-eligibility/contact-to-confirm-identity`, function (request, response) {
+    const redirectPath = `/${folderForViews}/declaration`;
+validatePath(response, redirectPath);
+  })
+
+
+// which uk nation
+
+ router.post(`/${folderForViews}/signposting-eligibility/which-uk-nation`, function (request, response) {
+    var gbPIP = request.session.data['gb-pip']
+    if (gbPIP == 'eng') {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/special-rules-for-end-of-life-application`;
+validatePath(response, redirectPath);
+    } else if (gbPIP == "nire") {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/applicant-lives-in-northern-ireland`;
+validatePath(response, redirectPath);
+    } else if (gbPIP == "scot") {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/applicant-lives-in-scotland`;
+validatePath(response, redirectPath);
+    } else if (gbPIP == "wales") {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/welsh-communication`;
+validatePath(response, redirectPath);
+    }
+    else if (gbPIP == "other-country") {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/applicant-lives-outside-uk`;
+validatePath(response, redirectPath);
+    }
+
+      else {
+    const redirectPath = `/${folderForViews}/signposting-eligibility/new-application`;
+validatePath(response, redirectPath);
+    }
+
+  })
+
+
+  // pip explanation
+  router.post(`/${folderForViews}/pip-explanation`, function (request, response) {
+    const redirectPath = `/${folderForViews}/declaration`;
+validatePath(response, redirectPath);
+  })
+
+
+   //National insurance
+  router.post(`/${folderForViews}/signposting-eligibility/national-insurance-number`, function (request, response) {
+     const redirectPath = `/${folderForViews}/signposting-eligibility/searchlight-check`;
+validatePath(response, redirectPath);
+  })
+
+
+
+
+
+
+
+
+
+  //NEW CORE PROTOTYPE JOURNEY 10 MAY 2026 ENDS PARTIALLY SOME ROUTES MAY BE BELOW THIS LINE
+
+
 
   router.post(`/${folderForViews}/signposting-eligibility/new-application`, function (request, response) {
     var gbPIP = request.session.data['gb-pip']
@@ -108,31 +430,8 @@ validatePath(response, redirectPath);
 
   })
 
-router.post(`/${folderForViews}/signposting-eligibility/claiming-self`, function (request, response) {
-  const claimingSelf = request.body['claiming-self'];
+ 
 
-  if (claimingSelf === 'myself') {
-    // 1. Set the user role for later use
-    request.session.data['journey'] = 'core';
-    
-    // 2. Redirect to SREL (Shared page for both DLA and Standard flows)
-    const redirectPath = `/${folderForViews}/signposting-eligibility/srel`;
-    validatePath(response, redirectPath);
-
-  } else if (claimingSelf === 'someone-else') {
-    // 1. Set the user role
-    request.session.data['journey'] = '3rd';
-    
-    // 2. Redirect to Someone Else (Shared page)
-    const redirectPath = `/${folderForViews}/signposting-eligibility/someone-else`;
-    validatePath(response, redirectPath);
-
-  } else {
-    // Error state: Re-render the current page (Stay in v5!)
-    const redirectPath = `/${folderForViews}/signposting-eligibility/claiming-self`;
-    validatePath(response, redirectPath);
-  }
-})
 
   //external route
 
@@ -169,10 +468,7 @@ validatePath(response, redirectPath);
     
   })
 
-router.post(`/${folderForViews}/signposting-eligibility/dla-1-change`, function (request, response) {
-     const redirectPath = `/${folderForViews}/signposting-eligibility/claiming-self`;
-validatePath(response, redirectPath);
-  })
+
 
   //last 12 months
   router.post(`/${folderForViews}/last-12-months`, function (request, response) {
@@ -189,33 +485,29 @@ validatePath(response, redirectPath);
 console.log('Redirecting to:', folderForViews);
   })
 
-router.post(`/${folderForViews}/signposting-eligibility/what-is-ni-number-3`, function (request, response) {
-  const externalRoute = request.session.data['ni3'];
-  let redirectPath;
 
-  // Use a switch or if/else, but let's be explicit with the folder names
-  if (externalRoute === "same-dob") {
-
-    redirectPath = `/${folderForViews}/signposting-eligibility/dla-1-inv`;
-
-  } else if (externalRoute === "different-dob" || externalRoute === "no-searchlight") {
-    redirectPath = `/${folderForViews}/signposting-eligibility/no-match-ni-kickout`;
-  } else if (externalRoute === "scr") {
-    redirectPath = `/${folderForViews}/signposting-eligibility/scr-kickout`;
-  } else {
-    // If no radio is selected, stay on the current page
-    redirectPath = `/${folderForViews}/signposting-eligibility/what-is-ni-number-3`;
+//what-is-ni-number-3
+router.post(`/${folderForViews}/what-is-ni-number-3`, function (request, response) {
+  var externalRoute = request.session.data['ni3']
+  if (externalRoute == "same-dob") {
+    const redirectPath = `/${folderForViews}/signposting-eligibility/appointee`;
+validatePath(response, redirectPath);
   }
-
-  console.log('--- DEBUG START ---');
-  console.log('Value of ni3:', externalRoute);
-  console.log('Sending user to:', redirectPath);
-  console.log('--- DEBUG END ---');
-
-  validatePath(response, redirectPath);
-});
-
-
+  else if (externalRoute == "different-dob") {
+    const redirectPath = `/${folderForViews}/signposting-eligibility/no-match-ni-kickout`;
+validatePath(response, redirectPath);
+  }
+  else if (externalRoute == "scr") {
+    const redirectPath = `/${folderForViews}/signposting-eligibility/scr-kickout`;
+validatePath(response, redirectPath);
+  }
+  else if (externalRoute == "no-searchlight") {
+    const redirectPath = `/${folderForViews}/signposting-eligibility/no-match-ni-kickout`;
+validatePath(response, redirectPath);
+  }
+  console.log('ni3 value:', request.session.data['ni3']);
+  console.log('Redirecting to:', folderForViews);
+})
 
 
 
@@ -236,68 +528,46 @@ validatePath(response, redirectPath);
 
 
 
-// Date of Birth / Age Confirmation (The Green "Continue" Button)
-router.post(`/${folderForViews}/signposting-eligibility/over-16`, function (request, response) {
-  
-  // 1. Resurface the early "Master Switch" from the start of the journey
-  const journeyType = request.session.data['new-app']
+  // Are you over 16 and under SPA?
+  router.post(`/${folderForViews}/signposting-eligibility/over-16`, function (request, response) {
+    const correctAge = request.session.data['age']
+    if (correctAge === 'yes') {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/dla-now`;
+      validatePath(response, redirectPath);
+    } else if (correctAge === "no-under-16") {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/under-16-ineligible`;
+      validatePath(response, redirectPath);
+    } else if (correctAge === "no-over-spa") {
+      const redirectPath = `/${folderForViews}/signposting-eligibility/last-12-months`;
+      validatePath(response, redirectPath);
+    }
+  })
 
-  // 2. The Logic Fork (The first Purple Diamond in your diagram)
-  if (journeyType === 'dla') {
-    // ENTER SUB-FLOW: This is a DLA claimant reporting a change
-    const redirectPath = `/${folderForViews}/signposting-eligibility/what-is-ni-number`;
-    validatePath(response, redirectPath);
-  } else {
-    // STANDARD FLOW: This is a standard PIP applicant
-    const redirectPath = `/${folderForViews}/signposting-eligibility/dla-now`;
-    validatePath(response, redirectPath);
-  }
-})
-
-
-// This catches the 'Quick Link' click for Over State Pension Age
-router.get(`/${folderForViews}/signposting-eligibility/age-check-logic`, function (request, response) {
-  const journeyType = request.session.data['new-app'];
-
-  // Check the 'Resurfaced' flag
-  if (journeyType === 'dla') {
-    // DLA users go to the question (Last 12 months)
-    const redirectPath = `/${folderForViews}/signposting-eligibility/last-12-months`;
-    validatePath(response, redirectPath);
-  } else {
-    // Standard users go to the kickout
-    const redirectPath = `/${folderForViews}/signposting-eligibility/pension-age-kickout`;
-    validatePath(response, redirectPath);
-  }
-});
-
-// DLA-0-PRE logic
-router.post(`/${folderForViews}/signposting-eligibility/dla-0-pre`, function (request, response) {
-  const dlaChoice = request.session.data['dla-pre-choice'];
-
-  if (dlaChoice === 'yes') {
-    // Send them to the invitation/next step
-    const redirectPath = `/${folderForViews}/signposting-eligibility/dla-1-inv`;
-    return validatePath(response, redirectPath); 
-  } else {
-    // Send them to the appointee/third party check
-    const redirectPath = `/${folderForViews}/signposting-eligibility/appointee`;
-    return validatePath(response, redirectPath);
-  }
-});
-
-
+// Claiming under SREL?
 router.post(`/${folderForViews}/signposting-eligibility/srel`, function (request, response) {
+
+  // Get the value selected on the form
   const srel = request.body['srel'];
+  // Read the journey already stored
   const journey = request.session.data['journey'];
-  
-  // 1. Validation: If they didn't pick an option, reload the page
+
+      console.log('SREL value is:', srel);
+  console.log('Journey value is:', journey);
+
+  // Safety check: ensure radios were selected
   if (!srel) {
     const redirectPath = `/${folderForViews}/signposting-eligibility/srel`;
     return validatePath(response, redirectPath);
   }
-
-  // 2. Logic for 3rd Party journey
+  // ────────────────────────────────────────
+  // JOURNEY LOGIC
+  // ────────────────────────────────────────
+  // CORE JOURNEY BEHAVIOUR
+  if (journey === 'core') {
+    const redirectPath = `/${folderForViews}/signposting-eligibility/what-is-your-name`;
+    return validatePath(response, redirectPath);
+  }
+  // THIRD-PARTY JOURNEY BEHAVIOUR
   if (journey === '3rd') {
     if (srel === 'no') {
       const redirectPath = `/${folderForViews}/signposting-eligibility/with-applicant`;
@@ -307,25 +577,8 @@ router.post(`/${folderForViews}/signposting-eligibility/srel`, function (request
       const redirectPath = `/${folderForViews}/signposting-eligibility/srel-bau-kickout`;
       return validatePath(response, redirectPath);
     }
-  } 
-  // 3. Logic for Core journey 
-  else if (journey === 'core') {
-    if (srel === 'no') {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/what-is-your-name`;
-      return validatePath(response, redirectPath);
-    }
-    if (srel === 'yes') {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/srel-bau-kickout`;
-      return validatePath(response, redirectPath);
-    }
-  }
-  // 4. Emergency Backup
-  else {
-    const redirectPath = `/${folderForViews}/signposting-eligibility/srel`;
-    return validatePath(response, redirectPath);
   }
 });
-
 
 
 
@@ -333,7 +586,7 @@ router.post(`/${folderForViews}/signposting-eligibility/srel`, function (request
     const claimingSelf = request.body['claiming-self'];
     if (claimingSelf === 'myself') {
       request.session.data['journey'] = 'core';
-      response.redirect('/pip-register-v4/signposting-eligibility/srel');
+      response.redirect('/pip-register-v4/signposting-eligibility/what-is-ni-number');
     } else if (claimingSelf === 'someone-else') {
       request.session.data['journey'] = '3rd';
       response.redirect('/pip-register-v4/signposting-eligibility/someone-else');
@@ -408,28 +661,12 @@ router.post(`/${folderForViews}/signposting-eligibility/appointee`, function (re
 
   validatePath(res, redirectPath);
 });
+``
 
-  //Do you have a mobile number
-  router.post(`/${folderForViews}/signposting-eligibility/dla-1-inv`, function (request, response) {
-    var dlaLetter = request.session.data['dlaLetter']
-    if (dlaLetter == 'yes') {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/dla-1b`;
-validatePath(response, redirectPath);
-    } else if (dlaLetter == 'no') {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/dla-3-needs`;
-validatePath(response, redirectPath);
-    }
-  })
 
   // third party speak
     router.post(`/${folderForViews}/signposting-eligibility/third-party-speak`, function (request, response) {
      const redirectPath = `/${folderForViews}/signposting-eligibility/thank-you-phone`;
-validatePath(response, redirectPath);
-  })
-
-    // third party speak
-    router.post(`/${folderForViews}/signposting-eligibility/dla-1b`, function (request, response) {
-     const redirectPath = `/${folderForViews}/signposting-eligibility/dla-2-med`;
 validatePath(response, redirectPath);
   })
 
@@ -438,7 +675,7 @@ validatePath(response, redirectPath);
   let redirectPath;
 
   if (journey === 'core') {
-    redirectPath = `/${folderForViews}/welcome-screen`;
+    redirectPath = `/${folderForViews}/task-list`;
   } else if (journey === '3rd') {
     redirectPath = `/${folderForViews}/signposting-eligibility/ready-application`;
   } else {
@@ -461,9 +698,9 @@ validatePath(response, redirectPath);
 validatePath(response, redirectPath);
   })
 
-  //NI
+  //National insurance
   router.post(`/${folderForViews}/signposting-eligibility/what-is-ni-number`, function (request, response) {
-     const redirectPath = `/${folderForViews}/signposting-eligibility/what-is-ni-number-2`;
+     const redirectPath = `/${folderForViews}/signposting-eligibility/searchlight-check`;
 validatePath(response, redirectPath);
   })
   
@@ -475,26 +712,13 @@ validatePath(response, redirectPath);
   //
   //Serchlight check
   router.post(`/${folderForViews}/signposting-eligibility/searchlight-check`, function (request, response) {
-    const redirectPath = `/${folderForViews}/signposting-eligibility/security-check`;
+    const redirectPath = `/${folderForViews}/signposting-eligibility/name-and-date-of-birth`;
 validatePath(response, redirectPath);
   })
 
 
 
-// DLA-0-PRE logic
-router.post(`/${folderForViews}/signposting-eligibility/dla-2-med`, function (request, response) {
-  const dlaMed = request.session.data['dlaMed'];
-
-  if (dlaMed === 'yes') {
-    // Send them to the invitation/next step
-    const redirectPath = `/${folderForViews}/signposting-eligibility/appointee`;
-    return validatePath(response, redirectPath); 
-
-  } else {
-    const redirectPath = `/${folderForViews}/signposting-eligibility/appointee`;
-    return validatePath(response, redirectPath);
-  }
-});
+  //welcome-screen
 
 
   // How many security questions were answered?
@@ -520,65 +744,6 @@ validatePath(response, redirectPath);
   }
 })
 
-router.post(`/${folderForViews}/signposting-eligibility/dla-3-needs`, function (request, response) {
-  var dlaNeeds = request.session.data['dlaNeeds'];
-
-  if (dlaNeeds == 'improved') {
-
- const redirectPath = `/${folderForViews}/signposting-eligibility/dla-6-next-steps`;
-validatePath(response, redirectPath);
-  } else if (dlaNeeds == 'same') {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/dla-4-apply`;
-validatePath(response, redirectPath);
-
-  } else if (dlaNeeds == 'worse') {
-         const redirectPath = `/${folderForViews}/signposting-eligibility/dla-5-rate`;
-validatePath(response, redirectPath);
-  } else {
-    // Fallback: no option selected
-         const redirectPath = `/${folderForViews}/signposting-eligibility/dla-3-needs`;
-validatePath(response, redirectPath);
-  }
-})
-
-router.post(`/${folderForViews}/signposting-eligibility/dla-4-apply`, function (request, response) {
-  var dlaApply = request.session.data['dlaApply'];
-
-  if (dlaApply == 'yes') {
-
- const redirectPath = `/${folderForViews}/signposting-eligibility/dla-1b`;
-validatePath(response, redirectPath);
-  } else if (dlaApply == 'no') {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/dla-4-kickout`;
-validatePath(response, redirectPath);
-
-  } else {
-    // Fallback: no option selected
-         const redirectPath = `/${folderForViews}/signposting-eligibility/dla-4-apply`;
-validatePath(response, redirectPath);
-  }
-})
-
-router.post(`/${folderForViews}/signposting-eligibility/dla-5-rate`, function (request, response) {
-  var dlaRates = request.session.data['dlaRates'];
-
-  if (dlaRates == 'highest') {
-
- const redirectPath = `/${folderForViews}/signposting-eligibility/dla-8-no-apply`;
-validatePath(response, redirectPath);
-  } else if (dlaRates == 'highLow') {
-      const redirectPath = `/${folderForViews}/signposting-eligibility/dla-6-next-steps`;
-validatePath(response, redirectPath);
-
-  } else if (dlaRates == 'lower') {
-         const redirectPath = `/${folderForViews}/signposting-eligibility/dla-6-next-steps`;
-validatePath(response, redirectPath);
-  } else {
-    // Fallback: no option selected
-         const redirectPath = `/${folderForViews}/signposting-eligibility/dla-5-rate`;
-validatePath(response, redirectPath);
-  }
-})
 
   router.post(`/${folderForViews}/signposting-eligibility/failed-security`, function (request, response) {
     const redirectPath = `/${folderForViews}/declaration`;
@@ -586,11 +751,8 @@ validatePath(response, redirectPath);
   })
 
 
-    router.post(`/${folderForViews}/signposting-eligibility/dla-6-next-steps`, function (request, response) {
-    const redirectPath = `/${folderForViews}/signposting-eligibility/dla-2-med`;
-validatePath(response, redirectPath);
-  })
 
+  //---------------------------------------------------------------------------------------------
 
   // Welcome screens
 
@@ -1087,7 +1249,8 @@ validatePath(response, redirectPath);
 
   })
 
-  router.post(`/${folderForViews}/contact-details/alt-formats/email-reason-1`, function (request, response) {
+
+   router.post(`/${folderForViews}/contact-details/alt-formats/email-reason-1`, function (request, response) {
     const redirectPath = `/${folderForViews}/contact-details/alt-formats/email-reason`;
 validatePath(response, redirectPath);
   })

@@ -21,16 +21,16 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
 
     <form action="#" method="post" method="post">
       <h1 class="govuk-heading-l">
-        I'm checking your details on the system before we continue
+        I'm looking up your details on the system
       </h1>
       {{ govukInsetText({
         classes: 'colour-blue',
-          text: "Action: Check the applicant's Searchlight details, and select whether they have a Special Customer Record, an appointee, or none of the above."
+          html: "Action: Enter the national insurance number <strong>AB 12 34 56 C</strong> in Searchlight."
       }) }}
 
   
 
-      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+   <!--   {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
 {{ govukRadios({
   name: "whereDoYouLive",
@@ -59,7 +59,7 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
     }  ]
 }) }}
 
-      <!--
+      
       {{ govukInsetText({
         classes: 'colour-blue',
           text: "Action: Enter the applicant's National Insurance number in Searchlight, and check which benefits they are getting now, if any."
@@ -121,6 +121,11 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
     }) }}
 
   </form>
+   <p class="govuk-body">
+        <a href="special-customer-record" class="govuk-link govuk-link--no-visited-state">Applicant has a Special Customer Record</a></p>
+      <p class="govuk-body">
+        <a href="different-or-no-searchlight-record" class="govuk-link govuk-link--no-visited-state">Applicant does not have a Searchlight record</a>
+      </p>
 
   <!DOCTYPE html> 
 <html lang="en"> 
@@ -146,7 +151,7 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
            <body class="govuk-template__body"> 
             <div class="govuk-width-container"> 
               <main class="govuk-main-wrapper"> <!-- Example usage of the dashed container --> 
-  <div class="dashed-container"> 
+  <!--<div class="dashed-container"> 
     <h3 class="govuk-heading-m">Quick links</h3> 
     <ul class="govuk-list"> 
       <li><a href="scr-kickout.html" class="govuk-link">Special customer record kickout</a></li>
@@ -155,7 +160,7 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
     </a></li> 
      
     </ul> 
-  </div> <!-- Another example with different content --> 
+  </div>  Another example with different content --> 
     
     
   </main>

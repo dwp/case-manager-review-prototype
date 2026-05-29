@@ -21,15 +21,15 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
     <form action="#" method="post" method="post">
 
       <h1 class="govuk-heading-l">
-        That’s okay, thank you
+       You can apply for PIP [with a Guernsey]/[with a Jersey]/[with an Isle of Man] National Insurance number
       </h1>
-      <p class="govuk-body">Please call us back when you have your invitation letter.</p>
+      <p class="govuk-body">I'll continue with your application now.</p>
 
       {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 
       {{ govukInsetText({
         classes: 'colour-blue',
-          text: "Action: End the call."
+          text: "Action: Register the application in PIPCS, and follow the normal procedure for applicants who do not have a UK National Insurance number."
       }) }}
 
   </form>

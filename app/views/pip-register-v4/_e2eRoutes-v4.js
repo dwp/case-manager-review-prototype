@@ -182,7 +182,7 @@ router.post(`/${folderForViews}/signposting-eligibility/security-questions`, fun
 
   if (secVerified == '2correct') {
 
- const redirectPath = `/${folderForViews}/declaration`;
+ const redirectPath = `/${folderForViews}/pip-explanation`;
 validatePath(response, redirectPath);
   } else if (secVerified == '1correct') {
       const redirectPath = `/${folderForViews}/signposting-eligibility/contact-to-confirm-identity`;
@@ -239,7 +239,7 @@ validatePath(response, redirectPath);
 
   // pip explanation
   router.post(`/${folderForViews}/pip-explanation`, function (request, response) {
-    const redirectPath = `/${folderForViews}/task-list`;
+    const redirectPath = `/${folderForViews}/declaration`;
 validatePath(response, redirectPath);
   })
 
@@ -554,7 +554,7 @@ validatePath(response, redirectPath);
   let redirectPath;
 
   if (journey === 'core') {
-    redirectPath = `/${folderForViews}/pip-explanation`;
+    redirectPath = `/${folderForViews}/task-list`;
   } else if (journey === '3rd') {
     redirectPath = `/${folderForViews}/signposting-eligibility/ready-application`;
   } else {

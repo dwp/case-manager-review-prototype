@@ -23,24 +23,37 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
     <form action="#" method="post" method="post">
 
       <h1 class="govuk-heading-l">
-        If your circumstances have changed, you might have to apply for PIP
+        Are you with the person you're helping now?
       </h1>
 
-      <p class="govuk-body">
-       If you do, your DLA payments will continue until we make a decision on your PIP application. They will only stop if you qualify for PIP.</a>
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
-      <!-- {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
-
-      {{ govukInsetText({
-        classes: 'colour-blue',
-          text: "Action: ________"
-      }) }} -->
-
-      <div>
-
-          {{ govukButton({
-        text: "Continue"
+      {{ govukRadios({
+        name: "claiming-self",
+        fieldset: {
+          legend: {
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        items: [
+          {
+            value: "myself",
+            text: "Yes"
+          },
+          {
+            value: "someone-else",
+            text: "No"
+          }
+        ]
       }) }}
+
+
+
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
 
   </form>
 

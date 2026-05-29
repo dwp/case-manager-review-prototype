@@ -11,15 +11,16 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form action="service-start-page" method="post">
+      <form action="service-start-page" method="post" method="post">
 
       <h1 class="govuk-heading-l">
-        Hello, you're through to the new claims line for Personal Independence Payment (PIP)</h1>
+        Hello, you're through to the new claims line for Personal Independence Payment (PIP)
+      </h1>
 
 
 {{ govukInsetText({
         classes: 'colour-blue',
-          text: "Action: Tell the caller your name."
+          text: "Action: Tell your name to the caller. "
       }) }}
 
 
@@ -29,23 +30,19 @@
           name: "new-app",
           fieldset: {
             legend: {
-              text: "How can I help you?",
+              text: "Are you calling to start a new application for PIP?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--m"
             }
           },
           items: [
             {
-              value: "pip",
-              text: "I want to apply for PIP"
+              value: "yes",
+              text: "Yes"
             },
             {
-              value: "existing",
-              text: "I want to talk about an existing claim"
-            },
-          {
-              value: "dla",
-              text: "I want to report a change of circumstances"
+              value: "no",
+              text: " No"
             }
           ]
         }) }}

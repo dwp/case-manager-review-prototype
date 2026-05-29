@@ -6,43 +6,57 @@
 
 {% set isDeclarationPre = true %}
 {% block pageTitle %}
-  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+Content page template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
+
+
 
 
 {% block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-          <form action="dla-1-inv" method="post" novalidate>
 
-                    {{ thirdPartyCaption({
+    <form action="#" method="post" method="post">
+
+        {{ thirdPartyCaption({
             thirdPartyName: thirdPartyName,
             applicantName: applicantName,
-            heading: "Did you get a letter asking you to call and apply for PIP?",
-              hint: ""
+            heading: "Do you want us to write to you or speak to you in Welsh?"
         }) }}
 
-            {{ govukRadios({
-              name: "dlaLetter",
-              
+
+
+      {{ govukRadios({
+              name: "welshcommunication",
+              fieldset: {
+                legend: {
+                  isPageHeading: false
+                }
+              },
               items: [
                 {
                   value: "yes",
-                  text: "Yes"
+                  text: "Yes, write or speak to me in Welsh"
                 },
                 {
                   value: "no",
-                  text: "No"
+                  text: "No, write and speak to me in English"
                 }
               ]
             }) }}
 
-            {{ govukButton({
-              text: "Continue"
-            }) }}
-          </form>
-   </div>
+      {{ govukButton({
+      text: "Continue"
+    }) }}
+
+
+  </form>
+
+
+
+
+  </div>
 </div>
 
 {% endblock %}

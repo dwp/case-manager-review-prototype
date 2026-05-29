@@ -13,8 +13,6 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 
-
-
 {% block content %}
 
 <div class="govuk-grid-row">
@@ -23,24 +21,16 @@ Content page template – {{ serviceName }} – GOV.UK Prototype Kit
     <form action="#" method="post" method="post">
 
       <h1 class="govuk-heading-l">
-        You do not need to apply for PIP now
+        I can see you have already applied for PIP
       </h1>
+      <p class="govuk-body">I just need to check your details before we continue.</p>
 
-      <p class="govuk-body">
-       You will continue getting the highest rate for your care and mobility components.
-      <br>
-      <br>
-    We will send you an invitation to apply for PIP when your DLA claim ends.</a>
-
-      <!-- {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+      {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 
       {{ govukInsetText({
         classes: 'colour-blue',
-          text: "Action: ________"
-      }) }} -->
-
-      <div>
-
+          text: "Action: Register the application in PIPCS."
+      }) }}
 
   </form>
 
