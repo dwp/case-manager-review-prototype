@@ -1,0 +1,103 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../layouts/main-v3.html" %}
+{% endif %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+
+<a class="govuk-link" href="/adult-disability-payment">
+      TEST </a>
+
+        <main class="govuk-main-wrapper  govuk-main-wrapper--auto-spacing" id="main-content">
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+
+          <form action="#" method="post" autocomplete="off" novalidate="" class="casa-journey-form">
+
+
+
+            <input type="hidden" name="_csrf" value="ef48e7e08ec7b0c3cecc78b03c32de514dbdf8dcf77c70789e48a0cfe9e577843bca6ef312d59723fd3091e29fe2460aa303e363c31f676bf50809e02ce4d83d604a70eb4528f784c77f486eb6c997e15e814827283eb0a4ebd8ecade47c972bb95ec01ea4f2525b1ed0820ac92d9c429f66730e6f5d8ed6c8cc3912e17b5685">
+
+
+  <fieldset class="govuk-fieldset">
+
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l govuk-!-margin-bottom-6">
+
+    <h1 class="govuk-fieldset__heading">
+      Hello, you're through to the new claims line for Personal Independence Payment (PIP)
+    </h1>
+
+  </legend>
+
+<div class="govuk-form-group">
+
+  <fieldset class="govuk-fieldset">
+
+  <legend class="govuk-fieldset__legend">
+
+    <h2 class="govuk-!-margin-bottom-2 govuk-!-margin-top-0 govuk-heading-m">Are you calling to start a new application for PIP?</h2>
+
+  </legend>
+
+
+  <div class="govuk-radios govuk-radios" data-module="govuk-radios" data-govuk-radios-init="">
+
+
+
+    <div class="govuk-radios__item">
+      <input class="govuk-radios__input" id="f-newClaimForPip" name="newClaimForPip" type="radio" value="yes">
+      <label class="govuk-label govuk-radios__label" for="f-newClaimForPip">
+        Yes
+      </label>
+
+    </div>
+
+    <div class="govuk-radios__item">
+      <input class="govuk-radios__input" id="f-newClaimForPip-2" name="newClaimForPip" type="radio" value="no">
+      <label class="govuk-label govuk-radios__label" for="f-newClaimForPip-2">
+        No
+      </label>
+
+    </div>
+
+  </div>
+
+</fieldset>
+
+</div>
+
+
+</fieldset>
+
+              <div class="govuk-button-group">
+
+
+<button type="submit" data-prevent-double-click="true" class="govuk-button" data-module="govuk-button" id="continue-button" data-govuk-button-init="">
+  Continue
+</button>
+
+
+              </div>
+
+          </form>
+
+      </div>
+    </div>
+
+
+        </main>
+      </div>
+{% endblock %}
+ 

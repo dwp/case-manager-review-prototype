@@ -1,0 +1,55 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "/layouts/main-v3.html" %}
+{% endif %}
+
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" action="" method="post">
+
+        <h1 class="govuk-heading-l">
+          We cannot continue this application now
+        </h1>
+
+<p class="govuk-body">
+        You must be with the person you are helping throughout the call.
+
+        <br><br>
+
+        Please call back when the person you are helping is with you.
+      </p>
+
+
+      
+
+       
+
+        <!-- <p><a href="/pip-register-v4/task-list.html">Go to task list</a></p> -->
+
+
+ 
+        
+      </form>
+
+    
+        </div>
+      </div>
+
+      
+    
+
+
+  </div>
+</div>
+   
+{% endblock %}

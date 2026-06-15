@@ -27,9 +27,9 @@ const validatePath = require('./validatePath.js')
       response.redirect('/pip-register-v5/signposting-eligibility/third-party-with-applicant');
     } else if (applysomeoneelse === 'someone-else') {
       request.session.data['journey'] = '3rd';
-      response.redirect('/pip-register-v5/signposting-eligibility/applying-for-someone-else');
+      response.redirect('/pip-register-v5/signposting-eligibility/collect-more-details');
     } else {
-      response.redirect('/pip-register-v5/signposting-eligibility/applying-for-someone-else');
+      response.redirect('/pip-register-v5/signposting-eligibility/collect-more-details');
     }
   })
 
@@ -677,7 +677,7 @@ validatePath(response, redirectPath);
   if (journey === 'core') {
     redirectPath = `/${folderForViews}/task-list`;
   } else if (journey === '3rd') {
-    redirectPath = `/${folderForViews}/signposting-eligibility/ready-application`;
+    redirectPath = `/${folderForViews}/task-list`;
   } else {
 
     redirectPath = `/${folderForViews}/welcome-screen`;

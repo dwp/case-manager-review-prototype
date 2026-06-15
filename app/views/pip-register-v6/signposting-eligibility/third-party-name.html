@@ -1,0 +1,79 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "/layouts/main-v3.html" %}
+{% endif %}
+
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" action="" method="post">
+
+        <h1 class="govuk-heading-l">
+          What is your name?
+        </h1>
+
+ {{ govukInsetText({
+        classes: 'colour-blue',
+          text: "Action: First name is enough as this is just to help your conversation."
+      }) }}
+      {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+        {% call govukFieldset({
+          legend: {
+            classes: "govuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+
+        {% if data['journey'] == "core" %}
+          {{ govukInput({
+            label: {
+              html: "<strong>First name</strong>"
+            },
+            id: "first-name",
+            name: "first-name",
+            autocomplete: "given-name",
+            spellcheck: false
+          }) }}
+
+         
+        {% endif %}
+
+        {% endcall %}
+
+       
+
+        <!-- <p><a href="/pip-register-v4/task-list.html">Go to task list</a></p> -->
+
+
+ {% from "govuk/components/button/macro.njk" import govukButton %}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+        
+      </form>
+ <p class="govuk-body">
+        <a href="i-need-to-speak-to-the-applicant" class="govuk-link govuk-link--no-visited-state">Third party did not give their name</a>
+      </p>
+    
+        </div>
+      </div>
+
+      
+    
+
+
+  </div>
+</div>
+   
+{% endblock %}

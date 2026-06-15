@@ -1,0 +1,52 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../layouts/main-v3.html" %}
+{% endif %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="#" method="post" method="post">
+
+          <h1 class="govuk-heading-l">
+            I have sent you the email now
+          </h1>
+
+          <p class="govuk-body">It tells you what you need to do next.
+            If you fill in the entire form, we may be able to assess your application without asking you to attend an appointment with a health professional </p>
+
+          <h2 class="govuk-heading-m">It is important for you to include copies of supporting evidence </h2>
+
+          <p class="govuk-body">This evidence will have an impact on your application. We need it to understand how your health conditions affect your ability to carry out day-to-day activities. </p>
+
+          <p class="govuk-body">By supporting evidence we mean things like: </p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>social care plans 
+            <li>reports from health professionals</li>
+            <li>prescription lists</li>
+            <li>test results, and </li>
+            <li>statements from carers or family members </li>
+          </ul>
+
+              {{ govukButton({
+                text: "Save and continue"
+              }) }}
+
+
+      </form>
+                      <p><a href="task-list-motability-done">Go to task list</a></p> 
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../layouts/main-v3.html" %}
+{% endif %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="#" method="post">
+        <div class="govuk-width-container">
+
+          <h1 class="govuk-heading-l">
+            Were you living in this [place type] yesterday?
+          </h1>
+
+          {% call govukFieldset({
+            legend: {
+              classes: "govuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          {{ govukRadios({
+            name: "other-yesterday",
+            items: [
+              {
+              value: "yes",
+              text: "Yes"
+              },
+              {
+              value: "no",
+              text: "No"
+              }
+            ]
+          }) }}
+
+          {% endcall %}
+
+            {{ govukButton({
+              text: "Save and continue"
+            }) }}
+            <p><a href="/pip-register-v4/task-list-hcp-done">Go to task list</a></p>
+ 
+        </div>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

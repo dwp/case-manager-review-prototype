@@ -1,0 +1,68 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../../layouts/main-v3.html" %}
+{% endif %}
+
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="what-type-of-audio-format" method="post">
+
+        {{ govukRadios({
+        name: "audio",
+        fieldset: {
+        legend: {
+        text: "What type of audio format do you need?",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+          }
+          },
+          items: [
+          {
+          value: "CD",
+          text: "CD"
+          },
+          {
+          value: "MP3 by email",
+          text:  "MP3 by email"
+          },
+          
+          {
+          value: "Casette tape",
+          text:  "Casette tape"
+          },
+          {
+            value: "DVD",
+            text:  "DVD"
+            }
+        ]
+        }) }}
+
+        {{ govukButton({
+        text: "Save and continue"
+        }) }}
+
+        <p><a href="/pip-register-v4/task-list-cd-done">Go to task list</a></p>
+        
+    </form> 
+
+  </div>
+</div> 
+{% endblock %}
+

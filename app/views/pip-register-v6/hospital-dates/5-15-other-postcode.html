@@ -1,0 +1,70 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../layouts/main-v3.html" %}
+{% endif %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" action="#" method="post">
+        <div class="govuk-width-container">
+
+          <h1 class="govuk-heading-l">
+            What is the name and postcode of the [place type]?
+          </h1>
+
+          {% call govukFieldset({
+            legend: {
+              classes: "govuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          }) %}
+
+          {{ govukInput({
+            label: {
+              text: "Place name (optional)"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "searchString",
+            name: "searchString"
+          }) }}
+
+          {{ govukInput({
+            label: {
+              text: "Postcode"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "postcode",
+            name: "postcode"
+          }) }}
+
+          {% endcall %}
+
+            {{ govukButton({
+              text: "Find address"
+            }) }}
+
+
+          <p class="govuk-body govuk-!-margin-bottom-6"><a href="5-19-other-address-manually" class="govuk-link">Enter address manually</a></p>
+                    <p><a href="other-residence-summary">Applicant does not know the address</a></p> 
+
+          <p><a href="/pip-register-v4/task-list-hcp-done">Go to task list</a></p>
+ 
+        </div>
+      </form>
+    </div>
+  </div>
+
+  {% endblock %}

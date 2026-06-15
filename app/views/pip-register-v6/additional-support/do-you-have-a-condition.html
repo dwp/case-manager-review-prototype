@@ -1,0 +1,82 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../layouts/main-v3.html" %}
+{% endif %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Do you have a mental health condition, or a condition that makes it difficult for you to remember things, learn new things, or make everyday decisions?
+      </h1>
+      <!--
+      <p class="govuk-body">We want to understand if you have significant difficulty communicating with us if you have:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>a mental health condition</li>
+        <li>learning, developmental or behavioural difficulties</li>
+        <li>a cognitive impairment</li>
+      </ul>
+      -->
+
+      {{ govukDetails({
+        summaryText: "Examples of conditions",
+        html: '<p class="govuk-body">This list is not exhaustive.</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Severe depression</li>
+              <li>Bipolar disorder</li>
+              <li>Post-traumatic stress disorder (PTSD)</li>
+              <li>Obsessive compulsive disorder (OCD)</li>
+              <li>Psychosis</li>
+              <li>Schizophrenia</li>
+              <li>Personality disorder</li>
+              <li>Conduct disorder</li>
+              <li>Attention deficit hyperactivity disorder (ADHD)</li>
+              <li>Down syndrome</li>
+              <li>Developmental delay</li>
+              <li>Alzheimer’s or dementia</li>
+            </ul>'
+      }) }}
+
+      <form class="form" action="#" method="post">
+
+        {{ govukRadios({
+            name: "any-condition",
+            items: [
+              {
+                value: "yes",
+                text: "Yes"
+              },
+              {
+                value: "no",
+                text: "No"
+              }
+            ]
+          }) }}
+
+          <!--{{ govukInsetText({
+           classes: 'colour-blue',
+             html: '<p class="govuk-body">Action: If no, but they clearly demonstrate a mental or cognitive condition by not following, understanding or engaging with the call then continue as if they answered yes:
+    </p>'
+         }) }}-->
+
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+
+                <p><a href="/pip-register-v4/task-list-as-done">Go to task list</a></p>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

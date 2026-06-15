@@ -1,0 +1,126 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "layouts/main.html" %}
+{% else %}
+    {% extends "layouts/main-gov.html" %}
+{% endif %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="/HCPYesNo" method="post" novalidate>
+
+        {% if (data['regScena'] == "citizen" ) %}
+
+
+        {% else %}
+
+        <h1 class="govuk-heading-l">
+          Are you sure you want to stop this application?  
+        </h1>
+
+        <p>You cannot return to the applicant's answers after you do this. </p>
+
+
+  
+       
+        {% endif %}
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            
+            </legend>
+           
+
+              </div>
+           
+            </div>
+          </fieldset>
+        </div>
+
+       {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  name: "StopApplication",
+  fieldset: {
+    legend: {
+      text: "",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "Yes",
+      text: "Yes"
+    },
+    {
+      value: "No",
+      text: "No"
+    }
+  ]
+}) }}
+
+        <a href="app-stop.html" role="button" draggable="false" class="govuk-button govuk-button" data-module="govuk-button">
+          Confirm and stop application
+      </a>
+        
+      </form>
+
+      <!-- {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+{{ govukCheckboxes({
+  name: "countries",
+  fieldset: {
+    legend: {
+      text: "Will you be travelling to any of these countries?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  errorMessage: {
+    text: "Select countries you will be travelling to, or select ‘No, I will not be travelling to any of these countries’"
+  },
+  items: [
+    {
+      value: "france",
+      text: "France",
+      checked: true
+    },
+    {
+      value: "portugal",
+      text: "Portugal"
+    },
+    {
+      value: "spain",
+      text: "Spain"
+    },
+    {
+      divider: "or"
+    },
+    {
+      value: "none",
+      text: "No, I will not be travelling to any of these countries",
+      checked: true,
+      behaviour: "exclusive"
+    }
+  ]
+}) }} -->
+
+    </div>
+  </div>
+
+{% endblock %}

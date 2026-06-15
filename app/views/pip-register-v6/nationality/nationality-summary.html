@@ -1,0 +1,128 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../layouts/main-v3.html" %}
+{% endif %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <form class="form" action="nationality-summary" method="post">
+
+      <h1 class="govuk-heading-l">
+        Check your answers
+      </h1>
+
+      <h2 class="govuk-heading-m">
+        Nationality, work and residence
+      </h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Nationality"
+            },
+            value: {
+              text: "British / [Another nationality] / [EEA]"
+            },
+            actions: {
+              items: [
+                {
+                  href: "what-is-your-nationality",
+                  text: "Change",
+                  visuallyHiddenText: "Question 1"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Living in UK before 2021"
+            },
+            value: {
+              text: "Yes / No"
+            },
+            actions: {
+              items: [
+                {
+                  href: "living-in-uk",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "In UK for at least 2 of last 3 years"
+            },
+            value: {
+              text: "Yes / No"
+            },
+            actions: {
+              items: [
+                {
+                  href: "uk-2-of-3-years",
+                  text: "Change",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          },
+        {
+          key: {
+            text: "Pensions or benefits in EU, Switzerland, Norway, Iceland or Liechtenstein"
+          },
+          value: {
+            text: "Yes / No"
+          },
+          actions: {
+            items: [
+              {
+                href: "benefits-abroad",
+                text: "Change",
+                visuallyHiddenText: "Question 4"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Work or insurance in EU, Switzerland, Norway, Iceland or Liechtenstein"
+          },
+          value: {
+            text: "Yes / No"
+          },
+          actions: {
+            items: [
+              {
+                href: "insurance-abroad",
+                text: "Change",
+                visuallyHiddenText: "Question 5"
+              }
+            ]
+          }
+        }
+        ]
+      }) }}
+
+      <form action="#" method="post">
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+          <p><a href="/pip-register-v4/task-list-as-done">Go to task list</a></p>
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

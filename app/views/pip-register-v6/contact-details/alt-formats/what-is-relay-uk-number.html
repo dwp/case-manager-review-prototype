@@ -1,0 +1,57 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../../layouts/main-v3.html" %}
+{% endif %}
+
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+   
+    {% from "govuk/components/input/macro.njk" import govukInput %}
+
+{{ govukInput({
+  label: {
+    text: "What is your Relay UK number?",
+    classes: "govuk-label--l",
+    isPageHeading: true
+  },
+  classes: "govuk-input--width-two-thirds",
+  hint: {
+    text: "If DWP need to use a 18002 prefix, include that in your Relay UK number."
+  },
+  id: "event-name",
+  name: "relay-uk",
+  inputmode: "numeric",
+  spellcheck: false
+}) }}
+
+
+    <form class="form" action="any-other-help-when-we-contact" method="post">
+      
+   
+    {{ govukButton({
+      text: "Save and continue"
+      }) }}
+
+      <p><a href="/pip-register-v4/task-list-cd-done">Go to task list</a></p>
+
+    </form>
+    </div>
+</div> 
+
+{% endblock %}
+

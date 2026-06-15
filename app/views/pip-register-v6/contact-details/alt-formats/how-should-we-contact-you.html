@@ -1,0 +1,121 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../../layouts/main-v3.html" %}
+{% endif %}
+
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!--citizen-->
+    {% if (data['regScena'] == "citizen" ) %}
+    <form class="form" action="/contact" method="post">
+
+      {{ govukRadios({
+      name: "contact",
+      fieldset: {
+      legend: {
+      text: "How should we contact you if we need to speak to you?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+      }
+      },
+        hint: {
+        text: "We usually contact you by phone if we need to speak to you. Select the best option for your needs."  
+        },
+          items: [
+          {
+          value: "Standard phone call",
+          text: "Standard phone call"
+          },
+          {
+          value: "Relay UK",
+          text: "Relay UK"
+          },
+          {
+          value: "Textphone",
+          text: "Textphone"
+          },
+          {
+          value: "Signing or lipspeaking",
+          text: "Signing or lipspeaking"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+      text: "Save and continue"
+      }) }}
+
+      <p><a href="/pip-register-v4/task-list-cd-done">Go to task list</a></p>
+    
+    </form> 
+
+    <!--agent-->
+    {% else %}
+    <form class="form" action="/contact" method="post">
+
+      {{ govukRadios({
+      name: "contact",
+      fieldset: {
+      legend: {
+      text: "If we need to speak to you about your application",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+      }
+      },
+        hint: {
+        html: "<p class='govuk-body'>We will usually contact you by phone.</p><h2 class='govuk-heading-m govuk-!-margin-top-4'>Do you need us to call you on a Relay UK or textphone number, or use a signing or lipspeaking service?</h2>"
+        },
+          items: [
+          {
+          value: "Standard phone call",
+          text: "No, standard phone call"
+          },
+          {
+            divider: "or"
+          },
+          {
+          value: "Relay UK",
+          text: "Relay UK"
+          },
+          {
+          value: "Textphone",
+          text: "Textphone"
+          },
+          {
+          value: "Signing or lipspeaking",
+          text: "Signing or lipspeaking"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+      text: "Save and continue"
+      }) }}
+
+      <p><a href="/pip-register-v4/task-list-cd-done">Go to task list</a></p>
+    
+    </form> 
+    {% endif %}
+
+  </div>
+</div> 
+
+{% endblock %}
+

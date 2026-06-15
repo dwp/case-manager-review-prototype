@@ -1,0 +1,51 @@
+{% extends "/layouts/main-v3.html" %}
+{% from "components/third-party-name.njk" import thirdPartyCaption %}
+{% set thirdPartyName = data['thirdPartyName'] %}
+{% set applicantName = data['applicantName'] %}
+
+
+{% set isDeclarationPre = true %}
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+          <form action="" method="post" novalidate>
+
+                    {{ thirdPartyCaption({
+            thirdPartyName: thirdPartyName,
+            applicantName: applicantName,
+            heading: "Have you qualified for PIP or Disability Living Allowance (DLA) in the last 12 months?",
+              hint: "You have qualified for PIP or DLA if your application was successful and DWP decided you are entitled to these benefits."
+        }) }}
+
+            {{ govukRadios({
+              name: "claimingdla",
+              
+              items: [
+                {
+                  value: "yes",
+                  text: "Yes"
+                },
+                {
+                  value: "no",
+                  text: "No"
+                }
+              ]
+            }) }}
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+          </form>
+   </div>
+</div>
+
+{% endblock %}

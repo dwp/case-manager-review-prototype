@@ -13,6 +13,7 @@ const router = govukPrototypeKit.requests.setupRouter()
 //Import from routes folder
 const e2eRoutes = require('./routes/e2eRoutes');
 
+require(`./views/${'pip-register-v6'}/_e2eRoutes-v6`)('pip-register-v6', 'pip', router)
 require(`./views/${'pip-register-v5'}/_e2eRoutes-v5`)('pip-register-v5', 'pip', router)
 require(`./views/${'pip-register-v4'}/_e2eRoutes-v4`)('pip-register-v4', 'pip', router)
 require(`./views/${'pip-register-v3'}/_e2eRoutes-v3`)('pip-register-v3', 'pip', router)

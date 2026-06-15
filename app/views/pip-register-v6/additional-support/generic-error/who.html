@@ -1,0 +1,76 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../../layouts/main.html" %}
+{% endif %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+    {% block beforeContent %}
+    {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  
+}) }}
+
+  <a style=" float:right; text-align: right; margin-top: 0.5rem;"  href="../generic-error/stop-app.html" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+    Stop this application
+</a> 
+
+    {% endblock %}
+
+
+
+{% block content %}
+
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        What is the name of the person helping you?
+
+      </h1>
+
+      <form class="form" action="#" method="post">
+        {% from "govuk/components/details/macro.njk" import govukDetails %}
+
+        {{ govukDetails({
+          summaryText: "Why we are asking this",
+          text: "If we need more information about your application and we have not been able to contact you, we can call the person who's helping you and ask them to tell you."
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Name of helper"
+          },
+          id: "first-name",
+          name: "first-name",
+          autocomplete: "name",
+          spellcheck: false
+        }) }}
+
+ 
+
+            
+
+      </form>
+
+      {{ govukButton({
+        text: "Save and continue",
+        href: "../generic-error/stop-mid.html"
+      }) }}
+
+      <p><a href="task-list-cd-done">Go to task list</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}

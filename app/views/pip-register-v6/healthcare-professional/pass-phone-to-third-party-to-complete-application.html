@@ -1,0 +1,56 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "/layouts/main-v3.html" %}
+{% endif %}
+
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" action="" method="post">
+
+        <h1 class="govuk-heading-l">
+          Thank you. We have recorded your consent preferences
+        </h1>
+
+<p class="govuk-body">
+      Please stay with the person helping you until the end of the call.
+      </p>
+
+<p class="govuk-body">
+You can now pass the phone back to them.      </p>
+      
+
+       
+
+        <!-- <p><a href="/pip-register-v4/task-list.html">Go to task list</a></p> -->
+
+
+ {% from "govuk/components/button/macro.njk" import govukButton %}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+        
+      </form>
+
+    
+        </div>
+      </div>
+
+      
+    
+
+
+  </div>
+</div>
+   
+{% endblock %}

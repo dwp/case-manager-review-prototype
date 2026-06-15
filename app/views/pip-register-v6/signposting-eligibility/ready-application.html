@@ -1,0 +1,43 @@
+{% extends "/layouts/main-v3.html" %}
+{% from "components/third-party-name.njk" import thirdPartyCaption %}
+{% set thirdPartyName = data['thirdPartyName'] %}
+{% set applicantName = data['applicantName'] %}
+
+
+{% set isDeclarationPre = true %}
+
+{% block pageTitle %}
+Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="#" method="post" method="post">
+
+                    {{ thirdPartyCaption({
+            thirdPartyName: thirdPartyName,
+            applicantName: applicantName,
+            heading: "We can now start your application"
+        }) }}
+    
+
+      <p class="govuk-body">
+       You can pass the phone back to [third party name / the person who is with you].</p>
+
+
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+  </form>
+  
+
+  </div>
+</div>
+
+{% endblock %}
