@@ -24,22 +24,34 @@
 
     <form class="form" action="what-size-print-do-you-need" method="post">
 
+       <h1 class="govuk-heading-l">
+         Our standard large print is font size 16. Is that ok for you?
+        </h1>
+
+ {{ govukInsetText({
+        classes: 'colour-blue',
+          text: "Action: Do not offer other font size options unless the standard large print size is not ok for them."
+      }) }}
+     
+     
       {{ govukRadios({
       name: "sizing",
       fieldset: {
       legend: {
-      text: "What size print do you need?",
+      text: "",
       isPageHeading: true,
       classes: "govuk-fieldset__legend--l"
       }
       },
-      hint: {
-        html: "<p class='govuk-hint'>Our letters are usually 12-point Arial font.<p>"  
-        },
+      
+     
       items: [
       {
       value: "16",
-      text: "16 point"
+      text: "Yes, standard large print (16-point)"
+      },
+      {
+        divider: "or"
       },
       {
       value: "18",
@@ -56,7 +68,7 @@
       text: "Save and continue"
       }) }}
 
-      <p><a href="/pip-register-v4/task-list-cd-done">Go to task list</a></p>
+      <p><a href="/pip-register-v6/task-list-cd-done">Go to task list</a></p>
 
     </form> 
 
