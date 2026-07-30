@@ -1,0 +1,97 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../layouts/main-v3.html" %}
+{% endif %}
+
+{% block pageTitle %}
+  Check your answers template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <div class="govuk-body govuk-!-margin-bottom-9">
+      <form class="form" action="hospice-residence-summary" method="post">
+
+        <h1 class="govuk-heading-l">
+          Check your answers
+        </h1>
+
+        <h2 class="govuk-heading-m">
+          Hospital and care facilities
+        </h2>
+
+              {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "In hospital or hospice today"
+              },
+              value: {
+                text: "Yes, hospice"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "5-2-today",
+                    text: "Change",
+                    visuallyHiddenText: "Question 1"
+                  }
+                ]
+              }
+            }
+            ,
+            {
+              key: {
+                text: "In hospice yesterday"
+              },
+              value: {
+                text: "Yes"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "5-8-hospice-yesterday",
+                    text: "Change",
+                    visuallyHiddenText: "Question 2"
+                  }
+                ]
+              }
+
+            },
+            {
+              key: {
+                text: "Hospice address"
+              },
+              value: {
+                html: "Princess Alice Hospice,<br>West End Lane,<br> Esher<br> KT10 8NA"
+
+              },
+              actions: {
+                items: [
+                  {
+                    href: "5-10-hospice-postcode",
+                    text: "Change",
+                    visuallyHiddenText: "Question 3"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+      </div>
+
+
+            {{ govukButton({
+              text: "Save and continue"
+            }) }}
+
+
+    </div>
+  </div>
+{% endblock %}

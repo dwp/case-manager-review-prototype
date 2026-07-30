@@ -1,0 +1,56 @@
+{% extends "/layouts/main-v3.html" %}
+{% from "components/third-party-name.njk" import thirdPartyCaption %}
+{% set thirdPartyName = data['thirdPartyName'] %}
+{% set applicantName = data['applicantName'] %}
+
+
+{% set isDeclarationPre = true %}
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+          <form action="" method="post" novalidate>
+
+                    {{ thirdPartyCaption({
+            thirdPartyName: thirdPartyName,
+            applicantName: applicantName,
+            heading: "We are not able to verify you as an appointee",
+              hint: ""
+             }) }}
+              <p class="govuk-body">If the applicant is not able to manage their own affairs, we can continue the call and go through the process to make you an appointee.</p>
+<p class="govuk-body">If they are able to manage this but you want to help them with this call, we can continue the call if you are with them now.</p>
+            {{ govukRadios({
+              name: "claimingdla",
+              
+              items: [
+                {
+                  value: "yes",
+                  text: "Prospect appointee"
+                },
+                {
+                  value: "no",
+                  text: "Third party"
+                }
+              ]
+            }) }}
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+          </form>
+   </div>
+</div>
+
+<p class="govuk-body">
+        <a href="#" class="govuk-link govuk-link--no-visited-state">Caller does not want to continue</a>
+      </p>
+
+{% endblock %}

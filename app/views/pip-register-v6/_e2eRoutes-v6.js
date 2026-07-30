@@ -323,7 +323,7 @@ validatePath(response, redirectPath);
 // contact to confirm identity
 
 router.post(`/${folderForViews}/signposting-eligibility/contact-to-confirm-identity`, function (request, response) {
-    const redirectPath = `/${folderForViews}/declaration`;
+    const redirectPath = `/${folderForViews}/pip-explanation`;
 validatePath(response, redirectPath);
   })
 
@@ -1040,8 +1040,8 @@ validatePath(response, redirectPath);
   // Contact details summary
   router.post(`/${folderForViews}/contact-details/alt-formats/what-colour-paper-do-you-need`, function (request, response) { 
     var largePrint = request.session.data['largePrint'];
-    if (largePrint == 'large-print,coloured-paper') {
-      const redirectPath = `/${folderForViews}/contact-details/alt-formats/large-print`;
+    if (largePrint == 'coloured-paper,large-print') {
+      const redirectPath = `/${folderForViews}/contact-details/alt-formats/what-size-print-do-you-need`;
       validatePath(response, redirectPath);
     }
     else {
@@ -1428,6 +1428,10 @@ validatePath(response, redirectPath);
 
   } else if (largePrint == 'large-print') {
     const redirectPath = `/${folderForViews}/contact-details/alt-formats/what-size-print-do-you-need`;
+validatePath(response, redirectPath);
+
+} else if (largePrint == 'coloured-paper,large-print') {
+    const redirectPath = `/${folderForViews}/contact-details/what-colour-paper-do-you-need`;
 validatePath(response, redirectPath);
 
   } else if (largePrint == 'none') {

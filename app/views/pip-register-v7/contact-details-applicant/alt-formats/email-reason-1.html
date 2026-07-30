@@ -1,0 +1,64 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../../layouts/main-v3.html" %}
+{% endif %}
+
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="#" method="post">
+
+     {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+<h1 class="govuk-heading-l govuk-!-margin-bottom-2">Please tell me the reason you need to receive letters by email</h1>
+</h1>
+
+
+          {{ govukInsetText({
+        classes: 'colour-blue',
+        text: "Action: Enter the reason. If the claimant does not want to give one, this option cannot be selected."
+      }) }}
+
+  {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+
+{{ govukCharacterCount({
+  name: "withHint",
+  id: "with-hint",
+  maxlength: 190,
+  label: {
+    text: "Reason for requesting emails",
+    classes: "govuk-label--m",
+    isPageHeading: true
+  },
+  hint: {
+    text: ""
+  }
+}) }}
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+
+      <p><a href="/pip-register-v4/task-list-cd-done">Go to task list</a></p>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

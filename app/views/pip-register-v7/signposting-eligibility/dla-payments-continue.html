@@ -1,0 +1,36 @@
+{% extends "/layouts/main-v3.html" %}
+{% from "components/third-party-name.njk" import thirdPartyCaption %}
+{% set thirdPartyName = data['thirdPartyName'] %}
+{% set applicantName = data['applicantName'] %}
+
+
+{% set isDeclarationPre = true %}
+
+{% block pageTitle %}
+Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+          <form action="#" method="post" novalidate>
+
+                        {{ thirdPartyCaption({
+            thirdPartyName: thirdPartyName,
+            applicantName: applicantName,
+            heading: "Your DLA payments will continue while we make a decision on your PIP application"
+        }) }}
+
+            <h1 class="govuk-heading-l"></h1>
+            {{ govukInsetText({
+              classes: 'colour-blue',
+              text: "Action: Register the application in PIPCS, and follow the normal procedure for reassessments."
+            }) }}
+          </form>
+   </div>
+</div>
+
+
+{% endblock %}

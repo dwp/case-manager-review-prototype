@@ -1,0 +1,107 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../layouts/main-v3.html" %}
+{% endif %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+When we need you to send us information about your claim</h1>
+
+      <form class="form" action="complete-forms" method="post">
+
+        <!-- <div class="govuk-hint">
+          This includes online and paper forms.
+        </div> -->
+                 <h2 class="govuk-heading-m">
+        Are you able to complete forms?
+      </h2>
+        {{ govukRadios({
+            name: "forms",
+            fieldset: {
+              legend: {
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+              }
+            },
+            items: [
+              {
+          value: "yes",
+          text: "Yes"
+              },
+              {
+          value: "no",
+          text: "No"
+              }
+            ]
+        }) }}
+
+         <h2 class="govuk-heading-m">
+        Are you able to read and respond to letters?
+      </h2>
+      {{ govukRadios({
+            name: "letters",
+            fieldset: {
+              legend: {
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+              }
+            },
+            items: [
+              {
+          value: "yes",
+          text: "Yes"
+              },
+              {
+          value: "no",
+          text: "No"
+              }
+            ]
+        }) }}
+
+            <h2 class="govuk-heading-m">
+        Are you able to manage your post and return information by post?
+      </h2>
+
+        {{ govukRadios({
+            name: "post",
+            fieldset: {
+              legend: {
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+              }
+            },
+            items: [
+              {
+          value: "yes",
+          text: "Yes"
+              },
+              {
+          value: "no",
+          text: "No"
+              }
+            ]
+        }) }}
+
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+
+                <p><a href="/pip-register-v4/task-list-as-done">Go to task list</a></p>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

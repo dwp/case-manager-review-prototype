@@ -1,0 +1,49 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../layouts/main-v3.html" %}
+{% endif %}
+
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/whatIsYourPreviousSurname" method="post">
+
+
+        {{ govukInput({
+          label: {
+            text: "What is your previous surname?",
+            classes: "govuk-label--xl",
+            isPageHeading: true
+          },
+          id: "telephone-number",
+          name: "telephone-number",
+          type: "tel",
+          autocomplete: "tel",
+          classes: "govuk-input--width-20"
+        }) }}
+
+
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        <p><a href="task-list">Go to task list</a></p>
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,101 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../layouts/main-v3.html" %}
+{% endif %}
+
+
+{% block pageTitle %}
+  Check your answers template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">
+        Check your answers
+      </h1>
+
+      <h2 class="govuk-heading-m">
+        Contact details
+      </h2>
+
+      {{ govukSummaryList({
+        rows: [
+          
+         {
+            key: {
+              text: "Address"
+            },
+            value: {
+              html: "1 Washington Street,<br>Worcester<br>WR1 1NL"
+            },
+            actions: {
+              items: [
+                {
+                  href: "select-your-address",
+                  text: "Change",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Mobile phone number"
+            },
+            value: {
+              text: "01234 567890"
+            },
+            actions: {
+              items: [
+                {
+                  href: "correspondence-address",
+                  text: "Change",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          },
+           {
+            key: {
+              text: "Other phone number"
+            },
+            value: {
+              text: "01432 098765"
+            },
+            actions: {
+              items: [
+                {
+                  href: "correspondence-address",
+                  text: "Change",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          }
+
+ 
+        
+          
+            
+          
+        ]
+      }) }}
+
+      <form action="#" method="post">
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

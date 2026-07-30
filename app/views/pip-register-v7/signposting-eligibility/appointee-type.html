@@ -1,0 +1,74 @@
+{% extends "/layouts/main-v3.html" %}
+{% from "components/third-party-name.njk" import thirdPartyCaption %}
+{% set thirdPartyName = data['thirdPartyName'] %}
+{% set applicantName = data['applicantName'] %}
+
+
+{% set isDeclarationPre = true %}
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+          <form action="" method="post" novalidate>
+
+                    {{ thirdPartyCaption({
+            thirdPartyName: thirdPartyName,
+            applicantName: applicantName,
+            heading: "I’m just viewing your record on the system now",
+              hint: ""
+        }) }}
+
+         {{ govukInsetText({
+        classes: 'colour-blue',
+          html: "Action: Check the Relationships section in Searchlight. Select the matching appointee type."
+      }) }}
+
+            {{ govukRadios({
+              name: "claimingdla",
+              
+              items: [
+                {
+                  value: "yes",
+                  text: "Appointee (Personal Acting Body)"
+                },
+                {
+                  value: "no",
+                  text: "Power of Attorney"
+                },
+              
+                 {
+                  value: "no",
+                  text: "Deputy"
+                },
+                 {
+                  value: "no",
+                  text: "Tutor under Scottish Law"
+                },
+                  {
+                  value: "no",
+                  text: "Curator Bonis or Judicial Factor under Scottish Law"
+                },
+                  {
+                  value: "no",
+                  text: "Guardian under Scottish Law"
+                }
+                  
+              ]
+            }) }}
+
+            {{ govukButton({
+              text: "Continue"
+            }) }}
+          </form>
+   </div>
+</div>
+
+{% endblock %}

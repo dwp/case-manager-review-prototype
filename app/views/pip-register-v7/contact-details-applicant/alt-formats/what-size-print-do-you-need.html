@@ -1,0 +1,80 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../../layouts/main-v3.html" %}
+{% endif %}
+
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="what-size-print-do-you-need" method="post">
+
+       <h1 class="govuk-heading-l">
+         Our standard large print is font size 16. Is that ok for you?
+        </h1>
+
+ {{ govukInsetText({
+        classes: 'colour-blue',
+          text: "Action: Do not offer other font size options unless the standard large print size is not ok for them."
+      }) }}
+     
+     
+      {{ govukRadios({
+      name: "sizing",
+      fieldset: {
+      legend: {
+      text: "",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+      }
+      },
+      
+     
+      items: [
+      {
+      value: "16",
+      text: "Yes, standard large print (16-point)"
+      },
+      {
+        divider: "or"
+      },
+      {
+      value: "18",
+      text:  "18 point"
+      },
+      {
+      value: "25",
+      text:  "25 point"
+      }
+      ]
+      }) }}
+
+      {{ govukButton({
+      text: "Save and continue"
+      }) }}
+
+      <p><a href="/pip-register-v7/task-list-cd-done">Go to task list</a></p>
+
+    </form> 
+
+  </div>
+</div> 
+
+
+{% endblock %}
+

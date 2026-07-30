@@ -1,0 +1,64 @@
+{% extends "/layouts/main-v3.html" %}
+{% from "components/third-party-name.njk" import thirdPartyCaption %}
+{% set thirdPartyName = data['thirdPartyName'] %}
+{% set applicantName = data['applicantName'] %}
+
+
+{% set isDeclarationPre = true %}
+{% block pageTitle %}
+Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="#" method="post" method="post">
+
+        {{ thirdPartyCaption({
+            thirdPartyName: thirdPartyName,
+            applicantName: applicantName,
+            heading: "You can apply for PIP today or wait until you receive your invitation letter"
+        }) }}
+
+  <p class="govuk-body">If you apply for PIP today, your DLA will continue to be paid while we're making our decision.</p>
+
+  <p class="govuk-body">Would you like to apply for PIP today?</p>
+
+      {{ govukRadios({
+              name: "welshcommunication",
+              fieldset: {
+                legend: {
+                  isPageHeading: false
+                }
+              },
+              items: [
+                {
+                  value: "yes",
+                  text: "Yes"
+                },
+                {
+                  value: "no",
+                  text: "No"
+                }
+              ]
+            }) }}
+
+      {{ govukButton({
+      text: "Continue"
+    }) }}
+
+
+  </form>
+
+
+
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "../../layouts/main-v3.html" %}
+{% endif %}
+
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block content %}
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="any-other-help-when-we-contact" method="post">
+       
+    {{ govukInput({
+      label: {
+        text: "What other phone number can we use to contact you?",
+        classes: "govuk-label--l",
+        isPageHeading: true
+      },
+      hint: {
+        text: "For landline, include a dialling code like 01630 960 001."
+      },
+      classes: "govuk-!-width-two-thirds",
+      id: "event-name",
+      name: "eventName"
+    }) }}
+
+
+     
+
+
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+  text: "Save and continue",
+  href: "contact-details-summary",
+  isStartButton: false
+}) }}
+
+        <p><a href="/pip-register-v4/task-list">Go to task list</a></p>
+
+
+    </form>
+    </div>
+</div> 
+
+{% endblock %}
+

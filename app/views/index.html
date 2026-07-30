@@ -23,7 +23,7 @@
       <h1 class="govuk-heading-l">
         Agent Assisted Registration (AAR) prototype access</h1>
 
-<p class='govuk-body'>This service / prototype is managed by<a href="https://dwpdigital.atlassian.net/wiki/spaces/HPDU/pages/133261558699/Team+Pelican" class="govuk-link" rel="noreferrer noopener" target="_blank"> Team Pelican (opens in new tab)</a>.</p>
+<p class='govuk-body'>This service / prototype is managed by <a href="https://dwpdigital.atlassian.net/wiki/spaces/HPDU/pages/133261558699/Team+Pelican" class="govuk-link" rel="noreferrer noopener" target="_blank">Team Pelican (opens in new tab)</a>.</p>
 
 
 <p class='govuk-body'>Use this page to access AAR prototype versions.
@@ -32,52 +32,6 @@
 
 Prototype access is grouped by user role to ensure users only see versions relevant to them.
 </p>
-
-
-{% from "govuk/components/table/macro.njk" import govukTable %}
-
-{{ govukTable({
-  caption: "Available prototype versions",
-  captionClasses: "govuk-table__caption--m",
-  firstCellIsHeader: true,
-  head: [
-    { text: "Version" },
-    { text: "Included journeys" },
-    { text: "Description" },
-    { text: "" }
-  ],
-  rows: [
-    [
-      { text: "V3" },
-       { text: "Core journey initial" },
-      { text: "Archived" },
-       {  html: '<a href="" class="govuk-link"></a>'
-       }
-    ],
-    [
-      { text: "V4" },
-      { text: "Core journey redesigned" },
-      { text: "Mirror of live service" },
-       { html: '<a href="" class="govuk-link"></a>'
-       }
-    ],
-    [
-      { text: "V5" },
-       { text: "Core journey redesigned" },
-      { text: "Enables support for third-party - Next release completed but not yet live" },
-       { html: '<a href="" class="govuk-link"></a>'}
-    ],
-    [
-      { text: "V6" },
-       { text: "Core journey redesigned" },
-      { text: "Enables support for DLA - Next release completed but not yet live" },
-       { html: '<a href="" class="govuk-link"></a>'}
-    ]
-  ]
-}) }}
-
-
-<br>
 
 
 
@@ -105,7 +59,7 @@ Prototype access is grouped by user role to ensure users only see versions relev
                 </p>
               '
       },
-      { text: "V3, V4, V5, V6" },
+      { text: "V3, V4, V5, V6, V7" },
       
      
       {
@@ -141,6 +95,69 @@ Prototype access is grouped by user role to ensure users only see versions relev
   ]
 }) }}
 
+
+<br>
+
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+{{ govukTable({
+  caption: "Available prototype versions",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: true,
+  head: [
+    { text: "Version" },
+    
+    { text: "Description" },
+    { text: "Status" }
+  ],
+  rows: [
+    [
+      { text: "V7" },
+      
+      { text: "Core journey + Third party + DLA + Appointees (Personal Acting Body)" },
+       { text: "Next release completed but not yet live"}
+    ],
+  
+  [
+      { text: "V6" },
+      
+      { text: "Core journey + Third party + DLA" },
+       { text: "Next release completed but not yet live"}
+    ],
+
+     [
+      { text: "V5" },
+       { text: "Core journey + Third party" },
+    
+        { text: "Live service"}
+    ],
+    
+     [
+      { text: "V4" },
+      { text: "Core journey" },
+      { text: "Previous live version" }
+       
+    ],
+  [
+      { text: "V3" },
+       { text: "Core journey initial" },
+      { text: "Archived" },
+       {  html: '<a href="" class="govuk-link"></a>'
+       }
+    ]
+   
+   
+     
+  ]
+}) }}
+
+
+<br>
+
+
+
+
+
 <br>
 <br>
 <br>
@@ -151,19 +168,19 @@ Prototype access is grouped by user role to ensure users only see versions relev
   captionClasses: "govuk-table__caption--m",
   firstCellIsHeader: true,
   head: [
-    { text: "Archived versions" },
+    { text: "Archived Versions" },
     { text: "" },
     { text: "" },
-    { text: "Archive Access" }
+    { text: "Start" }
   ],
   rows: [
     [
-      {  html: '<p class="govuk-body">Previous versions</p>' },
+      {  html: '<p class="govuk-heading-s">V3</p>' },
       { text: "" },
       {
       },
       {
-        html: '<a href="/pip-register-v3/signposting-eligibility/service-start-page" class="govuk-link">V3</a>'
+        html: '<a href="/pip-register-v3/signposting-eligibility/service-start-page" class="govuk-link">Start prototype</a>'
       }
 ]
   ]

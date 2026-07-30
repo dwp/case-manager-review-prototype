@@ -1,0 +1,57 @@
+{% if (data['regScena'] == "agent" ) %}
+    {% extends "../../layouts/main-v3.html" %}
+{% elseif (data['regScena'] == "citizen") %}
+{% extends "../../layouts/main-gov.html" %}
+{% else %}
+    {% extends "/layouts/main-v3.html" %}
+{% endif %}
+
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" action="" method="post">
+
+        <h1 class="govuk-heading-l">
+          Before we start, I need to speak to the person you're helping
+        </h1>
+
+<p class="govuk-body">
+        Please pass the phone to them now.
+      </p>
+
+
+      
+
+       
+
+        <!-- <p><a href="/pip-register-v4/task-list.html">Go to task list</a></p> -->
+
+
+ {% from "govuk/components/button/macro.njk" import govukButton %}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+        
+      </form>
+ <p class="govuk-body">
+        <a href="third-party-cannot-continue-application" class="govuk-link govuk-link--no-visited-state">Applicant cannot come to the phone</a>
+      </p>
+    
+        </div>
+      </div>
+
+      
+    
+
+
+  </div>
+</div>
+   
+{% endblock %}
