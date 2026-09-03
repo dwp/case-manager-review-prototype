@@ -21,6 +21,22 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-error-summary" data-module="govuk-error-summary">
+  <div role="alert">
+    <h2 class="govuk-error-summary__title">
+      There is a problem
+    </h2>
+    <div class="govuk-error-summary__body">
+      <ul class="govuk-list govuk-error-summary__list">
+        <li>
+          <a href="#">Select an address</a>
+        </li>
+       
+      </ul>
+    </div>
+  </div>
+</div>
       {% if (data['regScena'] == "citizen" ) %}
       <h1 class="govuk-heading-l">
         Select your address
@@ -34,9 +50,10 @@
 
       <form class="form" action="#" method="post">
         <div class="govuk-width-container">
+         
 
                <p>6 addresses found for <b>wr11nl</b> and <b>1</b>. <a href="what-is-your-postcode">Search again</a></p>
-
+ {% from "govuk/components/radios/macro.njk" import govukRadios %}
         {{ govukRadios({
           name: "select-an-address",
           items: [
@@ -65,8 +82,11 @@
             text: "14 Washington Street, Worcester, WR1 1NL"
             }
 
-          ]
-        }) }}
+          ],
+     errorMessage: {
+    text: " Select an address"
+  }
+}) }}
 
       </div>
 
@@ -77,46 +97,9 @@
         <p class="govuk-body govuk-!-margin-bottom-6"><a href="enter-address-manually-country" class="govuk-link">Enter address manually</a></p>
 
 
-        <p><a href="../task-list">Go to task list</a></p>
+        <p><a href="../task-list-appointee-details-in-progress">Go to task list</a></p>
 
       </form>
-
-       <!DOCTYPE html> 
-<html lang="en"> 
-  <head> 
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>GOV.UK Dashed Border Container</title> 
-    <!-- GOV.UK Frontend CSS --> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/govuk-frontend/4.7.0/govuk-frontend.min.css"> 
-     <style> .dashed-container { 
-      border: 2px dashed #b1b4b6; /* GOV.UK border colour */ 
-      padding: 20px; 
-      margin: 20px 0; 
-      background-color: #f3f2f1; /* GOV.UK light grey background */ 
-      } 
-      
-      .dashed-container h3 { 
-        margin-top: 0; 
-      } 
-      .dashed-container ul { 
-          margin-bottom: 0; }
-           </style> 
-           </head> 
-           <body class="govuk-template__body"> 
-            <div class="govuk-width-container"> 
-              <main class="govuk-main-wrapper"> <!-- Example usage of the dashed container --> 
-  <div class="dashed-container"> 
-    <h3 class="govuk-heading-m">Journey routes</h3> 
-    <ul class="govuk-list"> 
-      <li><a href="select-your-address-2" class="govuk-link">Address limits 3 - 35 characters</a></li> 
-     
-    </ul> 
-  </div> <!-- Another example with different content --> 
-    
-    
-  </main>
- </div> 
-</body>
 
     </div>
   </div>

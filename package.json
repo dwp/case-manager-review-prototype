@@ -9,14 +9,14 @@
     "@govuk-prototype-kit/common-templates": "2.0.1",
     "audit": "^0.0.6",
     "axios": "1.18.0",
-    "body-parser": "1.20.4",
-    "express": "4.22.1",
+    "body-parser": "1.20.6",
+    "express": "4.22.2",
     "govuk-frontend": "5.14.0",
-    "govuk-prototype-kit": "13.20.2",
+    "govuk-prototype-kit": "13.20.4",
     "hmrc-frontend": "6.117.0",
     "path": "0.12.7",
     "path-to-regexp": "3.3.0",
-    "qs": "6.14.1",
+    "qs": "6.15.3",
     "uuid": "^11.1.1",
     "ws": "8.21.0"
   },
@@ -24,12 +24,6 @@
     "immutable": "4.3.9",
     "brace-expansion": "^5.0.8",
     "eazy-logger": "4.1.0",
-    "express": {
-      "qs": "6.14.2"
-    },
-    "body-parser": {
-      "qs": "6.14.2"
-    },
     "minimatch": "10.2.5",
     "**": {
       "minimatch": "10.2.5"

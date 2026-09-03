@@ -83,7 +83,7 @@ router.post(`/${folderForViews}/signposting-eligibility/check-personal-details`,
   const firstName = request.session.data['first-name'];
   const lastName = request.session.data['last-name'];
 
-  const redirectPath = `/${folderForViews}/signposting-eligibility/which-uk-nation`;
+  const redirectPath = `/${folderForViews}/signposting-eligibility/where-do-you-live`;
 validatePath(response, redirectPath);;
 })
 
@@ -209,7 +209,7 @@ validatePath(response, redirectPath);
 
 // which uk nation
 
- router.post(`/${folderForViews}/signposting-eligibility/which-uk-nation`, function (request, response) {
+ router.post(`/${folderForViews}/signposting-eligibility/where-do-you-live`, function (request, response) {
     var gbPIP = request.session.data['gb-pip']
     if (gbPIP == 'eng') {
       const redirectPath = `/${folderForViews}/signposting-eligibility/special-rules-for-end-of-life-application`;

@@ -41,12 +41,12 @@
           name: "select-an-address",
           items: [
             {
-            value: "1 Washington Street, Worcester, WR1 1NL",
-            text: "1 Washington Street, Worcester, WR1 1NL"
+            value: "1W, Worcester, WR1 1NL",
+            text: "1W, Worcester, WR1 1NL"
             },
             {
-            value: "10 Washington Street, Worcester, WR1 1NL",
-            text: "10 Washington Street, Worcester, WR1 1NL"
+            value: "10 Washington Street On Avenue Nexter Close, Worcester, WR1 1NL",
+            text: "10 Washington Street On Avenue Nexter Close, Worcester, WR1 1NL"
             },
             {
             value: "11 Washington Street, Worcester, WR1 1NL",
@@ -71,8 +71,53 @@
       </div>
 
         {{ govukButton({
-        text: "Use this address"
+        text: "Use this address",
+        classes: "govuk-button--margin-right",
+        attributes: {
+          id: "use-this-address"
+        }
         }) }}
+
+
+       
+          
+        <script>
+          document.getElementById('use-this-address').addEventListener('click', function (event) {
+            event.preventDefault();
+
+            const selected = document.querySelector('input[name="select-an-address"]:checked');
+            if (selected) {
+              localStorage.setItem('selectedAddress', selected.value);
+           
+            if (selected.value === '1W, Worcester, WR1 1NL') {
+              window.location.href = 'update-address.html';
+            } else if (selected.value.startsWith('10 Washington Street')){
+              window.location.href = 'update-address.html';
+          
+            } else {
+              window.location.href = 'correspondence-address.html';
+            }
+          }
+          });
+          </script>
+          
+  <!--
+<a href="update-address-2.html" class="govuk-button govuk-button--secondary"
+id="update-address-2" style="margin-left: 5px;">
+  Update address
+</a> -->
+
+<script>
+  document.getElementById('update-address-2').addEventListener('click', function () {
+    const selected = document.querySelector('input[name="select-an-address"]:checked');
+    if (selected) {
+      localStorage.setItem ('selectedAddress', selected.value);
+    
+    }
+  });
+
+  </script>
+  
 
         <p class="govuk-body govuk-!-margin-bottom-6"><a href="enter-address-manually-country" class="govuk-link">Enter address manually</a></p>
 
@@ -80,43 +125,6 @@
         <p><a href="../task-list">Go to task list</a></p>
 
       </form>
-
-       <!DOCTYPE html> 
-<html lang="en"> 
-  <head> 
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>GOV.UK Dashed Border Container</title> 
-    <!-- GOV.UK Frontend CSS --> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/govuk-frontend/4.7.0/govuk-frontend.min.css"> 
-     <style> .dashed-container { 
-      border: 2px dashed #b1b4b6; /* GOV.UK border colour */ 
-      padding: 20px; 
-      margin: 20px 0; 
-      background-color: #f3f2f1; /* GOV.UK light grey background */ 
-      } 
-      
-      .dashed-container h3 { 
-        margin-top: 0; 
-      } 
-      .dashed-container ul { 
-          margin-bottom: 0; }
-           </style> 
-           </head> 
-           <body class="govuk-template__body"> 
-            <div class="govuk-width-container"> 
-              <main class="govuk-main-wrapper"> <!-- Example usage of the dashed container --> 
-  <div class="dashed-container"> 
-    <h3 class="govuk-heading-m">Journey routes</h3> 
-    <ul class="govuk-list"> 
-      <li><a href="select-your-address-2" class="govuk-link">Address limits 3 - 35 characters</a></li> 
-     
-    </ul> 
-  </div> <!-- Another example with different content --> 
-    
-    
-  </main>
- </div> 
-</body>
 
     </div>
   </div>

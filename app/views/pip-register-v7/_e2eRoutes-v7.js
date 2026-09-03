@@ -14,6 +14,16 @@ const validatePath = require('./validatePath.js')
   // DEV READY
 
 
+//Address states
+
+// Enter address manually page
+  router.post(`/${folderForViews}/contact-details/select-your-address-2`, function (_request, response) {
+    const redirectPath = `/${folderForViews}/contact-details/update-address`;
+validatePath(response, redirectPath);
+  })
+
+
+
 //Appointees v7 pre reg PAB
 
 // for yourself or someone else
@@ -98,9 +108,11 @@ router.post(`/${folderForViews}/signposting-eligibility/check-personal-details-a
   const firstName = request.session.data['first-name'];
   const lastName = request.session.data['last-name'];
 
-  const redirectPath = `/${folderForViews}/signposting-eligibility/which-uk-nation`;
+  const redirectPath = `/${folderForViews}/signposting-eligibility/where-do-you-live`;
 validatePath(response, redirectPath);;
 })
+
+
 
 
 //Appointees v7 pre reg PAB end 
@@ -295,7 +307,7 @@ router.post(`/${folderForViews}/signposting-eligibility/check-personal-details`,
   const firstName = request.session.data['first-name'];
   const lastName = request.session.data['last-name'];
 
-  const redirectPath = `/${folderForViews}/signposting-eligibility/which-uk-nation`;
+  const redirectPath = `/${folderForViews}/signposting-eligibility/where-do-you-live`;
 validatePath(response, redirectPath);;
 })
 
@@ -421,7 +433,7 @@ validatePath(response, redirectPath);
 
 // which uk nation
 
- router.post(`/${folderForViews}/signposting-eligibility/which-uk-nation`, function (request, response) {
+ router.post(`/${folderForViews}/signposting-eligibility/where-do-you-live`, function (request, response) {
     var gbPIP = request.session.data['gb-pip']
     if (gbPIP == 'eng') {
       const redirectPath = `/${folderForViews}/signposting-eligibility/special-rules-for-end-of-life-application`;
