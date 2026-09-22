@@ -22,6 +22,11 @@ const validatePath = require('./validatePath.js')
 validatePath(response, redirectPath);
   })
 
+// Enter address manually page
+  router.post(`/${folderForViews}/contact-details/select-your-address-3`, function (_request, response) {
+    const redirectPath = `/${folderForViews}/contact-details/update-address-4`;
+validatePath(response, redirectPath);
+  })
 
 
 //Appointees v7 pre reg PAB
@@ -1144,15 +1149,10 @@ validatePath(response, redirectPath);
   
  // check contact information
   router.post(`/${folderForViews}/appointee-details/check-contact-information`, function (request, response) {
-    const redirectPath = `/${folderForViews}/appointee-details/questions-for-the-applicant`;
+    const redirectPath = `/${folderForViews}/task-list-appointee-2`;
 validatePath(response, redirectPath);
   })
 
-  // questions for the applicant
-  router.post(`/${folderForViews}/appointee-details/questions-for-the-applicant`, function (request, response) {
-    const redirectPath = `/${folderForViews}/contact-details-applicant/your-postcode-building-number`;
-validatePath(response, redirectPath);
-  })
 
 
   // Would you like us to send your letters in another way, like larger text, audio or braille?
@@ -1229,7 +1229,7 @@ validatePath(response, redirectPath);
 
 //Motability to Motability CYA
   router.post(`/${folderForViews}/motability/motability-summary`, function (request, response) {
-    const redirectPath = `/${folderForViews}/task-list-appointee-completed`;
+    const redirectPath = `/${folderForViews}/task-list-motability-done`;
 validatePath(response, redirectPath);
   })
 
@@ -1240,6 +1240,12 @@ validatePath(response, redirectPath);
 
 
 //appointee - applicant details v7 begin
+
+  // questions for the applicant
+  router.post(`/${folderForViews}/contact-details-applicant/questions-for-the-applicant`, function (request, response) {
+    const redirectPath = `/${folderForViews}/contact-details-applicant/your-postcode-building-number`;
+validatePath(response, redirectPath);
+  })
 
 
  router.post(`/${folderForViews}/contact-details-applicant/your-postcode-building-number`, function (request, response) {
@@ -1309,7 +1315,7 @@ validatePath(response, redirectPath);
 
 // check contact information
   router.post(`/${folderForViews}/contact-details-applicant/check-contact-information`, function (request, response) {
-    const redirectPath = `/${folderForViews}/nationality/start`;
+    const redirectPath = `/${folderForViews}/task-list-appointee-3-1`;
 validatePath(response, redirectPath);
   })
 
@@ -1500,13 +1506,13 @@ validatePath(response, redirectPath);
 
   // Contact details summary
   router.post(`/${folderForViews}/contact-details/contact-details-summary`, function (request, response) {
-    const redirectPath = `/${folderForViews}/additional-support/start-info`;
+    const redirectPath = `/${folderForViews}/task-list-as-done-1`;
 validatePath(response, redirectPath);
   })
 
   // Contact details summary
   router.post(`/${folderForViews}/contact-details/contact-details-summary`, function (request, response) {
-const redirectPath = `/${folderForViews}/additional-support/start-info`;
+const redirectPath = `/${folderForViews}/task-list-as-done-1`;
 validatePath(response, redirectPath);
 
   })
@@ -2039,7 +2045,7 @@ validatePath(response, redirectPath);
   })
 
   router.post(`/${folderForViews}/nationality/nationality-summary`, function (request, response) {
-      const redirectPath = `/${folderForViews}/healthcare-professional/consent-1`;
+      const redirectPath = `/${folderForViews}/task-list-nat-done`;
 validatePath(response, redirectPath);
   })
 
@@ -2395,7 +2401,7 @@ validatePath(response, redirectPath);
 
 
   router.post(`/${folderForViews}/healthcare-professional/hp-summary-two-remove`, function (request, response) {
-    const redirectPath = `/${folderForViews}/hospital-dates/5-1-why-we-need-details`;
+    const redirectPath = `/${folderForViews}/task-list-hcp-done`;
 validatePath(response, redirectPath);
   })
 
@@ -2482,7 +2488,7 @@ validatePath(response, redirectPath);
 
       // hospice manually > start bank
   router.post(`/${folderForViews}/hospital-dates/hospital-residence-summary`, function (request, response) {
-    const redirectPath = `/${folderForViews}/bank-details/6-1-start`;
+    const redirectPath = `/${folderForViews}/task-list-hcp-done-1`;
 validatePath(response, redirectPath);
   })
 
@@ -2669,7 +2675,7 @@ validatePath(response, redirectPath);
 
   // Bank details CYA to task list
   router.post(`/${folderForViews}/bank-details/bank-details-summary`, function (request, response) {
-    const redirectPath = `/${folderForViews}/motability/motability`;
+    const redirectPath = `/${folderForViews}/task-list-bank-done`;
 validatePath(response, redirectPath);
   })
 

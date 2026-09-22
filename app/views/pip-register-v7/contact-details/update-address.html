@@ -206,7 +206,7 @@ autocomplete: "postal-code"
 {% from "govuk/components/select/macro.njk" import govukSelect %}
 
 
-<!--
+
 <div class="govuk-form-group">
   <label class="govuk-label" for="sort">
     Country
@@ -482,7 +482,7 @@ autocomplete: "postal-code"
             <option value="Zambia">Zambiam</option>
             <option value="Zimbabwe">Zimbabwean</option>
           </select>
-        </div>-->
+        </div>
 
      {{ govukButton({
 text: "Update address",
@@ -499,6 +499,7 @@ attributes: {
 
             localStorage.setItem('updatedAddressLine1', document.getElementById('address-line-1').value);
             localStorage.setItem('updatedAddressLine2', document.getElementById('address-line-2').value);
+         // localStorage.setItem('updatedAddressLine3', document.getElementById('address-line-3').value);
             localStorage.setItem('updatedAddressTown', document.getElementById('address-town').value);
             localStorage.setItem('updatedAddressCounty', document.getElementById('address-county').value);
             localStorage.setItem('updatedAddressPostcode', document.getElementById('address-postcode').value);
